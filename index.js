@@ -119,6 +119,11 @@ const toSpectralType = (num) => {
   return SPECTRAL_TYPES[num];
 };
 
+/**
+ * ABIs for client interaction with Influence
+ */
+const contracts = require('./contracts.json');
+
 module.exports = {
   MASTER_SEED,
   START_TIMESTAMP,
@@ -129,5 +134,6 @@ module.exports = {
   toBonus,
   toBonuses,
   isScanned,
-  toSpectralType
+  toSpectralType,
+  contracts
 };
