@@ -4,6 +4,7 @@ const MAX_RADIUS = 375142; // in meters
 const TOTAL_ASTEROIDS = 250000;
 const REGIONS = [ 'MainBelt', 'Trojans' ];
 const SPECTRAL_TYPES = [ 'C', 'Cm', 'Ci', 'Cs', 'Cms', 'Cis', 'S', 'Sm', 'Si', 'M', 'I' ];
+const RARITIES = [ 'Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable' ];
 const BONUS_MAPS = [
   {
     spectralTypes: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
@@ -103,6 +104,23 @@ const toBonuses = (packed, spectralType) => {
 };
 
 /**
+ * Returns the rarity level of the asteroid based on the bonuses and size
+ * @param bonuses
+ * @param radius
+ */
+const toRarity = (bonuses) => {
+  let rarity = 0;
+
+  for (b of bonuses) {
+    rarity += b.level;
+  }
+
+  if (rarity <= 3) return RARITIES[rarity];
+  if (rarity <= 5) return RARITIES[4];
+  return RARITIES[5];
+};
+
+/**
  * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
  * @param packed The bitpacked bonuses int
  */
@@ -133,6 +151,7 @@ module.exports = {
   SPECTRAL_TYPES,
   toBonus,
   toBonuses,
+  toRarity,
   isScanned,
   toSpectralType,
   contracts
