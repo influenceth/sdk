@@ -242,6 +242,11 @@ class KeplerianOrbit {
  */
 const contracts = require('./contracts.json');
 
+/**
+ * Adalia time conversion module
+ */
+const adaliaTime = require('./adaliaTime.js');
+
 module.exports = {
   MASTER_SEED,
   START_TIMESTAMP,
@@ -255,5 +260,6 @@ module.exports = {
   isScanned,
   toSpectralType,
   KeplerianOrbit,
-  contracts
+  contracts,
+  time: adaliaTime,
 };
