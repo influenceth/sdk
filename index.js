@@ -5,6 +5,7 @@ const TOTAL_ASTEROIDS = 250000;
 const REGIONS = [ 'MainBelt', 'Trojans' ];
 const SPECTRAL_TYPES = [ 'C', 'Cm', 'Ci', 'Cs', 'Cms', 'Cis', 'S', 'Sm', 'Si', 'M', 'I' ];
 const RARITIES = [ 'Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable' ];
+const SIZES = [ 'Small', 'Medium', 'Large', 'Huge' ]
 const BONUS_MAPS = [
   {
     spectralTypes: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
@@ -137,6 +138,17 @@ const toSpectralType = (num) => {
   return SPECTRAL_TYPES[num];
 };
 
+/**
+ * Returns the size string based on the asteroid radius
+ * @param rad The asteroid radius int value
+ */
+const toSize = (rad) => {
+  if (rad <= 5000) return SIZES[0]
+  if (rad <= 20000) return SIZES[1]
+  if (rad <= 50000) return SIZES[2]
+  return SIZES[3]
+}
+
 class KeplerianOrbit {
   constructor(elements) {
     this.a = elements.a; // Semi-major axis
@@ -254,6 +266,7 @@ module.exports = {
   toRarity,
   isScanned,
   toSpectralType,
+  toSize,
   KeplerianOrbit,
   contracts
 };
