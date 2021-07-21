@@ -143,12 +143,15 @@ const toSpectralType = (num) => {
  * @param rad The asteroid radius int value
  */
 const toSize = (rad) => {
-  if (rad <= 5000) return SIZES[0]
-  if (rad <= 20000) return SIZES[1]
-  if (rad <= 50000) return SIZES[2]
-  return SIZES[3]
+  if (rad <= 5000) return SIZES[0];
+  if (rad <= 20000) return SIZES[1];
+  if (rad <= 50000) return SIZES[2];
+  return SIZES[3];
 }
 
+/**
+ * Class that defines an orbit and provides convenience conversion methods
+ */
 class KeplerianOrbit {
   constructor(elements) {
     this.a = elements.a; // Semi-major axis
@@ -188,6 +191,23 @@ class KeplerianOrbit {
 
     const point = { x: x, y: y, z: z };
     return point;
+  }
+
+  /**
+   * Returns an numPoints sized array of uniformly (in radians) separated points along the orbit path
+   * @param numPoints Number of points to create along an orbit
+   */
+  getSmoothOrbit(numPoints) {
+    const points = [];
+    const delta = 2 * Math.PI / numPoints;
+    let angle = 0;
+
+    for (let i = 0; i < numPoints; i++) {
+      points.push(this.getPosByAngle(angle));
+      angle += delta;
+    }
+
+    return points;
   }
 
   /**
@@ -261,6 +281,9 @@ module.exports = {
   TOTAL_ASTEROIDS,
   REGIONS,
   SPECTRAL_TYPES,
+  RARITIES,
+  SIZES,
+  BONUS_MAPS,
   toBonus,
   toBonuses,
   toRarity,
