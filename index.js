@@ -170,19 +170,19 @@ const toSize = (rad) => {
  * Returns the collection name the crew member is a part of
  * @param c The unpacked collection id
  */
-const toCrewCollection = (c) => CREW_COLLECTIONS[c];
+const toCrewCollection = (c) => CREW_COLLECTIONS[c - 1];
 
 /**
  * Returns the crew class string based on the unpacked class id
  * @param c The unpacked class id
  */
-const toCrewClass = (c) => CREW_CLASSES[c];
+const toCrewClass = (c) => CREW_CLASSES[c - 1];
 
 /**
  * Returns the crew title based on the unpacked title id
  * @param t The unpacked title id
  */
-const toCrewTitle = (t) => CREW_TITLES[t];
+const toCrewTitle = (t) => CREW_TITLES[t - 1];
 
 /**
  * Class that defines an orbit and provides convenience conversion methods
