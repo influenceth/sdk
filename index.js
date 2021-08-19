@@ -63,7 +63,7 @@ const BONUS_MAPS = [
 ];
 
 // Crew member enumerables
-const CREW_COLLECTIONS = [ 'Arvad Specialists', 'Arvad Citizens' ];
+const CREW_COLLECTIONS = [ 'Arvad Specialist', 'Arvad Citizen' ];
 const CREW_CLASSES = [ 'Pilot', 'Engineer', 'Miner', 'Merchant', 'Scientist' ];
 const CREW_TITLES = [
   'Communications Officer', 'Teaching Assistant', 'Librarian', 'Nurse', 'Public Safety Officer', 'Warehouse Worker',
