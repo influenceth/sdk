@@ -1,11 +1,14 @@
+// Influence global constants
 const MASTER_SEED = 'influence';
 const START_TIMESTAMP = 1609459200; // Zero date timestamp for orbits
+
+// Asteroid constants and enumerables
 const MAX_RADIUS = 375142; // in meters
 const TOTAL_ASTEROIDS = 250000;
 const REGIONS = [ 'MainBelt', 'Trojans' ];
 const SPECTRAL_TYPES = [ 'C', 'Cm', 'Ci', 'Cs', 'Cms', 'Cis', 'S', 'Sm', 'Si', 'M', 'I' ];
 const RARITIES = [ 'Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable' ];
-const SIZES = [ 'Small', 'Medium', 'Large', 'Huge' ]
+const SIZES = [ 'Small', 'Medium', 'Large', 'Huge' ];
 const BONUS_MAPS = [
   {
     spectralTypes: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
@@ -58,6 +61,20 @@ const BONUS_MAPS = [
     ]
   }
 ];
+
+// Crew member enumerables
+const CREW_COLLECTIONS = [ 'Arvad Specialists', 'Arvad Citizens' ];
+const CREW_CLASSES = [ 'Pilot', 'Engineer', 'Miner', 'Merchant', 'Scientist' ];
+const CREW_TITLES = [
+  'Communications Officer', 'Teaching Assistant', 'Librarian', 'Nurse', 'Public Safety Officer', 'Warehouse Worker',
+  'Maintenance Technician', 'Systems Administrator', 'Structural Engineer', 'Farmer', 'Line Cook', 'Artist',
+  'Block Captain', 'Observatory Technician', 'Teacher', 'Historian', 'Physician Assistant', 'Security Officer',
+  'Logistics Specialist', 'Electrician', 'Software Engineer', 'Life Support Engineer', 'Field Botanist',
+  'Section Cook', 'Author', 'Delegate', 'Cartographer', 'Professor', 'Archivist', 'Resident Physician',
+  'Tactical Officer', 'Warehouse Manager', 'EVA Technician', 'Embedded Engineer', 'Propulsion Engineer',
+  'Nutritionist', 'Kitchen Manager', 'Musician', 'Councilor', 'Navigator', 'Distinguished Profressor', 'Curator',
+  'Physician', 'Intelligence Officer', 'Logistics Manager', 'Facilities Supervisor', 'Systems Architect',
+  'Reactor Engineer', 'Plant Geneticist', 'Chef', 'Actor', 'Justice'];
 
 /**
  * Returns the bonus information based on its position in the bitpacked bonuses int
@@ -147,7 +164,25 @@ const toSize = (rad) => {
   if (rad <= 20000) return SIZES[1];
   if (rad <= 50000) return SIZES[2];
   return SIZES[3];
-}
+};
+
+/**
+ * Returns the collection name the crew member is a part of
+ * @param c The unpacked collection id
+ */
+const toCrewCollection = (c) => CREW_COLLECTIONS[c];
+
+/**
+ * Returns the crew class string based on the unpacked class id
+ * @param c The unpacked class id
+ */
+const toCrewClass = (c) => CREW_CLASSES[c];
+
+/**
+ * Returns the crew title based on the unpacked title id
+ * @param t The unpacked title id
+ */
+const toCrewTitle = (t) => CREW_TITLES[t];
 
 /**
  * Class that defines an orbit and provides convenience conversion methods
@@ -284,12 +319,18 @@ module.exports = {
   RARITIES,
   SIZES,
   BONUS_MAPS,
+  CREW_COLLECTIONS,
+  CREW_CLASSES,
+  CREW_TITLES,
   toBonus,
   toBonuses,
   toRarity,
   isScanned,
   toSpectralType,
   toSize,
+  toCrewCollection,
+  toCrewClass,
+  toCrewTitle,
   KeplerianOrbit,
   contracts
 };
