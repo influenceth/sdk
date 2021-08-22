@@ -31,7 +31,7 @@ declare module 'influence-utils' {
 
   export const enum BonusType {
     Yield = 'yield',
-    Volantile = 'volantile',
+    Volantile = 'volatile',
     Metal = 'metal',
     Organic = 'organic',
     RareEarth = 'rareearth',
