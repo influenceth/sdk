@@ -76,6 +76,26 @@ const CREW_TITLES = [
   'Physician', 'Intelligence Officer', 'Logistics Manager', 'Facilities Supervisor', 'Systems Architect',
   'Reactor Engineer', 'Plant Geneticist', 'Chef', 'Actor', 'Justice'];
 
+const CREW_SEX = [ 'Male', 'Female' ];
+const CREW_OUTFIT = [
+  'Light Spacesuit - Blue', 'Light Spacesuit - Purple', 'Light Spacesuit - Orange',
+  'Heavy Spacesuit - Red', 'Heavy Spacesuit - Black', 'Heavy Spacesuit - Blue',
+  'Lab Coat - White', 'Lab Coat - Yellow', 'Lab Coat - Green',
+  'Tool Vest - Orange', 'Tool Vest - Green', 'Tool Vest - Yellow',
+  'Jacket - Red', 'Jacket - Green', 'Jacket - Black',
+  'Stationwear - Red',  'Stationwear - Green', 'Stationwear - Black'
+];
+
+const CREW_HAIR = [ 'Bald', 'Mohawk', 'Slickback', 'Curly', 'Buzz', 'Top Knot',
+  'Bun', 'Long', 'Ponytail', 'Pixie', 'Double Bun', 'Shoulder' ];
+
+const CREW_HAIR_COLOR = [ 'Red', 'Gray', 'Brown', 'Blonde', 'Black' ];
+const CREW_FACIAL_FEATURE = [ 'Scar', 'Piercing', 'Long Beard', 'Full Beard', 'Circle Beard',
+  'Handlebar Mustache', 'Mustache' ];
+
+const CREW_HEAD_PIECE = [ 'Welding Goggles', 'AR Glasses', 'Eyepatch', 'Mask', 'Helmet' ];
+const CREW_BONUS_ITEM = [ 'Glow', 'Drone - Gray', 'Drone - Orange', 'Drone - Green', 'Drone - Yellow' ];
+
 /**
  * Returns the bonus information based on its position in the bitpacked bonuses int
  * @param num Position in the bitpacked bonuses int
@@ -183,6 +203,14 @@ const toCrewClass = (c) => CREW_CLASSES[c - 1];
  * @param t The unpacked title id
  */
 const toCrewTitle = (t) => CREW_TITLES[t - 1];
+
+const toCrewSex = (s) => CREW_SEX[s - 1];
+const toCrewOutfit = (o) => CREW_OUTFIT[o - 1];
+const toCrewHair = (h) => CREW_HAIR[h];
+const toCrewHairColor = (h) => CREW_HAIR_COLOR[h - 1];
+const toCrewFacialFeature = (f) => CREW_FACIAL_FEATURE[f - 1];
+const toCrewHeadPiece = (h) => CREW_HEAD_PIECE[h - 1];
+const toCrewItem = (i) => CREW_BONUS_ITEM[i - 1];
 
 /**
  * Class that defines an orbit and provides convenience conversion methods
@@ -322,6 +350,12 @@ module.exports = {
   CREW_COLLECTIONS,
   CREW_CLASSES,
   CREW_TITLES,
+  CREW_SEX,
+  CREW_HAIR,
+  CREW_HAIR_COLOR,
+  CREW_FACIAL_FEATURE,
+  CREW_HEAD_PIECE,
+  CREW_BONUS_ITEM,
   toBonus,
   toBonuses,
   toRarity,
@@ -331,6 +365,13 @@ module.exports = {
   toCrewCollection,
   toCrewClass,
   toCrewTitle,
+  toCrewSex,
+  toCrewOutfit,
+  toCrewHair,
+  toCrewHairColor,
+  toCrewFacialFeature,
+  toCrewHeadPiece,
+  toCrewItem,
   KeplerianOrbit,
   contracts
 };
