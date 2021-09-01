@@ -12,7 +12,7 @@ Ethereum smart contract ABIs can be included with `import { contracts } from 'in
 ## API
 1. The API is whitelist only, please request access to the #community-devs channel in the Influence Discord: https://discord.gg/UHMqbznhJS to receive an API key.
 2. If possible, prefer using the exports here: https://www.dropbox.com/sh/5g3ww8wi9n0p4s6/AADcR0lgL8iKTQrpiWUC37Oxa?dl=0 rather than putting additional load on the API.
-3. See docs below:
+3. These endpoints are located at https://api.influenceth.io (or api-staging for testnet)
 
 ### Authenticating
 1. Once you have a client_id and client_secret retrieve a JWT token by sending a `POST` request to `/v1/auth.token` with the following JSON body:
@@ -416,6 +416,10 @@ Example (only) response:
     }
 ]
 ```
+
+## Image API
+
+The following endpoints are located at https://images.influenceth.io (or images-staging for testnet)
 
 ### GET /v1/metadata/asteroids/:id/image.svg
 Returns the asteroid card generally displayed in OpenSea. This will be *aggressively* rate-limited as it is a high-bandwidth call. Consider using the OpenSea API as well: https://docs.opensea.io/reference/api-overview
