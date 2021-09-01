@@ -421,8 +421,8 @@ Example (only) response:
 
 The following endpoints are located at https://images.influenceth.io (or images-staging for testnet)
 
-### GET /v1/metadata/asteroids/:id/image.svg
+### GET /v1/asteroids/:id/image.svg
 Returns the asteroid card generally displayed in OpenSea. This will be *aggressively* rate-limited as it is a high-bandwidth call. Consider using the OpenSea API as well: https://docs.opensea.io/reference/api-overview
 
-### GET /v1/metadata/crew/:id/image.svg
+### GET /v1/crew/:id/image.svg
 Returns the crew card generally displayed in OpenaSea. This will be *aggressivel* rate-limited as it is a high bandwidth call. Consider using the OpenSea API as well: https://docs.opensea.io/reference/api-overview
