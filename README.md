@@ -15,7 +15,7 @@ Ethereum smart contract ABIs can be included with `import { contracts } from 'in
 3. These endpoints are located at https://api.influenceth.io (or api-staging for testnet)
 
 ### Authenticating
-1. Once you have a client_id and client_secret retrieve a JWT token by sending a `POST` request to `/v1/auth.token` with the following JSON body:
+1. Once you have a client_id and client_secret retrieve a JWT token by sending a `POST` request to `/v1/auth/token` with the following JSON body:
 ```json
 {
   "grant_type": "client_credentials",
