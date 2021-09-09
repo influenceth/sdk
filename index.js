@@ -72,7 +72,7 @@ const CREW_TITLES = [
   'Logistics Specialist', 'Electrician', 'Software Engineer', 'Life Support Engineer', 'Field Botanist',
   'Section Cook', 'Author', 'Delegate', 'Cartographer', 'Professor', 'Archivist', 'Resident Physician',
   'Tactical Officer', 'Warehouse Manager', 'EVA Technician', 'Embedded Engineer', 'Propulsion Engineer',
-  'Nutritionist', 'Kitchen Manager', 'Musician', 'Councilor', 'Navigator', 'Distinguished Profressor', 'Curator',
+  'Nutritionist', 'Kitchen Manager', 'Musician', 'Councilor', 'Navigator', 'Distinguished Professor', 'Curator',
   'Physician', 'Intelligence Officer', 'Logistics Manager', 'Facilities Supervisor', 'Systems Architect',
   'Reactor Engineer', 'Plant Geneticist', 'Chef', 'Actor', 'Justice'];
 
