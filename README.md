@@ -11,11 +11,11 @@ Ethereum smart contract ABIs can be included with `import { contracts } from 'in
 
 ## API
 1. The API is whitelist only, please request access to the #community-devs channel in the Influence Discord: https://discord.gg/UHMqbznhJS to receive an API key.
-2. If possible, prefer using the exports here: https://www.dropbox.com/home/Influence rather than putting additional load on the API.
-3. See docs below:
+2. If possible, prefer using the exports here: https://www.dropbox.com/sh/5g3ww8wi9n0p4s6/AADcR0lgL8iKTQrpiWUC37Oxa?dl=0 rather than putting additional load on the API.
+3. These endpoints are located at https://api.influenceth.io (or api-staging for testnet)
 
 ### Authenticating
-1. Once you have a client_id and client_secret retrieve a JWT token by sending a `POST` request to `/v1/auth.token` with the following JSON body:
+1. Once you have a client_id and client_secret retrieve a JWT token by sending a `POST` request to `/v1/auth/token` with the following JSON body:
 ```json
 {
   "grant_type": "client_credentials",
@@ -24,7 +24,7 @@ Ethereum smart contract ABIs can be included with `import { contracts } from 'in
 }
 ```
 2. You'll receive back a JSON object with the token which does not expire (you can always request a new one if needed):
-```
+```json
 {
   "access_token": "[access_token]",
   "token_type": "bearer"
@@ -33,7 +33,13 @@ Ethereum smart contract ABIs can be included with `import { contracts } from 'in
 3. Include the token in the header for any requests to the API as: `Authorization: Bearer [access_token]`
 
 ### GET /v1/asteroids
-Returns an array of asteroids matching the given query. This can be a heavy query depending on the specific set of filters and will be rate-limited. Recommend utilizing the export at https://www.dropbox.com/home/Influence instead.
+Returns an array of asteroids matching the given query. This can be a heavy query depending on the specific set of filters and will be rate-limited. Recommend utilizing the export at https://www.dropbox.com/sh/5g3ww8wi9n0p4s6/AADcR0lgL8iKTQrpiWUC37Oxa?dl=0 instead.
+
+Pagination is supported and preferred if possible. Pagination params:
+- `perPage=10`
+- `page=3`
+
+If you need a total to support pagination, call your query along with `count=true`.
 
 Query params include:
 - `radiusMin=1000` & `radiusMax=376000`
@@ -313,7 +319,7 @@ Example response:
 ```
 
 ### GET /v1/planets
-Returns details for the five Adalian planets including orbital elements. Also available on the Dropbox as an export.
+Returns details for the five Adalian planets including orbital elements. Also available on the Dropbox at https://www.dropbox.com/sh/5g3ww8wi9n0p4s6/AADcR0lgL8iKTQrpiWUC37Oxa?dl=0 as an export.
 
 Example (only) response:
 ```json
@@ -411,8 +417,12 @@ Example (only) response:
 ]
 ```
 
-### GET /v1/metadata/asteroids/:id/card.svg
+## Image API
+
+The following endpoints are located at https://images.influenceth.io (or images-staging for testnet)
+
+### GET /v1/asteroids/:id/image.svg
 Returns the asteroid card generally displayed in OpenSea. This will be *aggressively* rate-limited as it is a high-bandwidth call. Consider using the OpenSea API as well: https://docs.opensea.io/reference/api-overview
 
-### GET /v1/metadata/crew/:id/card.svg
+### GET /v1/crew/:id/image.svg
 Returns the crew card generally displayed in OpenaSea. This will be *aggressivel* rate-limited as it is a high bandwidth call. Consider using the OpenSea API as well: https://docs.opensea.io/reference/api-overview
