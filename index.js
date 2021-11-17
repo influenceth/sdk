@@ -63,7 +63,7 @@ const BONUS_MAPS = [
 ];
 
 // Crew member enumerables
-const CREW_COLLECTIONS = [ 'Arvad Specialist', 'Arvad Citizen' ];
+const CREW_COLLECTIONS = [ 'Arvad Specialist', 'Arvad Citizen', 'Arvad Leadership' ];
 const CREW_CLASSES = [ 'Pilot', 'Engineer', 'Miner', 'Merchant', 'Scientist' ];
 const CREW_TITLES = [
   'Communications Officer', 'Teaching Assistant', 'Librarian', 'Nurse', 'Public Safety Officer', 'Warehouse Worker',
@@ -74,7 +74,9 @@ const CREW_TITLES = [
   'Tactical Officer', 'Warehouse Manager', 'EVA Technician', 'Embedded Engineer', 'Propulsion Engineer',
   'Nutritionist', 'Kitchen Manager', 'Musician', 'Councilor', 'Navigator', 'Distinguished Professor', 'Curator',
   'Physician', 'Intelligence Officer', 'Logistics Manager', 'Facilities Supervisor', 'Systems Architect',
-  'Reactor Engineer', 'Plant Geneticist', 'Chef', 'Actor', 'Justice'];
+  'Reactor Engineer', 'Plant Geneticist', 'Chef', 'Actor', 'Justice', 'Chief Navigator', 'Provost', 'Chief Archivist',
+  'Chief Medical Officer', 'Head of Security', 'Chief Logistics Officer', 'Chief Steward', 'Chief Technology Officer',
+  'Head of Engineering', 'Chief Botanist', 'Chief Cook', 'Entertainment Director', 'High Commander' ];
 
 const CREW_SEX = [ 'Male', 'Female' ];
 const CREW_OUTFIT = [
@@ -83,7 +85,12 @@ const CREW_OUTFIT = [
   'Lab Coat - White', 'Lab Coat - Yellow', 'Lab Coat - Green',
   'Tool Vest - Orange', 'Tool Vest - Green', 'Tool Vest - Yellow',
   'Jacket - Red', 'Jacket - Green', 'Jacket - Black',
-  'Stationwear - Red',  'Stationwear - Green', 'Stationwear - Black'
+  'Stationwear - Red',  'Stationwear - Green', 'Stationwear - Black',
+  'Light Spacesuit - Navigation', 'Stationwear - Education', 'Stationwear - Archival',
+  'Lab Coat - Medical', 'Heavy Spacesuit - Security', 'Light Spacesuit - Logistics',
+  'Tool Vest - Maintenance', 'Light Spacesuit - Technology', 'Tool Vest - Engineering',
+  'Lab Coat - Botany', 'Jacket - Cooking', 'Jacket - Entertainment',
+  'Stationwear - Commander'
 ];
 
 const CREW_HAIR = [ 'Bald', 'Mohawk', 'Slickback', 'Curly', 'Buzz', 'Top Knot',
@@ -93,8 +100,15 @@ const CREW_HAIR_COLOR = [ 'Red', 'Gray', 'Brown', 'Blonde', 'Black' ];
 const CREW_FACIAL_FEATURE = [ 'Scar', 'Piercing', 'Long Beard', 'Full Beard', 'Circle Beard',
   'Handlebar Mustache', 'Mustache' ];
 
-const CREW_HEAD_PIECE = [ 'Welding Goggles', 'AR Glasses', 'Eyepatch', 'Mask', 'Helmet' ];
-const CREW_BONUS_ITEM = [ 'Glow', 'Drone - Gray', 'Drone - Orange', 'Drone - Green', 'Drone - Yellow' ];
+const CREW_HEAD_PIECE = [
+  'Welding Goggles', 'AR Glasses', 'Eyepatch', 'Mask', 'Helmet', 'Navigation Goggles', 'Spectacles',
+  'Archival Glasses', 'Medical Glasses', 'Headset', 'Earmuffs', 'Technology Glasses', 'Botany Glasses',
+  'Chef Hat', 'Eyepatch - Orange', 'Eyepatch - Gold'
+];
+const CREW_BONUS_ITEM = [
+  'Glow', 'Drone - Gray', 'Drone - Orange', 'Drone - Green', 'Drone - Yellow', 'Drone - Medical',
+  'Drone - Technology', 'Drone - Commander'
+];
 
 /**
  * Returns the bonus information based on its position in the bitpacked bonuses int
