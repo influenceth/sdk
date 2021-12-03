@@ -110,6 +110,29 @@ const CREW_BONUS_ITEM = [
   'Drone - Technology', 'Drone - Commander'
 ];
 
+const CREW_TRAITS = [
+  {
+    name: 'Drive: Survival',
+    type: 'cosmetic',
+    description: 'You need to live. Your primary drive is the survival of yourself, the people you know, and the species.'
+  },
+  {
+    name: 'Drive: Service',
+    type: 'cosmetic',
+    description: 'You need to fulfill your role. Your primary drive is to serve humanity for the greater good.'
+  },
+  {
+    name: 'Drive: Glory',
+    type: 'cosmetic',
+    description: 'You need to excel. Your primary drive is to be the best at whatever you do.'
+  },
+  {
+    name: 'Drive: Command',
+    type: 'cosmetic',
+    description: 'You need to be in control. Your primary drive is to lead others in what you know to be the right direction.'
+  }
+];
+
 /**
  * Returns the bonus information based on its position in the bitpacked bonuses int
  * @param num Position in the bitpacked bonuses int
@@ -225,6 +248,7 @@ const toCrewHairColor = (h) => CREW_HAIR_COLOR[h - 1];
 const toCrewFacialFeature = (f) => CREW_FACIAL_FEATURE[f - 1];
 const toCrewHeadPiece = (h) => CREW_HEAD_PIECE[h - 1];
 const toCrewItem = (i) => CREW_BONUS_ITEM[i - 1];
+const toCrewTrait = (t) => CREW_TRAITS[t - 1];
 
 /**
  * Class that defines an orbit and provides convenience conversion methods
@@ -370,6 +394,7 @@ module.exports = {
   CREW_FACIAL_FEATURE,
   CREW_HEAD_PIECE,
   CREW_BONUS_ITEM,
+  CREW_TRAITS,
   toBonus,
   toBonuses,
   toRarity,
@@ -386,6 +411,7 @@ module.exports = {
   toCrewFacialFeature,
   toCrewHeadPiece,
   toCrewItem,
+  toCrewTrait,
   KeplerianOrbit,
   contracts
 };
