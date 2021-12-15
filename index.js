@@ -130,6 +130,101 @@ const CREW_TRAITS = [
     name: 'Drive: Command',
     type: 'cosmetic',
     description: 'You need to be in control. Your primary drive is to lead others in what you know to be the right direction.'
+  },
+  {
+    name: 'Adventurous',
+    type: 'cosmetic',
+    description: 'You are bold, brave, and intrepid. You recognize that in order to move humanity forward, it is sometimes necessary to take that giant leap for mankind.'
+  },
+  {
+    name: 'Ambitious',
+    type: 'cosmetic',
+    description: 'You know what needs to be done, and you know that you are the one who can do it. You are driven to succeed, no matter the obstacles.'
+  },
+  {
+    name: 'Arrogant',
+    type: 'cosmetic',
+    description: 'Hubris may have been the downfall of lesser people, but you are steadfastly confident in your own abilities. Let other people be led around by those stronger than themselves, you know what you are capable of.'
+  },
+  {
+    name: 'Cautious',
+    type: 'cosmetic',
+    description: 'Let others leap before they look. You will stay with what you know works, until there is some proof that another course is safer.'
+  },
+  {
+    name: 'Creative',
+    type: 'cosmetic',
+    description: 'You seek to bring new ideas to light. Your mind is constantly wandering to the question "what if..." You want to see if you can explain the "unexplainable".'
+  },
+  {
+    name: 'Curious',
+    type: 'cosmetic',
+    description: 'You are excited to open your mind and learn something new. The universe is full of the undiscovered just waiting to be discovered.'
+  },
+  {
+    name: 'Fierce',
+    type: 'cosmetic',
+    description: 'You are a forceful person who is drawn to intensity. You have strong convictions and seek out others who do as well.'
+  },
+  {
+    name: 'Flexible',
+    type: 'cosmetic',
+    description: 'You are open-minded and able to quickly analyze new ideas. You are not stuck in the past and are always ready to respond to new challenges.'
+  },
+  {
+    name: 'Frantic',
+    type: 'cosmetic',
+    description: 'You are prone to anxiety and always forget your towel.'
+  },
+  {
+    name: 'Hopeful',
+    type: 'cosmetic',
+    description: 'You know the risks, you understand the downsides, but you just can\'t help your optimism. Besides, when has humanity ever truly expanded its abilities except when it held onto hope in the face of adversity?'
+  },
+  {
+    name: 'Independent',
+    type: 'cosmetic',
+    description: 'You are free-thinking and not prone to blindly following orders, unless there is a very good explanation behind those orders.'
+  },
+  {
+    name: 'Irrational',
+    type: 'cosmetic',
+    description: 'You don\'t waste your time with logic, at least not the type that makes sense to anyone else. You have never had the dubious honor of being called "reasonable."'
+  },
+  {
+    name: 'Loyal',
+    type: 'cosmetic',
+    description: 'You understand the importance of staying the course and trusting those around you to make rational decisions.'
+  },
+  {
+    name: 'Pragmatic',
+    type: 'cosmetic',
+    description: 'Instead of wasting time wishing for a better reality, you are firmly rooted in your present situation. You prefer to find the most practical solution to a problem, even if it isn\'t always the most desirable.'
+  },
+  {
+    name: 'Rational',
+    type: 'cosmetic',
+    description: 'You try not to let messy emotions cloud your thinking. Logic is the only reliable constant in the universe.'
+  },
+  {
+    name: 'Reckless',
+    type: 'cosmetic',
+    description: 'You believe that anyone who takes life too seriously will never know its true enjoyment. Meticulous plans and detailed outcome calculations are for others to worry about.'
+  },
+  {
+    name: 'Regressive',
+    type: 'cosmetic',
+    description: 'You look to the past and rely on what others have built or imagined. You prefer to rely upon what is tried and true, rather than innovate yourself into a disaster.'
+  },
+  {
+    name: 'Serious',
+    type: 'cosmetic',
+    description: 'You have no time for self-indulgent nonsense. You understand your role and responsibilities in the universe and you wish that others understood theirs.'
+  },
+  {
+    name: 'Steadfast',
+    type: 'cosmetic',
+    description: 'You are firm in your beliefs and prefer to rely on what is known, rather than dream about what could be. You believe that experience is the best teacher.'
   }
 ];
 
