@@ -225,6 +225,51 @@ const CREW_TRAITS = [
     name: 'Steadfast',
     type: 'cosmetic',
     description: 'You are firm in your beliefs and prefer to rely on what is known, rather than dream about what could be. You believe that experience is the best teacher.'
+  },
+  {
+    name: 'Council Loyalist',
+    type: 'cosmetic',
+    description: 'You are loyal to the Prime Council and the last High Commander of the Arvad. '
+  },
+  {
+    name: 'Council Moderate',
+    type: 'cosmetic',
+    description: 'You believe that there is no better alternative to the Prime Council and the last High Commander of the Arvad. '
+  },
+  {
+    name: 'Independent Moderate',
+    type: 'cosmetic',
+    description: 'You are critical of the leadership of the Prime Council and the last High Commander of the Arvad.'
+  },
+  {
+    name: 'Independent Radical',
+    type: 'cosmetic',
+    description: 'You openly oppose the leadership of the Prime Council or the last High Commander of the Arvad. '
+  },
+  {
+    name: 'Navigator',
+    type: 'impactful',
+    description: 'You have increased ship fuel efficency while travelling.'
+  },
+  {
+    name: 'Dietitian',
+    type: 'impactful',
+    description: 'You have decreased food consumption needs among your crew.'
+  },
+  {
+    name: 'Refiner',
+    type: 'impactful',
+    description: 'You have increased refining yield while refining raw mined materials.'
+  },
+  {
+    name: 'Surveyor',
+    type: 'impactful',
+    description: 'You have increased core sampling speed while surveying an asteroid.'
+  },
+  {
+    name: 'Hauler',
+    type: 'impactful',
+    description: 'You have increased ship cargo capacity while travelling.'
   }
 ];
 
