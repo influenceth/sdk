@@ -270,6 +270,21 @@ const CREW_TRAITS = [
     name: 'Hauler',
     type: 'impactful',
     description: 'You have increased ship cargo capacity while travelling.'
+  },
+  {
+    name: 'Optimistic',
+    type: 'cosmetic',
+    description: 'You know that no matter how dark it may seem now, dawn is just over the horizon.'
+  },
+  {
+    name: 'Indecisive',
+    type: 'cosmetic',
+    description: 'You are not quick to choose. You often prefer to wait for more information before committing yourself.'
+  },
+  {
+    name: 'Pessimistic',
+    type: 'cosmetic',
+    description: 'You see no point in trying to fool yourself or anyone else. You often expect the worst and are rarely surprised by reality.'
   }
 ];
 
