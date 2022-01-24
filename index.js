@@ -285,6 +285,31 @@ const CREW_TRAITS = [
     name: 'Pessimistic',
     type: 'cosmetic',
     description: 'You see no point in trying to fool yourself or anyone else. You often expect the worst and are rarely surprised by reality.'
+  },
+  {
+    name: 'Righteous',
+    type: 'cosmetic',
+    description: 'You believe that you are virtuous and hold others to a high moral standard.'
+  },
+  {
+    name: 'Communal',
+    type: 'cosmetic',
+    description: 'You believe in community and cooperation. We can all succeed, if we work together.'
+  },
+  {
+    name: 'Impartial',
+    type: 'cosmetic',
+    description: 'You are capable of viewing many issues without bias or prejudice.'
+  },
+  {
+    name: 'Enterprising',
+    type: 'cosmetic',
+    description: 'You are resourceful and able to build on the ideas of others.'
+  },
+  {
+    name: 'Opportunistic',
+    type: 'cosmetic',
+    description: 'You believe in taking advantage of being in the right place at the right time.'
   }
 ];
 
