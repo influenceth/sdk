@@ -277,7 +277,7 @@ const CREW_TRAITS = [
     description: 'You know that no matter how dark it may seem now, dawn is just over the horizon.'
   },
   {
-    name: 'Indecisive',
+    name: 'Thoughtful',
     type: 'cosmetic',
     description: 'You are not quick to choose. You often prefer to wait for more information before committing yourself.'
   },
