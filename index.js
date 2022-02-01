@@ -310,6 +310,56 @@ const CREW_TRAITS = [
     name: 'Opportunistic',
     type: 'cosmetic',
     description: 'You believe in taking advantage of being in the right place at the right time.'
+  },
+  {
+    name: 'Buster',
+    type: 'impactful',
+    description: 'You have increased top ship acceleration.'
+  },
+  {
+    name: 'Mogul',
+    type: 'impactful',
+    description: 'You have increased market volume capacity.'
+  },
+  {
+    name: 'Scholar',
+    type: 'impactful',
+    description: 'You have decreased time to next technology.'
+  },
+  {
+    name: 'Recycler',
+    type: 'impactful',
+    description: 'You have decreased loss when reprocessing materials.'
+  },
+  {
+    name: 'Mechanic',
+    type: 'impactful',
+    description: 'You have decreased cost for ship repair.'
+  },
+  {
+    name: 'Operator',
+    type: 'impactful',
+    description: 'You have reduced rate of wear during ship operation.'
+  },
+  {
+    name: 'Logistician',
+    type: 'impactful',
+    description: 'You have reduced surface transport fuel costs.'
+  },
+  {
+    name: 'Experimenter',
+    type: 'impactful',
+    description: 'You have decreased time to next invention.'
+  },
+  {
+    name: 'Builder',
+    type: 'impactful',
+    description: 'You have decreased assembly waste.'
+  },
+  {
+    name: 'Prospector',
+    type: 'impactful',
+    description: 'You have increased viability gain per core sample.'
   }
 ];
 
