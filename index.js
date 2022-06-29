@@ -112,22 +112,22 @@ const CREW_BONUS_ITEM = [
 
 const CREW_TRAITS = [
   {
-    name: 'Drive: Survival',
+    name: 'Survival',
     type: 'cosmetic',
     description: 'You need to live. Your primary drive is the survival of yourself, the people you know, and the species.'
   },
   {
-    name: 'Drive: Service',
+    name: 'Service',
     type: 'cosmetic',
     description: 'You need to fulfill your role. Your primary drive is to serve humanity for the greater good.'
   },
   {
-    name: 'Drive: Glory',
+    name: 'Glory',
     type: 'cosmetic',
     description: 'You need to excel. Your primary drive is to be the best at whatever you do.'
   },
   {
-    name: 'Drive: Command',
+    name: 'Command',
     type: 'cosmetic',
     description: 'You need to be in control. Your primary drive is to lead others in what you know to be the right direction.'
   },
