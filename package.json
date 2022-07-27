@@ -1,6 +1,6 @@
 {
   "name": "influence-utils",
-  "version": "1.7.1",
+  "version": "2.0.1",
   "description": "Utilities to interact with Influence",
   "main": "index.js",
   "types": "index.d.ts",
