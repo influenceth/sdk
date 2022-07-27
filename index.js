@@ -603,7 +603,8 @@ class KeplerianOrbit {
 /**
  * ABIs for client interaction with Influence
  */
-const contracts = require('./contracts.json');
+const ethereumContracts = require('./contracts_ethereum.json');
+const starknetContracts = require('./contracts_starknet.json');
 
 module.exports = {
   MASTER_SEED,
@@ -644,5 +645,7 @@ module.exports = {
   toCrewItem,
   toCrewTrait,
   KeplerianOrbit,
-  contracts
+  contracts: ethereumContracts, // (for backward compatibility)
+  ethereumContracts,
+  starknetContracts
 };
