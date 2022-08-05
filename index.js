@@ -65,6 +65,13 @@ const BONUS_MAPS = [
 // Crew member enumerables
 const CREW_COLLECTIONS = [ 'Arvad Specialist', 'Arvad Citizen', 'Arvad Leadership' ];
 const CREW_CLASSES = [ 'Pilot', 'Engineer', 'Miner', 'Merchant', 'Scientist' ];
+const CREW_CLASS_DESCRIPTIONS = [
+  'Often restless, and always ready for adventure, pilots are happiest when they are flying. Their expertise gets them and their crew where they want to go quickly, safely, and efficiently.',
+  'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.',
+  'While on the surface it may appear that miners value the strength of their backs over their brains, like their quarry, the reality lies underneath: they are highly skilled and knowledgeable in their area of expertise.',
+  'Predictions of the ebb and flow of goods and services are about more than numbers on a spreadsheet, they are about anticipating the needs and desires of humanity, something merchants strive to understand.',
+  'Motivated by a desire to expand human knowledge, scientists have the capability to learn from the past, while keeping their gaze steadily on the future.' 
+];
 const CREW_TITLES = [
   'Communications Officer', 'Teaching Assistant', 'Librarian', 'Nurse', 'Public Safety Officer', 'Warehouse Worker',
   'Maintenance Technician', 'Systems Administrator', 'Structural Engineer', 'Farmer', 'Line Cook', 'Artist',
@@ -466,6 +473,12 @@ const toCrewCollection = (c) => CREW_COLLECTIONS[c - 1];
 const toCrewClass = (c) => CREW_CLASSES[c - 1];
 
 /**
+ * Returns the crew class description string based on the unpacked class id
+ * @param c The unpacked class id
+ */
+const toCrewClassDescription = (c) => CREW_CLASS_DESCRIPTIONS[c - 1];
+
+/**
  * Returns the crew title based on the unpacked title id
  * @param t The unpacked title id
  */
@@ -617,6 +630,7 @@ module.exports = {
   BONUS_MAPS,
   CREW_COLLECTIONS,
   CREW_CLASSES,
+  CREW_CLASS_DESCRIPTIONS,
   CREW_TITLES,
   CREW_SEX,
   CREW_OUTFIT,
@@ -634,6 +648,7 @@ module.exports = {
   toSize,
   toCrewCollection,
   toCrewClass,
+  toCrewClassDescription,
   toCrewTitle,
   toCrewSex,
   toCrewOutfit,
