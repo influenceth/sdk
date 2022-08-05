@@ -63,7 +63,7 @@ const BONUS_MAPS = [
 ];
 
 // Crew member enumerables
-const CREW_COLLECTIONS = [ 'Arvad Specialist', 'Arvad Citizen', 'Arvad Leadership' ];
+const CREW_COLLECTIONS = [ 'Arvad Specialist', 'Arvad Citizen', 'Arvad Leadership', 'Adalian' ];
 const CREW_CLASSES = [ 'Pilot', 'Engineer', 'Miner', 'Merchant', 'Scientist' ];
 const CREW_CLASS_DESCRIPTIONS = [
   'Often restless, and always ready for adventure, pilots are happiest when they are flying. Their expertise gets them and their crew where they want to go quickly, safely, and efficiently.',
