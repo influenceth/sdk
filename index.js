@@ -66,11 +66,11 @@ const BONUS_MAPS = [
 const CREW_COLLECTIONS = [ 'Arvad Specialist', 'Arvad Citizen', 'Arvad Leadership', 'Adalian' ];
 const CREW_CLASSES = [ 'Pilot', 'Engineer', 'Miner', 'Merchant', 'Scientist' ];
 const CREW_CLASS_DESCRIPTIONS = [
-  'Often restless, and always ready for adventure, pilots are happiest when they are flying. Their expertise gets them and their crew where they want to go quickly, safely, and efficiently.',
+  'Often restless, always ready for adventure, pilots are happiest when flying. Their expertise gets them and their crew where they want to go quickly, safely, efficiently.',
   'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.',
-  'While on the surface it may appear that miners value the strength of their backs over their brains, like their quarry, the reality lies underneath: they are highly skilled and knowledgeable in their area of expertise.',
-  'Predictions of the ebb and flow of goods and services are about more than numbers on a spreadsheet, they are about anticipating the needs and desires of humanity, something merchants strive to understand.',
-  'Motivated by a desire to expand human knowledge, scientists have the capability to learn from the past, while keeping their gaze steadily on the future.' 
+  'On the surface it appears that miners value their strength over their brains, but like their quarry, the reality lies underneath: they are highly skilled and erudite in their area of expertise.',
+  'Predicting the ebb and flow of the market is about more than just the raw data, it is about anticipating the needs and desires of humanity- this is what merchants strive to understand.',
+  'Motivated by a desire to expand human knowledge, scientists learn from the past, while keeping their gaze steadily on the future.' 
 ];
 const CREW_TITLES = [
   'Communications Officer', 'Teaching Assistant', 'Librarian', 'Nurse', 'Public Safety Officer', 'Warehouse Worker',
