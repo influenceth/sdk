@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/influence-utils.svg)](https://badge.fury.io/js/influence-utils)
+
 # influence-utils
 Utilities / SDK / API docs for interacting with Influence
 
