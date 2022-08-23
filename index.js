@@ -619,6 +619,11 @@ class KeplerianOrbit {
 const ethereumContracts = require('./contracts_ethereum.json');
 const starknetContracts = require('./contracts_starknet.json');
 
+/**
+ * Other utils
+ */
+const Address = require('./lib/address');
+
 module.exports = {
   MASTER_SEED,
   START_TIMESTAMP,
@@ -659,6 +664,7 @@ module.exports = {
   toCrewHeadPiece,
   toCrewItem,
   toCrewTrait,
+  Address,
   KeplerianOrbit,
   contracts: ethereumContracts, // (for backward compatibility)
   ethereumContracts,
