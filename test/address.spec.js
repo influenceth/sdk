@@ -88,4 +88,15 @@ describe('toStandard', function () {
     address2 = '0x0000000000000000000000000000000000000000000000000000000000000000';
     expect(addresses.areEqual(address1, address2, 'l1', 'l2')).to.be.false;
   });
+
+  it('should infer chain correctly', function () {
+    expect(addresses.inferChain('0xb3f631d686b706d308bBd1F3259455e33e9e1E4E')).to.equal('ethereum');
+    expect(addresses.inferChain('0xb3f631d686b706d308bbd1f3259455e33e9e1e4e')).to.equal('ethereum');
+
+    expect(addresses.inferChain('0x04a472fe795cc40e9dc838fe4f1608cb91bf027854d016675ec81e172a2e3599')).to.equal('starknet');
+    expect(addresses.inferChain('0x04f7cFf6cCc9254E2B325D2DD9fCaA0128126Bacc5CB5957E1c5a45b99770ce4')).to.equal('starknet');
+
+    expect(addresses.inferChain(1027399672797809865638060860065780941489646214734n)).to.equal('ethereum');
+    expect(addresses.inferChain(2247097934540446211494964943374780971694749891460604801791934968891189493760n)).to.equal('starknet');    
+  });
 });
