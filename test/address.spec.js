@@ -6,16 +6,19 @@ describe('toStandard', function () {
     const address = '0xb3f631d686b706d308bBd1F3259455e33e9e1E4E';
     const intAddress = 1027399672797809865638060860065780941489646214734n;
     const rawHexAddress = 'b3f631d686b706d308bBd1F3259455e33e9e1E4E';
-    
+    const intStringAddress = '1027399672797809865638060860065780941489646214734';
+
     const result = addresses.toStandard(address, 'ethereum');
     const intResult = addresses.toStandard(intAddress, 'ethereum');
     const hexResult = addresses.toStandard(rawHexAddress, 'ethereum');
+    const intStringResult = addresses.toStandard(intStringAddress);
     const detectedResult = addresses.toStandard(address);
 
     const expected = '0xb3f631d686b706d308bbd1f3259455e33e9e1e4e';
     expect(result).to.equal(expected);
     expect(intResult).to.equal(expected);
     expect(hexResult).to.equal(expected);
+    expect(intStringResult).to.equal(expected);
     expect(detectedResult).to.equal(expected);
   });
 
@@ -23,16 +26,19 @@ describe('toStandard', function () {
     const address = '0x04a472fE795cc40e9dc838fE4f1608cb91BF027854d016675eC81e172a2e3599';
     const intAddress = 2099807972647657112397945542074228174142925999869997955893525634648181192089n;
     const rawHexAddress = '04a472fE795cc40e9dc838fE4f1608cb91BF027854d016675eC81e172a2e3599';
-    
+    const intStringAddress = '2099807972647657112397945542074228174142925999869997955893525634648181192089';
+
     const result = addresses.toStandard(address, 'starknet');
     const intResult = addresses.toStandard(intAddress, 'starknet');
     const hexResult = addresses.toStandard(rawHexAddress, 'starknet');
+    const intStringResult = addresses.toStandard(intStringAddress);
     const detectedResult = addresses.toStandard(address);
 
     const expected = '0x04a472fe795cc40e9dc838fe4f1608cb91bf027854d016675ec81e172a2e3599';
     expect(result).to.equal(expected);
     expect(intResult).to.equal(expected);
     expect(hexResult).to.equal(expected);
+    expect(intStringResult).to.equal(expected);
     expect(detectedResult).to.equal(expected);
   });
 
