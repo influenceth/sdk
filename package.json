@@ -1,6 +1,6 @@
 {
   "name": "influence-utils",
-  "version": "1.9.2",
+  "version": "1.10.0",
   "description": "Utilities to interact with Influence",
   "main": "index.js",
   "types": "index.d.ts",
@@ -20,5 +20,8 @@
   "devDependencies": {
     "chai": "^4.3.6",
     "mocha": "^10.0.0"
+  },
+  "dependencies": {
+    "starknet": "^4.4.2"
   }
 }
