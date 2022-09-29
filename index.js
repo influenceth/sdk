@@ -70,7 +70,7 @@ const CREW_CLASS_DESCRIPTIONS = [
   'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.',
   'On the surface it appears that miners value their strength over their brains, but like their quarry, the reality lies underneath: they are highly skilled and erudite in their area of expertise.',
   'Predicting the ebb and flow of the market is about more than just the raw data, it is about anticipating the needs and desires of humanity- this is what merchants strive to understand.',
-  'Motivated by a desire to expand human knowledge, scientists learn from the past, while keeping their gaze steadily on the future.' 
+  'Motivated by a desire to expand human knowledge, scientists learn from the past, while keeping their gaze steadily on the future.'
 ];
 const CREW_TITLES = [
   'Communications Officer', 'Teaching Assistant', 'Librarian', 'Nurse', 'Public Safety Officer', 'Warehouse Worker',
@@ -623,6 +623,7 @@ const starknetContracts = require('./contracts_starknet.json');
  * Other utils
  */
 const Address = require('./lib/address');
+const Merkle = require('./lib/merkle');
 
 module.exports = {
   MASTER_SEED,
@@ -665,6 +666,7 @@ module.exports = {
   toCrewItem,
   toCrewTrait,
   Address,
+  Merkle,
   KeplerianOrbit,
   contracts: ethereumContracts, // (for backward compatibility)
   ethereumContracts,
