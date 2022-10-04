@@ -370,6 +370,31 @@ const CREW_TRAITS = [
   }
 ];
 
+const RESOURCES = [
+  'Ammonia',
+  'Carbon Dioxide',
+  'Carbon Monoxide',
+  'Hydrogen',
+  'Methane',
+  'Nitrogen',
+  'Sulfur Dioxide',
+  'Water',
+  'Feldspar',
+  'Graphite',
+  'Olivine',
+  'Pyroxene',
+  'Rhabdite',
+  'Taenite',
+  'Troilite',
+  'Apatite',
+  'Bitumen',
+  'Calcite',
+  'Merrillite',
+  'Xenotime',
+  'Coffinite',
+  'Uraninite'
+};
+
 /**
  * Returns the bonus information based on its position in the bitpacked bonuses int
  * @param num Position in the bitpacked bonuses int
@@ -431,6 +456,19 @@ const toRarity = (bonuses) => {
   if (rarity <= 5) return RARITIES[4];
   return RARITIES[5];
 };
+
+/**
+ * Converts array of relative resources into an object based on the RESOURCES list
+ * Result format: { RESOURCE_NAME: value }
+ * @param resources array of float values (asc order by resource type)
+ */
+const toResources = (resources) => {
+  resources.reduce((acc, value, index) => {
+    const key = RESOURCES[index + 1];
+    acc[key] = value;
+    return acc;
+  }, {});
+}
 
 /**
  * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
