@@ -370,29 +370,29 @@ const CREW_TRAITS = [
   }
 ];
 
-const RESOURCES = [
-  'Ammonia',
-  'Carbon Dioxide',
-  'Carbon Monoxide',
-  'Hydrogen',
-  'Methane',
-  'Nitrogen',
-  'Sulfur Dioxide',
-  'Water',
-  'Feldspar',
-  'Graphite',
-  'Olivine',
-  'Pyroxene',
-  'Rhabdite',
-  'Taenite',
-  'Troilite',
-  'Apatite',
-  'Bitumen',
-  'Calcite',
-  'Merrillite',
-  'Xenotime',
-  'Coffinite',
-  'Uraninite'
+const RESOURCES = {
+  1: { name: 'Ammonia' },
+  2: { name: 'Carbon Dioxide' },
+  3: { name: 'Carbon Monoxide' },
+  4: { name: 'Hydrogen' },
+  5: { name: 'Methane' },
+  6: { name: 'Nitrogen' },
+  7: { name: 'Sulfur Dioxide' },
+  8: { name: 'Water' },
+  9: { name: 'Feldspar' },
+  10: { name: 'Graphite' },
+  11: { name: 'Olivine' },
+  12: { name: 'Pyroxene' },
+  13: { name: 'Rhabdite' },
+  14: { name: 'Taenite' },
+  15: { name: 'Troilite' },
+  16: { name: 'Apatite' },
+  17: { name: 'Bitumen' },
+  18: { name: 'Calcite' },
+  19: { name: 'Merrillite' },
+  20: { name: 'Xenotime' },
+  21: { name: 'Coffinite' },
+  22: { name: 'Uraninite' }
 };
 
 /**
@@ -463,9 +463,10 @@ const toRarity = (bonuses) => {
  * @param resources array of float values (asc order by resource type)
  */
 const toResources = (resources) => {
-  resources.reduce((acc, value, index) => {
-    const key = RESOURCES[index + 1];
-    acc[key] = value;
+  return resources.reduce((acc, value, index) => {
+    const { name } = RESOURCES[index + 1] || {};
+    if (!name) throw new Error('Invalid index/key');
+    acc[name] = value;
     return acc;
   }, {});
 }
@@ -671,6 +672,7 @@ module.exports = {
   REGIONS,
   SPECTRAL_TYPES,
   RARITIES,
+  RESOURCES,
   SIZES,
   BONUS_MAPS,
   CREW_COLLECTIONS,
@@ -688,6 +690,7 @@ module.exports = {
   toBonus,
   toBonuses,
   toRarity,
+  toResources,
   isScanned,
   toSpectralType,
   toSize,
