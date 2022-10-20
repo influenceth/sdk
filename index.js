@@ -97,7 +97,10 @@ const CREW_OUTFIT = [
   'Lab Coat - Medical', 'Heavy Spacesuit - Security', 'Light Spacesuit - Logistics',
   'Tool Vest - Maintenance', 'Light Spacesuit - Technology', 'Tool Vest - Engineering',
   'Lab Coat - Botany', 'Jacket - Cooking', 'Jacket - Entertainment',
-  'Stationwear - Commander'
+  'Stationwear - Commander', 'Pilot Recruit - Primary', 'Pilot Recruit - Variant',
+  'Engineer Recruit - Primary', 'Engineer Recruit - Variant', 'Miner Recruit - Primary',
+  'Miner Recruit - Variant', 'Merchant Recruit - Primary', 'Merchant Recruit - Variant',
+  'Scientist Recruit - Primary', 'Scientist Recruit - Variant'
 ];
 
 const CREW_HAIR = [ 'Bald', 'Mohawk', 'Slickback', 'Curly', 'Buzz', 'Top Knot',
