@@ -28,7 +28,7 @@ const toStandard = (address, explicitChain) => {
     return undefined;
   }
 
-  const chain = explicitChain || (intAddress <= 2n ** 160n ? 'ethereum' : 'starknet');
+  const chain = explicitChain || (intAddress <= BigInt(2 ** 160) ? 'ethereum' : 'starknet');
   switch (chain) {
     case 'ethereum':
     case 'l1':
@@ -50,7 +50,7 @@ const areEqual = (address1, address2, chain1, chain2) => {
   return address1 === address2;
 };
 
-module.exports = {
+export default {
   toStandard,
   areEqual
 };

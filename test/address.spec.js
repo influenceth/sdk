@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { Address: addresses } = require('../index.js');
+import { expect } from 'chai';
+import { Address as addresses } from '../build/index.js';
 
 describe('toStandard', function () {
   it('should return a standard address for ethereum', function () {

@@ -1,4 +1,4 @@
-const { hash } = require('starknet');
+import { hash } from 'starknet';
 
 class MerkleTree {
   /**
@@ -7,7 +7,7 @@ class MerkleTree {
    * @param {Number<BigInt>|<String>}
    * @param {Number<BigInt>|<String>}
   */
-  static #sortedHash(a, b) {
+  static #sortedHash (a, b) {
     let aSorted = BigInt(a);
     let bSorted = BigInt(b);
 
@@ -16,10 +16,10 @@ class MerkleTree {
       bSorted = BigInt(a);
     }
 
-    return BigInt(hash.pedersen([ aSorted, bSorted ]));
+    return BigInt(hash.pedersen([aSorted, bSorted]));
   }
 
-  static #getNextLevel(level) {
+  static #getNextLevel (level) {
     const nextLevel = [];
 
     for (let i = 0; i < level.length; i += 2) {
@@ -30,12 +30,12 @@ class MerkleTree {
     return nextLevel;
   };
 
-  static #generateProof(level, index, proof) {
+  static #generateProof (level, index, proof) {
     if (level.length === 1) return proof;
     if (level.length % 2 !== 0) level.push(0n);
 
     const nextLevel = MerkleTree.#getNextLevel(level);
-    let indexParent = 0
+    let indexParent = 0;
 
     for (let i = 0; i < level.length; i++) {
       if (i === index) {
@@ -52,14 +52,13 @@ class MerkleTree {
     return MerkleTree.#generateProof(nextLevel, indexParent, proof);
   };
 
-  static #generateProofFromTree(tree, index, currentLevel, proof) {
+  static #generateProofFromTree (tree, index, currentLevel, proof) {
     const level = tree[currentLevel];
     if (level.length === 1) return proof;
     if (level.length % 2 !== 0) level.push(0n);
 
     currentLevel++;
-    const nextLevel = tree[currentLevel];
-    let indexParent = 0
+    let indexParent = 0;
 
     for (let i = 0; i < level.length; i++) {
       if (i === index) {
@@ -83,11 +82,11 @@ class MerkleTree {
    * @param {Array<BigInt|String>}
    * @return {BigInt}
   */
-  static generateRoot(values) {
+  static generateRoot (values) {
     if (values.length === 1) return values[0];
     if (values.length % 2 !== 0) values.push(0);
 
-    const nextLevel = MerkleTree.#getNextLevel(values)
+    const nextLevel = MerkleTree.#getNextLevel(values);
     return MerkleTree.generateRoot(nextLevel);
   };
 
@@ -97,7 +96,7 @@ class MerkleTree {
    * @param {Array.<BigInt|String>}
    * @return {Array.<BigInt>}
   */
-  static generateTree(values, tree = []) {
+  static generateTree (values, tree = []) {
     if (values.length === 1) {
       tree.push(values);
       return tree;
@@ -106,7 +105,7 @@ class MerkleTree {
     if (values.length % 2 !== 0) values.push(0);
 
     tree.push(values);
-    const nextLevel = MerkleTree.#getNextLevel(values)
+    const nextLevel = MerkleTree.#getNextLevel(values);
     return MerkleTree.generateTree(nextLevel, tree);
   };
 
@@ -118,7 +117,7 @@ class MerkleTree {
     * @param {Number}
     * @return {Array.<BigInt>}
   */
-  static generateProof(values, index) {
+  static generateProof (values, index) {
     return MerkleTree.#generateProof(values, index, []);
   };
 
@@ -129,7 +128,7 @@ class MerkleTree {
    * @param {Number}
    * @param {Array.<BigInt|String>}
   */
-  static generateProofFromTree(tree, index) {
+  static generateProofFromTree (tree, index) {
     return MerkleTree.#generateProofFromTree(tree, index, 0, []);
   };
 
@@ -138,7 +137,7 @@ class MerkleTree {
    *
    * @param {BigInt|String}
   */
-  static verify(leaf, root, proof) {
+  static verify (leaf, root, proof) {
     let curr = BigInt(leaf);
 
     for (const proofElem of proof) {
@@ -149,4 +148,4 @@ class MerkleTree {
   };
 }
 
-module.exports = MerkleTree;
+export default MerkleTree;

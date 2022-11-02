@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const { Merkle } = require('../index.js');
+import { expect } from 'chai';
+import { Merkle } from '../build/index.js';
 
 const testValues = [1, 2, 3, 4, 5, 6];
 const expected = {
