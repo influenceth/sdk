@@ -9,9 +9,10 @@
     "require": "./build/index.cjs"
   },
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha",
+    "build": "rollup --config ./rollup.config.js",
     "lint": "eslint ./src",
-    "build": "rollup --config ./rollup.config.js"
+    "postinstall": "npm run build",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",

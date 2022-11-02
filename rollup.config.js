@@ -4,11 +4,13 @@ import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 import { importAssertionsPlugin } from 'rollup-plugin-import-assert';
 import { importAssertions } from 'acorn-import-assertions';
 
+const { env: { NODE_ENV } } = process;
+
 const input = './src/index.js';
 
 const output = [
-  { file: './build/index.cjs', format: 'cjs' },
-  { file: './build/index.js', format: 'es' }
+  { file: './build/index.cjs', format: 'cjs', sourcemap: (NODE_ENV !== 'production') },
+  { file: './build/index.js', format: 'es', sourcemap: (NODE_ENV !== 'production') }
 ];
 
 const plugins = [
@@ -20,15 +22,9 @@ const plugins = [
   importAssertionsPlugin()
 ];
 
-if (['test', 'development'].includes(process.env.NODE_ENV)) {
-  // During development include a source map. We don't ship this to npm,
-  // because it significantly increases the module size:
-  output.sourcemap = true;
-} else {
-  // Minify code when publishing, this significantly decreases the module
-  // size increased introduced by shipping both ESM and CJS:
-  plugins.push(terser());
-}
+// Minify code when publishing, this significantly decreases the module
+// size increased introduced by shipping both ESM and CJS:
+if (process.env.NODE_ENV === 'production') plugins.push(terser());
 
 export default {
   acornInjectPlugins: [importAssertions],
