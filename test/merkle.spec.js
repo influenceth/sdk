@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Merkle } from '../build/index.js';
+import Merkle from '../src/lib/MerkleTree.js';
 
 const testValues = [1, 2, 3, 4, 5, 6];
 const expected = {

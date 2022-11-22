@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Address as addresses } from '../build/index.js';
+import addresses from '../src/lib/address.js';
 
 describe('toStandard', function () {
   it('should return a standard address for ethereum', function () {
