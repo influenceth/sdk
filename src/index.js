@@ -1,102 +1,77 @@
-import {
-  MASTER_SEED,
-  START_TIMESTAMP,
-  MAX_RADIUS,
-  TOTAL_ASTEROIDS,
-  REGIONS,
-  SPECTRAL_TYPES,
-  RARITIES,
-  SIZES,
-  BONUS_MAPS,
-  CREW_COLLECTIONS,
-  CREW_CLASSES,
-  CREW_CLASS_DESCRIPTIONS,
-  CREW_TITLES,
-  CREW_SEX,
-  CREW_OUTFIT,
-  CREW_HAIR,
-  CREW_HAIR_COLOR,
-  CREW_FACIAL_FEATURE,
-  CREW_HEAD_PIECE,
-  CREW_BONUS_ITEM,
-  CREW_TRAITS,
-  RESOURCES
-} from './constants.js';
-
+import { MASTER_SEED, START_TIMESTAMP } from './constants.js';
+import Asteroid from './assets/asteroid.js';
+import Construction from './assets/construction.js';
+import Crewmate from './assets/crewmate.js';
+import Extraction from './assets/extraction';
+import Inventory from './assets/inventory.js';
 import KeplerianOrbit from './lib/KeplerianOrbit.js';
 import Address from './lib/address.js';
 import Merkle from './lib/MerkleTree.js';
-
-/**
- * ABIs for client interaction with Influence
- */
 import ethereumContracts from './abis/contracts_ethereum.json' assert { type: 'json' };
 import starknetContracts from './abis/contracts_starknet.json' assert { type: 'json' };
 
-/**
- * Returns the bonus information based on its position in the bitpacked bonuses int
- * @param num Position in the bitpacked bonuses int
- */
-export const toBonus = (num) => {
-  if (num < 1 || num > 14) return '';
-  let bonus;
+// Utility libs
+export { Address, Merkle, KeplerianOrbit };
 
-  for (const b of BONUS_MAPS) {
-    bonus = b.bonuses.find(p => p.position === num);
-    if (bonus?.position) return bonus;
-  }
-};
+// Game asset libs
+export { Asteroid, Construction, Crewmate, Extraction, Inventory };
 
-/**
- * Converts packed bonuses into an array of bonus types including base types
- * @param spectralType The spectral type (int) of the asteroid
- * @param packed The bitpacked bonuses int
- */
-export const toBonuses = (packed, spectralType) => {
-  if (spectralType === undefined) throw new Error('Spectral type is required');
+// Contract ABIs
+export { ethereumContracts, starknetContracts };
 
-  const bonuses = [];
-  let b, p, added;
+// Legacy support (v1 compatiblity) ###################################################################################
+export { MASTER_SEED, START_TIMESTAMP };
+export const contracts = ethereumContracts;
 
-  for (b of BONUS_MAPS) {
-    if (b.spectralTypes.includes(spectralType)) {
-      added = false;
+export const MAX_RADIUS = Asteroid.MAX_RADIUS;
+export const TOTAL_ASTEROIDS = Asteroid.TOTAL_ASTEROIDS;
+export const REGIONS = Asteroid.REGIONS;
+export const SPECTRAL_TYPES = Object.values(Asteroid.SPECTRAL_TYPES).map(v => v.name);
+export const RARITIES = Asteroid.RARITIES;
+export const SIZES = Asteroid.SIZES;
+export const BONUS_MAPS = JSON.parse(JSON.stringify(Asteroid.BONUS_MAPS)).map(bonus => {
+  bonus.spectralTypes = bonus.spectralTypes.map(v => v - 1);
+  return bonus;
+});
 
-      for (p of b.bonuses) {
-        if ((packed & (1 << p.position)) > 0) {
-          bonuses.push(p);
-          added = true;
-        }
-      }
+export const toBonus = Asteroid.getBonus;
+export const toBonuses = (v) => Asteroid.getBonuses(v + 1);
+export const toRarity = Asteroid.getRarity;
+export const isScanned = Asteroid.getScanned;
+export const toSpectralType = (v) => Asteroid.getSpectralType(v).name;
+export const toSize = Asteroid.getSize;
 
-      if (!added) bonuses.push(b.base);
-    }
-  }
+export const CREW_BONUS_ITEM = Object.values(Crewmate.BONUS_ITEMS).map(v => v.name).slice(1);
+export const CREW_CLASSES = Object.values(Crewmate.CLASSES).map(v => v.name);
+export const CREW_CLASS_DESCRIPTIONS = Object.values(Crewmate.CLASSES).map(v => v.description);
+export const CREW_COLLECTIONS = Object.values(Crewmate.COLLECTIONS).map(v => v.name);
+export const CREW_FACIAL_FEATURE = Object.values(Crewmate.FACIAL_FEATURES).map(v => v.name).slice(1);
+export const CREW_HAIR = Object.values(Crewmate.HAIR_STYLES).map(v => v.name);
+export const CREW_HAIR_COLOR = Object.values(Crewmate.HAIR_COLORS).map(v => v.name);
+export const CREW_HEAD_PIECE = Object.values(Crewmate.HEAD_PIECES).map(v => v.name).slice(1);
+export const CREW_OUTFIT = Object.values(Crewmate.OUTFITS).map(v => v.name);
+export const CREW_SEX = Object.values(Crewmate.GENDERS).map(v => v.name);
+export const CREW_TITLES = Object.values(Crewmate.TITLES).map(v => v.name).slice(1);
+export const CREW_TRAITS = Object.values(Crewmate.TRAITS).map(v => v.name);
+export const toCrewClass = (v) => Crewmate.getClass(v).name;
+export const toCrewClassDescription = (v) => Crewmate.getClass(v).description;
+export const toCrewCollection = (v) => Crewmate.COLLECTIONS[v].name;
+export const toCrewFacialFeature = (v) => Crewmate.getFacialFeature(v).name;
+export const toCrewHair = (v) => Crewmate.getHairStyle(v).name;
+export const toCrewHairColor = (v) => Crewmate.getHairColor(v).name;
+export const toCrewHeadPiece = (v) => Crewmate.getHeadPiece(v).name;
+export const toCrewItem = (v) => Crewmate.getBonusItem(v).name;
+export const toCrewOutfit = (v) => Crewmate.getOutfit(v).name;
+export const toCrewSex = (v) => Crewmate.getGender(v).name;
+export const toCrewTitle = (v) => Crewmate.getTitle(v).name;
+export const toCrewTrait = (v) => Crewmate.getTrait(v).name;
 
-  return bonuses;
-};
-
-/**
- * Returns the rarity level of the asteroid based on the bonuses and size
- * @param bonuses
- * @param radius
- */
-export const toRarity = (bonuses) => {
-  let rarity = 0;
-
-  for (const b of bonuses) {
-    rarity += b.level;
-  }
-
-  if (rarity <= 3) return RARITIES[rarity];
-  if (rarity <= 5) return RARITIES[4];
-  return RARITIES[5];
-};
+export const RESOURCES = Inventory.RESOURCES;
 
 /**
  * Converts array of relative resources into an object based on the RESOURCES list
- * Result format: { RESOURCE_NAME: value }
  * @param resources array of float values (asc order by resource type)
+ * @return Array of resource objects, i.e. { RESOURCE_NAME: value }
  */
 export const toResources = (resources) => {
   return resources.reduce((acc, value, index) => {
@@ -105,102 +80,4 @@ export const toResources = (resources) => {
     acc[name] = value;
     return acc;
   }, {});
-};
-
-/**
- * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
- * @param packed The bitpacked bonuses int
- */
-export const isScanned = (packed) => {
-  return ((packed & (1 << 0)) > 0);
-};
-
-/**
- * Returns the spectral type string based on its array value
- * @param num The spectral type int value
- */
-export const toSpectralType = (num) => {
-  if (num < 0 || num > 10) return '';
-  return SPECTRAL_TYPES[num];
-};
-
-/**
- * Returns the size string based on the asteroid radius
- * @param rad The asteroid radius int value
- */
-export const toSize = (rad) => {
-  if (rad <= 5000) return SIZES[0];
-  if (rad <= 20000) return SIZES[1];
-  if (rad <= 50000) return SIZES[2];
-  return SIZES[3];
-};
-
-/**
- * Returns the collection name the crew member is a part of
- * @param c The unpacked collection id
- */
-export const toCrewCollection = (c) => CREW_COLLECTIONS[c - 1];
-
-/**
- * Returns the crew class string based on the unpacked class id
- * @param c The unpacked class id
- */
-export const toCrewClass = (c) => CREW_CLASSES[c - 1];
-
-/**
- * Returns the crew class description string based on the unpacked class id
- * @param c The unpacked class id
- */
-export const toCrewClassDescription = (c) => CREW_CLASS_DESCRIPTIONS[c - 1];
-
-/**
- * Returns the crew title based on the unpacked title id
- * @param t The unpacked title id
- */
-export const toCrewTitle = (t) => CREW_TITLES[t - 1];
-
-export const toCrewSex = (s) => CREW_SEX[s - 1];
-export const toCrewOutfit = (o) => CREW_OUTFIT[o - 1];
-export const toCrewHair = (h) => CREW_HAIR[h];
-export const toCrewHairColor = (h) => CREW_HAIR_COLOR[h - 1];
-export const toCrewFacialFeature = (f) => CREW_FACIAL_FEATURE[f - 1];
-export const toCrewHeadPiece = (h) => CREW_HEAD_PIECE[h - 1];
-export const toCrewItem = (i) => CREW_BONUS_ITEM[i - 1];
-export const toCrewTrait = (t) => CREW_TRAITS[t - 1];
-
-export {
-  MASTER_SEED,
-  START_TIMESTAMP,
-  MAX_RADIUS,
-  TOTAL_ASTEROIDS,
-  REGIONS,
-  SPECTRAL_TYPES,
-  RARITIES,
-  RESOURCES,
-  SIZES,
-  BONUS_MAPS,
-  CREW_COLLECTIONS,
-  CREW_CLASSES,
-  CREW_CLASS_DESCRIPTIONS,
-  CREW_TITLES,
-  CREW_SEX,
-  CREW_OUTFIT,
-  CREW_HAIR,
-  CREW_HAIR_COLOR,
-  CREW_FACIAL_FEATURE,
-  CREW_HEAD_PIECE,
-  CREW_BONUS_ITEM,
-  CREW_TRAITS
-};
-
-export {
-  Address,
-  Merkle,
-  KeplerianOrbit
-};
-
-export {
-  ethereumContracts as contracts, // (for backward compatibility)
-  ethereumContracts,
-  starknetContracts
 };

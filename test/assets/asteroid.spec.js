@@ -1,10 +1,9 @@
 import { expect } from 'chai';
-import asteroid from '../../src/models/asteroid.js';
+import asteroid from '../../src/assets/asteroid.js';
 
-describe.only('Asteroid model', function () {
+describe('Asteroid model', function () {
   it('should get settings for resource maps', function () {
     const result = asteroid.getResourceMapSettings(100000, 13, 1, 0.3332);
-    console.log(result);
   });
 
   it('should get the radius', function () {
