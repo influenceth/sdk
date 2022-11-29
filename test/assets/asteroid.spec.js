@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import asteroid from '../../src/assets/asteroid.js';
 
-describe('Asteroid model', function () {
+describe('Asteroid library', function () {
   it('should get settings for resource maps', function () {
     const result = asteroid.getResourceMapSettings(100000, 13, 1, 0.3332);
   });

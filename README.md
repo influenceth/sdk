@@ -1,20 +1,19 @@
-[![npm version](https://badge.fury.io/js/influence-utils.svg)](https://badge.fury.io/js/influence-utils)
+[![npm version](https://badge.fury.io/js/@influenceth%2Fsdk.svg)](https://badge.fury.io/js/@influenceth%2Fsdk)
 
-# influence-utils
+# Influence SDK
 Utilities / SDK / API docs for interacting with Influence
 
-## Utilities
-1. Install the utilities in your project with `npm install --save influence-utils`
-2. Include with either `import utils from 'influence-utils'` or import { toBonuses } from 'influence-utils' to include specific methods
-3. Find documentation for (most) methods at https://github.com/Influenceth/influence-utils/blob/master/index.js
+## Installation
+1. Install the utilities in your project with `npm install --save @influenceth/sdk`
+2. Include with `import { Asteroid } from '@influenceth/sdk'`
 
 ## Contract ABIs
-Ethereum smart contract ABIs can be included with `import { contracts } from 'influence-utils'` and utilized with either Etherjs or Web3.
+Smart contract ABIs can be included with `import { starknetContracts, ethereumContracts } from '@influenceth/sdk'` and utilized with Starknetjs, Ethers, Web3js.
 
 ## API
 1. The API is whitelist only, please request access to the #community-devs channel in the Influence Discord: https://discord.gg/UHMqbznhJS to receive an API key.
 2. If possible, prefer using the exports here: https://www.dropbox.com/sh/5g3ww8wi9n0p4s6/AADcR0lgL8iKTQrpiWUC37Oxa?dl=0 rather than putting additional load on the API.
-3. These endpoints are located at https://api.influenceth.io (or api-staging for testnet)
+3. These endpoints are located at https://api.influenceth.io (or api-goerli for testnet)
 
 ### Authenticating
 1. Once you have a client_id and client_secret retrieve a JWT token by sending a `POST` request to `/v1/auth/token` with the following JSON body:

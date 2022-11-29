@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import addresses from '../src/lib/address.js';
 
-describe('toStandard', function () {
+describe('Address library', function () {
   it('should return a standard address for ethereum', function () {
     const address = '0xb3f631d686b706d308bBd1F3259455e33e9e1E4E';
     const intAddress = 1027399672797809865638060860065780941489646214734n;

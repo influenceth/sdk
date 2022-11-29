@@ -1,3 +1,38 @@
+const ABILITIES = {
+  1: {
+    name: 'Core Sample Speed',
+    class: 3,
+    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 },
+    traits: { 31: 0.10 }
+  },
+  2: {
+    name: 'Core Sample Quality',
+    class: 3,
+    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 },
+    traits: { 50: 0.10 }
+  },
+  3: {
+    name: 'Surface Transport Speed',
+    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05,
+               6: 0.05, 19: 0.10, 32: 0.15, 45: 0.20, 58: 0.25 },
+    traits: { 47: 0.10 }
+  },
+  4: {
+    name: 'Extraction Rate',
+    class: 3,
+    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 }
+  },
+  5: {
+    name: 'Construction Efficiency',
+    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 },
+    traits: { 49: 0.10 }
+  },
+  6: {
+    name: 'Inventory Capacity',
+    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 }
+  }
+};
+
 const BONUS_ITEMS = {
   0: { name: 'None' },
   1: { name: 'Glow' },
@@ -267,6 +302,12 @@ const TRAITS = {
 };
 
 /**
+ * @param {integer} abilityId
+ * @returns Details for a given ability
+ */
+export const getAbility = (abilityId) => ABILITIES[abilityId];
+
+/**
  * @param bonusItemId The crewmate's bonus item identifier
  * @returns Details object for bonus item including a 'name' attribute
  */
@@ -332,7 +373,6 @@ export const getOutfit = (outfitId) => OUTFITS[outfitId];
  */
 export const getTrait = (traitId) => TRAITS[traitId];
 
-
 export default {
   BONUS_ITEMS,
   COLLECTIONS,
@@ -345,6 +385,7 @@ export default {
   OUTFITS,
   TITLES,
   TRAITS,
+  getAbility,
   getBonusItem,
   getCollection,
   getClass,

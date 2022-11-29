@@ -1,5 +1,5 @@
 {
-  "name": "influence-utils",
+  "name": "@influenceth/sdk",
   "version": "2.0.0-beta.0",
   "description": "Influence SDK",
   "type": "module",
@@ -8,21 +8,23 @@
     "import": "./build/index.js",
     "require": "./build/index.cjs"
   },
+  "files": [ "build/*" ],
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
     "lint": "eslint ./src",
+    "prepublishOnly": "npm run build",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Influenceth/influence-utils.git"
+    "url": "git+https://github.com/Influenceth/sdk.git"
   },
   "author": "Unstoppable Games, Inc.",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/Influenceth/influence-utils/issues"
+    "url": "https://github.com/Influenceth/sdk/issues"
   },
-  "homepage": "https://github.com/Influenceth/influence-utils#readme",
+  "homepage": "https://github.com/Influenceth/sdk#readme",
   "devDependencies": {
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.6",
