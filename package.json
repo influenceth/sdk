@@ -1,6 +1,6 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "Influence SDK",
   "type": "module",
   "module": "./build/index.js",
@@ -8,7 +8,9 @@
     "import": "./build/index.js",
     "require": "./build/index.cjs"
   },
-  "files": [ "build/*" ],
+  "files": [
+    "build/*"
+  ],
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
     "lint": "eslint ./src",
