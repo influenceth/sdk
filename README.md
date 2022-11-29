@@ -1,10 +1,10 @@
 [![npm version](https://badge.fury.io/js/influence-utils.svg)](https://badge.fury.io/js/influence-utils)
 
-# influence-utils
-Utilities / SDK / API docs for interacting with Influence
+# Influence SDK
+Developer's kit including utilities and contract ABIs for interacting with Influence
 
-## Utilities
-1. Install the utilities in your project with `npm install --save influence-utils`
+## Installation
+1. Install with `npm install --save influence-utils`
 2. Include with either `import utils from 'influence-utils'` or import { toBonuses } from 'influence-utils' to include specific methods
 3. Find documentation for (most) methods at https://github.com/Influenceth/influence-utils/blob/master/index.js
 
