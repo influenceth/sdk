@@ -35,7 +35,7 @@ export const BONUS_MAPS = JSON.parse(JSON.stringify(Asteroid.BONUS_MAPS)).map(bo
 });
 
 export const toBonus = Asteroid.getBonus;
-export const toBonuses = (v) => Asteroid.getBonuses(v + 1);
+export const toBonuses = Asteroid.getBonuses;
 export const toRarity = Asteroid.getRarity;
 export const isScanned = Asteroid.getScanned;
 export const toSpectralType = (v) => Asteroid.getSpectralType(v).name;

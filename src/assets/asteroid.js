@@ -5,7 +5,7 @@ import { SIMPLEX_DISTRIBUTION } from '../constants.js';
 
 export const BONUS_MAPS = [
   {
-    spectralTypes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    spectralTypes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     base: { name: 'Yield0', level: 0, modifier: 0, type: 'yield' },
     bonuses: [
       { position: 1, name: 'Yield1', level: 1, modifier: 3, type: 'yield' },
@@ -14,7 +14,7 @@ export const BONUS_MAPS = [
     ]
   },
   {
-    spectralTypes: [1, 2, 3, 4, 5, 6, 9, 11],
+    spectralTypes: [0, 1, 2, 3, 4, 5, 8, 10],
     base: { name: 'Volatile0', level: 0, modifier: 0, type: 'volatile' },
     bonuses: [
       { position: 4, name: 'Volatile1', level: 1, modifier: 10, type: 'volatile' },
@@ -23,7 +23,7 @@ export const BONUS_MAPS = [
     ]
   },
   {
-    spectralTypes: [2, 4, 5, 6, 7, 8, 9, 10],
+    spectralTypes: [1, 3, 4, 5, 6, 7, 8, 9],
     base: { name: 'Metal0', level: 0, modifier: 0, type: 'metal' },
     bonuses: [
       { position: 7, name: 'Metal1', level: 1, modifier: 10, type: 'metal' },
@@ -32,7 +32,7 @@ export const BONUS_MAPS = [
     ]
   },
   {
-    spectralTypes: [1, 2, 3, 4, 5, 6],
+    spectralTypes: [0, 1, 2, 3, 4, 5],
     base: { name: 'Organic0', level: 0, modifier: 0, type: 'organic' },
     bonuses: [
       { position: 10, name: 'Organic1', level: 1, modifier: 10, type: 'organic' },
@@ -41,14 +41,14 @@ export const BONUS_MAPS = [
     ]
   },
   {
-    spectralTypes: [4, 5, 6, 7, 8, 9],
+    spectralTypes: [3, 4, 5, 6, 7, 8],
     base: { name: 'RareEarth0', level: 0, modifier: 0, type: 'rareearth' },
     bonuses: [
       { position: 13, name: 'RareEarth3', level: 3, modifier: 30, type: 'rareearth' }
     ]
   },
   {
-    spectralTypes: [2, 4, 5, 6, 7, 8, 9, 10],
+    spectralTypes: [1, 3, 4, 5, 6, 7, 8, 9],
     base: { name: 'Fissile0', level: 0, modifier: 0, type: 'fissile' },
     bonuses: [
       { position: 14, name: 'Fissile3', level: 3, modifier: 30, type: 'fissile' }
@@ -62,17 +62,17 @@ export const RARITIES = ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional'
 export const REGIONS = ['MainBelt', 'Trojans'];
 export const SIZES = ['Small', 'Medium', 'Large', 'Huge'];
 export const SPECTRAL_TYPES = {
-  1: { name: 'C', resources: [1, 6, 7, 8, 9, 10, 11] },
-  2: { name: 'Cm', resources: [1, 6, 7, 8, 9, 10, 11, 18, 19, 20, 21, 22] },
-  3: { name: 'Ci', resources: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
-  4: { name: 'Cs', resources: [1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
-  5: { name: 'Cms', resources: [1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  6: { name: 'Cis', resources: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
-  7: { name: 'S', resources: [12, 13, 14, 15, 16, 17] },
-  8: { name: 'Sm', resources: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  9: { name: 'Si', resources: [1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17] },
-  10: { name: 'M', resources: [18, 19, 20, 21, 22] },
-  11: { name: 'I', resources: [1, 2, 3, 4, 5, 6, 7, 8 ] }
+  0: { name: 'C', resources: [1, 6, 7, 8, 9, 10, 11] },
+  1: { name: 'Cm', resources: [1, 6, 7, 8, 9, 10, 11, 18, 19, 20, 21, 22] },
+  2: { name: 'Ci', resources: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
+  3: { name: 'Cs', resources: [1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
+  4: { name: 'Cms', resources: [1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  5: { name: 'Cis', resources: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
+  6: { name: 'S', resources: [12, 13, 14, 15, 16, 17] },
+  7: { name: 'Sm', resources: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  8: { name: 'Si', resources: [1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17] },
+  9: { name: 'M', resources: [18, 19, 20, 21, 22] },
+  10: { name: 'I', resources: [1, 2, 3, 4, 5, 6, 7, 8 ] }
 };
 
 // Constants defining resource distribution maps
@@ -274,7 +274,8 @@ export const getSize = (radius) => {
  * Returns the spectral type details including a name attribute
  */
 export const getSpectralType = (spectralTypeId) => {
-  return SPECTRAL_TYPES[spectralTypeId];
+  if (SPECTRAL_TYPES[spectralTypeId]) return SPECTRAL_TYPES[spectralTypeId];
+  throw new Error('Invalid spectral type');
 };
 
 /**

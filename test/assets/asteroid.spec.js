@@ -2,6 +2,21 @@ import { expect } from 'chai';
 import asteroid from '../../src/assets/asteroid.js';
 
 describe('Asteroid library', function () {
+  it('should get spectral types', function () {
+    let type = asteroid.getSpectralType(0);
+    expect(type.name).to.equal('C');
+    type = asteroid.getSpectralType(10);
+    expect(type.name).to.equal('I');
+  });
+
+  it('should fail to get invalid spectral type', function () {
+    try {
+      const type = asteroid.getSpectralType(11);
+    } catch (error) {
+      expect(error.message).to.deep.contain('Invalid spectral type');
+    }
+  });
+
   it('should get settings for resource maps', function () {
     const result = asteroid.getResourceMapSettings(100000, 13, 1, 0.3332);
   });
