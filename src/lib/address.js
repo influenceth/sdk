@@ -1,5 +1,5 @@
 // Standardizes addresses to the correct length, and all downcased
-const toStandard = (address, explicitChain) => {
+export const toStandard = (address, explicitChain) => {
   let parseable = true;
   let intAddress;
   let error;
@@ -43,7 +43,7 @@ const toStandard = (address, explicitChain) => {
 
 // Check for equality, chain is optional but is useful if one or both addresses
 // may possibly be the null address (since the detection can't determine # of bits)
-const areEqual = (address1, address2, chain1, chain2) => {
+export const areEqual = (address1, address2, chain1, chain2) => {
   address1 = toStandard(address1, chain1);
   address2 = toStandard(address2, chain2);
 

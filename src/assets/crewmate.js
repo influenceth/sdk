@@ -1,4 +1,4 @@
-const ABILITIES = {
+export const ABILITIES = {
   1: {
     name: 'Core Sample Speed',
     class: 3,
@@ -33,7 +33,7 @@ const ABILITIES = {
   }
 };
 
-const BONUS_ITEMS = {
+export const BONUS_ITEMS = {
   0: { name: 'None' },
   1: { name: 'Glow' },
   2: { name: 'Drone - Gray' },
@@ -45,7 +45,7 @@ const BONUS_ITEMS = {
   8: { name: 'Drone - Commander' }
 };
 
-const CLASSES = {
+export const CLASSES = {
   1: { name: 'Pilot', description: 'Often restless, always ready for adventure, pilots are happiest when flying. Their expertise gets them and their crew where they want to go quickly, safely, efficiently.' },
   2: { name: 'Engineer', description: 'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.' },
   3: { name: 'Miner', description: 'On the surface it appears that miners value their strength over their brains, but like their quarry, the reality lies underneath: they are highly skilled and erudite in their area of expertise.' },
@@ -53,14 +53,14 @@ const CLASSES = {
   5: { name: 'Scientist', description: 'Motivated by a desire to expand human knowledge, scientists learn from the past, while keeping their gaze steadily on the future.' }
 };
 
-const COLLECTIONS = {
+export const COLLECTIONS = {
   1: { name: 'Arvad Specialist' },
   2: { name: 'Arvad Citizen' },
   3: { name: 'Arvad Leadership' },
   4: { name: 'Adalian' }
 };
 
-const DEPARTMENTS = {
+export const DEPARTMENTS = {
   1: { name: 'Navigation' },
   2: { name: 'Education' },
   3: { name: 'Knowledge' },
@@ -76,7 +76,7 @@ const DEPARTMENTS = {
   13: { name: 'Management' }
 };
 
-const FACIAL_FEATURES = {
+export const FACIAL_FEATURES = {
   0: { name: 'None' },
   1: { name: 'Scar' },
   2: { name: 'Piercing' },
@@ -87,12 +87,12 @@ const FACIAL_FEATURES = {
   7: { name: 'Mustache' }
 };
 
-const GENDERS = {
+export const GENDERS = {
   1: { name: 'Male' },
   2: { name: 'Female' }
 };
 
-const HAIR_COLORS = {
+export const HAIR_COLORS = {
   1: { name: 'Red' },
   2: { name: 'Gray' },
   3: { name: 'Brown' },
@@ -100,7 +100,7 @@ const HAIR_COLORS = {
   5: { name: 'Black' }
 };
 
-const HAIR_STYLES = {
+export const HAIR_STYLES = {
   0: { name: 'Bald' },
   1: { name: 'Mohawk' },
   2: { name: 'Slickback' },
@@ -115,7 +115,7 @@ const HAIR_STYLES = {
   11: { name: 'Shoulder' }
 };
 
-const HEAD_PIECES = {
+export const HEAD_PIECES = {
   0: { name: 'None' },
   1: { name: 'Welding Goggles' },
   2: { name: 'AR Glasses' },
@@ -135,7 +135,7 @@ const HEAD_PIECES = {
   16: { name: 'Eyepatch - Gold' },
 };
 
-const OUTFITS = {
+export const OUTFITS = {
   1: { name: 'Light Spacesuit - Blue' },
   2: { name: 'Light Spacesuit - Purple' },
   3: { name: 'Light Spacesuit - Orange' },
@@ -179,7 +179,7 @@ const OUTFITS = {
   41: { name: 'Scientist Recruit - Variant' }
 };
 
-const TITLES = {
+export const TITLES = {
   0: { name: 'None' },
   1: { name: 'Communications Officer' },
   2: { name: 'Teaching Assistant' },
@@ -248,7 +248,7 @@ const TITLES = {
   65: { name: 'High Commander' }
 };
 
-const TRAITS = {
+export const TRAITS = {
   1: { name: 'Drive: Survival', type: 'cosmetic', description: 'You need to live. Your primary drive is the survival of yourself, the people you know, and the species.' },
   2: { name: 'Drive: Service', type: 'cosmetic', description: 'You need to fulfill your role. Your primary drive is to serve humanity for the greater good.' },
   3: { name: 'Drive: Glory', type: 'cosmetic', description: 'You need to excel. Your primary drive is to be the best at whatever you do.' },

@@ -1,6 +1,6 @@
 import Crewmate from './crewmate.js';
 
-const CLASS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
+export const CLASS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
 
 /**
  * @param {integer} abilityId Crewmate ability identifier
@@ -51,5 +51,6 @@ export const getAbilityBonus = (abilityId, crewmates = []) => {
 };
 
 export default {
+  CLASS_EFFICIENCY,
   getAbilityBonus
 };

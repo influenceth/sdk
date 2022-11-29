@@ -27,7 +27,7 @@ describe('Asteroid library', function () {
     expect(position).to.eql([ -0, -1, -0 ]);
   });
 
-  it('should calculate distances between lots', async function () {
+  it('should calculate distances between lots', function () {
     const argsList = [
       { asteroid_id: 250000, origin_lot: 1, dest_lot: 13 },
       { asteroid_id: 250000, origin_lot: 4, dest_lot: 8 },
@@ -36,11 +36,42 @@ describe('Asteroid library', function () {
       { asteroid_id: 25000, origin_lot: 78, dest_lot: 23 }
     ];
 
-    const expectedDistances = [ 3.2161, 2.8149, 347.7338, 15.1174, 3.0699 ];
+    const expected = [ 3.2161, 2.8149, 347.7338, 15.1174, 3.0699 ];
 
     for (const [ i, args ] of argsList.entries()) {
       const distance = asteroid.getLotDistance(args.asteroid_id, args.origin_lot, args.dest_lot);
-      expect(Number(distance.toFixed(4))).to.equal(expectedDistances[i]);
+      expect(Number(distance.toFixed(4))).to.equal(expected[i]);
+    }
+  });
+
+  it('should calculate the time to travel between lots', function () {
+    const argsList = [
+      { asteroid_id: 250000, origin_lot: 1, dest_lot: 13 },
+      { asteroid_id: 250000, origin_lot: 4, dest_lot: 8 },
+      { asteroid_id: 1, origin_lot: 2345, dest_lot: 345634 },
+      { asteroid_id: 2500, origin_lot: 123, dest_lot: 342 },
+      { asteroid_id: 25000, origin_lot: 78, dest_lot: 23 }
+    ];
+
+    const expected = [ 0, 0, 1251842, 54423, 0 ];
+
+    for (const [ i, args ] of argsList.entries()) {
+      const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot);
+      expect(Number(distance.toFixed(4))).to.equal(expected[i]);
+    }
+  });
+
+  it('should calculate the time to travel between lots with bonuses', function () {
+    const argsList = [
+      { asteroid_id: 1, origin_lot: 2345, dest_lot: 345634, totalBonus: 1.5 },
+      { asteroid_id: 2500, origin_lot: 123, dest_lot: 342, totalBonus: 3.1 }
+    ];
+
+    const expected = [834562, 0 ];
+
+    for (const [ i, args ] of argsList.entries()) {
+      const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot, args.totalBonus);
+      expect(Number(distance.toFixed(4))).to.equal(expected[i]);
     }
   });
 });

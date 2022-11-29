@@ -3,7 +3,7 @@ import { multiply, dot } from 'mathjs';
 import procedural from '../lib/procedural.js';
 import { SIMPLEX_DISTRIBUTION } from '../constants.js';
 
-const BONUS_MAPS = [
+export const BONUS_MAPS = [
   {
     spectralTypes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     base: { name: 'Yield0', level: 0, modifier: 0, type: 'yield' },
@@ -56,11 +56,12 @@ const BONUS_MAPS = [
   }
 ];
 
-const MAX_RADIUS = 375142; // in meters
-const RARITIES = ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable'];
-const REGIONS = ['MainBelt', 'Trojans'];
-const SIZES = ['Small', 'Medium', 'Large', 'Huge'];
-const SPECTRAL_TYPES = {
+export const FREE_TRANSPORT_RADIUS = 5; // in km
+export const MAX_RADIUS = 375142; // in meters
+export const RARITIES = ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable'];
+export const REGIONS = ['MainBelt', 'Trojans'];
+export const SIZES = ['Small', 'Medium', 'Large', 'Huge'];
+export const SPECTRAL_TYPES = {
   1: { name: 'C', resources: [1, 6, 7, 8, 9, 10, 11] },
   2: { name: 'Cm', resources: [1, 6, 7, 8, 9, 10, 11, 18, 19, 20, 21, 22] },
   3: { name: 'Ci', resources: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
@@ -112,7 +113,7 @@ const NOISE_STEP_WEIGHT = [
  * @param spectralType The spectral type (int) of the asteroid
  * @param packed The bitpacked bonuses int
  */
-const getBonuses = (packed, spectralType) => {
+export const getBonuses = (packed, spectralType) => {
   if (spectralType === undefined) throw new Error('Spectral type is required');
 
   const bonuses = [];
@@ -138,11 +139,12 @@ const getBonuses = (packed, spectralType) => {
 
 /**
  * Calculates the distance (along surface of a sphere) between two lots on an asteroid
- * @param asteroidId The asteroid identifier
- * @param originLotId The starting lot identifier
- * @param destLotId The ending lot identifier
+ * @param {integer} asteroidId The asteroid identifier
+ * @param {integer} originLotIdThe starting lot identifier
+ * @param {integer} destLotId The ending lot identifier
+ * @return Distance in km
  */
-const getLotDistance = (asteroidId, originLotId, destLotId) => {
+export const getLotDistance = (asteroidId, originLotId, destLotId) => {
   const radius = getRadius(asteroidId);
   const origin = multiply(getLotPosition(asteroidId, originLotId), radius);
   const dest = multiply(getLotPosition(asteroidId, destLotId), radius);
@@ -154,7 +156,7 @@ const getLotDistance = (asteroidId, originLotId, destLotId) => {
  * @param asteroidId The asteroid identifier
  * @param lotId The lot identifier
  */
-const getLotPosition = (asteroidId, lotId) => {
+export const getLotPosition = (asteroidId, lotId) => {
   const phi = Math.PI * (3 - Math.sqrt(5));
   const theta = phi * (lotId - 1);
 
@@ -170,10 +172,24 @@ const getLotPosition = (asteroidId, lotId) => {
 };
 
 /**
+ * Calculates the travel time between two lots considering an overall crew bonus
+ * @param {integer} asteroidId The asteroid identifier
+ * @param {integer} originLotIdThe starting lot identifier
+ * @param {integer} destLotId The ending lot identifier
+ * @param {float} totalBonus
+ * @return Travel time in seconds
+ */
+ export const getLotTravelTime = (asteroidId, originLotId, destLotId, totalBonus = 1) => {
+  const distance = getLotDistance(asteroidId, originLotId, destLotId);
+  const time = distance <= FREE_TRANSPORT_RADIUS * totalBonus ? 0 : Math.ceil(distance * 3600 / totalBonus);
+  return time;
+};
+
+/**
  * Returns the (spherical) asteroid radius in km
  * @param asteroidId The asteroid identifier
  */
-const getRadius = (asteroidId) => {
+export const getRadius = (asteroidId) => {
   return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475)
 };
 
@@ -200,7 +216,7 @@ const getRadius = (asteroidId) => {
  * @param resourceId The resource identifier
  * @param abundance The relative abundance (0 to 1)
  */
-const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
+export const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
   const radius = getRadius(asteroidId);
   const radiusRatio = radius / 1000 / MAX_RADIUS;
   const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * radiusRatio);
@@ -238,7 +254,7 @@ const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance)
  * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
  * @param packed The bitpacked bonuses int
  */
- const getScanned = (packed) => {
+export const getScanned = (packed) => {
   return ((packed & (1 << 0)) > 0);
 };
 
@@ -246,7 +262,7 @@ const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance)
  * Returns the size string based on the asteroid radius
  * @param radius The asteroid radius in meters
  */
- const getSize = (radius) => {
+export const getSize = (radius) => {
   if (radius <= 5000) return SIZES[0];
   if (radius <= 20000) return SIZES[1];
   if (radius <= 50000) return SIZES[2];
@@ -257,7 +273,7 @@ const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance)
  * @param spectralTypeId The spectral type identifier (1-11)
  * Returns the spectral type details including a name attribute
  */
-const getSpectralType = (spectralTypeId) => {
+export const getSpectralType = (spectralTypeId) => {
   return SPECTRAL_TYPES[spectralTypeId];
 };
 
@@ -296,6 +312,7 @@ export default {
   getBonuses,
   getLotDistance,
   getLotPosition,
+  getLotTravelTime,
   getRadius,
   getRarity,
   getResourceMapSettings,

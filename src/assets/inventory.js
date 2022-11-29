@@ -3,7 +3,7 @@
  * massPerUnit is in tonnes / unit
  * volumePerUnit is in cubic meters / unit
  */
-const RESOURCES = {
+ export const RESOURCES = {
   1: { name: 'Water', massPerUnit: 0.001, volumePerUnit: 0.103 },
   2: { name: 'Hydrogen', massPerUnit: 0.001, volumePerUnit: 6.1 },
   3: { name: 'Ammonia', massPerUnit: 0.001, volumePerUnit: 0.16 },

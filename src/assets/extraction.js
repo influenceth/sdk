@@ -18,10 +18,10 @@ export const STATUSES = ['Idle', 'Extracting'];
  * @param {integer} totalYield
  * @return The extraction time in seconds
  */
-export const getExtractionTime = (targetYield, remainingYield, initialYield) => {
+export const getExtractionTime = (targetYield, remainingYield, initialYield, totalBonus = 1) => {
   const startTimeRatio = Math.sqrt(remainingYield / initialYield);
   const endTimeRatio = Math.sqrt((remainingYield - targetYield) / initialYield);
-  const time = (startTimeRatio - endTimeRatio) * MAX_EXTRACTION_TIME;
+  const time = (startTimeRatio - endTimeRatio) * MAX_EXTRACTION_TIME / totalBonus;
   return time;
 }
 
