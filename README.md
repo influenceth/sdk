@@ -1,7 +1,8 @@
 [![npm version](https://badge.fury.io/js/@influenceth%2Fsdk.svg)](https://badge.fury.io/js/@influenceth%2Fsdk)
 
 # Influence SDK
-Utilities / SDK / API docs for interacting with Influence
+Utilities / SDK / API docs for interacting with Influence. The SDK is licensed under permissive open source licenses to encourage its use.
+More information can be found in the LICENSE files.
 
 ## Installation
 1. Install the utilities in your project with `npm install --save @influenceth/sdk`

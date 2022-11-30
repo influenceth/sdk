@@ -1,20 +1,25 @@
 import { MASTER_SEED, START_TIMESTAMP } from './constants.js';
-import Asteroid from './assets/asteroid.js';
-import Construction from './assets/construction.js';
-import Crewmate from './assets/crewmate.js';
-import Extraction from './assets/extraction';
-import Inventory from './assets/inventory.js';
-import KeplerianOrbit from './lib/KeplerianOrbit.js';
-import Address from './lib/address.js';
-import Merkle from './lib/MerkleTree.js';
-import ethereumContracts from './abis/contracts_ethereum.json' assert { type: 'json' };
-import starknetContracts from './abis/contracts_starknet.json' assert { type: 'json' };
+
+import Asteroid from './lib/asteroid.js';
+import Construction from './lib/construction.js';
+import CoreSample from './lib/coreSample.js';
+import Crew from './lib/crew.js';
+import Crewmate from './lib/crewmate.js';
+import Extraction from './lib/extraction';
+import Inventory from './lib/inventory.js';
+
+import KeplerianOrbit from './utils/KeplerianOrbit.js';
+import Address from './utils/address.js';
+import Merkle from './utils/MerkleTree.js';
+
+import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'json' };
+import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
 // Utility libs
 export { Address, Merkle, KeplerianOrbit };
 
 // Game asset libs
-export { Asteroid, Construction, Crewmate, Extraction, Inventory };
+export { Asteroid, Construction, CoreSample, Crew, Crewmate, Extraction, Inventory };
 
 // Contract ABIs
 export { ethereumContracts, starknetContracts };
@@ -64,7 +69,7 @@ export const toCrewItem = (v) => Crewmate.getBonusItem(v).name;
 export const toCrewOutfit = (v) => Crewmate.getOutfit(v).name;
 export const toCrewSex = (v) => Crewmate.getGender(v).name;
 export const toCrewTitle = (v) => Crewmate.getTitle(v).name;
-export const toCrewTrait = (v) => Crewmate.getTrait(v).name;
+export const toCrewTrait = (v) => Crewmate.getTrait(v);
 
 export const RESOURCES = Inventory.RESOURCES;
 
