@@ -1,31 +1,34 @@
-import { MASTER_SEED, START_TIMESTAMP } from './constants.js';
+import Constants from './constants.js';
 
 import Asteroid from './lib/asteroid.js';
+import Capable from './lib/capable.js';
 import Construction from './lib/construction.js';
 import CoreSample from './lib/coreSample.js';
 import Crew from './lib/crew.js';
 import Crewmate from './lib/crewmate.js';
 import Extraction from './lib/extraction';
 import Inventory from './lib/inventory.js';
+import Lot from './lib/lot.js';
 
-import KeplerianOrbit from './utils/KeplerianOrbit.js';
 import Address from './utils/address.js';
+import KeplerianOrbit from './utils/KeplerianOrbit.js';
 import Merkle from './utils/MerkleTree.js';
 
 import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'json' };
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
 // Utility libs
-export { Address, Merkle, KeplerianOrbit };
+export { Address, KeplerianOrbit, Merkle };
 
 // Game asset libs
-export { Asteroid, Construction, CoreSample, Crew, Crewmate, Extraction, Inventory };
+export { Asteroid, Capable, Construction, CoreSample, Crew, Crewmate, Extraction, Inventory, Lot };
 
 // Contract ABIs
 export { ethereumContracts, starknetContracts };
 
 // Legacy support (v1 compatiblity) ###################################################################################
-export { MASTER_SEED, START_TIMESTAMP };
+export const MASTER_SEED = Constants.MASTER_SEED
+export const START_TIMESTAMP = Constants.START_TIMESTAMP;
 export const contracts = ethereumContracts;
 
 export const MAX_RADIUS = Asteroid.MAX_RADIUS;

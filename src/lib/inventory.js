@@ -1,3 +1,36 @@
+// Keyed by capableType -> inventoryType
+// Capacities are in tonnes and cubic meters
+export const CAPACITIES = {
+  1: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 },
+    1: { name: 'Storage', mass: 1500000, volume: 75000 }
+  },
+  2: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 }
+  },
+  3: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 }
+  },
+  4: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 }
+  },
+  5: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 }
+  },
+  6: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 }
+  },
+  7: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 }
+  },
+  8: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 }
+  },
+  9: {
+    0: { name: 'Construction Site', mass: 0, volume: 0 }
+  }
+};
+
 /**
  * Map of resourceIds to details
  * massPerUnit is in tonnes / unit
@@ -27,6 +60,14 @@ export const RESOURCES = {
   21: { name: 'Troilite', category: 'Metal', massPerUnit: 0.001, volumePerUnit: 0.037, iconVersion: 1, modelVersion: 1 },
   22: { name: 'Uraninite', category: 'Fissile', massPerUnit: 0.001, volumePerUnit: 0.0155, iconVersion: 1, modelVersion: 1 },
   175: { name: 'Core Sampler', category: 'Tool', massPerUnit: 0.03, volumePerUnit: 0.4, iconVersion: 1, modelVersion: 1 }
+};
+
+export const getCapacities = (capableType, inventoryType) => {
+  if (CAPACITIES[capableType]) {
+    return CAPACITIES[capableType][inventoryType];
+  } else {
+    throw new Error('Capable type does not exist');
+  }
 };
 
 /**
