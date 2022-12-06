@@ -1,13 +1,14 @@
 export const TYPES = {
-  1: { name: 'Warehouse', category: 'Building', capabilities: [ 'construction', 'inventory' ] },
-  2: { name: 'Extractor', category: 'Building', capabilities: [ 'construction', 'extraction', 'inventory' ] },
-  3: { name: 'Refinery', category: 'Building', capabilities: [ 'construction', 'inventory' ] },
-  4: { name: 'Farm', category: 'Building', capabilities: [ 'construction', 'inventory' ] },
-  5: { name: 'Factory', category: 'Building', capabilities: [ 'construction', 'inventory' ] },
-  6: { name: 'Shipyard', category: 'Building', capabilities: [ 'construction', 'inventory' ] },
-  7: { name: 'Spaceport', category: 'Building', capabilities: [ 'construction', 'inventory' ] },
-  8: { name: 'Marketplace', category: 'Building', capabilities: [ 'construction', 'inventory' ] },
-  9: { name: 'Habitat', category: 'Building', capabilities: [ 'construction', 'inventory' ] }
+  0: { name: 'Empty Lot', category: 'Building', capabilities: [], iconVersion: 1, modelVersion: 1 },
+  1: { name: 'Warehouse', category: 'Building', capabilities: [ 'construction', 'inventory' ], iconVersion: 1, modelVersion: 1 },
+  2: { name: 'Extractor', category: 'Building', capabilities: [ 'construction', 'extraction', 'inventory' ], iconVersion: 1, modelVersion: 1 },
+  3: { name: 'Refinery', category: 'Building', capabilities: [ 'construction', 'inventory' ], iconVersion: 1, modelVersion: 1 },
+  4: { name: 'Farm', category: 'Building', capabilities: [ 'construction', 'inventory' ], iconVersion: 1, modelVersion: 1 },
+  5: { name: 'Factory', category: 'Building', capabilities: [ 'construction', 'inventory' ], iconVersion: 1, modelVersion: 1 },
+  6: { name: 'Shipyard', category: 'Building', capabilities: [ 'construction', 'inventory' ], iconVersion: 1, modelVersion: 1 },
+  7: { name: 'Spaceport', category: 'Building', capabilities: [ 'construction', 'inventory' ], iconVersion: 1, modelVersion: 1 },
+  8: { name: 'Marketplace', category: 'Building', capabilities: [ 'construction', 'inventory' ], iconVersion: 1, modelVersion: 1 },
+  9: { name: 'Habitat', category: 'Building', capabilities: [ 'construction', 'inventory' ], iconVersion: 1, modelVersion: 1 }
 };
 
 /**
