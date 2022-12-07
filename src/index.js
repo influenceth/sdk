@@ -6,7 +6,7 @@ import Construction from './lib/construction.js';
 import CoreSample from './lib/coreSample.js';
 import Crew from './lib/crew.js';
 import Crewmate from './lib/crewmate.js';
-import Extraction from './lib/extraction';
+import Extraction from './lib/extraction.js';
 import Inventory from './lib/inventory.js';
 import Lot from './lib/lot.js';
 
@@ -37,10 +37,7 @@ export const REGIONS = Asteroid.REGIONS;
 export const SPECTRAL_TYPES = Object.values(Asteroid.SPECTRAL_TYPES).map(v => v.name);
 export const RARITIES = Asteroid.RARITIES;
 export const SIZES = Asteroid.SIZES;
-export const BONUS_MAPS = JSON.parse(JSON.stringify(Asteroid.BONUS_MAPS)).map(bonus => {
-  bonus.spectralTypes = bonus.spectralTypes.map(v => v - 1);
-  return bonus;
-});
+export const BONUS_MAPS = Asteroid.BONUS_MAPS;
 
 export const toBonus = Asteroid.getBonus;
 export const toBonuses = Asteroid.getBonuses;
