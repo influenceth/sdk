@@ -1,4 +1,5 @@
 export const MAX_YIELD = 10000; // tonnes
+export const SAMPLE_TIME = 3600; // in IRL seconds, 1 Adalian day
 export const STATUS_NEW = 0;
 export const STATUS_STARTED = 1;
 export const STATUS_FINISHED = 2;
@@ -11,6 +12,10 @@ export const STATUSES = ['New', 'Started', 'Finished', 'Used'];
  */
  export const getStatus = (status) => {
   return STATUSES[status];
+};
+
+export const getSampleTime = (totalBonus = 1) => {
+  return Math.ceil(SAMPLE_TIME / totalBonus);
 };
 
 export const getSampleBounds = (abundance, initialYield = 0, totalBonus = 1) => {
@@ -31,5 +36,6 @@ export default {
   STATUS_USED,
   STATUSES,
   getSampleBounds,
+  getSampleTime,
   getStatus
 };

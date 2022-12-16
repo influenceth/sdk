@@ -19,5 +19,10 @@ describe('CoreSample library', function () {
     expect(lower.toFixed(2)).to.equal('1166.67');
     expect(upper).to.equal(1500);
   });
+
+  it('should get the core sample time with a bonus', async function () {
+    const time = CoreSample.getSampleTime(1.3);
+    expect(time).to.equal(2770);
+  });
 });
 

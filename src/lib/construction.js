@@ -24,7 +24,7 @@ export const STATUSES = ['New', 'Planned', 'Under Construction', 'Operational'];
  */
 export const getConstructionTime = (capableType, totalBonus = 1) => {
   if (CONSTRUCTION_TIMES[capableType]) {
-    return CONSTRUCTION_TIMES[capableType] / totalBonus;
+    return Math.ceil(CONSTRUCTION_TIMES[capableType] / totalBonus);
   } else {
     throw new Error('Capable type is invalid or not constructable');
   }

@@ -22,7 +22,7 @@ export const getExtractionTime = (targetYield, remainingYield, initialYield, tot
   const startTimeRatio = Math.sqrt(remainingYield / initialYield);
   const endTimeRatio = Math.sqrt((remainingYield - targetYield) / initialYield);
   const time = (startTimeRatio - endTimeRatio) * MAX_EXTRACTION_TIME / totalBonus;
-  return time;
+  return Math.ceil(time);
 }
 
 export default {
