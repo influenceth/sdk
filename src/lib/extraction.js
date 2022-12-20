@@ -29,5 +29,6 @@ export default {
   STATUS_IDLE,
   STATUS_EXTRACTING,
   STATUSES,
+  getExtractionTime,
   getStatus
 };
