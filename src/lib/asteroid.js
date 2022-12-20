@@ -218,7 +218,7 @@ export const getRadius = (asteroidId) => {
  */
 export const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
   const radius = getRadius(asteroidId);
-  const radiusRatio = radius / 1000 / MAX_RADIUS;
+  const radiusRatio = radius * 1000 / MAX_RADIUS;
   const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * radiusRatio);
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
 
