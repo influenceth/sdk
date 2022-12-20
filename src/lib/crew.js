@@ -21,7 +21,7 @@ export const getAbilityBonus = (abilityId, crewmates = []) => {
     }
 
     // If the crewmate has a title and it has a match in the ability
-    if (crewmate.titleId && ability.titles[crewmate.titleId]) {
+    if (crewmate.titleId && ability.titles && ability.titles[crewmate.titleId]) {
       const info = details.titles[crewmate.titleId] || { matches: 0, bonusPerMatch: ability.titles[crewmate.titleId], bonus: 0 };
       info.matches++;
       info.bonus += ability.titles[crewmate.titleId];
@@ -31,7 +31,7 @@ export const getAbilityBonus = (abilityId, crewmates = []) => {
 
     // Get traits bonuses
     crewmate.traitIds.forEach(traitId => {
-      if (traitId && ability.traits[traitId]) {
+      if (traitId && ability.traits && ability.traits[traitId]) {
         const info = details.traits[traitId] || { matches: 0, bonusPerMatch: ability.traits[traitId], bonus: 0 };
         info.matches++;
         info.bonus += ability.traits[traitId];
