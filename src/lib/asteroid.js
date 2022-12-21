@@ -245,8 +245,7 @@ export const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abu
   partialStep = fullStep * NOISE_STEP_WEIGHT[octaves - 1];
   const upperCutoff = 1 - cutoffZero - partialStep;
 
-  const persistence = RESOURCE_OCTAVE_PERS;
-  return { octaves, persistence, lowerCutoff, upperCutoff, pointScale, pointShift: [ xShift, yShift, zShift ]};
+  return { octaves, lowerCutoff, upperCutoff, pointScale, pointShift: [ xShift, yShift, zShift ]};
 };
 
 /**
