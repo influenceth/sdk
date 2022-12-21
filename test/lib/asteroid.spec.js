@@ -89,4 +89,13 @@ describe('Asteroid library', function () {
       expect(Number(distance.toFixed(4))).to.equal(expected[i]);
     }
   });
+
+  it('should calculate resource map params', function () {
+    let settings = asteroid.getResourceMapSettings(1, 42, 1, 0.25);
+    expect(settings.octaves).to.equal(8);
+    settings = asteroid.getResourceMapSettings(104, 42, 1, 0.25);
+    expect(settings.octaves).to.equal(5);
+    settings = asteroid.getResourceMapSettings(250000, 42, 1, 0.25);
+    expect(settings.octaves).to.equal(3);
+  });
 });

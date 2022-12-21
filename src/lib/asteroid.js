@@ -77,11 +77,12 @@ export const SPECTRAL_TYPES = {
 
 // Constants defining resource distribution maps
 const OCTAVE_STEP_MOD = 2.39435907268;
-const RESOURCE_OCTAVE_MUL = 6;
-const RESOURCE_OCTAVE_BASE = 2;
+const PHI = Math.PI * (3 - Math.sqrt(5));
+const RESOURCE_OCTAVE_MUL = 5;
+const RESOURCE_OCTAVE_BASE = 3;
 const RESOURCE_OCTAVE_PERS = 0.5;
-const RESOURCE_SIZE_MUL = 3;
-const RESOURCE_SIZE_BASE = 1.5;
+const RESOURCE_SIZE_MUL = 0.75;
+const RESOURCE_SIZE_BASE = 0.375;
 const TOTAL_ASTEROIDS = 250000;
 const NOISE_STEP_WEIGHT = [
   0.0000000000000, // 1 -> 1
@@ -146,8 +147,9 @@ export const getBonuses = (packed, spectralType) => {
  */
 export const getLotDistance = (asteroidId, originLotId, destLotId) => {
   const radius = getRadius(asteroidId);
-  const origin = multiply(getLotPosition(asteroidId, originLotId), radius);
-  const dest = multiply(getLotPosition(asteroidId, destLotId), radius);
+  const numLots = getSurfaceArea(asteroidId, radius);
+  const origin = multiply(getLotPosition(asteroidId, originLotId, numLots), radius);
+  const dest = multiply(getLotPosition(asteroidId, destLotId, numLots), radius);
   return radius * Math.acos(dot(origin, dest) / (radius * radius));
 };
 
@@ -155,19 +157,16 @@ export const getLotDistance = (asteroidId, originLotId, destLotId) => {
  * Returns the Cartesian position of a lot on a (spherical) asteroid
  * @param asteroidId The asteroid identifier
  * @param lotId The lot identifier
+ * @param numLots Optional area / number of lots param (if precalculated)
  */
-export const getLotPosition = (asteroidId, lotId) => {
-  const phi = Math.PI * (3 - Math.sqrt(5));
-  const theta = phi * (lotId - 1);
-
-  const numLots = getSurfaceArea(asteroidId);
+export const getLotPosition = (asteroidId, lotId, numLots = 0) => {
+  const theta = PHI * (lotId - 1);
+  numLots = numLots || getSurfaceArea(asteroidId);
   const lotFrac = (lotId - 1) / (numLots - 1);
   const y = 1 - (lotFrac * 2);
   const radius = Math.sqrt(1 - y * y); // radius at y
-
   const x = radius * Math.cos(theta);
   const z = radius * Math.sin(theta);
-
   return [ x, y, z ];
 };
 
@@ -219,7 +218,7 @@ export const getRadius = (asteroidId) => {
 export const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
   const radius = getRadius(asteroidId);
   const radiusRatio = radius * 1000 / MAX_RADIUS;
-  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * radiusRatio);
+  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1/3));
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
 
   const resourceSeed = hash.pedersen([ BigInt(asteroidSeed), BigInt(resourceId) ]);
@@ -281,9 +280,10 @@ export const getSpectralType = (spectralTypeId) => {
 /**
  * Calculate the total (spherical) surface area in square km of an asteroid (rounded down)
  * @param asteroidId The asteroid identifier
+ * @param radius Optional radius in km
  */
- const getSurfaceArea = (asteroidId) => {
-  const radius = getRadius(asteroidId);
+ const getSurfaceArea = (asteroidId, radius = 0) => {
+  radius = radius || getRadius(asteroidId);
   const area = 4 * Math.PI * Math.pow(radius, 2);
   return Math.floor(area);
 };
@@ -292,7 +292,7 @@ const _getSimplexDist = (percentile) => {
   const upperHalf = percentile > 0.5;
   if (upperHalf) percentile = 1 - percentile;
   const lower = Math.floor(percentile * 100);
-  const upper = lower + 1;
+  const upper = Math.ceil(percentile * 100);
   const lowerDist = SIMPLEX_DISTRIBUTION[lower];
   const upperDist = SIMPLEX_DISTRIBUTION[upper];
   const fracPerc = (percentile * 100) - Math.floor(percentile * 100);
