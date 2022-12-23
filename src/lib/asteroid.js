@@ -1,6 +1,7 @@
 import { hash } from 'starknet';
 import { multiply, dot } from 'mathjs';
 import procedural from '../utils/procedural.js';
+import { recursiveSNoise } from '../utils/simplex.js';
 import { SIMPLEX_DISTRIBUTION } from '../constants.js';
 
 export const BONUS_MAPS = [
@@ -80,7 +81,6 @@ const OCTAVE_STEP_MOD = 2.39435907268;
 const PHI = Math.PI * (3 - Math.sqrt(5));
 const RESOURCE_OCTAVE_MUL = 5;
 const RESOURCE_OCTAVE_BASE = 3;
-const RESOURCE_OCTAVE_PERS = 0.5;
 const RESOURCE_SIZE_MUL = 0.75;
 const RESOURCE_SIZE_BASE = 0.375;
 const TOTAL_ASTEROIDS = 250000;
@@ -94,6 +94,77 @@ const NOISE_STEP_WEIGHT = [
   0.9946991129726, // 7 -> 1
   1.0000000000000 // 8 -> 1
 ];
+
+/**
+ * Returns the resource abundance at a specific lot
+ * @param asteroidId The asteroid identifier
+ * @param asteroidSeed The seed generated during resource scanning
+ * @param lotId The lot identifier (1-indexed)
+ * @param resourceId The resource identifier (from Inventory lib)
+ * @param abundance Asteroid-wide abundance for the given resource [0, 1]
+ */
+export const getAbundanceAtLot = (asteroidId, asteroidSeed, lotId, resourceId, abundance) => {
+  const settings = getAbundanceMapSettings(asteroidId, asteroidSeed, resourceId, abundance);
+  const point = getLotPosition(asteroidId, lotId);
+  return getAbundanceAtPosition(point, settings);
+};
+
+/**
+ * Returns the resource abundance at an arbitray x,y,z position (pre-calculated)
+ * @param point Array of x, y, z positions on unit sphere for the lot (getLotPosition)
+ * @param settings Settings derived from getResourceMapSettings
+ */
+export const getAbundanceAtPosition = (point, settings) => {
+  point = point.map((v, i) => v * settings.pointScale + settings.pointShift[i]);
+  let noise = recursiveSNoise(point, 0.5, settings.octaves);
+  noise = 0.5 * noise + 0.5;
+
+  // Scale noise value between cutoff and the upper cutoff and return
+  const aboveCutoff = noise < settings.lowerCutoff ? 0 : 1;
+  const scaled = (noise - settings.lowerCutoff) / (settings.upperCutoff - settings.lowerCutoff);
+  const abundance = Math.min(scaled * aboveCutoff, 1); // clamp to a max of 1.0
+  return abundance;
+};
+
+/**
+ * Returns a set of settings / configs to be utilized in generating resource heatmaps
+ * @param asteroidId The asteroid identifier
+ * @param asteroidSeed The random asteroid seed from scanning (not derived solely from asteroidId)
+ * @param resourceId The resource identifier
+ * @param abundance The relative abundance (0 to 1)
+ */
+ export const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
+  const radius = getRadius(asteroidId);
+  const radiusRatio = radius * 1000 / MAX_RADIUS;
+  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1/3));
+  const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
+
+  const resourceSeed = hash.pedersen([ BigInt(asteroidSeed), BigInt(resourceId) ]);
+  const xSeed = hash.pedersen([ BigInt(resourceSeed), 1n ]);
+  const ySeed = hash.pedersen([ BigInt(resourceSeed), 2n ]);
+  const zSeed = hash.pedersen([ BigInt(resourceSeed), 3n ]);
+
+  let lowShift = -5;
+  let highShift = 5;
+
+  let xShift = procedural.realBetween(xSeed, lowShift, highShift);
+  let yShift = procedural.realBetween(ySeed, lowShift, highShift);
+  let zShift = procedural.realBetween(zSeed, lowShift, highShift);
+
+  // Get simplex distribution based settings
+  const cutoffFrac = abundance * 2;
+  const cutoffSingle = _getSimplexDist(cutoffFrac);
+  let fullStep = (0.5 - cutoffSingle) / OCTAVE_STEP_MOD;
+  let partialStep = fullStep * NOISE_STEP_WEIGHT[octaves - 1];
+  const lowerCutoff = 1 - cutoffSingle - partialStep;
+
+  const cutoffZero = _getSimplexDist(0);
+  fullStep = (0.5 - cutoffZero) / OCTAVE_STEP_MOD;
+  partialStep = fullStep * NOISE_STEP_WEIGHT[octaves - 1];
+  const upperCutoff = 1 - cutoffZero - partialStep;
+
+  return { octaves, lowerCutoff, upperCutoff, pointScale, pointShift: [ xShift, yShift, zShift ]};
+};
 
 /**
  * Returns the bonus information based on its position in the bitpacked bonuses int
@@ -209,46 +280,6 @@ export const getRadius = (asteroidId) => {
 };
 
 /**
- * Returns a set of settings / configs to be utilized in generating resource heatmaps
- * @param asteroidId The asteroid identifier
- * @param asteroidSeed The random asteroid seed from scanning (not derived solely from asteroidId)
- * @param resourceId The resource identifier
- * @param abundance The relative abundance (0 to 1)
- */
-export const getResourceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
-  const radius = getRadius(asteroidId);
-  const radiusRatio = radius * 1000 / MAX_RADIUS;
-  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1/3));
-  const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
-
-  const resourceSeed = hash.pedersen([ BigInt(asteroidSeed), BigInt(resourceId) ]);
-  const xSeed = hash.pedersen([ BigInt(resourceSeed), 1n ]);
-  const ySeed = hash.pedersen([ BigInt(resourceSeed), 2n ]);
-  const zSeed = hash.pedersen([ BigInt(resourceSeed), 3n ]);
-
-  let lowShift = -5;
-  let highShift = 5;
-
-  let xShift = procedural.realBetween(xSeed, lowShift, highShift);
-  let yShift = procedural.realBetween(ySeed, lowShift, highShift);
-  let zShift = procedural.realBetween(zSeed, lowShift, highShift);
-
-  // Get simplex distribution based settings
-  const cutoffFrac = abundance * 2;
-  const cutoffSingle = _getSimplexDist(cutoffFrac);
-  let fullStep = (0.5 - cutoffSingle) / OCTAVE_STEP_MOD;
-  let partialStep = fullStep * NOISE_STEP_WEIGHT[octaves - 1];
-  const lowerCutoff = 1 - cutoffSingle - partialStep;
-
-  const cutoffZero = _getSimplexDist(0);
-  fullStep = (0.5 - cutoffZero) / OCTAVE_STEP_MOD;
-  partialStep = fullStep * NOISE_STEP_WEIGHT[octaves - 1];
-  const upperCutoff = 1 - cutoffZero - partialStep;
-
-  return { octaves, lowerCutoff, upperCutoff, pointScale, pointShift: [ xShift, yShift, zShift ]};
-};
-
-/**
  * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
  * @param packed The bitpacked bonuses int
  */
@@ -308,6 +339,9 @@ export default {
   SIZES,
   SPECTRAL_TYPES,
   TOTAL_ASTEROIDS,
+  getAbundanceAtLot,
+  getAbundanceAtPosition,
+  getAbundanceMapSettings,
   getBonus,
   getBonuses,
   getLotDistance,
@@ -315,7 +349,6 @@ export default {
   getLotTravelTime,
   getRadius,
   getRarity,
-  getResourceMapSettings,
   getScanned,
   getSize,
   getSpectralType,

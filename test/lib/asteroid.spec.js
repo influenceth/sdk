@@ -17,8 +17,28 @@ describe('Asteroid library', function () {
     }
   });
 
-  it('should get settings for resource maps', function () {
-    const result = asteroid.getResourceMapSettings(100000, 13, 1, 0.3332);
+  it('should calculate abundance map params', function () {
+    let settings = asteroid.getAbundanceMapSettings(1, 42, 1, 0.25);
+    expect(settings.octaves).to.equal(8);
+    settings = asteroid.getAbundanceMapSettings(104, 42, 1, 0.25);
+    expect(settings.octaves).to.equal(5);
+    settings = asteroid.getAbundanceMapSettings(250000, 42, 1, 0.25);
+    expect(settings.octaves).to.equal(3);
+  });
+
+  it('should get abundances at a unit sphere position', function () {
+    const point = asteroid.getLotPosition(100, 1);
+    const abundance = asteroid.getAbundanceAtPosition(point, {
+      octaves: 6, lowerCutoff: 0, upperCutoff: 1, pointScale: 1, pointShift: [ -0.005, 11.578, -2.87 ]
+    });
+
+    expect(Number(abundance.toFixed(5))).to.equal(0.40892)
+  });
+
+  it('should get abundance at a specific lot', function () {
+    const asteroidSeed = 3590329621830653642883442320016035471801660656180234502900732533901525272177n;
+    const abundance = asteroid.getAbundanceAtLot(1000, asteroidSeed, 2096, 10, 0.212)
+    expect(Number(abundance.toFixed(5))).to.equal(0.04443);
   });
 
   it('should get the radius', function () {
@@ -88,14 +108,5 @@ describe('Asteroid library', function () {
       const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot, args.totalBonus);
       expect(Number(distance.toFixed(4))).to.equal(expected[i]);
     }
-  });
-
-  it('should calculate resource map params', function () {
-    let settings = asteroid.getResourceMapSettings(1, 42, 1, 0.25);
-    expect(settings.octaves).to.equal(8);
-    settings = asteroid.getResourceMapSettings(104, 42, 1, 0.25);
-    expect(settings.octaves).to.equal(5);
-    settings = asteroid.getResourceMapSettings(250000, 42, 1, 0.25);
-    expect(settings.octaves).to.equal(3);
   });
 });
