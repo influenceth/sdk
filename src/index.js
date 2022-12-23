@@ -13,7 +13,7 @@ import Lot from './lib/lot.js';
 import Address from './utils/address.js';
 import KeplerianOrbit from './utils/KeplerianOrbit.js';
 import Merkle from './utils/MerkleTree.js';
-import Simplex from './utils/Simplex.js';
+import Simplex from './utils/simplex.js';
 
 import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'json' };
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
