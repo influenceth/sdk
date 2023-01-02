@@ -321,7 +321,9 @@ export const getResource = (resourceId) => {
 };
 
 export default {
+  CAPACITIES,
   RESOURCES,
+  getCapacities,
   getContents,
   getResource
 };
