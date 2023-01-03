@@ -77,13 +77,6 @@ export const SPECTRAL_TYPES = {
 };
 
 // Constants defining resource distribution maps
-const OCTAVE_STEP_MOD = 2.39435907268;
-const PHI = Math.PI * (3 - Math.sqrt(5));
-const RESOURCE_OCTAVE_MUL = 5;
-const RESOURCE_OCTAVE_BASE = 3;
-const RESOURCE_SIZE_MUL = 0.75;
-const RESOURCE_SIZE_BASE = 0.375;
-const TOTAL_ASTEROIDS = 250000;
 const NOISE_STEP_WEIGHT = [
   0.0000000000000, // 1 -> 1
   0.6101823028867, // 2 -> 1
@@ -94,6 +87,15 @@ const NOISE_STEP_WEIGHT = [
   0.9946991129726, // 7 -> 1
   1.0000000000000 // 8 -> 1
 ];
+
+const OCTAVE_STEP_MOD = 2.39435907268;
+const PHI = Math.PI * (3 - Math.sqrt(5));
+const RESOURCE_OCTAVE_MUL = 5;
+const RESOURCE_OCTAVE_BASE = 3;
+const RESOURCE_SIZE_MUL = 0.75;
+const RESOURCE_SIZE_BASE = 0.375;
+const SCANNING_TIME = 3600; // seconds
+const TOTAL_ASTEROIDS = 250000;
 
 /**
  * Returns the resource abundance at a specific lot
@@ -336,6 +338,7 @@ export default {
   MAX_RADIUS,
   RARITIES,
   REGIONS,
+  SCANNING_TIME,
   SIZES,
   SPECTRAL_TYPES,
   TOTAL_ASTEROIDS,
