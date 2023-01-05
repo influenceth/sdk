@@ -253,7 +253,7 @@ export const getLotPosition = (asteroidId, lotId, numLots = 0) => {
  */
 export const getLotTravelTime = (asteroidId, originLotId, destLotId, totalBonus = 1) => {
   const distance = getLotDistance(asteroidId, originLotId, destLotId);
-  const time = distance <= FREE_TRANSPORT_RADIUS * totalBonus ? 0 : Math.ceil(distance * 3600 / totalBonus);
+  const time = distance <= FREE_TRANSPORT_RADIUS * totalBonus ? 0 : Math.ceil(distance * 60 / totalBonus);
   return time;
 };
 

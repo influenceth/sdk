@@ -88,7 +88,7 @@ describe('Asteroid library', function () {
       { asteroid_id: 25000, origin_lot: 78, dest_lot: 23 }
     ];
 
-    const expected = [ 0, 0, 1251842, 54423, 0 ];
+    const expected = [ 0, 0, 20865, 908, 0 ];
 
     for (const [ i, args ] of argsList.entries()) {
       const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot);
@@ -102,7 +102,7 @@ describe('Asteroid library', function () {
       { asteroid_id: 2500, origin_lot: 123, dest_lot: 342, totalBonus: 3.1 }
     ];
 
-    const expected = [834562, 0 ];
+    const expected = [13910, 0 ];
 
     for (const [ i, args ] of argsList.entries()) {
       const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot, args.totalBonus);
