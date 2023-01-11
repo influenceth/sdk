@@ -4859,6 +4859,429 @@
       "type": "function"
     },
     {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "features",
+          "type": "felt"
+        },
+        {
+          "name": "features_proof_len",
+          "type": "felt"
+        },
+        {
+          "name": "features_proof",
+          "type": "felt*"
+        },
+        {
+          "name": "boost",
+          "type": "felt"
+        },
+        {
+          "name": "bonuses",
+          "type": "felt"
+        },
+        {
+          "name": "bonuses_proof_len",
+          "type": "felt"
+        },
+        {
+          "name": "bonuses_proof",
+          "type": "felt*"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_AsteroidStartScan",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_AsteroidFinishScan",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_ConstructionFinish",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_ConstructionStart",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_ConstructionDeconstruct",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "capable_type",
+          "type": "felt"
+        },
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_ConstructionPlan",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_ConstructionUnplan",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "resource_id",
+          "type": "felt"
+        },
+        {
+          "name": "sample_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_CoreSampleStartSampling",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "resource_id",
+          "type": "felt"
+        },
+        {
+          "name": "sample_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_CoreSampleFinishSampling",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "crewmate_id",
+          "type": "felt"
+        },
+        {
+          "name": "name",
+          "type": "felt"
+        },
+        {
+          "name": "features_len",
+          "type": "felt"
+        },
+        {
+          "name": "features",
+          "type": "felt*"
+        },
+        {
+          "name": "traits_len",
+          "type": "felt"
+        },
+        {
+          "name": "traits",
+          "type": "felt*"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_CrewmateInitializeAdalian",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "crew_len",
+          "type": "felt"
+        },
+        {
+          "name": "crew",
+          "type": "felt*"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_CrewMint",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "crew_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_len",
+          "type": "felt"
+        },
+        {
+          "name": "crew",
+          "type": "felt*"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_CrewSetComposition",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_ExtractionFinish",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "resource_id",
+          "type": "felt"
+        },
+        {
+          "name": "sample_id",
+          "type": "felt"
+        },
+        {
+          "name": "yield",
+          "type": "felt"
+        },
+        {
+          "name": "destination_lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "destination_inventory_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_ExtractionStart",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "origin_lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "origin_inventory_id",
+          "type": "felt"
+        },
+        {
+          "name": "destination_lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "destination_inventory_id",
+          "type": "felt"
+        },
+        {
+          "name": "resource_ids_len",
+          "type": "felt"
+        },
+        {
+          "name": "resource_ids",
+          "type": "felt*"
+        },
+        {
+          "name": "quantities_len",
+          "type": "felt"
+        },
+        {
+          "name": "quantities",
+          "type": "felt*"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_InventoryTransferStart",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "destination_lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "destination_inventory_id",
+          "type": "felt"
+        },
+        {
+          "name": "delivery_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_InventoryTransferFinish",
+      "type": "event"
+    },
+    {
+      "data": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "Dispatcher_LotOccupy",
+      "type": "event"
+    },
+    {
       "inputs": [
         {
           "name": "owner",
