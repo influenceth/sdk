@@ -63,7 +63,7 @@ class KeplerianOrbit {
    * Retrieves the orbital period in days
    */
   getPeriod () {
-    const thirdLaw = 0.000007495; // R^3 / T^2
+    const thirdLaw = 0.000006421064256; // GM / 4*pi*pi for ~86% solar mass Adalia
     return Math.sqrt(Math.pow(this.a, 3) / thirdLaw);
   }
 
