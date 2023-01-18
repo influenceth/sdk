@@ -73,7 +73,7 @@ export const SPECTRAL_TYPES = {
   7: { name: 'Sm', resources: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
   8: { name: 'Si', resources: [1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17] },
   9: { name: 'M', resources: [18, 19, 20, 21, 22] },
-  10: { name: 'I', resources: [1, 2, 3, 4, 5, 6, 7, 8 ] }
+  10: { name: 'I', resources: [1, 2, 3, 4, 5, 6, 7, 8] }
 };
 
 // Constants defining resource distribution maps
@@ -117,6 +117,13 @@ export const getAbundanceAtLot = (asteroidId, asteroidSeed, lotId, resourceId, a
  * @param settings Settings derived from getResourceMapSettings
  */
 export const getAbundanceAtPosition = (point, settings) => {
+
+  // If noise cutoffs are the same, abundance is 0 so return that now
+  // instead of trying to stretch noise to infinity.
+  if (settings.upperCutoff == settings.lowerCutoff) {
+    return 0;
+  }
+
   point = point.map((v, i) => v * settings.pointScale + settings.pointShift[i]);
   let noise = recursiveSNoise(point, 0.5, settings.octaves);
   noise = 0.5 * noise + 0.5;
@@ -135,16 +142,16 @@ export const getAbundanceAtPosition = (point, settings) => {
  * @param resourceId The resource identifier
  * @param abundance The relative abundance (0 to 1)
  */
- export const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
+export const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
   const radius = getRadius(asteroidId);
   const radiusRatio = radius * 1000 / MAX_RADIUS;
-  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1/3));
+  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1 / 3));
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
 
-  const resourceSeed = hash.pedersen([ BigInt(asteroidSeed), BigInt(resourceId) ]);
-  const xSeed = hash.pedersen([ BigInt(resourceSeed), 1n ]);
-  const ySeed = hash.pedersen([ BigInt(resourceSeed), 2n ]);
-  const zSeed = hash.pedersen([ BigInt(resourceSeed), 3n ]);
+  const resourceSeed = hash.pedersen([BigInt(asteroidSeed), BigInt(resourceId)]);
+  const xSeed = hash.pedersen([BigInt(resourceSeed), 1n]);
+  const ySeed = hash.pedersen([BigInt(resourceSeed), 2n]);
+  const zSeed = hash.pedersen([BigInt(resourceSeed), 3n]);
 
   let lowShift = -5;
   let highShift = 5;
@@ -165,14 +172,14 @@ export const getAbundanceAtPosition = (point, settings) => {
   partialStep = fullStep * NOISE_STEP_WEIGHT[octaves - 1];
   const upperCutoff = 1 - cutoffZero - partialStep;
 
-  return { octaves, lowerCutoff, upperCutoff, pointScale, pointShift: [ xShift, yShift, zShift ]};
+  return { octaves, lowerCutoff, upperCutoff, pointScale, pointShift: [xShift, yShift, zShift] };
 };
 
 /**
  * Returns the bonus information based on its position in the bitpacked bonuses int
  * @param num Position in the bitpacked bonuses int
  */
- export const getBonus = (num) => {
+export const getBonus = (num) => {
   if (num < 1 || num > 14) return '';
   let bonus;
 
@@ -240,7 +247,7 @@ export const getLotPosition = (asteroidId, lotId, numLots = 0) => {
   const radius = Math.sqrt(1 - y * y); // radius at y
   const x = radius * Math.cos(theta);
   const z = radius * Math.sin(theta);
-  return [ x, y, z ];
+  return [x, y, z];
 };
 
 /**
@@ -269,7 +276,7 @@ export const getRadius = (asteroidId) => {
  * Returns the rarity level of the asteroid based on the set of scanned bonuses
  * @param bonuses Array of bonus objects
  */
- const getRarity = (bonuses) => {
+const getRarity = (bonuses) => {
   let rarity = 0;
 
   for (const b of bonuses) {
@@ -314,7 +321,7 @@ export const getSpectralType = (spectralTypeId) => {
  * @param asteroidId The asteroid identifier
  * @param radius Optional radius in km
  */
- const getSurfaceArea = (asteroidId, radius = 0) => {
+const getSurfaceArea = (asteroidId, radius = 0) => {
   radius = radius || getRadius(asteroidId);
   const area = 4 * Math.PI * Math.pow(radius, 2);
   return Math.floor(area);
