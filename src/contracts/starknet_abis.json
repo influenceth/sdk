@@ -6335,6 +6335,25 @@
           "type": "felt"
         },
         {
+          "name": "crew_id",
+          "type": "felt"
+        }
+      ],
+      "name": "restartGracePeriod",
+      "outputs": [],
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "asteroid_id",
+          "type": "felt"
+        },
+        {
+          "name": "lot_id",
+          "type": "felt"
+        },
+        {
           "name": "capable_type",
           "type": "felt"
         },
