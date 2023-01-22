@@ -224,15 +224,25 @@ export const getBonuses = (packed, spectralType) => {
   return bonuses;
 };
 
+/**
+ * Calculates the distance (along surface of a sphere) between two lots on an asteroid
+ * @param {object} bonuses The asteroid identifier
+ * @param {integer} resourceId starting lot identifier
+ * @return Mathching bonuses and total multiplier
+ */
 export const getBonusByResource = (bonuses, resourceId) => {
   let multiplier = 1;
+  let matches = [];
 
   bonuses.forEach(bonus => {
     const found = BONUS_MAPS.find(v => v.base.type === bonus.type && v.resourceIds.includes(resourceId));
-    if (found) multiplier *= (100 + bonus.modifier) / 100;
+    if (found) {
+      multiplier *= (100 + bonus.modifier) / 100;
+      matches.push(bonus);
+    }
   });
 
-  return multiplier;
+  return { bonuses: matches, totalBonus: multiplier };
 };
 
 /**
