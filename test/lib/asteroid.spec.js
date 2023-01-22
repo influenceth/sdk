@@ -2,6 +2,27 @@ import { expect } from 'chai';
 import asteroid from '../../src/lib/asteroid.js';
 
 describe('Asteroid library', function () {
+  it('should get bonuses', function () {
+    const packed = parseInt('101001', 2);
+    const bonuses = asteroid.getBonuses(packed, 1);
+    expect(bonuses[0].name).to.equal('Yield3');
+    expect(bonuses[1].name).to.equal('Volatile2');
+  });
+
+  it('should return multiplier for resource and a set of bonuses', function () {
+    let packed = parseInt('101001', 2);
+    let bonuses = asteroid.getBonuses(packed, 1);
+    let multiplier = asteroid.getBonusByResource(bonuses, 1);
+    expect(multiplier).to.equal(1.38);
+    multiplier = asteroid.getBonusByResource(bonuses, 9);
+    expect(multiplier).to.equal(1.15);
+
+    packed = parseInt('1', 2);
+    bonuses = asteroid.getBonuses(packed, 1);
+    multiplier = asteroid.getBonusByResource(bonuses, 1);
+    expect(multiplier).to.equal(1);
+  });
+
   it('should get spectral types', function () {
     let type = asteroid.getSpectralType(0);
     expect(type.name).to.equal('C');

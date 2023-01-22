@@ -7,6 +7,7 @@ import { SIMPLEX_DISTRIBUTION } from '../constants.js';
 export const BONUS_MAPS = [
   {
     spectralTypes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    resourceIds: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ],
     base: { name: 'Yield0', level: 0, modifier: 0, type: 'yield' },
     bonuses: [
       { position: 1, name: 'Yield1', level: 1, modifier: 3, type: 'yield' },
@@ -16,6 +17,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [0, 1, 2, 3, 4, 5, 8, 10],
+    resourceIds: [ 1, 2, 3, 4, 5, 6, 7, 8 ],
     base: { name: 'Volatile0', level: 0, modifier: 0, type: 'volatile' },
     bonuses: [
       { position: 4, name: 'Volatile1', level: 1, modifier: 10, type: 'volatile' },
@@ -25,6 +27,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [1, 3, 4, 5, 6, 7, 8, 9],
+    resourceIds: [ 12, 13, 14, 18, 19, 20, 21 ],
     base: { name: 'Metal0', level: 0, modifier: 0, type: 'metal' },
     bonuses: [
       { position: 7, name: 'Metal1', level: 1, modifier: 10, type: 'metal' },
@@ -34,6 +37,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [0, 1, 2, 3, 4, 5],
+    resourceIds: [ 9, 10, 11 ],
     base: { name: 'Organic0', level: 0, modifier: 0, type: 'organic' },
     bonuses: [
       { position: 10, name: 'Organic1', level: 1, modifier: 10, type: 'organic' },
@@ -43,6 +47,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [3, 4, 5, 6, 7, 8],
+    resourceIds: [ 16, 17 ],
     base: { name: 'RareEarth0', level: 0, modifier: 0, type: 'rareearth' },
     bonuses: [
       { position: 13, name: 'RareEarth3', level: 3, modifier: 30, type: 'rareearth' }
@@ -50,6 +55,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [1, 3, 4, 5, 6, 7, 8, 9],
+    resourceIds: [ 15, 22 ],
     base: { name: 'Fissile0', level: 0, modifier: 0, type: 'fissile' },
     bonuses: [
       { position: 14, name: 'Fissile3', level: 3, modifier: 30, type: 'fissile' }
@@ -218,6 +224,17 @@ export const getBonuses = (packed, spectralType) => {
   return bonuses;
 };
 
+export const getBonusByResource = (bonuses, resourceId) => {
+  let multiplier = 1;
+
+  bonuses.forEach(bonus => {
+    const found = BONUS_MAPS.find(v => v.base.type === bonus.type && v.resourceIds.includes(resourceId));
+    if (found) multiplier *= (100 + bonus.modifier) / 100;
+  });
+
+  return multiplier;
+};
+
 /**
  * Calculates the distance (along surface of a sphere) between two lots on an asteroid
  * @param {integer} asteroidId The asteroid identifier
@@ -353,6 +370,7 @@ export default {
   getAbundanceAtPosition,
   getAbundanceMapSettings,
   getBonus,
+  getBonusByResource,
   getBonuses,
   getLotDistance,
   getLotPosition,
