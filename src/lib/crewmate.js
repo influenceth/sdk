@@ -24,6 +24,7 @@ export const ABILITIES = {
   },
   5: {
     name: 'Construction Efficiency',
+    class: 2,
     titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 },
     traits: { 49: 0.10 }
   },
