@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import asteroid from '../../src/lib/asteroid.js';
+import { SIMPLEX_POLY_FIT } from '../../src/constants.js';
 
 describe('Asteroid library', function () {
   it('should get bonuses', function () {
@@ -50,16 +51,16 @@ describe('Asteroid library', function () {
   it('should get abundances at a unit sphere position', function () {
     const point = asteroid.getLotPosition(100, 1);
     const abundance = asteroid.getAbundanceAtPosition(point, {
-      octaves: 6, lowerCutoff: 0, upperCutoff: 1, pointScale: 1, pointShift: [ -0.005, 11.578, -2.87 ]
+      abundance: 1, octaves: 6, polyParams: SIMPLEX_POLY_FIT[6], pointScale: 1, pointShift: [ -0.005, 11.578, -2.87 ]
     });
 
-    expect(Number(abundance.toFixed(5))).to.equal(0.40892)
+    expect(Number(abundance.toFixed(5))).to.equal(0.59825)
   });
 
   it('should get abundance at a specific lot', function () {
     const asteroidSeed = 3590329621830653642883442320016035471801660656180234502900732533901525272177n;
     const abundance = asteroid.getAbundanceAtLot(1000, asteroidSeed, 2096, 10, 0.212)
-    expect(Number(abundance.toFixed(5))).to.equal(0.04443);
+    expect(Number(abundance.toFixed(5))).to.equal(0.106);
   });
 
   it('should get the radius', function () {

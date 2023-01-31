@@ -1,4 +1,5 @@
 export const MAX_EXTRACTION_TIME = 365 * 3600; // 365 Adalian days in IRL seconds
+export const MAX_YIELD = 10000 * 1000;
 export const STATUS_IDLE = 0;
 export const STATUS_EXTRACTING = 1;
 export const STATUSES = ['Idle', 'Extracting'];
@@ -18,9 +19,9 @@ export const STATUSES = ['Idle', 'Extracting'];
  * @param {integer} totalYield
  * @return The extraction time in seconds
  */
-export const getExtractionTime = (targetYield, remainingYield, initialYield, totalBonus = 1) => {
-  const startTimeRatio = Math.sqrt(remainingYield / initialYield);
-  const endTimeRatio = Math.sqrt((remainingYield - targetYield) / initialYield);
+export const getExtractionTime = (targetYield, remainingYield, totalBonus = 1) => {
+  const startTimeRatio = Math.sqrt(remainingYield / MAX_YIELD);
+  const endTimeRatio = Math.sqrt((remainingYield - targetYield) / MAX_YIELD);
   const time = (startTimeRatio - endTimeRatio) * MAX_EXTRACTION_TIME / totalBonus;
   return Math.ceil(time);
 }

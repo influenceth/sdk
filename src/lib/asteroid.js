@@ -2,7 +2,7 @@ import { hash } from 'starknet';
 import { multiply, dot } from 'mathjs';
 import procedural from '../utils/procedural.js';
 import { recursiveSNoise } from '../utils/simplex.js';
-import { SIMPLEX_DISTRIBUTION } from '../constants.js';
+import { SIMPLEX_POLY_FIT } from '../constants.js';
 
 export const BONUS_MAPS = [
   {
@@ -82,19 +82,6 @@ export const SPECTRAL_TYPES = {
   10: { name: 'I', resources: [1, 2, 3, 4, 5, 6, 7, 8] }
 };
 
-// Constants defining resource distribution maps
-const NOISE_STEP_WEIGHT = [
-  0.0000000000000, // 1 -> 1
-  0.6101823028867, // 2 -> 1
-  0.8229127977102, // 3 -> 1
-  0.9154024275287, // 4 -> 1
-  0.9611609377604, // 5 -> 1
-  0.9833976243208, // 6 -> 1
-  0.9946991129726, // 7 -> 1
-  1.0000000000000 // 8 -> 1
-];
-
-const OCTAVE_STEP_MOD = 2.39435907268;
 const PHI = Math.PI * (3 - Math.sqrt(5));
 const RESOURCE_OCTAVE_MUL = 5;
 const RESOURCE_OCTAVE_BASE = 3;
@@ -123,21 +110,25 @@ export const getAbundanceAtLot = (asteroidId, asteroidSeed, lotId, resourceId, a
  * @param settings Settings derived from getResourceMapSettings
  */
 export const getAbundanceAtPosition = (point, settings) => {
-
-  // If noise cutoffs are the same, abundance is 0 so return that now
-  // instead of trying to stretch noise to infinity.
-  if (settings.upperCutoff == settings.lowerCutoff) {
-    return 0;
-  }
+  if (settings.abundance === 0) return 0;
 
   point = point.map((v, i) => v * settings.pointScale + settings.pointShift[i]);
   let noise = recursiveSNoise(point, 0.5, settings.octaves);
   noise = 0.5 * noise + 0.5;
 
-  // Scale noise value between cutoff and the upper cutoff and return
-  const aboveCutoff = noise < settings.lowerCutoff ? 0 : 1;
-  const scaled = (noise - settings.lowerCutoff) / (settings.upperCutoff - settings.lowerCutoff);
-  const abundance = Math.min(scaled * aboveCutoff, 1); // clamp to a max of 1.0
+  // Get percentile of noise based on poly fits
+  let percentile = 0;
+
+  for (let i = 0; i < settings.polyParams.length; i++) {
+    percentile += settings.polyParams[i] * Math.pow(noise, i);
+  }
+
+  // Scale and clamp abundance to [0,1] then add half the base abundance as a floor
+  let abundance = (percentile + settings.abundance - 1.0) / settings.abundance;
+  abundance = Math.min(Math.max(abundance, 0), 1);
+  const abundanceFloor = settings.abundance / 2;
+  abundance = abundance * (1.0 - abundanceFloor) + abundanceFloor;
+
   return abundance;
 };
 
@@ -153,6 +144,7 @@ export const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, ab
   const radiusRatio = radius * 1000 / MAX_RADIUS;
   const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1 / 3));
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
+  const polyParams = SIMPLEX_POLY_FIT[octaves];
 
   const resourceSeed = hash.pedersen([BigInt(asteroidSeed), BigInt(resourceId)]);
   const xSeed = hash.pedersen([BigInt(resourceSeed), 1n]);
@@ -166,19 +158,7 @@ export const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, ab
   let yShift = procedural.realBetween(ySeed, lowShift, highShift);
   let zShift = procedural.realBetween(zSeed, lowShift, highShift);
 
-  // Get simplex distribution based settings
-  const cutoffFrac = abundance * 2;
-  const cutoffSingle = _getSimplexDist(cutoffFrac);
-  let fullStep = (0.5 - cutoffSingle) / OCTAVE_STEP_MOD;
-  let partialStep = fullStep * NOISE_STEP_WEIGHT[octaves - 1];
-  const lowerCutoff = 1 - cutoffSingle - partialStep;
-
-  const cutoffZero = _getSimplexDist(0);
-  fullStep = (0.5 - cutoffZero) / OCTAVE_STEP_MOD;
-  partialStep = fullStep * NOISE_STEP_WEIGHT[octaves - 1];
-  const upperCutoff = 1 - cutoffZero - partialStep;
-
-  return { octaves, lowerCutoff, upperCutoff, pointScale, pointShift: [xShift, yShift, zShift] };
+  return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
 };
 
 /**
