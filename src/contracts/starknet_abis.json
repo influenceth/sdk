@@ -7018,10 +7018,6 @@
           "type": "felt"
         },
         {
-          "name": "initial_yield",
-          "type": "felt"
-        },
-        {
           "name": "delay",
           "type": "felt"
         },
