@@ -334,6 +334,36 @@ const getSurfaceArea = (asteroidId, radius = 0) => {
   return Math.floor(area);
 };
 
+/**
+ * Unpacks a packed set of static asteroid data including orbital elements and spectral type
+ * @param {Uint32Array} packed 32 bit array of packed asteroid details (3 elements per asteroid)
+ */
+const unpackAsteroidDetails = (packed) => {
+  const unpacked = [];
+
+  for (let i = 1; i <= 250000; i++) {
+    const offset = i - 1;
+    const packedSAE = packed[offset * 3];
+    const packedIO = packed[offset * 3 + 1];
+    const packedWM = packed[offset * 3 + 2];
+    unpacked.push({
+      i,
+      r: getRadius(i),
+      spectralType: packedSAE & 15,
+      orbital: {
+        a: ((packedSAE & 4194288) >> 4) / 1000,
+        e: ((packedSAE & 4290772992) >> 22) / 1000,
+        i: (packedIO & 65535) * Math.PI / 18000,
+        o: ((packedIO & 4294901760) >> 16) * Math.PI / 18000,
+        w: (packedWM & 65535) * Math.PI / 18000,
+        m: ((packedWM & 4294901760) >> 16) * Math.PI / 18000
+      }
+    });
+  }
+
+  return unpacked;
+};
+
 const _getSimplexDist = (percentile) => {
   const upperHalf = percentile > 0.5;
   if (upperHalf) percentile = 1 - percentile;
@@ -370,5 +400,6 @@ export default {
   getScanned,
   getSize,
   getSpectralType,
-  getSurfaceArea
+  getSurfaceArea,
+  unpackAsteroidDetails
 };

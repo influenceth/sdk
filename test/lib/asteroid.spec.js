@@ -1,6 +1,8 @@
 import { expect } from 'chai';
+import axios from 'axios';
 import asteroid from '../../src/lib/asteroid.js';
 import { SIMPLEX_POLY_FIT } from '../../src/constants.js';
+import KeplerianOrbit from '../../src/utils/KeplerianOrbit.js';
 
 describe('Asteroid library', function () {
   it('should get bonuses', function () {
@@ -130,5 +132,55 @@ describe('Asteroid library', function () {
       const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot, args.totalBonus);
       expect(Number(distance.toFixed(4))).to.equal(expected[i]);
     }
+  });
+
+  it('should unpack binary asteroid details data', async function () {
+    const url = 'https://d1c1daundk1ax0.cloudfront.net/influence/goerli/data/asteroids.bin';
+    const { data: buffer } = await axios({ url, method: 'GET', responseType: 'arraybuffer' });
+    const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
+    const parsed = new Uint32Array(arrayBuffer);
+    const unpacked = asteroid.unpackAsteroidDetails(parsed);
+
+    expect(unpacked[0]).to.deep.include({
+      i: 1,
+      r: 375.142,
+      spectralType: 0,
+      orbital: {
+        a: 2.082,
+        e: 0.325,
+        i: 0.002443460952792061,
+        o: 3.4108969571725183,
+        w: 5.283809777487633,
+        m: 0.9480628496833199
+      }
+    });
+
+    expect(unpacked[103]).to.deep.include({
+      i: 104,
+      r: 41.314723757085574,
+      spectralType: 4,
+      orbital: {
+        a: 1.816,
+        e: 0.147,
+        i: 0.05969026041820607,
+        o: 2.4717352866743694,
+        w: 0.3218387140677544,
+        m: 3.9975021187678124
+      }
+    });
+
+    expect(unpacked[249999]).to.deep.include({
+      i: 250000,
+      r: 1.0237034933988756,
+      spectralType: 2,
+      orbital: {
+        a: 3.716,
+        e: 0.038,
+        i: 0.2698279023583233,
+        o: 2.2516492679978843,
+        w: 1.5184364492350666,
+        m: 0.30578168494940655
+      }
+    });
   });
 });
