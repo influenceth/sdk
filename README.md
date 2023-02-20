@@ -421,7 +421,7 @@ Example (only) response:
 
 ## Image API
 
-The following endpoints are located at https://images.influenceth.io (or images-staging for testnet)
+The following endpoints are located at https://images.influenceth.io (or images-goerli for testnet)
 
 ### GET /v1/asteroids/:id/image.svg
 Returns the asteroid card generally displayed in OpenSea. This will be *aggressively* rate-limited as it is a high-bandwidth call. Consider using the OpenSea API as well: https://docs.opensea.io/reference/api-overview
