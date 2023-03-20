@@ -83,12 +83,28 @@ export const SPECTRAL_TYPES = {
 };
 
 const PHI = Math.PI * (3 - Math.sqrt(5));
+const TWO_PI = 2 * Math.PI;
 const RESOURCE_OCTAVE_MUL = 5;
 const RESOURCE_OCTAVE_BASE = 3;
 const RESOURCE_SIZE_MUL = 0.75;
 const RESOURCE_SIZE_BASE = 0.375;
 const SCANNING_TIME = 3600; // seconds
 const TOTAL_ASTEROIDS = 250000;
+
+export const MAX_LOT_REGIONS = 5000;
+export const MAX_LOTS_RENDERED = 8000;
+
+const getAngleDiff = (angle1, angle2) => {
+  const a1 = angle1 >= 0 ? angle1 : (angle1 + TWO_PI);
+  const a2 = angle2 >= 0 ? angle2 : (angle2 + TWO_PI);
+  const diff = Math.abs(a1 - a2) % TWO_PI;
+  return diff > Math.PI ? (TWO_PI - diff) : diff;
+}
+
+const normalizeVector = (v3) => {
+  const mult = 1 / (Math.sqrt( v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2] ) || 1);
+  return v3.map((x) => x * mult);
+};
 
 /**
  * Returns the resource abundance at a specific lot
@@ -241,7 +257,7 @@ export const getLotDistance = (asteroidId, originLotId, destLotId) => {
 };
 
 /**
- * Returns the Cartesian position of a lot on a (spherical) asteroid
+ * Returns the Cartesian position of a lot on a (unit-radius spherical) asteroid
  * @param asteroidId The asteroid identifier
  * @param lotId The lot identifier
  * @param numLots Optional area / number of lots param (if precalculated)
@@ -255,6 +271,122 @@ export const getLotPosition = (asteroidId, lotId, numLots = 0) => {
   const x = radius * Math.cos(theta);
   const z = radius * Math.sin(theta);
   return [x, y, z];
+};
+
+/**
+ * 
+ * @param asteroidId 
+ * @param lotTally Optional (floored) surface area in km
+ * @returns 
+ */
+export const getLotRegionTally = (lotTally = 0) => {
+  if (lotTally < MAX_LOTS_RENDERED) return 1;
+  return Math.min(MAX_LOT_REGIONS, Math.max(Math.ceil(lotTally / 100), 100));
+};
+
+/**
+ * Calculates the region containing the specified position
+ * @param positions (Float32Array) Batch of Asteroids lot positions
+ * @param regionTally (int) The number of regions on the asteroid
+ * @returns (int) region id
+ */
+export const getPositionRegion = (position, regionTally) => {
+  const region = getClosestLots({
+    center: normalizeVector(position),
+    lotTally: regionTally,
+    findTally: 1
+  })[0];
+  return region === undefined ? -1 : region;
+};
+
+/**
+ * Calculates the region of each inputted position
+ * @param positions (Float32Array) Batch of Asteroids lot positions
+ * @param regionTally (int) The number of regions on the asteroid
+ * @returns (Int16Array) region ids
+ */
+export const lotPositionsToRegions = (flatPositions, regionTally) => {
+  const batchSize = flatPositions.length / 3;
+  const regions = new Int16Array(batchSize);
+  for (let i = 0; i < batchSize; i++) {
+    const positionIndex = i * 3;
+    regions[i] = getPositionRegion(
+      [flatPositions[positionIndex], flatPositions[positionIndex + 1], flatPositions[positionIndex + 2]],
+      regionTally
+    );
+  }
+  return regions;
+};
+
+/**
+ * 
+ * @param center (int) The number of regions on the asteroid
+ * @param centerLot (int) The number of regions on the asteroid
+ * @param lotTally (int) The number of regions on the asteroid
+ * @param findTally (int) The number of regions on the asteroid
+ * @returns 
+ */
+export const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
+  const returnAllPoints = !findTally; // if no findTally attached, return all (sorted)
+
+  // if pass centerLot instead of center, set center from centerLot
+  // NOTE: assume centerLot is nominal lot id
+  if (centerLot && !center) {
+    center = AsteroidLib.getLotPosition(0, centerLot, lotTally);
+  }
+
+  let arcToSearch, yToSearch, maxIndex, minIndex, centerTheta, thetaTolerance;
+  if (returnAllPoints || lotTally < 100) {
+    minIndex = 0;
+    maxIndex = lotTally;
+  } else {
+    // assuming # of lots returning represent a circular area around center,
+    // the radius of which is ~the arc length we need to search
+    //    SA of unit sphere (4 * pi * r^2) == 4 * pi
+    //    lotArea is SA / lotTally == 4 * pi / lotTally
+    //    targetArea is pi * search_radius^2 == findTally * lotArea
+    //      search_radius = sqrt(findTally * (4 * pi / lotTally) / pi)
+    // + 10% safety factor
+    arcToSearch = 1.1 * Math.sqrt(4 * findTally / lotTally);
+
+    // angle of arclen == arclen / radius (radius is 1)
+    // y of angle == sin(angle) * radius (radius is 1)
+    yToSearch = Math.sin(arcToSearch);
+    maxIndex = Math.min(lotTally, Math.ceil((1 - center[1] + yToSearch) * (lotTally - 1) / 2));
+    minIndex = Math.max(0, Math.floor((1 - center[1] - yToSearch) * (lotTally - 1) / 2));
+
+    centerTheta = Math.atan2(center[2], center[0]);
+    thetaTolerance = arcToSearch / Math.sqrt(1 - center[1] * center[1]);
+  }
+
+  const points = [];
+  for(let index = minIndex; index < maxIndex; index++) {
+    const theta = PHI * index;
+    if (!returnAllPoints) {
+      if (getAngleDiff(centerTheta, theta) > thetaTolerance) {
+        continue;
+      }
+    }
+
+    const y = 1 - (2 * index / (lotTally - 1));
+    const radiusAtY = Math.sqrt(1 - y * y);
+    const x = Math.cos(theta) * radiusAtY;
+    const z = Math.sin(theta) * radiusAtY;
+
+    points.push([
+      x,
+      y,
+      z,
+      index + 1,  // nominalIndex
+      Math.pow(center[0] - x, 2) + Math.pow(center[1] - y, 2) + Math.pow(center[2] - z, 2),
+    ]);
+  }
+  //console.log(`${maxIndex - minIndex} points in range; ${points.length} checked`);
+
+  return points
+    .sort((a, b) => a[4] < b[4] ? -1 : 1) // sort by distance
+    .map((p) => p[3]) // map to lot index
+    .slice(0, findTally || undefined); // slice to target number
 };
 
 /**
@@ -379,6 +511,8 @@ const _getSimplexDist = (percentile) => {
 
 export default {
   BONUS_MAPS,
+  MAX_LOT_REGIONS,
+  MAX_LOTS_RENDERED,
   MAX_RADIUS,
   RARITIES,
   REGIONS,
@@ -392,14 +526,18 @@ export default {
   getBonus,
   getBonusByResource,
   getBonuses,
+  getClosestLots,
   getLotDistance,
   getLotPosition,
+  getLotRegionTally,
   getLotTravelTime,
+  getPositionRegion,
   getRadius,
   getRarity,
   getScanned,
   getSize,
   getSpectralType,
   getSurfaceArea,
+  lotPositionsToRegions,
   unpackAsteroidDetails
 };
