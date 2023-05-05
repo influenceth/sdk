@@ -1,5 +1,5 @@
 import * as math from 'mathjs';
-import { ADALIA_GAUSSIAN_CONSTANT, M_PER_AU } from '../constants';
+import { ADALIA_GAUSSIAN_CONSTANT, GM_ADALIA, M_PER_AU } from '../constants';
 
 /**
  * Class that defines an orbit and provides convenience conversion methods
@@ -27,6 +27,7 @@ class KeplerianOrbit {
    * @param {number} tol Tolerance for eccentricity and inclination checks, default to 1e-8
    */
   static fromPositionAndVelocity(r, v, tol = 1E-8) {
+    const k = GM_ADALIA;
     const h = math.cross(r, v);
     const n = math.cross([0, 0, 1], h);
     const e = math.divide(
