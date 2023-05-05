@@ -1,4 +1,5 @@
-import { ADALIA_GAUSSIAN_CONSTANT } from '../constants';
+import * as math from 'mathjs';
+import { ADALIA_GAUSSIAN_CONSTANT, M_PER_AU } from '../constants';
 
 /**
  * Class that defines an orbit and provides convenience conversion methods
@@ -11,6 +12,96 @@ class KeplerianOrbit {
     this.o = elements.o; // Longitude of ascending node
     this.w = elements.w; // Argument of periapsis
     this.m = elements.m; // Mean anomaly at epoch
+  }
+
+  /**
+   * Returns KeplerianOrbit for the orbital defined by a given position and velocity
+   * 
+   * Adapted from rv2coe in https://github.com/poliastro/poliastro/blob/main/src/poliastro/core/elements.py
+   * 
+   * Returns:
+   * KeplerianOrbit
+   *
+   * @param {Array.<number>} r Position vector (m)
+   * @param {Array.<number>} v Velocity vector (m / s)
+   * @param {number} tol Tolerance for eccentricity and inclination checks, default to 1e-8
+   */
+  static fromPositionAndVelocity(r, v, tol = 1E-8) {
+    const h = math.cross(r, v);
+    const n = math.cross([0, 0, 1], h);
+    const e = math.divide(
+      math.subtract(
+        math.multiply(math.dot(v, v) - k / math.norm(r), r),
+        math.multiply(math.dot(r, v), v)
+      ),
+      k
+    );
+  
+    const ecc = math.norm(e);
+    const p = math.dot(h, h) / k;
+    const inc = Math.acos(h[2] / math.norm(h));
+  
+    const circular = ecc < tol;
+    const equatorial = Math.abs(inc) < tol;
+    
+    let raan, argp, nu;
+    if (equatorial && !circular) {
+      raan = 0;
+      argp = Math.atan2(e[1], e[0]) % (2 * Math.PI);
+      nu = Math.atan2(math.dot(h, math.cross(e, r)) / math.norm(h), math.dot(r, e));
+    } else if (!equatorial && circular) {
+      raan = Math.atan2(n[1], n[0]) % (2 * Math.PI);
+      argp = 0;
+      nu = Math.atan2(math.dot(r, math.cross(h, n)) / math.norm(h), math.dot(r, n));
+    } else if (equatorial && circular) {
+      raan = 0;
+      argp = 0;
+      nu = Math.atan2(r[1], r[0]) % (2 * Math.PI);
+    } else {
+      const a = p / (1 - (ecc ** 2));
+      const ka = k * a;
+      if (a > 0) {
+        const e_se = math.dot(r, v) / Math.sqrt(ka);
+        const e_ce = math.norm(r) * math.dot(v, v) / k - 1;
+        const E = Math.atan2(e_se, e_ce);
+        nu = 2 * Math.atan(Math.sqrt((1 + ecc) / (1 - ecc)) * Math.tan(E / 2));
+      } else {
+        const e_sh = math.dot(r, v) / Math.sqrt(-ka);
+        const e_ch = math.norm(r) * (math.norm(v) ** 2) / k - 1;
+        const F = Math.log((e_ch + e_sh) / (e_ch - e_sh)) / 2;
+        nu = 2 * Math.atan(Math.sqrt((ecc + 1) / (ecc - 1)) * Math.tanh(F / 2));
+      }
+  
+      raan = Math.atan2(n[1], n[0]) % (2 * Math.PI);
+      const px = math.dot(r, n);
+      const py = math.dot(r, math.cross(h, n)) / math.norm(h);
+      argp = (Math.atan2(py, px) - nu) % (2 * Math.PI);
+    }
+  
+    nu = (nu + Math.PI) % (2 * Math.PI) - Math.PI;
+  
+    // Semi-latus rectum of parameter (m) --> Semi-major axis (AU)
+    let aM = p / (1 - ecc ** 2);
+    let aAU = aM / M_PER_AU;
+
+    // True Anomaly --> Mean anomaly at epoch
+    let meanAnomaly;
+    if (ecc <= 1) { // elliptical
+      const eccAnomaly = 2 * Math.atan(Math.sqrt((1 - ecc) / (1 + ecc)) * Math.tan(nu / 2));
+      meanAnomaly = eccAnomaly - ecc * Math.sin(eccAnomaly);
+    } else { // hyperbolic
+      const eccAnomaly = Math.acosh((ecc + Math.cos(nu)) / (1 + ecc * Math.cos(nu)));
+      meanAnomaly = ecc * Math.sinh(eccAnomaly) - eccAnomaly;
+    }
+  
+    return new KeplerianOrbit({
+      a: aAU,
+      e: ecc,
+      i: inc,
+      o: raan,  // Right ascension of the ascending node == Longitude of ascending node
+      w: argp,  // Argument of Perigee == Argument of periapsis
+      m: meanAnomaly
+    });
   }
 
   /**
