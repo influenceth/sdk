@@ -1,7 +1,4 @@
 import * as math from 'mathjs';
-import { Buffer as ImportedBuffer } from 'buffer';
-self.Buffer = self.Buffer || ImportedBuffer; // eslint-disable-line no-restricted-globals
-if (window) window.Buffer = self.Buffer; // eslint-disable-line no-restricted-globals
 import cephes from 'cephes';
 
 const pi = Math.PI;
@@ -312,7 +309,7 @@ const _householder = (p0, T0, ll, M, atol, rtol, maxiter) => {
   throw new Error('Failed to converge');
 };
 
-export async function multiSolver(mu, r1, r2, tof, vi1, vi2, progradeOptions = [true, false], lowpathOptions = [true]) {
+async function multiSolver(mu, r1, r2, tof, vi1, vi2, progradeOptions = [true, false], lowpathOptions = [true]) {
   let minDeltaV = null;
   let bestSolutionV1;
   let bestSolutionV2;
@@ -339,4 +336,7 @@ export async function multiSolver(mu, r1, r2, tof, vi1, vi2, progradeOptions = [
   };
 };
 
-export default solver;
+export default {
+  solver,
+  multiSolver
+};
