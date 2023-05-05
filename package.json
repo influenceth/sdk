@@ -51,6 +51,7 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "cephes": "^1.2.0",
     "mathjs": "^11.4.0",
     "starknet": "^4.4.2"
