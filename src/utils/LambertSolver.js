@@ -1,6 +1,7 @@
 import * as math from 'mathjs';
 import { Buffer as ImportedBuffer } from 'buffer';
 self.Buffer = self.Buffer || ImportedBuffer; // eslint-disable-line no-restricted-globals
+if (window) window.Buffer = self.Buffer; // eslint-disable-line no-restricted-globals
 import cephes from 'cephes';
 
 const pi = Math.PI;
