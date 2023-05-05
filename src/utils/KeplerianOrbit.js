@@ -1,3 +1,5 @@
+import { ADALIA_GAUSSIAN_CONSTANT } from '../constants';
+
 /**
  * Class that defines an orbit and provides convenience conversion methods
  */
@@ -8,7 +10,7 @@ class KeplerianOrbit {
     this.i = elements.i; // Inclination
     this.o = elements.o; // Longitude of ascending node
     this.w = elements.w; // Argument of periapsis
-    this.m = elements.m; // Mean anomoly at epoch
+    this.m = elements.m; // Mean anomaly at epoch
   }
 
   /**
@@ -63,7 +65,7 @@ class KeplerianOrbit {
    * Retrieves the orbital period in days
    */
   getPeriod () {
-    const thirdLaw = 0.000006421064256; // GM / 4*pi*pi for ~86% solar mass Adalia
+    const thirdLaw = 0.000006421078688030129; // GM / 4*pi*pi in AU DAY (a is AU and period returned in days)
     return Math.sqrt(Math.pow(this.a, 3) / thirdLaw);
   }
 
@@ -83,25 +85,44 @@ class KeplerianOrbit {
     const p = w + o;
 
     // Calculate mean motion based on assumption that mass of asteroid <<< Sun
-    const k = 0.01720209895; // Gaussian constant (units are days and AU)
-    const n = k / Math.sqrt(Math.pow(a, 3)); // Mean motion
+    const n = ADALIA_GAUSSIAN_CONSTANT / Math.sqrt(Math.pow(a, 3)); // Mean motion
 
-    // Calcualate the mean anomoly at elapsed time
+    // Calculate the mean anomaly at elapsed time
     const M = m + (n * elapsed);
 
     // Estimate the eccentric and true anomolies using an iterative approximation
-    let E1;
-    let E = M;
-    let lastDiff = 1;
+    let v;
+    if (e < 1) {
+      let E1;
+      let E = M;
+      let lastDiff = 1;
+  
+      while (lastDiff > 0.0000001) {
+        E1 = M + (e * Math.sin(E));
+        lastDiff = Math.abs(E1 - E);
+        E = E1;
+      }
 
-    while (lastDiff > 0.0000001) {
-      E1 = M + (e * Math.sin(E));
-      lastDiff = Math.abs(E1 - E);
-      E = E1;
+      v = 2 * Math.atan(Math.sqrt((1 + e) / (1 - e)) * Math.tan(E / 2));
+  
+    } else {
+      let F1;
+      let F = M; // Initial guess for hyperbolic eccentric anomaly
+      let lastDiff = 1;
+      let maxIterations = 100;
+      let iteration = 0;
+      
+      while (lastDiff > 0.0000001 && iteration < maxIterations) {
+        F1 = F - (e * Math.sinh(F) - F - M) / (e * Math.cosh(F) - 1);
+        lastDiff = Math.abs(F1 - F);
+        F = F1;
+        iteration++;
+      }
+
+      v = 2 * Math.atan(Math.tanh(F / 2) / Math.sqrt((e - 1)/(e + 1)));
     }
 
     // Calculate in heliocentric polar and then convert to cartesian
-    const v = 2 * Math.atan(Math.sqrt((1 + e) / (1 - e)) * Math.tan(E / 2));
     const r = a * (1 - Math.pow(e, 2)) / (1 + e * Math.cos(v)); // Current radius in AU
 
     const pos = {
@@ -115,6 +136,37 @@ class KeplerianOrbit {
       y: +pos.y.toFixed(10),
       z: +pos.z.toFixed(10)
     };
+  }
+
+  getTrueAnomalyAtPos (pos) {
+    const e = this.e;
+    const i = this.i;
+    const o = this.o;
+    const w = this.w;
+
+    // Calculate the argument of latitude (u)
+    const u = Math.atan2(pos.z / Math.sin(i), (pos.x * Math.cos(o) + pos.y * Math.sin(o)));
+
+    // Calculate the eccentric anomaly (E) or hyperbolic eccentric anomaly (F) based on the type of orbit
+    // then calculate the true anomaly (v)
+    let E, F, v;
+
+    // Elliptical orbit
+    if (e < 1) {
+      E = 2 * Math.atan(Math.sqrt((1 - e) / (1 + e)) * Math.tan((u - w) / 2));
+      // Correct E for quadrant ambiguity
+      if (u < w) {
+        E += 2 * Math.PI;
+      }
+      v = 2 * Math.atan(Math.sqrt((1 + e) / (1 - e)) * Math.tan(E / 2));
+
+    // Hyperbolic orbit
+    } else {
+      F = 2 * Math.atanh(Math.sqrt((e - 1) / (e + 1)) * Math.tan((u - w) / 2));
+      v = 2 * Math.atan(Math.sqrt((e + 1) / (e - 1)) * Math.tanh(F / 2));
+    }
+
+    return v;
   }
 };
 
