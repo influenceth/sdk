@@ -1,6 +1,7 @@
 import * as math from 'mathjs';
-self.Buffer = self.Buffer || require('buffer').Buffer; // eslint-disable-line no-restricted-globals
-const cephes = require('cephes');
+import { Buffer as ImportedBuffer } from 'buffer';
+self.Buffer = self.Buffer || ImportedBuffer; // eslint-disable-line no-restricted-globals
+import cephes from 'cephes';
 
 const pi = Math.PI;
 
