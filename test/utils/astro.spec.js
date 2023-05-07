@@ -61,10 +61,23 @@ describe.only('Orbital library', function () {
     expect(nu.toFixed(7)).to.equal((1.611549764828964).toFixed(7));
   });
 
+  it('should generate classical elements from state vectors for hyperbolic orbits', function () {
+    const k = 3.9860047e14;
+    const r = [ -8173532.704990985, -16011738.121722244, -202722.41788328032 ];
+    const v = [ 6580.954362290776, -4052.9254479420347, -948.6406516239671 ];
+    const { p, ecc, inc, raan, argp, nu } = astro.stateToClassic(k, r, v);
+    expect(p.toFixed(3)).to.equal((48848563.341).toFixed(3));
+    expect(ecc.toFixed(7)).to.equal((1.7311).toFixed(7));
+    expect(inc.toFixed(7)).to.equal((0.122138).toFixed(7));
+    expect(raan.toFixed(7)).to.equal((1.00681).toFixed(7));
+    expect(argp.toFixed(7)).to.equal((3.10686).toFixed(7));
+    expect(nu.toFixed(7)).to.equal((0.12741601769795755).toFixed(7));
+  });
+
   it('should generate state vectors from classical elements', function () {
     const k = 398600.44180000003;
-    const ell = [ 11067.79, 0.83285, 1.5336208137274174, 3.9774308323698775, 0.9316567547145732, 1.611549764828964 ];
-    const [ r, v ] = astro.classicToState(k, ...ell);
+    const el = [ 11067.79, 0.83285, 1.5336208137274174, 3.9774308323698775, 0.9316567547145732, 1.611549764828964 ];
+    const [ r, v ] = astro.classicToState(k, ...el);
     expect(r[0].toFixed(5)).to.equal((6.52536812e3).toFixed(5));
     expect(r[1].toFixed(5)).to.equal((6.86153183e3).toFixed(5));
     expect(r[2].toFixed(5)).to.equal((6.44911861e3).toFixed(5));
@@ -73,5 +86,17 @@ describe.only('Orbital library', function () {
     expect(v[2].toFixed(5)).to.equal((-1.97571010e0).toFixed(5));
   });
 
-  // TODO: add hyperbolic and parabolic tests for state <-> classical
+  it('should generate state vectors from classical elements for hyperbolic orbits', function () {
+    const k = 3.9860047e14;
+    const el = [ 4.884856334147761e7, 1.7311, 0.122138, 1.00681, 3.10686, 0.12741601769795755 ];
+    const [ r, v ] = astro.classicToState(k, ...el);
+    expect(r[0].toFixed(5)).to.equal((-8173532.70499).toFixed(5));
+    expect(r[1].toFixed(5)).to.equal((-16011738.12172).toFixed(5));
+    expect(r[2].toFixed(5)).to.equal((-202722.41788).toFixed(5));
+    expect(v[0].toFixed(5)).to.equal((6580.95436).toFixed(5));
+    expect(v[1].toFixed(5)).to.equal((-4052.92545).toFixed(5));
+    expect(v[2].toFixed(5)).to.equal((-948.64065).toFixed(5));
+  });
+
+  // TODO: add parabolic tests for state <-> classical
 });
