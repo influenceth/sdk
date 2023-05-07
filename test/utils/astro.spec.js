@@ -60,4 +60,18 @@ describe.only('Orbital library', function () {
     expect(argp.toFixed(7)).to.equal((0.9316567547145732).toFixed(7));
     expect(nu.toFixed(7)).to.equal((1.611549764828964).toFixed(7));
   });
+
+  it('should generate state vectors from classical elements', function () {
+    const k = 398600.44180000003;
+    const ell = [ 11067.79, 0.83285, 1.5336208137274174, 3.9774308323698775, 0.9316567547145732, 1.611549764828964 ];
+    const [ r, v ] = astro.classicToState(k, ...ell);
+    expect(r[0].toFixed(5)).to.equal((6.52536812e3).toFixed(5));
+    expect(r[1].toFixed(5)).to.equal((6.86153183e3).toFixed(5));
+    expect(r[2].toFixed(5)).to.equal((6.44911861e3).toFixed(5));
+    expect(v[0].toFixed(5)).to.equal((4.90227865e0).toFixed(5));
+    expect(v[1].toFixed(5)).to.equal((5.53313957e0).toFixed(5));
+    expect(v[2].toFixed(5)).to.equal((-1.97571010e0).toFixed(5));
+  });
+
+  // TODO: add hyperbolic and parabolic tests for state <-> classical
 });

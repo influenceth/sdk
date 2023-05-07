@@ -4,12 +4,36 @@ export const GRAVITATIONAL_CONSTANT = 6.67430E-11; // m3 kg-1 s-2
 export const S_PER_DAY = 86400;
 
 /**
+ * Converts from classical orbital elements to state vectors
+ *
+ * @param k Standard gravitational parameter (km^3 / s^2)
+ * @param p Semi latus rectum or parameter
+ * @param ecc Eccentricity
+ * @param inc Inclination (rad)
+ * @param raan Longitude of ascending node (rad)
+ * @param argp Argument of periapsis (rad)
+ * @param nu True anomaly (rad)
+ */
+const classicToState = (k, p, ecc, inc, raan, argp, nu) => {
+  const pqw = math.dotMultiply(
+    [[ Math.cos(nu), Math.sin(nu), 0 ], [ -Math.sin(nu), ecc + Math.cos(nu), 0 ]],
+    [[0, 0, 0].fill(p / (1 + ecc * Math.cos(nu)), 0, 3), [0, 0, 0].fill(Math.sqrt(k / p), 0, 3)]
+  );
+
+  let rm = _rotation_matrix(raan, 2);
+  rm = math.multiply(rm, _rotation_matrix(inc, 0));
+  rm = math.multiply(rm, _rotation_matrix(argp, 2));
+
+  return math.multiply(pqw, math.transpose(rm));
+};
+
+/**
  * Converts from state vectors to classical orbital elements
  *
- * @param {*} k Standard gravitational parameter (km^3 / s^2)
- * @param {*} r Position vector (km)
- * @param {*} v Velocity vector (km / s)
- * @param {*} tol Tolerance for eccentricity and inclination checks
+ * @param k Standard gravitational parameter (km^3 / s^2)
+ * @param r Position vector (km)
+ * @param v Velocity vector (km / s)
+ * @param tol Tolerance for eccentricity and inclination checks
  * @returns {Object} Classical orbital elements { p, ecc, inc, raan, argp, nu }
  */
 const stateToClassic = (k, r, v, tol = 1e-8) => {
@@ -51,6 +75,7 @@ const stateToClassic = (k, r, v, tol = 1e-8) => {
     const a = p / (1 - (ecc ** 2));
     const ka = k * a;
 
+    // TODO: handle parabolic orbits
     if (a > 0) {
       // Elliptical orbit
       const e_se = math.dot(r, v) / Math.sqrt(ka);
@@ -165,7 +190,30 @@ const M_to_nu = (M, ecc) => {
 // Implements modulo (as distinct from the remainder operator)
 const _modulo = (x, y) => ((x % y) + y) % y;
 
+/**
+ * Generates a rotation matrix
+ *
+ * @param {Array} angle
+ * @param {Integer} axis
+ */
+const _rotation_matrix = (angle, axis) => {
+  const c = Math.cos(angle);
+  const s = Math.sin(angle);
+  const a1 = _modulo((axis + 1), 3);
+  const a2 = _modulo((axis + 2), 3);
+
+  const R = math.zeros([3, 3]);
+  R[axis][axis] = 1;
+  R[a1][a1] = c;
+  R[a1][a2] = -s;
+  R[a2][a1] = s;
+  R[a2][a2] = c;
+
+  return R;
+};
+
 export default {
+  classicToState,
   stateToClassic,
   E_to_M,
   M_to_E,
