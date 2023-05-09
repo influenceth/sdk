@@ -30,7 +30,7 @@ export { ethereumContracts, starknetContracts };
 // Legacy support (v1 compatiblity) ###################################################################################
 export const ADALIA_GAUSSIAN_CONSTANT = Constants.ADALIA_GAUSSIAN_CONSTANT
 export const ADALIA_MASS = Constants.ADALIA_MASS;
-export const GM_ADALIA = KeplerianOrbit.GM_ADALIA
+export const GM_ADALIA = Constants.GM_ADALIA
 export const GRAVITATIONAL_CONSTANT = Constants.GRAVITATIONAL_CONSTANT;
 export const MASTER_SEED = Constants.MASTER_SEED
 export const START_TIMESTAMP = Constants.START_TIMESTAMP;

@@ -1,8 +1,5 @@
-import { GRAVITATIONAL_CONSTANT, elements, angles } from '@influenceth/astro';
-import { ADALIA_GAUSSIAN_CONSTANT, ADALIA_MASS } from '../constants.js';
-
-export const KM_PER_AU = 1.495978707e8;
-export const GM_ADALIA = GRAVITATIONAL_CONSTANT * ADALIA_MASS;
+import { elements, angles } from '@influenceth/astro';
+import { ADALIA_GAUSSIAN_CONSTANT, GM_ADALIA, KM_PER_AU } from '../constants.js';
 
 /**
  * Class that defines an orbit and provides convenience conversion methods
