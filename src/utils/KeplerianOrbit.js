@@ -17,13 +17,17 @@ class KeplerianOrbit {
   /**
    * Returns KeplerianOrbit for the orbital defined by a given position and velocity
    *
-   * @param {Array.<number>} r Position vector (km)
-   * @param {Array.<number>} v Velocity vector (km / s)
+   * @param {Array.<number>} r Position vector (m)
+   * @param {Array.<number>} v Velocity vector (m / s)
    * @returns {KeplerianOrbit}
    */
   static fromStateVectors(r, v) {
     const mu = GM_ADALIA / (1000 ** 3);
-    const { p, ecc: e, inc: i, raan: o, argp: w, nu } = elements.rv2coe(mu, r, v);
+    const { p, ecc: e, inc: i, raan: o, argp: w, nu } = elements.rv2coe(
+      mu,
+      r.map((x) => x / 1000), // convert to km for astro
+      v.map((x) => x / 1000)  // convert to km / s for astro
+    );
 
     // Semi-latus rectum of parameter (km) --> Semi-major axis (AU)
     let a = p / (1 - e ** 2) / KM_PER_AU;
