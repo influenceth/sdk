@@ -12,7 +12,6 @@ import Lot from './lib/lot.js';
 
 import Address from './utils/address.js';
 import KeplerianOrbit from './utils/KeplerianOrbit.js';
-import LambertSolver from './utils/LambertSolver.js';
 import Merkle from './utils/MerkleTree.js';
 import Simplex from './utils/simplex.js';
 
@@ -20,7 +19,7 @@ import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'j
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
 // Utility libs
-export { Address, KeplerianOrbit, LambertSolver, Merkle, Simplex };
+export { Address, KeplerianOrbit, Merkle, Simplex };
 
 // Game asset libs
 export { Asteroid, Capable, Construction, CoreSample, Crew, Crewmate, Extraction, Inventory, Lot };

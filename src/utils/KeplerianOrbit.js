@@ -1,20 +1,20 @@
-import astro from './astro.js';
+import { GRAVITATIONAL_CONSTANT, elements, angles } from '@influenceth/astro';
 import { ADALIA_GAUSSIAN_CONSTANT, ADALIA_MASS } from '../constants.js';
 
 const KM_PER_AU = 1.495978707e8;
-const GM_ADALIA = astro.GRAVITATIONAL_CONSTANT * ADALIA_MASS;
+const GM_ADALIA = GRAVITATIONAL_CONSTANT * ADALIA_MASS;
 
 /**
  * Class that defines an orbit and provides convenience conversion methods
  */
 class KeplerianOrbit {
-  constructor (elements) {
-    this.a = elements.a; // Semi-major axis
-    this.e = elements.e; // Eccentricity
-    this.i = elements.i; // Inclination
-    this.o = elements.o; // Longitude of ascending node
-    this.w = elements.w; // Argument of periapsis
-    this.m = elements.m; // Mean anomaly at epoch
+  constructor (el) {
+    this.a = el.a; // Semi-major axis
+    this.e = el.e; // Eccentricity
+    this.i = el.i; // Inclination
+    this.o = el.o; // Longitude of ascending node
+    this.w = el.w; // Argument of periapsis
+    this.m = el.m; // Mean anomaly at epoch
   }
 
   /**
@@ -25,41 +25,42 @@ class KeplerianOrbit {
    * @returns {KeplerianOrbit}
    */
   static fromStateVectors(r, v) {
-    const { p, ecc: e, inc: i, raan: o, argp: w, nu } = astro.stateToClassic(GM_ADALIA, r, v);
+    const mu = GM_ADALIA / (1000 ** 3);
+    const { p, ecc: e, inc: i, raan: o, argp: w, nu } = elements.rv2coe(mu, r, v);
 
     // Semi-latus rectum of parameter (km) --> Semi-major axis (AU)
     let a = p / (1 - e ** 2) / KM_PER_AU;
 
     // True Anomaly --> Mean anomaly
-    let m = e < 1 ? astro.E_to_M(nu_to_E(nu, e), e) : astro.F_to_M(nu_to_F(nu, e), e);
+    let m = e < 1 ? angles.E_to_M(angles.nu_to_E(nu, e), e) : angles.F_to_M(angles.nu_to_F(nu, e), e);
 
     return new KeplerianOrbit({ a, e, i, o, w, m });
   }
 
   /**
     * The distance in AU from center of the ellipse to the object
-    * @param t Angular parameter (in radians)
+    * @param nu True anomaly / angular parameter (in radians)
     */
-  getRadius (t) {
+  getRadius (nu) {
     const { a, e } = this;
-    return a * (1 - Math.pow(e, 2)) / (1 + e * Math.cos(t));
+    return a * (1 - Math.pow(e, 2)) / (1 + e * Math.cos(nu));
   }
 
   /**
    * Returns Cartesian coordinates at a specific angular parameter
-   * @param t Angular parmeter (in radians)
+   * @param nu True anomaly / angular parmeter (in radians)
    */
-  getPosByAngle (t) {
+  getPosByAngle (nu) {
     const { i, o, w } = this;
 
     // Distance to the point from the orbit focus.
-    const r = this.getRadius(t);
+    const r = this.getRadius(nu);
 
     // Cartesian transformation
     return {
-      x: r * (Math.cos(o) * Math.cos(t + w) - Math.sin(o) * Math.sin(t + w) * Math.cos(i)),
-      y: r * (Math.sin(o) * Math.cos(t + w) + Math.cos(o) * Math.sin(t + w) * Math.cos(i)),
-      z: r * (Math.sin(t + w) * Math.sin(i))
+      x: r * (Math.cos(o) * Math.cos(nu + w) - Math.sin(o) * Math.sin(nu + w) * Math.cos(i)),
+      y: r * (Math.sin(o) * Math.cos(nu + w) + Math.cos(o) * Math.sin(nu + w) * Math.cos(i)),
+      z: r * (Math.sin(nu + w) * Math.sin(i))
     };
   }
 
@@ -100,7 +101,7 @@ class KeplerianOrbit {
 
     // Calculate the mean anomaly at elapsed time and derive true anomaly
     const M = m + (n * elapsed);
-    const nu = e < 1 ? astro.M_to_nu(M, e) : astro.F_to_nu(M, e);
+    const nu = e < 1 ? angles.M_to_nu(M, e) : angles.F_to_nu(M, e);
 
     // Get position based on true anomaly
     return this.getPosByAngle(nu);
@@ -118,11 +119,11 @@ class KeplerianOrbit {
       // Elliptical orbit
       let E = 2 * Math.atan(Math.sqrt((1 - e) / (1 + e)) * Math.tan((u - w) / 2));
       if (u < w) E += 2 * Math.PI; // Correct E for quadrant ambiguity
-      return astro.E_to_nu(E, e);
+      return angles.E_to_nu(E, e);
     } else {
       // Hyperbolic orbit
       const F = 2 * Math.atanh(Math.sqrt((e - 1) / (e + 1)) * Math.tan((u - w) / 2));
-      return astro.F_to_nu(F, e);
+      return angles.F_to_nu(F, e);
     }
   }
 };
