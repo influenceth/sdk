@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import axios from 'axios';
 import asteroid from '../../src/lib/asteroid.js';
 import { SIMPLEX_POLY_FIT } from '../../src/constants.js';
-import KeplerianOrbit from '../../src/utils/KeplerianOrbit.js';
 
 describe('Asteroid library', function () {
   it('should get bonuses', function () {

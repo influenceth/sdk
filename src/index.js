@@ -11,7 +11,7 @@ import Inventory from './lib/inventory.js';
 import Lot from './lib/lot.js';
 
 import Address from './utils/address.js';
-import KeplerianOrbit from './utils/KeplerianOrbit.js';
+import AdalianOrbit from './utils/AdalianOrbit.js';
 import Merkle from './utils/MerkleTree.js';
 import Simplex from './utils/simplex.js';
 
@@ -19,7 +19,7 @@ import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'j
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
 // Utility libs
-export { Address, KeplerianOrbit, Merkle, Simplex };
+export { Address, AdalianOrbit, Merkle, Simplex };
 
 // Game asset libs
 export { Asteroid, Capable, Construction, CoreSample, Crew, Crewmate, Extraction, Inventory, Lot };
@@ -27,11 +27,15 @@ export { Asteroid, Capable, Construction, CoreSample, Crew, Crewmate, Extraction
 // Contract ABIs
 export { ethereumContracts, starknetContracts };
 
-// Legacy support (v1 compatiblity) ###################################################################################
-export const ADALIA_GAUSSIAN_CONSTANT = Constants.ADALIA_GAUSSIAN_CONSTANT
 export const ADALIA_MASS = Constants.ADALIA_MASS;
-export const GM_ADALIA = Constants.GM_ADALIA
-export const GRAVITATIONAL_CONSTANT = Constants.GRAVITATIONAL_CONSTANT;
+export const GM_ADALIA = Constants.GM_ADALIA;
+export const SIMPLEX_POLY_FIT = Constants.SIMPLEX_POLY_FIT;
+
+// Legacy support (v1 compatiblity) ###################################################################################
+
+const KeplerianOrbit = AdalianOrbit;
+export { KeplerianOrbit };
+
 export const MASTER_SEED = Constants.MASTER_SEED
 export const START_TIMESTAMP = Constants.START_TIMESTAMP;
 export const contracts = ethereumContracts;
