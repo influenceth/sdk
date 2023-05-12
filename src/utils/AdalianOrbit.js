@@ -87,7 +87,7 @@ class AdalianOrbit {
   }
 
   getTrueAnomalyAtPos (pos) {
-    const { e, i, o, w } = this;
+    const { ecc: e, inc: i, raan: o, argp: w } = this.orbit;
 
     // Calculate the argument of latitude (u)
     const u = Math.atan2(pos.z / Math.sin(i), (pos.x * Math.cos(o) + pos.y * Math.sin(o)));
