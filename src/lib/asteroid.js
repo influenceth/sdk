@@ -511,6 +511,7 @@ const _getSimplexDist = (percentile) => {
 
 export default {
   BONUS_MAPS,
+  FREE_TRANSPORT_RADIUS,
   MAX_LOT_REGIONS,
   MAX_LOTS_RENDERED,
   MAX_RADIUS,
