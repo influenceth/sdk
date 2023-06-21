@@ -8,7 +8,7 @@ export const STATUSES = ['Idle', 'Extracting'];
  * Returns the plain text description of the construction status
  * @param status
  */
- export const getStatus = (status) => {
+export const getStatus = (status) => {
   return STATUSES[status];
 };
 
@@ -24,7 +24,7 @@ export const getExtractionTime = (targetYield, remainingYield, totalBonus = 1) =
   const endTimeRatio = Math.sqrt((remainingYield - targetYield) / MAX_YIELD);
   const time = (startTimeRatio - endTimeRatio) * MAX_EXTRACTION_TIME / totalBonus;
   return Math.ceil(time);
-}
+};
 
 export default {
   STATUS_IDLE,

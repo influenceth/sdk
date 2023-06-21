@@ -40,7 +40,7 @@ export const SIMPLEX_POLY_FIT = Constants.SIMPLEX_POLY_FIT;
 const KeplerianOrbit = AdalianOrbit;
 export { KeplerianOrbit };
 
-export const MASTER_SEED = Constants.MASTER_SEED
+export const MASTER_SEED = Constants.MASTER_SEED;
 export const START_TIMESTAMP = Constants.START_TIMESTAMP;
 export const contracts = ethereumContracts;
 

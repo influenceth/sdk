@@ -10,7 +10,7 @@ export const STATUSES = ['New', 'Started', 'Finished', 'Used'];
  * Returns the plain text description of the construction status
  * @param status
  */
- export const getStatus = (status) => {
+export const getStatus = (status) => {
   return STATUSES[status];
 };
 

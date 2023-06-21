@@ -1,8 +1,8 @@
-import { hash } from 'starknet';
+import { ec } from 'starknet';
 import { ONE, fromFixed } from './fixed.js';
 
 export const derive = (seed, entropy) => {
-  return hash.pedersen([ BigInt(seed), BigInt(entropy) ]);
+  return ec.starkCurve.pedersen(BigInt(seed), BigInt(entropy));
 };
 
 export const intBetween = (seed, low, high) => {

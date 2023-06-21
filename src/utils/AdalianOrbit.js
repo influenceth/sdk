@@ -29,13 +29,13 @@ class AdalianOrbit {
    * @param {Array.<number>} v Velocity vector (m / s)
    * @returns {AdalianOrbit}
    */
-  static fromStateVectors(r, v) {
+  static fromStateVectors (r, v) {
     const adalianOrbit = new AdalianOrbit();
 
     adalianOrbit.orbit = Orbit.fromStateVectors(
       MU,
       r.map((x) => x / 1000), // convert to km for astro
-      v.map((x) => x / 1000)  // convert to km / s for astro
+      v.map((x) => x / 1000) // convert to km / s for astro
     );
 
     return adalianOrbit;

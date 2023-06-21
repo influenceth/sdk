@@ -8,8 +8,8 @@ export const toFelt = (num) => BigInt(num);
 
 // Converts to Cairo 64.61 representation
 export const toFixed = (num) => {
-  let res = BigInt(num) * ONE;
-  if (res > FIXED_SIZE || res <= FIXED_SIZE * -1n) throw new Error('Number is out of valid range')
+  const res = BigInt(num) * ONE;
+  if (res > FIXED_SIZE || res <= FIXED_SIZE * -1n) throw new Error('Number is out of valid range');
   return toFelt(res);
 };
 
@@ -20,7 +20,7 @@ export const fromFixed = (num) => {
   const int = Number(res / ONE);
   const frac = Number(res % ONE) / Number(ONE);
   return int + frac;
-}
+};
 
 export default {
   FIXED_SIZE,

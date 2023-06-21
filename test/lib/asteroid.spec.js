@@ -34,7 +34,7 @@ describe('Asteroid library', function () {
 
   it('should fail to get invalid spectral type', function () {
     try {
-      const type = asteroid.getSpectralType(11);
+      asteroid.getSpectralType(11);
     } catch (error) {
       expect(error.message).to.deep.contain('Invalid spectral type');
     }
@@ -52,15 +52,15 @@ describe('Asteroid library', function () {
   it('should get abundances at a unit sphere position', function () {
     const point = asteroid.getLotPosition(100, 1);
     const abundance = asteroid.getAbundanceAtPosition(point, {
-      abundance: 1, octaves: 6, polyParams: SIMPLEX_POLY_FIT[6], pointScale: 1, pointShift: [ -0.005, 11.578, -2.87 ]
+      abundance: 1, octaves: 6, polyParams: SIMPLEX_POLY_FIT[6], pointScale: 1, pointShift: [-0.005, 11.578, -2.87]
     });
 
-    expect(Number(abundance.toFixed(5))).to.equal(0.59825)
+    expect(Number(abundance.toFixed(5))).to.equal(0.59825);
   });
 
   it('should get abundance at a specific lot', function () {
     const asteroidSeed = 3590329621830653642883442320016035471801660656180234502900732533901525272177n;
-    const abundance = asteroid.getAbundanceAtLot(1000, asteroidSeed, 2096, 10, 0.212)
+    const abundance = asteroid.getAbundanceAtLot(1000, asteroidSeed, 2096, 10, 0.212);
     expect(Number(abundance.toFixed(5))).to.equal(0.106);
   });
 
@@ -80,9 +80,9 @@ describe('Asteroid library', function () {
 
   it('should get the lot position', function () {
     let position = asteroid.getLotPosition(1, 1);
-    expect(position).to.eql([ 0, 1, 0 ]);
+    expect(position).to.eql([0, 1, 0]);
     position = asteroid.getLotPosition(250000, 13);
-    expect(position).to.eql([ -0, -1, -0 ]);
+    expect(position).to.eql([-0, -1, -0]);
   });
 
   it('should calculate distances between lots', function () {
@@ -94,9 +94,9 @@ describe('Asteroid library', function () {
       { asteroid_id: 25000, origin_lot: 78, dest_lot: 23 }
     ];
 
-    const expected = [ 3.2161, 2.8149, 347.7338, 15.1174, 3.0699 ];
+    const expected = [3.2161, 2.8149, 347.7338, 15.1174, 3.0699];
 
-    for (const [ i, args ] of argsList.entries()) {
+    for (const [i, args] of argsList.entries()) {
       const distance = asteroid.getLotDistance(args.asteroid_id, args.origin_lot, args.dest_lot);
       expect(Number(distance.toFixed(4))).to.equal(expected[i]);
     }
@@ -111,9 +111,9 @@ describe('Asteroid library', function () {
       { asteroid_id: 25000, origin_lot: 78, dest_lot: 23 }
     ];
 
-    const expected = [ 0, 0, 20865, 908, 0 ];
+    const expected = [0, 0, 20865, 908, 0];
 
-    for (const [ i, args ] of argsList.entries()) {
+    for (const [i, args] of argsList.entries()) {
       const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot);
       expect(Number(distance.toFixed(4))).to.equal(expected[i]);
     }
@@ -125,9 +125,9 @@ describe('Asteroid library', function () {
       { asteroid_id: 2500, origin_lot: 123, dest_lot: 342, totalBonus: 3.1 }
     ];
 
-    const expected = [13910, 0 ];
+    const expected = [13910, 0];
 
-    for (const [ i, args ] of argsList.entries()) {
+    for (const [i, args] of argsList.entries()) {
       const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot, args.totalBonus);
       expect(Number(distance.toFixed(4))).to.equal(expected[i]);
     }

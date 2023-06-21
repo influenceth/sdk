@@ -51,7 +51,7 @@ const expected = {
       1585031860307053614775232457055372934135351753486924178555528195594933887604n
     ]
   ]
-}
+};
 
 describe('Merkle Tree', function () {
   describe('generateRoot', function () {
@@ -64,7 +64,7 @@ describe('Merkle Tree', function () {
       root = Merkle.generateRoot([1n, 2n, 3n, 4n, 5n, 6n]);
       expect(root).to.eql(expectedRoot);
 
-      root = Merkle.generateRoot(['0x1','0x2','0x3','0x4','0x5','0x6']);
+      root = Merkle.generateRoot(['0x1', '0x2', '0x3', '0x4', '0x5', '0x6']);
       expect(root).to.eql(expectedRoot);
     });
   });
@@ -72,7 +72,7 @@ describe('Merkle Tree', function () {
   describe('generateTree', function () {
     it('should create a merkle tree correctly based on the values provided', function () {
       const tree = Merkle.generateTree([1, 2, 3, 4, 5, 6]);
-      expect(tree).to.have.lengthOf(4)
+      expect(tree).to.have.lengthOf(4);
       expect(tree[0].length).to.eql(6);
       expect(tree[0]).to.include.members([1, 2, 3, 4, 5, 6]);
       expect(tree[1]).to.include.members(expected.tree[1]);

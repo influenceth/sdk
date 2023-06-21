@@ -13,8 +13,18 @@ export const ABILITIES = {
   },
   3: {
     name: 'Surface Transport Speed',
-    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05,
-               6: 0.05, 19: 0.10, 32: 0.15, 45: 0.20, 58: 0.25 },
+    titles: {
+      13: 0.01,
+      26: 0.02,
+      39: 0.03,
+      52: 0.04,
+      65: 0.05,
+      6: 0.05,
+      19: 0.10,
+      32: 0.15,
+      45: 0.20,
+      58: 0.25
+    },
     traits: { 47: 0.10 }
   },
   4: {
@@ -133,7 +143,7 @@ export const HEAD_PIECES = {
   13: { name: 'Botany Glasses' },
   14: { name: 'Chef Hat' },
   15: { name: 'Eyepatch - Orange' },
-  16: { name: 'Eyepatch - Gold' },
+  16: { name: 'Eyepatch - Gold' }
 };
 
 export const OUTFITS = {
@@ -366,7 +376,7 @@ export const getOutfit = (outfitId) => OUTFITS[outfitId];
  * @param titleId The crewmate's title identifier
  * @returns Details object for title including a 'name' attribute
  */
- export const getTitle = (titleId) => TITLES[titleId];
+export const getTitle = (titleId) => TITLES[titleId];
 
 /**
  * @param traitId The crewmate's trait identifier

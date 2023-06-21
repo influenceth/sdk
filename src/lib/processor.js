@@ -12,7 +12,7 @@ export const PROCESSES = {
  * Returns the plain text description of the construction status
  * @param status
  */
- export const getStatus = (status) => {
+export const getStatus = (status) => {
   return STATUSES[status];
 };
 

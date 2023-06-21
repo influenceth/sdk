@@ -1,4 +1,4 @@
-import { hash } from 'starknet';
+import { ec } from 'starknet';
 import { multiply, dot } from 'mathjs';
 import procedural from '../utils/procedural.js';
 import { recursiveSNoise } from '../utils/simplex.js';
@@ -7,7 +7,7 @@ import { SIMPLEX_POLY_FIT } from '../constants.js';
 export const BONUS_MAPS = [
   {
     spectralTypes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    resourceIds: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ],
+    resourceIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
     base: { name: 'Yield0', level: 0, modifier: 0, type: 'yield' },
     bonuses: [
       { position: 1, name: 'Yield1', level: 1, modifier: 3, type: 'yield' },
@@ -17,7 +17,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [0, 1, 2, 3, 4, 5, 8, 10],
-    resourceIds: [ 1, 2, 3, 4, 5, 6, 7, 8 ],
+    resourceIds: [1, 2, 3, 4, 5, 6, 7, 8],
     base: { name: 'Volatile0', level: 0, modifier: 0, type: 'volatile' },
     bonuses: [
       { position: 4, name: 'Volatile1', level: 1, modifier: 10, type: 'volatile' },
@@ -27,7 +27,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [1, 3, 4, 5, 6, 7, 8, 9],
-    resourceIds: [ 12, 13, 14, 18, 19, 20, 21 ],
+    resourceIds: [12, 13, 14, 18, 19, 20, 21],
     base: { name: 'Metal0', level: 0, modifier: 0, type: 'metal' },
     bonuses: [
       { position: 7, name: 'Metal1', level: 1, modifier: 10, type: 'metal' },
@@ -37,7 +37,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [0, 1, 2, 3, 4, 5],
-    resourceIds: [ 9, 10, 11 ],
+    resourceIds: [9, 10, 11],
     base: { name: 'Organic0', level: 0, modifier: 0, type: 'organic' },
     bonuses: [
       { position: 10, name: 'Organic1', level: 1, modifier: 10, type: 'organic' },
@@ -47,7 +47,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [3, 4, 5, 6, 7, 8],
-    resourceIds: [ 16, 17 ],
+    resourceIds: [16, 17],
     base: { name: 'RareEarth0', level: 0, modifier: 0, type: 'rareearth' },
     bonuses: [
       { position: 13, name: 'RareEarth3', level: 3, modifier: 30, type: 'rareearth' }
@@ -55,7 +55,7 @@ export const BONUS_MAPS = [
   },
   {
     spectralTypes: [1, 3, 4, 5, 6, 7, 8, 9],
-    resourceIds: [ 15, 22 ],
+    resourceIds: [15, 22],
     base: { name: 'Fissile0', level: 0, modifier: 0, type: 'fissile' },
     bonuses: [
       { position: 14, name: 'Fissile3', level: 3, modifier: 30, type: 'fissile' }
@@ -99,10 +99,10 @@ const getAngleDiff = (angle1, angle2) => {
   const a2 = angle2 >= 0 ? angle2 : (angle2 + TWO_PI);
   const diff = Math.abs(a1 - a2) % TWO_PI;
   return diff > Math.PI ? (TWO_PI - diff) : diff;
-}
+};
 
 const normalizeVector = (v3) => {
-  const mult = 1 / (Math.sqrt( v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2] ) || 1);
+  const mult = 1 / (Math.sqrt(v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2]) || 1);
   return v3.map((x) => x * mult);
 };
 
@@ -162,17 +162,17 @@ export const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, ab
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
   const polyParams = SIMPLEX_POLY_FIT[octaves];
 
-  const resourceSeed = hash.pedersen([BigInt(asteroidSeed), BigInt(resourceId)]);
-  const xSeed = hash.pedersen([BigInt(resourceSeed), 1n]);
-  const ySeed = hash.pedersen([BigInt(resourceSeed), 2n]);
-  const zSeed = hash.pedersen([BigInt(resourceSeed), 3n]);
+  const resourceSeed = ec.starkCurve.pedersen(BigInt(asteroidSeed), BigInt(resourceId));
+  const xSeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 1n);
+  const ySeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 2n);
+  const zSeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 3n);
 
-  let lowShift = -5;
-  let highShift = 5;
+  const lowShift = -5;
+  const highShift = 5;
 
-  let xShift = procedural.realBetween(xSeed, lowShift, highShift);
-  let yShift = procedural.realBetween(ySeed, lowShift, highShift);
-  let zShift = procedural.realBetween(zSeed, lowShift, highShift);
+  const xShift = procedural.realBetween(xSeed, lowShift, highShift);
+  const yShift = procedural.realBetween(ySeed, lowShift, highShift);
+  const zShift = procedural.realBetween(zSeed, lowShift, highShift);
 
   return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
 };
@@ -228,7 +228,7 @@ export const getBonuses = (packed, spectralType) => {
  */
 export const getBonusByResource = (bonuses, resourceId) => {
   let multiplier = 1;
-  let matches = [];
+  const matches = [];
 
   bonuses.forEach(bonus => {
     const found = BONUS_MAPS.find(v => v.base.type === bonus.type && v.resourceIds.includes(resourceId));
@@ -274,10 +274,10 @@ export const getLotPosition = (asteroidId, lotId, numLots = 0) => {
 };
 
 /**
- * 
- * @param asteroidId 
+ *
+ * @param asteroidId
  * @param lotTally Optional (floored) surface area in km
- * @returns 
+ * @returns
  */
 export const getLotRegionTally = (lotTally = 0) => {
   if (lotTally < MAX_LOTS_RENDERED) return 1;
@@ -319,12 +319,12 @@ export const lotPositionsToRegions = (flatPositions, regionTally) => {
 };
 
 /**
- * 
+ *
  * @param center (int) The number of regions on the asteroid
  * @param centerLot (int) The number of regions on the asteroid
  * @param lotTally (int) The number of regions on the asteroid
  * @param findTally (int) The number of regions on the asteroid
- * @returns 
+ * @returns
  */
 export const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   const returnAllPoints = !findTally; // if no findTally attached, return all (sorted)
@@ -332,7 +332,7 @@ export const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   // if pass centerLot instead of center, set center from centerLot
   // NOTE: assume centerLot is nominal lot id
   if (centerLot && !center) {
-    center = AsteroidLib.getLotPosition(0, centerLot, lotTally);
+    center = getLotPosition(0, centerLot, lotTally);
   }
 
   let arcToSearch, yToSearch, maxIndex, minIndex, centerTheta, thetaTolerance;
@@ -360,7 +360,7 @@ export const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   }
 
   const points = [];
-  for(let index = minIndex; index < maxIndex; index++) {
+  for (let index = minIndex; index < maxIndex; index++) {
     const theta = PHI * index;
     if (!returnAllPoints) {
       if (getAngleDiff(centerTheta, theta) > thetaTolerance) {
@@ -377,11 +377,10 @@ export const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
       x,
       y,
       z,
-      index + 1,  // nominalIndex
-      Math.pow(center[0] - x, 2) + Math.pow(center[1] - y, 2) + Math.pow(center[2] - z, 2),
+      index + 1, // nominalIndex
+      Math.pow(center[0] - x, 2) + Math.pow(center[1] - y, 2) + Math.pow(center[2] - z, 2)
     ]);
   }
-  //console.log(`${maxIndex - minIndex} points in range; ${points.length} checked`);
 
   return points
     .sort((a, b) => a[4] < b[4] ? -1 : 1) // sort by distance
@@ -408,7 +407,7 @@ export const getLotTravelTime = (asteroidId, originLotId, destLotId, totalBonus 
  * @param asteroidId The asteroid identifier
  */
 export const getRadius = (asteroidId) => {
-  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475)
+  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475);
 };
 
 /**
@@ -496,18 +495,18 @@ const unpackAsteroidDetails = (packed) => {
   return unpacked;
 };
 
-const _getSimplexDist = (percentile) => {
-  const upperHalf = percentile > 0.5;
-  if (upperHalf) percentile = 1 - percentile;
-  const lower = Math.floor(percentile * 100);
-  const upper = Math.ceil(percentile * 100);
-  const lowerDist = SIMPLEX_DISTRIBUTION[lower];
-  const upperDist = SIMPLEX_DISTRIBUTION[upper];
-  const fracPerc = (percentile * 100) - Math.floor(percentile * 100);
-  let result = lowerDist + fracPerc * (upperDist - lowerDist);
-  if (upperHalf) result = 1 - result;
-  return result;
-};
+// const _getSimplexDist = (percentile) => {
+//   const upperHalf = percentile > 0.5;
+//   if (upperHalf) percentile = 1 - percentile;
+//   const lower = Math.floor(percentile * 100);
+//   const upper = Math.ceil(percentile * 100);
+//   const lowerDist = SIMPLEX_DISTRIBUTION[lower];
+//   const upperDist = SIMPLEX_DISTRIBUTION[upper];
+//   const fracPerc = (percentile * 100) - Math.floor(percentile * 100);
+//   let result = lowerDist + fracPerc * (upperDist - lowerDist);
+//   if (upperHalf) result = 1 - result;
+//   return result;
+// };
 
 export default {
   BONUS_MAPS,
