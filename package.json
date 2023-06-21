@@ -53,6 +53,6 @@
     "@influenceth/astro": "^0.2.4",
     "buffer": "^6.0.3",
     "mathjs": "^11.4.0",
-    "starknet": "^4.4.2"
+    "starknet": "^5.14.0"
   }
 }
