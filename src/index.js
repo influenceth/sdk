@@ -1,4 +1,5 @@
 import Constants from './constants.js';
+import * as systems from './systems.js';
 
 import Asteroid from './lib/asteroid.js';
 import Capable from './lib/capable.js';
@@ -23,6 +24,9 @@ export { Address, AdalianOrbit, Merkle, Simplex };
 
 // Game asset libs
 export { Asteroid, Capable, Construction, CoreSample, Crew, Crewmate, Extraction, Inventory, Lot };
+
+// Game systems
+export { systems };
 
 // Contract ABIs
 export { ethereumContracts, starknetContracts };
