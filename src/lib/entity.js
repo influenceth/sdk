@@ -27,7 +27,7 @@ export const entityTypes = {
 
 export class Entity {
   constructor (label, id) {
-    this.label = Entity.format(label).label;
+    this.label = this.constructor.format(label).label;
     this.id = id;
   }
 
