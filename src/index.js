@@ -1,5 +1,4 @@
 import Constants from './constants.js';
-import * as systems from './systems.js';
 
 import Asteroid from './lib/asteroid.js';
 import Capable from './lib/capable.js';
@@ -10,6 +9,7 @@ import Crewmate from './lib/crewmate.js';
 import Extraction from './lib/extraction.js';
 import Inventory from './lib/inventory.js';
 import Lot from './lib/lot.js';
+import * as systems from './lib/systems.js';
 
 import Address from './utils/address.js';
 import AdalianOrbit from './utils/AdalianOrbit.js';

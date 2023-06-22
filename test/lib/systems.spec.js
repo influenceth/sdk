@@ -16,7 +16,7 @@ import {
   SurfaceScanStart,
   SurfaceScanFinish,
   NameChange
-} from '../../src/systems.js';
+} from '../../src/lib/systems.js';
 
 describe('Systems', function () {
   describe('CrewExchange::format', function () {
@@ -30,9 +30,9 @@ describe('Systems', function () {
       expect(name).to.equal('CrewExchange');
       expect(calldata.length).to.equal(14);
       expect(calldata).to.deep.equal([
-        '1131570551', '1',
+        '1', '1',
         '3', '1', '2', '3',
-        '1131570551', '2',
+        '1', '2',
         '5', '1', '2', '3', '4', '5'
       ]);
     });
@@ -40,10 +40,10 @@ describe('Systems', function () {
 
   describe('CrewStation::format', function () {
     it('should format the data correctly', function () {
-      const { name, calldata } = CrewStation.format({ label: 'Station', id: 1 }, { label: 'Crew', id: 1 });
+      const { name, calldata } = CrewStation.format({ label: 'Habitat', id: 1 }, { label: 'Crew', id: 1 });
       expect(name).to.equal('CrewStation');
       expect(calldata.length).to.equal(4);
-      expect(calldata).to.deep.equal(['23490384980701038', '1', '1131570551', '1']);
+      expect(calldata).to.deep.equal(['28', '1', '1', '1']);
     });
   });
 
@@ -52,16 +52,16 @@ describe('Systems', function () {
       const { name, calldata } = CrewmateRecruitment.format({ label: 'Crewmate', id: 1 });
       expect(name).to.equal('CrewmateRecruitment');
       expect(calldata.length).to.equal(2);
-      expect(calldata).to.deep.equal(['4860058511496803429', '1']);
+      expect(calldata).to.deep.equal(['2', '1']);
     });
   });
 
   describe('Delegate::format', function () {
     it('should format the data correctly', function () {
-      const { name, calldata } = Delegate.format({ label: 'Asteroid', id: 1 }, '0x0111');
+      const { name, calldata } = Delegate.format({ label: 'Crew', id: 1 }, '0x0111');
       expect(name).to.equal('Delegate');
       expect(calldata.length).to.equal(3);
-      expect(calldata).to.deep.equal(['4716241213847464292', '1', '273']);
+      expect(calldata).to.deep.equal(['1', '1', '273']);
     });
   });
 
@@ -70,7 +70,7 @@ describe('Systems', function () {
       const { name, calldata } = FoodSupply.format({ label: 'Asteroid', id: 1 }, 1, 100, { label: 'Crew', id: 1 });
       expect(name).to.equal('FoodSupply');
       expect(calldata.length).to.equal(6);
-      expect(calldata).to.deep.equal(['4716241213847464292', '1', '1', '100', '1131570551', '1']);
+      expect(calldata).to.deep.equal(['3', '1', '1', '100', '1', '1']);
     });
   });
 
@@ -87,13 +87,13 @@ describe('Systems', function () {
       expect(name).to.equal('InventoryTransfer');
       expect(calldata.length).to.equal(13);
       expect(calldata).to.deep.equal([
-        '1281505029230414819186', '1',
+        '21', '1',
         '1',
         '4', '1', '2', '3', '4',
-        '1611888520680975987557',
+        '20',
         '2',
         '1',
-        '1131570551',
+        '1',
         '1'
       ]);
     });
@@ -111,10 +111,10 @@ describe('Systems', function () {
       expect(name).to.equal('GrantPermission');
       expect(calldata.length).to.equal(12);
       expect(calldata).to.deep.equal([
-        '20373273627091316', '1',
+        '28', '1',
         '1',
-        '1131570551', '2',
-        '1131570551', '1',
+        '1', '2',
+        '1', '1',
         '4', '1', '2', '3', '4'
       ]);
     });
@@ -132,10 +132,10 @@ describe('Systems', function () {
       expect(name).to.equal('RevokePermission');
       expect(calldata.length).to.equal(12);
       expect(calldata).to.deep.equal([
-        '20373273627091316', '1',
+        '28', '1',
         '1',
-        '1131570551', '2',
-        '1131570551', '1',
+        '1', '2',
+        '1', '1',
         '4', '1', '2', '3', '4'
       ]);
     });
@@ -146,16 +146,16 @@ describe('Systems', function () {
       const { name, calldata } = AssignPolicy.format(
         { label: 'Habitat', id: 1 },
         1,
-        { label: 'Policy', id: 1 },
+        { label: 'Public_Policy', id: 1 },
         { label: 'Crew', id: 1 }
       );
       expect(name).to.equal('AssignPolicy');
       expect(calldata.length).to.equal(7);
       expect(calldata).to.deep.equal([
-        '20373273627091316', '1',
+        '28', '1',
         '1',
-        '88439490438009', '1',
-        '1131570551', '1'
+        '13', '1',
+        '1', '1'
       ]);
     });
   });
@@ -169,7 +169,7 @@ describe('Systems', function () {
       );
       expect(name).to.equal('RemovePolicy');
       expect(calldata.length).to.equal(5);
-      expect(calldata).to.deep.equal(['20373273627091316', '1', '1', '1131570551', '1']);
+      expect(calldata).to.deep.equal(['28', '1', '1', '1', '1']);
     });
   });
 
@@ -178,7 +178,7 @@ describe('Systems', function () {
       const { name, calldata } = NameChange.format({ label: 'Asteroid', id: 1 }, 'New Name');
       expect(name).to.equal('NameChange');
       expect(calldata.length).to.equal(3);
-      expect(calldata).to.deep.equal(['4716241213847464292', '1', '5649052288243821925']);
+      expect(calldata).to.deep.equal(['3', '1', '5649052288243821925']);
     });
   });
 
@@ -187,7 +187,7 @@ describe('Systems', function () {
       const { name, calldata } = Recruitment.format({ label: 'Crew', id: 1 });
       expect(name).to.equal('Recruitment');
       expect(calldata.length).to.equal(2);
-      expect(calldata).to.deep.equal(['1131570551', '1']);
+      expect(calldata).to.deep.equal(['1', '1']);
     });
   });
 
@@ -196,7 +196,7 @@ describe('Systems', function () {
       const { name, calldata } = ResourceScanStart.format({ label: 'Asteroid', id: 1 }, { label: 'Crew', id: 1 });
       expect(name).to.equal('ResourceScanStart');
       expect(calldata.length).to.equal(4);
-      expect(calldata).to.deep.equal(['4716241213847464292', '1', '1131570551', '1']);
+      expect(calldata).to.deep.equal(['3', '1', '1', '1']);
     });
   });
 
@@ -205,7 +205,7 @@ describe('Systems', function () {
       const { name, calldata } = ResourceScanFinish.format({ label: 'Asteroid', id: 1 }, { label: 'Crew', id: 1 });
       expect(name).to.equal('ResourceScanFinish');
       expect(calldata.length).to.equal(4);
-      expect(calldata).to.deep.equal(['4716241213847464292', '1', '1131570551', '1']);
+      expect(calldata).to.deep.equal(['3', '1', '1', '1']);
     });
   });
 
@@ -214,7 +214,7 @@ describe('Systems', function () {
       const { name, calldata } = SurfaceScanStart.format({ label: 'Asteroid', id: 1 }, { label: 'Crew', id: 1 });
       expect(name).to.equal('SurfaceScanStart');
       expect(calldata.length).to.equal(4);
-      expect(calldata).to.deep.equal(['4716241213847464292', '1', '1131570551', '1']);
+      expect(calldata).to.deep.equal(['3', '1', '1', '1']);
     });
   });
 
@@ -223,7 +223,7 @@ describe('Systems', function () {
       const { name, calldata } = SurfaceScanFinish.format({ label: 'Asteroid', id: 1 });
       expect(name).to.equal('SurfaceScanFinish');
       expect(calldata.length).to.equal(2);
-      expect(calldata).to.deep.equal(['4716241213847464292', '1']);
+      expect(calldata).to.deep.equal(['3', '1']);
     });
   });
 });
