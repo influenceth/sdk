@@ -33,8 +33,14 @@ export class Entity {
 
   static format (data) {
     if (!data.label) throw new Error('Entity label required');
+    let labelId;
 
-    const labelId = entityTypes[data.label.toUpperCase()];
+    if (Number.isInteger(data.label) && Object.values(entityTypes).includes(data.label)) {
+      labelId = data.label;
+    } else {
+      labelId = entityTypes[data.label.toUpperCase()];
+    }
+
     if (!labelId) throw new Error(`Unknown entity label: ${data.label}`);
     return { ...data, label: labelId };
   }
