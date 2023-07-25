@@ -1,24 +1,24 @@
-export const STATUS_IDLE = 0;
-export const STATUS_PROCESSING = 1;
-export const STATUSES = ['Idle', 'Processing'];
+import Process from './Process';
 
-export const PROCESSES = {
-  23: { name: 'Water Electrolysis', inputs: { 1: 9 }, outputs: { 2: 1, 23: 8 } },
-  35: { name: 'Fused Quartz Process', inputs: { 26: 1 }, outputs: { 41: 1 } },
-  45: { name: 'Fungal Soil Process', inputs: { 10: 3, 24: 2 }, outputs: { 56: 5 } }
+const IDS = {
+  REFINERY: 1,
+  FACTORY: 2,
+  BIOREACTOR: 3,
+  SHIPYARD: 4,
 };
 
-/**
- * Returns the plain text description of the construction status
- * @param status
- */
- export const getStatus = (status) => {
-  return STATUSES[status];
+const STATUSES = {
+  IDLE: 0,
+  RUNNING: 1
+};
+
+const getAvailableProcesses = (processorId) => {
+  return Object.values(Process.TYPES).filter(p => p.processorType === processorId);
 };
 
 export default {
-  STATUS_IDLE,
-  STATUS_PROCESSING,
+  IDS,
   STATUSES,
-  getStatus
-};
+
+  getAvailableProcesses
+}

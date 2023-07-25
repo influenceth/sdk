@@ -1,86 +1,308 @@
 import { hash } from 'starknet';
 import { multiply, dot } from 'mathjs';
+
 import procedural from '../utils/procedural.js';
 import { recursiveSNoise } from '../utils/simplex.js';
 import { SIMPLEX_POLY_FIT } from '../constants.js';
+import Nameable from './nameable.js';
+import Product from './product.js';
 
-export const BONUS_MAPS = [
+
+/**
+ * Constants
+ */
+const FREE_TRANSPORT_RADIUS = 5; // in km
+const MAX_RADIUS = 375142; // in meters
+const MAX_LOT_REGIONS = 5000;
+const RARITIES = ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable'];
+const SCANNING_STATUSES = {
+  UNSCANNED: 0,
+  SURFACE_SCANNING: 1,
+  SURFACE_SCANNED: 2,
+  RESOURCE_SCANNING: 3,
+  RESOURCE_SCANNED: 4,
+};
+const SCANNING_TIME = 3600; // seconds
+const SIZES = ['Small', 'Medium', 'Large', 'Huge'];
+const TOTAL_ASTEROIDS = 250000;
+
+const SPECTRAL_IDS = {
+  C_TYPE: 1,
+  CM_TYPE: 2,
+  CI_TYPE: 3,
+  CS_TYPE: 4,
+  CMS_TYPE: 5,
+  CIS_TYPE: 6,
+  S_TYPE: 7,
+  SM_TYPE: 8,
+  SI_TYPE: 9,
+  M_TYPE: 10,
+  I_TYPE: 11,
+};
+const SPECTRAL_TYPES = {
+  [IDS.C_TYPE]: {
+    name: 'C',
+    resources: [
+      Product.IDS.WATER,
+      Product.IDS.CARBON_DIOXIDE,
+      Product.IDS.CARBON_MONOXIDE,
+      Product.IDS.METHANE,
+      Product.IDS.APATITE,
+      Product.IDS.BITUMEN,
+      Product.IDS.CALCITE
+    ]
+  },
+  [IDS.CM_TYPE]: {
+    name: 'Cm',
+    resources: [
+      Product.IDS.WATER,
+      Product.IDS.CARBON_DIOXIDE,
+      Product.IDS.CARBON_MONOXIDE,
+      Product.IDS.METHANE,
+      Product.IDS.APATITE,
+      Product.IDS.BITUMEN,
+      Product.IDS.CALCITE,
+      Product.IDS.RHABDITE,
+      Product.IDS.GRAPHITE,
+      Product.IDS.TAENITE,
+      Product.IDS.TROILITE,
+      Product.IDS.URANINITE
+    ]
+  },
+  [IDS.CI_TYPE]: {
+    name: 'Ci',
+    resources: [
+      Product.IDS.WATER,
+      Product.IDS.HYDROGEN,
+      Product.IDS.AMMONIA,
+      Product.IDS.NITROGEN,
+      Product.IDS.SULFUR_DIOXIDE,
+      Product.IDS.CARBON_DIOXIDE,
+      Product.IDS.CARBON_MONOXIDE,
+      Product.IDS.METHANE,
+      Product.IDS.APATITE,
+      Product.IDS.BITUMEN,
+      Product.IDS.CALCITE
+    ]
+  },
+  [IDS.CS_TYPE]: {
+    name: 'Cs',
+    resources: [
+      Product.IDS.WATER,
+      Product.IDS.CARBON_DIOXIDE,
+      Product.IDS.CARBON_MONOXIDE,
+      Product.IDS.METHANE,
+      Product.IDS.APATITE,
+      Product.IDS.BITUMEN,
+      Product.IDS.CALCITE,
+      Product.IDS.FELDSPAR,
+      Product.IDS.OLIVINE,
+      Product.IDS.PYROXENE,
+      Product.IDS.COFFINITE,
+      Product.IDS.MERRILLITE,
+      Product.IDS.XENOTIME
+    ]
+  },
+  [IDS.CMS_TYPE]: {
+    name: 'Cms',
+    resources: [
+      Product.IDS.WATER,
+      Product.IDS.CARBON_DIOXIDE,
+      Product.IDS.CARBON_MONOXIDE,
+      Product.IDS.METHANE,
+      Product.IDS.APATITE,
+      Product.IDS.BITUMEN,
+      Product.IDS.CALCITE,
+      Product.IDS.FELDSPAR,
+      Product.IDS.OLIVINE,
+      Product.IDS.PYROXENE,
+      Product.IDS.COFFINITE,
+      Product.IDS.MERRILLITE,
+      Product.IDS.XENOTIME,
+      Product.IDS.RHABDITE,
+      Product.IDS.GRAPHITE,
+      Product.IDS.TAENITE,
+      Product.IDS.TROILITE,
+      Product.IDS.URANINITE
+    ]
+  },
+  [IDS.CIS_TYPE]: {
+    name: 'Cis',
+    resources: [
+      Product.IDS.WATER,
+      Product.IDS.HYDROGEN,
+      Product.IDS.AMMONIA,
+      Product.IDS.NITROGEN,
+      Product.IDS.SULFUR_DIOXIDE,
+      Product.IDS.CARBON_DIOXIDE,
+      Product.IDS.CARBON_MONOXIDE,
+      Product.IDS.METHANE,
+      Product.IDS.APATITE,
+      Product.IDS.BITUMEN,
+      Product.IDS.CALCITE,
+      Product.IDS.FELDSPAR,
+      Product.IDS.OLIVINE,
+      Product.IDS.PYROXENE,
+      Product.IDS.COFFINITE,
+      Product.IDS.MERRILLITE,
+      Product.IDS.XENOTIME
+    ]
+  },
+  [IDS.S_TYPE]: {
+    name: 'S',
+    resources: [
+      Product.IDS.FELDSPAR,
+      Product.IDS.OLIVINE,
+      Product.IDS.PYROXENE,
+      Product.IDS.COFFINITE,
+      Product.IDS.MERRILLITE,
+      Product.IDS.XENOTIME
+    ]
+  },
+  [IDS.SM_TYPE]: {
+    name: 'Sm',
+    resources: [
+      Product.IDS.FELDSPAR,
+      Product.IDS.OLIVINE,
+      Product.IDS.PYROXENE,
+      Product.IDS.COFFINITE,
+      Product.IDS.MERRILLITE,
+      Product.IDS.XENOTIME,
+      Product.IDS.RHABDITE,
+      Product.IDS.GRAPHITE,
+      Product.IDS.TAENITE,
+      Product.IDS.TROILITE,
+      Product.IDS.URANINITE
+    ]
+  },
+  [IDS.SI_TYPE]: {
+    name: 'Si',
+    resources: [
+      Product.IDS.WATER,
+      Product.IDS.HYDROGEN,
+      Product.IDS.AMMONIA,
+      Product.IDS.NITROGEN,
+      Product.IDS.SULFUR_DIOXIDE,
+      Product.IDS.CARBON_DIOXIDE,
+      Product.IDS.CARBON_MONOXIDE,
+      Product.IDS.METHANE,
+      Product.IDS.FELDSPAR,
+      Product.IDS.OLIVINE,
+      Product.IDS.PYROXENE,
+      Product.IDS.COFFINITE,
+      Product.IDS.MERRILLITE,
+      Product.IDS.XENOTIME
+    ]
+  },
+  [IDS.M_TYPE]: {
+    name: 'M',
+    resources: [
+      Product.IDS.RHABDITE,
+      Product.IDS.GRAPHITE,
+      Product.IDS.TAENITE,
+      Product.IDS.TROILITE,
+      Product.IDS.URANINITE
+    ]
+  },
+  [IDS.I_TYPE]: {
+    name: 'I',
+    resources: [
+      Product.IDS.WATER,
+      Product.IDS.HYDROGEN,
+      Product.IDS.AMMONIA,
+      Product.IDS.NITROGEN,
+      Product.IDS.SULFUR_DIOXIDE,
+      Product.IDS.CARBON_DIOXIDE,
+      Product.IDS.CARBON_MONOXIDE,
+      Product.IDS.METHANE
+    ]
+  }
+};
+
+const getProductCategorySpectralTypes = (category) => {
+  const categoryProducts = getAllOfCategory(category);
+  return Object.keys(SPECTRAL_TYPES)
+    .filter((i) => SPECTRAL_TYPES[i].resources.filter((r) => categoryProducts.includes(r)).length > 0);
+};
+const BONUS_IDS = {
+  YIELD_1: 1,
+  YIELD_2: 2,
+  YIELD_3: 3,
+  VOLATILE_1: 4,
+  VOLATILE_2: 5,
+  VOLATILE_3: 6,
+  METAL_1: 7,
+  METAL_2: 8,
+  METAL_3: 9,
+  ORGANIC_1: 10,
+  ORGANIC_2: 11,
+  ORGANIC_3: 12,
+  RARE_EARTH: 13,
+  FISSILE: 14,
+};
+const BONUS_MAPS = [
   {
-    spectralTypes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    resourceIds: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ],
+    spectralTypes: [...Object.values(SPECTRAL_IDS)],
+    resourcesIds: Product.getTypeProducts('Raw Material'),
     base: { name: 'Yield0', level: 0, modifier: 0, type: 'yield' },
     bonuses: [
-      { position: 1, name: 'Yield1', level: 1, modifier: 3, type: 'yield' },
-      { position: 2, name: 'Yield2', level: 2, modifier: 6, type: 'yield' },
-      { position: 3, name: 'Yield3', level: 3, modifier: 15, type: 'yield' }
+      { position: BONUS_IDS.YIELD_1, name: 'Yield1', level: 1, modifier: 3, type: 'yield' },
+      { position: BONUS_IDS.YIELD_2, name: 'Yield2', level: 2, modifier: 6, type: 'yield' },
+      { position: BONUS_IDS.YIELD_3, name: 'Yield3', level: 3, modifier: 15, type: 'yield' }
     ]
   },
   {
-    spectralTypes: [0, 1, 2, 3, 4, 5, 8, 10],
-    resourceIds: [ 1, 2, 3, 4, 5, 6, 7, 8 ],
+    spectralTypes: getProductCategorySpectralTypes('Volatile'),
+    resourcesIds: Product.getAllOfCategory('Volatile'),
     base: { name: 'Volatile0', level: 0, modifier: 0, type: 'volatile' },
     bonuses: [
-      { position: 4, name: 'Volatile1', level: 1, modifier: 10, type: 'volatile' },
-      { position: 5, name: 'Volatile2', level: 2, modifier: 20, type: 'volatile' },
-      { position: 6, name: 'Volatile3', level: 3, modifier: 50, type: 'volatile' }
+      { position: BONUS_IDS.VOLATILE_1, name: 'Volatile1', level: 1, modifier: 10, type: 'volatile' },
+      { position: BONUS_IDS.VOLATILE_2, name: 'Volatile2', level: 2, modifier: 20, type: 'volatile' },
+      { position: BONUS_IDS.VOLATILE_3, name: 'Volatile3', level: 3, modifier: 50, type: 'volatile' }
     ]
   },
   {
-    spectralTypes: [1, 3, 4, 5, 6, 7, 8, 9],
-    resourceIds: [ 12, 13, 14, 18, 19, 20, 21 ],
+    spectralTypes: getProductCategorySpectralTypes('Metal'),
+    resourcesIds: Product.getAllOfCategory('Metal'),
     base: { name: 'Metal0', level: 0, modifier: 0, type: 'metal' },
     bonuses: [
-      { position: 7, name: 'Metal1', level: 1, modifier: 10, type: 'metal' },
-      { position: 8, name: 'Metal2', level: 2, modifier: 20, type: 'metal' },
-      { position: 9, name: 'Metal3', level: 3, modifier: 50, type: 'metal' }
+      { position: BONUS_IDS.METAL_1, name: 'Metal1', level: 1, modifier: 10, type: 'metal' },
+      { position: BONUS_IDS.METAL_2, name: 'Metal2', level: 2, modifier: 20, type: 'metal' },
+      { position: BONUS_IDS.METAL_3, name: 'Metal3', level: 3, modifier: 50, type: 'metal' }
     ]
   },
   {
-    spectralTypes: [0, 1, 2, 3, 4, 5],
-    resourceIds: [ 9, 10, 11 ],
+    spectralTypes: getProductCategorySpectralTypes('Organic'),
+    resourcesIds: Product.getAllOfCategory('Organic'),
     base: { name: 'Organic0', level: 0, modifier: 0, type: 'organic' },
     bonuses: [
-      { position: 10, name: 'Organic1', level: 1, modifier: 10, type: 'organic' },
-      { position: 11, name: 'Organic2', level: 2, modifier: 20, type: 'organic' },
-      { position: 12, name: 'Organic3', level: 3, modifier: 50, type: 'organic' }
+      { position: BONUS_IDS.ORGANIC_1, name: 'Organic1', level: 1, modifier: 10, type: 'organic' },
+      { position: BONUS_IDS.ORGANIC_2, name: 'Organic2', level: 2, modifier: 20, type: 'organic' },
+      { position: BONUS_IDS.ORGANIC_3, name: 'Organic3', level: 3, modifier: 50, type: 'organic' }
     ]
   },
   {
-    spectralTypes: [3, 4, 5, 6, 7, 8],
-    resourceIds: [ 16, 17 ],
+    spectralTypes: getProductCategorySpectralTypes('Rare Earth'),
+    resourcesIds: Product.getAllOfCategory('Rare Earth'),
     base: { name: 'RareEarth0', level: 0, modifier: 0, type: 'rareearth' },
     bonuses: [
-      { position: 13, name: 'RareEarth3', level: 3, modifier: 30, type: 'rareearth' }
+      { position: BONUS_IDS.RARE_EARTH, name: 'RareEarth3', level: 3, modifier: 30, type: 'rareearth' }
     ]
   },
   {
-    spectralTypes: [1, 3, 4, 5, 6, 7, 8, 9],
-    resourceIds: [ 15, 22 ],
+    spectralTypes: getProductCategorySpectralTypes('Fissile'),
+    resourcesIds: Product.getAllOfCategory('Fissile'),
     base: { name: 'Fissile0', level: 0, modifier: 0, type: 'fissile' },
     bonuses: [
-      { position: 14, name: 'Fissile3', level: 3, modifier: 30, type: 'fissile' }
+      { position: BONUS_IDS.FISSILE, name: 'Fissile3', level: 3, modifier: 30, type: 'fissile' }
     ]
   }
 ];
 
-export const FREE_TRANSPORT_RADIUS = 5; // in km
-export const MAX_RADIUS = 375142; // in meters
-export const RARITIES = ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable'];
-export const REGIONS = ['MainBelt', 'Trojans'];
-export const SIZES = ['Small', 'Medium', 'Large', 'Huge'];
-export const SPECTRAL_TYPES = {
-  0: { name: 'C', resources: [1, 6, 7, 8, 9, 10, 11] },
-  1: { name: 'Cm', resources: [1, 6, 7, 8, 9, 10, 11, 18, 19, 20, 21, 22] },
-  2: { name: 'Ci', resources: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
-  3: { name: 'Cs', resources: [1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
-  4: { name: 'Cms', resources: [1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  5: { name: 'Cis', resources: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
-  6: { name: 'S', resources: [12, 13, 14, 15, 16, 17] },
-  7: { name: 'Sm', resources: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  8: { name: 'Si', resources: [1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17] },
-  9: { name: 'M', resources: [18, 19, 20, 21, 22] },
-  10: { name: 'I', resources: [1, 2, 3, 4, 5, 6, 7, 8] }
-};
+
+/**
+ * Getters and utils
+ */
 
 const PHI = Math.PI * (3 - Math.sqrt(5));
 const TWO_PI = 2 * Math.PI;
@@ -88,11 +310,6 @@ const RESOURCE_OCTAVE_MUL = 5;
 const RESOURCE_OCTAVE_BASE = 3;
 const RESOURCE_SIZE_MUL = 0.75;
 const RESOURCE_SIZE_BASE = 0.375;
-const SCANNING_TIME = 3600; // seconds
-const TOTAL_ASTEROIDS = 250000;
-
-export const MAX_LOT_REGIONS = 5000;
-export const MAX_LOTS_RENDERED = 8000;
 
 const getAngleDiff = (angle1, angle2) => {
   const a1 = angle1 >= 0 ? angle1 : (angle1 + TWO_PI);
@@ -106,75 +323,24 @@ const normalizeVector = (v3) => {
   return v3.map((x) => x * mult);
 };
 
+
 /**
- * Returns the resource abundance at a specific lot
+ * Returns the (spherical) asteroid radius in km
  * @param asteroidId The asteroid identifier
- * @param asteroidSeed The seed generated during resource scanning
- * @param lotId The lot identifier (1-indexed)
- * @param resourceId The resource identifier (from Inventory lib)
- * @param abundance Asteroid-wide abundance for the given resource [0, 1]
  */
-export const getAbundanceAtLot = (asteroidId, asteroidSeed, lotId, resourceId, abundance) => {
-  const settings = getAbundanceMapSettings(asteroidId, asteroidSeed, resourceId, abundance);
-  const point = getLotPosition(asteroidId, lotId);
-  return getAbundanceAtPosition(point, settings);
+const getRadius = (asteroidId) => {
+  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475)
 };
 
 /**
- * Returns the resource abundance at an arbitray x,y,z position (pre-calculated)
- * @param point Array of x, y, z positions on unit sphere for the lot (getLotPosition)
- * @param settings Settings derived from getResourceMapSettings
- */
-export const getAbundanceAtPosition = (point, settings) => {
-  if (settings.abundance === 0) return 0;
-
-  point = point.map((v, i) => v * settings.pointScale + settings.pointShift[i]);
-  let noise = recursiveSNoise(point, 0.5, settings.octaves);
-  noise = 0.5 * noise + 0.5;
-
-  // Get percentile of noise based on poly fits
-  let percentile = 0;
-
-  for (let i = 0; i < settings.polyParams.length; i++) {
-    percentile += settings.polyParams[i] * Math.pow(noise, i);
-  }
-
-  // Scale and clamp abundance to [0,1] then add half the base abundance as a floor
-  let abundance = (percentile + settings.abundance - 1.0) / settings.abundance;
-  abundance = Math.min(Math.max(abundance, 0), 1);
-  const abundanceFloor = settings.abundance / 2;
-  abundance = abundance * (1.0 - abundanceFloor) + abundanceFloor;
-
-  return abundance;
-};
-
-/**
- * Returns a set of settings / configs to be utilized in generating resource heatmaps
+ * Calculate the total (spherical) surface area in square km of an asteroid (rounded down)
  * @param asteroidId The asteroid identifier
- * @param asteroidSeed The random asteroid seed from scanning (not derived solely from asteroidId)
- * @param resourceId The resource identifier
- * @param abundance The relative abundance (0 to 1)
+ * @param radius Optional radius in km
  */
-export const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
-  const radius = getRadius(asteroidId);
-  const radiusRatio = radius * 1000 / MAX_RADIUS;
-  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1 / 3));
-  const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
-  const polyParams = SIMPLEX_POLY_FIT[octaves];
-
-  const resourceSeed = hash.pedersen([BigInt(asteroidSeed), BigInt(resourceId)]);
-  const xSeed = hash.pedersen([BigInt(resourceSeed), 1n]);
-  const ySeed = hash.pedersen([BigInt(resourceSeed), 2n]);
-  const zSeed = hash.pedersen([BigInt(resourceSeed), 3n]);
-
-  let lowShift = -5;
-  let highShift = 5;
-
-  let xShift = procedural.realBetween(xSeed, lowShift, highShift);
-  let yShift = procedural.realBetween(ySeed, lowShift, highShift);
-  let zShift = procedural.realBetween(zSeed, lowShift, highShift);
-
-  return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
+const getSurfaceArea = (asteroidId, radius = 0) => {
+  radius = radius || getRadius(asteroidId);
+  const area = 4 * Math.PI * Math.pow(radius, 2);
+  return Math.floor(area);
 };
 
 /**
@@ -221,10 +387,9 @@ export const getBonuses = (packed, spectralType) => {
 };
 
 /**
- * Calculates the distance (along surface of a sphere) between two lots on an asteroid
- * @param {object} bonuses The asteroid identifier
- * @param {integer} resourceId starting lot identifier
- * @return Mathching bonuses and total multiplier
+ * Gets the bonus for a specific resource
+ * @param bonuses The unpacked bonuses for the asteroid
+ * @param resourceId The resource identifier
  */
 export const getBonusByResource = (bonuses, resourceId) => {
   let multiplier = 1;
@@ -242,13 +407,128 @@ export const getBonusByResource = (bonuses, resourceId) => {
 };
 
 /**
+ * Returns the rarity level of the asteroid based on the set of scanned bonuses
+ * @param bonuses Array of bonus objects
+ */
+const getRarity = (bonuses) => {
+  let rarity = 0;
+
+  for (const b of bonuses) {
+    rarity += b.level;
+  }
+
+  if (rarity <= 3) return RARITIES[rarity];
+  if (rarity <= 5) return RARITIES[4];
+  return RARITIES[5];
+};
+
+/**
+ * Returns the size string based on the asteroid radius
+ * @param radius The asteroid radius in meters
+ */
+export const getSize = (radius) => {
+  if (radius <= 5000) return SIZES[0];
+  if (radius <= 20000) return SIZES[1];
+  if (radius <= 50000) return SIZES[2];
+  return SIZES[3];
+};
+
+/**
+ * @param spectralTypeId The spectral type identifier (1-11)
+ * Returns the spectral type details including a name attribute
+ */
+export const getSpectralType = (spectralTypeId) => {
+  return SPECTRAL_IDS[spectralTypeId]?.name || '';
+};
+
+/**
+ * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
+ * @param packed The bitpacked bonuses int
+ */
+export const getScanned = (packed) => {
+  return ((packed & (1 << 0)) > 0);
+};
+
+/**
+ * Returns the resource abundance at a specific lot
+ * @param asteroidId The asteroid identifier
+ * @param asteroidSeed The seed generated during resource scanning
+ * @param lotId The lot identifier (1-indexed)
+ * @param resourceId The resource identifier (from Inventory lib)
+ * @param abundance Asteroid-wide abundance for the given resource [0, 1]
+ */
+const getAbundanceAtLot = (asteroidId, asteroidSeed, lotId, resourceId, abundance) => {
+  const settings = getAbundanceMapSettings(asteroidId, asteroidSeed, resourceId, abundance);
+  const point = getLotPosition(asteroidId, lotId);
+  return getAbundanceAtPosition(point, settings);
+};
+
+/**
+ * Returns the resource abundance at an arbitray x,y,z position (pre-calculated)
+ * @param point Array of x, y, z positions on unit sphere for the lot (getLotPosition)
+ * @param settings Settings derived from getResourceMapSettings
+ */
+const getAbundanceAtPosition = (point, settings) => {
+  if (settings.abundance === 0) return 0;
+
+  point = point.map((v, i) => v * settings.pointScale + settings.pointShift[i]);
+  let noise = recursiveSNoise(point, 0.5, settings.octaves);
+  noise = 0.5 * noise + 0.5;
+
+  // Get percentile of noise based on poly fits
+  let percentile = 0;
+
+  for (let i = 0; i < settings.polyParams.length; i++) {
+    percentile += settings.polyParams[i] * Math.pow(noise, i);
+  }
+
+  // Scale and clamp abundance to [0,1] then add half the base abundance as a floor
+  let abundance = (percentile + settings.abundance - 1.0) / settings.abundance;
+  abundance = Math.min(Math.max(abundance, 0), 1);
+  const abundanceFloor = settings.abundance / 2;
+  abundance = abundance * (1.0 - abundanceFloor) + abundanceFloor;
+
+  return abundance;
+};
+
+/**
+ * Returns a set of settings / configs to be utilized in generating resource heatmaps
+ * @param asteroidId The asteroid identifier
+ * @param asteroidSeed The random asteroid seed from scanning (not derived solely from asteroidId)
+ * @param resourceId The resource identifier
+ * @param abundance The relative abundance (0 to 1)
+ */
+const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
+  const radius = getRadius(asteroidId);
+  const radiusRatio = radius * 1000 / MAX_RADIUS;
+  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1 / 3));
+  const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
+  const polyParams = SIMPLEX_POLY_FIT[octaves];
+
+  const resourceSeed = hash.pedersen([BigInt(asteroidSeed), BigInt(resourceId)]);
+  const xSeed = hash.pedersen([BigInt(resourceSeed), 1n]);
+  const ySeed = hash.pedersen([BigInt(resourceSeed), 2n]);
+  const zSeed = hash.pedersen([BigInt(resourceSeed), 3n]);
+
+  let lowShift = -5;
+  let highShift = 5;
+
+  let xShift = procedural.realBetween(xSeed, lowShift, highShift);
+  let yShift = procedural.realBetween(ySeed, lowShift, highShift);
+  let zShift = procedural.realBetween(zSeed, lowShift, highShift);
+
+  return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
+};
+
+
+/**
  * Calculates the distance (along surface of a sphere) between two lots on an asteroid
  * @param {integer} asteroidId The asteroid identifier
  * @param {integer} originLotIdThe starting lot identifier
  * @param {integer} destLotId The ending lot identifier
  * @return Distance in km
  */
-export const getLotDistance = (asteroidId, originLotId, destLotId) => {
+const getLotDistance = (asteroidId, originLotId, destLotId) => {
   const radius = getRadius(asteroidId);
   const numLots = getSurfaceArea(asteroidId, radius);
   const origin = multiply(getLotPosition(asteroidId, originLotId, numLots), radius);
@@ -262,7 +542,7 @@ export const getLotDistance = (asteroidId, originLotId, destLotId) => {
  * @param lotId The lot identifier
  * @param numLots Optional area / number of lots param (if precalculated)
  */
-export const getLotPosition = (asteroidId, lotId, numLots = 0) => {
+const getLotPosition = (asteroidId, lotId, numLots = 0) => {
   const theta = PHI * (lotId - 1);
   numLots = numLots || getSurfaceArea(asteroidId);
   const lotFrac = (lotId - 1) / (numLots - 1);
@@ -279,18 +559,17 @@ export const getLotPosition = (asteroidId, lotId, numLots = 0) => {
  * @param lotTally Optional (floored) surface area in km
  * @returns 
  */
-export const getLotRegionTally = (lotTally = 0) => {
-  if (lotTally < MAX_LOTS_RENDERED) return 1;
+const getLotRegionTally = (lotTally = 0) => {
   return Math.min(MAX_LOT_REGIONS, Math.max(Math.ceil(lotTally / 100), 100));
 };
 
 /**
  * Calculates the region containing the specified position
- * @param positions (Float32Array) Batch of Asteroids lot positions
+ * @param position (Float32Array) Asteroid lot position
  * @param regionTally (int) The number of regions on the asteroid
  * @returns (int) region id
  */
-export const getPositionRegion = (position, regionTally) => {
+const getPositionRegion = (position, regionTally) => {
   const region = getClosestLots({
     center: normalizeVector(position),
     lotTally: regionTally,
@@ -305,7 +584,7 @@ export const getPositionRegion = (position, regionTally) => {
  * @param regionTally (int) The number of regions on the asteroid
  * @returns (Int16Array) region ids
  */
-export const lotPositionsToRegions = (flatPositions, regionTally) => {
+const getRegionsOfLotPositions = (flatPositions, regionTally) => {
   const batchSize = flatPositions.length / 3;
   const regions = new Int16Array(batchSize);
   for (let i = 0; i < batchSize; i++) {
@@ -326,7 +605,7 @@ export const lotPositionsToRegions = (flatPositions, regionTally) => {
  * @param findTally (int) The number of regions on the asteroid
  * @returns 
  */
-export const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
+const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   const returnAllPoints = !findTally; // if no findTally attached, return all (sorted)
 
   // if pass centerLot instead of center, set center from centerLot
@@ -397,80 +676,18 @@ export const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
  * @param {float} totalBonus
  * @return Travel time in seconds
  */
-export const getLotTravelTime = (asteroidId, originLotId, destLotId, totalBonus = 1) => {
+const getLotTravelTime = (asteroidId, originLotId, destLotId, totalBonus = 1) => {
   const distance = getLotDistance(asteroidId, originLotId, destLotId);
   const time = distance <= FREE_TRANSPORT_RADIUS * totalBonus ? 0 : Math.ceil(distance * 60 / totalBonus);
   return time;
 };
 
-/**
- * Returns the (spherical) asteroid radius in km
- * @param asteroidId The asteroid identifier
- */
-export const getRadius = (asteroidId) => {
-  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475)
-};
-
-/**
- * Returns the rarity level of the asteroid based on the set of scanned bonuses
- * @param bonuses Array of bonus objects
- */
-const getRarity = (bonuses) => {
-  let rarity = 0;
-
-  for (const b of bonuses) {
-    rarity += b.level;
-  }
-
-  if (rarity <= 3) return RARITIES[rarity];
-  if (rarity <= 5) return RARITIES[4];
-  return RARITIES[5];
-};
-
-/**
- * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
- * @param packed The bitpacked bonuses int
- */
-export const getScanned = (packed) => {
-  return ((packed & (1 << 0)) > 0);
-};
-
-/**
- * Returns the size string based on the asteroid radius
- * @param radius The asteroid radius in meters
- */
-export const getSize = (radius) => {
-  if (radius <= 5000) return SIZES[0];
-  if (radius <= 20000) return SIZES[1];
-  if (radius <= 50000) return SIZES[2];
-  return SIZES[3];
-};
-
-/**
- * @param spectralTypeId The spectral type identifier (1-11)
- * Returns the spectral type details including a name attribute
- */
-export const getSpectralType = (spectralTypeId) => {
-  if (SPECTRAL_TYPES[spectralTypeId]) return SPECTRAL_TYPES[spectralTypeId];
-  throw new Error('Invalid spectral type');
-};
-
-/**
- * Calculate the total (spherical) surface area in square km of an asteroid (rounded down)
- * @param asteroidId The asteroid identifier
- * @param radius Optional radius in km
- */
-const getSurfaceArea = (asteroidId, radius = 0) => {
-  radius = radius || getRadius(asteroidId);
-  const area = 4 * Math.PI * Math.pow(radius, 2);
-  return Math.floor(area);
-};
 
 /**
  * Unpacks a packed set of static asteroid data including orbital elements and spectral type
  * @param {Uint32Array} packed 32 bit array of packed asteroid details (3 elements per asteroid)
  */
-const unpackAsteroidDetails = (packed) => {
+const getUnpackedAsteroidDetails = (packed) => {
   const unpacked = [];
 
   for (let i = 1; i <= 250000; i++) {
@@ -496,31 +713,18 @@ const unpackAsteroidDetails = (packed) => {
   return unpacked;
 };
 
-const _getSimplexDist = (percentile) => {
-  const upperHalf = percentile > 0.5;
-  if (upperHalf) percentile = 1 - percentile;
-  const lower = Math.floor(percentile * 100);
-  const upper = Math.ceil(percentile * 100);
-  const lowerDist = SIMPLEX_DISTRIBUTION[lower];
-  const upperDist = SIMPLEX_DISTRIBUTION[upper];
-  const fracPerc = (percentile * 100) - Math.floor(percentile * 100);
-  let result = lowerDist + fracPerc * (upperDist - lowerDist);
-  if (upperHalf) result = 1 - result;
-  return result;
-};
-
 export default {
-  BONUS_MAPS,
+  BONUS_IDS,
   FREE_TRANSPORT_RADIUS,
   MAX_LOT_REGIONS,
-  MAX_LOTS_RENDERED,
   MAX_RADIUS,
   RARITIES,
-  REGIONS,
   SCANNING_TIME,
+  SCANNING_STATUSES,
   SIZES,
-  SPECTRAL_TYPES,
+  SPECTRAL_IDS,
   TOTAL_ASTEROIDS,
+  
   getAbundanceAtLot,
   getAbundanceAtPosition,
   getAbundanceMapSettings,
@@ -532,13 +736,13 @@ export default {
   getLotPosition,
   getLotRegionTally,
   getLotTravelTime,
-  getPositionRegion,
   getRadius,
   getRarity,
+  getRegionsOfLotPositions,
   getScanned,
   getSize,
   getSpectralType,
   getSurfaceArea,
-  lotPositionsToRegions,
-  unpackAsteroidDetails
+  getUnpackedAsteroidDetails,
+  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Asteroid),
 };

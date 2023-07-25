@@ -1,6 +1,7 @@
 import Crewmate from './crewmate.js';
+import Nameable from './nameable.js';
 
-export const CLASS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
+export const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
 
 /**
  * @param {integer} abilityId Crewmate ability identifier
@@ -43,7 +44,7 @@ export const getAbilityBonus = (abilityId, crewmates = []) => {
 
   // If there's a class affinity apply it
   if (details.class) {
-    details.class.multiplier = CLASS_EFFICIENCY[details.class.matches];
+    details.class.multiplier = CREWMATE_STACKING_BONUS_EFFICIENCY[details.class.matches];
     details.totalBonus *= details.class.multiplier;
   }
 
@@ -51,6 +52,8 @@ export const getAbilityBonus = (abilityId, crewmates = []) => {
 };
 
 export default {
-  CLASS_EFFICIENCY,
-  getAbilityBonus
+  CREWMATE_STACKING_BONUS_EFFICIENCY,
+  
+  getAbilityBonus,
+  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.CREW),
 };

@@ -4,7 +4,6 @@ import { constants } from '@influenceth/astro';
 export const ADALIA_MASS = 1.7033730830877267e30; // kg
 export const GM_ADALIA = constants.G * ADALIA_MASS;
 export const MASTER_SEED = 'influence';
-export const START_TIMESTAMP = 1609459200; // Zero date timestamp for orbits
 export const SIMPLEX_POLY_FIT = {
   1: [ 0.044363, -1.691305, 22.890226, -127.26599, 384.093578, -585.849871, 432.255245, -123.520867 ],
   2: [ 0.886138, -19.560496, 171.895764, -780.710568, 1982.691002, -2760.093607, 1966.990019, -561.983908 ],
@@ -20,6 +19,4 @@ export default {
   ADALIA_MASS,
   GM_ADALIA,
   MASTER_SEED,
-  START_TIMESTAMP,
-  SIMPLEX_POLY_FIT
 };

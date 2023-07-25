@@ -1,52 +1,53 @@
-export const ABILITIES = {
-  1: {
+import Nameable from './nameable';
+
+const ABILITY_IDS = {
+  CORE_SAMPLE_SPEED: 1,
+  CORE_SAMPLE_QUALITY: 2,
+  SURFACE_TRANSPORT_SPEED: 3,
+  EXTRACTION_RATE: 4,
+  CONSTRUCTION_EFFICIENCY: 5,
+  INVENTORY_CAPACITY: 6
+}
+
+const ABILITIES = {
+  [ABILITY_IDS.CORE_SAMPLE_SPEED]: {
     name: 'Core Sample Speed',
     class: 3,
     titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 },
     traits: { 31: 0.10 }
   },
-  2: {
+  [ABILITY_IDS.CORE_SAMPLE_QUALITY]: {
     name: 'Core Sample Quality',
     class: 3,
     titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 },
     traits: { 50: 0.10 }
   },
-  3: {
+  [ABILITY_IDS.SURFACE_TRANSPORT_SPEED]: {
     name: 'Surface Transport Speed',
     titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05,
                6: 0.05, 19: 0.10, 32: 0.15, 45: 0.20, 58: 0.25 },
     traits: { 47: 0.10 }
   },
-  4: {
+  [ABILITY_IDS.EXTRACTION_RATE]: {
     name: 'Extraction Rate',
     class: 3,
     titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 }
   },
-  5: {
+  [ABILITY_IDS.CONSTRUCTION_EFFICIENCY]: {
     name: 'Construction Efficiency',
     class: 2,
     titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 },
     traits: { 49: 0.10 }
   },
-  6: {
+  [ABILITY_IDS.INVENTORY_CAPACITY]: {
     name: 'Inventory Capacity',
     titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05 }
   }
 };
 
-export const BONUS_ITEMS = {
-  0: { name: 'None' },
-  1: { name: 'Glow' },
-  2: { name: 'Drone - Gray' },
-  3: { name: 'Drone - Orange' },
-  4: { name: 'Drone - Green' },
-  5: { name: 'Drone - Yellow' },
-  6: { name: 'Drone - Medical' },
-  7: { name: 'Drone - Technology' },
-  8: { name: 'Drone - Commander' }
-};
+// TODO: do we want to map CLASS_ID, COLLECTION_ID, etc so they can be accessed as CLASS.PILOT, etc?
 
-export const CLASSES = {
+const CLASSES = {
   1: { name: 'Pilot', description: 'Often restless, always ready for adventure, pilots are happiest when flying. Their expertise gets them and their crew where they want to go quickly, safely, efficiently.' },
   2: { name: 'Engineer', description: 'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.' },
   3: { name: 'Miner', description: 'On the surface it appears that miners value their strength over their brains, but like their quarry, the reality lies underneath: they are highly skilled and erudite in their area of expertise.' },
@@ -54,14 +55,14 @@ export const CLASSES = {
   5: { name: 'Scientist', description: 'Motivated by a desire to expand human knowledge, scientists learn from the past, while keeping their gaze steadily on the future.' }
 };
 
-export const COLLECTIONS = {
+const COLLECTIONS = {
   1: { name: 'Arvad Specialist' },
   2: { name: 'Arvad Citizen' },
   3: { name: 'Arvad Leadership' },
   4: { name: 'Adalian' }
 };
 
-export const DEPARTMENTS = {
+const DEPARTMENTS = {
   1: { name: 'Navigation' },
   2: { name: 'Education' },
   3: { name: 'Knowledge' },
@@ -77,110 +78,7 @@ export const DEPARTMENTS = {
   13: { name: 'Management' }
 };
 
-export const FACIAL_FEATURES = {
-  0: { name: 'None' },
-  1: { name: 'Scar' },
-  2: { name: 'Piercing' },
-  3: { name: 'Long Beard' },
-  4: { name: 'Full Beard' },
-  5: { name: 'Circle Beard' },
-  6: { name: 'Handlebar Mustache' },
-  7: { name: 'Mustache' }
-};
-
-export const GENDERS = {
-  1: { name: 'Male' },
-  2: { name: 'Female' }
-};
-
-export const HAIR_COLORS = {
-  1: { name: 'Red' },
-  2: { name: 'Gray' },
-  3: { name: 'Brown' },
-  4: { name: 'Blonde' },
-  5: { name: 'Black' }
-};
-
-export const HAIR_STYLES = {
-  0: { name: 'Bald' },
-  1: { name: 'Mohawk' },
-  2: { name: 'Slickback' },
-  3: { name: 'Curly' },
-  4: { name: 'Buzz' },
-  5: { name: 'Top Knot' },
-  6: { name: 'Bun' },
-  7: { name: 'Long' },
-  8: { name: 'Ponytail' },
-  9: { name: 'Pixie' },
-  10: { name: 'Double Bun' },
-  11: { name: 'Shoulder' }
-};
-
-export const HEAD_PIECES = {
-  0: { name: 'None' },
-  1: { name: 'Welding Goggles' },
-  2: { name: 'AR Glasses' },
-  3: { name: 'Eyepatch' },
-  4: { name: 'Mask' },
-  5: { name: 'Helmet' },
-  6: { name: 'Navigation Goggles' },
-  7: { name: 'Spectacles' },
-  8: { name: 'Archival Glasses' },
-  9: { name: 'Medical Glasses' },
-  10: { name: 'Headset' },
-  11: { name: 'Earmuffs' },
-  12: { name: 'Technology Glasses' },
-  13: { name: 'Botany Glasses' },
-  14: { name: 'Chef Hat' },
-  15: { name: 'Eyepatch - Orange' },
-  16: { name: 'Eyepatch - Gold' },
-};
-
-export const OUTFITS = {
-  1: { name: 'Light Spacesuit - Blue' },
-  2: { name: 'Light Spacesuit - Purple' },
-  3: { name: 'Light Spacesuit - Orange' },
-  4: { name: 'Heavy Spacesuit - Red' },
-  5: { name: 'Heavy Spacesuit - Black' },
-  6: { name: 'Heavy Spacesuit - Blue' },
-  7: { name: 'Lab Coat - White' },
-  8: { name: 'Lab Coat - Yellow' },
-  9: { name: 'Lab Coat - Green' },
-  10: { name: 'Tool Vest - Orange' },
-  11: { name: 'Tool Vest - Green' },
-  12: { name: 'Tool Vest - Yellow' },
-  13: { name: 'Jacket - Red' },
-  14: { name: 'Jacket - Green' },
-  15: { name: 'Jacket - Black' },
-  16: { name: 'Stationwear - Red' },
-  17: { name: 'Stationwear - Green' },
-  18: { name: 'Stationwear - Black' },
-  19: { name: 'Light Spacesuit - Navigation' },
-  20: { name: 'Stationwear - Education' },
-  21: { name: 'Stationwear - Archival' },
-  22: { name: 'Lab Coat - Medical' },
-  23: { name: 'Heavy Spacesuit - Security' },
-  24: { name: 'Light Spacesuit - Logistics' },
-  25: { name: 'Tool Vest - Maintenance' },
-  26: { name: 'Light Spacesuit - Technology' },
-  27: { name: 'Tool Vest - Engineering' },
-  28: { name: 'Lab Coat - Botany' },
-  29: { name: 'Jacket - Cooking' },
-  30: { name: 'Jacket - Entertainment' },
-  31: { name: 'Stationwear - Commander' },
-  32: { name: 'Pilot Recruit - Primary' },
-  33: { name: 'Pilot Recruit - Variant' },
-  34: { name: 'Engineer Recruit - Primary' },
-  35: { name: 'Engineer Recruit - Variant' },
-  36: { name: 'Miner Recruit - Primary' },
-  37: { name: 'Miner Recruit - Variant' },
-  38: { name: 'Merchant Recruit - Primary' },
-  39: { name: 'Merchant Recruit - Variant' },
-  40: { name: 'Scientist Recruit - Primary' },
-  41: { name: 'Scientist Recruit - Variant' }
-};
-
-export const TITLES = {
+const TITLES = {
   0: { name: 'None' },
   1: { name: 'Communications Officer' },
   2: { name: 'Teaching Assistant' },
@@ -249,7 +147,7 @@ export const TITLES = {
   65: { name: 'High Commander' }
 };
 
-export const TRAITS = {
+const TRAITS = {
   1: { name: 'Drive: Survival', type: 'cosmetic', description: 'You need to live. Your primary drive is the survival of yourself, the people you know, and the species.' },
   2: { name: 'Drive: Service', type: 'cosmetic', description: 'You need to fulfill your role. Your primary drive is to serve humanity for the greater good.' },
   3: { name: 'Drive: Glory', type: 'cosmetic', description: 'You need to excel. Your primary drive is to be the best at whatever you do.' },
@@ -302,79 +200,196 @@ export const TRAITS = {
   50: { name: 'Prospector', type: 'impactful', description: 'You have increased viability gain per core sample.' }
 };
 
+// Appearance constants
+const BONUS_ITEMS = {
+  0: { name: 'None' },
+  1: { name: 'Glow' },
+  2: { name: 'Drone - Gray' },
+  3: { name: 'Drone - Orange' },
+  4: { name: 'Drone - Green' },
+  5: { name: 'Drone - Yellow' },
+  6: { name: 'Drone - Medical' },
+  7: { name: 'Drone - Technology' },
+  8: { name: 'Drone - Commander' }
+};
+
+const FACIAL_FEATURES = {
+  0: { name: 'None' },
+  1: { name: 'Scar' },
+  2: { name: 'Piercing' },
+  3: { name: 'Long Beard' },
+  4: { name: 'Full Beard' },
+  5: { name: 'Circle Beard' },
+  6: { name: 'Handlebar Mustache' },
+  7: { name: 'Mustache' }
+};
+
+const GENDERS = {
+  1: { name: 'Male' },
+  2: { name: 'Female' }
+};
+
+const HAIR_COLORS = {
+  1: { name: 'Red' },
+  2: { name: 'Gray' },
+  3: { name: 'Brown' },
+  4: { name: 'Blonde' },
+  5: { name: 'Black' }
+};
+
+const HAIR_STYLES = {
+  0: { name: 'Bald' },
+  1: { name: 'Mohawk' },
+  2: { name: 'Slickback' },
+  3: { name: 'Curly' },
+  4: { name: 'Buzz' },
+  5: { name: 'Top Knot' },
+  6: { name: 'Bun' },
+  7: { name: 'Long' },
+  8: { name: 'Ponytail' },
+  9: { name: 'Pixie' },
+  10: { name: 'Double Bun' },
+  11: { name: 'Shoulder' }
+};
+
+const HEAD_PIECES = {
+  0: { name: 'None' },
+  1: { name: 'Welding Goggles' },
+  2: { name: 'AR Glasses' },
+  3: { name: 'Eyepatch' },
+  4: { name: 'Mask' },
+  5: { name: 'Helmet' },
+  6: { name: 'Navigation Goggles' },
+  7: { name: 'Spectacles' },
+  8: { name: 'Archival Glasses' },
+  9: { name: 'Medical Glasses' },
+  10: { name: 'Headset' },
+  11: { name: 'Earmuffs' },
+  12: { name: 'Technology Glasses' },
+  13: { name: 'Botany Glasses' },
+  14: { name: 'Chef Hat' },
+  15: { name: 'Eyepatch - Orange' },
+  16: { name: 'Eyepatch - Gold' },
+};
+
+const OUTFITS = {
+  1: { name: 'Light Spacesuit - Blue' },
+  2: { name: 'Light Spacesuit - Purple' },
+  3: { name: 'Light Spacesuit - Orange' },
+  4: { name: 'Heavy Spacesuit - Red' },
+  5: { name: 'Heavy Spacesuit - Black' },
+  6: { name: 'Heavy Spacesuit - Blue' },
+  7: { name: 'Lab Coat - White' },
+  8: { name: 'Lab Coat - Yellow' },
+  9: { name: 'Lab Coat - Green' },
+  10: { name: 'Tool Vest - Orange' },
+  11: { name: 'Tool Vest - Green' },
+  12: { name: 'Tool Vest - Yellow' },
+  13: { name: 'Jacket - Red' },
+  14: { name: 'Jacket - Green' },
+  15: { name: 'Jacket - Black' },
+  16: { name: 'Stationwear - Red' },
+  17: { name: 'Stationwear - Green' },
+  18: { name: 'Stationwear - Black' },
+  19: { name: 'Light Spacesuit - Navigation' },
+  20: { name: 'Stationwear - Education' },
+  21: { name: 'Stationwear - Archival' },
+  22: { name: 'Lab Coat - Medical' },
+  23: { name: 'Heavy Spacesuit - Security' },
+  24: { name: 'Light Spacesuit - Logistics' },
+  25: { name: 'Tool Vest - Maintenance' },
+  26: { name: 'Light Spacesuit - Technology' },
+  27: { name: 'Tool Vest - Engineering' },
+  28: { name: 'Lab Coat - Botany' },
+  29: { name: 'Jacket - Cooking' },
+  30: { name: 'Jacket - Entertainment' },
+  31: { name: 'Stationwear - Commander' },
+  32: { name: 'Pilot Recruit - Primary' },
+  33: { name: 'Pilot Recruit - Variant' },
+  34: { name: 'Engineer Recruit - Primary' },
+  35: { name: 'Engineer Recruit - Variant' },
+  36: { name: 'Miner Recruit - Primary' },
+  37: { name: 'Miner Recruit - Variant' },
+  38: { name: 'Merchant Recruit - Primary' },
+  39: { name: 'Merchant Recruit - Variant' },
+  40: { name: 'Scientist Recruit - Primary' },
+  41: { name: 'Scientist Recruit - Variant' }
+};
+
 /**
  * @param {integer} abilityId
  * @returns Details for a given ability
  */
-export const getAbility = (abilityId) => ABILITIES[abilityId];
+const getAbility = (abilityId) => ABILITIES[abilityId];
 
 /**
  * @param bonusItemId The crewmate's bonus item identifier
  * @returns Details object for bonus item including a 'name' attribute
  */
-export const getBonusItem = (bonusItemId) => BONUS_ITEMS[bonusItemId];
+const getBonusItem = (bonusItemId) => BONUS_ITEMS[bonusItemId];
 
 /**
  * @param collectionId The crewmate's collection identifier
  * @returns Details object for collection including a 'name' attribute
  */
-export const getCollection = (collectionId) => COLLECTIONS[collectionId];
+const getCollection = (collectionId) => COLLECTIONS[collectionId];
 
 /**
  * @param classId The crewmate's class identifier
  * @returns Details object for class including a 'name' attribute
  */
-export const getClass = (classId) => CLASSES[classId];
+const getClass = (classId) => CLASSES[classId];
 
 /**
  * @param facialFeatureId The crewmate's facialFeature identifier
  * @returns Details object for facialFeature including a 'name' attribute
  */
-export const getFacialFeature = (facialFeatureId) => FACIAL_FEATURES[facialFeatureId];
+const getFacialFeature = (facialFeatureId) => FACIAL_FEATURES[facialFeatureId];
 
 /**
  * @param genderId The crewmate's gender identifier
  * @returns Details object for gender including a 'name' attribute
  */
-export const getGender = (genderId) => GENDERS[genderId];
+const getGender = (genderId) => GENDERS[genderId];
 
 /**
  * @param hairColorId The crewmate's hairColor identifier
  * @returns Details object for hairColor including a 'name' attribute
  */
-export const getHairColor = (hairColorId) => HAIR_COLORS[hairColorId];
+const getHairColor = (hairColorId) => HAIR_COLORS[hairColorId];
 
 /**
  * @param hairId The crewmate's hair identifier
  * @returns Details object for hair including a 'name' attribute
  */
-export const getHairStyle = (hairId) => HAIR_STYLES[hairId];
+const getHairStyle = (hairId) => HAIR_STYLES[hairId];
 
 /**
  * @param headPieceId The crewmate's headPiece identifier
  * @returns Details object for headPiece including a 'name' attribute
  */
-export const getHeadPiece = (headPieceId) => HEAD_PIECES[headPieceId];
+const getHeadPiece = (headPieceId) => HEAD_PIECES[headPieceId];
 
 /**
  * @param outfitId The crewmate's outfit identifier
  * @returns Details object for outfit including a 'name' attribute
  */
-export const getOutfit = (outfitId) => OUTFITS[outfitId];
+const getOutfit = (outfitId) => OUTFITS[outfitId];
 
 /**
  * @param titleId The crewmate's title identifier
  * @returns Details object for title including a 'name' attribute
  */
- export const getTitle = (titleId) => TITLES[titleId];
+ const getTitle = (titleId) => TITLES[titleId];
 
 /**
  * @param traitId The crewmate's trait identifier
  * @returns Details object for trait including a 'name' attribute
  */
-export const getTrait = (traitId) => TRAITS[traitId];
+const getTrait = (traitId) => TRAITS[traitId];
 
 export default {
+  ABILITY_IDS,
   BONUS_ITEMS,
   COLLECTIONS,
   CLASSES,
@@ -386,6 +401,7 @@ export default {
   OUTFITS,
   TITLES,
   TRAITS,
+
   getAbility,
   getBonusItem,
   getCollection,
@@ -397,5 +413,6 @@ export default {
   getHeadPiece,
   getOutfit,
   getTitle,
-  getTrait
+  getTrait,
+  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Crewmate),
 };

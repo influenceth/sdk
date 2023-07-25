@@ -1,4 +1,5 @@
 import { angles, constants, Orbit } from '@influenceth/astro';
+
 import { GM_ADALIA } from '../constants.js';
 
 const MU = GM_ADALIA / (1000 ** 3); // Convert to km^3 / s^2
@@ -78,7 +79,7 @@ class AdalianOrbit {
 
   /**
    * Retrieves Cartesian coordinates in AU at a specified elapsed time
-   * @param elapsed Time in days (in-game) since game START_TIMESTAMP
+   * @param elapsed Time in days (in-game) since Time.START_TIMESTAMP
    */
   getPositionAtTime (elapsed) {
     const tof = elapsed * 86400; // Convert days to seconds
