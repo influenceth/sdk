@@ -1,4 +1,4 @@
-import Process from './Process';
+import Process from './process';
 
 const IDS = {
   REFINERY: 1,
