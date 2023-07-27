@@ -34,55 +34,55 @@ const TYPES = {
     i: IDS.WAREHOUSE_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.WAREHOUSE].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.WAREHOUSE].requirements,
   },
   [IDS.EXTRACTOR_SITE]: {
     i: IDS.EXTRACTOR_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.EXTRACTOR].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.EXTRACTOR].requirements,
   },
   [IDS.REFINERY_SITE]: {
     i: IDS.REFINERY_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.REFINERY].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.REFINERY].requirements,
   },
   [IDS.BIOREACTOR_SITE]: {
     i: IDS.BIOREACTOR_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.BIOREACTOR].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.BIOREACTOR].requirements,
   },
   [IDS.FACTORY_SITE]: {
     i: IDS.FACTORY_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.FACTORY].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.FACTORY].requirements,
   },
   [IDS.SHIPYARD_SITE]: {
     i: IDS.SHIPYARD_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.SHIPYARD].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.SHIPYARD].requirements,
   },
   [IDS.SPACEPORT_SITE]: {
     i: IDS.SPACEPORT_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.SPACEPORT].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.SPACEPORT].requirements,
   },
   [IDS.MARKETPLACE_SITE]: {
     i: IDS.MARKETPLACE_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.MARKETPLACE].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.MARKETPLACE].requirements,
   },
   [IDS.HABITAT_SITE]: {
     i: IDS.HABITAT_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.HABITAT].materials,
+    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.HABITAT].requirements,
   },
   [IDS.WAREHOUSE_PRIMARY]: {
     i: IDS.WAREHOUSE_PRIMARY,
@@ -127,14 +127,15 @@ const TYPES = {
     productConstraints: null
   },
 };
+
 // sum the product constraints mass and volume in case that is useful for progress bars
 Object.keys(TYPES).forEach((key) => {
   TYPES[key].productConstraintsTotalMass = Infinity;
   TYPES[key].productConstraintsTotalVolume = Infinity;
   if (TYPES[key].productConstraints) {
-    if (!Object.values(config.productConstraints).find((q) => q === 0)) {
-      const sum = Object.keys(config.productConstraints).reduce((acc, productId) => {
-        const quanta = config.productConstraints[productId];
+    if (!Object.values(TYPES[key].productConstraints).find((q) => q === 0)) {
+      const sum = Object.keys(TYPES[key].productConstraints).reduce((acc, productId) => {
+        const quanta = TYPES[key].productConstraints[productId];
         if (quanta === 0) {
           acc.m = Infinity;
           acc.v = Infinity;
@@ -213,7 +214,6 @@ export default {
   STATUSES,
   TYPES,
 
-  getConfig,
   getContents,
   getFilledCapacity,
   getType

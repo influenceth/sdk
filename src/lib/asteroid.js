@@ -40,7 +40,7 @@ const SPECTRAL_IDS = {
   I_TYPE: 11,
 };
 const SPECTRAL_TYPES = {
-  [IDS.C_TYPE]: {
+  [SPECTRAL_IDS.C_TYPE]: {
     name: 'C',
     resources: [
       Product.IDS.WATER,
@@ -52,7 +52,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.CALCITE
     ]
   },
-  [IDS.CM_TYPE]: {
+  [SPECTRAL_IDS.CM_TYPE]: {
     name: 'Cm',
     resources: [
       Product.IDS.WATER,
@@ -69,7 +69,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.URANINITE
     ]
   },
-  [IDS.CI_TYPE]: {
+  [SPECTRAL_IDS.CI_TYPE]: {
     name: 'Ci',
     resources: [
       Product.IDS.WATER,
@@ -85,7 +85,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.CALCITE
     ]
   },
-  [IDS.CS_TYPE]: {
+  [SPECTRAL_IDS.CS_TYPE]: {
     name: 'Cs',
     resources: [
       Product.IDS.WATER,
@@ -103,7 +103,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.XENOTIME
     ]
   },
-  [IDS.CMS_TYPE]: {
+  [SPECTRAL_IDS.CMS_TYPE]: {
     name: 'Cms',
     resources: [
       Product.IDS.WATER,
@@ -126,7 +126,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.URANINITE
     ]
   },
-  [IDS.CIS_TYPE]: {
+  [SPECTRAL_IDS.CIS_TYPE]: {
     name: 'Cis',
     resources: [
       Product.IDS.WATER,
@@ -148,7 +148,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.XENOTIME
     ]
   },
-  [IDS.S_TYPE]: {
+  [SPECTRAL_IDS.S_TYPE]: {
     name: 'S',
     resources: [
       Product.IDS.FELDSPAR,
@@ -159,7 +159,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.XENOTIME
     ]
   },
-  [IDS.SM_TYPE]: {
+  [SPECTRAL_IDS.SM_TYPE]: {
     name: 'Sm',
     resources: [
       Product.IDS.FELDSPAR,
@@ -175,7 +175,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.URANINITE
     ]
   },
-  [IDS.SI_TYPE]: {
+  [SPECTRAL_IDS.SI_TYPE]: {
     name: 'Si',
     resources: [
       Product.IDS.WATER,
@@ -194,7 +194,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.XENOTIME
     ]
   },
-  [IDS.M_TYPE]: {
+  [SPECTRAL_IDS.M_TYPE]: {
     name: 'M',
     resources: [
       Product.IDS.RHABDITE,
@@ -204,7 +204,7 @@ const SPECTRAL_TYPES = {
       Product.IDS.URANINITE
     ]
   },
-  [IDS.I_TYPE]: {
+  [SPECTRAL_IDS.I_TYPE]: {
     name: 'I',
     resources: [
       Product.IDS.WATER,
@@ -220,10 +220,11 @@ const SPECTRAL_TYPES = {
 };
 
 const getProductCategorySpectralTypes = (category) => {
-  const categoryProducts = getAllOfCategory(category);
+  const categoryProducts = Product.getListByCategory(category);
   return Object.keys(SPECTRAL_TYPES)
     .filter((i) => SPECTRAL_TYPES[i].resources.filter((r) => categoryProducts.includes(r)).length > 0);
 };
+
 const BONUS_IDS = {
   YIELD_1: 1,
   YIELD_2: 2,
@@ -243,7 +244,7 @@ const BONUS_IDS = {
 const BONUS_MAPS = [
   {
     spectralTypes: [...Object.values(SPECTRAL_IDS)],
-    resourcesIds: Product.getTypeProducts('Raw Material'),
+    resourcesIds: Product.getListByProductType('Raw Material'),
     base: { name: 'Yield0', level: 0, modifier: 0, type: 'yield' },
     bonuses: [
       { position: BONUS_IDS.YIELD_1, name: 'Yield1', level: 1, modifier: 3, type: 'yield' },
@@ -253,7 +254,7 @@ const BONUS_MAPS = [
   },
   {
     spectralTypes: getProductCategorySpectralTypes('Volatile'),
-    resourcesIds: Product.getAllOfCategory('Volatile'),
+    resourcesIds: Product.getListByCategory('Volatile'),
     base: { name: 'Volatile0', level: 0, modifier: 0, type: 'volatile' },
     bonuses: [
       { position: BONUS_IDS.VOLATILE_1, name: 'Volatile1', level: 1, modifier: 10, type: 'volatile' },
@@ -263,7 +264,7 @@ const BONUS_MAPS = [
   },
   {
     spectralTypes: getProductCategorySpectralTypes('Metal'),
-    resourcesIds: Product.getAllOfCategory('Metal'),
+    resourcesIds: Product.getListByCategory('Metal'),
     base: { name: 'Metal0', level: 0, modifier: 0, type: 'metal' },
     bonuses: [
       { position: BONUS_IDS.METAL_1, name: 'Metal1', level: 1, modifier: 10, type: 'metal' },
@@ -273,7 +274,7 @@ const BONUS_MAPS = [
   },
   {
     spectralTypes: getProductCategorySpectralTypes('Organic'),
-    resourcesIds: Product.getAllOfCategory('Organic'),
+    resourcesIds: Product.getListByCategory('Organic'),
     base: { name: 'Organic0', level: 0, modifier: 0, type: 'organic' },
     bonuses: [
       { position: BONUS_IDS.ORGANIC_1, name: 'Organic1', level: 1, modifier: 10, type: 'organic' },
@@ -283,7 +284,7 @@ const BONUS_MAPS = [
   },
   {
     spectralTypes: getProductCategorySpectralTypes('Rare Earth'),
-    resourcesIds: Product.getAllOfCategory('Rare Earth'),
+    resourcesIds: Product.getListByCategory('Rare Earth'),
     base: { name: 'RareEarth0', level: 0, modifier: 0, type: 'rareearth' },
     bonuses: [
       { position: BONUS_IDS.RARE_EARTH, name: 'RareEarth3', level: 3, modifier: 30, type: 'rareearth' }
@@ -291,7 +292,7 @@ const BONUS_MAPS = [
   },
   {
     spectralTypes: getProductCategorySpectralTypes('Fissile'),
-    resourcesIds: Product.getAllOfCategory('Fissile'),
+    resourcesIds: Product.getListByCategory('Fissile'),
     base: { name: 'Fissile0', level: 0, modifier: 0, type: 'fissile' },
     bonuses: [
       { position: BONUS_IDS.FISSILE, name: 'Fissile3', level: 3, modifier: 30, type: 'fissile' }
@@ -438,7 +439,7 @@ export const getSize = (radius) => {
  * Returns the spectral type details including a name attribute
  */
 export const getSpectralType = (spectralTypeId) => {
-  return SPECTRAL_IDS[spectralTypeId]?.name || '';
+  return SPECTRAL_TYPES[spectralTypeId]?.name || '';
 };
 
 /**
@@ -723,6 +724,7 @@ export default {
   SCANNING_STATUSES,
   SIZES,
   SPECTRAL_IDS,
+  SPECTRAL_TYPES,
   TOTAL_ASTEROIDS,
   
   getAbundanceAtLot,

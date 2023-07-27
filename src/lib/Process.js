@@ -3534,9 +3534,12 @@ const TYPES = {
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
+const getListByProcessorType = (processorType) => Object.values(TYPES).filter(type => type.processorType === processorType);
+
 export default {
   IDS,
   TYPES,
 
+  getListByProcessorType,
   getType
 };

@@ -24,21 +24,21 @@ const TYPES = {
       condition of asteroid material; for example, a bed of regolith will settle
       and become more compacted than would be found on an asteroid.`,
   },
-  [IDS.Warehouse]: {
-    i: IDS.Warehouse,
+  [IDS.WAREHOUSE]: {
+    i: IDS.WAREHOUSE,
     name: 'Warehouse',
     description: `The Warehouse provides inventory space to store items: raw
       materials, refined materials, process modules, or finished goods.`,
   },
-  [IDS.Extractor]: {
-    i: IDS.Extractor,
+  [IDS.EXTRACTOR]: {
+    i: IDS.EXTRACTOR,
     name: 'Extractor',
     description: `The Extractor is responsible for extracting the raw materials from an
       asteroid. They are tied closely to the core sampling process, and rely
       on the availability of a core sample to be able to operate efficiently.`,
   },
-  [IDS.Refinery]: {
-    i: IDS.Refinery,
+  [IDS.REFINERY]: {
+    i: IDS.REFINERY,
     name: 'Refinery',
     description: `The Refinery allows for the refining of raw materials into their
       constituent refined materials. Effectively they are responsible for
@@ -46,27 +46,27 @@ const TYPES = {
       to modify the targeted output which defines the recipe, and therefore
       required inputs.`,
   },
-  [IDS.Bioreactor]: {
-    i: IDS.Bioreactor,
+  [IDS.BIOREACTOR]: {
+    i: IDS.BIOREACTOR,
     name: 'Bioreactor',
     description: '',  // TODO: ...
   },
-  [IDS.Factory]: {
-    i: IDS.Factory,
+  [IDS.FACTORY]: {
+    i: IDS.FACTORY,
     name: 'Factory',
     description: `All finished goods, except for ships, are produced in the Factory based
       on their installed assembly process modules. The finished goods produced
       in Factories are primarily consumables, or serve to be assembled as new
       buildings, or new ships.`,
   },
-  [IDS.Shipyard]: {
-    i: IDS.Shipyard,
+  [IDS.SHIPYARD]: {
+    i: IDS.SHIPYARD,
     name: 'Shipyard',
     description: `The Shipyard is a specialized Factory that are required for the final
       construction and deconstruction of ships.`,
   },
-  [IDS.Spaceport]: {
-    i: IDS.Spaceport,
+  [IDS.SPACEPORT]: {
+    i: IDS.SPACEPORT,
     name: 'Spaceport',
     description: `The Spaceport allows for the landing of all ship classes on an asteroid's
       surface, not just those capable of performing all-terrain landings like
@@ -75,8 +75,8 @@ const TYPES = {
       those ships. Although they have unlimited space, landing is subject to a
       queue with one landing occurring every 4 Adalian hours (10 real minutes).`,
   },
-  [IDS.Marketplace]: {
-    i: IDS.Marketplace,
+  [IDS.MARKETPLACE]: {
+    i: IDS.MARKETPLACE,
     name: 'Marketplace',
     description: `The Marketplace serves as the central point of the Adalian economy. Once
       they are built on an asteroid they allow for the exchange of all local
@@ -88,8 +88,8 @@ const TYPES = {
       a single, asteroid-wide market interface displaying items for sale, but
       any explicit buy-orders must be placed at a specific Marketplace.`,
   },
-  [IDS.Habitat]: {
-    i: IDS.Habitat,
+  [IDS.HABITAT]: {
+    i: IDS.HABITAT,
     name: 'Habitat',
     description: `The Habitat is the only location which allows recruiting of new Crewmates
       and is required to support any Hab Modules not attached to ships.
@@ -139,7 +139,7 @@ const CONSTRUCTION_TYPES = {
       [Product.IDS.THERMAL_MODULE]: 20
     }
   },
-  [IDS.FARM]: {
+  [IDS.BIOREACTOR]: {
     constructionTime: 5609000,
     requirements: {
       [Product.IDS.DEIONIZED_WATER]: 2900000,
@@ -245,9 +245,9 @@ const getConstructionType = (type) => CONSTRUCTION_TYPES[type] ? { ...CONSTRUCTI
  */
 const getConstructionTime = (buildingType, totalBonus = 1) => {
   if (CONSTRUCTION_TYPES[buildingType]) {
-    return Math.ceil(CONSTRUCTION_TYPES[buildingType] / totalBonus);
+    return Math.ceil(CONSTRUCTION_TYPES[buildingType].constructionTime / totalBonus);
   } else {
-    throw new Error('Capable type is invalid or not constructable');
+    throw new Error('Building type is invalid or not constructable');
   }
 };
 

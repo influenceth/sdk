@@ -1,5 +1,3 @@
-import Process from './process';
-
 const IDS = {
   REFINERY: 1,
   FACTORY: 2,
@@ -12,13 +10,7 @@ const STATUSES = {
   RUNNING: 1
 };
 
-const getAvailableProcesses = (processorId) => {
-  return Object.values(Process.TYPES).filter(p => p.processorType === processorId);
-};
-
 export default {
   IDS,
-  STATUSES,
-
-  getAvailableProcesses
+  STATUSES
 }

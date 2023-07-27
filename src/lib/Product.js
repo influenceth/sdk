@@ -2299,101 +2299,17 @@ const TYPES = {
     category: "Ship Part",
     massPerUnit: 32000000,
     isAtomic: true
-  },
-  [IDS.SHUTTLE]: {
-    i: IDS.SHUTTLE,
-    name: "Shuttle",
-    productType: "Ship",
-    massPerUnit: 100755000,
-    isAtomic: true
-  },
-  [IDS.LIGHT_TRANSPORT]: {
-    i: IDS.LIGHT_TRANSPORT,
-    name: "Light Transport",
-    productType: "Ship",
-    massPerUnit: 185525000,
-    isAtomic: true
-  },
-  [IDS.HEAVY_TRANSPORT]: {
-    i: IDS.HEAVY_TRANSPORT,
-    name: "Heavy Transport",
-    productType: "Ship",
-    massPerUnit: 969525000,
-    isAtomic: true
-  },
-  [IDS.WAREHOUSE]: {
-    i: IDS.WAREHOUSE,
-    name: "Warehouse",
-    productType: "Building",
-    massPerUnit: 1800000000,
-    isAtomic: true
-  },
-  [IDS.EXTRACTOR]: {
-    i: IDS.EXTRACTOR,
-    name: "Extractor",
-    productType: "Building",
-    massPerUnit: 1531900000,
-    isAtomic: true
-  },
-  [IDS.REFINERY]: {
-    i: IDS.REFINERY,
-    name: "Refinery",
-    productType: "Building",
-    massPerUnit: 2766900000,
-    isAtomic: true
-  },
-  [IDS.FARM]: {
-    i: IDS.FARM,
-    name: "Farm",
-    productType: "Building",
-    massPerUnit: 7590700000,
-    isAtomic: true
-  },
-  [IDS.FACTORY]: {
-    i: IDS.FACTORY,
-    name: "Factory",
-    productType: "Building",
-    massPerUnit: 0,
-    isAtomic: true
-  },
-  [IDS.SHIPYARD]: {
-    i: IDS.SHIPYARD,
-    name: "Shipyard",
-    productType: "Building",
-    massPerUnit: 0,
-    isAtomic: true
-  },
-  [IDS.SPACEPORT]: {
-    i: IDS.SPACEPORT,
-    name: "Spaceport",
-    productType: "Building",
-    massPerUnit: 0,
-    isAtomic: true
-  },
-  [IDS.MARKETPLACE]: {
-    i: IDS.MARKETPLACE,
-    name: "Marketplace",
-    productType: "Building",
-    massPerUnit: 0,
-    isAtomic: true
-  },
-  [IDS.HABITAT]: {
-    i: IDS.HABITAT,
-    name: "Habitat",
-    productType: "Building",
-    massPerUnit: 0,
-    isAtomic: true
   }
 };
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
-const getAllOfCategory = (category) => {
+const getListByCategory = (category) => {
   return Object.keys(TYPES)
     .filter((i) => TYPES[i].category === category);
 };
 
-const getAllOfProductType = (productType) => {
+const getListByProductType = (productType) => {
   return Object.keys(TYPES)
     .filter((i) => TYPES[i].productType === productType);
 }
@@ -2402,7 +2318,7 @@ export default {
   IDS,
   TYPES,
 
-  getAllOfCategory,
-  getAllOfProductType,
+  getListByCategory,
+  getListByProductType,
   getType,
 };
