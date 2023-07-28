@@ -22,7 +22,7 @@ import Address from './utils/address.js';
 import AdalianOrbit from './utils/AdalianOrbit.js';
 import Merkle from './utils/MerkleTree.js';
 import Simplex from './utils/simplex.js';
-import Time from './utils/time.js';
+import Time from './utils/Time.js';
 
 import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'json' };
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
