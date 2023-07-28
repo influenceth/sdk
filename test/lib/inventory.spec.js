@@ -1,34 +1,54 @@
 import { expect } from 'chai';
 import inventory from '../../src/lib/inventory.js';
+import { checkIdsAndTypes } from '../testUtils.js';
 
 describe('Inventory library', function () {
+  checkIdsAndTypes(inventory.IDS, inventory.TYPES);
+
+  it('should get filled capacity', function () {
+    // no massConstraint, but product constraints
+    let filled = inventory.getFilledCapacity(inventory.IDS.WAREHOUSE_SITE);
+    expect(filled).to.deep.equal({ filledMass: 1800e6, filledVolume: 1621e6 });
+
+    // massConstraint, but no product constraints
+    filled = inventory.getFilledCapacity(inventory.IDS.WAREHOUSE_PRIMARY);
+    expect(filled).to.deep.equal({ filledMass: 1500000e6, filledVolume: 75000e6 });
+
+    // massConstraint and product constraints
+    filled = inventory.getFilledCapacity(inventory.IDS.PROPELLANT_SMALL);
+    expect(filled).to.deep.equal({ filledMass: 1e6, filledVolume: 1e6 });
+  });
+
   it('should get resource details and totals with two arrays', function () {
-    const { resources, totals } = inventory.getContents([ 3, 6, 8 ], [ 34523, 45642, 6743 ]);
-    expect(resources[3].mass.toFixed(3)).to.equal('34.523');
-    expect(resources[3].volume.toFixed(3)).to.equal('55.237');
+    const { products, totals } = inventory.getContents([ 3, 6, 8 ], [ 34523, 45642, 6743 ]);
 
-    expect(resources[6].mass.toFixed(3)).to.equal('45.642');
-    expect(resources[6].volume.toFixed(3)).to.equal('29.211');
+    expect(products[3].mass).to.equal(34523000);
+    expect(products[3].volume).to.equal(47296510);
 
-    expect(resources[8].mass.toFixed(3)).to.equal('6.743');
-    expect(resources[8].volume.toFixed(3)).to.equal('15.846');
+    expect(products[6].mass).to.equal(45642000);
+    expect(products[6].volume).to.equal(36559242);
 
-    expect(totals.mass.toFixed(3)).to.equal('86.908');
-    expect(totals.volume.toFixed(3)).to.equal('100.294');
+    expect(products[8].mass).to.equal(6743000);
+    expect(products[8].volume).to.equal(14969460);
+
+    expect(totals.mass).to.equal(86908000);
+    expect(totals.volume).to.equal(98825212);
   });
 
   it('should get resource details and totals with one object', function () {
-    const { resources, totals } = inventory.getContents({ 3: 34523, 6: 45642, 8: 6743 });
-    expect(resources[3].mass.toFixed(3)).to.equal('34.523');
-    expect(resources[3].volume.toFixed(3)).to.equal('55.237');
+    const { products, totals } = inventory.getContents({ 3: 34523, 6: 45642, 8: 6743 });
+    
+    expect(products[3].mass).to.equal(34523000);
+    expect(products[3].volume).to.equal(47296510);
 
-    expect(resources[6].mass.toFixed(3)).to.equal('45.642');
-    expect(resources[6].volume.toFixed(3)).to.equal('29.211');
+    expect(products[6].mass).to.equal(45642000);
+    expect(products[6].volume).to.equal(36559242);
 
-    expect(resources[8].mass.toFixed(3)).to.equal('6.743');
-    expect(resources[8].volume.toFixed(3)).to.equal('15.846');
+    expect(products[8].mass).to.equal(6743000);
+    expect(products[8].volume).to.equal(14969460);
 
-    expect(totals.mass.toFixed(3)).to.equal('86.908');
-    expect(totals.volume.toFixed(3)).to.equal('100.294');
+    expect(totals.mass).to.equal(86908000);
+    expect(totals.volume).to.equal(98825212);
   });
+
 });

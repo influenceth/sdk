@@ -1,4 +1,4 @@
-import Product from './product';
+import Product from './product.js';
 
 const IDS = {
   EMPTY_LOT: 0,
@@ -104,7 +104,7 @@ const TYPES = {
 };
 const CONSTRUCTION_TYPES = {
   [IDS.WAREHOUSE]: {
-    constructionTime: 1800000,
+    constructionTime: 480,
     requirements: {
       [Product.IDS.CEMENT]: 700000,
       [Product.IDS.STEEL_BEAM]: 700000,
@@ -112,7 +112,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.EXTRACTOR]: {
-    constructionTime: 1574300,
+    constructionTime: 576,
     requirements: {
       [Product.IDS.CEMENT]: 400000,
       [Product.IDS.STEEL_BEAM]: 900000,
@@ -126,7 +126,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.REFINERY]: {
-    constructionTime: 2445402,
+    constructionTime: 1152,
     requirements: {
       [Product.IDS.CEMENT]: 800000,
       [Product.IDS.STEEL_BEAM]: 600000,
@@ -140,7 +140,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.BIOREACTOR]: {
-    constructionTime: 5609000,
+    constructionTime: 960,
     requirements: {
       [Product.IDS.DEIONIZED_WATER]: 2900000,
       [Product.IDS.FUSED_QUARTZ]: 500000,
@@ -157,7 +157,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.FACTORY]: {
-    constructionTime: 3701200,
+    constructionTime: 1440,
     requirements: {
       [Product.IDS.CEMENT]: 900000,
       [Product.IDS.STEEL_BEAM]: 1100000,
@@ -170,7 +170,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.SHIPYARD]: {
-    constructionTime: 7511000,
+    constructionTime: 2592,
     requirements: {
       [Product.IDS.CEMENT]: 2000000,
       [Product.IDS.STEEL_BEAM]: 2400000,
@@ -183,7 +183,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.SPACEPORT]: {
-    constructionTime: 11784000,
+    constructionTime: 2592,
     requirements: {
       [Product.IDS.CEMENT]: 4300000,
       [Product.IDS.STEEL_BEAM]: 2200000,
@@ -197,7 +197,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.MARKETPLACE]: {
-    constructionTime: 9910800,
+    constructionTime: 2880,
     requirements: {
       [Product.IDS.CEMENT]: 3000000,
       [Product.IDS.STEEL_BEAM]: 2500000,
@@ -211,7 +211,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.HABITAT]: {
-    constructionTime: 19522000,
+    constructionTime: 4032,
     requirements: {
       [Product.IDS.DEIONIZED_WATER]: 1500000,
       [Product.IDS.CEMENT]: 5000000,

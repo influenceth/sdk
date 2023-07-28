@@ -1,4 +1,4 @@
-import Nameable from './nameable';
+import Nameable from './nameable.js';
 
 const ABILITY_IDS = {
   CORE_SAMPLE_SPEED: 1,
@@ -9,7 +9,7 @@ const ABILITY_IDS = {
   INVENTORY_CAPACITY: 6
 }
 
-const ABILITIES = {
+const ABILITY_TYPES = {
   [ABILITY_IDS.CORE_SAMPLE_SPEED]: {
     name: 'Core Sample Speed',
     class: 3,
@@ -154,14 +154,14 @@ const TRAITS = {
   4: { name: 'Drive: Command', type: 'cosmetic', description: 'You need to be in control. Your primary drive is to lead others in what you know to be the right direction.' },
   5: { name: 'Adventurous', type: 'cosmetic', description: 'You are bold, brave, and intrepid. You recognize that in order to move humanity forward, it is sometimes necessary to take that giant leap for mankind.' },
   6: { name: 'Ambitious', type: 'cosmetic', description: 'You know what needs to be done, and you know that you are the one who can do it. You are driven to succeed, no matter the obstacles.' },
-  7: { name: 'Arrogant', type: 'cosmetic', description: 'Hubris may have been the downfall of lesser people, but you are steadfastly confident in your own abilities. Let other people be led around by those stronger than themselves, you know what you are capable of.' },
+  7: { name: 'Arrogant', type: 'cosmetic', description: 'Hubris may have been the downfall of lesser people, but you are steadfastly confident in your own ABILITY_TYPES. Let other people be led around by those stronger than themselves, you know what you are capable of.' },
   8: { name: 'Cautious', type: 'cosmetic', description: 'Let others leap before they look. You will stay with what you know works, until there is some proof that another course is safer.' },
   9: { name: 'Creative', type: 'cosmetic', description: 'You seek to bring new ideas to light. Your mind is constantly wandering to the question "what if..." You want to see if you can explain the "unexplainable".' },
   10: { name: 'Curious', type: 'cosmetic', description: 'You are excited to open your mind and learn something new. The universe is full of the undiscovered just waiting to be discovered.' },
   11: { name: 'Fierce', type: 'cosmetic', description: 'You are a forceful person who is drawn to intensity. You have strong convictions and seek out others who do as well.' },
   12: { name: 'Flexible', type: 'cosmetic', description: 'You are open-minded and able to quickly analyze new ideas. You are not stuck in the past and are always ready to respond to new challenges.' },
   13: { name: 'Frantic', type: 'cosmetic', description: 'You are prone to anxiety and always forget your towel.' },
-  14: { name: 'Hopeful', type: 'cosmetic', description: 'You know the risks, you understand the downsides, but you just can\'t help your optimism. Besides, when has humanity ever truly expanded its abilities except when it held onto hope in the face of adversity?' },
+  14: { name: 'Hopeful', type: 'cosmetic', description: 'You know the risks, you understand the downsides, but you just can\'t help your optimism. Besides, when has humanity ever truly expanded its ABILITY_TYPES except when it held onto hope in the face of adversity?' },
   15: { name: 'Independent', type: 'cosmetic', description: 'You are free-thinking and not prone to blindly following orders, unless there is a very good explanation behind those orders.' },
   16: { name: 'Irrational', type: 'cosmetic', description: 'You don\'t waste your time with logic, at least not the type that makes sense to anyone else. You have never had the dubious honor of being called "reasonable."' },
   17: { name: 'Loyal', type: 'cosmetic', description: 'You understand the importance of staying the course and trusting those around you to make rational decisions.' },
@@ -320,7 +320,7 @@ const OUTFITS = {
  * @param {integer} abilityId
  * @returns Details for a given ability
  */
-const getAbility = (abilityId) => ABILITIES[abilityId];
+const getAbility = (abilityId) => ABILITY_TYPES[abilityId];
 
 /**
  * @param bonusItemId The crewmate's bonus item identifier
@@ -390,9 +390,11 @@ const getTrait = (traitId) => TRAITS[traitId];
 
 export default {
   ABILITY_IDS,
+  ABILITY_TYPES,
   BONUS_ITEMS,
   COLLECTIONS,
   CLASSES,
+  DEPARTMENTS,
   FACIAL_FEATURES,
   GENDERS,
   HAIR_COLORS,

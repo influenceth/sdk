@@ -1,5 +1,5 @@
-import Building from './building';
-import Product from './product';
+import Building from './building.js';
+import Product from './product.js';
 
 const IDS = {
   WAREHOUSE_SITE: 1,
@@ -154,6 +154,13 @@ Object.keys(TYPES).forEach((key) => {
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
+/**
+ * Returns the mass and volume of a "full" version of the inventory
+ *  "Full" may be at mass(/volume)Constraint if it exists, or at a sum of 
+ *  the filled productConstraints, or Infinity if neither constraint exists
+ * @param {integer} inventoryType
+ * @returns {object} An object with filledMass and filledVolume (in grams and mL)
+ */
 const getFilledCapacity = (inventoryType) => {
   const config = TYPES[inventoryType] || {};
   return {
@@ -166,14 +173,11 @@ const getFilledCapacity = (inventoryType) => {
   };
 }
 
-
-// TODO: this may be deprecated
-
 /**
  * Converts a raw productIds / quantities array pair into a product details set
  * @param {[integer]|object} products Object with productId -> quantity OR array of productIds
  * @param {[integer]} quantities Array of quantities (required when productsSet is an array)
- * @returns An object with a set of products and a total mass and volume (in tonnes and cubic meters)
+ * @returns An object with a set of products and a total mass and volume (in grams and mL)
  */
 const getContents = (products, quantities = []) => {
   let productIds = products;

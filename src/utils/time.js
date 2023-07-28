@@ -1,24 +1,57 @@
-const START_TIMESTAMP = 1609459200; // Zero date timestamp for orbits
-const LORE_TIME_DIFF = 2558; // Time in adays between zero-time for orbits and zero-time for game clock (assume gameclock zero at 1618668000)
+class Time {
+  constructor (unixTimeMS) {
+    this.unixTimeMS = unixTimeMS;
+  }
 
-const orbitTimeToGameTime = (orbitTime) => {
-  return orbitTime - LORE_TIME_DIFF;
-};
+  // Zero date timestamp for in-game clock display
+  static CLOCK_ZERO_TIMESTAMP = 1618668000;
 
-const orbitTimeToRealDate = (orbitTime) => {
-  return new Date((orbitTime * 86400 / 24 + START_TIMESTAMP) * 1000);
-};
+  // Zero date timestamp for orbits
+  static ORBIT_ZERO_TIMESTAMP = 1609459200;
 
-const unixTimeToGameTime = (unixTime) => {
-  const orbitTime = (unixTime - START_TIMESTAMP) / 3600;
-  return orbitTimeToGameTime(orbitTime);
-};
+  static fromGameClockADays(adalianClockTime) {
+    // convert from adays to elapsed seconds, then shift to zero timestamp 
+    return new Time(
+      1000 * (adalianClockTime * 3600 + Time.CLOCK_ZERO_TIMESTAMP)
+    );
+  }
 
-export default {
-  LORE_TIME_DIFF,
-  START_TIMESTAMP,
+  static fromOrbitADays(elapsedOrbitADays) {
+    // convert from adays to elapsed seconds, then shift to zero timestamp
+    return new Time(
+      1000 * (elapsedOrbitADays * 3600 + Time.ORBIT_ZERO_TIMESTAMP)
+    );
+  }
 
-  orbitTimeToGameTime,
-  orbitTimeToRealDate,
-  unixTimeToGameTime
+  static fromUnixTime(unixTimeMS) {
+    return new Time(unixTimeMS);
+  }
+
+  /**
+   * Return the game clock time (in adays)
+   * @returns 
+   */
+  toGameClockADays(format = false) {
+    let adays = (this.unixTimeMS / 1000 - Time.CLOCK_ZERO_TIMESTAMP) / 3600;
+    if (format) adays = adays.toLocaleString(undefined, { minimumFractionDigits: 2 })
+    return adays;
+  }
+
+  /**
+   * Return elapsed orbit time (in adays)
+   * @returns 
+   */
+  toOrbitADays() {
+    return (this.unixTimeMS / 1000 - Time.ORBIT_ZERO_TIMESTAMP) / 3600;
+  }
+
+  /**
+   * Returns a date object
+   * @returns
+   */
+  toDate() {
+    return new Date(this.unixTimeMS);
+  }
 }
+
+export default Time;

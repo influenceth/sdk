@@ -240,13 +240,67 @@ const IDS = {
   PROPULSION_MODULE: 245
 };
 
+const CLASSIFICATIONS = {
+  RAW_MATERIAL: "Raw Material",
+  REFINED_MATERIAL: "Refined Material",
+  COMPONENT: "Component",
+  REFINED_METAL: "Refined Metal",
+  FINISHED_GOOD: "Finished Good",
+  SHIP_COMPONENT: "Ship Component"
+};
+
+const CATEGORIES = {
+  VOLATILE: "Volatile",
+  ORGANIC: "Organic",
+  METAL: "Metal",
+  FISSILE: "Fissile",
+  RARE_EARTH: "Rare Earth",
+  OXIDIZER: "Oxidizer",
+  REFINED_VOLATILE: "Refined Volatile",
+  SALT: "Salt",
+  OXIDE: "Oxide",
+  REFINED_ORGANIC: "Refined Organic",
+  CARBONATE: "Carbonate",
+  REFINED_METAL: "Refined Metal",
+  PHOSPHATE: "Phosphate",
+  SULFIDE: "Sulfide",
+  CONSTRUCTION: "Construction",
+  STRUCTURE: "Structure",
+  ELECTRONICS: "Electronics",
+  NONMETAL: "Nonmetal",
+  ALLOY: "Alloy",
+  ACID: "Acid",
+  MIXTURE: "Mixture",
+  FOOD: "Food",
+  PROCESSED_METAL: "Processed Metal",
+  POLYMER: "Polymer",
+  SULFATE: "Sulfate",
+  BASE: "Base",
+  FINISHED_ALLOY: "Finished Alloy",
+  REFINED_FISSILE: "Refined Fissile",
+  NITRATE: "Nitrate",
+  PLUMBING: "Plumbing",
+  FABRIC: "Fabric",
+  GLASS: "Glass",
+  MECHANISM: "Mechanism",
+  SHIP_PART: "Ship Part",
+  SHIP_HULL: "Ship Hull",
+  PROPELLANT: "Propellant",
+  ELECTRONICS_OPTICS: "Electronics/Optics",
+  TOOL: "Tool",
+  REFINED_RARE_EARTH: "Refined Rare Earth",
+  FLUORIDE: "Fluoride",
+  OPTICS: "Optics",
+  ELECTRONICS_MECHANISM: "Electronics/Mechanism"
+};
+
 // massPerUnit is g, volumePerUnit is mL
 const TYPES = {
   [IDS.WATER]: {
     i: IDS.WATER,
     name: "Water",
-    productType: "Raw Material",
-    category: "Volatile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 971,
     isAtomic: false
@@ -254,8 +308,8 @@ const TYPES = {
   [IDS.HYDROGEN]: {
     i: IDS.HYDROGEN,
     name: "Hydrogen",
-    productType: "Raw Material",
-    category: "Volatile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 14100,
     isAtomic: false
@@ -263,8 +317,8 @@ const TYPES = {
   [IDS.AMMONIA]: {
     i: IDS.AMMONIA,
     name: "Ammonia",
-    productType: "Raw Material",
-    category: "Volatile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 1370,
     isAtomic: false
@@ -272,8 +326,8 @@ const TYPES = {
   [IDS.NITROGEN]: {
     i: IDS.NITROGEN,
     name: "Nitrogen",
-    productType: "Raw Material",
-    category: "Volatile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 1240,
     isAtomic: false
@@ -281,8 +335,8 @@ const TYPES = {
   [IDS.SULFUR_DIOXIDE]: {
     i: IDS.SULFUR_DIOXIDE,
     name: "Sulfur Dioxide",
-    productType: "Raw Material",
-    category: "Volatile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 684,
     isAtomic: false
@@ -290,8 +344,8 @@ const TYPES = {
   [IDS.CARBON_DIOXIDE]: {
     i: IDS.CARBON_DIOXIDE,
     name: "Carbon Dioxide",
-    productType: "Raw Material",
-    category: "Volatile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 801,
     isAtomic: false
@@ -299,8 +353,8 @@ const TYPES = {
   [IDS.CARBON_MONOXIDE]: {
     i: IDS.CARBON_MONOXIDE,
     name: "Carbon Monoxide",
-    productType: "Raw Material",
-    category: "Volatile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 1250,
     isAtomic: false
@@ -308,8 +362,8 @@ const TYPES = {
   [IDS.METHANE]: {
     i: IDS.METHANE,
     name: "Methane",
-    productType: "Raw Material",
-    category: "Volatile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 2220,
     isAtomic: false
@@ -317,8 +371,8 @@ const TYPES = {
   [IDS.APATITE]: {
     i: IDS.APATITE,
     name: "Apatite",
-    productType: "Raw Material",
-    category: "Organic",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 521,
     isAtomic: false
@@ -326,8 +380,8 @@ const TYPES = {
   [IDS.BITUMEN]: {
     i: IDS.BITUMEN,
     name: "Bitumen",
-    productType: "Raw Material",
-    category: "Organic",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1600,
     isAtomic: false
@@ -335,8 +389,8 @@ const TYPES = {
   [IDS.CALCITE]: {
     i: IDS.CALCITE,
     name: "Calcite",
-    productType: "Raw Material",
-    category: "Organic",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 615,
     isAtomic: false
@@ -344,8 +398,8 @@ const TYPES = {
   [IDS.FELDSPAR]: {
     i: IDS.FELDSPAR,
     name: "Feldspar",
-    productType: "Raw Material",
-    category: "Metal",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.METAL,
     massPerUnit: 1000,
     volumePerUnit: 606,
     isAtomic: false
@@ -353,8 +407,8 @@ const TYPES = {
   [IDS.OLIVINE]: {
     i: IDS.OLIVINE,
     name: "Olivine",
-    productType: "Raw Material",
-    category: "Metal",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.METAL,
     massPerUnit: 1000,
     volumePerUnit: 617,
     isAtomic: false
@@ -362,8 +416,8 @@ const TYPES = {
   [IDS.PYROXENE]: {
     i: IDS.PYROXENE,
     name: "Pyroxene",
-    productType: "Raw Material",
-    category: "Metal",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.METAL,
     massPerUnit: 1000,
     volumePerUnit: 476,
     isAtomic: false
@@ -371,8 +425,8 @@ const TYPES = {
   [IDS.COFFINITE]: {
     i: IDS.COFFINITE,
     name: "Coffinite",
-    productType: "Raw Material",
-    category: "Fissile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.FISSILE,
     massPerUnit: 1000,
     volumePerUnit: 327,
     isAtomic: false
@@ -380,8 +434,8 @@ const TYPES = {
   [IDS.MERRILLITE]: {
     i: IDS.MERRILLITE,
     name: "Merrillite",
-    productType: "Raw Material",
-    category: "Rare Earth",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.RARE_EARTH,
     massPerUnit: 1000,
     volumePerUnit: 521,
     isAtomic: false
@@ -389,8 +443,8 @@ const TYPES = {
   [IDS.XENOTIME]: {
     i: IDS.XENOTIME,
     name: "Xenotime",
-    productType: "Raw Material",
-    category: "Rare Earth",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.RARE_EARTH,
     massPerUnit: 1000,
     volumePerUnit: 358,
     isAtomic: false
@@ -398,8 +452,8 @@ const TYPES = {
   [IDS.RHABDITE]: {
     i: IDS.RHABDITE,
     name: "Rhabdite",
-    productType: "Raw Material",
-    category: "Metal",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.METAL,
     massPerUnit: 1000,
     volumePerUnit: 233,
     isAtomic: false
@@ -407,8 +461,8 @@ const TYPES = {
   [IDS.GRAPHITE]: {
     i: IDS.GRAPHITE,
     name: "Graphite",
-    productType: "Raw Material",
-    category: "Metal",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.METAL,
     massPerUnit: 1000,
     volumePerUnit: 737,
     isAtomic: false
@@ -416,8 +470,8 @@ const TYPES = {
   [IDS.TAENITE]: {
     i: IDS.TAENITE,
     name: "Taenite",
-    productType: "Raw Material",
-    category: "Metal",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.METAL,
     massPerUnit: 1000,
     volumePerUnit: 208,
     isAtomic: false
@@ -425,8 +479,8 @@ const TYPES = {
   [IDS.TROILITE]: {
     i: IDS.TROILITE,
     name: "Troilite",
-    productType: "Raw Material",
-    category: "Metal",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.METAL,
     massPerUnit: 1000,
     volumePerUnit: 362,
     isAtomic: false
@@ -434,8 +488,8 @@ const TYPES = {
   [IDS.URANINITE]: {
     i: IDS.URANINITE,
     name: "Uraninite",
-    productType: "Raw Material",
-    category: "Fissile",
+    classification: CLASSIFICATIONS.RAW_MATERIAL,
+    category: CATEGORIES.FISSILE,
     massPerUnit: 1000,
     volumePerUnit: 156,
     isAtomic: false
@@ -443,8 +497,8 @@ const TYPES = {
   [IDS.OXYGEN]: {
     i: IDS.OXYGEN,
     name: "Oxygen",
-    productType: "Refined Material",
-    category: "Oxidizer",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDIZER,
     massPerUnit: 1000,
     volumePerUnit: 876,
     isAtomic: false
@@ -452,8 +506,8 @@ const TYPES = {
   [IDS.DEIONIZED_WATER]: {
     i: IDS.DEIONIZED_WATER,
     name: "Deionized Water",
-    productType: "Refined Material",
-    category: "Refined Volatile",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_VOLATILE,
     massPerUnit: 1000,
     volumePerUnit: 1000,
     isAtomic: false
@@ -461,8 +515,8 @@ const TYPES = {
   [IDS.SALTS]: {
     i: IDS.SALTS,
     name: "Salts",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 775,
     isAtomic: false
@@ -470,8 +524,8 @@ const TYPES = {
   [IDS.SILICA]: {
     i: IDS.SILICA,
     name: "Silica",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 629,
     isAtomic: false
@@ -479,8 +533,8 @@ const TYPES = {
   [IDS.NAPHTHA]: {
     i: IDS.NAPHTHA,
     name: "Naphtha",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1300,
     isAtomic: false
@@ -488,8 +542,8 @@ const TYPES = {
   [IDS.SODIUM_BICARBONATE]: {
     i: IDS.SODIUM_BICARBONATE,
     name: "Sodium Bicarbonate",
-    productType: "Refined Material",
-    category: "Carbonate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
     volumePerUnit: 909,
     isAtomic: false
@@ -497,8 +551,8 @@ const TYPES = {
   [IDS.IRON]: {
     i: IDS.IRON,
     name: "Iron",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 140,
     isAtomic: false
@@ -506,8 +560,8 @@ const TYPES = {
   [IDS.COPPER]: {
     i: IDS.COPPER,
     name: "Copper",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 123,
     isAtomic: false
@@ -515,8 +569,8 @@ const TYPES = {
   [IDS.NICKEL]: {
     i: IDS.NICKEL,
     name: "Nickel",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 161,
     isAtomic: false
@@ -524,8 +578,8 @@ const TYPES = {
   [IDS.QUICKLIME]: {
     i: IDS.QUICKLIME,
     name: "Quicklime",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 599,
     isAtomic: false
@@ -533,8 +587,8 @@ const TYPES = {
   [IDS.ACETYLENE]: {
     i: IDS.ACETYLENE,
     name: "Acetylene",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1440,
     isAtomic: false
@@ -542,8 +596,8 @@ const TYPES = {
   [IDS.AMMONIUM_CARBONATE]: {
     i: IDS.AMMONIUM_CARBONATE,
     name: "Ammonium Carbonate",
-    productType: "Refined Material",
-    category: "Carbonate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
     volumePerUnit: 1330,
     isAtomic: false
@@ -551,8 +605,8 @@ const TYPES = {
   [IDS.TRIPLE_SUPERPHOSPHATE]: {
     i: IDS.TRIPLE_SUPERPHOSPHATE,
     name: "Triple Superphosphate",
-    productType: "Refined Material",
-    category: "Phosphate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.PHOSPHATE,
     massPerUnit: 1000,
     volumePerUnit: 870,
     isAtomic: false
@@ -560,8 +614,8 @@ const TYPES = {
   [IDS.PHOSPHATE_AND_SULFATE_SALTS]: {
     i: IDS.PHOSPHATE_AND_SULFATE_SALTS,
     name: "Phosphate and Sulfate Salts",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 595,
     isAtomic: false
@@ -569,8 +623,8 @@ const TYPES = {
   [IDS.IRON_SULFIDE]: {
     i: IDS.IRON_SULFIDE,
     name: "Iron Sulfide",
-    productType: "Refined Material",
-    category: "Sulfide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SULFIDE,
     massPerUnit: 1000,
     volumePerUnit: 344,
     isAtomic: false
@@ -578,8 +632,8 @@ const TYPES = {
   [IDS.LEAD_SULFIDE]: {
     i: IDS.LEAD_SULFIDE,
     name: "Lead Sulfide",
-    productType: "Refined Material",
-    category: "Sulfide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SULFIDE,
     massPerUnit: 1000,
     volumePerUnit: 219,
     isAtomic: false
@@ -587,8 +641,8 @@ const TYPES = {
   [IDS.TIN_SULFIDE]: {
     i: IDS.TIN_SULFIDE,
     name: "Tin Sulfide",
-    productType: "Refined Material",
-    category: "Sulfide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SULFIDE,
     massPerUnit: 1000,
     volumePerUnit: 319,
     isAtomic: false
@@ -596,8 +650,8 @@ const TYPES = {
   [IDS.MOLYBDENUM_DISULFIDE]: {
     i: IDS.MOLYBDENUM_DISULFIDE,
     name: "Molybdenum Disulfide",
-    productType: "Refined Material",
-    category: "Sulfide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SULFIDE,
     massPerUnit: 1000,
     volumePerUnit: 329,
     isAtomic: false
@@ -605,8 +659,8 @@ const TYPES = {
   [IDS.FUSED_QUARTZ]: {
     i: IDS.FUSED_QUARTZ,
     name: "Fused Quartz",
-    productType: "Component",
-    category: "Construction",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.CONSTRUCTION,
     massPerUnit: 1000,
     volumePerUnit: 415,
     isAtomic: false
@@ -614,8 +668,8 @@ const TYPES = {
   [IDS.FIBERGLASS]: {
     i: IDS.FIBERGLASS,
     name: "Fiberglass",
-    productType: "Component",
-    category: "Structure",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.STRUCTURE,
     massPerUnit: 1000,
     volumePerUnit: 1260,
     isAtomic: false
@@ -623,8 +677,8 @@ const TYPES = {
   [IDS.BARE_COPPER_WIRE]: {
     i: IDS.BARE_COPPER_WIRE,
     name: "Bare Copper Wire",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     volumePerUnit: 123,
     isAtomic: false
@@ -632,8 +686,8 @@ const TYPES = {
   [IDS.CEMENT]: {
     i: IDS.CEMENT,
     name: "Cement",
-    productType: "Component",
-    category: "Construction",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.CONSTRUCTION,
     massPerUnit: 1000,
     volumePerUnit: 1130,
     isAtomic: false
@@ -641,8 +695,8 @@ const TYPES = {
   [IDS.SODIUM_CHLORIDE]: {
     i: IDS.SODIUM_CHLORIDE,
     name: "Sodium Chloride",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 1410,
     isAtomic: false
@@ -650,8 +704,8 @@ const TYPES = {
   [IDS.POTASSIUM_CHLORIDE]: {
     i: IDS.POTASSIUM_CHLORIDE,
     name: "Potassium Chloride",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 842,
     isAtomic: false
@@ -659,8 +713,8 @@ const TYPES = {
   [IDS.BORAX]: {
     i: IDS.BORAX,
     name: "Borax",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 963,
     isAtomic: false
@@ -668,8 +722,8 @@ const TYPES = {
   [IDS.LITHIUM_CARBONATE]: {
     i: IDS.LITHIUM_CARBONATE,
     name: "Lithium Carbonate",
-    productType: "Refined Material",
-    category: "Carbonate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
     volumePerUnit: 948,
     isAtomic: false
@@ -677,8 +731,8 @@ const TYPES = {
   [IDS.MAGNESIUM_CHLORIDE]: {
     i: IDS.MAGNESIUM_CHLORIDE,
     name: "Magnesium Chloride",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 718,
     isAtomic: false
@@ -686,8 +740,8 @@ const TYPES = {
   [IDS.PROPYLENE]: {
     i: IDS.PROPYLENE,
     name: "Propylene",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 2040,
     isAtomic: false
@@ -695,8 +749,8 @@ const TYPES = {
   [IDS.SULFUR]: {
     i: IDS.SULFUR,
     name: "Sulfur",
-    productType: "Refined Material",
-    category: "Nonmetal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
     volumePerUnit: 805,
     isAtomic: false
@@ -704,8 +758,8 @@ const TYPES = {
   [IDS.STEEL]: {
     i: IDS.STEEL,
     name: "Steel",
-    productType: "Refined Material",
-    category: "Alloy",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
     volumePerUnit: 159,
     isAtomic: false
@@ -713,8 +767,8 @@ const TYPES = {
   [IDS.SILICON]: {
     i: IDS.SILICON,
     name: "Silicon",
-    productType: "Refined Material",
-    category: "Nonmetal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
     volumePerUnit: 715,
     isAtomic: false
@@ -722,8 +776,8 @@ const TYPES = {
   [IDS.NITRIC_ACID]: {
     i: IDS.NITRIC_ACID,
     name: "Nitric Acid",
-    productType: "Refined Material",
-    category: "Acid",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ACID,
     massPerUnit: 1000,
     volumePerUnit: 893,
     isAtomic: false
@@ -731,8 +785,8 @@ const TYPES = {
   [IDS.SULFURIC_ACID]: {
     i: IDS.SULFURIC_ACID,
     name: "Sulfuric Acid",
-    productType: "Refined Material",
-    category: "Acid",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ACID,
     massPerUnit: 1000,
     volumePerUnit: 687,
     isAtomic: false
@@ -740,8 +794,8 @@ const TYPES = {
   [IDS.SOIL]: {
     i: IDS.SOIL,
     name: "Soil",
-    productType: "Refined Material",
-    category: "Mixture",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.MIXTURE,
     massPerUnit: 1000,
     volumePerUnit: 714,
     isAtomic: false
@@ -749,8 +803,8 @@ const TYPES = {
   [IDS.FERROSILICON]: {
     i: IDS.FERROSILICON,
     name: "Ferrosilicon",
-    productType: "Refined Material",
-    category: "Alloy",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
     volumePerUnit: 271,
     isAtomic: false
@@ -758,16 +812,16 @@ const TYPES = {
   [IDS.WEATHERED_OLIVINE]: {
     i: IDS.WEATHERED_OLIVINE,
     name: "Weathered Olivine",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.OXALIC_ACID]: {
     i: IDS.OXALIC_ACID,
     name: "Oxalic Acid",
-    productType: "Refined Material",
-    category: "Acid",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ACID,
     massPerUnit: 1000,
     volumePerUnit: 1050,
     isAtomic: false
@@ -775,8 +829,8 @@ const TYPES = {
   [IDS.SILVER]: {
     i: IDS.SILVER,
     name: "Silver",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 119,
     isAtomic: false
@@ -784,8 +838,8 @@ const TYPES = {
   [IDS.GOLD]: {
     i: IDS.GOLD,
     name: "Gold",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 64.8,
     isAtomic: false
@@ -793,8 +847,8 @@ const TYPES = {
   [IDS.TIN]: {
     i: IDS.TIN,
     name: "Tin",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 171,
     isAtomic: false
@@ -802,8 +856,8 @@ const TYPES = {
   [IDS.IRON_OXIDE]: {
     i: IDS.IRON_OXIDE,
     name: "Iron Oxide",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 387,
     isAtomic: false
@@ -811,8 +865,8 @@ const TYPES = {
   [IDS.SPIRULINA_AND_CHLORELLA_ALGAE]: {
     i: IDS.SPIRULINA_AND_CHLORELLA_ALGAE,
     name: "Spirulina and Chlorella Algae",
-    productType: "Refined Material",
-    category: "Food",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FOOD,
     massPerUnit: 1000,
     volumePerUnit: 2500,
     isAtomic: false
@@ -820,8 +874,8 @@ const TYPES = {
   [IDS.MOLYBDENUM_TRIOXIDE]: {
     i: IDS.MOLYBDENUM_TRIOXIDE,
     name: "Molybdenum Trioxide",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 426,
     isAtomic: false
@@ -829,8 +883,8 @@ const TYPES = {
   [IDS.SILICA_POWDER]: {
     i: IDS.SILICA_POWDER,
     name: "Silica Powder",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 755,
     isAtomic: false
@@ -838,8 +892,8 @@ const TYPES = {
   [IDS.SOLDER]: {
     i: IDS.SOLDER,
     name: "Solder",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     volumePerUnit: 148,
     isAtomic: false
@@ -847,8 +901,8 @@ const TYPES = {
   [IDS.FIBER_OPTIC_CABLE]: {
     i: IDS.FIBER_OPTIC_CABLE,
     name: "Fiber Optic Cable",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     volumePerUnit: 886,
     isAtomic: false
@@ -856,8 +910,8 @@ const TYPES = {
   [IDS.STEEL_BEAM]: {
     i: IDS.STEEL_BEAM,
     name: "Steel Beam",
-    productType: "Component",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 1100,
     isAtomic: false
@@ -865,8 +919,8 @@ const TYPES = {
   [IDS.STEEL_SHEET]: {
     i: IDS.STEEL_SHEET,
     name: "Steel Sheet",
-    productType: "Component",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 150,
     isAtomic: false
@@ -874,8 +928,8 @@ const TYPES = {
   [IDS.STEEL_PIPE]: {
     i: IDS.STEEL_PIPE,
     name: "Steel Pipe",
-    productType: "Component",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 1200,
     isAtomic: false
@@ -883,8 +937,8 @@ const TYPES = {
   [IDS.STEEL_WIRE]: {
     i: IDS.STEEL_WIRE,
     name: "Steel Wire",
-    productType: "Component",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 150,
     isAtomic: false
@@ -892,8 +946,8 @@ const TYPES = {
   [IDS.ACRYLONITRILE]: {
     i: IDS.ACRYLONITRILE,
     name: "Acrylonitrile",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1230,
     isAtomic: false
@@ -901,8 +955,8 @@ const TYPES = {
   [IDS.POLYPROPYLENE]: {
     i: IDS.POLYPROPYLENE,
     name: "Polypropylene",
-    productType: "Refined Material",
-    category: "Polymer",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.POLYMER,
     massPerUnit: 1000,
     volumePerUnit: 1570,
     isAtomic: false
@@ -910,8 +964,8 @@ const TYPES = {
   [IDS.MAGNESIUM]: {
     i: IDS.MAGNESIUM,
     name: "Magnesium",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 632,
     isAtomic: false
@@ -919,8 +973,8 @@ const TYPES = {
   [IDS.CHLORINE]: {
     i: IDS.CHLORINE,
     name: "Chlorine",
-    productType: "Refined Material",
-    category: "Nonmetal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
     volumePerUnit: 4019.9999999999995,
     isAtomic: false
@@ -928,8 +982,8 @@ const TYPES = {
   [IDS.SODIUM_CARBONATE]: {
     i: IDS.SODIUM_CARBONATE,
     name: "Sodium Carbonate",
-    productType: "Refined Material",
-    category: "Carbonate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
     volumePerUnit: 787,
     isAtomic: false
@@ -937,8 +991,8 @@ const TYPES = {
   [IDS.CALCIUM_CHLORIDE]: {
     i: IDS.CALCIUM_CHLORIDE,
     name: "Calcium Chloride",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 775,
     isAtomic: false
@@ -946,8 +1000,8 @@ const TYPES = {
   [IDS.BORIA]: {
     i: IDS.BORIA,
     name: "Boria",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 739,
     isAtomic: false
@@ -955,8 +1009,8 @@ const TYPES = {
   [IDS.LITHIUM_SULFATE]: {
     i: IDS.LITHIUM_SULFATE,
     name: "Lithium Sulfate",
-    productType: "Refined Material",
-    category: "Sulfate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SULFATE,
     massPerUnit: 1000,
     volumePerUnit: 751,
     isAtomic: false
@@ -964,8 +1018,8 @@ const TYPES = {
   [IDS.HYDROCHLORIC_ACID]: {
     i: IDS.HYDROCHLORIC_ACID,
     name: "Hydrochloric Acid",
-    productType: "Refined Material",
-    category: "Acid",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ACID,
     massPerUnit: 1000,
     volumePerUnit: 1040,
     isAtomic: false
@@ -973,8 +1027,8 @@ const TYPES = {
   [IDS.HYDROFLUORIC_ACID]: {
     i: IDS.HYDROFLUORIC_ACID,
     name: "Hydrofluoric Acid",
-    productType: "Refined Material",
-    category: "Acid",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ACID,
     massPerUnit: 1000,
     volumePerUnit: 1090,
     isAtomic: false
@@ -982,8 +1036,8 @@ const TYPES = {
   [IDS.PHOSPHORIC_ACID]: {
     i: IDS.PHOSPHORIC_ACID,
     name: "Phosphoric Acid",
-    productType: "Refined Material",
-    category: "Acid",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ACID,
     massPerUnit: 1000,
     volumePerUnit: 694,
     isAtomic: false
@@ -991,8 +1045,8 @@ const TYPES = {
   [IDS.BORIC_ACID]: {
     i: IDS.BORIC_ACID,
     name: "Boric Acid",
-    productType: "Refined Material",
-    category: "Acid",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ACID,
     massPerUnit: 1000,
     volumePerUnit: 1390,
     isAtomic: false
@@ -1000,8 +1054,8 @@ const TYPES = {
   [IDS.ZINC_OXIDE]: {
     i: IDS.ZINC_OXIDE,
     name: "Zinc Oxide",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 357,
     isAtomic: false
@@ -1009,8 +1063,8 @@ const TYPES = {
   [IDS.NICKEL_OXIDE]: {
     i: IDS.NICKEL_OXIDE,
     name: "Nickel Oxide",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 300,
     isAtomic: false
@@ -1018,8 +1072,8 @@ const TYPES = {
   [IDS.MAGNESIA]: {
     i: IDS.MAGNESIA,
     name: "Magnesia",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 559,
     isAtomic: false
@@ -1027,8 +1081,8 @@ const TYPES = {
   [IDS.ALUMINA]: {
     i: IDS.ALUMINA,
     name: "Alumina",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 460,
     isAtomic: false
@@ -1036,8 +1090,8 @@ const TYPES = {
   [IDS.SODIUM_HYDROXIDE]: {
     i: IDS.SODIUM_HYDROXIDE,
     name: "Sodium Hydroxide",
-    productType: "Refined Material",
-    category: "Base",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.BASE,
     massPerUnit: 1000,
     volumePerUnit: 671,
     isAtomic: false
@@ -1045,8 +1099,8 @@ const TYPES = {
   [IDS.POTASSIUM_HYDROXIDE]: {
     i: IDS.POTASSIUM_HYDROXIDE,
     name: "Potassium Hydroxide",
-    productType: "Refined Material",
-    category: "Base",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.BASE,
     massPerUnit: 1000,
     volumePerUnit: 674,
     isAtomic: false
@@ -1054,8 +1108,8 @@ const TYPES = {
   [IDS.SOYBEANS]: {
     i: IDS.SOYBEANS,
     name: "Soybeans",
-    productType: "Refined Material",
-    category: "Food",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FOOD,
     massPerUnit: 1000,
     volumePerUnit: 1530,
     isAtomic: false
@@ -1063,8 +1117,8 @@ const TYPES = {
   [IDS.POTATOES]: {
     i: IDS.POTATOES,
     name: "Potatoes",
-    productType: "Refined Material",
-    category: "Food",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FOOD,
     massPerUnit: 1000,
     volumePerUnit: 1520,
     isAtomic: false
@@ -1072,8 +1126,8 @@ const TYPES = {
   [IDS.AMMONIUM_OXALATE]: {
     i: IDS.AMMONIUM_OXALATE,
     name: "Ammonium Oxalate",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 1110,
     isAtomic: false
@@ -1081,8 +1135,8 @@ const TYPES = {
   [IDS.RARE_EARTH_SULFATES]: {
     i: IDS.RARE_EARTH_SULFATES,
     name: "Rare Earth Sulfates",
-    productType: "Refined Material",
-    category: "Sulfate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SULFATE,
     massPerUnit: 1000,
     volumePerUnit: 681,
     isAtomic: false
@@ -1090,8 +1144,8 @@ const TYPES = {
   [IDS.FERROCHROMIUM]: {
     i: IDS.FERROCHROMIUM,
     name: "Ferrochromium",
-    productType: "Refined Material",
-    category: "Alloy",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
     volumePerUnit: 222,
     isAtomic: false
@@ -1099,8 +1153,8 @@ const TYPES = {
   [IDS.YELLOWCAKE]: {
     i: IDS.YELLOWCAKE,
     name: "Yellowcake",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 172,
     isAtomic: false
@@ -1108,8 +1162,8 @@ const TYPES = {
   [IDS.ALUMINA_CERAMIC]: {
     i: IDS.ALUMINA_CERAMIC,
     name: "Alumina Ceramic",
-    productType: "Component",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 316,
     isAtomic: false
@@ -1117,8 +1171,8 @@ const TYPES = {
   [IDS.AUSTENITIC_NICHROME]: {
     i: IDS.AUSTENITIC_NICHROME,
     name: "Austenitic Nichrome",
-    productType: "Component",
-    category: "Finished Alloy",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.FINISHED_ALLOY,
     massPerUnit: 1000,
     volumePerUnit: 135,
     isAtomic: false
@@ -1126,8 +1180,8 @@ const TYPES = {
   [IDS.COPPER_WIRE]: {
     i: IDS.COPPER_WIRE,
     name: "Copper Wire",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     volumePerUnit: 152,
     isAtomic: false
@@ -1135,8 +1189,8 @@ const TYPES = {
   [IDS.SILICON_WAFER]: {
     i: IDS.SILICON_WAFER,
     name: "Silicon Wafer",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     volumePerUnit: 472,
     isAtomic: false
@@ -1144,8 +1198,8 @@ const TYPES = {
   [IDS.STEEL_CABLE]: {
     i: IDS.STEEL_CABLE,
     name: "Steel Cable",
-    productType: "Component",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 182,
     isAtomic: false
@@ -1153,8 +1207,8 @@ const TYPES = {
   [IDS.POLYACRYLONITRILE]: {
     i: IDS.POLYACRYLONITRILE,
     name: "Polyacrylonitrile",
-    productType: "Refined Material",
-    category: "Polymer",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.POLYMER,
     massPerUnit: 1000,
     volumePerUnit: 1210,
     isAtomic: false
@@ -1162,8 +1216,8 @@ const TYPES = {
   [IDS.NATURAL_FLAVORINGS]: {
     i: IDS.NATURAL_FLAVORINGS,
     name: "Natural Flavorings",
-    productType: "Refined Material",
-    category: "Food",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FOOD,
     massPerUnit: 1000,
     volumePerUnit: 1820,
     isAtomic: false
@@ -1171,8 +1225,8 @@ const TYPES = {
   [IDS.PLATINUM]: {
     i: IDS.PLATINUM,
     name: "Platinum",
-    productType: "Refined Metal",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_METAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 58.3,
     isAtomic: false
@@ -1180,8 +1234,8 @@ const TYPES = {
   [IDS.LITHIUM_CHLORIDE]: {
     i: IDS.LITHIUM_CHLORIDE,
     name: "Lithium Chloride",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 805,
     isAtomic: false
@@ -1189,8 +1243,8 @@ const TYPES = {
   [IDS.ZINC]: {
     i: IDS.ZINC,
     name: "Zinc",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 175,
     isAtomic: false
@@ -1198,8 +1252,8 @@ const TYPES = {
   [IDS.EPICHLOROHYDRIN]: {
     i: IDS.EPICHLOROHYDRIN,
     name: "Epichlorohydrin",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1060,
     isAtomic: false
@@ -1207,8 +1261,8 @@ const TYPES = {
   [IDS.BISPHENOL_A]: {
     i: IDS.BISPHENOL_A,
     name: "Bisphenol A",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1040,
     isAtomic: false
@@ -1216,8 +1270,8 @@ const TYPES = {
   [IDS.RARE_EARTH_OXIDES]: {
     i: IDS.RARE_EARTH_OXIDES,
     name: "Rare Earth Oxides",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 272,
     isAtomic: false
@@ -1225,8 +1279,8 @@ const TYPES = {
   [IDS.AMMONIUM_CHLORIDE]: {
     i: IDS.AMMONIUM_CHLORIDE,
     name: "Ammonium Chloride",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 1090,
     isAtomic: false
@@ -1234,8 +1288,8 @@ const TYPES = {
   [IDS.ALUMINIUM]: {
     i: IDS.ALUMINIUM,
     name: "Aluminium",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 463,
     isAtomic: false
@@ -1243,8 +1297,8 @@ const TYPES = {
   [IDS.CALCIUM]: {
     i: IDS.CALCIUM,
     name: "Calcium",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 1290,
     isAtomic: false
@@ -1252,8 +1306,8 @@ const TYPES = {
   [IDS.SODIUM_CHROMATE]: {
     i: IDS.SODIUM_CHROMATE,
     name: "Sodium Chromate",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 617,
     isAtomic: false
@@ -1261,8 +1315,8 @@ const TYPES = {
   [IDS.LEACHED_COFFINITE]: {
     i: IDS.LEACHED_COFFINITE,
     name: "Leached Coffinite",
-    productType: "Refined Material",
-    category: "Refined Fissile",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_FISSILE,
     massPerUnit: 1000,
     volumePerUnit: 333,
     isAtomic: false
@@ -1270,8 +1324,8 @@ const TYPES = {
   [IDS.URANYL_NITRATE]: {
     i: IDS.URANYL_NITRATE,
     name: "Uranyl Nitrate",
-    productType: "Refined Material",
-    category: "Nitrate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.NITRATE,
     massPerUnit: 1000,
     volumePerUnit: 593,
     isAtomic: false
@@ -1279,8 +1333,8 @@ const TYPES = {
   [IDS.FLUORINE]: {
     i: IDS.FLUORINE,
     name: "Fluorine",
-    productType: "Refined Material",
-    category: "Nonmetal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
     volumePerUnit: 1520,
     isAtomic: false
@@ -1288,8 +1342,8 @@ const TYPES = {
   [IDS.SODIUM_TUNGSTATE]: {
     i: IDS.SODIUM_TUNGSTATE,
     name: "Sodium Tungstate",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 435,
     isAtomic: false
@@ -1297,8 +1351,8 @@ const TYPES = {
   [IDS.FERRITE]: {
     i: IDS.FERRITE,
     name: "Ferrite",
-    productType: "Refined Material",
-    category: "Finished Alloy",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FINISHED_ALLOY,
     massPerUnit: 1000,
     volumePerUnit: 220,
     isAtomic: false
@@ -1306,32 +1360,32 @@ const TYPES = {
   [IDS.DIODE]: {
     i: IDS.DIODE,
     name: "Diode",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.LASER_DIODE]: {
     i: IDS.LASER_DIODE,
     name: "Laser Diode",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.BALL_VALVE]: {
     i: IDS.BALL_VALVE,
     name: "Ball Valve",
-    productType: "Component",
-    category: "Plumbing",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PLUMBING,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.ALUMINIUM_BEAM]: {
     i: IDS.ALUMINIUM_BEAM,
     name: "Aluminium Beam",
-    productType: "Component",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 3190,
     isAtomic: false
@@ -1339,8 +1393,8 @@ const TYPES = {
   [IDS.ALUMINIUM_SHEET]: {
     i: IDS.ALUMINIUM_SHEET,
     name: "Aluminium Sheet",
-    productType: "Component",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 436,
     isAtomic: false
@@ -1348,8 +1402,8 @@ const TYPES = {
   [IDS.ALUMINIUM_PIPE]: {
     i: IDS.ALUMINIUM_PIPE,
     name: "Aluminium Pipe",
-    productType: "Component",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 3190,
     isAtomic: false
@@ -1357,8 +1411,8 @@ const TYPES = {
   [IDS.POLYACRYLONITRILE_FABRIC]: {
     i: IDS.POLYACRYLONITRILE_FABRIC,
     name: "Polyacrylonitrile Fabric",
-    productType: "Component",
-    category: "Fabric",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.FABRIC,
     massPerUnit: 1000,
     volumePerUnit: 2820,
     isAtomic: false
@@ -1366,24 +1420,24 @@ const TYPES = {
   [IDS.COLD_GAS_THRUSTER]: {
     i: IDS.COLD_GAS_THRUSTER,
     name: "Cold Gas Thruster",
-    productType: "Component",
-    category: "Plumbing",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PLUMBING,
     massPerUnit: 3000,
     isAtomic: true
   },
   [IDS.COLD_GAS_TORQUE_THRUSTER]: {
     i: IDS.COLD_GAS_TORQUE_THRUSTER,
     name: "Cold Gas Torque Thruster",
-    productType: "Component",
-    category: "Plumbing",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PLUMBING,
     massPerUnit: 3000,
     isAtomic: true
   },
   [IDS.CARBON_FIBER]: {
     i: IDS.CARBON_FIBER,
     name: "Carbon Fiber",
-    productType: "Component",
-    category: "Fabric",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.FABRIC,
     massPerUnit: 1000,
     volumePerUnit: 1750,
     isAtomic: false
@@ -1391,8 +1445,8 @@ const TYPES = {
   [IDS.FOOD]: {
     i: IDS.FOOD,
     name: "Food",
-    productType: "Finished Good",
-    category: "Food",
+    classification: CLASSIFICATIONS.FINISHED_GOOD,
+    category: CATEGORIES.FOOD,
     massPerUnit: 1000,
     volumePerUnit: 1250,
     isAtomic: false
@@ -1400,16 +1454,16 @@ const TYPES = {
   [IDS.SMALL_PROPELLANT_TANK]: {
     i: IDS.SMALL_PROPELLANT_TANK,
     name: "Small Propellant Tank",
-    productType: "Component",
-    category: "Plumbing",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.PLUMBING,
     massPerUnit: 6000,
     isAtomic: true
   },
   [IDS.BOROSILICATE_GLASS]: {
     i: IDS.BOROSILICATE_GLASS,
     name: "Borosilicate Glass",
-    productType: "Component",
-    category: "Glass",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.GLASS,
     massPerUnit: 1000,
     volumePerUnit: 595,
     isAtomic: false
@@ -1417,24 +1471,24 @@ const TYPES = {
   [IDS.BALL_BEARING]: {
     i: IDS.BALL_BEARING,
     name: "Ball Bearing",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.LARGE_THRUST_BEARING]: {
     i: IDS.LARGE_THRUST_BEARING,
     name: "Large Thrust Bearing",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 2000000,
     isAtomic: true
   },
   [IDS.BORON]: {
     i: IDS.BORON,
     name: "Boron",
-    productType: "Refined Material",
-    category: "Nonmetal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
     volumePerUnit: 543,
     isAtomic: false
@@ -1442,8 +1496,8 @@ const TYPES = {
   [IDS.LITHIUM]: {
     i: IDS.LITHIUM,
     name: "Lithium",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 3770,
     isAtomic: false
@@ -1451,8 +1505,8 @@ const TYPES = {
   [IDS.EPOXY]: {
     i: IDS.EPOXY,
     name: "Epoxy",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1680,
     isAtomic: false
@@ -1460,8 +1514,8 @@ const TYPES = {
   [IDS.NEODYMIUM_OXIDE]: {
     i: IDS.NEODYMIUM_OXIDE,
     name: "Neodymium Oxide",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 251,
     isAtomic: false
@@ -1469,8 +1523,8 @@ const TYPES = {
   [IDS.YTTRIA]: {
     i: IDS.YTTRIA,
     name: "Yttria",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 363,
     isAtomic: false
@@ -1478,8 +1532,8 @@ const TYPES = {
   [IDS.SODIUM_DICHROMATE]: {
     i: IDS.SODIUM_DICHROMATE,
     name: "Sodium Dichromate",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 661,
     isAtomic: false
@@ -1487,8 +1541,8 @@ const TYPES = {
   [IDS.NOVOLAK_PREPOLYMER_RESIN]: {
     i: IDS.NOVOLAK_PREPOLYMER_RESIN,
     name: "Novolak Prepolymer Resin",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1020,
     isAtomic: false
@@ -1496,8 +1550,8 @@ const TYPES = {
   [IDS.FERROMOLYBDENUM]: {
     i: IDS.FERROMOLYBDENUM,
     name: "Ferromolybdenum",
-    productType: "Refined Material",
-    category: "Alloy",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
     volumePerUnit: 168,
     isAtomic: false
@@ -1505,8 +1559,8 @@ const TYPES = {
   [IDS.AMMONIUM_DIURANATE]: {
     i: IDS.AMMONIUM_DIURANATE,
     name: "Ammonium Diuranate",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 370,
     isAtomic: false
@@ -1514,8 +1568,8 @@ const TYPES = {
   [IDS.AMMONIUM_PARATUNGSTATE]: {
     i: IDS.AMMONIUM_PARATUNGSTATE,
     name: "Ammonium Paratungstate",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 435,
     isAtomic: false
@@ -1523,64 +1577,64 @@ const TYPES = {
   [IDS.ENGINE_BELL]: {
     i: IDS.ENGINE_BELL,
     name: "Engine Bell",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 300000,
     isAtomic: true
   },
   [IDS.STEEL_TRUSS]: {
     i: IDS.STEEL_TRUSS,
     name: "Steel Truss",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 1500000,
     isAtomic: true
   },
   [IDS.ALUMINIUM_HULL_PLATE]: {
     i: IDS.ALUMINIUM_HULL_PLATE,
     name: "Aluminium Hull Plate",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 600000,
     isAtomic: true
   },
   [IDS.ALUMINIUM_TRUSS]: {
     i: IDS.ALUMINIUM_TRUSS,
     name: "Aluminium Truss",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 1000000,
     isAtomic: true
   },
   [IDS.CARGO_MODULE]: {
     i: IDS.CARGO_MODULE,
     name: "Cargo Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 5000000,
     isAtomic: true
   },
   [IDS.PRESSURE_VESSEL]: {
     i: IDS.PRESSURE_VESSEL,
     name: "Pressure Vessel",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 1850000,
     isAtomic: true
   },
   [IDS.PROPELLANT_TANK]: {
     i: IDS.PROPELLANT_TANK,
     name: "Propellant Tank",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 3500000,
     isAtomic: true
   },
   [IDS.STAINLESS_STEEL]: {
     i: IDS.STAINLESS_STEEL,
     name: "Stainless Steel",
-    productType: "Refined Material",
-    category: "Finished Alloy",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FINISHED_ALLOY,
     massPerUnit: 1000,
     volumePerUnit: 0,
     isAtomic: false
@@ -1588,64 +1642,64 @@ const TYPES = {
   [IDS.BARE_CIRCUIT_BOARD]: {
     i: IDS.BARE_CIRCUIT_BOARD,
     name: "Bare Circuit Board",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.FERRITE_BEAD_INDUCTOR]: {
     i: IDS.FERRITE_BEAD_INDUCTOR,
     name: "Ferrite-bead Inductor",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.CORE_DRILL_SAMPLER]: {
     i: IDS.CORE_DRILL_SAMPLER,
     name: "Core Drill Sampler",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 2000,
     isAtomic: true
   },
   [IDS.CORE_DRILL_THRUSTER]: {
     i: IDS.CORE_DRILL_THRUSTER,
     name: "Core Drill Thruster",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 10000,
     isAtomic: true
   },
   [IDS.PARABOLIC_DISH]: {
     i: IDS.PARABOLIC_DISH,
     name: "Parabolic Dish",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 72000,
     isAtomic: true
   },
   [IDS.PHOTOVOLTAIC_PANEL]: {
     i: IDS.PHOTOVOLTAIC_PANEL,
     name: "Photovoltaic Panel",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 8000,
     isAtomic: true
   },
   [IDS.LIPO_BATTERY]: {
     i: IDS.LIPO_BATTERY,
     name: "LiPo Battery",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 5000,
     isAtomic: true
   },
   [IDS.NEODYMIUM_TRICHLORIDE]: {
     i: IDS.NEODYMIUM_TRICHLORIDE,
     name: "Neodymium Trichloride",
-    productType: "Refined Material",
-    category: "Salt",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.SALT,
     massPerUnit: 1000,
     volumePerUnit: 404,
     isAtomic: false
@@ -1653,8 +1707,8 @@ const TYPES = {
   [IDS.CHROMIA]: {
     i: IDS.CHROMIA,
     name: "Chromia",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 348,
     isAtomic: false
@@ -1662,8 +1716,8 @@ const TYPES = {
   [IDS.PHOTORESIST_EPOXY]: {
     i: IDS.PHOTORESIST_EPOXY,
     name: "Photoresist Epoxy",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     volumePerUnit: 1670,
     isAtomic: false
@@ -1671,8 +1725,8 @@ const TYPES = {
   [IDS.URANIUM_DIOXIDE]: {
     i: IDS.URANIUM_DIOXIDE,
     name: "Uranium Dioxide",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     volumePerUnit: 165,
     isAtomic: false
@@ -1680,8 +1734,8 @@ const TYPES = {
   [IDS.TUNGSTEN]: {
     i: IDS.TUNGSTEN,
     name: "Tungsten",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 64.8,
     isAtomic: false
@@ -1689,40 +1743,40 @@ const TYPES = {
   [IDS.SHUTTLE_HULL]: {
     i: IDS.SHUTTLE_HULL,
     name: "Shuttle Hull",
-    productType: "Ship Component",
-    category: "Ship Hull",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_HULL,
     massPerUnit: 44600000,
     isAtomic: true
   },
   [IDS.LIGHT_TRANSPORT_HULL]: {
     i: IDS.LIGHT_TRANSPORT_HULL,
     name: "Light Transport Hull",
-    productType: "Ship Component",
-    category: "Ship Hull",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_HULL,
     massPerUnit: 74200000,
     isAtomic: true
   },
   [IDS.CARGO_RING]: {
     i: IDS.CARGO_RING,
     name: "Cargo Ring",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 10000000,
     isAtomic: true
   },
   [IDS.HEAVY_TRANSPORT_HULL]: {
     i: IDS.HEAVY_TRANSPORT_HULL,
     name: "Heavy Transport Hull",
-    productType: "Ship Component",
-    category: "Ship Hull",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_HULL,
     massPerUnit: 480400000,
     isAtomic: true
   },
   [IDS.TUNGSTEN_POWDER]: {
     i: IDS.TUNGSTEN_POWDER,
     name: "Tungsten Powder",
-    productType: "Refined Material",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 104,
     isAtomic: false
@@ -1730,8 +1784,8 @@ const TYPES = {
   [IDS.HYDROGEN_PROPELLANT]: {
     i: IDS.HYDROGEN_PROPELLANT,
     name: "Hydrogen Propellant",
-    productType: "Finished Good",
-    category: "Propellant",
+    classification: CLASSIFICATIONS.FINISHED_GOOD,
+    category: CATEGORIES.PROPELLANT,
     massPerUnit: 1000,
     volumePerUnit: 13300,
     isAtomic: false
@@ -1739,48 +1793,48 @@ const TYPES = {
   [IDS.STAINLESS_STEEL_SHEET]: {
     i: IDS.STAINLESS_STEEL_SHEET,
     name: "Stainless Steel Sheet",
-    productType: "Refined Material",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.STAINLESS_STEEL_PIPE]: {
     i: IDS.STAINLESS_STEEL_PIPE,
     name: "Stainless Steel Pipe",
-    productType: "Refined Material",
-    category: "Processed Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.CCD]: {
     i: IDS.CCD,
     name: "CCD",
-    productType: "Refined Material",
-    category: "Electronics/Optics",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ELECTRONICS_OPTICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.COMPUTER_CHIP]: {
     i: IDS.COMPUTER_CHIP,
     name: "Computer Chip",
-    productType: "Refined Material",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.CORE_DRILL]: {
     i: IDS.CORE_DRILL,
     name: "Core Drill",
-    productType: "Finished Good",
-    category: "Tool",
+    classification: CLASSIFICATIONS.FINISHED_GOOD,
+    category: CATEGORIES.TOOL,
     massPerUnit: 30000,
     isAtomic: true
   },
   [IDS.NEODYMIUM]: {
     i: IDS.NEODYMIUM,
     name: "Neodymium",
-    productType: "Refined Material",
-    category: "Refined Rare Earth",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_RARE_EARTH,
     massPerUnit: 1000,
     volumePerUnit: 0,
     isAtomic: false
@@ -1788,8 +1842,8 @@ const TYPES = {
   [IDS.CHROMIUM]: {
     i: IDS.CHROMIUM,
     name: "Chromium",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 0,
     isAtomic: false
@@ -1797,112 +1851,112 @@ const TYPES = {
   [IDS.URANIUM_TETRAFLUORIDE]: {
     i: IDS.URANIUM_TETRAFLUORIDE,
     name: "Uranium Tetrafluoride",
-    productType: "Refined Material",
-    category: "Fluoride",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.PURE_NITROGEN]: {
     i: IDS.PURE_NITROGEN,
     name: "Pure Nitrogen",
-    productType: "Refined Material",
-    category: "Refined Volatile",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_VOLATILE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.ND_YAG_LASER_ROD]: {
     i: IDS.ND_YAG_LASER_ROD,
     name: "Nd:YAG Laser Rod",
-    productType: "Component",
-    category: "Optics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.OPTICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.NICHROME]: {
     i: IDS.NICHROME,
     name: "Nichrome",
-    productType: "Component",
-    category: "Finished Alloy",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.FINISHED_ALLOY,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.NEODYMIUM_MAGNET]: {
     i: IDS.NEODYMIUM_MAGNET,
     name: "Neodymium Magnet",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.UNENRICHED_URANIUM_HEXAFLUORIDE]: {
     i: IDS.UNENRICHED_URANIUM_HEXAFLUORIDE,
     name: "Unenriched Uranium Hexafluoride",
-    productType: "Refined Material",
-    category: "Fluoride",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.HIGHLY_ENRICHED_URANIUM_HEXAFLUORIDE]: {
     i: IDS.HIGHLY_ENRICHED_URANIUM_HEXAFLUORIDE,
     name: "Highly Enriched Uranium Hexafluoride",
-    productType: "Component",
-    category: "Fluoride",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.ND_YAG_LASER]: {
     i: IDS.ND_YAG_LASER,
     name: "Nd:YAG Laser",
-    productType: "Component",
-    category: "Electronics/Optics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS_OPTICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.THIN_FILM_RESISTOR]: {
     i: IDS.THIN_FILM_RESISTOR,
     name: "Thin-film Resistor",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.HIGHLY_ENRICHED_URANIUM_POWDER]: {
     i: IDS.HIGHLY_ENRICHED_URANIUM_POWDER,
     name: "Highly Enriched Uranium Powder",
-    productType: "Component",
-    category: "Refined Fissile",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.REFINED_FISSILE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.LEACHED_FELDSPAR]: {
     i: IDS.LEACHED_FELDSPAR,
     name: "Leached Feldspar",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.ROASTED_RHABDITE]: {
     i: IDS.ROASTED_RHABDITE,
     name: "Roasted Rhabdite",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.RHABDITE_SLAG]: {
     i: IDS.RHABDITE_SLAG,
     name: "Rhabdite Slag",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.POTASSIUM_CARBONATE]: {
     i: IDS.POTASSIUM_CARBONATE,
     name: "Potassium Carbonate",
-    productType: "Refined Material",
-    category: "Carbonate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
     volumePerUnit: 0,
     isAtomic: false
@@ -1910,48 +1964,48 @@ const TYPES = {
   [IDS.HYDROGEN_HEPTAFLUOROTANTALATE_AND_NIOBATE]: {
     i: IDS.HYDROGEN_HEPTAFLUOROTANTALATE_AND_NIOBATE,
     name: "Hydrogen Heptafluorotantalate and Niobate",
-    productType: "Refined Material",
-    category: "Fluoride",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.LEAD]: {
     i: IDS.LEAD,
     name: "Lead",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.POTASSIUM_FLUORIDE]: {
     i: IDS.POTASSIUM_FLUORIDE,
     name: "Potassium Fluoride",
-    productType: "Refined Material",
-    category: "Fluoride",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.POTASSIUM_HEPTAFLUOROTANTALATE]: {
     i: IDS.POTASSIUM_HEPTAFLUOROTANTALATE,
     name: "Potassium Heptafluorotantalate",
-    productType: "Refined Material",
-    category: "Fluoride",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.DIEPOXY_PREPOLYMER_RESIN]: {
     i: IDS.DIEPOXY_PREPOLYMER_RESIN,
     name: "Diepoxy Prepolymer Resin",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.TANTALUM]: {
     i: IDS.TANTALUM,
     name: "Tantalum",
-    productType: "Refined Material",
-    category: "Refined Metal",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
     volumePerUnit: 0,
     isAtomic: false
@@ -1959,344 +2013,344 @@ const TYPES = {
   [IDS.PEDOT]: {
     i: IDS.PEDOT,
     name: "PEDOT",
-    productType: "Refined Material",
-    category: "Refined Organic",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.POLYMER_TANTALUM_CAPACITOR]: {
     i: IDS.POLYMER_TANTALUM_CAPACITOR,
     name: "Polymer Tantalum Capacitor",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.SURFACE_MOUNT_DEVICE_REEL]: {
     i: IDS.SURFACE_MOUNT_DEVICE_REEL,
     name: "Surface Mount Device Reel",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 5000,
     isAtomic: true
   },
   [IDS.CIRCUIT_BOARD]: {
     i: IDS.CIRCUIT_BOARD,
     name: "Circuit Board",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.BRUSHLESS_MOTOR_STATOR]: {
     i: IDS.BRUSHLESS_MOTOR_STATOR,
     name: "Brushless Motor Stator",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 3000,
     isAtomic: true
   },
   [IDS.BRUSHLESS_MOTOR_ROTOR]: {
     i: IDS.BRUSHLESS_MOTOR_ROTOR,
     name: "Brushless Motor Rotor",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 3000,
     isAtomic: true
   },
   [IDS.BRUSHLESS_MOTOR]: {
     i: IDS.BRUSHLESS_MOTOR,
     name: "Brushless Motor",
-    productType: "Component",
-    category: "Electronics/Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS_MECHANISM,
     massPerUnit: 6000,
     isAtomic: true
   },
   [IDS.LANDING_LEG]: {
     i: IDS.LANDING_LEG,
     name: "Landing Leg",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 816000,
     isAtomic: true
   },
   [IDS.LANDING_AUGER]: {
     i: IDS.LANDING_AUGER,
     name: "Landing Auger",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 144000,
     isAtomic: true
   },
   [IDS.PUMP]: {
     i: IDS.PUMP,
     name: "Pump",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 8000,
     isAtomic: true
   },
   [IDS.RADIO_ANTENNA]: {
     i: IDS.RADIO_ANTENNA,
     name: "Radio Antenna",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 75000,
     isAtomic: true
   },
   [IDS.FIBER_OPTIC_GYROSCOPE]: {
     i: IDS.FIBER_OPTIC_GYROSCOPE,
     name: "Fiber Optic Gyroscope",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 2000,
     isAtomic: true
   },
   [IDS.STAR_TRACKER]: {
     i: IDS.STAR_TRACKER,
     name: "Star Tracker",
-    productType: "Component",
-    category: "Electronics/Optics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS_OPTICS,
     massPerUnit: 2000,
     isAtomic: true
   },
   [IDS.COMPUTER]: {
     i: IDS.COMPUTER,
     name: "Computer",
-    productType: "Component",
-    category: "Electronics",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.CONTROL_MOMENT_GYROSCOPE]: {
     i: IDS.CONTROL_MOMENT_GYROSCOPE,
     name: "Control Moment Gyroscope",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 160000,
     isAtomic: true
   },
   [IDS.ROBOTIC_ARM]: {
     i: IDS.ROBOTIC_ARM,
     name: "Robotic Arm",
-    productType: "Component",
-    category: "Mechanism",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.MECHANISM,
     massPerUnit: 300000,
     isAtomic: true
   },
   [IDS.BERYLLIUM_CARBONATE]: {
     i: IDS.BERYLLIUM_CARBONATE,
     name: "Beryllium Carbonate",
-    productType: "Refined Material",
-    category: "Carbonate",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.BERYLLIA]: {
     i: IDS.BERYLLIA,
     name: "Beryllia",
-    productType: "Refined Material",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.BERYLLIA_CERAMIC]: {
     i: IDS.BERYLLIA_CERAMIC,
     name: "Beryllia Ceramic",
-    productType: "Component",
-    category: "Oxide",
+    classification: CLASSIFICATIONS.COMPONENT,
+    category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.NEON]: {
     i: IDS.NEON,
     name: "Neon",
-    productType: "Refined Material",
-    category: "Refined Volatile",
+    classification: CLASSIFICATIONS.REFINED_MATERIAL,
+    category: CATEGORIES.REFINED_VOLATILE,
     massPerUnit: 1000,
     isAtomic: false
   },
   [IDS.HEAT_EXCHANGER]: {
     i: IDS.HEAT_EXCHANGER,
     name: "Heat Exchanger",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 40000,
     isAtomic: true
   },
   [IDS.TURBOPUMP]: {
     i: IDS.TURBOPUMP,
     name: "Turbopump",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 290000,
     isAtomic: true
   },
   [IDS.NEON_FUEL_SEPARATOR_CENTRIFUGE]: {
     i: IDS.NEON_FUEL_SEPARATOR_CENTRIFUGE,
     name: "Neon/Fuel Separator Centrifuge",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 190000,
     isAtomic: true
   },
   [IDS.FUEL_MAKE_UP_TANK]: {
     i: IDS.FUEL_MAKE_UP_TANK,
     name: "Fuel Make-up Tank",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 100000,
     isAtomic: true
   },
   [IDS.NEON_MAKE_UP_TANK]: {
     i: IDS.NEON_MAKE_UP_TANK,
     name: "Neon Make-up Tank",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 250000,
     isAtomic: true
   },
   [IDS.LIGHTBULB_END_MODERATORS]: {
     i: IDS.LIGHTBULB_END_MODERATORS,
     name: "Lightbulb End Moderators",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 130000,
     isAtomic: true
   },
   [IDS.FUSED_QUARTZ_LIGHTBULB_TUBE]: {
     i: IDS.FUSED_QUARTZ_LIGHTBULB_TUBE,
     name: "Fused Quartz Lightbulb Tube",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 50000,
     isAtomic: true
   },
   [IDS.REACTOR_PLUMBING_ASSEMBLY]: {
     i: IDS.REACTOR_PLUMBING_ASSEMBLY,
     name: "Reactor Plumbing Assembly",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 1942000,
     isAtomic: true
   },
   [IDS.FLOW_DIVIDER_MODERATOR]: {
     i: IDS.FLOW_DIVIDER_MODERATOR,
     name: "Flow Divider Moderator",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 18700000,
     isAtomic: true
   },
   [IDS.NUCLEAR_LIGHTBULB]: {
     i: IDS.NUCLEAR_LIGHTBULB,
     name: "Nuclear Lightbulb",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 180000,
     isAtomic: true
   },
   [IDS.COMPOSITE_OVERWRAPPED_REACTOR_SHELL]: {
     i: IDS.COMPOSITE_OVERWRAPPED_REACTOR_SHELL,
     name: "Composite-overwrapped Reactor Shell",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 6000000,
     isAtomic: true
   },
   [IDS.CLOSED_CYCLE_GAS_CORE_NUCLEAR_REACTOR_ENGINE]: {
     i: IDS.CLOSED_CYCLE_GAS_CORE_NUCLEAR_REACTOR_ENGINE,
     name: "Closed-cycle Gas Core Nuclear Reactor Engine",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 30000000,
     isAtomic: true
   },
   [IDS.HABITATION_MODULE]: {
     i: IDS.HABITATION_MODULE,
     name: "Habitation Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 2200000,
     isAtomic: true
   },
   [IDS.MOBILITY_MODULE]: {
     i: IDS.MOBILITY_MODULE,
     name: "Mobility Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 2000000,
     isAtomic: true
   },
   [IDS.FLUIDS_AUTOMATION_MODULE]: {
     i: IDS.FLUIDS_AUTOMATION_MODULE,
     name: "Fluids Automation Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 3600000,
     isAtomic: true
   },
   [IDS.SOLIDS_AUTOMATION_MODULE]: {
     i: IDS.SOLIDS_AUTOMATION_MODULE,
     name: "Solids Automation Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 3600000,
     isAtomic: true
   },
   [IDS.TERRAIN_INTERFACE_MODULE]: {
     i: IDS.TERRAIN_INTERFACE_MODULE,
     name: "Terrain Interface Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 960000,
     isAtomic: true
   },
   [IDS.AVIONICS_MODULE]: {
     i: IDS.AVIONICS_MODULE,
     name: "Avionics Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 500000,
     isAtomic: true
   },
   [IDS.ESCAPE_MODULE]: {
     i: IDS.ESCAPE_MODULE,
     name: "Escape Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 6665000,
     isAtomic: true
   },
   [IDS.ATTITUDE_CONTROL_MODULE]: {
     i: IDS.ATTITUDE_CONTROL_MODULE,
     name: "Attitude Control Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 660000,
     isAtomic: true
   },
   [IDS.POWER_MODULE]: {
     i: IDS.POWER_MODULE,
     name: "Power Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 2000000,
     isAtomic: true
   },
   [IDS.THERMAL_MODULE]: {
     i: IDS.THERMAL_MODULE,
     name: "Thermal Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 1000000,
     isAtomic: true
   },
   [IDS.PROPULSION_MODULE]: {
     i: IDS.PROPULSION_MODULE,
     name: "Propulsion Module",
-    productType: "Ship Component",
-    category: "Ship Part",
+    classification: CLASSIFICATIONS.SHIP_COMPONENT,
+    category: CATEGORIES.SHIP_PART,
     massPerUnit: 32000000,
     isAtomic: true
   }
@@ -2305,20 +2359,22 @@ const TYPES = {
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
 const getListByCategory = (category) => {
-  return Object.keys(TYPES)
+  return Object.values(IDS)
     .filter((i) => TYPES[i].category === category);
 };
 
-const getListByProductType = (productType) => {
-  return Object.keys(TYPES)
-    .filter((i) => TYPES[i].productType === productType);
+const getListByClassification = (classification) => {
+  return Object.values(IDS)
+    .filter((i) => TYPES[i].classification === classification);
 }
 
 export default {
+  CATEGORIES,
+  CLASSIFICATIONS,
   IDS,
   TYPES,
 
   getListByCategory,
-  getListByProductType,
+  getListByClassification,
   getType,
 };

@@ -26,8 +26,8 @@ const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
  * @return The extraction time in seconds
  */
 const getExtractionTime = (targetYield, remainingYield, totalBonus = 1) => {
-  const startTimeRatio = Math.sqrt(remainingYield / MAX_YIELD);
-  const endTimeRatio = Math.sqrt((remainingYield - targetYield) / MAX_YIELD);
+  const startTimeRatio = Math.sqrt(remainingYield / MAX_YIELD_PER_RUN);
+  const endTimeRatio = Math.sqrt((remainingYield - targetYield) / MAX_YIELD_PER_RUN);
   const time = (startTimeRatio - endTimeRatio) * MAX_EXTRACTION_TIME / totalBonus;
   return Math.ceil(time);
 }

@@ -1,6 +1,6 @@
-import Building from './building';
-import Product from './product';
-import Ship from './ship';
+import Building from './building.js';
+import Product from './product.js';
+import Ship from './ship.js';
 
 export default {
   Building: {

@@ -37,7 +37,7 @@ const SPECTRAL_IDS = {
   SM_TYPE: 8,
   SI_TYPE: 9,
   M_TYPE: 10,
-  I_TYPE: 11,
+  I_TYPE: 11
 };
 const SPECTRAL_TYPES = {
   [SPECTRAL_IDS.C_TYPE]: {
@@ -221,8 +221,8 @@ const SPECTRAL_TYPES = {
 
 const getProductCategorySpectralTypes = (category) => {
   const categoryProducts = Product.getListByCategory(category);
-  return Object.keys(SPECTRAL_TYPES)
-    .filter((i) => SPECTRAL_TYPES[i].resources.filter((r) => categoryProducts.includes(r)).length > 0);
+  return Object.values(SPECTRAL_IDS)
+    .filter((i) => !!SPECTRAL_TYPES[i].resources.find((r) => categoryProducts.includes(r)));
 };
 
 const BONUS_IDS = {
@@ -244,7 +244,7 @@ const BONUS_IDS = {
 const BONUS_MAPS = [
   {
     spectralTypes: [...Object.values(SPECTRAL_IDS)],
-    resourcesIds: Product.getListByProductType('Raw Material'),
+    resourceIds: Product.getListByClassification(Product.CLASSIFICATIONS.RAW_MATERIAL),
     base: { name: 'Yield0', level: 0, modifier: 0, type: 'yield' },
     bonuses: [
       { position: BONUS_IDS.YIELD_1, name: 'Yield1', level: 1, modifier: 3, type: 'yield' },
@@ -253,8 +253,8 @@ const BONUS_MAPS = [
     ]
   },
   {
-    spectralTypes: getProductCategorySpectralTypes('Volatile'),
-    resourcesIds: Product.getListByCategory('Volatile'),
+    spectralTypes: getProductCategorySpectralTypes(Product.CATEGORIES.VOLATILE),
+    resourceIds: Product.getListByCategory(Product.CATEGORIES.VOLATILE),
     base: { name: 'Volatile0', level: 0, modifier: 0, type: 'volatile' },
     bonuses: [
       { position: BONUS_IDS.VOLATILE_1, name: 'Volatile1', level: 1, modifier: 10, type: 'volatile' },
@@ -263,8 +263,8 @@ const BONUS_MAPS = [
     ]
   },
   {
-    spectralTypes: getProductCategorySpectralTypes('Metal'),
-    resourcesIds: Product.getListByCategory('Metal'),
+    spectralTypes: getProductCategorySpectralTypes(Product.CATEGORIES.METAL),
+    resourceIds: Product.getListByCategory(Product.CATEGORIES.METAL),
     base: { name: 'Metal0', level: 0, modifier: 0, type: 'metal' },
     bonuses: [
       { position: BONUS_IDS.METAL_1, name: 'Metal1', level: 1, modifier: 10, type: 'metal' },
@@ -273,8 +273,8 @@ const BONUS_MAPS = [
     ]
   },
   {
-    spectralTypes: getProductCategorySpectralTypes('Organic'),
-    resourcesIds: Product.getListByCategory('Organic'),
+    spectralTypes: getProductCategorySpectralTypes(Product.CATEGORIES.ORGANIC),
+    resourceIds: Product.getListByCategory(Product.CATEGORIES.ORGANIC),
     base: { name: 'Organic0', level: 0, modifier: 0, type: 'organic' },
     bonuses: [
       { position: BONUS_IDS.ORGANIC_1, name: 'Organic1', level: 1, modifier: 10, type: 'organic' },
@@ -283,23 +283,22 @@ const BONUS_MAPS = [
     ]
   },
   {
-    spectralTypes: getProductCategorySpectralTypes('Rare Earth'),
-    resourcesIds: Product.getListByCategory('Rare Earth'),
+    spectralTypes: getProductCategorySpectralTypes(Product.CATEGORIES.RARE_EARTH),
+    resourceIds: Product.getListByCategory(Product.CATEGORIES.RARE_EARTH),
     base: { name: 'RareEarth0', level: 0, modifier: 0, type: 'rareearth' },
     bonuses: [
       { position: BONUS_IDS.RARE_EARTH, name: 'RareEarth3', level: 3, modifier: 30, type: 'rareearth' }
     ]
   },
   {
-    spectralTypes: getProductCategorySpectralTypes('Fissile'),
-    resourcesIds: Product.getListByCategory('Fissile'),
+    spectralTypes: getProductCategorySpectralTypes(Product.CATEGORIES.FISSILE),
+    resourceIds: Product.getListByCategory(Product.CATEGORIES.FISSILE),
     base: { name: 'Fissile0', level: 0, modifier: 0, type: 'fissile' },
     bonuses: [
       { position: BONUS_IDS.FISSILE, name: 'Fissile3', level: 3, modifier: 30, type: 'fissile' }
     ]
   }
 ];
-
 
 /**
  * Getters and utils
@@ -348,7 +347,7 @@ const getSurfaceArea = (asteroidId, radius = 0) => {
  * Returns the bonus information based on its position in the bitpacked bonuses int
  * @param num Position in the bitpacked bonuses int
  */
-export const getBonus = (num) => {
+const getBonus = (num) => {
   if (num < 1 || num > 14) return '';
   let bonus;
 
@@ -360,10 +359,10 @@ export const getBonus = (num) => {
 
 /**
  * Converts packed bonuses into an array of bonus types including base types
- * @param spectralType The spectral type (int) of the asteroid
  * @param packed The bitpacked bonuses int
+ * @param spectralType The spectral type (int) of the asteroid
  */
-export const getBonuses = (packed, spectralType) => {
+const getBonuses = (packed, spectralType) => {
   if (spectralType === undefined) throw new Error('Spectral type is required');
 
   const bonuses = [];
@@ -392,12 +391,14 @@ export const getBonuses = (packed, spectralType) => {
  * @param bonuses The unpacked bonuses for the asteroid
  * @param resourceId The resource identifier
  */
-export const getBonusByResource = (bonuses, resourceId) => {
+const getBonusByResource = (bonuses, resourceId) => {
   let multiplier = 1;
   let matches = [];
 
   bonuses.forEach(bonus => {
-    const found = BONUS_MAPS.find(v => v.base.type === bonus.type && v.resourceIds.includes(resourceId));
+    const found = BONUS_MAPS.find(v => {
+      return v.base.type === bonus.type && v.resourceIds.includes(resourceId)
+    });
     if (found) {
       multiplier *= (100 + bonus.modifier) / 100;
       matches.push(bonus);
@@ -427,7 +428,7 @@ const getRarity = (bonuses) => {
  * Returns the size string based on the asteroid radius
  * @param radius The asteroid radius in meters
  */
-export const getSize = (radius) => {
+const getSize = (radius) => {
   if (radius <= 5000) return SIZES[0];
   if (radius <= 20000) return SIZES[1];
   if (radius <= 50000) return SIZES[2];
@@ -438,7 +439,7 @@ export const getSize = (radius) => {
  * @param spectralTypeId The spectral type identifier (1-11)
  * Returns the spectral type details including a name attribute
  */
-export const getSpectralType = (spectralTypeId) => {
+const getSpectralType = (spectralTypeId) => {
   return SPECTRAL_TYPES[spectralTypeId]?.name || '';
 };
 
@@ -446,7 +447,7 @@ export const getSpectralType = (spectralTypeId) => {
  * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
  * @param packed The bitpacked bonuses int
  */
-export const getScanned = (packed) => {
+const getScanned = (packed) => {
   return ((packed & (1 << 0)) > 0);
 };
 
@@ -546,6 +547,7 @@ const getLotDistance = (asteroidId, originLotId, destLotId) => {
 const getLotPosition = (asteroidId, lotId, numLots = 0) => {
   const theta = PHI * (lotId - 1);
   numLots = numLots || getSurfaceArea(asteroidId);
+  if (lotId < 1 || lotId > numLots) throw new Error('Invalid lot id');
   const lotFrac = (lotId - 1) / (numLots - 1);
   const y = 1 - (lotFrac * 2);
   const radius = Math.sqrt(1 - y * y); // radius at y
@@ -555,9 +557,7 @@ const getLotPosition = (asteroidId, lotId, numLots = 0) => {
 };
 
 /**
- * 
- * @param asteroidId 
- * @param lotTally Optional (floored) surface area in km
+ * @param lotTally surface area in km (floored)
  * @returns 
  */
 const getLotRegionTally = (lotTally = 0) => {
@@ -599,9 +599,9 @@ const getRegionsOfLotPositions = (flatPositions, regionTally) => {
 };
 
 /**
- * 
- * @param center (int) The number of regions on the asteroid
- * @param centerLot (int) The number of regions on the asteroid
+ * NOTE: either center OR centerLot should be provided, not both
+ * @param center (int) The center position to search around
+ * @param centerLot (int) The lot id to search around
  * @param lotTally (int) The number of regions on the asteroid
  * @param findTally (int) The number of regions on the asteroid
  * @returns 
@@ -612,7 +612,7 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   // if pass centerLot instead of center, set center from centerLot
   // NOTE: assume centerLot is nominal lot id
   if (centerLot && !center) {
-    center = AsteroidLib.getLotPosition(0, centerLot, lotTally);
+    center = getLotPosition(0, centerLot, lotTally);
   }
 
   let arcToSearch, yToSearch, maxIndex, minIndex, centerTheta, thetaTolerance;
@@ -666,6 +666,7 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   return points
     .sort((a, b) => a[4] < b[4] ? -1 : 1) // sort by distance
     .map((p) => p[3]) // map to lot index
+    .filter((p) => !centerLot || p !== centerLot) // filter out centerLot if that is how searched
     .slice(0, findTally || undefined); // slice to target number
 };
 

@@ -1,5 +1,5 @@
-import Nameable from './nameable';
-import Product from './product';
+import Nameable from './nameable.js';
+import Product from './product.js';
 
 const IDS = {
   ESCAPE_MODULE: 1,
@@ -59,7 +59,7 @@ const TYPES = {
 
 const CONSTRUCTION_TYPES = {
   [IDS.SHUTTLE]: {
-    constructionTime: 100755,
+    constructionTime: 108,
     requirements: {
       [Product.IDS.SHUTTLE_HULL]: 1,
       [Product.IDS.AVIONICS_MODULE]: 1,
@@ -71,7 +71,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.LIGHT_TRANSPORT]: {
-    constructionTime: 185525,
+    constructionTime: 144,
     requirements: {
       [Product.IDS.CARGO_MODULE]: 6,
       [Product.IDS.LIGHT_TRANSPORT_HULL]: 1,
@@ -85,7 +85,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.HEAVY_TRANSPORT]: {
-    constructionTime: 969525,
+    constructionTime: 360,
     requirements: {
       [Product.IDS.CARGO_MODULE]: 36,
       [Product.IDS.HEAVY_TRANSPORT_HULL]: 1,
