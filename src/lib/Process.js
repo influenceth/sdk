@@ -371,7 +371,7 @@ const TYPES = {
   [IDS.BASIC_FOOD_COOKING_AND_PACKAGING]: {
     i: IDS.BASIC_FOOD_COOKING_AND_PACKAGING,
     name: "Basic Food Cooking and Packaging",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 40,
     recipeTime: 0.0125,
     inputs: {
@@ -404,7 +404,7 @@ const TYPES = {
   [IDS.SILICA_FUSING]: {
     i: IDS.SILICA_FUSING,
     name: "Silica Fusing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 6,
     recipeTime: 0.000066,
     inputs: {
@@ -417,7 +417,7 @@ const TYPES = {
   [IDS.SILICA_PULTRUSION]: {
     i: IDS.SILICA_PULTRUSION,
     name: "Silica Pultrusion",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 12,
     recipeTime: 0.000066,
     inputs: {
@@ -430,7 +430,7 @@ const TYPES = {
   [IDS.COPPER_WIRE_DRAWING]: {
     i: IDS.COPPER_WIRE_DRAWING,
     name: "Copper Wire Drawing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -443,7 +443,7 @@ const TYPES = {
   [IDS.SALTY_CEMENT_MIXING]: {
     i: IDS.SALTY_CEMENT_MIXING,
     name: "Salty Cement Mixing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -549,7 +549,7 @@ const TYPES = {
   [IDS.FUNGAL_SOILBUILDING]: {
     i: IDS.FUNGAL_SOILBUILDING,
     name: "Fungal Soilbuilding",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 2880,
     recipeTime: 0.00001,
     inputs: {
@@ -700,7 +700,7 @@ const TYPES = {
   [IDS.SOLDER_MANUFACTURING]: {
     i: IDS.SOLDER_MANUFACTURING,
     name: "Solder Manufacturing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -715,7 +715,7 @@ const TYPES = {
   [IDS.QUARTZ_FILAMENT_DRAWING_AND_WRAPPING]: {
     i: IDS.QUARTZ_FILAMENT_DRAWING_AND_WRAPPING,
     name: "Quartz Filament Drawing and Wrapping",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -729,7 +729,7 @@ const TYPES = {
   [IDS.STEEL_BEAM_ROLLING]: {
     i: IDS.STEEL_BEAM_ROLLING,
     name: "Steel Beam Rolling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -742,7 +742,7 @@ const TYPES = {
   [IDS.STEEL_SHEET_ROLLING]: {
     i: IDS.STEEL_SHEET_ROLLING,
     name: "Steel Sheet Rolling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -755,7 +755,7 @@ const TYPES = {
   [IDS.STEEL_PIPE_ROLLING]: {
     i: IDS.STEEL_PIPE_ROLLING,
     name: "Steel Pipe Rolling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -768,7 +768,7 @@ const TYPES = {
   [IDS.STEEL_WIRE_DRAWING]: {
     i: IDS.STEEL_WIRE_DRAWING,
     name: "Steel Wire Drawing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1129,7 +1129,7 @@ const TYPES = {
   [IDS.ALUMINA_FORMING_AND_SINTERING]: {
     i: IDS.ALUMINA_FORMING_AND_SINTERING,
     name: "Alumina Forming and Sintering",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1157,7 +1157,7 @@ const TYPES = {
   [IDS.COPPER_WIRE_INSULATING]: {
     i: IDS.COPPER_WIRE_INSULATING,
     name: "Copper Wire Insulating",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1171,7 +1171,7 @@ const TYPES = {
   [IDS.SILICON_CZOCHRALSKI_PROCESS_AND_WAFER_SLICING]: {
     i: IDS.SILICON_CZOCHRALSKI_PROCESS_AND_WAFER_SLICING,
     name: "Silicon Czochralski Process and Wafer Slicing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1185,7 +1185,7 @@ const TYPES = {
   [IDS.STEEL_CABLE_LAYING]: {
     i: IDS.STEEL_CABLE_LAYING,
     name: "Steel Cable Laying",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1212,7 +1212,7 @@ const TYPES = {
   [IDS.SOYBEAN_GROWING]: {
     i: IDS.SOYBEAN_GROWING,
     name: "Soybean Growing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1353,7 +1353,7 @@ const TYPES = {
   [IDS.POTATO_GROWING]: {
     i: IDS.POTATO_GROWING,
     name: "Potato Growing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1447,7 +1447,7 @@ const TYPES = {
   [IDS.NATURAL_FLAVORINGS_GROWING]: {
     i: IDS.NATURAL_FLAVORINGS_GROWING,
     name: "Natural Flavorings Growing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 24,
     recipeTime: 8736,
     inputs: {
@@ -1511,7 +1511,7 @@ const TYPES = {
   [IDS.FERRITE_SINTERING]: {
     i: IDS.FERRITE_SINTERING,
     name: "Ferrite Sintering",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1527,7 +1527,7 @@ const TYPES = {
   [IDS.DIODE_DOPING_AND_ASSEMBLY]: {
     i: IDS.DIODE_DOPING_AND_ASSEMBLY,
     name: "Diode Doping and Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1542,7 +1542,7 @@ const TYPES = {
   [IDS.BALL_VALVE_MACHINING]: {
     i: IDS.BALL_VALVE_MACHINING,
     name: "Ball Valve Machining",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1555,7 +1555,7 @@ const TYPES = {
   [IDS.ALUMINIUM_BEAM_ROLLING]: {
     i: IDS.ALUMINIUM_BEAM_ROLLING,
     name: "Aluminium Beam Rolling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1568,7 +1568,7 @@ const TYPES = {
   [IDS.ALUMINIUM_SHEET_ROLLING]: {
     i: IDS.ALUMINIUM_SHEET_ROLLING,
     name: "Aluminium Sheet Rolling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: " ",
     recipeTime: 1,
     inputs: {
@@ -1581,7 +1581,7 @@ const TYPES = {
   [IDS.ALUMINIUM_PIPE_ROLLING]: {
     i: IDS.ALUMINIUM_PIPE_ROLLING,
     name: "Aluminium Pipe Rolling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1594,7 +1594,7 @@ const TYPES = {
   [IDS.POLYACRYLONITRILE_WEAVING]: {
     i: IDS.POLYACRYLONITRILE_WEAVING,
     name: "Polyacrylonitrile Weaving",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1607,7 +1607,7 @@ const TYPES = {
   [IDS.COLD_GAS_THRUSTER_PRINTING]: {
     i: IDS.COLD_GAS_THRUSTER_PRINTING,
     name: "Cold Gas Thruster Printing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1635,7 +1635,7 @@ const TYPES = {
   [IDS.ALUMINIUM_SMALL_PROPELLANT_TANK_ASSEMBLY]: {
     i: IDS.ALUMINIUM_SMALL_PROPELLANT_TANK_ASSEMBLY,
     name: "Aluminium Small Propellant Tank Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1664,7 +1664,7 @@ const TYPES = {
   [IDS.BALL_BEARING_MACHINING_AND_ASSEMBLY]: {
     i: IDS.BALL_BEARING_MACHINING_AND_ASSEMBLY,
     name: "Ball Bearing Machining and Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1678,7 +1678,7 @@ const TYPES = {
   [IDS.LARGE_THRUST_BEARING_MACHINING_AND_ASSEMBLY]: {
     i: IDS.LARGE_THRUST_BEARING_MACHINING_AND_ASSEMBLY,
     name: "Large Thrust Bearing Machining and Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1861,7 +1861,7 @@ const TYPES = {
   [IDS.BOARD_PRINTING]: {
     i: IDS.BOARD_PRINTING,
     name: "Board Printing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1877,7 +1877,7 @@ const TYPES = {
   [IDS.FERRITE_BEAD_INDUCTOR_WINDING]: {
     i: IDS.FERRITE_BEAD_INDUCTOR_WINDING,
     name: "Ferrite-bead Inductor Winding",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1892,7 +1892,7 @@ const TYPES = {
   [IDS.CORE_SAMPLER_DRILL_MILLING]: {
     i: IDS.CORE_SAMPLER_DRILL_MILLING,
     name: "Core Sampler Drill Milling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1905,7 +1905,7 @@ const TYPES = {
   [IDS.CORE_SAMPLER_THRUSTER_ASSEMBLY]: {
     i: IDS.CORE_SAMPLER_THRUSTER_ASSEMBLY,
     name: "Core Sampler Thruster Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1921,7 +1921,7 @@ const TYPES = {
   [IDS.PARABOLIC_DISH_ASSEMBLY]: {
     i: IDS.PARABOLIC_DISH_ASSEMBLY,
     name: "Parabolic Dish Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1937,7 +1937,7 @@ const TYPES = {
   [IDS.PHOTOVOLTAIC_PANEL_AMORPHIZATION_AND_ASSEMBLY]: {
     i: IDS.PHOTOVOLTAIC_PANEL_AMORPHIZATION_AND_ASSEMBLY,
     name: "Photovoltaic Panel Amorphization and Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1953,7 +1953,7 @@ const TYPES = {
   [IDS.LIPO_BATTERY_ASSEMBLY]: {
     i: IDS.LIPO_BATTERY_ASSEMBLY,
     name: "LiPo Battery Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -1999,7 +1999,7 @@ const TYPES = {
   [IDS.PHOTORESIST_EPOXY_STOICHIOMETRY_AND_PACKAGING]: {
     i: IDS.PHOTORESIST_EPOXY_STOICHIOMETRY_AND_PACKAGING,
     name: "Photoresist Epoxy Stoichiometry and Packaging",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2199,7 +2199,7 @@ const TYPES = {
   [IDS.TUNGSTEN_GAS_ATOMIZATION]: {
     i: IDS.TUNGSTEN_GAS_ATOMIZATION,
     name: "Tungsten Gas Atomization",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2227,7 +2227,7 @@ const TYPES = {
   [IDS.STAINLESS_STEEL_SHEET_ROLLING]: {
     i: IDS.STAINLESS_STEEL_SHEET_ROLLING,
     name: "Stainless Steel Sheet Rolling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2240,7 +2240,7 @@ const TYPES = {
   [IDS.STAINLESS_STEEL_PIPE_ROLLING]: {
     i: IDS.STAINLESS_STEEL_PIPE_ROLLING,
     name: "Stainless Steel Pipe Rolling",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: " ",
     inputs: {
@@ -2253,7 +2253,7 @@ const TYPES = {
   [IDS.SILICON_WAFER_CPU_PHOTOLITHOGRAPHY_BALL_BONDING_AND_ENCAPSULATION]: {
     i: IDS.SILICON_WAFER_CPU_PHOTOLITHOGRAPHY_BALL_BONDING_AND_ENCAPSULATION,
     name: "Silicon Wafer CPU Photolithography, Ball Bonding, and Encapsulation",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2272,7 +2272,7 @@ const TYPES = {
   [IDS.CORE_SAMPLER_ASSEMBLY]: {
     i: IDS.CORE_SAMPLER_ASSEMBLY,
     name: "Core Sampler Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2366,7 +2366,7 @@ const TYPES = {
   [IDS.ND_YAG_CZOCHRALSKI_PROCESS]: {
     i: IDS.ND_YAG_CZOCHRALSKI_PROCESS,
     name: "Nd:YAG Czochralski Process",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2395,7 +2395,7 @@ const TYPES = {
   [IDS.MAGNET_SINTERING]: {
     i: IDS.MAGNET_SINTERING,
     name: "Magnet Sintering",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2437,7 +2437,7 @@ const TYPES = {
   [IDS.ND_YAG_LASER_ASSEMBLY]: {
     i: IDS.ND_YAG_LASER_ASSEMBLY,
     name: "Nd:YAG Laser Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2453,7 +2453,7 @@ const TYPES = {
   [IDS.THIN_FILM_RESISTOR_SPUTTERING_AND_LASER_TRIMMING]: {
     i: IDS.THIN_FILM_RESISTOR_SPUTTERING_AND_LASER_TRIMMING,
     name: "Thin-film Resistor Sputtering and Laser-trimming",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2482,7 +2482,7 @@ const TYPES = {
   [IDS.SPIRULINA_AND_CHLORELLA_ALGAE_GROWING]: {
     i: IDS.SPIRULINA_AND_CHLORELLA_ALGAE_GROWING,
     name: "Spirulina and Chlorella Algae Growing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 24,
     recipeTime: 85,
     inputs: {
@@ -2501,7 +2501,7 @@ const TYPES = {
   [IDS.PEDOT_BACTERIA_CULTURING]: {
     i: IDS.PEDOT_BACTERIA_CULTURING,
     name: "PEDOT Bacteria Culturing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 24,
     recipeTime: 15,
     inputs: {
@@ -2516,7 +2516,7 @@ const TYPES = {
   [IDS.BPA_BACTERIA_CULTURING]: {
     i: IDS.BPA_BACTERIA_CULTURING,
     name: "BPA Bacteria Culturing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2545,7 +2545,7 @@ const TYPES = {
   [IDS.NOVOLAK_BACTERIA_CULTURING]: {
     i: IDS.NOVOLAK_BACTERIA_CULTURING,
     name: "Novolak Bacteria Culturing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2665,7 +2665,7 @@ const TYPES = {
   [IDS.POLYMER_TANTALUM_CAPACITOR_ASSEMBLY]: {
     i: IDS.POLYMER_TANTALUM_CAPACITOR_ASSEMBLY,
     name: "Polymer Tantalum Capacitor Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2683,7 +2683,7 @@ const TYPES = {
   [IDS.SURFACE_MOUNT_DEVICE_REEL_ASSEMBLY]: {
     i: IDS.SURFACE_MOUNT_DEVICE_REEL_ASSEMBLY,
     name: "Surface Mount Device Reel Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2699,7 +2699,7 @@ const TYPES = {
   [IDS.PICK_AND_PLACE_BOARD_POPULATION]: {
     i: IDS.PICK_AND_PLACE_BOARD_POPULATION,
     name: "Pick-and-place Board Population",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2714,7 +2714,7 @@ const TYPES = {
   [IDS.MOTOR_STATOR_ASSEMBLY]: {
     i: IDS.MOTOR_STATOR_ASSEMBLY,
     name: "Motor Stator Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -2730,7 +2730,7 @@ const TYPES = {
   [IDS.MOTOR_ROTOR_ASSEMBLY]: {
     i: IDS.MOTOR_ROTOR_ASSEMBLY,
     name: "Motor Rotor Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 1.5,
     recipeTime: 0.5,
     inputs: {
@@ -2745,7 +2745,7 @@ const TYPES = {
   [IDS.BRUSHLESS_MOTOR_ASSEMBLY]: {
     i: IDS.BRUSHLESS_MOTOR_ASSEMBLY,
     name: "Brushless Motor Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0.0125,
     recipeTime: 0.0125,
     inputs: {
@@ -2791,7 +2791,7 @@ const TYPES = {
   [IDS.PUMP_ASSEMBLY]: {
     i: IDS.PUMP_ASSEMBLY,
     name: "Pump Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 6,
     recipeTime: 2,
     inputs: {
@@ -2806,7 +2806,7 @@ const TYPES = {
   [IDS.ANTENNA_ASSEMBLY]: {
     i: IDS.ANTENNA_ASSEMBLY,
     name: "Antenna Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 1.5,
     recipeTime: 1,
     inputs: {
@@ -2821,7 +2821,7 @@ const TYPES = {
   [IDS.FIBER_OPTIC_GYROSCOPE_ASSEMBLY]: {
     i: IDS.FIBER_OPTIC_GYROSCOPE_ASSEMBLY,
     name: "Fiber Optic Gyroscope Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 3.75,
     recipeTime: 2.5,
     inputs: {
@@ -2836,7 +2836,7 @@ const TYPES = {
   [IDS.STAR_TRACKER_ASSEMBLY]: {
     i: IDS.STAR_TRACKER_ASSEMBLY,
     name: "Star Tracker Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 6,
     recipeTime: 20,
     inputs: {
@@ -2852,7 +2852,7 @@ const TYPES = {
   [IDS.COMPUTER_ASSEMBLY]: {
     i: IDS.COMPUTER_ASSEMBLY,
     name: "Computer Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 3.75,
     recipeTime: 12.5,
     inputs: {
@@ -2866,7 +2866,7 @@ const TYPES = {
   [IDS.CONTROL_MOMENT_GYROSCOPE_ASSEMBLY]: {
     i: IDS.CONTROL_MOMENT_GYROSCOPE_ASSEMBLY,
     name: "Control Moment Gyroscope Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 45,
     recipeTime: 30,
     inputs: {
@@ -2882,7 +2882,7 @@ const TYPES = {
   [IDS.ROBOTIC_ARM_ASSEMBLY]: {
     i: IDS.ROBOTIC_ARM_ASSEMBLY,
     name: "Robotic Arm Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 15,
     recipeTime: 1,
     inputs: {
@@ -2943,7 +2943,7 @@ const TYPES = {
   [IDS.BERYLLIA_FORMING_AND_SINTERING]: {
     i: IDS.BERYLLIA_FORMING_AND_SINTERING,
     name: "Beryllia Forming and Sintering",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 12,
     recipeTime: 0.000042,
     inputs: {
@@ -2956,7 +2956,7 @@ const TYPES = {
   [IDS.SILICON_WAFER_CCD_PHOTOLITHOGRAPHY_BALL_BONDING_AND_PACKAGING]: {
     i: IDS.SILICON_WAFER_CCD_PHOTOLITHOGRAPHY_BALL_BONDING_AND_PACKAGING,
     name: "Silicon Wafer CCD Photolithography, Ball Bonding, and Packaging",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -3006,7 +3006,7 @@ const TYPES = {
   [IDS.LASER_DIODE_DOPING_AMORPHIZATION_AND_ASSEMBLY]: {
     i: IDS.LASER_DIODE_DOPING_AMORPHIZATION_AND_ASSEMBLY,
     name: "Laser Diode Doping, Amorphization, and Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -3088,7 +3088,7 @@ const TYPES = {
   [IDS.COLD_GAS_TORQUE_THRUSTER_PRINTING]: {
     i: IDS.COLD_GAS_TORQUE_THRUSTER_PRINTING,
     name: "Cold Gas Torque Thruster Printing",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -3333,7 +3333,7 @@ const TYPES = {
   [IDS.POWER_MODULE_ASSEMBLY]: {
     i: IDS.POWER_MODULE_ASSEMBLY,
     name: "Power Module Assembly",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 450,
     recipeTime: 30,
     inputs: {
@@ -3477,7 +3477,7 @@ const TYPES = {
   [IDS.EPOXY_STOICHIOMETRY_AND_PACKAGING]: {
     i: IDS.EPOXY_STOICHIOMETRY_AND_PACKAGING,
     name: "Epoxy Stoichiometry and Packaging",
-    processorType: Processor.IDS.BIOREACTOR,
+    processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
     inputs: {
@@ -3490,7 +3490,7 @@ const TYPES = {
   [IDS.PEDOT_ALGAE_GROWING]: {
     i: IDS.PEDOT_ALGAE_GROWING,
     name: "PEDOT Algae Growing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 26,
     recipeTime: 105,
     inputs: {
@@ -3505,7 +3505,7 @@ const TYPES = {
   [IDS.BPA_ALGAE_GROWING]: {
     i: IDS.BPA_ALGAE_GROWING,
     name: "BPA Algae Growing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 22,
     recipeTime: 80,
     inputs: {
@@ -3519,7 +3519,7 @@ const TYPES = {
   [IDS.NOVOLAK_ALGAE_GROWING]: {
     i: IDS.NOVOLAK_ALGAE_GROWING,
     name: "Novolak Algae Growing",
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.BIOREACTOR,
     setupTime: 24,
     recipeTime: 90,
     inputs: {
