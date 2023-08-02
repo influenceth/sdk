@@ -8,19 +8,25 @@ const TYPES = {
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
+const getNameError = (name = '', config) => {
+  if (!config) return 'Invalid type specified.'
+  if (config.min && name.length < config.min) return `Name must have a minimum length of ${config.min}.`;
+  if (config.max && name.length > config.max) return `Name can have a maximum length of ${config.max}.`;
+  if (!config.alpha && name.match(/[a-z]/i)) return `Name cannot contain letters.`;
+  if (!config.num && name.match(/[0-9]/)) return `Name cannot contain numbers.`;
+  if (!config.sym && name.match(/[^a-z0-9]/i)) return `Name cannot contain symbols.`;
+  return null;
+}
+
 const isNameValid = (name = '', config) => {
-  if (!config) return false;
-  if (config.min && name.length < config.min) return false;
-  if (config.max && name.length > config.max) return false;
-  if (!config.alpha && name.match(/[a-z]/i)) return false;
-  if (!config.num && name.match(/[0-9]/)) return false;
-  if (!config.sym && name.match(/[^a-z0-9]/i)) return false;
+  if (getNameError(name, config)) return false;
   return true;
 };
 
 export default {
   TYPES,
 
+  getNameError,
   getType,
   isNameValid
 };
