@@ -11,9 +11,12 @@ the crewmate names were saved, to be seeded into the initial Influence state on 
 bonuses, purchase order, spectral type, radius, and orbital elements were saved to support a Merkle-tree driven seed
 of the information on Starknet.
 
-Copies of both snapshots can ben found hosted on IPFS here:
-- Asteroids snapshot: https://influence.infura-ipfs.io/ipfs/QmeReEF7S8ECaS3VsiEPQrpyLYr71K9Pwv2hg1VED9gTvP
-- Crewmate snapshot: https://influence.infura-ipfs.io/ipfs/QmeUhfLNm12tshMpscTopWrTvDwuSPZDQYdSAHJeXD4Ky8
+Copies of both snapshots and the asteroid Merkle tree are preserved on IPFS here:
+- Asteroids snapshot: https://influence.infura-ipfs.io/ipfs/QmXHV29r6KeqVMLVDnbru44hRLQGi46qnSCqU53BRtJkfG
+- Asteroids Merkle Tree: https://influence.infura-ipfs.io/ipfs/QmVS9yNQWMumTJ6wJLrMetKxyiEysuKZaoGjaTMQJTmjty
+- Crewmate snapshot: https://influence.infura-ipfs.io/ipfs/QmPjtFx2b8gx4kBEX3xZmCafmyWdfDj8UkNqfQGmFvtg4U
+
+A utility is also available at `utils/generateAsteroidMerkle.js` to generate the Merkle tree from the snapshot.
 
 ## Contract ABIs
 Smart contract ABIs can be included with `import { starknetContracts, ethereumContracts } from '@influenceth/sdk'` and utilized with Starknetjs, Ethers, Web3js.

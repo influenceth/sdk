@@ -22,6 +22,7 @@ const SCANNING_STATUSES = {
   RESOURCE_SCANNING: 3,
   RESOURCE_SCANNED: 4,
 };
+
 const SCANNING_TIME = 3600; // seconds
 const SIZES = ['Small', 'Medium', 'Large', 'Huge'];
 const TOTAL_ASTEROIDS = 250000;
@@ -39,9 +40,11 @@ const SPECTRAL_IDS = {
   M_TYPE: 10,
   I_TYPE: 11
 };
+
 const SPECTRAL_TYPES = {
   [SPECTRAL_IDS.C_TYPE]: {
     name: 'C',
+    density: 1.4,
     resources: [
       Product.IDS.WATER,
       Product.IDS.CARBON_DIOXIDE,
@@ -54,6 +57,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.CM_TYPE]: {
     name: 'Cm',
+    density: 3.35,
     resources: [
       Product.IDS.WATER,
       Product.IDS.CARBON_DIOXIDE,
@@ -71,6 +75,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.CI_TYPE]: {
     name: 'Ci',
+    density: 1.6,
     resources: [
       Product.IDS.WATER,
       Product.IDS.HYDROGEN,
@@ -87,6 +92,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.CS_TYPE]: {
     name: 'Cs',
+    density: 2.05,
     resources: [
       Product.IDS.WATER,
       Product.IDS.CARBON_DIOXIDE,
@@ -105,6 +111,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.CMS_TYPE]: {
     name: 'Cms',
+    density: 3.13333333333333333333333333,
     resources: [
       Product.IDS.WATER,
       Product.IDS.CARBON_DIOXIDE,
@@ -128,6 +135,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.CIS_TYPE]: {
     name: 'Cis',
+    density: 1.66666666666666666666666667,
     resources: [
       Product.IDS.WATER,
       Product.IDS.HYDROGEN,
@@ -150,6 +158,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.S_TYPE]: {
     name: 'S',
+    density: 2.7,
     resources: [
       Product.IDS.FELDSPAR,
       Product.IDS.OLIVINE,
@@ -161,6 +170,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.SM_TYPE]: {
     name: 'Sm',
+    density: 4,
     resources: [
       Product.IDS.FELDSPAR,
       Product.IDS.OLIVINE,
@@ -177,6 +187,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.SI_TYPE]: {
     name: 'Si',
+    density: 1.8,
     resources: [
       Product.IDS.WATER,
       Product.IDS.HYDROGEN,
@@ -196,6 +207,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.M_TYPE]: {
     name: 'M',
+    density: 5.3,
     resources: [
       Product.IDS.RHABDITE,
       Product.IDS.GRAPHITE,
@@ -206,6 +218,7 @@ const SPECTRAL_TYPES = {
   },
   [SPECTRAL_IDS.I_TYPE]: {
     name: 'I',
+    density: 0.9,
     resources: [
       Product.IDS.WATER,
       Product.IDS.HYDROGEN,
@@ -558,11 +571,23 @@ const getLotPosition = (asteroidId, lotId, numLots = 0) => {
 
 /**
  * @param lotTally surface area in km (floored)
- * @returns 
+ * @returns
  */
 const getLotRegionTally = (lotTally = 0) => {
   return Math.min(MAX_LOT_REGIONS, Math.max(Math.ceil(lotTally / 100), 100));
 };
+
+/**
+ * Calculates the mass of the asteroid in tonnes
+ * @param spectralType See SPECTRAL_TYPES
+ * @param radius in meters
+ * @returns Mass in tonnes
+ */
+const getMass = (spectralType, radius) => {
+  const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
+  const volume = 4 / 3 * Math.PI * Math.pow(radius / 1000, 3); // km3
+  return density * volume;
+}
 
 /**
  * Calculates the region containing the specified position
@@ -604,7 +629,7 @@ const getRegionsOfLotPositions = (flatPositions, regionTally) => {
  * @param centerLot (int) The lot id to search around
  * @param lotTally (int) The number of regions on the asteroid
  * @param findTally (int) The number of regions on the asteroid
- * @returns 
+ * @returns
  */
 const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   const returnAllPoints = !findTally; // if no findTally attached, return all (sorted)
@@ -727,7 +752,7 @@ export default {
   SPECTRAL_IDS,
   SPECTRAL_TYPES,
   TOTAL_ASTEROIDS,
-  
+
   getAbundanceAtLot,
   getAbundanceAtPosition,
   getAbundanceMapSettings,
@@ -739,6 +764,7 @@ export default {
   getLotPosition,
   getLotRegionTally,
   getLotTravelTime,
+  getMass,
   getRadius,
   getRarity,
   getRegionsOfLotPositions,
