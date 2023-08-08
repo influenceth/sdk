@@ -1,4 +1,4 @@
-import Nameable from './nameable.js';
+import Name from './name.js';
 import Product from './product.js';
 
 const IDS = {
@@ -110,5 +110,5 @@ export default {
 
   getConstructionType,
   getType,
-  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Ship),
+  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Ship),
 };

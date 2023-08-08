@@ -12,9 +12,10 @@ import Exchange from './lib/exchange.js';
 import Extractor from './lib/extractor.js';
 import Inventory from './lib/inventory.js';
 import Location from './lib/location.js';
-import Nameable from './lib/nameable.js';
+import Name from './lib/name.js';
 import Order from './lib/order.js';
 import Process from './lib/process.js';
+import Processor from './lib/processor.js';
 import Product from './lib/product.js';
 import Ship from './lib/ship.js';
 import Station from './lib/station.js';
@@ -32,7 +33,7 @@ import starknetContracts from './contracts/starknet_abis.json' assert { type: 'j
 export { AdalianOrbit, Address, Merkle, Simplex, Time };
 
 // Game asset libs
-export { Assets, Asteroid, Building, Crew, Crewmate, Deposit, Dock, DryDock, Exchange, Extractor, Inventory, Location, Nameable, Order, Process, Product, Ship, Station };
+export { Assets, Asteroid, Building, Crew, Crewmate, Deposit, Dock, DryDock, Exchange, Extractor, Inventory, Location, Name, Order, Process, Processor, Product, Ship, Station };
 
 // Contract ABIs
 export { ethereumContracts, starknetContracts };

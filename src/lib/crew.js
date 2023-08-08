@@ -1,5 +1,5 @@
 import Crewmate from './crewmate.js';
-import Nameable from './nameable.js';
+import Name from './name.js';
 
 export const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
 
@@ -55,5 +55,5 @@ export default {
   CREWMATE_STACKING_BONUS_EFFICIENCY,
   
   getAbilityBonus,
-  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.CREW),
+  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.CREW),
 };

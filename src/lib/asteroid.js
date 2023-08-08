@@ -4,7 +4,7 @@ import { multiply, dot } from 'mathjs';
 import procedural from '../utils/procedural.js';
 import { recursiveSNoise } from '../utils/simplex.js';
 import { SIMPLEX_POLY_FIT } from '../constants.js';
-import Nameable from './nameable.js';
+import Name from './name.js';
 import Product from './product.js';
 
 /**
@@ -335,8 +335,8 @@ const normalizeVector = (v3) => {
   return v3.map((x) => x * mult);
 };
 
-const fromEntity = {};
-const fromComponent = {};
+const Entity = {};
+const Component = {};
 
 /**
  * Returns the (spherical) asteroid radius in km
@@ -399,8 +399,8 @@ const getBonuses = (packed, spectralType) => {
 
   return bonuses;
 };
-fromComponent.getBonuses = (celestial) => getBonuses(celestial.bonuses, celestial.spectralType);
-fromEntity.getBonuses = (asteroid) => fromComponent.getBonuses(asteroid.Celestial);
+Component.getBonuses = (celestial) => getBonuses(celestial.bonuses, celestial.spectralType);
+Entity.getBonuses = (asteroid) => Component.getBonuses(asteroid.Celestial);
 
 /**
  * Gets the bonus for a specific resource
@@ -423,14 +423,15 @@ const getBonusByResource = (bonuses, resourceId) => {
 
   return { bonuses: matches, totalBonus: multiplier };
 };
-fromComponent.getBonusByResource = (celestial, resourceId) => getBonusByResource(getBonuses(celestial), resourceId);
-fromEntity.getBonusByResource = (asteroid, resourceId) => fromComponent.getBonusByResource(asteroid.Celestial, resourceId);
+Component.getBonusByResource = (celestial, resourceId) => getBonusByResource(getBonuses(celestial), resourceId);
+Entity.getBonusByResource = (asteroid, resourceId) => Component.getBonusByResource(asteroid.Celestial, resourceId);
 
 /**
  * Returns the rarity level of the asteroid based on the set of scanned bonuses
  * @param bonuses Array of bonus objects
  */
 const getRarity = (bonuses = []) => {
+  
   let rarity = 0;
 
   for (const b of bonuses) {
@@ -441,8 +442,8 @@ const getRarity = (bonuses = []) => {
   if (rarity <= 5) return RARITIES[4];
   return RARITIES[5];
 };
-fromComponent.getRarity = (celestial) => getRarity(getBonuses(celestial));
-fromEntity.getRarity = (asteroid) => fromComponent.getRarity(asteroid.Celestial);
+Component.getRarity = (celestial) => getRarity(getBonuses(celestial));
+Entity.getRarity = (asteroid) => Component.getRarity(asteroid.Celestial);
 
 /**
  * Calculates the mass of the asteroid in tonnes
@@ -454,10 +455,9 @@ const getMass = (spectralType, radius) => {
   const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
   const volume = 4 / 3 * Math.PI * Math.pow(radius / 1000, 3); // km3
   return density * volume;
-};
-
-fromComponent.getMass = (celestial) => getMass(celestial.celestialType, celestial.radius);
-fromEntity.getMass = (asteroid) => fromComponent.getMass(asteroid.Celestial);
+}
+Component.getMass = (celestial) => getMass(celestial.celestialType, celestial.radius);
+Entity.getMass = (asteroid) => Component.getMass(asteroid.Celestial);
 
 /**
  * Returns the size string based on the asteroid radius
@@ -469,8 +469,8 @@ const getSize = (radius) => {
   if (radius <= 50000) return SIZES[2];
   return SIZES[3];
 };
-fromComponent.getSize = (celestial) => getSize(celestial.radius);
-fromEntity.getSize = (asteroid) => fromComponent.getSize(asteroid.Celestial);
+Component.getSize = (celestial) => getSize(celestial.radius);
+Entity.getSize = (asteroid) => Component.getSize(asteroid.Celestial);
 
 /**
  * @param spectralTypeId The spectral type identifier (1-11)
@@ -479,8 +479,8 @@ fromEntity.getSize = (asteroid) => fromComponent.getSize(asteroid.Celestial);
 const getSpectralType = (spectralTypeId) => {
   return SPECTRAL_TYPES[spectralTypeId]?.name || '';
 };
-fromComponent.getSpectralType = (celestial) => getSpectralType(celestial.celestialType);
-fromEntity.getSpectralType = (asteroid) => fromComponent.getSpectralType(asteroid.Celestial);
+Component.getSpectralType = (celestial) => getSpectralType(celestial.celestialType);
+Entity.getSpectralType = (asteroid) => Component.getSpectralType(asteroid.Celestial);
 
 /**
  * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
@@ -489,8 +489,8 @@ fromEntity.getSpectralType = (asteroid) => fromComponent.getSpectralType(asteroi
 const getScanned = (packed) => {
   return ((packed & (1 << 0)) > 0);
 };
-fromComponent.getScanned = (celestial) => getScanned(celestial.bonuses);
-fromEntity.getScanned = (asteroid) => fromComponent.getScanned(asteroid.Celestial);
+Component.getScanned = (celestial) => getScanned(celestial.bonuses);
+Entity.getScanned = (asteroid) => Component.getScanned(asteroid.Celestial);
 
 /**
  * Returns the resource abundance at a specific lot
@@ -796,8 +796,8 @@ export default {
   getSpectralType,
   getSurfaceArea,
   getUnpackedAsteroidDetails,
-  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Asteroid),
+  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Asteroid),
 
-  fromEntity,
-  fromComponent
+  Entity,
+  Component
 };
