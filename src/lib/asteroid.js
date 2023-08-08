@@ -7,7 +7,6 @@ import { SIMPLEX_POLY_FIT } from '../constants.js';
 import Nameable from './nameable.js';
 import Product from './product.js';
 
-
 /**
  * Constants
  */
@@ -20,7 +19,7 @@ const SCANNING_STATUSES = {
   SURFACE_SCANNING: 1,
   SURFACE_SCANNED: 2,
   RESOURCE_SCANNING: 3,
-  RESOURCE_SCANNED: 4,
+  RESOURCE_SCANNED: 4
 };
 
 const SCANNING_TIME = 3600; // seconds
@@ -252,7 +251,7 @@ const BONUS_IDS = {
   ORGANIC_2: 11,
   ORGANIC_3: 12,
   RARE_EARTH: 13,
-  FISSILE: 14,
+  FISSILE: 14
 };
 const BONUS_MAPS = [
   {
@@ -329,10 +328,10 @@ const getAngleDiff = (angle1, angle2) => {
   const a2 = angle2 >= 0 ? angle2 : (angle2 + TWO_PI);
   const diff = Math.abs(a1 - a2) % TWO_PI;
   return diff > Math.PI ? (TWO_PI - diff) : diff;
-}
+};
 
 const normalizeVector = (v3) => {
-  const mult = 1 / (Math.sqrt( v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2] ) || 1);
+  const mult = 1 / (Math.sqrt(v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2]) || 1);
   return v3.map((x) => x * mult);
 };
 
@@ -344,7 +343,7 @@ const fromComponent = {};
  * @param asteroidId The asteroid identifier
  */
 const getRadius = (asteroidId) => {
-  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475)
+  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475);
 };
 
 /**
@@ -410,11 +409,11 @@ fromEntity.getBonuses = (asteroid) => fromComponent.getBonuses(asteroid.Celestia
  */
 const getBonusByResource = (bonuses, resourceId) => {
   let multiplier = 1;
-  let matches = [];
+  const matches = [];
 
   bonuses.forEach(bonus => {
     const found = BONUS_MAPS.find(v => {
-      return v.base.type === bonus.type && v.resourceIds.includes(resourceId)
+      return v.base.type === bonus.type && v.resourceIds.includes(resourceId);
     });
     if (found) {
       multiplier *= (100 + bonus.modifier) / 100;
@@ -455,7 +454,8 @@ const getMass = (spectralType, radius) => {
   const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
   const volume = 4 / 3 * Math.PI * Math.pow(radius / 1000, 3); // km3
   return density * volume;
-}
+};
+
 fromComponent.getMass = (celestial) => getMass(celestial.celestialType, celestial.radius);
 fromEntity.getMass = (asteroid) => fromComponent.getMass(asteroid.Celestial);
 
@@ -553,12 +553,12 @@ const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance
   const ySeed = hash.pedersen([BigInt(resourceSeed), 2n]);
   const zSeed = hash.pedersen([BigInt(resourceSeed), 3n]);
 
-  let lowShift = -5;
-  let highShift = 5;
+  const lowShift = -5;
+  const highShift = 5;
 
-  let xShift = procedural.realBetween(xSeed, lowShift, highShift);
-  let yShift = procedural.realBetween(ySeed, lowShift, highShift);
-  let zShift = procedural.realBetween(zSeed, lowShift, highShift);
+  const xShift = procedural.realBetween(xSeed, lowShift, highShift);
+  const yShift = procedural.realBetween(ySeed, lowShift, highShift);
+  const zShift = procedural.realBetween(zSeed, lowShift, highShift);
 
   return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
 };
@@ -680,7 +680,7 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   }
 
   const points = [];
-  for(let index = minIndex; index < maxIndex; index++) {
+  for (let index = minIndex; index < maxIndex; index++) {
     const theta = PHI * index;
     if (!returnAllPoints) {
       if (getAngleDiff(centerTheta, theta) > thetaTolerance) {
@@ -697,11 +697,11 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
       x,
       y,
       z,
-      index + 1,  // nominalIndex
-      Math.pow(center[0] - x, 2) + Math.pow(center[1] - y, 2) + Math.pow(center[2] - z, 2),
+      index + 1, // nominalIndex
+      Math.pow(center[0] - x, 2) + Math.pow(center[1] - y, 2) + Math.pow(center[2] - z, 2)
     ]);
   }
-  //console.log(`${maxIndex - minIndex} points in range; ${points.length} checked`);
+  // console.log(`${maxIndex - minIndex} points in range; ${points.length} checked`);
 
   return points
     .sort((a, b) => a[4] < b[4] ? -1 : 1) // sort by distance
@@ -754,6 +754,14 @@ const getUnpackedAsteroidDetails = (packed) => {
   return unpacked;
 };
 
+const getBoostFromPurchaseOrder = function (purchaseOrder) {
+  if (!purchaseOrder) return 1;
+  if (purchaseOrder >= 1 && purchaseOrder <= 100) return 4;
+  if (purchaseOrder >= 101 && purchaseOrder <= 1100) return 3;
+  if (purchaseOrder >= 1101 && purchaseOrder <= 11100) return 2;
+  return 1;
+};
+
 export default {
   BONUS_IDS,
   FREE_TRANSPORT_RADIUS,
@@ -773,6 +781,7 @@ export default {
   getBonus,
   getBonusByResource,
   getBonuses,
+  getBoostFromPurchaseOrder,
   getClosestLots,
   getLotDistance,
   getLotPosition,
