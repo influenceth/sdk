@@ -321,6 +321,9 @@ const OUTFITS = {
   41: { name: 'Scientist Recruit - Variant' }
 };
 
+const fromEntity = {};
+const fromComponent = {};
+
 /**
  * @param {integer} abilityId
  * @returns Details for a given ability
@@ -328,70 +331,130 @@ const OUTFITS = {
 const getAbility = (abilityId) => ABILITY_TYPES[abilityId];
 
 /**
- * @param bonusItemId The crewmate's bonus item identifier
- * @returns Details object for bonus item including a 'name' attribute
- */
-const getBonusItem = (bonusItemId) => BONUS_ITEMS[bonusItemId];
-
-/**
  * @param collectionId The crewmate's collection identifier
  * @returns Details object for collection including a 'name' attribute
  */
 const getCollection = (collectionId) => COLLECTIONS[collectionId];
+fromComponent.getCollection = (crewmate) => getCollection(crewmate.coll);
+fromEntity.getCollection = (entity) => fromComponent.getCollection(entity.Crewmate);
 
 /**
  * @param classId The crewmate's class identifier
  * @returns Details object for class including a 'name' attribute
  */
 const getClass = (classId) => CLASSES[classId];
-
-/**
- * @param facialFeatureId The crewmate's facialFeature identifier
- * @returns Details object for facialFeature including a 'name' attribute
- */
-const getFacialFeature = (facialFeatureId) => FACIAL_FEATURES[facialFeatureId];
-
-/**
- * @param genderId The crewmate's gender identifier
- * @returns Details object for gender including a 'name' attribute
- */
-const getGender = (genderId) => GENDERS[genderId];
-
-/**
- * @param hairColorId The crewmate's hairColor identifier
- * @returns Details object for hairColor including a 'name' attribute
- */
-const getHairColor = (hairColorId) => HAIR_COLORS[hairColorId];
-
-/**
- * @param hairId The crewmate's hair identifier
- * @returns Details object for hair including a 'name' attribute
- */
-const getHairStyle = (hairId) => HAIR_STYLES[hairId];
-
-/**
- * @param headPieceId The crewmate's headPiece identifier
- * @returns Details object for headPiece including a 'name' attribute
- */
-const getHeadPiece = (headPieceId) => HEAD_PIECES[headPieceId];
-
-/**
- * @param outfitId The crewmate's outfit identifier
- * @returns Details object for outfit including a 'name' attribute
- */
-const getOutfit = (outfitId) => OUTFITS[outfitId];
+fromComponent.getClass = (crewmate) => getClass(crewmate.class);
+fromEntity.getClass = (entity) => fromComponent.getClass(entity.Crewmate);
 
 /**
  * @param titleId The crewmate's title identifier
  * @returns Details object for title including a 'name' attribute
  */
  const getTitle = (titleId) => TITLES[titleId];
+ fromComponent.getTitle = (crewmate) => getTitle(crewmate.title);
+ fromEntity.getTitle = (entity) => fromComponent.getTitle(entity.Crewmate);
 
 /**
  * @param traitId The crewmate's trait identifier
  * @returns Details object for trait including a 'name' attribute
  */
 const getTrait = (traitId) => TRAITS[traitId];
+
+/**
+ * @param crewmate The crewmate component object
+ * @returns Array of trait ids
+ */
+const getCombinedTraits = (crewmate) => [...(crewmate.impactful || []), ...(crewmate.cosmetic || [])].sort();
+fromComponent.getCombinedTraits = getCombinedTraits;
+fromEntity.getCombinedTraits = (entity) => fromComponent.getCombinedTraits(entity.Crewmate);
+
+/**
+ * @param appearance The packed crewmate appearance
+ * @returns An unpacked object of appearance attributes
+ */
+const unpackAppearance = (appearance) => {
+  let local = appearance + 0;
+  return [
+    ['sex', 2],
+    ['body', 4],
+    ['facialFeature', 4],
+    ['hair', 4],
+    ['hairColor', 4],
+    ['outfit', 4],
+    ['headPiece', 4],
+    ['bonusItem', 3],
+  ].reduce((acc, [keyName, maskLength]) => {
+    acc[keyName] = local & (2 ** maskLength - 1);
+    local >>= maskLength;
+    return acc;
+  }, {});
+};
+fromComponent.unpackAppearance = (crewmate) => unpackAppearance(crewmate.appearance);
+fromEntity.unpackAppearance = (entity) => fromComponent.unpackAppearance(entity.Crewmate);
+
+/**
+ * @param bodyId The crewmate's body identifier
+ * @returns Details object for body including a 'name' attribute
+ */
+const getBody = (bodyId) => BONUS_ITEMS[bodyId];
+fromComponent.getBody = (crewmate) => getBonusItem(unpackAppearance(crewmate.appearance).body);
+fromEntity.getBody = (entity) => fromComponent.getBonusItem(entity.Crewmate);
+
+/**
+ * @param bonusItemId The crewmate's bonus item identifier
+ * @returns Details object for bonus item including a 'name' attribute
+ */
+const getBonusItem = (bonusItemId) => BONUS_ITEMS[bonusItemId];
+fromComponent.getBonusItem = (crewmate) => getBonusItem(unpackAppearance(crewmate.appearance).bonusItem);
+fromEntity.getBonusItem = (entity) => fromComponent.getBonusItem(entity.Crewmate);
+
+/**
+ * @param facialFeatureId The crewmate's facialFeature identifier
+ * @returns Details object for facialFeature including a 'name' attribute
+ */
+const getFacialFeature = (facialFeatureId) => FACIAL_FEATURES[facialFeatureId];
+fromComponent.getFacialFeature = (crewmate) => getFacialFeature(unpackAppearance(crewmate.appearance).facialFeature);
+fromEntity.getFacialFeature = (entity) => fromComponent.getFacialFeature(entity.Crewmate);
+
+/**
+ * @param genderId The crewmate's gender identifier
+ * @returns Details object for gender including a 'name' attribute
+ */
+const getGender = (genderId) => GENDERS[genderId];
+fromComponent.getGender = (crewmate) => getGender(unpackAppearance(crewmate.appearance).sex);
+fromEntity.getGender = (entity) => fromComponent.getGender(entity.Crewmate);
+
+/**
+ * @param hairColorId The crewmate's hairColor identifier
+ * @returns Details object for hairColor including a 'name' attribute
+ */
+const getHairColor = (hairColorId) => HAIR_COLORS[hairColorId];
+fromComponent.getHairColor = (crewmate) => getHairColor(unpackAppearance(crewmate.appearance).hairColor);
+fromEntity.getHairColor = (entity) => fromComponent.getHairColor(entity.Crewmate);
+
+/**
+ * @param hairId The crewmate's hair identifier
+ * @returns Details object for hair including a 'name' attribute
+ */
+const getHairStyle = (hairId) => HAIR_STYLES[hairId];
+fromComponent.getHairStyle = (crewmate) => getHairStyle(unpackAppearance(crewmate.appearance).hair);
+fromEntity.getHairStyle = (entity) => fromComponent.getHairStyle(entity.Crewmate);
+
+/**
+ * @param headPieceId The crewmate's headPiece identifier
+ * @returns Details object for headPiece including a 'name' attribute
+ */
+const getHeadPiece = (headPieceId) => HEAD_PIECES[headPieceId];
+fromComponent.getHeadPiece = (crewmate) => getHeadPiece(unpackAppearance(crewmate.appearance).headPiece);
+fromEntity.getHeadPiece = (entity) => fromComponent.getHeadPiece(entity.Crewmate);
+
+/**
+ * @param outfitId The crewmate's outfit identifier
+ * @returns Details object for outfit including a 'name' attribute
+ */
+const getOutfit = (outfitId) => OUTFITS[outfitId];
+fromComponent.getOutfit = (crewmate) => getOutfit(unpackAppearance(crewmate.appearance).outfit);
+fromEntity.getOutfit = (entity) => fromComponent.getOutfit(entity.Crewmate);
 
 export default {
   ABILITY_IDS,
@@ -411,8 +474,10 @@ export default {
   TRAIT_TYPES,
 
   getAbility,
+  getBody,
   getBonusItem,
   getCollection,
+  getCombinedTraits,
   getClass,
   getFacialFeature,
   getGender,
@@ -423,4 +488,7 @@ export default {
   getTitle,
   getTrait,
   isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Crewmate),
+
+  fromEntity,
+  fromComponent
 };

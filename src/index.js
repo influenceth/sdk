@@ -11,6 +11,7 @@ import DryDock from './lib/dryDock.js';
 import Exchange from './lib/exchange.js';
 import Extractor from './lib/extractor.js';
 import Inventory from './lib/inventory.js';
+import Location from './lib/location.js';
 import Nameable from './lib/nameable.js';
 import Order from './lib/order.js';
 import Process from './lib/process.js';
@@ -31,7 +32,7 @@ import starknetContracts from './contracts/starknet_abis.json' assert { type: 'j
 export { AdalianOrbit, Address, Merkle, Simplex, Time };
 
 // Game asset libs
-export { Assets, Asteroid, Building, Crew, Crewmate, Deposit, Dock, DryDock, Exchange, Extractor, Inventory, Nameable, Order, Process, Product, Ship, Station };
+export { Assets, Asteroid, Building, Crew, Crewmate, Deposit, Dock, DryDock, Exchange, Extractor, Inventory, Location, Nameable, Order, Process, Product, Ship, Station };
 
 // Contract ABIs
 export { ethereumContracts, starknetContracts };

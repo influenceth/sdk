@@ -336,6 +336,8 @@ const normalizeVector = (v3) => {
   return v3.map((x) => x * mult);
 };
 
+const fromEntity = {};
+const fromComponent = {};
 
 /**
  * Returns the (spherical) asteroid radius in km
@@ -398,6 +400,8 @@ const getBonuses = (packed, spectralType) => {
 
   return bonuses;
 };
+fromComponent.getBonuses = (celestial) => getBonuses(celestial.bonuses, celestial.spectralType);
+fromEntity.getBonuses = (asteroid) => fromComponent.getBonuses(asteroid.Celestial);
 
 /**
  * Gets the bonus for a specific resource
@@ -420,12 +424,14 @@ const getBonusByResource = (bonuses, resourceId) => {
 
   return { bonuses: matches, totalBonus: multiplier };
 };
+fromComponent.getBonusByResource = (celestial, resourceId) => getBonusByResource(getBonuses(celestial), resourceId);
+fromEntity.getBonusByResource = (asteroid, resourceId) => fromComponent.getBonusByResource(asteroid.Celestial, resourceId);
 
 /**
  * Returns the rarity level of the asteroid based on the set of scanned bonuses
  * @param bonuses Array of bonus objects
  */
-const getRarity = (bonuses) => {
+const getRarity = (bonuses = []) => {
   let rarity = 0;
 
   for (const b of bonuses) {
@@ -436,6 +442,22 @@ const getRarity = (bonuses) => {
   if (rarity <= 5) return RARITIES[4];
   return RARITIES[5];
 };
+fromComponent.getRarity = (celestial) => getRarity(getBonuses(celestial));
+fromEntity.getRarity = (asteroid) => fromComponent.getRarity(asteroid.Celestial);
+
+/**
+ * Calculates the mass of the asteroid in tonnes
+ * @param spectralType See SPECTRAL_TYPES
+ * @param radius in meters
+ * @returns Mass in tonnes
+ */
+const getMass = (spectralType, radius) => {
+  const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
+  const volume = 4 / 3 * Math.PI * Math.pow(radius / 1000, 3); // km3
+  return density * volume;
+}
+fromComponent.getMass = (celestial) => getMass(celestial.celestialType, celestial.radius);
+fromEntity.getMass = (asteroid) => fromComponent.getMass(asteroid.Celestial);
 
 /**
  * Returns the size string based on the asteroid radius
@@ -447,6 +469,8 @@ const getSize = (radius) => {
   if (radius <= 50000) return SIZES[2];
   return SIZES[3];
 };
+fromComponent.getSize = (celestial) => getSize(celestial.radius);
+fromEntity.getSize = (asteroid) => fromComponent.getSize(asteroid.Celestial);
 
 /**
  * @param spectralTypeId The spectral type identifier (1-11)
@@ -455,6 +479,8 @@ const getSize = (radius) => {
 const getSpectralType = (spectralTypeId) => {
   return SPECTRAL_TYPES[spectralTypeId]?.name || '';
 };
+fromComponent.getSpectralType = (celestial) => getSpectralType(celestial.celestialType);
+fromEntity.getSpectralType = (asteroid) => fromComponent.getSpectralType(asteroid.Celestial);
 
 /**
  * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
@@ -463,6 +489,8 @@ const getSpectralType = (spectralTypeId) => {
 const getScanned = (packed) => {
   return ((packed & (1 << 0)) > 0);
 };
+fromComponent.getScanned = (celestial) => getScanned(celestial.bonuses);
+fromEntity.getScanned = (asteroid) => fromComponent.getScanned(asteroid.Celestial);
 
 /**
  * Returns the resource abundance at a specific lot
@@ -535,7 +563,6 @@ const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance
   return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
 };
 
-
 /**
  * Calculates the distance (along surface of a sphere) between two lots on an asteroid
  * @param {integer} asteroidId The asteroid identifier
@@ -576,18 +603,6 @@ const getLotPosition = (asteroidId, lotId, numLots = 0) => {
 const getLotRegionTally = (lotTally = 0) => {
   return Math.min(MAX_LOT_REGIONS, Math.max(Math.ceil(lotTally / 100), 100));
 };
-
-/**
- * Calculates the mass of the asteroid in tonnes
- * @param spectralType See SPECTRAL_TYPES
- * @param radius in meters
- * @returns Mass in tonnes
- */
-const getMass = (spectralType, radius) => {
-  const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
-  const volume = 4 / 3 * Math.PI * Math.pow(radius / 1000, 3); // km3
-  return density * volume;
-}
 
 /**
  * Calculates the region containing the specified position
@@ -709,7 +724,6 @@ const getLotTravelTime = (asteroidId, originLotId, destLotId, totalBonus = 1) =>
   return time;
 };
 
-
 /**
  * Unpacks a packed set of static asteroid data including orbital elements and spectral type
  * @param {Uint32Array} packed 32 bit array of packed asteroid details (3 elements per asteroid)
@@ -774,4 +788,7 @@ export default {
   getSurfaceArea,
   getUnpackedAsteroidDetails,
   isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Asteroid),
+
+  fromEntity,
+  fromComponent
 };
