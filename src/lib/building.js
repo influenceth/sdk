@@ -261,5 +261,5 @@ export default {
   getConstructionTime,
   getConstructionType,
   getType,
-  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Building),
+  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Building),
 }

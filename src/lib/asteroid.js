@@ -4,9 +4,8 @@ import { multiply, dot } from 'mathjs';
 import procedural from '../utils/procedural.js';
 import { recursiveSNoise } from '../utils/simplex.js';
 import { SIMPLEX_POLY_FIT } from '../constants.js';
-import Nameable from './nameable.js';
+import Name from './name.js';
 import Product from './product.js';
-
 
 /**
  * Constants
@@ -20,7 +19,7 @@ const SCANNING_STATUSES = {
   SURFACE_SCANNING: 1,
   SURFACE_SCANNED: 2,
   RESOURCE_SCANNING: 3,
-  RESOURCE_SCANNED: 4,
+  RESOURCE_SCANNED: 4
 };
 
 const SCANNING_TIME = 3600; // seconds
@@ -252,7 +251,7 @@ const BONUS_IDS = {
   ORGANIC_2: 11,
   ORGANIC_3: 12,
   RARE_EARTH: 13,
-  FISSILE: 14,
+  FISSILE: 14
 };
 const BONUS_MAPS = [
   {
@@ -329,20 +328,22 @@ const getAngleDiff = (angle1, angle2) => {
   const a2 = angle2 >= 0 ? angle2 : (angle2 + TWO_PI);
   const diff = Math.abs(a1 - a2) % TWO_PI;
   return diff > Math.PI ? (TWO_PI - diff) : diff;
-}
+};
 
 const normalizeVector = (v3) => {
-  const mult = 1 / (Math.sqrt( v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2] ) || 1);
+  const mult = 1 / (Math.sqrt(v3[0] * v3[0] + v3[1] * v3[1] + v3[2] * v3[2]) || 1);
   return v3.map((x) => x * mult);
 };
 
+const Entity = {};
+const Component = {};
 
 /**
  * Returns the (spherical) asteroid radius in km
  * @param asteroidId The asteroid identifier
  */
 const getRadius = (asteroidId) => {
-  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475)
+  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475);
 };
 
 /**
@@ -398,6 +399,8 @@ const getBonuses = (packed, spectralType) => {
 
   return bonuses;
 };
+Component.getBonuses = (celestial) => getBonuses(celestial.bonuses, celestial.spectralType);
+Entity.getBonuses = (asteroid) => Component.getBonuses(asteroid.Celestial);
 
 /**
  * Gets the bonus for a specific resource
@@ -406,11 +409,11 @@ const getBonuses = (packed, spectralType) => {
  */
 const getBonusByResource = (bonuses, resourceId) => {
   let multiplier = 1;
-  let matches = [];
+  const matches = [];
 
   bonuses.forEach(bonus => {
     const found = BONUS_MAPS.find(v => {
-      return v.base.type === bonus.type && v.resourceIds.includes(resourceId)
+      return v.base.type === bonus.type && v.resourceIds.includes(resourceId);
     });
     if (found) {
       multiplier *= (100 + bonus.modifier) / 100;
@@ -420,12 +423,15 @@ const getBonusByResource = (bonuses, resourceId) => {
 
   return { bonuses: matches, totalBonus: multiplier };
 };
+Component.getBonusByResource = (celestial, resourceId) => getBonusByResource(getBonuses(celestial), resourceId);
+Entity.getBonusByResource = (asteroid, resourceId) => Component.getBonusByResource(asteroid.Celestial, resourceId);
 
 /**
  * Returns the rarity level of the asteroid based on the set of scanned bonuses
  * @param bonuses Array of bonus objects
  */
-const getRarity = (bonuses) => {
+const getRarity = (bonuses = []) => {
+  
   let rarity = 0;
 
   for (const b of bonuses) {
@@ -436,6 +442,22 @@ const getRarity = (bonuses) => {
   if (rarity <= 5) return RARITIES[4];
   return RARITIES[5];
 };
+Component.getRarity = (celestial) => getRarity(getBonuses(celestial));
+Entity.getRarity = (asteroid) => Component.getRarity(asteroid.Celestial);
+
+/**
+ * Calculates the mass of the asteroid in tonnes
+ * @param spectralType See SPECTRAL_TYPES
+ * @param radius in meters
+ * @returns Mass in tonnes
+ */
+const getMass = (spectralType, radius) => {
+  const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
+  const volume = 4 / 3 * Math.PI * Math.pow(radius / 1000, 3); // km3
+  return density * volume;
+}
+Component.getMass = (celestial) => getMass(celestial.celestialType, celestial.radius);
+Entity.getMass = (asteroid) => Component.getMass(asteroid.Celestial);
 
 /**
  * Returns the size string based on the asteroid radius
@@ -447,6 +469,8 @@ const getSize = (radius) => {
   if (radius <= 50000) return SIZES[2];
   return SIZES[3];
 };
+Component.getSize = (celestial) => getSize(celestial.radius);
+Entity.getSize = (asteroid) => Component.getSize(asteroid.Celestial);
 
 /**
  * @param spectralTypeId The spectral type identifier (1-11)
@@ -455,6 +479,8 @@ const getSize = (radius) => {
 const getSpectralType = (spectralTypeId) => {
   return SPECTRAL_TYPES[spectralTypeId]?.name || '';
 };
+Component.getSpectralType = (celestial) => getSpectralType(celestial.celestialType);
+Entity.getSpectralType = (asteroid) => Component.getSpectralType(asteroid.Celestial);
 
 /**
  * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
@@ -463,6 +489,8 @@ const getSpectralType = (spectralTypeId) => {
 const getScanned = (packed) => {
   return ((packed & (1 << 0)) > 0);
 };
+Component.getScanned = (celestial) => getScanned(celestial.bonuses);
+Entity.getScanned = (asteroid) => Component.getScanned(asteroid.Celestial);
 
 /**
  * Returns the resource abundance at a specific lot
@@ -525,16 +553,15 @@ const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance
   const ySeed = hash.pedersen([BigInt(resourceSeed), 2n]);
   const zSeed = hash.pedersen([BigInt(resourceSeed), 3n]);
 
-  let lowShift = -5;
-  let highShift = 5;
+  const lowShift = -5;
+  const highShift = 5;
 
-  let xShift = procedural.realBetween(xSeed, lowShift, highShift);
-  let yShift = procedural.realBetween(ySeed, lowShift, highShift);
-  let zShift = procedural.realBetween(zSeed, lowShift, highShift);
+  const xShift = procedural.realBetween(xSeed, lowShift, highShift);
+  const yShift = procedural.realBetween(ySeed, lowShift, highShift);
+  const zShift = procedural.realBetween(zSeed, lowShift, highShift);
 
   return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
 };
-
 
 /**
  * Calculates the distance (along surface of a sphere) between two lots on an asteroid
@@ -576,18 +603,6 @@ const getLotPosition = (asteroidId, lotId, numLots = 0) => {
 const getLotRegionTally = (lotTally = 0) => {
   return Math.min(MAX_LOT_REGIONS, Math.max(Math.ceil(lotTally / 100), 100));
 };
-
-/**
- * Calculates the mass of the asteroid in tonnes
- * @param spectralType See SPECTRAL_TYPES
- * @param radius in meters
- * @returns Mass in tonnes
- */
-const getMass = (spectralType, radius) => {
-  const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
-  const volume = 4 / 3 * Math.PI * Math.pow(radius / 1000, 3); // km3
-  return density * volume;
-}
 
 /**
  * Calculates the region containing the specified position
@@ -665,7 +680,7 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
   }
 
   const points = [];
-  for(let index = minIndex; index < maxIndex; index++) {
+  for (let index = minIndex; index < maxIndex; index++) {
     const theta = PHI * index;
     if (!returnAllPoints) {
       if (getAngleDiff(centerTheta, theta) > thetaTolerance) {
@@ -682,11 +697,11 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
       x,
       y,
       z,
-      index + 1,  // nominalIndex
-      Math.pow(center[0] - x, 2) + Math.pow(center[1] - y, 2) + Math.pow(center[2] - z, 2),
+      index + 1, // nominalIndex
+      Math.pow(center[0] - x, 2) + Math.pow(center[1] - y, 2) + Math.pow(center[2] - z, 2)
     ]);
   }
-  //console.log(`${maxIndex - minIndex} points in range; ${points.length} checked`);
+  // console.log(`${maxIndex - minIndex} points in range; ${points.length} checked`);
 
   return points
     .sort((a, b) => a[4] < b[4] ? -1 : 1) // sort by distance
@@ -708,7 +723,6 @@ const getLotTravelTime = (asteroidId, originLotId, destLotId, totalBonus = 1) =>
   const time = distance <= FREE_TRANSPORT_RADIUS * totalBonus ? 0 : Math.ceil(distance * 60 / totalBonus);
   return time;
 };
-
 
 /**
  * Unpacks a packed set of static asteroid data including orbital elements and spectral type
@@ -740,6 +754,14 @@ const getUnpackedAsteroidDetails = (packed) => {
   return unpacked;
 };
 
+const getBoostFromPurchaseOrder = function (purchaseOrder) {
+  if (!purchaseOrder) return 1;
+  if (purchaseOrder >= 1 && purchaseOrder <= 100) return 4;
+  if (purchaseOrder >= 101 && purchaseOrder <= 1100) return 3;
+  if (purchaseOrder >= 1101 && purchaseOrder <= 11100) return 2;
+  return 1;
+};
+
 export default {
   BONUS_IDS,
   FREE_TRANSPORT_RADIUS,
@@ -759,6 +781,7 @@ export default {
   getBonus,
   getBonusByResource,
   getBonuses,
+  getBoostFromPurchaseOrder,
   getClosestLots,
   getLotDistance,
   getLotPosition,
@@ -773,5 +796,8 @@ export default {
   getSpectralType,
   getSurfaceArea,
   getUnpackedAsteroidDetails,
-  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Asteroid),
+  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Asteroid),
+
+  Entity,
+  Component
 };

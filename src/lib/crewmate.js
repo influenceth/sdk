@@ -1,4 +1,4 @@
-import Nameable from './nameable.js';
+import Name from './name.js';
 
 const ABILITY_IDS = {
   CORE_SAMPLE_SPEED: 1,
@@ -148,57 +148,62 @@ const TITLES = {
   66: { name: 'Adalian Prime Councilor' }
 };
 
+const TRAIT_TYPES = {
+  COSMETIC: 'cosmetic',
+  IMPACTFUL: 'impactful',
+};
+
 const TRAITS = {
-  1: { name: 'Drive: Survival', type: 'cosmetic', description: 'You need to live. Your primary drive is the survival of yourself, the people you know, and the species.' },
-  2: { name: 'Drive: Service', type: 'cosmetic', description: 'You need to fulfill your role. Your primary drive is to serve humanity for the greater good.' },
-  3: { name: 'Drive: Glory', type: 'cosmetic', description: 'You need to excel. Your primary drive is to be the best at whatever you do.' },
-  4: { name: 'Drive: Command', type: 'cosmetic', description: 'You need to be in control. Your primary drive is to lead others in what you know to be the right direction.' },
-  5: { name: 'Adventurous', type: 'cosmetic', description: 'You are bold, brave, and intrepid. You recognize that in order to move humanity forward, it is sometimes necessary to take that giant leap for mankind.' },
-  6: { name: 'Ambitious', type: 'cosmetic', description: 'You know what needs to be done, and you know that you are the one who can do it. You are driven to succeed, no matter the obstacles.' },
-  7: { name: 'Arrogant', type: 'cosmetic', description: 'Hubris may have been the downfall of lesser people, but you are steadfastly confident in your own ABILITY_TYPES. Let other people be led around by those stronger than themselves, you know what you are capable of.' },
-  8: { name: 'Cautious', type: 'cosmetic', description: 'Let others leap before they look. You will stay with what you know works, until there is some proof that another course is safer.' },
-  9: { name: 'Creative', type: 'cosmetic', description: 'You seek to bring new ideas to light. Your mind is constantly wandering to the question "what if..." You want to see if you can explain the "unexplainable".' },
-  10: { name: 'Curious', type: 'cosmetic', description: 'You are excited to open your mind and learn something new. The universe is full of the undiscovered just waiting to be discovered.' },
-  11: { name: 'Fierce', type: 'cosmetic', description: 'You are a forceful person who is drawn to intensity. You have strong convictions and seek out others who do as well.' },
-  12: { name: 'Flexible', type: 'cosmetic', description: 'You are open-minded and able to quickly analyze new ideas. You are not stuck in the past and are always ready to respond to new challenges.' },
-  13: { name: 'Frantic', type: 'cosmetic', description: 'You are prone to anxiety and always forget your towel.' },
-  14: { name: 'Hopeful', type: 'cosmetic', description: 'You know the risks, you understand the downsides, but you just can\'t help your optimism. Besides, when has humanity ever truly expanded its ABILITY_TYPES except when it held onto hope in the face of adversity?' },
-  15: { name: 'Independent', type: 'cosmetic', description: 'You are free-thinking and not prone to blindly following orders, unless there is a very good explanation behind those orders.' },
-  16: { name: 'Irrational', type: 'cosmetic', description: 'You don\'t waste your time with logic, at least not the type that makes sense to anyone else. You have never had the dubious honor of being called "reasonable."' },
-  17: { name: 'Loyal', type: 'cosmetic', description: 'You understand the importance of staying the course and trusting those around you to make rational decisions.' },
-  18: { name: 'Pragmatic', type: 'cosmetic', description: 'Instead of wasting time wishing for a better reality, you are firmly rooted in your present situation. You prefer to find the most practical solution to a problem, even if it isn\'t always the most desirable.' },
-  19: { name: 'Rational', type: 'cosmetic', description: 'You try not to let messy emotions cloud your thinking. Logic is the only reliable constant in the universe.' },
-  20: { name: 'Reckless', type: 'cosmetic', description: 'You believe that anyone who takes life too seriously will never know its true enjoyment. Meticulous plans and detailed outcome calculations are for others to worry about.' },
-  21: { name: 'Regressive', type: 'cosmetic', description: 'You look to the past and rely on what others have built or imagined. You prefer to rely upon what is tried and true, rather than innovate yourself into a disaster.' },
-  22: { name: 'Serious', type: 'cosmetic', description: 'You have no time for self-indulgent nonsense. You understand your role and responsibilities in the universe and you wish that others understood theirs.' },
-  23: { name: 'Steadfast', type: 'cosmetic', description: 'You are firm in your beliefs and prefer to rely on what is known, rather than dream about what could be. You believe that experience is the best teacher.' },
-  24: { name: 'Council Loyalist', type: 'cosmetic', description: 'You are loyal to the Prime Council and the last High Commander of the Arvad. ' },
-  25: { name: 'Council Moderate', type: 'cosmetic', description: 'You believe that there is no better alternative to the Prime Council and the last High Commander of the Arvad. ' },
-  26: { name: 'Independent Moderate', type: 'cosmetic', description: 'You are critical of the leadership of the Prime Council and the last High Commander of the Arvad.' },
-  27: { name: 'Independent Radical', type: 'cosmetic', description: 'You openly oppose the leadership of the Prime Council or the last High Commander of the Arvad. ' },
-  28: { name: 'Navigator', type: 'impactful', description: 'You have increased ship fuel efficency while travelling.' },
-  29: { name: 'Dietitian', type: 'impactful', description: 'You have decreased food consumption needs among your crew.' },
-  30: { name: 'Refiner', type: 'impactful', description: 'You have increased refining yield while refining raw mined materials.' },
-  31: { name: 'Surveyor', type: 'impactful', description: 'You have increased core sampling speed while surveying an asteroid.' },
-  32: { name: 'Hauler', type: 'impactful', description: 'You have increased ship cargo capacity while travelling.' },
-  33: { name: 'Optimistic', type: 'cosmetic', description: 'You know that no matter how dark it may seem now, dawn is just over the horizon.' },
-  34: { name: 'Thoughtful', type: 'cosmetic', description: 'You are not quick to choose. You often prefer to wait for more information before committing yourself.' },
-  35: { name: 'Pessimistic', type: 'cosmetic', description: 'You see no point in trying to fool yourself or anyone else. You often expect the worst and are rarely surprised by reality.' },
-  36: { name: 'Righteous', type: 'cosmetic', description: 'You believe that you are virtuous and hold others to a high moral standard.' },
-  37: { name: 'Communal', type: 'cosmetic', description: 'You believe in community and cooperation. We can all succeed, if we work together.' },
-  38: { name: 'Impartial', type: 'cosmetic', description: 'You are capable of viewing many issues without bias or prejudice.' },
-  39: { name: 'Enterprising', type: 'cosmetic', description: 'You are resourceful and able to build on the ideas of others.' },
-  40: { name: 'Opportunistic', type: 'cosmetic', description: 'You believe in taking advantage of being in the right place at the right time.' },
-  41: { name: 'Buster', type: 'impactful', description: 'You have increased top ship acceleration.' },
-  42: { name: 'Mogul', type: 'impactful', description: 'You have increased market volume capacity.' },
-  43: { name: 'Scholar', type: 'impactful', description: 'You have decreased time to next technology.' },
-  44: { name: 'Recycler', type: 'impactful', description: 'You have decreased loss when reprocessing materials.' },
-  45: { name: 'Mechanic', type: 'impactful', description: 'You have decreased cost for ship repair.' },
-  46: { name: 'Operator', type: 'impactful', description: 'You have reduced rate of wear during ship operation.' },
-  47: { name: 'Logistician', type: 'impactful', description: 'You have reduced surface transport fuel costs.' },
-  48: { name: 'Experimenter', type: 'impactful', description: 'You have decreased time to next invention.' },
-  49: { name: 'Builder', type: 'impactful', description: 'You have decreased assembly waste.' },
-  50: { name: 'Prospector', type: 'impactful', description: 'You have increased viability gain per core sample.' }
+  1: { name: 'Drive: Survival', type: TRAIT_TYPES.COSMETIC, description: 'You need to live. Your primary drive is the survival of yourself, the people you know, and the species.' },
+  2: { name: 'Drive: Service', type: TRAIT_TYPES.COSMETIC, description: 'You need to fulfill your role. Your primary drive is to serve humanity for the greater good.' },
+  3: { name: 'Drive: Glory', type: TRAIT_TYPES.COSMETIC, description: 'You need to excel. Your primary drive is to be the best at whatever you do.' },
+  4: { name: 'Drive: Command', type: TRAIT_TYPES.COSMETIC, description: 'You need to be in control. Your primary drive is to lead others in what you know to be the right direction.' },
+  5: { name: 'Adventurous', type: TRAIT_TYPES.COSMETIC, description: 'You are bold, brave, and intrepid. You recognize that in order to move humanity forward, it is sometimes necessary to take that giant leap for mankind.' },
+  6: { name: 'Ambitious', type: TRAIT_TYPES.COSMETIC, description: 'You know what needs to be done, and you know that you are the one who can do it. You are driven to succeed, no matter the obstacles.' },
+  7: { name: 'Arrogant', type: TRAIT_TYPES.COSMETIC, description: 'Hubris may have been the downfall of lesser people, but you are steadfastly confident in your own ABILITY_TYPES. Let other people be led around by those stronger than themselves, you know what you are capable of.' },
+  8: { name: 'Cautious', type: TRAIT_TYPES.COSMETIC, description: 'Let others leap before they look. You will stay with what you know works, until there is some proof that another course is safer.' },
+  9: { name: 'Creative', type: TRAIT_TYPES.COSMETIC, description: 'You seek to bring new ideas to light. Your mind is constantly wandering to the question "what if..." You want to see if you can explain the "unexplainable".' },
+  10: { name: 'Curious', type: TRAIT_TYPES.COSMETIC, description: 'You are excited to open your mind and learn something new. The universe is full of the undiscovered just waiting to be discovered.' },
+  11: { name: 'Fierce', type: TRAIT_TYPES.COSMETIC, description: 'You are a forceful person who is drawn to intensity. You have strong convictions and seek out others who do as well.' },
+  12: { name: 'Flexible', type: TRAIT_TYPES.COSMETIC, description: 'You are open-minded and able to quickly analyze new ideas. You are not stuck in the past and are always ready to respond to new challenges.' },
+  13: { name: 'Frantic', type: TRAIT_TYPES.COSMETIC, description: 'You are prone to anxiety and always forget your towel.' },
+  14: { name: 'Hopeful', type: TRAIT_TYPES.COSMETIC, description: 'You know the risks, you understand the downsides, but you just can\'t help your optimism. Besides, when has humanity ever truly expanded its ABILITY_TYPES except when it held onto hope in the face of adversity?' },
+  15: { name: 'Independent', type: TRAIT_TYPES.COSMETIC, description: 'You are free-thinking and not prone to blindly following orders, unless there is a very good explanation behind those orders.' },
+  16: { name: 'Irrational', type: TRAIT_TYPES.COSMETIC, description: 'You don\'t waste your time with logic, at least not the type that makes sense to anyone else. You have never had the dubious honor of being called "reasonable."' },
+  17: { name: 'Loyal', type: TRAIT_TYPES.COSMETIC, description: 'You understand the importance of staying the course and trusting those around you to make rational decisions.' },
+  18: { name: 'Pragmatic', type: TRAIT_TYPES.COSMETIC, description: 'Instead of wasting time wishing for a better reality, you are firmly rooted in your present situation. You prefer to find the most practical solution to a problem, even if it isn\'t always the most desirable.' },
+  19: { name: 'Rational', type: TRAIT_TYPES.COSMETIC, description: 'You try not to let messy emotions cloud your thinking. Logic is the only reliable constant in the universe.' },
+  20: { name: 'Reckless', type: TRAIT_TYPES.COSMETIC, description: 'You believe that anyone who takes life too seriously will never know its true enjoyment. Meticulous plans and detailed outcome calculations are for others to worry about.' },
+  21: { name: 'Regressive', type: TRAIT_TYPES.COSMETIC, description: 'You look to the past and rely on what others have built or imagined. You prefer to rely upon what is tried and true, rather than innovate yourself into a disaster.' },
+  22: { name: 'Serious', type: TRAIT_TYPES.COSMETIC, description: 'You have no time for self-indulgent nonsense. You understand your role and responsibilities in the universe and you wish that others understood theirs.' },
+  23: { name: 'Steadfast', type: TRAIT_TYPES.COSMETIC, description: 'You are firm in your beliefs and prefer to rely on what is known, rather than dream about what could be. You believe that experience is the best teacher.' },
+  24: { name: 'Council Loyalist', type: TRAIT_TYPES.COSMETIC, description: 'You are loyal to the Prime Council and the last High Commander of the Arvad. ' },
+  25: { name: 'Council Moderate', type: TRAIT_TYPES.COSMETIC, description: 'You believe that there is no better alternative to the Prime Council and the last High Commander of the Arvad. ' },
+  26: { name: 'Independent Moderate', type: TRAIT_TYPES.COSMETIC, description: 'You are critical of the leadership of the Prime Council and the last High Commander of the Arvad.' },
+  27: { name: 'Independent Radical', type: TRAIT_TYPES.COSMETIC, description: 'You openly oppose the leadership of the Prime Council or the last High Commander of the Arvad. ' },
+  28: { name: 'Navigator', type: TRAIT_TYPES.IMPACTFUL, description: 'You have increased ship fuel efficency while travelling.' },
+  29: { name: 'Dietitian', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased food consumption needs among your crew.' },
+  30: { name: 'Refiner', type: TRAIT_TYPES.IMPACTFUL, description: 'You have increased refining yield while refining raw mined materials.' },
+  31: { name: 'Surveyor', type: TRAIT_TYPES.IMPACTFUL, description: 'You have increased core sampling speed while surveying an asteroid.' },
+  32: { name: 'Hauler', type: TRAIT_TYPES.IMPACTFUL, description: 'You have increased ship cargo capacity while travelling.' },
+  33: { name: 'Optimistic', type: TRAIT_TYPES.COSMETIC, description: 'You know that no matter how dark it may seem now, dawn is just over the horizon.' },
+  34: { name: 'Thoughtful', type: TRAIT_TYPES.COSMETIC, description: 'You are not quick to choose. You often prefer to wait for more information before committing yourself.' },
+  35: { name: 'Pessimistic', type: TRAIT_TYPES.COSMETIC, description: 'You see no point in trying to fool yourself or anyone else. You often expect the worst and are rarely surprised by reality.' },
+  36: { name: 'Righteous', type: TRAIT_TYPES.COSMETIC, description: 'You believe that you are virtuous and hold others to a high moral standard.' },
+  37: { name: 'Communal', type: TRAIT_TYPES.COSMETIC, description: 'You believe in community and cooperation. We can all succeed, if we work together.' },
+  38: { name: 'Impartial', type: TRAIT_TYPES.COSMETIC, description: 'You are capable of viewing many issues without bias or prejudice.' },
+  39: { name: 'Enterprising', type: TRAIT_TYPES.COSMETIC, description: 'You are resourceful and able to build on the ideas of others.' },
+  40: { name: 'Opportunistic', type: TRAIT_TYPES.COSMETIC, description: 'You believe in taking advantage of being in the right place at the right time.' },
+  41: { name: 'Buster', type: TRAIT_TYPES.IMPACTFUL, description: 'You have increased top ship acceleration.' },
+  42: { name: 'Mogul', type: TRAIT_TYPES.IMPACTFUL, description: 'You have increased market volume capacity.' },
+  43: { name: 'Scholar', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next technology.' },
+  44: { name: 'Recycler', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased loss when reprocessing materials.' },
+  45: { name: 'Mechanic', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased cost for ship repair.' },
+  46: { name: 'Operator', type: TRAIT_TYPES.IMPACTFUL, description: 'You have reduced rate of wear during ship operation.' },
+  47: { name: 'Logistician', type: TRAIT_TYPES.IMPACTFUL, description: 'You have reduced surface transport fuel costs.' },
+  48: { name: 'Experimenter', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next invention.' },
+  49: { name: 'Builder', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased assembly waste.' },
+  50: { name: 'Prospector', type: TRAIT_TYPES.IMPACTFUL, description: 'You have increased viability gain per core sample.' }
 };
 
 // Appearance constants
@@ -317,6 +322,9 @@ const OUTFITS = {
   41: { name: 'Scientist Recruit - Variant' }
 };
 
+const Entity = {};
+const Component = {};
+
 /**
  * @param {integer} abilityId
  * @returns Details for a given ability
@@ -324,70 +332,130 @@ const OUTFITS = {
 const getAbility = (abilityId) => ABILITY_TYPES[abilityId];
 
 /**
- * @param bonusItemId The crewmate's bonus item identifier
- * @returns Details object for bonus item including a 'name' attribute
- */
-const getBonusItem = (bonusItemId) => BONUS_ITEMS[bonusItemId];
-
-/**
  * @param collectionId The crewmate's collection identifier
  * @returns Details object for collection including a 'name' attribute
  */
 const getCollection = (collectionId) => COLLECTIONS[collectionId];
+Component.getCollection = (crewmate) => getCollection(crewmate.coll);
+Entity.getCollection = (entity) => Component.getCollection(entity.Crewmate);
 
 /**
  * @param classId The crewmate's class identifier
  * @returns Details object for class including a 'name' attribute
  */
 const getClass = (classId) => CLASSES[classId];
-
-/**
- * @param facialFeatureId The crewmate's facialFeature identifier
- * @returns Details object for facialFeature including a 'name' attribute
- */
-const getFacialFeature = (facialFeatureId) => FACIAL_FEATURES[facialFeatureId];
-
-/**
- * @param genderId The crewmate's gender identifier
- * @returns Details object for gender including a 'name' attribute
- */
-const getGender = (genderId) => GENDERS[genderId];
-
-/**
- * @param hairColorId The crewmate's hairColor identifier
- * @returns Details object for hairColor including a 'name' attribute
- */
-const getHairColor = (hairColorId) => HAIR_COLORS[hairColorId];
-
-/**
- * @param hairId The crewmate's hair identifier
- * @returns Details object for hair including a 'name' attribute
- */
-const getHairStyle = (hairId) => HAIR_STYLES[hairId];
-
-/**
- * @param headPieceId The crewmate's headPiece identifier
- * @returns Details object for headPiece including a 'name' attribute
- */
-const getHeadPiece = (headPieceId) => HEAD_PIECES[headPieceId];
-
-/**
- * @param outfitId The crewmate's outfit identifier
- * @returns Details object for outfit including a 'name' attribute
- */
-const getOutfit = (outfitId) => OUTFITS[outfitId];
+Component.getClass = (crewmate) => getClass(crewmate.class);
+Entity.getClass = (entity) => Component.getClass(entity.Crewmate);
 
 /**
  * @param titleId The crewmate's title identifier
  * @returns Details object for title including a 'name' attribute
  */
  const getTitle = (titleId) => TITLES[titleId];
+ Component.getTitle = (crewmate) => getTitle(crewmate.title);
+ Entity.getTitle = (entity) => Component.getTitle(entity.Crewmate);
 
 /**
  * @param traitId The crewmate's trait identifier
  * @returns Details object for trait including a 'name' attribute
  */
 const getTrait = (traitId) => TRAITS[traitId];
+
+/**
+ * @param crewmate The crewmate component object
+ * @returns Array of trait ids
+ */
+const getCombinedTraits = (crewmate) => [...(crewmate.impactful || []), ...(crewmate.cosmetic || [])].sort();
+Component.getCombinedTraits = getCombinedTraits;
+Entity.getCombinedTraits = (entity) => Component.getCombinedTraits(entity.Crewmate);
+
+/**
+ * @param appearance The packed crewmate appearance
+ * @returns An unpacked object of appearance attributes
+ */
+const unpackAppearance = (appearance) => {
+  let local = appearance + 0;
+  return [
+    ['sex', 2],
+    ['body', 4],
+    ['facialFeature', 4],
+    ['hair', 4],
+    ['hairColor', 4],
+    ['outfit', 4],
+    ['headPiece', 4],
+    ['bonusItem', 3],
+  ].reduce((acc, [keyName, maskLength]) => {
+    acc[keyName] = local & (2 ** maskLength - 1);
+    local >>= maskLength;
+    return acc;
+  }, {});
+};
+Component.unpackAppearance = (crewmate) => unpackAppearance(crewmate.appearance);
+Entity.unpackAppearance = (entity) => Component.unpackAppearance(entity.Crewmate);
+
+/**
+ * @param bodyId The crewmate's body identifier
+ * @returns Details object for body including a 'name' attribute
+ */
+const getBody = (bodyId) => BONUS_ITEMS[bodyId];
+Component.getBody = (crewmate) => getBonusItem(unpackAppearance(crewmate.appearance).body);
+Entity.getBody = (entity) => Component.getBonusItem(entity.Crewmate);
+
+/**
+ * @param bonusItemId The crewmate's bonus item identifier
+ * @returns Details object for bonus item including a 'name' attribute
+ */
+const getBonusItem = (bonusItemId) => BONUS_ITEMS[bonusItemId];
+Component.getBonusItem = (crewmate) => getBonusItem(unpackAppearance(crewmate.appearance).bonusItem);
+Entity.getBonusItem = (entity) => Component.getBonusItem(entity.Crewmate);
+
+/**
+ * @param facialFeatureId The crewmate's facialFeature identifier
+ * @returns Details object for facialFeature including a 'name' attribute
+ */
+const getFacialFeature = (facialFeatureId) => FACIAL_FEATURES[facialFeatureId];
+Component.getFacialFeature = (crewmate) => getFacialFeature(unpackAppearance(crewmate.appearance).facialFeature);
+Entity.getFacialFeature = (entity) => Component.getFacialFeature(entity.Crewmate);
+
+/**
+ * @param genderId The crewmate's gender identifier
+ * @returns Details object for gender including a 'name' attribute
+ */
+const getGender = (genderId) => GENDERS[genderId];
+Component.getGender = (crewmate) => getGender(unpackAppearance(crewmate.appearance).sex);
+Entity.getGender = (entity) => Component.getGender(entity.Crewmate);
+
+/**
+ * @param hairColorId The crewmate's hairColor identifier
+ * @returns Details object for hairColor including a 'name' attribute
+ */
+const getHairColor = (hairColorId) => HAIR_COLORS[hairColorId];
+Component.getHairColor = (crewmate) => getHairColor(unpackAppearance(crewmate.appearance).hairColor);
+Entity.getHairColor = (entity) => Component.getHairColor(entity.Crewmate);
+
+/**
+ * @param hairId The crewmate's hair identifier
+ * @returns Details object for hair including a 'name' attribute
+ */
+const getHairStyle = (hairId) => HAIR_STYLES[hairId];
+Component.getHairStyle = (crewmate) => getHairStyle(unpackAppearance(crewmate.appearance).hair);
+Entity.getHairStyle = (entity) => Component.getHairStyle(entity.Crewmate);
+
+/**
+ * @param headPieceId The crewmate's headPiece identifier
+ * @returns Details object for headPiece including a 'name' attribute
+ */
+const getHeadPiece = (headPieceId) => HEAD_PIECES[headPieceId];
+Component.getHeadPiece = (crewmate) => getHeadPiece(unpackAppearance(crewmate.appearance).headPiece);
+Entity.getHeadPiece = (entity) => Component.getHeadPiece(entity.Crewmate);
+
+/**
+ * @param outfitId The crewmate's outfit identifier
+ * @returns Details object for outfit including a 'name' attribute
+ */
+const getOutfit = (outfitId) => OUTFITS[outfitId];
+Component.getOutfit = (crewmate) => getOutfit(unpackAppearance(crewmate.appearance).outfit);
+Entity.getOutfit = (entity) => Component.getOutfit(entity.Crewmate);
 
 export default {
   ABILITY_IDS,
@@ -404,10 +472,13 @@ export default {
   OUTFITS,
   TITLES,
   TRAITS,
+  TRAIT_TYPES,
 
   getAbility,
+  getBody,
   getBonusItem,
   getCollection,
+  getCombinedTraits,
   getClass,
   getFacialFeature,
   getGender,
@@ -417,5 +488,8 @@ export default {
   getOutfit,
   getTitle,
   getTrait,
-  isNameValid: (name) => Nameable.isNameValid(name, Nameable.TYPES.Crewmate),
+  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Crewmate),
+
+  Entity,
+  Component
 };
