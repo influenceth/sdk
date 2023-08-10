@@ -144,7 +144,8 @@ const TITLES = {
   62: { name: 'Chief Botanist' },
   63: { name: 'Chief Cook' },
   64: { name: 'Entertainment Director' },
-  65: { name: 'High Commander' }
+  65: { name: 'High Commander' },
+  66: { name: 'Adalian Prime Councilor' }
 };
 
 const TRAITS = {

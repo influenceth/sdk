@@ -12,12 +12,13 @@ const IDS = {
   MARKETPLACE_SITE: 8,
   HABITAT_SITE: 9,
   WAREHOUSE_PRIMARY: 10,
-  PROPELLANT_SMALL: 11,
-  PROPELLANT_MEDIUM: 12,
-  PROPELLANT_LARGE: 13,
-  CARGO_SMALL: 14,
-  CARGO_MEDIUM: 15,
-  CARGO_LARGE: 16,
+  PROPELLANT_TINY: 11,
+  PROPELLANT_SMALL: 12,
+  PROPELLANT_MEDIUM: 13,
+  PROPELLANT_LARGE: 14,
+  CARGO_SMALL: 15,
+  CARGO_MEDIUM: 16,
+  CARGO_LARGE: 17,
 };
 
 const STATUSES = {
@@ -90,6 +91,12 @@ const TYPES = {
     volumeConstraint: 75000e6,
     productConstraints: null
   },
+  [IDS.PROPELLANT_TINY]: {
+    i: IDS.PROPELLANT_TINY,
+    massConstraint: 1e6,
+    volumeConstraint: 1e6,
+    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
+  },
   [IDS.PROPELLANT_SMALL]: {
     i: IDS.PROPELLANT_SMALL,
     massConstraint: 1e6,
@@ -156,7 +163,7 @@ const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
 /**
  * Returns the mass and volume of a "full" version of the inventory
- *  "Full" may be at mass(/volume)Constraint if it exists, or at a sum of 
+ *  "Full" may be at mass(/volume)Constraint if it exists, or at a sum of
  *  the filled productConstraints, or Infinity if neither constraint exists
  * @param {integer} inventoryType
  * @returns {object} An object with filledMass and filledVolume (in grams and mL)
