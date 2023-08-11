@@ -14,6 +14,12 @@ const STATUSES = {
   IN_FLIGHT: 2,
 };
 
+const MODES = {
+  NORMAL: 1,
+  EMERGENCY: 2,
+};
+
+// exhaustVelocity is in m/s
 const TYPES = {
   [IDS.ESCAPE_MODULE]: {
     i: IDS.ESCAPE_MODULE,
@@ -22,7 +28,7 @@ const TYPES = {
     docking: false,
     propellantSlot: 1,
     cargoSlot: 0,
-    exhaustVelocity: 30,
+    exhaustVelocity: 30000,
     hullMass: 5e6,
   },
   [IDS.SHUTTLE]: {
@@ -32,7 +38,7 @@ const TYPES = {
     docking: true,
     propellantSlot: 1,
     cargoSlot: 2,
-    exhaustVelocity: 30,
+    exhaustVelocity: 30000,
     hullMass: 100e6,
   },
   [IDS.LIGHT_TRANSPORT]: {
@@ -42,7 +48,7 @@ const TYPES = {
     docking: true,
     propellantSlot: 1,
     cargoSlot: 2,
-    exhaustVelocity: 30,
+    exhaustVelocity: 30000,
     hullMass: 180e6,
   },
   [IDS.HEAVY_TRANSPORT]: {
@@ -52,7 +58,7 @@ const TYPES = {
     docking: true,
     propellantSlot: 1,
     cargoSlot: 2,
-    exhaustVelocity: 30,
+    exhaustVelocity: 30000,
     hullMass: 1000e6,
   },
 };
@@ -105,6 +111,7 @@ const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 export default {
   CONSTRUCTION_TYPES,
   IDS,
+  MODES,
   STATUSES,
   TYPES,
 

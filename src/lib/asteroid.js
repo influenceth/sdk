@@ -14,7 +14,7 @@ const FREE_TRANSPORT_RADIUS = 5; // in km
 const MAX_RADIUS = 375142; // in meters
 const MAX_LOT_REGIONS = 5000;
 const RARITIES = ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable'];
-const SCANNING_STATUSES = {
+const SCAN_STATUSES = {
   UNSCANNED: 0,
   SURFACE_SCANNING: 1,
   SURFACE_SCANNED: 2,
@@ -338,6 +338,14 @@ const normalizeVector = (v3) => {
 const Entity = {};
 const Component = {};
 
+const getBaseName = (asteroidId) => {
+  const alpha = 'TFJGNRIWSHQPLOXCKBUMADZYVE';
+  const simpleHash = (asteroidId * 523) % 857;
+  let leftIndex = simpleHash % alpha.length;
+  let rightIndex = Math.floor(simpleHash / alpha.length) % alpha.length;
+  return `${alpha[leftIndex]}${alpha[rightIndex]}-${String(asteroidId).padStart(3, '0')}`;
+};
+
 /**
  * Returns the (spherical) asteroid radius in km
  * @param asteroidId The asteroid identifier
@@ -356,6 +364,26 @@ const getSurfaceArea = (asteroidId, radius = 0) => {
   const area = 4 * Math.PI * Math.pow(radius, 2);
   return Math.floor(area);
 };
+
+/**
+ * Converts packed abundances into an object with resource ids as keys and abundances as values
+ * @param packed The bitpacked abundances int
+ */
+const getAbundances = (packed) => {
+  let local = packed + 0;
+  const stride = 10;
+
+  const strideExp = 2 ** stride;
+  const abundances = {};
+  const rawMaterials = Product.getListByCategory(Product.CATEGORIES.RAW_MATERIAL);
+  for (let i = 1; i <= rawMaterials.length; i++) {
+    resources[i] = (abundances % strideExp) / 1000;
+    local = local >> stride;
+  }
+  return abundances;
+};
+Component.getAbundances = (celestial) => getAbundances(celestial.abundances);
+Entity.getAbundances = (asteroid) => Component.getAbundances(asteroid.Celestial);
 
 /**
  * Returns the bonus information based on its position in the bitpacked bonuses int
@@ -769,7 +797,7 @@ export default {
   MAX_RADIUS,
   RARITIES,
   SCANNING_TIME,
-  SCANNING_STATUSES,
+  SCAN_STATUSES,
   SIZES,
   SPECTRAL_IDS,
   SPECTRAL_TYPES,
@@ -778,6 +806,8 @@ export default {
   getAbundanceAtLot,
   getAbundanceAtPosition,
   getAbundanceMapSettings,
+  getAbundances,
+  getBaseName,
   getBonus,
   getBonusByResource,
   getBonuses,

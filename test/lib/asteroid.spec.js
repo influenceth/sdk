@@ -14,6 +14,17 @@ describe('Asteroid library', function () {
     });
   });
 
+  it('should get base name', function() {
+    expect(asteroid.getBaseName(1)).to.equal('GA-001');
+    expect(asteroid.getBaseName(2)).to.equal('WW-002');
+    expect(asteroid.getBaseName(3)).to.equal('QF-003');
+    expect(asteroid.getBaseName(1000)).to.equal('ZS-1000');
+    expect(asteroid.getBaseName(1001)).to.equal('EJ-1001');
+    expect(asteroid.getBaseName(1002)).to.equal('GK-1002');
+    expect(asteroid.getBaseName(123456)).to.equal('BH-123456');
+    expect(asteroid.getBaseName(250000)).to.equal('GG-250000');
+  });
+
   it('should get the radius', function () {
     const APRadius = asteroid.getRadius(1);
     expect(APRadius).to.equal(375.142);
