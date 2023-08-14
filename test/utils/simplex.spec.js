@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { snoise, recursiveSNoise } from '../../src/utils/simplex.js';
 
-describe('Simpplex library', function () {
+describe('Simplex library', function () {
   it('should generate correct values for single octave', function () {
     let noise = snoise([0.0, 0.0, 0.0]);
     expect(Number(noise.toFixed(5))).to.equal(-0.43587);

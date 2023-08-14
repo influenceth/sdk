@@ -21,4 +21,9 @@ describe('Crew library', function () {
     const details = Crew.getAbilityBonus(1, [ { classId: 1 }, { classId: 2, traitIds: [ 31 ]}]);
     expect(details.totalBonus.toFixed(4)).to.equal('0.5500');
   });
+
+  it ('should accept alternative property names for crewmate attributes', function () {
+    const details = Crew.getAbilityBonus(3, [ { class: 3, title: 65 }, { class: 3, impactful: [ 47 ]}]);
+    expect(details.totalBonus.toFixed(4)).to.equal('1.1500');
+  });
 });

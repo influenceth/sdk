@@ -8,11 +8,7 @@ const STATUSES = {
   USED: 3,
 };
 
-export const getSampleTime = (totalBonus = 1) => {
-  return Math.ceil(SAMPLE_TIME / totalBonus);
-};
-
-export const getSampleBounds = (abundance, initialYield = 0, totalBonus = 1) => {
+const getSampleBounds = (abundance, initialYield = 0, totalBonus = 1) => {
   let lower = initialYield;
   let upper = abundance * MAX_YIELD;
 
@@ -22,11 +18,15 @@ export const getSampleBounds = (abundance, initialYield = 0, totalBonus = 1) => 
   return { lower, upper };
 };
 
+const getSampleTime = (totalBonus = 1) => {
+  return Math.ceil(SAMPLE_TIME / totalBonus);
+};
+
 export default {
   MAX_YIELD,
   SAMPLE_TIME,
   STATUSES,
 
-  getSampleTime,
   getSampleBounds,
+  getSampleTime,
 }

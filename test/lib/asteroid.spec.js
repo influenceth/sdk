@@ -39,6 +39,16 @@ describe('Asteroid library', function () {
     expect(LasteroidArea).to.equal(13);
   });
 
+  it('should get unpacked abundances', function () {
+    let abundances = {};
+    abundances = asteroid.getAbundances(0n);
+    expect(Object.keys(abundances).length).to.equal(22);
+    expect(!!Object.values(abundances).find((v) => v > 0)).to.be.false;
+
+    abundances = asteroid.getAbundances(164550455732120604215496918255735050498273586563358426139512320200n);
+    expect(JSON.stringify(abundances)).to.equal(`{"1":0.2,"2":0.3,"3":0,"4":0,"5":0.4,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0.1}`);
+  });
+
   it('should get bonus by index', function () {
     let bonus = asteroid.getBonus(asteroid.BONUS_IDS.YIELD_2);
     expect(bonus.name).to.equal('Yield2');
@@ -113,6 +123,13 @@ describe('Asteroid library', function () {
     expect(rarity).to.equal('Incomparable');
   });
 
+  it('should get mass from spectral type and radius', function () {
+    expect(asteroid.getMass(asteroid.SPECTRAL_IDS.C_TYPE, asteroid.MAX_RADIUS)).to.equal(309601968481880060);
+    expect(asteroid.getMass(asteroid.SPECTRAL_IDS.M_TYPE, asteroid.MAX_RADIUS)).to.equal(1172064594967117300);
+    expect(asteroid.getMass(asteroid.SPECTRAL_IDS.S_TYPE, 12000)).to.equal(19543219579451.383);
+    expect(asteroid.getMass(asteroid.SPECTRAL_IDS.CMS_TYPE, 12000)).to.equal(22679785684795.434);
+  });
+
   it('should get size from radius', function () {
     let size = asteroid.getSize(1023);
     expect(size).to.equal('Small');
@@ -133,6 +150,13 @@ describe('Asteroid library', function () {
     expect(typeName).to.equal('');
     typeName = asteroid.getSpectralType(100);
     expect(typeName).to.equal('');
+  });
+
+  it('should determine scan status based on bonuses', function () {
+    let scanned = asteroid.getScanned(0);
+    expect(scanned).to.be.false;
+    scanned = asteroid.getScanned(5);
+    expect(scanned).to.be.true;
   });
 
   it('should get abundance at a specific lot', function () {
@@ -354,5 +378,22 @@ describe('Asteroid library', function () {
         m: 0.30578168494940655
       }
     });
+  });
+
+  it('should get boost from purchase order', function () {
+    let boost = asteroid.getBoostFromPurchaseOrder(null);
+    expect(boost).to.equal(1);
+
+    boost = asteroid.getBoostFromPurchaseOrder(50);
+    expect(boost).to.equal(4);
+
+    boost = asteroid.getBoostFromPurchaseOrder(500);
+    expect(boost).to.equal(3);
+
+    boost = asteroid.getBoostFromPurchaseOrder(5000);
+    expect(boost).to.equal(2);
+
+    boost = asteroid.getBoostFromPurchaseOrder(50000);
+    expect(boost).to.equal(1);
   });
 });

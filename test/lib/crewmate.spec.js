@@ -23,4 +23,8 @@ describe('Crewmate library', function () {
     );
     expect(invalidTrait).to.be.false;
   });
+
+  it('should unpack appearance', function () {
+    expect(JSON.stringify(crewmate.unpackAppearance(`0x200090001000800040024000000`))).to.equal(`{"sex":2,"body":9,"facialFeature":1,"hair":8,"hairColor":4,"outfit":36,"headPiece":0,"bonusItem":0}`);
+  });
 });

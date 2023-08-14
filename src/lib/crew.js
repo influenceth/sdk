@@ -1,14 +1,14 @@
 import Crewmate from './crewmate.js';
 import Name from './name.js';
 
-export const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
+const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
 
 /**
  * @param {integer} abilityId Crewmate ability identifier
  * @param {[object]} crewmates Array of crewmate objects including classId, traitIds, and titleId
  * @return The overall bonus to be applied to the ability
  */
-export const getAbilityBonus = (abilityId, crewmates = []) => {
+const getAbilityBonus = (abilityId, crewmates = []) => {
   const ability = Crewmate.getAbility(abilityId);
   const details = { name: ability.name, totalBonus: 1, traits: {}, titles: {} };
   if (ability.class) details.class = { classId: ability.class, matches: 0 };

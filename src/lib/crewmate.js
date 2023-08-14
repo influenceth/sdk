@@ -374,19 +374,23 @@ Entity.getCombinedTraits = (entity) => Component.getCombinedTraits(entity.Crewma
  * @returns An unpacked object of appearance attributes
  */
 const unpackAppearance = (appearance) => {
-  let local = appearance + 0;
-  return [
-    ['sex', 2],
-    ['body', 4],
-    ['facialFeature', 4],
-    ['hair', 4],
-    ['hairColor', 4],
-    ['outfit', 4],
-    ['headPiece', 4],
-    ['bonusItem', 3],
-  ].reduce((acc, [keyName, maskLength]) => {
-    acc[keyName] = local & (2 ** maskLength - 1);
-    local >>= maskLength;
+  const appearanceMasks = [
+    ['sex', 4],
+    ['body', 16],
+    ['facialFeature', 16],
+    ['hair', 16],
+    ['hairColor', 16],
+    ['outfit', 16],
+    ['headPiece', 16],
+    ['bonusItem', 8],
+  ];
+  const targetLength = appearanceMasks.reduce((acc, cur) => acc + cur[1], 0);
+  const appearanceString = BigInt(appearance).toString(2).padStart(targetLength, '0');
+
+  let offset = 0;
+  return appearanceMasks.reduce((acc, [keyName, maskLength]) => {
+    acc[keyName] = parseInt(appearanceString.substr(offset, maskLength), 2);
+    offset += maskLength;
     return acc;
   }, {});
 };
@@ -488,6 +492,7 @@ export default {
   getOutfit,
   getTitle,
   getTrait,
+  unpackAppearance,
   isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Crewmate),
 
   Entity,

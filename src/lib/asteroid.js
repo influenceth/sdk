@@ -367,17 +367,17 @@ const getSurfaceArea = (asteroidId, radius = 0) => {
 
 /**
  * Converts packed abundances into an object with resource ids as keys and abundances as values
- * @param packed The bitpacked abundances int
+ * @param packed The bitpacked abundances BigInt
  */
 const getAbundances = (packed) => {
-  let local = packed + 0;
-  const stride = 10;
+  const stride = 10n;
+  const strideExp = 2n ** stride;
 
-  const strideExp = 2 ** stride;
+  let local = BigInt(packed) + 0n;
   const abundances = {};
-  const rawMaterials = Product.getListByCategory(Product.CATEGORIES.RAW_MATERIAL);
+  const rawMaterials = Product.getListByClassification(Product.CLASSIFICATIONS.RAW_MATERIAL);
   for (let i = 1; i <= rawMaterials.length; i++) {
-    resources[i] = (abundances % strideExp) / 1000;
+    abundances[i] = parseInt(local % strideExp) / 1000;
     local = local >> stride;
   }
   return abundances;
