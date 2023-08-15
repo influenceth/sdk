@@ -9,6 +9,7 @@ import Delivery from './lib/delivery.js';
 import Deposit from './lib/deposit.js';
 import Dock from './lib/dock.js';
 import DryDock from './lib/dryDock.js';
+import Entity from './lib/entity.js';
 import Exchange from './lib/exchange.js';
 import Extractor from './lib/extractor.js';
 import Inventory from './lib/inventory.js';
@@ -34,7 +35,7 @@ import starknetContracts from './contracts/starknet_abis.json' assert { type: 'j
 export { AdalianOrbit, Address, Merkle, Simplex, Time };
 
 // Game asset libs
-export { Assets, Asteroid, Building, Crew, Crewmate, Delivery, Deposit, Dock, DryDock, Exchange, Extractor, Inventory, Location, Name, Order, Process, Processor, Product, Ship, Station };
+export { Assets, Asteroid, Building, Crew, Crewmate, Delivery, Entity, Deposit, Dock, DryDock, Exchange, Extractor, Inventory, Location, Name, Order, Process, Processor, Product, Ship, Station };
 
 // Contract ABIs
 export { ethereumContracts, starknetContracts };
