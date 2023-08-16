@@ -8,8 +8,8 @@ export const toFelt = (num) => BigInt(num);
 
 // Converts to Cairo 64.61 representation
 export const toFixed = (num) => {
-  let res = BigInt(num) * ONE;
-  if (res > FIXED_SIZE || res <= FIXED_SIZE * -1n) throw new Error('Number is out of valid range')
+  const res = BigInt(num) * ONE;
+  if (res > FIXED_SIZE || res <= FIXED_SIZE * -1n) throw new Error('Number is out of valid range');
   return toFelt(res);
 };
 
@@ -20,6 +20,25 @@ export const fromFixed = (num) => {
   const int = Number(res / ONE);
   const frac = Number(res % ONE) / Number(ONE);
   return int + frac;
+};
+
+export class Fixed {
+  constructor (mag, sign, size = 64) {
+    if (![64, 128].includes(size)) throw new Error('Invalid size. Must be 64 or 128');
+    this.mag = mag;
+    this.sign = Number(sign);
+    this.size = size;
+  }
+
+  static toFixed (input, size = 64) {
+    if (Array.isArray) return new Fixed(input[0], input[1], size);
+    return new Fixed(input);
+  }
+
+  valueOf () {
+    const _value = this.mag / (2 ** (this.size === 64 ? 32 : 64));
+    return (this.sign) ? -_value : _value;
+  }
 }
 
 export default {
@@ -27,6 +46,7 @@ export default {
   ONE,
   PRIME,
   PRIME_HALF,
+  Fixed,
   toFelt,
   toFixed,
   fromFixed
