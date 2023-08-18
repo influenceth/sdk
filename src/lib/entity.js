@@ -1,3 +1,4 @@
+// TODO: remove in favor of TYPES?
 const IDS = {
   CREW: 1,
   CREWMATE: 2,
@@ -9,6 +10,8 @@ const IDS = {
   ORDER: 8,
   DELIVERY: 9
 };
+
+const TYPES = IDS;
 
 const LABELS = {
   [IDS.CREW]: 'CREW',
@@ -22,6 +25,7 @@ const LABELS = {
   [IDS.DELIVERY]: 'DELIVERY'
 };
 
+// TODO: should probably use BigInt
 const unpackEntity = function (value) {
   const _value = Number(value);
   const label = _value % 65536;
@@ -29,8 +33,14 @@ const unpackEntity = function (value) {
   return { id, label };
 };
 
+const packEntity = function ({ id, label }) {
+  return BigInt(id) * 65536n + BigInt(label);
+};
+
 export default {
   IDS,
+  TYPES,
   LABELS,
-  unpackEntity
+  unpackEntity,
+  packEntity
 };
