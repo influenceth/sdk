@@ -10,8 +10,8 @@ import Product from './product.js';
 /**
  * Constants
  */
-const FREE_TRANSPORT_RADIUS = 5; // in km
-const MAX_RADIUS = 375142; // in meters
+const FREE_TRANSPORT_RADIUS = 5; // km
+const MAX_RADIUS = 375.142; // km
 const MAX_LOT_REGIONS = 5000;
 const RARITIES = ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable'];
 const SCAN_STATUSES = {
@@ -351,7 +351,7 @@ const getBaseName = (asteroidId) => {
  * @param asteroidId The asteroid identifier
  */
 const getRadius = (asteroidId) => {
-  return MAX_RADIUS / 1000 / Math.pow(asteroidId, 0.475);
+  return MAX_RADIUS / Math.pow(asteroidId, 0.475);
 };
 
 /**
@@ -459,7 +459,7 @@ Entity.getBonusByResource = (asteroid, resourceId) => Component.getBonusByResour
  * @param bonuses Array of bonus objects
  */
 const getRarity = (bonuses = []) => {
-  
+
   let rarity = 0;
 
   for (const b of bonuses) {
@@ -476,12 +476,12 @@ Entity.getRarity = (asteroid) => Component.getRarity(asteroid.Celestial);
 /**
  * Calculates the mass of the asteroid in tonnes
  * @param spectralType See SPECTRAL_TYPES
- * @param radius in meters
+ * @param radius in km
  * @returns Mass in tonnes
  */
 const getMass = (spectralType, radius) => {
   const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
-  const volume = 4 / 3 * Math.PI * Math.pow(radius / 1000, 3); // km3
+  const volume = 4 / 3 * Math.PI * Math.pow(radius, 3); // km3
   return density * volume;
 }
 Component.getMass = (celestial) => getMass(celestial.celestialType, celestial.radius);
@@ -489,12 +489,12 @@ Entity.getMass = (asteroid) => Component.getMass(asteroid.Celestial);
 
 /**
  * Returns the size string based on the asteroid radius
- * @param radius The asteroid radius in meters
+ * @param radius The asteroid radius in km
  */
 const getSize = (radius) => {
-  if (radius <= 5000) return SIZES[0];
-  if (radius <= 20000) return SIZES[1];
-  if (radius <= 50000) return SIZES[2];
+  if (radius <= 5) return SIZES[0];
+  if (radius <= 20) return SIZES[1];
+  if (radius <= 50) return SIZES[2];
   return SIZES[3];
 };
 Component.getSize = (celestial) => getSize(celestial.radius);
@@ -571,7 +571,7 @@ const getAbundanceAtPosition = (point, settings) => {
  */
 const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
   const radius = getRadius(asteroidId);
-  const radiusRatio = radius * 1000 / MAX_RADIUS;
+  const radiusRatio = radius / MAX_RADIUS;
   const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1 / 3));
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
   const polyParams = SIMPLEX_POLY_FIT[octaves];

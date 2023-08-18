@@ -82,7 +82,7 @@ describe('Asteroid library', function () {
   it('should return bonus for resource and a set of bonuses', function () {
     let packed = parseInt('101001', 2);
     let bonuses = asteroid.getBonuses(packed, asteroid.SPECTRAL_IDS.C_TYPE);
-    
+
     let bonus = asteroid.getBonusByResource(bonuses, product.IDS.WATER);
     expect(bonus.totalBonus).to.equal(1.38);
     bonus = asteroid.getBonusByResource(bonuses, product.IDS.APATITE);
@@ -126,15 +126,15 @@ describe('Asteroid library', function () {
   it('should get mass from spectral type and radius', function () {
     expect(asteroid.getMass(asteroid.SPECTRAL_IDS.C_TYPE, asteroid.MAX_RADIUS)).to.equal(309601968481880060);
     expect(asteroid.getMass(asteroid.SPECTRAL_IDS.M_TYPE, asteroid.MAX_RADIUS)).to.equal(1172064594967117300);
-    expect(asteroid.getMass(asteroid.SPECTRAL_IDS.S_TYPE, 12000)).to.equal(19543219579451.383);
-    expect(asteroid.getMass(asteroid.SPECTRAL_IDS.CMS_TYPE, 12000)).to.equal(22679785684795.434);
+    expect(asteroid.getMass(asteroid.SPECTRAL_IDS.S_TYPE, 12)).to.equal(19543219579451.383);
+    expect(asteroid.getMass(asteroid.SPECTRAL_IDS.CMS_TYPE, 12)).to.equal(22679785684795.434);
   });
 
   it('should get size from radius', function () {
-    let size = asteroid.getSize(1023);
+    let size = asteroid.getSize(1.023);
     expect(size).to.equal('Small');
 
-    size = asteroid.getSize(40000);
+    size = asteroid.getSize(40);
     expect(size).to.equal('Large');
   });
 
@@ -273,7 +273,7 @@ describe('Asteroid library', function () {
       lots = asteroid.getClosestLots({ center: [0, 1, 0], lotTally: 13, findTally: 5 });
       expect(lots).to.deep.equal([ 1, 2, 3, 4, 5 ]);
     });
-  
+
     it('should get lots closest to a lot id', function () {
       let lots = asteroid.getClosestLots({ centerLot: 1, lotTally: 1000, findTally: 5 });
       expect(lots).to.deep.equal([ 2, 3, 4, 5, 6 ]);

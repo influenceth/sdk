@@ -16,6 +16,7 @@ import Inventory from './lib/inventory.js';
 import Location from './lib/location.js';
 import Name from './lib/name.js';
 import Order from './lib/order.js';
+import * as Planet from './lib/planet.js';
 import Process from './lib/process.js';
 import Processor from './lib/processor.js';
 import Product from './lib/product.js';
@@ -35,7 +36,30 @@ import starknetContracts from './contracts/starknet_abis.json' assert { type: 'j
 export { AdalianOrbit, Address, Merkle, Simplex, Time };
 
 // Game asset libs
-export { Assets, Asteroid, Building, Crew, Crewmate, Delivery, Entity, Deposit, Dock, DryDock, Exchange, Extractor, Inventory, Location, Name, Order, Process, Processor, Product, Ship, Station };
+export {
+  Assets,
+  Asteroid,
+  Building,
+  Crew,
+  Crewmate,
+  Delivery,
+  Entity,
+  Deposit,
+  Dock,
+  DryDock,
+  Exchange,
+  Extractor,
+  Inventory,
+  Location,
+  Name,
+  Order,
+  Planet,
+  Process,
+  Processor,
+  Product,
+  Ship,
+  Station
+};
 
 // Contract ABIs
 export { ethereumContracts, starknetContracts };

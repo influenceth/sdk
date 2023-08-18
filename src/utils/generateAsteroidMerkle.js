@@ -28,7 +28,7 @@ const transformAsteroid = (asteroid) => {
   return {
     id: BigInt(asteroid.i),
     spectralType: BigInt(asteroid.spectralType + 1),
-    mass: BigInt(Math.round(Asteroid.getMass(asteroid.spectralType + 1, asteroid.r))) * 2n ** 64n,
+    mass: BigInt(Math.round(Asteroid.getMass(asteroid.spectralType + 1, asteroid.r / 1000))) * 2n ** 64n,
     radius: BigInt(asteroid.r) * 2n ** 32n / 1000n,
     a: BigInt(Math.round(asteroid.orbital.a * 1000)) * BigInt(constants.AU) * 2n ** 64n / 1000n / 1000n,
     ecc: BigInt(Math.round(asteroid.orbital.e * 1000)) * 2n ** 64n / 1000n,
