@@ -427,7 +427,7 @@ const getBonuses = (packed, spectralType) => {
 
   return bonuses;
 };
-Component.getBonuses = (celestial) => getBonuses(celestial.bonuses, celestial.spectralType);
+Component.getBonuses = (celestial) => getBonuses(celestial.bonuses, celestial.celestialType);
 Entity.getBonuses = (asteroid) => Component.getBonuses(asteroid.Celestial);
 
 /**
