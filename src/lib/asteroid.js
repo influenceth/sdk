@@ -451,7 +451,10 @@ const getBonusByResource = (bonuses, resourceId) => {
 
   return { bonuses: matches, totalBonus: multiplier };
 };
-Component.getBonusByResource = (celestial, resourceId) => getBonusByResource(getBonuses(celestial), resourceId);
+Component.getBonusByResource = (celestial, resourceId) => {
+  return getBonusByResource(Component.getBonuses(celestial), resourceId);
+};
+
 Entity.getBonusByResource = (asteroid, resourceId) => Component.getBonusByResource(asteroid.Celestial, resourceId);
 
 /**
@@ -470,7 +473,7 @@ const getRarity = (bonuses = []) => {
   if (rarity <= 5) return RARITIES[4];
   return RARITIES[5];
 };
-Component.getRarity = (celestial) => getRarity(getBonuses(celestial));
+Component.getRarity = (celestial) => getRarity(Component.getBonuses(celestial));
 Entity.getRarity = (asteroid) => Component.getRarity(asteroid.Celestial);
 
 /**
