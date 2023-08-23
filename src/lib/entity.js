@@ -11,21 +11,22 @@ const IDS = {
   DELIVERY: 9
 };
 
-const TYPES = IDS;
-
-const LABELS = {
-  [IDS.CREW]: 'CREW',
-  [IDS.CREWMATE]: 'CREWMATE',
-  [IDS.ASTEROID]: 'ASTEROID',
-  [IDS.LOT]: 'LOT',
-  [IDS.BUILDING]: 'BUILDING',
-  [IDS.SHIP]: 'SHIP',
-  [IDS.DEPOSIT]: 'DEPOSIT',
-  [IDS.ORDER]: 'ORDER',
-  [IDS.DELIVERY]: 'DELIVERY'
+const TYPES = {
+  [IDS.CREW]: { label: 'CREW' },
+  [IDS.CREWMATE]: { label: 'CREWMATE' },
+  [IDS.ASTEROID]: { label: 'ASTEROID' },
+  [IDS.LOT]: { label: 'LOT' },
+  [IDS.BUILDING]: { label: 'BUILDING' },
+  [IDS.SHIP]: { label: 'SHIP' },
+  [IDS.DEPOSIT]: { label: 'DEPOSIT' },
+  [IDS.ORDER]: { label: 'ORDER' },
+  [IDS.DELIVERY]: { label: 'DELIVERY' },
 };
 
-// TODO: should probably use BigInt
+const packEntity = function ({ id, label }) {
+  return BigInt(id) * 65536n + BigInt(label);
+};
+
 const unpackEntity = function (value) {
   const _value = Number(value);
   const label = _value % 65536;
@@ -33,14 +34,10 @@ const unpackEntity = function (value) {
   return { id, label };
 };
 
-const packEntity = function ({ id, label }) {
-  return BigInt(id) * 65536n + BigInt(label);
-};
-
 export default {
   IDS,
   TYPES,
-  LABELS,
-  unpackEntity,
-  packEntity
+  
+  packEntity,
+  unpackEntity
 };
