@@ -376,20 +376,21 @@ Entity.getCombinedTraits = (entity) => Component.getCombinedTraits(entity.Crewma
 const unpackAppearance = (appearance) => {
   let output = {};
   const appearanceMasks = [
-    ['gender', 4n],
-    ['body', 16n],
-    ['face', 16n],
-    ['hair', 16n],
-    ['hairColor', 16n],
-    ['clothes', 16n],
-    ['head', 16n],
-    ['item', 8n],
+    ['gender', 4],
+    ['body', 16],
+    ['face', 16],
+    ['hair', 16],
+    ['hairColor', 16],
+    ['clothes', 16],
+    ['head', 16],
+    ['item', 8]
   ];
 
   appearance = BigInt(appearance);
-  appearanceMasks.forEach(([key, mask]) => {
-    output[key] = Number(appearance & (2n ** mask - 1n));
-    appearance >>= mask;
+  appearanceMasks.forEach(([key, exp]) => {
+    const mask = BigInt(Math.pow(2, exp)) - 1n;
+    output[key] = Number(appearance & mask);
+    appearance >>= BigInt(exp);
   });
 
   return output;

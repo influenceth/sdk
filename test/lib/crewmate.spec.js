@@ -24,8 +24,9 @@ describe('Crewmate library', function () {
     expect(invalidTrait).to.be.false;
   });
 
-  it.only('should unpack appearance', function () {
+  it('should unpack appearance', function () {
     const appearance = crewmate.unpackAppearance('0x2000020007000000092');
+    console.log(appearance);
     expect(appearance).to.deep.equal({
       gender: 2,
       body: 9,
