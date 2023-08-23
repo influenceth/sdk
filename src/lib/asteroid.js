@@ -338,13 +338,10 @@ const normalizeVector = (v3) => {
 const Entity = {};
 const Component = {};
 
-const getBaseName = (asteroidId) => {
-  const alpha = 'TFJGNRIWSHQPLOXCKBUMADZYVE';
-  const simpleHash = (asteroidId * 523) % 857;
-  let leftIndex = simpleHash % alpha.length;
-  let rightIndex = Math.floor(simpleHash / alpha.length) % alpha.length;
-  return `${alpha[leftIndex]}${alpha[rightIndex]}-${String(asteroidId).padStart(3, '0')}`;
+const getBaseName = (asteroidId, spectralType) => {
+  return `${asteroidId}-${getSpectralType(spectralType).toUpperCase()}`;
 };
+Entity.getBaseName = (asteroid) => getBaseName(asteroid.id, asteroid.Celestial?.celestialType);
 
 /**
  * Returns the (spherical) asteroid radius in km
@@ -364,6 +361,8 @@ const getSurfaceArea = (asteroidId, radius = 0) => {
   const area = 4 * Math.PI * Math.pow(radius, 2);
   return Math.floor(area);
 };
+Component.getSurfaceArea = (celestial) => getSurfaceArea(0, celestial.radius);
+Entity.getSurfaceArea = (asteroid) => Component.getSurfaceArea(asteroid.id, asteroid.Celestial?.radius);
 
 /**
  * Converts packed abundances into an object with resource ids as keys and abundances as values
