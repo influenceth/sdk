@@ -364,6 +364,8 @@ const getSurfaceArea = (asteroidId, radius = 0) => {
   const area = 4 * Math.PI * Math.pow(radius, 2);
   return Math.floor(area);
 };
+Component.getSurfaceArea = (celestial) => getSurfaceArea(null, celestial.radius);
+Entity.getSurfaceArea = (asteroid) => Component.getSurfaceArea(asteroid.Celestial);
 
 /**
  * Converts packed abundances into an object with resource ids as keys and abundances as values

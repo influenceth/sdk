@@ -50,7 +50,7 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
-    "@influenceth/astro": "^0.2.5",
+    "@influenceth/astro": "^0.2.6",
     "buffer": "^6.0.3",
     "mathjs": "^11.4.0",
     "starknet": "^4.4.2"
