@@ -374,25 +374,25 @@ Entity.getCombinedTraits = (entity) => Component.getCombinedTraits(entity.Crewma
  * @returns An unpacked object of appearance attributes
  */
 const unpackAppearance = (appearance) => {
+  let output = {};
   const appearanceMasks = [
-    ['sex', 4],
-    ['body', 16],
-    ['facialFeature', 16],
-    ['hair', 16],
-    ['hairColor', 16],
-    ['outfit', 16],
-    ['headPiece', 16],
-    ['bonusItem', 8],
+    ['gender', 4n],
+    ['body', 16n],
+    ['face', 16n],
+    ['hair', 16n],
+    ['hairColor', 16n],
+    ['clothes', 16n],
+    ['head', 16n],
+    ['item', 8n],
   ];
-  const targetLength = appearanceMasks.reduce((acc, cur) => acc + cur[1], 0);
-  const appearanceString = BigInt(appearance).toString(2).padStart(targetLength, '0');
 
-  let offset = 0;
-  return appearanceMasks.reduce((acc, [keyName, maskLength]) => {
-    acc[keyName] = parseInt(appearanceString.substr(offset, maskLength), 2);
-    offset += maskLength;
-    return acc;
-  }, {});
+  appearance = BigInt(appearance);
+  appearanceMasks.forEach(([key, mask]) => {
+    output[key] = Number(appearance & (2n ** mask - 1n));
+    appearance >>= mask;
+  });
+
+  return output;
 };
 Component.unpackAppearance = (crewmate) => unpackAppearance(crewmate.appearance);
 Entity.unpackAppearance = (entity) => Component.unpackAppearance(entity.Crewmate);
