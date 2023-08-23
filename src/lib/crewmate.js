@@ -207,7 +207,7 @@ const TRAITS = {
 };
 
 // Appearance constants
-const BONUS_ITEMS = {
+const ITEMS = {
   0: { name: 'None' },
   1: { name: 'Glow' },
   2: { name: 'Drone - Gray' },
@@ -219,7 +219,7 @@ const BONUS_ITEMS = {
   8: { name: 'Drone - Commander' }
 };
 
-const FACIAL_FEATURES = {
+const FACES = {
   0: { name: 'None' },
   1: { name: 'Scar' },
   2: { name: 'Piercing' },
@@ -243,7 +243,7 @@ const HAIR_COLORS = {
   5: { name: 'Black' }
 };
 
-const HAIR_STYLES = {
+const HAIRS = {
   0: { name: 'Bald' },
   1: { name: 'Mohawk' },
   2: { name: 'Slickback' },
@@ -258,7 +258,7 @@ const HAIR_STYLES = {
   11: { name: 'Shoulder' }
 };
 
-const HEAD_PIECES = {
+const HEADS = {
   0: { name: 'None' },
   1: { name: 'Welding Goggles' },
   2: { name: 'AR Glasses' },
@@ -278,7 +278,7 @@ const HEAD_PIECES = {
   16: { name: 'Eyepatch - Gold' },
 };
 
-const OUTFITS = {
+const CLOTHES = {
   1: { name: 'Light Spacesuit - Blue' },
   2: { name: 'Light Spacesuit - Purple' },
   3: { name: 'Light Spacesuit - Orange' },
@@ -399,35 +399,27 @@ Component.unpackAppearance = (crewmate) => unpackAppearance(crewmate.appearance)
 Entity.unpackAppearance = (entity) => Component.unpackAppearance(entity.Crewmate);
 
 /**
- * @param bodyId The crewmate's body identifier
- * @returns Details object for body including a 'name' attribute
+ * @param itemId The crewmate's item identifier
+ * @returns Details object for item including a 'name' attribute
  */
-const getBody = (bodyId) => BONUS_ITEMS[bodyId];
-Component.getBody = (crewmate) => getBonusItem(unpackAppearance(crewmate.appearance).body);
-Entity.getBody = (entity) => Component.getBonusItem(entity.Crewmate);
+const getItem = (itemId) => ITEMS[itemId];
+Component.getItem = (crewmate) => getItem(unpackAppearance(crewmate.appearance).item);
+Entity.getItem = (entity) => Component.getItem(entity.Crewmate);
 
 /**
- * @param bonusItemId The crewmate's bonus item identifier
- * @returns Details object for bonus item including a 'name' attribute
+ * @param faceId The crewmate's face identifier
+ * @returns Details object for face including a 'name' attribute
  */
-const getBonusItem = (bonusItemId) => BONUS_ITEMS[bonusItemId];
-Component.getBonusItem = (crewmate) => getBonusItem(unpackAppearance(crewmate.appearance).bonusItem);
-Entity.getBonusItem = (entity) => Component.getBonusItem(entity.Crewmate);
-
-/**
- * @param facialFeatureId The crewmate's facialFeature identifier
- * @returns Details object for facialFeature including a 'name' attribute
- */
-const getFacialFeature = (facialFeatureId) => FACIAL_FEATURES[facialFeatureId];
-Component.getFacialFeature = (crewmate) => getFacialFeature(unpackAppearance(crewmate.appearance).facialFeature);
-Entity.getFacialFeature = (entity) => Component.getFacialFeature(entity.Crewmate);
+const getFace = (faceId) => FACES[faceId];
+Component.getFace = (crewmate) => getFace(unpackAppearance(crewmate.appearance).face);
+Entity.getFace = (entity) => Component.getFace(entity.Crewmate);
 
 /**
  * @param genderId The crewmate's gender identifier
  * @returns Details object for gender including a 'name' attribute
  */
 const getGender = (genderId) => GENDERS[genderId];
-Component.getGender = (crewmate) => getGender(unpackAppearance(crewmate.appearance).sex);
+Component.getGender = (crewmate) => getGender(unpackAppearance(crewmate.appearance).gender);
 Entity.getGender = (entity) => Component.getGender(entity.Crewmate);
 
 /**
@@ -442,55 +434,54 @@ Entity.getHairColor = (entity) => Component.getHairColor(entity.Crewmate);
  * @param hairId The crewmate's hair identifier
  * @returns Details object for hair including a 'name' attribute
  */
-const getHairStyle = (hairId) => HAIR_STYLES[hairId];
-Component.getHairStyle = (crewmate) => getHairStyle(unpackAppearance(crewmate.appearance).hair);
-Entity.getHairStyle = (entity) => Component.getHairStyle(entity.Crewmate);
+const getHair = (hairId) => HAIRS[hairId];
+Component.getHair = (crewmate) => getHair(unpackAppearance(crewmate.appearance).hair);
+Entity.getHair = (entity) => Component.getHair(entity.Crewmate);
 
 /**
- * @param headPieceId The crewmate's headPiece identifier
- * @returns Details object for headPiece including a 'name' attribute
+ * @param headId The crewmate's head identifier
+ * @returns Details object for head including a 'name' attribute
  */
-const getHeadPiece = (headPieceId) => HEAD_PIECES[headPieceId];
-Component.getHeadPiece = (crewmate) => getHeadPiece(unpackAppearance(crewmate.appearance).headPiece);
-Entity.getHeadPiece = (entity) => Component.getHeadPiece(entity.Crewmate);
+const getHead = (headId) => HEADS[headId];
+Component.getHead = (crewmate) => getHead(unpackAppearance(crewmate.appearance).head);
+Entity.getHead = (entity) => Component.getHead(entity.Crewmate);
 
 /**
- * @param outfitId The crewmate's outfit identifier
- * @returns Details object for outfit including a 'name' attribute
+ * @param clothesId The crewmate's clothes identifier
+ * @returns Details object for clothes including a 'name' attribute
  */
-const getOutfit = (outfitId) => OUTFITS[outfitId];
-Component.getOutfit = (crewmate) => getOutfit(unpackAppearance(crewmate.appearance).outfit);
-Entity.getOutfit = (entity) => Component.getOutfit(entity.Crewmate);
+const getClothes = (clothesId) => CLOTHES[clothesId];
+Component.getClothes = (crewmate) => getClothes(unpackAppearance(crewmate.appearance).clothes);
+Entity.getClothes = (entity) => Component.getClothes(entity.Crewmate);
 
 export default {
   ABILITY_IDS,
   ABILITY_TYPES,
-  BONUS_ITEMS,
-  COLLECTIONS,
   CLASSES,
+  CLOTHES,
+  COLLECTIONS,
   DEPARTMENTS,
-  FACIAL_FEATURES,
+  FACES,
   GENDERS,
   HAIR_COLORS,
-  HAIR_STYLES,
-  HEAD_PIECES,
-  OUTFITS,
+  HAIRS,
+  HEADS,
+  ITEMS,
   TITLES,
-  TRAITS,
   TRAIT_TYPES,
+  TRAITS,
 
   getAbility,
-  getBody,
-  getBonusItem,
+  getClass,
+  getClothes,
   getCollection,
   getCombinedTraits,
-  getClass,
-  getFacialFeature,
+  getFace,
   getGender,
+  getHair,
   getHairColor,
-  getHairStyle,
-  getHeadPiece,
-  getOutfit,
+  getHead,
+  getItem,
   getTitle,
   getTrait,
   unpackAppearance,

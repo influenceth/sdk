@@ -350,6 +350,8 @@ Entity.getBaseName = (asteroid) => getBaseName(asteroid.id, asteroid.Celestial?.
 const getRadius = (asteroidId) => {
   return MAX_RADIUS / Math.pow(asteroidId, 0.475);
 };
+Component.getRadius = (celestial) => celestial.radius;
+Entity.getRadius = (asteroid) => asteroid.Celestial ? Component.getRadius(asteroid.Celestial) : getRadius(asteroid.id);
 
 /**
  * Calculate the total (spherical) surface area in square km of an asteroid (rounded down)
