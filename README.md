@@ -12,11 +12,21 @@ bonuses, purchase order, spectral type, radius, and orbital elements were saved 
 of the information on Starknet.
 
 Copies of both snapshots and the asteroid Merkle tree are preserved on IPFS here:
-- Asteroids snapshot: https://influence.infura-ipfs.io/ipfs/QmXHV29r6KeqVMLVDnbru44hRLQGi46qnSCqU53BRtJkfG
+- Asteroids snapshot: https://influence.infura-ipfs.io/ipfs/QmdJ7kY74efg8PvcbZ7AzuVdfZAksUiAVUL7koznvYWUq4
 - Asteroids Merkle Tree: https://influence.infura-ipfs.io/ipfs/QmVS9yNQWMumTJ6wJLrMetKxyiEysuKZaoGjaTMQJTmjty
 - Crewmate snapshot: https://influence.infura-ipfs.io/ipfs/QmPjtFx2b8gx4kBEX3xZmCafmyWdfDj8UkNqfQGmFvtg4U
 
 A utility is also available at `utils/generateAsteroidMerkle.js` to generate the Merkle tree from the snapshot.
+
+## Snapshot Details
+At the time of the snapshot:
+- 8,650 asteroids had been used to mint an Arvad Crewmate
+- an additional 13 Arvad Department heads had been minted
+- The last crewmate minted on L1 was ID: 8663
+- 11,468 asteroids had been minted
+- 2,450 of the first 11,100 minted can still be used to mint an Arvad Crewmate
+- The last 368 asteroids are eligible to claim an Adalian Crewmate on L2
+- The first 1,859 asteroids are eligible to claim an Arrival Starter Pack on L2
 
 ## Contract ABIs
 Smart contract ABIs can be included with `import { starknetContracts, ethereumContracts } from '@influenceth/sdk'` and utilized with Starknetjs, Ethers, Web3js.
