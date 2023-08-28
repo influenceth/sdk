@@ -7,7 +7,7 @@ const ABILITY_IDS = {
   EXTRACTION_RATE: 4,
   CONSTRUCTION_EFFICIENCY: 5,
   INVENTORY_CAPACITY: 6
-}
+};
 
 const ABILITY_TYPES = {
   [ABILITY_IDS.CORE_SAMPLE_SPEED]: {
@@ -24,8 +24,7 @@ const ABILITY_TYPES = {
   },
   [ABILITY_IDS.SURFACE_TRANSPORT_SPEED]: {
     name: 'Surface Transport Speed',
-    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05,
-               6: 0.05, 19: 0.10, 32: 0.15, 45: 0.20, 58: 0.25 },
+    titles: { 13: 0.01, 26: 0.02, 39: 0.03, 52: 0.04, 65: 0.05, 6: 0.05, 19: 0.10, 32: 0.15, 45: 0.20, 58: 0.25 },
     traits: { 47: 0.10 }
   },
   [ABILITY_IDS.EXTRACTION_RATE]: {
@@ -45,7 +44,7 @@ const ABILITY_TYPES = {
   }
 };
 
-// TODO: do we want to map CLASS_ID, COLLECTION_ID, etc so they can be accessed as CLASS.PILOT, etc?
+// TODO: do we want to map COLLECTION_ID, etc so they can be accessed as CLASS.PILOT, etc?
 
 const CLASSES = {
   1: { name: 'Pilot', description: 'Often restless, always ready for adventure, pilots are happiest when flying. Their expertise gets them and their crew where they want to go quickly, safely, efficiently.' },
@@ -53,6 +52,14 @@ const CLASSES = {
   3: { name: 'Miner', description: 'On the surface it appears that miners value their strength over their brains, but like their quarry, the reality lies underneath: they are highly skilled and erudite in their area of expertise.' },
   4: { name: 'Merchant', description: 'Predicting the ebb and flow of the market is about more than just the raw data, it is about anticipating the needs and desires of humanity- this is what merchants strive to understand.' },
   5: { name: 'Scientist', description: 'Motivated by a desire to expand human knowledge, scientists learn from the past, while keeping their gaze steadily on the future.' }
+};
+
+const CLASS_IDS = {
+  PILOT: 1,
+  ENGINEER: 2,
+  MINER: 3,
+  MERCHANT: 4,
+  SCIENTIST: 5
 };
 
 const COLLECTIONS = {
@@ -150,7 +157,7 @@ const TITLES = {
 
 const TRAIT_TYPES = {
   COSMETIC: 'cosmetic',
-  IMPACTFUL: 'impactful',
+  IMPACTFUL: 'impactful'
 };
 
 const TRAITS = {
@@ -204,6 +211,59 @@ const TRAITS = {
   48: { name: 'Experimenter', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next invention.' },
   49: { name: 'Builder', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased assembly waste.' },
   50: { name: 'Prospector', type: TRAIT_TYPES.IMPACTFUL, description: 'You have increased viability gain per core sample.' }
+};
+
+const TRAIT_IDS = {
+  DRIVE_SURVIVAL: 1,
+  DRIVE_SERVICE: 2,
+  DRIVE_GLORY: 3,
+  DRIVE_COMMAND: 4,
+  ADVENTUROUS: 5,
+  AMBITIOUS: 6,
+  ARROGANT: 7,
+  CAUTIOUS: 8,
+  CREATIVE: 9,
+  CURIOUS: 10,
+  FIERCE: 11,
+  FLEXIBLE: 12,
+  FRANTIC: 13,
+  HOPEFUL: 14,
+  INDEPENDENT: 15,
+  IRRATIONAL: 16,
+  LOYAL: 17,
+  PRAGMATIC: 18,
+  RATIONAL: 19,
+  RECKLESS: 20,
+  REGRESSIVE: 21,
+  SERIOUS: 22,
+  STEADFAST: 23,
+  COUNCIL_LOYALIST: 24,
+  COUNCIL_MODERATE: 25,
+  INDEPENDENT_MODERATE: 26,
+  INDEPENDENT_RADICAL: 27,
+  NAVIGATOR: 28,
+  DIETITIAN: 29,
+  REFINER: 30,
+  SURVEYOR: 31,
+  HAULER: 32,
+  OPTIMISTIC: 33,
+  THOUGHTFUL: 34,
+  PESSIMISTIC: 35,
+  RIGHTEOUS: 36,
+  COMMUNAL: 37,
+  IMPARTIAL: 38,
+  ENTERPRISING: 39,
+  OPPORTUNISTIC: 40,
+  BUSTER: 41,
+  MOGUL: 42,
+  SCHOLAR: 43,
+  RECYCLER: 44,
+  MECHANIC: 45,
+  OPERATOR: 46,
+  LOGISTICIAN: 47,
+  EXPERIMENTER: 48,
+  BUILDER: 49,
+  PROSPECTOR: 50
 };
 
 // Appearance constants
@@ -275,7 +335,7 @@ const HEADS = {
   13: { name: 'Botany Glasses' },
   14: { name: 'Chef Hat' },
   15: { name: 'Eyepatch - Orange' },
-  16: { name: 'Eyepatch - Gold' },
+  16: { name: 'Eyepatch - Gold' }
 };
 
 const CLOTHES = {
@@ -351,9 +411,9 @@ Entity.getClass = (entity) => Component.getClass(entity.Crewmate);
  * @param titleId The crewmate's title identifier
  * @returns Details object for title including a 'name' attribute
  */
- const getTitle = (titleId) => TITLES[titleId];
- Component.getTitle = (crewmate) => getTitle(crewmate.title);
- Entity.getTitle = (entity) => Component.getTitle(entity.Crewmate);
+const getTitle = (titleId) => TITLES[titleId];
+Component.getTitle = (crewmate) => getTitle(crewmate.title);
+Entity.getTitle = (entity) => Component.getTitle(entity.Crewmate);
 
 /**
  * @param traitId The crewmate's trait identifier
@@ -374,7 +434,7 @@ Entity.getCombinedTraits = (entity) => Component.getCombinedTraits(entity.Crewma
  * @returns An unpacked object of appearance attributes
  */
 const unpackAppearance = (appearance) => {
-  let output = {};
+  const output = {};
   const appearanceMasks = [
     ['gender', 4],
     ['body', 16],
@@ -454,10 +514,213 @@ const getClothes = (clothesId) => CLOTHES[clothesId];
 Component.getClothes = (crewmate) => getClothes(unpackAppearance(crewmate.appearance).clothes);
 Entity.getClothes = (entity) => Component.getClothes(entity.Crewmate);
 
+/**
+ *
+ * @param crewmateClass One of CLASSES id
+ * @param traits Array of TRAITS ids in story order
+ */
+const nextArvadianTraits = (crewmateClass = null, traits = []) => {
+  let validTraits = [];
+
+  if (traits.length === 0) {
+    validTraits = [TRAIT_IDS.DRIVE_SURVIVAL, TRAIT_IDS.DRIVE_SERVICE, TRAIT_IDS.DRIVE_GLORY, TRAIT_IDS.DRIVE_COMMAND];
+  } else if (traits.length === 1) {
+    if (traits[0] === TRAIT_IDS.DRIVE_SURVIVAL) {
+      validTraits = [
+        TRAIT_IDS.FRANTIC,
+        TRAIT_IDS.AMBITIOUS,
+        TRAIT_IDS.CREATIVE,
+        TRAIT_IDS.PRAGMATIC,
+        TRAIT_IDS.FLEXIBLE,
+        TRAIT_IDS.STEADFAST,
+        TRAIT_IDS.CAUTIOUS,
+        TRAIT_IDS.ADVENTUROUS
+      ];
+    } else if (traits[0] === TRAIT_IDS.DRIVE_SERVICE) {
+      validTraits = [
+        TRAIT_IDS.REGRESSIVE,
+        TRAIT_IDS.CURIOUS,
+        TRAIT_IDS.CAUTIOUS,
+        TRAIT_IDS.STEADFAST,
+        TRAIT_IDS.ADVENTUROUS,
+        TRAIT_IDS.LOYAL,
+        TRAIT_IDS.INDEPENDENT
+      ];
+    } else if (traits[0] === TRAIT_IDS.DRIVE_GLORY) {
+      validTraits = [
+        TRAIT_IDS.RECKLESS.LOYAL,
+        TRAIT_IDS.SERIOUS.LOYAL,
+        TRAIT_IDS.IRRATIONAL.LOYAL,
+        TRAIT_IDS.RATIONAL.LOYAL,
+        TRAIT_IDS.INDEPENDENT.LOYAL,
+        TRAIT_IDS.FIERCE.LOYAL,
+        TRAIT_IDS.AMBITIOUS.LOYAL,
+        TRAIT_IDS.LOYAL
+      ];
+    } else if (traits[0] === TRAIT_IDS.DRIVE_COMMAND) {
+      validTraits = [
+        TRAIT_IDS.ARROGANT.LOYAL,
+        TRAIT_IDS.HOPEFUL.LOYAL,
+        TRAIT_IDS.SERIOUS.LOYAL,
+        TRAIT_IDS.FIERCE.LOYAL,
+        TRAIT_IDS.AMBITIOUS.LOYAL,
+        TRAIT_IDS.LOYAL
+      ];
+    }
+  } else if (traits.length === 2) {
+    validTraits = [
+      TRAIT_IDS.COUNCIL_LOYALIST,
+      TRAIT_IDS.COUNCIL_MODERATE,
+      TRAIT_IDS.INDEPENDENT_MODERATE,
+      TRAIT_IDS.INDEPENDENT_RADICAL
+    ];
+
+    const forSurvival = [TRAIT_IDS.AMBITIOUS, TRAIT_IDS.FLEXIBLE, TRAIT_IDS.ADVENTUROUS];
+    const forService = [TRAIT_IDS.CAUTIOUS, TRAIT_IDS.STEADFAST, TRAIT_IDS.ADVENTUROUS, TRAIT_IDS.INDEPENDENT];
+    const forGlory = [TRAIT_IDS.SERIOUS, TRAIT_IDS.RATIONAL, TRAIT_IDS.INDEPENDENT, TRAIT_IDS.FIERCE, TRAIT_IDS.LOYAL];
+    const forCommand = [TRAIT_IDS.HOPEFUL, TRAIT_IDS.SERIOUS, TRAIT_IDS.FIERCE, TRAIT_IDS.LOYAL];
+
+    if (traits[0] === TRAIT_IDS.DRIVE_SURVIVAL && forSurvival.includes(traits[1])) validTraits.splice(0, 1);
+    if (traits[0] === TRAIT_IDS.DRIVE_SERVICE && forService.includes(traits[1])) validTraits.splice(0, 1);
+    if (traits[0] === TRAIT_IDS.DRIVE_GLORY && forGlory.includes(traits[1])) validTraits.splice(3, 1);
+    if (traits[0] === TRAIT_IDS.DRIVE_COMMAND && forCommand.includes(traits[1])) validTraits.splice(3, 1);
+  } else if (traits.length === 3) {
+    validTraits = [TRAIT_IDS.NAVIGATOR, TRAIT_IDS.DIETITIAN, TRAIT_IDS.REFINER, TRAIT_IDS.SURVEYOR, TRAIT_IDS.HAULER];
+  } else if (traits.length === 4) {
+    validTraits = [TRAIT_IDS.OPTIMISTIC, TRAIT_IDS.THOUGHTFUL, TRAIT_IDS.PESSIMISTIC];
+  } else if (traits.length === 5) {
+    const councilLoyalist = [TRAIT_IDS.RIGHTEOUS, TRAIT_IDS.COMMUNAL, TRAIT_IDS.IMPARTIAL];
+    const councilModerate = [TRAIT_IDS.RIGHTEOUS, TRAIT_IDS.COMMUNAL, TRAIT_IDS.IMPARTIAL, TRAIT_IDS.ENTERPRISING];
+    const indModerate = [TRAIT_IDS.COMMUNAL, TRAIT_IDS.IMPARTIAL, TRAIT_IDS.ENTERPRISING, TRAIT_IDS.OPPORTUNISTIC];
+    const indRadical = [TRAIT_IDS.COMMUNAL, TRAIT_IDS.ENTERPRISING, TRAIT_IDS.OPPORTUNISTIC];
+
+    if (traits[2] === TRAIT_IDS.COUNCIL_LOYALIST) validTraits = councilLoyalist;
+    if (traits[2] === TRAIT_IDS.COUNCIL_MODERATE) validTraits = councilModerate;
+    if (traits[2] === TRAIT_IDS.INDEPENDENT_MODERATE) validTraits = indModerate;
+    if (traits[2] === TRAIT_IDS.INDEPENDENT_RADICAL) validTraits = indRadical;
+  } else if (traits.length === 6) {
+    if (crewmateClass === CLASS_IDS.PILOT) {
+      validTraits = [
+        TRAIT_IDS.BUSTER,
+        TRAIT_IDS.MOGUL,
+        TRAIT_IDS.SCHOLAR,
+        TRAIT_IDS.OPERATOR,
+        TRAIT_IDS.LOGISTICIAN,
+        TRAIT_IDS.EXPERIMENTER
+      ];
+    } else if (crewmateClass === CLASS_IDS.ENGINEER) {
+      validTraits = [
+        TRAIT_IDS.MECHANIC,
+        TRAIT_IDS.RECYCLER,
+        TRAIT_IDS.SCHOLAR,
+        TRAIT_IDS.BUILDER,
+        TRAIT_IDS.PROSPECTOR,
+        TRAIT_IDS.EXPERIMENTER
+      ];
+    } else if (crewmateClass === CLASS_IDS.MINER) {
+      validTraits = [
+        TRAIT_IDS.RECYCLER,
+        TRAIT_IDS.MOGUL,
+        TRAIT_IDS.MECHANIC,
+        TRAIT_IDS.PROSPECTOR,
+        TRAIT_IDS.LOGISTICIAN,
+        TRAIT_IDS.BUILDER
+      ];
+    } else if (crewmateClass === CLASS_IDS.MERCHANT) {
+      validTraits = [
+        TRAIT_IDS.MOGUL,
+        TRAIT_IDS.RECYCLER,
+        TRAIT_IDS.BUSTER,
+        TRAIT_IDS.LOGISTICIAN,
+        TRAIT_IDS.PROSPECTOR,
+        TRAIT_IDS.OPERATOR
+      ];
+    } else if (crewmateClass === CLASS_IDS.SCIENTIST) {
+      validTraits = [
+        TRAIT_IDS.SCHOLAR,
+        TRAIT_IDS.MECHANIC,
+        TRAIT_IDS.BUSTER,
+        TRAIT_IDS.EXPERIMENTER,
+        TRAIT_IDS.BUILDER,
+        TRAIT_IDS.OPERATOR
+      ];
+    }
+  } else if (traits.length === 7) {
+    if (crewmateClass === CLASS_IDS.PILOT) {
+      validTraits = [TRAIT_IDS.BUILDER, TRAIT_IDS.PROSPECTOR];
+      validTraits.push(traits[6] === TRAIT_IDS.OPERATOR ? TRAIT_IDS.BUSTER : TRAIT_IDS.OPERATOR);
+    } else if (crewmateClass === CLASS_IDS.ENGINEER) {
+      validTraits = [TRAIT_IDS.LOGISTICIAN, TRAIT_IDS.OPERATOR];
+      validTraits.push(traits[6] === TRAIT_IDS.BUILDER ? TRAIT_IDS.MECHANIC : TRAIT_IDS.BUILDER);
+    } else if (crewmateClass === CLASS_IDS.MINER) {
+      validTraits = [TRAIT_IDS.OPERATOR, TRAIT_IDS.EXPERIMENTER];
+      validTraits.push(traits[6] === TRAIT_IDS.PROSPECTOR ? TRAIT_IDS.RECYCLER : TRAIT_IDS.PROSPECTOR);
+    } else if (crewmateClass === CLASS_IDS.MERCHANT) {
+      validTraits = [TRAIT_IDS.BUILDER, TRAIT_IDS.EXPERIMENTER];
+      validTraits.push(traits[6] === TRAIT_IDS.LOGISTICIAN ? TRAIT_IDS.MOGUL : TRAIT_IDS.LOGISTICIAN);
+    } else if (crewmateClass === CLASS_IDS.SCIENTIST) {
+      validTraits = [TRAIT_IDS.LOGISTICIAN, TRAIT_IDS.PROSPECTOR];
+      validTraits.push(traits[6] === TRAIT_IDS.EXPERIMENTER ? TRAIT_IDS.SCHOLAR : TRAIT_IDS.EXPERIMENTER);
+    }
+  }
+
+  return validTraits;
+};
+
+/**
+ *
+ * @param crewmateClass One of CLASSES id
+ * @param traits Array of TRAITS ids in story order
+ */
+const nextAdalianTraits = (crewmateClass, traits) => {
+  let validTraits = [];
+
+  if (traits.length === 0) {
+    validTraits = [TRAIT_IDS.DRIVE_SURVIVAL, TRAIT_IDS.DRIVE_SERVICE, TRAIT_IDS.DRIVE_GLORY, TRAIT_IDS.DRIVE_COMMAND];
+  } else if (traits.length === 1) {
+    if (crewmateClass === CLASS_IDS.PILOT) validTraits = [TRAIT_IDS.NAVIGATOR, TRAIT_IDS.BUSTER, TRAIT_IDS.OPERATOR];
+    if (crewmateClass === CLASS_IDS.ENGINEER) validTraits = [TRAIT_IDS.REFINER, TRAIT_IDS.MECHANIC, TRAIT_IDS.BUILDER];
+    if (crewmateClass === CLASS_IDS.MINER) validTraits = [TRAIT_IDS.SURVEYOR, TRAIT_IDS.RECYCLER, TRAIT_IDS.PROSPECTOR];
+    if (crewmateClass === CLASS_IDS.MERCHANT) validTraits = [TRAIT_IDS.HAULER, TRAIT_IDS.MOGUL, TRAIT_IDS.LOGISTICIAN];
+    if (crewmateClass === CLASS_IDS.SCIENTIST) validTraits = [TRAIT_IDS.DIETITIAN, TRAIT_IDS.SCHOLAR, TRAIT_IDS.EXPERIMENTER];
+  } else if (traits.length === 2) {
+    validTraits = [
+      TRAIT_IDS.RIGHTEOUS,
+      TRAIT_IDS.COMMUNAL,
+      TRAIT_IDS.IMPARTIAL,
+      TRAIT_IDS.ENTERPRISING,
+      TRAIT_IDS.OPPORTUNISTIC
+    ];
+
+    if (traits[0] === TRAIT_IDS.DRIVE_SURVIVAL) validTraits.splice(0, 1);
+    if (traits[0] === TRAIT_IDS.DRIVE_SERVICE) validTraits.splice(4, 1);
+    if (traits[0] === TRAIT_IDS.DRIVE_GLORY) validTraits.splice(1, 1);
+    if (traits[0] === TRAIT_IDS.DRIVE_COMMAND) validTraits.splice(3, 1);
+  } else if (traits.length === 3) {
+    validTraits = [
+      TRAIT_IDS.ADVENTUROUS,
+      TRAIT_IDS.AMBITIOUS,
+      TRAIT_IDS.ARROGANT,
+      TRAIT_IDS.CAUTIOUS,
+      TRAIT_IDS.CREATIVE,
+      TRAIT_IDS.CURIOUS,
+      TRAIT_IDS.FRANTIC,
+      TRAIT_IDS.INDEPENDENT,
+      TRAIT_IDS.IRRATIONAL,
+      TRAIT_IDS.PRAGMATIC,
+      TRAIT_IDS.RECKLESS,
+      TRAIT_IDS.SERIOUS
+    ];
+  }
+
+  return validTraits;
+};
+
 export default {
   ABILITY_IDS,
   ABILITY_TYPES,
   CLASSES,
+  CLASS_IDS,
   CLOTHES,
   COLLECTIONS,
   DEPARTMENTS,
@@ -470,6 +733,7 @@ export default {
   TITLES,
   TRAIT_TYPES,
   TRAITS,
+  TRAIT_IDS,
 
   getAbility,
   getClass,
@@ -484,8 +748,10 @@ export default {
   getItem,
   getTitle,
   getTrait,
-  unpackAppearance,
   isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Crewmate),
+  nextAdalianTraits,
+  nextArvadianTraits,
+  unpackAppearance,
 
   Entity,
   Component
