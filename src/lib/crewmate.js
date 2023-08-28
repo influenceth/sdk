@@ -69,6 +69,13 @@ const COLLECTIONS = {
   4: { name: 'Adalian' }
 };
 
+const COLLECTION_IDS = {
+  ARVAD_SPECIALIST: 1,
+  ARVAD_CITIZEN: 2,
+  ARVAD_LEADERSHIP: 3,
+  ADALIAN: 4
+};
+
 const DEPARTMENTS = {
   1: { name: 'Navigation' },
   2: { name: 'Education' },
@@ -515,6 +522,27 @@ Component.getClothes = (crewmate) => getClothes(unpackAppearance(crewmate.appear
 Entity.getClothes = (entity) => Component.getClothes(entity.Crewmate);
 
 /**
+ * @param collection The collection I
+ * @param crewmateClass One of CLASSES id
+ * @param traits Array of TRAITS ids in story order
+ */
+const nextTraits = (collection, crewmateClass = null, traits = []) => {
+  const arvadCollections = [
+    COLLECTION_IDS.ARVAD_CITIZEN,
+    COLLECTION_IDS.ARVAD_SPECIALIST,
+    COLLECTION_IDS.ARVAD_LEADERSHIP
+  ];
+
+  if (arvadCollections.includes(collection)) {
+    return nextArvadianTraits(crewmateClass, traits);
+  } else if (collection === COLLECTION_IDS.ADALIAN) {
+    return nextAdalianTraits(crewmateClass, traits);
+  }
+
+  return [];
+};
+
+/**
  *
  * @param crewmateClass One of CLASSES id
  * @param traits Array of TRAITS ids in story order
@@ -723,6 +751,7 @@ export default {
   CLASS_IDS,
   CLOTHES,
   COLLECTIONS,
+  COLLECTION_IDS,
   DEPARTMENTS,
   FACES,
   GENDERS,
@@ -749,8 +778,7 @@ export default {
   getTitle,
   getTrait,
   isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Crewmate),
-  nextAdalianTraits,
-  nextArvadianTraits,
+  nextTraits,
   unpackAppearance,
 
   Entity,
