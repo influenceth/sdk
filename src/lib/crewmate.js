@@ -436,22 +436,34 @@ const getCombinedTraits = (crewmate) => [...(crewmate.impactful || []), ...(crew
 Component.getCombinedTraits = getCombinedTraits;
 Entity.getCombinedTraits = (entity) => Component.getCombinedTraits(entity.Crewmate);
 
+const appearanceMasks = [
+  ['gender', 4],
+  ['body', 16],
+  ['face', 16],
+  ['hair', 16],
+  ['hairColor', 16],
+  ['clothes', 16],
+  ['head', 16],
+  ['item', 8]
+];
+const packAppearance = (details) => {
+  let output = 0n;
+
+  for (let i = appearanceMasks.length - 1; i >= 0; i--) {
+    const [key, exp] = appearanceMasks[i];
+    output <<= BigInt(exp);
+    output += BigInt(details[key]);
+  }
+
+  return `0x${output.toString(16)}`;
+};
+
 /**
  * @param appearance The packed crewmate appearance
  * @returns An unpacked object of appearance attributes
  */
 const unpackAppearance = (appearance) => {
-  const output = {};
-  const appearanceMasks = [
-    ['gender', 4],
-    ['body', 16],
-    ['face', 16],
-    ['hair', 16],
-    ['hairColor', 16],
-    ['clothes', 16],
-    ['head', 16],
-    ['item', 8]
-  ];
+  let output = {};
 
   appearance = BigInt(appearance);
   appearanceMasks.forEach(([key, exp]) => {
@@ -777,8 +789,8 @@ export default {
   getItem,
   getTitle,
   getTrait,
-  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Crewmate),
   nextTraits,
+  packAppearance,
   unpackAppearance,
 
   Entity,

@@ -830,7 +830,6 @@ export default {
   getSpectralType,
   getSurfaceArea,
   getUnpackedAsteroidDetails,
-  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Asteroid),
 
   Entity,
   Component

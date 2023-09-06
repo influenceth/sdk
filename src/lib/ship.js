@@ -117,5 +117,4 @@ export default {
 
   getConstructionType,
   getType,
-  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.Ship),
 };

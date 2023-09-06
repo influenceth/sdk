@@ -62,5 +62,4 @@ export default {
   CREWMATE_STACKING_BONUS_EFFICIENCY,
   
   getAbilityBonus,
-  isNameValid: (name) => Name.isNameValid(name, Name.TYPES.CREW),
 };

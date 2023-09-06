@@ -22,6 +22,7 @@ import Processor from './lib/processor.js';
 import Product from './lib/product.js';
 import Ship from './lib/ship.js';
 import Station from './lib/station.js';
+import System from './lib/system.js';
 
 import Address from './utils/address.js';
 import AdalianOrbit from './utils/AdalianOrbit.js';
@@ -59,7 +60,8 @@ export {
   Processor,
   Product,
   Ship,
-  Station
+  Station,
+  System
 };
 
 // Contract ABIs

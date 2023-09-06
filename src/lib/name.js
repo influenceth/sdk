@@ -1,12 +1,14 @@
+import Entity from './entity.js';
+
 const TYPES = {
-  Asteroid: { min: 4, max: 28, alpha: true, num: true, sym: true },
-  Building: { min: 4, max: 28, alpha: true, num: true, sym: true },
-  Crew: { min: 4, max: 28, alpha: true, num: false, sym: true },
-  Crewmate: { min: 4, max: 28, alpha: true, num: false, sym: true },
-  Ship: { min: 4, max: 28, alpha: true, num: true, sym: true },
+  [Entity.IDS.ASTEROID]: { min: 4, max: 28, alpha: true, num: true, sym: true },
+  [Entity.IDS.BUILDING]: { min: 4, max: 28, alpha: true, num: true, sym: true },
+  [Entity.IDS.CREW]: { min: 4, max: 28, alpha: true, num: false, sym: true },
+  [Entity.IDS.CREWMATE]: { min: 4, max: 28, alpha: true, num: false, sym: true },
+  [Entity.IDS.SHIP]: { min: 4, max: 28, alpha: true, num: true, sym: true },
 };
 
-const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
+const getType = (entityType) => TYPES[entityType] ? { ...TYPES[entityType] } : null;
 
 const getNameError = (name = '', config) => {
   if (!config) return 'Invalid type specified.'
