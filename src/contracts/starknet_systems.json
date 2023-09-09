@@ -96,6 +96,10 @@
         "type": "core::array::Span::<core::integer::u64>"
       },
       {
+        "name": "name",
+        "type": "core::felt252"
+      },
+      {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
       }
@@ -274,6 +278,10 @@
       {
         "name": "clothes",
         "type": "core::integer::u64"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
       },
       {
         "name": "station",
