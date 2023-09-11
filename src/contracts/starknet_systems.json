@@ -1,4 +1,20 @@
 {
+  "ArrangeCrew": {
+    "type": "function",
+    "name": "ArrangeCrew",
+    "inputs": [
+      {
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "AssignPublicPolicy": {
     "type": "function",
     "name": "AssignPublicPolicy",
@@ -30,6 +46,22 @@
       {
         "name": "name",
         "type": "influence::common::types::string::String"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ClaimEarlyAdopterReward": {
+    "type": "function",
+    "name": "ClaimEarlyAdopterReward",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
       },
       {
         "name": "caller_crew",
