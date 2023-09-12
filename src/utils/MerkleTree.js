@@ -1,4 +1,4 @@
-import { hash } from 'starknet';
+import { ec } from 'starknet';
 
 class MerkleTree {
   /**
@@ -16,7 +16,7 @@ class MerkleTree {
       bSorted = BigInt(a);
     }
 
-    return BigInt(hash.pedersen([aSorted, bSorted]));
+    return BigInt(ec.starkCurve.pedersen(aSorted, bSorted));
   }
 
   static #getNextLevel (level) {

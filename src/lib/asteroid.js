@@ -1,10 +1,9 @@
-import { hash } from 'starknet';
+import { ec } from 'starknet';
 import { multiply, dot } from 'mathjs';
 
 import procedural from '../utils/procedural.js';
 import { recursiveSNoise } from '../utils/simplex.js';
 import { SIMPLEX_POLY_FIT } from '../constants.js';
-import Name from './name.js';
 import Product from './product.js';
 
 /**
@@ -463,7 +462,6 @@ Entity.getBonusByResource = (asteroid, resourceId) => Component.getBonusByResour
  * @param bonuses Array of bonus objects
  */
 const getRarity = (bonuses = []) => {
-
   let rarity = 0;
 
   for (const b of bonuses) {
@@ -487,7 +485,7 @@ const getMass = (spectralType, radius) => {
   const density = SPECTRAL_TYPES[spectralType].density * Math.pow(1000, 3); // tonnes / km3
   const volume = 4 / 3 * Math.PI * Math.pow(radius, 3); // km3
   return density * volume;
-}
+};
 Component.getMass = (celestial) => getMass(celestial.celestialType, celestial.radius);
 Entity.getMass = (asteroid) => Component.getMass(asteroid.Celestial);
 
@@ -580,10 +578,10 @@ const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
   const polyParams = SIMPLEX_POLY_FIT[octaves];
 
-  const resourceSeed = hash.pedersen([BigInt(asteroidSeed), BigInt(resourceId)]);
-  const xSeed = hash.pedersen([BigInt(resourceSeed), 1n]);
-  const ySeed = hash.pedersen([BigInt(resourceSeed), 2n]);
-  const zSeed = hash.pedersen([BigInt(resourceSeed), 3n]);
+  const resourceSeed = ec.starkCurve.pedersen(BigInt(asteroidSeed), BigInt(resourceId));
+  const xSeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 1n);
+  const ySeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 2n);
+  const zSeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 3n);
 
   const lowShift = -5;
   const highShift = 5;

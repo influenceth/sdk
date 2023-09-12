@@ -1,4 +1,4 @@
-import { hash } from 'starknet';
+import { ec } from 'starknet';
 import { constants } from '@influenceth/astro';
 
 import MerkleTree from './MerkleTree.js';
@@ -13,7 +13,7 @@ const generateMerkleTree = (snapshot) => {
 };
 
 const generateLeaves = (snapshot, start = 0, finish = 0) => {
-  let leaves = [];
+  const leaves = [];
   if (finish === 0) { finish = snapshot.length; }
 
   for (let i = start; i < finish; i++) {
@@ -22,7 +22,7 @@ const generateLeaves = (snapshot, start = 0, finish = 0) => {
   }
 
   return leaves;
-}
+};
 
 const transformAsteroid = (asteroid) => {
   return {
@@ -43,18 +43,18 @@ const transformAsteroid = (asteroid) => {
 };
 
 const asteroidHash = function (t) {
-  let hashed = hash.pedersen([t.id, t.spectralType])
-  hashed = hash.pedersen([hashed, t.mass]);
-  hashed = hash.pedersen([hashed, t.radius]);
-  hashed = hash.pedersen([hashed, t.a]);
-  hashed = hash.pedersen([hashed, t.ecc]);
-  hashed = hash.pedersen([hashed, t.inc]);
-  hashed = hash.pedersen([hashed, t.raan]);
-  hashed = hash.pedersen([hashed, t.argp]);
-  hashed = hash.pedersen([hashed, t.m]);
-  hashed = hash.pedersen([hashed, t.purchaseOrder]);
-  hashed = hash.pedersen([hashed, t.scanStatus]);
-  hashed = hash.pedersen([hashed, t.bonuses]);
+  let hashed = ec.starkCurve.pedersen(t.id, t.spectralType);
+  hashed = ec.starkCurve.pedersen(hashed, t.mass);
+  hashed = ec.starkCurve.pedersen(hashed, t.radius);
+  hashed = ec.starkCurve.pedersen(hashed, t.a);
+  hashed = ec.starkCurve.pedersen(hashed, t.ecc);
+  hashed = ec.starkCurve.pedersen(hashed, t.inc);
+  hashed = ec.starkCurve.pedersen(hashed, t.raan);
+  hashed = ec.starkCurve.pedersen(hashed, t.argp);
+  hashed = ec.starkCurve.pedersen(hashed, t.m);
+  hashed = ec.starkCurve.pedersen(hashed, t.purchaseOrder);
+  hashed = ec.starkCurve.pedersen(hashed, t.scanStatus);
+  hashed = ec.starkCurve.pedersen(hashed, t.bonuses);
   return hashed;
 };
 
