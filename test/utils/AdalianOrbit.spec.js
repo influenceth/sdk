@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import almostEqual from 'almost-equal';
+import { constants } from '@influenceth/astro';
 import AdalianOrbit from '../../src/utils/AdalianOrbit.js';
 
 describe('Orbital library', function () {
@@ -22,6 +23,22 @@ describe('Orbital library', function () {
       w: 5.283809777487633,
       m: 0.9480628496833199
     });
+
+    const pos = orbit.getPositionAtTime(0);
+    expect(almostEqual(pos.x, -192699041645.188, 0, 1e-7)).to.be.true;
+    expect(almostEqual(pos.y, -223423094198.8061, 0, 1e-7)).to.be.true;
+    expect(almostEqual(pos.z, 400973733.18174685, 0, 1e-7)).to.be.true;
+  });
+
+  it('should create an orbit from a set of asteroid params in km', function () {
+    const orbit = new AdalianOrbit({
+      a: 2.192 * constants.AU / 1000,
+      e: 0.325,
+      i: 0.002443460952792061,
+      o: 3.4108969571725183,
+      w: 5.283809777487633,
+      m: 0.9480628496833199
+    }, { units: 'km' });
 
     const pos = orbit.getPositionAtTime(0);
     expect(almostEqual(pos.x, -192699041645.188, 0, 1e-7)).to.be.true;

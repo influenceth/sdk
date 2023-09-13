@@ -8,7 +8,7 @@ const MU = GM_ADALIA / (1000 ** 3); // Convert to km^3 / s^2
  * Class that defines an orbit and provides convenience conversion methods
  */
 class AdalianOrbit {
-  constructor (el = {}) {
+  constructor (el = {}, options = { units: 'AU' }) {
     const a = el.a; // Semi-major axis
     const e = el.ecc || el.e; // Eccentricity
     const i = el.inc || el.i; // Inclination
@@ -18,7 +18,11 @@ class AdalianOrbit {
     let p = el.p; // Semi-latus rectum
     let nu = el.nu; // True anomaly
 
-    if (!p && a) p = el.a * (1 - e ** 2) * constants.AU / 1000; // Convert to semi-latus rectum in km
+    if (!p && a) {
+      const units = options.units === 'AU' ? constants.AU / 1000 : 1;
+      p = el.a * (1 - e ** 2) * units; // Convert to semi-latus rectum in km
+    }
+
     if (!nu && m) nu = angles.M_to_nu(m, e); // Convert to true anomaly
     this.orbit = Orbit.fromClassicElements(MU, p, e, i, o, w, nu);
   }
@@ -30,13 +34,13 @@ class AdalianOrbit {
    * @param {Array.<number>} v Velocity vector (m / s)
    * @returns {AdalianOrbit}
    */
-  static fromStateVectors(r, v) {
+  static fromStateVectors (r, v) {
     const adalianOrbit = new AdalianOrbit();
 
     adalianOrbit.orbit = Orbit.fromStateVectors(
       MU,
       r.map((x) => x / 1000), // convert to km for astro
-      v.map((x) => x / 1000)  // convert to km / s for astro
+      v.map((x) => x / 1000) // convert to km / s for astro
     );
 
     return adalianOrbit;
