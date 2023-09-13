@@ -1,4 +1,3 @@
-import Name from './name.js';
 import Product from './product.js';
 
 const IDS = {
