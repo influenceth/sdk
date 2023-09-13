@@ -1,5 +1,6 @@
 import { ec } from 'starknet';
 import { multiply, dot } from 'mathjs';
+import { ethers } from 'ethers';
 
 import procedural from '../utils/procedural.js';
 import { recursiveSNoise } from '../utils/simplex.js';
@@ -522,6 +523,13 @@ const getScanned = (packed) => {
 Component.getScanned = (celestial) => getScanned(celestial.bonuses);
 Entity.getScanned = (asteroid) => Component.getScanned(asteroid.Celestial);
 
+const getSeed = (asteroidId) => {
+  const masterSeed = ethers.encodeBytes32String('influence');
+  return ethers.solidityPackedSha256(['bytes32', 'uint256'], [masterSeed, asteroidId]);
+};
+Component.getSeed = (celestial) => getSeed(celestial.id);
+Entity.getSeed = (asteroid) => Component.getSeed(asteroid.Celestial);
+
 /**
  * Returns the resource abundance at a specific lot
  * @param asteroidId The asteroid identifier
@@ -824,6 +832,7 @@ export default {
   getRarity,
   getRegionsOfLotPositions,
   getScanned,
+  getSeed,
   getSize,
   getSpectralType,
   getSurfaceArea,
