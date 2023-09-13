@@ -10,10 +10,10 @@ const MU = GM_ADALIA / (1000 ** 3); // Convert to km^3 / s^2
 class AdalianOrbit {
   constructor (el = {}, options = { units: 'AU' }) {
     const a = el.a; // Semi-major axis
-    const e = el.ecc || el.e; // Eccentricity
-    const i = el.inc || el.i; // Inclination
-    const o = el.raan || el.o; // Longitude of ascending node
-    const w = el.argp || el.w; // Argument of periapsis
+    const e = !isNaN(el.ecc) ? el.ecc : el.e; // Eccentricity
+    const i = !isNaN(el.inc) ? el.inc : el.i; // Inclination
+    const o = !isNaN(el.raan) ? el.raan : el.o; // Longitude of ascending node
+    const w = !isNaN(el.argp) ? el.argp : el.w; // Argument of periapsis
     const m = el.m; // Mean anomoly at epoch
     let p = el.p; // Semi-latus rectum
     let nu = el.nu; // True anomaly
