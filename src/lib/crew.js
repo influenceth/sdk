@@ -1,5 +1,4 @@
 import Crewmate from './crewmate.js';
-import Name from './name.js';
 
 const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
 

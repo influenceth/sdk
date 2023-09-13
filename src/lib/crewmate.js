@@ -1,4 +1,3 @@
-import Name from './name.js';
 
 const ABILITY_IDS = {
   CORE_SAMPLE_SPEED: 1,
@@ -452,7 +451,7 @@ const packAppearance = (details) => {
   for (let i = appearanceMasks.length - 1; i >= 0; i--) {
     const [key, exp] = appearanceMasks[i];
     output <<= BigInt(exp);
-    output += BigInt(details[key]);
+    output += BigInt(details[key] || 0);
   }
 
   return `0x${output.toString(16)}`;
