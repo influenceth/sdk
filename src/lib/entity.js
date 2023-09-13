@@ -34,10 +34,22 @@ const unpackEntity = function (value) {
   return { id, label };
 };
 
+const formatEntity = function (value) {
+  if (!value) throw new Error('Invalid entity value');
+
+  if (value.id && value.label) return { id: Number(value.id), label: Number(value.label) };
+  if (Number(value) > 0) {
+    const entity = unpackEntity(value);
+    if (entity.id > 0 && entity.label > 0) return entity;
+  }
+
+  throw new Error('Invalid entity value');
+};
+
 export default {
   IDS,
   TYPES,
-  
+  formatEntity,
   packEntity,
   unpackEntity
 };
