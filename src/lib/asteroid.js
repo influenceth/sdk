@@ -527,8 +527,7 @@ const getSeed = (asteroidId) => {
   const masterSeed = ethers.encodeBytes32String('influence');
   return ethers.solidityPackedSha256(['bytes32', 'uint256'], [masterSeed, asteroidId]);
 };
-Component.getSeed = (celestial) => getSeed(celestial.id);
-Entity.getSeed = (asteroid) => Component.getSeed(asteroid.Celestial);
+Entity.getSeed = (asteroid) => getSeed(asteroid.id);
 
 /**
  * Returns the resource abundance at a specific lot

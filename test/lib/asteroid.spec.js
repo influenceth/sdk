@@ -24,6 +24,7 @@ describe('Asteroid library', function () {
     expect(asteroid.getSeed(1)).to.eql('0xc724751ccde05a7706fc8a93757fa3783eda21e98941d100b254017f455576ab');
     expect(asteroid.getSeed(4)).to.eql('0x22d99e32b149d9f3e77b55c2a90a946a79e759762a1cd3d73e95af8f14e4768d');
     expect(asteroid.getSeed(250000)).to.eql('0xa57bd63a2ca351918eec3092d3aada3808e7492ba2471532998a82f84969c91e');
+    expect(asteroid.Entity.getSeed({ id: 1 })).to.eql('0xc724751ccde05a7706fc8a93757fa3783eda21e98941d100b254017f455576ab');
   });
 
   it('should get the radius', function () {
