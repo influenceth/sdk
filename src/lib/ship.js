@@ -11,6 +11,7 @@ const STATUSES = {
   UNDER_CONSTRUCTION: 0,
   AVAILABLE: 1,
   IN_FLIGHT: 2,
+  DISABLED: 3
 };
 
 const MODES = {

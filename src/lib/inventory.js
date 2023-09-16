@@ -93,44 +93,44 @@ const TYPES = {
   },
   [IDS.PROPELLANT_TINY]: {
     i: IDS.PROPELLANT_TINY,
-    massConstraint: 1e6,
-    volumeConstraint: 1e6,
+    massConstraint: 100e6,
+    volumeConstraint: 1310e6,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
   },
   [IDS.PROPELLANT_SMALL]: {
     i: IDS.PROPELLANT_SMALL,
-    massConstraint: 1e6,
-    volumeConstraint: 1e6,
+    massConstraint: 1000e6,
+    volumeConstraint: 13100e6,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
   },
   [IDS.PROPELLANT_MEDIUM]: {
     i: IDS.PROPELLANT_MEDIUM,
-    massConstraint: 1e6,
-    volumeConstraint: 1e6,
+    massConstraint: 2000e6,
+    volumeConstraint: 26200e6,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
   },
   [IDS.PROPELLANT_LARGE]: {
     i: IDS.PROPELLANT_LARGE,
-    massConstraint: 1e6,
-    volumeConstraint: 1e6,
+    massConstraint: 12000e6,
+    volumeConstraint: 157200e6,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
   },
   [IDS.CARGO_SMALL]: {
     i: IDS.CARGO_SMALL,
-    massConstraint: 1e6,
-    volumeConstraint: 1e6,
+    massConstraint: 50e6,
+    volumeConstraint: 65e6,
     productConstraints: null
   },
   [IDS.CARGO_MEDIUM]: {
     i: IDS.CARGO_MEDIUM,
-    massConstraint: 1e6,
-    volumeConstraint: 1e6,
+    massConstraint: 2000e6,
+    volumeConstraint: 1500e6,
     productConstraints: null
   },
   [IDS.CARGO_LARGE]: {
     i: IDS.CARGO_LARGE,
-    massConstraint: 1e6,
-    volumeConstraint: 1e6,
+    massConstraint: 12000e6,
+    volumeConstraint: 9000e6,
     productConstraints: null
   },
 };
