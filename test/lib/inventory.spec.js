@@ -16,7 +16,7 @@ describe('Inventory library', function () {
 
     // massConstraint and product constraints
     filled = inventory.getFilledCapacity(inventory.IDS.PROPELLANT_SMALL);
-    expect(filled).to.deep.equal({ filledMass: 100e6, filledVolume: 1310e6 });
+    expect(filled).to.deep.equal({ filledMass: 1000e6, filledVolume: 13100e6 });
   });
 
   it('should get resource details and totals with two arrays', function () {
