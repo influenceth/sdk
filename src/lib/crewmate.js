@@ -1,195 +1,3 @@
-
-const ABILITY_IDS = {
-  CORE_SAMPLE_TIME: 1,
-  CORE_SAMPLE_QUALITY: 2,
-  HOPPER_TRANSPORT_TIME: 3,
-  EXTRACTION_TIME: 4,
-  CONSTRUCTION_TIME: 5,
-  INVENTORY_MASS_CAPACITY: 6,
-  PROPELLANT_EXHAUST_VELOCITY: 7,
-  REFINING_TIME: 8,
-  MANUFACTURING_TIME: 9,
-  REACTION_TIME: 10,
-  FREE_TRANSPORT_DISTANCE: 11,
-  DECONSTRUCTION_YIELD: 12,
-  SECONDARY_REFINING_YIELD: 13,
-  FOOD_CONSUMPTION_TIME: 14,
-  FOOD_RATIONING_PENALTY: 15,
-  MARKETPLACE_FEE_ENFORCEMENT: 16,
-  MARKETPLACE_FEE_REDUCTION: 17,
-  PROPELLANT_FLOW_RATE: 18,
-  INVENTORY_VOLUME_CAPACITY: 19
-};
-
-const managementBonusPerTier = 0.005;
-const managementBonuses = {
-  [TITLE_IDS.BLOCK_CAPTAIN]: managementBonusPerTier * 1,
-  [TITLE_IDS.DELEGATE]: managementBonusPerTier * 2,
-  [TITLE_IDS.COUNCILOR]: managementBonusPerTier * 3,
-  [TITLE_IDS.JUSTICE]: managementBonusPerTier * 4,
-  [TITLE_IDS.HIGH_COMMANDER]: managementBonusPerTier * 5
-};
-
-const ABILITY_TYPES = {
-  [ABILITY_IDS.CORE_SAMPLE_TIME]: {
-    name: 'Core Sample Time',
-    class: CLASS_IDS.MINER,
-    titles: { ...managementBonuses },
-    traits: { [TRAIT_IDS.SURVEYOR]: 0.10 }
-  },
-  [ABILITY_IDS.CORE_SAMPLE_QUALITY]: {
-    name: 'Core Sample Quality',
-    class: CLASS_IDS.MINER,
-    traits: { [TRAIT_IDS.MINER]: 0.05 }
-  },
-  [ABILITY_IDS.EXTRACTION_TIME]: {
-    name: 'Extraction Time',
-    class: CLASS_IDS.MINER,
-    titles: { ...managementBonuses }
-  },
-  [ABILITY_IDS.HOPPER_TRANSPORT_TIME]: {
-    name: 'Hopper Transport Time',
-    titles: {
-      [TITLE_IDS.WAREHOUSE_WORKER]: 0.0125,
-      [TITLE_IDS.LOGISTICS_SPECIALIST]: 0.025,
-      [TITLE_IDS.WAREHOUSE_MANAGER]: 0.0375,
-      [TITLE_IDS.FACILITIES_SUPERVISOR]: 0.05,
-      [TITLE_IDS.CHIEF_STEWARD]: 0.0625,
-      ...managementBonuses
-    },
-    traits: { [TRAIT_IDS.LOGISTICIAN]: 0.05 }
-  },
-  [ABILITY_IDS.FREE_TRANSPORT_DISTANCE]: {
-    name: 'Free Transport Distance',
-    class: CLASS_IDS.MERCHANT
-  },
-  [ABILITY_IDS.INVENTORY_MASS_CAPACITY]: {
-    name: 'Inventory Mass Capacity',
-    traits: { [TRAIT_IDS.HAULER]: 0.05 }
-  },
-  [ABILITY_IDS.INVENTORY_VOLUME_CAPACITY]: {
-    name: 'Inventory Volume Capacity',
-    titles: {
-      [TITLE_IDS.WAREHOUSE_WORKER]: 0.0125,
-      [TITLE_IDS.LOGISTICS_SPECIALIST]: 0.025,
-      [TITLE_IDS.WAREHOUSE_MANAGER]: 0.0375,
-      [TITLE_IDS.FACILITIES_SUPERVISOR]: 0.05,
-      [TITLE_IDS.CHIEF_STEWARD]: 0.0625
-    }
-  },
-  [ABILITY_IDS.PROPELLANT_EXHAUST_VELOCITY]: {
-    name: 'Propellant Exhaust Velocity',
-    class: CLASS_IDS.PILOT,
-    titles: {
-      [TITLE_IDS.COMMUNICATIONS_OFFICER]: 0.01,
-      [TITLE_IDS.OBSERVATORY_TECHNICIAN]: 0.02,
-      [TITLE_IDS.CARTOGRAPHER]: 0.03,
-      [TITLE_IDS.NAVIGATOR]: 0.04,
-      [TITLE_IDS.CHIEF_NAVIGATOR]: 0.05
-    },
-    traits: { [TRAIT_IDS.NAVIGATOR]: 0.02 }
-  },
-  [ABILITY_IDS.PROPELLANT_FLOW_RATE]: {
-    name: 'Propellant Flow Rate',
-    class: CLASS_IDS.PILOT,
-    titles: {
-      [TITLE_IDS.COMMUNICATIONS_OFFICER]: 0.01,
-      [TITLE_IDS.OBSERVATORY_TECHNICIAN]: 0.02,
-      [TITLE_IDS.CARTOGRAPHER]: 0.03,
-      [TITLE_IDS.NAVIGATOR]: 0.04,
-      [TITLE_IDS.CHIEF_NAVIGATOR]: 0.05
-    },
-    traits: { [TRAIT_IDS.BUSTER]: 0.02 }
-  },
-  [ABILITY_IDS.CONSTRUCTION_TIME]: {
-    name: 'Construction Time',
-    class: CLASS_IDS.ENGINEER,
-    titles: { ...managementBonuses },
-    traits: { [TRAIT_IDS.BUILDER]: 0.05 }
-  },
-  [ABILITY_IDS.DECONSTRUCTION_YIELD]: {
-    name: 'Deconstruction Yield',
-    traits: { [TRAIT_IDS.RECYCLER]: 0.1 }
-  },
-  [ABILITY_IDS.REFINING_TIME]: {
-    name: 'Refining Time',
-    class: CLASS_IDS.ENGINEER,
-    titles: {
-      [TITLE_IDS.STRUCTURAL_ENGINEER]: 0.0125,
-      [TITLE_IDS.LIFE_SUPPORT_ENGINEER]: 0.025,
-      [TITLE_IDS.PROPULSION_ENGINEER]: 0.0375,
-      [TITLE_IDS.REACTOR_ENGINEER]: 0.05,
-      [TITLE_IDS.HEAD_OF_ENGINEERING]: 0.0625,
-      ...managementBonuses
-    },
-    traits: { [TRAIT_IDS.REFINER]: 0.05 }
-  },
-  [ABILITY_IDS.SECONDARY_REFINING_YIELD]: {
-    name: 'Secondary Refining Yield',
-    class: CLASS_IDS.SCIENTIST
-  },
-  [ABILITY_IDS.MANUFACTURING_TIME]: {
-    name: 'Manufacturing Time',
-    class: CLASS_IDS.ENGINEER,
-    titles: {
-      [TITLE_IDS.STRUCTURAL_ENGINEER]: 0.0125,
-      [TITLE_IDS.LIFE_SUPPORT_ENGINEER]: 0.025,
-      [TITLE_IDS.PROPULSION_ENGINEER]: 0.0375,
-      [TITLE_IDS.REACTOR_ENGINEER]: 0.05,
-      [TITLE_IDS.HEAD_OF_ENGINEERING]: 0.0625,
-      ...managementBonuses
-    }
-  },
-  [ABILITY_IDS.REACTION_TIME]: {
-    name: 'Reaction Time',
-    class: CLASS_IDS.SCIENTIST,
-    titles: {
-      [TITLE_IDS.FARMER]: 0.025,
-      [TITLE_IDS.FIELD_BOTANIST]: 0.05,
-      [TITLE_IDS.NUTRITIONIST]: 0.075,
-      [TITLE_IDS.PLANT_GENETICIST]: 0.1,
-      [TITLE_IDS.CHIEF_BOTANIST]: 0.125,
-      ...managementBonuses
-    }
-  },
-  [ABILITY_IDS.FOOD_CONSUMPTION_TIME]: {
-    name: 'Food Consumption Time',
-    title: {
-      [TITLE_IDS.LINE_COOK]: 0.025,
-      [TITLE_IDS.SECTION_COOK]: 0.05,
-      [TITLE_IDS.KITCHEN_MANAGER]: 0.075,
-      [TITLE_IDS.CHEF]: 0.1,
-      [TITLE_IDS.CHIEF_COOK]: 0.125,
-      ...managementBonuses },
-    traits: { [TRAIT_IDS.DIETITIAN]: 0.05 }
-  },
-  [ABILITY_IDS.FOOD_RATIONING_PENALTY]: {
-    name: 'Food Rationing Penalty',
-    title: {
-      [TITLE_IDS.NURSE]: 0.00833,
-      [TITLE_IDS.PHYSICIAN_ASSISTANT]: 0.01667,
-      [TITLE_IDS.RESIDENT_PHYSICIAN]: 0.025,
-      [TITLE_IDS.PHYSICIAN]: 0.0333,
-      [TITLE_IDS.CHIEF_MEDICAL_OFFICER]: 0.04167
-    }
-  },
-  [ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT]: {
-    name: 'Marketplace Fee Enforcement',
-    traits: { [TRAIT_IDS.MOGUL]: 0.0175 }
-  },
-  [ABILITY_IDS.MARKETPLACE_FEE_REDUCTION]: {
-    name: 'Marketplace Fee Reduction',
-    class: CLASS_IDS.MERCHANT,
-    titles: {
-      [TITLE_IDS.ARTIST]: 0.05,
-      [TITLE_IDS.AUTHOR]: 0.1,
-      [TITLE_IDS.MUSICIAN]: 0.15,
-      [TITLE_IDS.ACTOR]: 0.2,
-      [TITLE_IDS.ENTERTAINMENT_DIRECTOR]: 0.25
-    }
-  }
-};
-
 const CLASSES = {
   1: { name: 'Pilot', description: 'Often restless, always ready for adventure, pilots are happiest when flying. Their expertise gets them and their crew where they want to go quickly, safely, efficiently.' },
   2: { name: 'Engineer', description: 'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.' },
@@ -500,6 +308,198 @@ const TRAIT_IDS = {
   EXPERIMENTER: 48,
   BUILDER: 49,
   PROSPECTOR: 50
+};
+
+
+const ABILITY_IDS = {
+  CORE_SAMPLE_TIME: 1,
+  CORE_SAMPLE_QUALITY: 2,
+  HOPPER_TRANSPORT_TIME: 3,
+  EXTRACTION_TIME: 4,
+  CONSTRUCTION_TIME: 5,
+  INVENTORY_MASS_CAPACITY: 6,
+  PROPELLANT_EXHAUST_VELOCITY: 7,
+  REFINING_TIME: 8,
+  MANUFACTURING_TIME: 9,
+  REACTION_TIME: 10,
+  FREE_TRANSPORT_DISTANCE: 11,
+  DECONSTRUCTION_YIELD: 12,
+  SECONDARY_REFINING_YIELD: 13,
+  FOOD_CONSUMPTION_TIME: 14,
+  FOOD_RATIONING_PENALTY: 15,
+  MARKETPLACE_FEE_ENFORCEMENT: 16,
+  MARKETPLACE_FEE_REDUCTION: 17,
+  PROPELLANT_FLOW_RATE: 18,
+  INVENTORY_VOLUME_CAPACITY: 19
+};
+
+const managementBonusPerTier = 0.005;
+const managementBonuses = {
+  [TITLE_IDS.BLOCK_CAPTAIN]: managementBonusPerTier * 1,
+  [TITLE_IDS.DELEGATE]: managementBonusPerTier * 2,
+  [TITLE_IDS.COUNCILOR]: managementBonusPerTier * 3,
+  [TITLE_IDS.JUSTICE]: managementBonusPerTier * 4,
+  [TITLE_IDS.HIGH_COMMANDER]: managementBonusPerTier * 5
+};
+
+const ABILITY_TYPES = {
+  [ABILITY_IDS.CORE_SAMPLE_TIME]: {
+    name: 'Core Sample Time',
+    class: CLASS_IDS.MINER,
+    titles: { ...managementBonuses },
+    traits: { [TRAIT_IDS.SURVEYOR]: 0.10 }
+  },
+  [ABILITY_IDS.CORE_SAMPLE_QUALITY]: {
+    name: 'Core Sample Quality',
+    class: CLASS_IDS.MINER,
+    traits: { [TRAIT_IDS.PROSPECTOR]: 0.05 }
+  },
+  [ABILITY_IDS.EXTRACTION_TIME]: {
+    name: 'Extraction Time',
+    class: CLASS_IDS.MINER,
+    titles: { ...managementBonuses }
+  },
+  [ABILITY_IDS.HOPPER_TRANSPORT_TIME]: {
+    name: 'Hopper Transport Time',
+    titles: {
+      [TITLE_IDS.WAREHOUSE_WORKER]: 0.0125,
+      [TITLE_IDS.LOGISTICS_SPECIALIST]: 0.025,
+      [TITLE_IDS.WAREHOUSE_MANAGER]: 0.0375,
+      [TITLE_IDS.FACILITIES_SUPERVISOR]: 0.05,
+      [TITLE_IDS.CHIEF_STEWARD]: 0.0625,
+      ...managementBonuses
+    },
+    traits: { [TRAIT_IDS.LOGISTICIAN]: 0.05 }
+  },
+  [ABILITY_IDS.FREE_TRANSPORT_DISTANCE]: {
+    name: 'Free Transport Distance',
+    class: CLASS_IDS.MERCHANT
+  },
+  [ABILITY_IDS.INVENTORY_MASS_CAPACITY]: {
+    name: 'Inventory Mass Capacity',
+    traits: { [TRAIT_IDS.HAULER]: 0.05 }
+  },
+  [ABILITY_IDS.INVENTORY_VOLUME_CAPACITY]: {
+    name: 'Inventory Volume Capacity',
+    titles: {
+      [TITLE_IDS.WAREHOUSE_WORKER]: 0.0125,
+      [TITLE_IDS.LOGISTICS_SPECIALIST]: 0.025,
+      [TITLE_IDS.WAREHOUSE_MANAGER]: 0.0375,
+      [TITLE_IDS.FACILITIES_SUPERVISOR]: 0.05,
+      [TITLE_IDS.CHIEF_STEWARD]: 0.0625
+    }
+  },
+  [ABILITY_IDS.PROPELLANT_EXHAUST_VELOCITY]: {
+    name: 'Propellant Exhaust Velocity',
+    class: CLASS_IDS.PILOT,
+    titles: {
+      [TITLE_IDS.COMMUNICATIONS_OFFICER]: 0.01,
+      [TITLE_IDS.OBSERVATORY_TECHNICIAN]: 0.02,
+      [TITLE_IDS.CARTOGRAPHER]: 0.03,
+      [TITLE_IDS.NAVIGATOR]: 0.04,
+      [TITLE_IDS.CHIEF_NAVIGATOR]: 0.05
+    },
+    traits: { [TRAIT_IDS.NAVIGATOR]: 0.02 }
+  },
+  [ABILITY_IDS.PROPELLANT_FLOW_RATE]: {
+    name: 'Propellant Flow Rate',
+    class: CLASS_IDS.PILOT,
+    titles: {
+      [TITLE_IDS.COMMUNICATIONS_OFFICER]: 0.01,
+      [TITLE_IDS.OBSERVATORY_TECHNICIAN]: 0.02,
+      [TITLE_IDS.CARTOGRAPHER]: 0.03,
+      [TITLE_IDS.NAVIGATOR]: 0.04,
+      [TITLE_IDS.CHIEF_NAVIGATOR]: 0.05
+    },
+    traits: { [TRAIT_IDS.BUSTER]: 0.02 }
+  },
+  [ABILITY_IDS.CONSTRUCTION_TIME]: {
+    name: 'Construction Time',
+    class: CLASS_IDS.ENGINEER,
+    titles: { ...managementBonuses },
+    traits: { [TRAIT_IDS.BUILDER]: 0.05 }
+  },
+  [ABILITY_IDS.DECONSTRUCTION_YIELD]: {
+    name: 'Deconstruction Yield',
+    traits: { [TRAIT_IDS.RECYCLER]: 0.1 }
+  },
+  [ABILITY_IDS.REFINING_TIME]: {
+    name: 'Refining Time',
+    class: CLASS_IDS.ENGINEER,
+    titles: {
+      [TITLE_IDS.STRUCTURAL_ENGINEER]: 0.0125,
+      [TITLE_IDS.LIFE_SUPPORT_ENGINEER]: 0.025,
+      [TITLE_IDS.PROPULSION_ENGINEER]: 0.0375,
+      [TITLE_IDS.REACTOR_ENGINEER]: 0.05,
+      [TITLE_IDS.HEAD_OF_ENGINEERING]: 0.0625,
+      ...managementBonuses
+    },
+    traits: { [TRAIT_IDS.REFINER]: 0.05 }
+  },
+  [ABILITY_IDS.SECONDARY_REFINING_YIELD]: {
+    name: 'Secondary Refining Yield',
+    class: CLASS_IDS.SCIENTIST
+  },
+  [ABILITY_IDS.MANUFACTURING_TIME]: {
+    name: 'Manufacturing Time',
+    class: CLASS_IDS.ENGINEER,
+    titles: {
+      [TITLE_IDS.STRUCTURAL_ENGINEER]: 0.0125,
+      [TITLE_IDS.LIFE_SUPPORT_ENGINEER]: 0.025,
+      [TITLE_IDS.PROPULSION_ENGINEER]: 0.0375,
+      [TITLE_IDS.REACTOR_ENGINEER]: 0.05,
+      [TITLE_IDS.HEAD_OF_ENGINEERING]: 0.0625,
+      ...managementBonuses
+    }
+  },
+  [ABILITY_IDS.REACTION_TIME]: {
+    name: 'Reaction Time',
+    class: CLASS_IDS.SCIENTIST,
+    titles: {
+      [TITLE_IDS.FARMER]: 0.025,
+      [TITLE_IDS.FIELD_BOTANIST]: 0.05,
+      [TITLE_IDS.NUTRITIONIST]: 0.075,
+      [TITLE_IDS.PLANT_GENETICIST]: 0.1,
+      [TITLE_IDS.CHIEF_BOTANIST]: 0.125,
+      ...managementBonuses
+    }
+  },
+  [ABILITY_IDS.FOOD_CONSUMPTION_TIME]: {
+    name: 'Food Consumption Time',
+    title: {
+      [TITLE_IDS.LINE_COOK]: 0.025,
+      [TITLE_IDS.SECTION_COOK]: 0.05,
+      [TITLE_IDS.KITCHEN_MANAGER]: 0.075,
+      [TITLE_IDS.CHEF]: 0.1,
+      [TITLE_IDS.CHIEF_COOK]: 0.125,
+      ...managementBonuses },
+    traits: { [TRAIT_IDS.DIETITIAN]: 0.05 }
+  },
+  [ABILITY_IDS.FOOD_RATIONING_PENALTY]: {
+    name: 'Food Rationing Penalty',
+    title: {
+      [TITLE_IDS.NURSE]: 0.00833,
+      [TITLE_IDS.PHYSICIAN_ASSISTANT]: 0.01667,
+      [TITLE_IDS.RESIDENT_PHYSICIAN]: 0.025,
+      [TITLE_IDS.PHYSICIAN]: 0.0333,
+      [TITLE_IDS.CHIEF_MEDICAL_OFFICER]: 0.04167
+    }
+  },
+  [ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT]: {
+    name: 'Marketplace Fee Enforcement',
+    traits: { [TRAIT_IDS.MOGUL]: 0.0175 }
+  },
+  [ABILITY_IDS.MARKETPLACE_FEE_REDUCTION]: {
+    name: 'Marketplace Fee Reduction',
+    class: CLASS_IDS.MERCHANT,
+    titles: {
+      [TITLE_IDS.ARTIST]: 0.05,
+      [TITLE_IDS.AUTHOR]: 0.1,
+      [TITLE_IDS.MUSICIAN]: 0.15,
+      [TITLE_IDS.ACTOR]: 0.2,
+      [TITLE_IDS.ENTERTAINMENT_DIRECTOR]: 0.25
+    }
+  }
 };
 
 // Appearance constants
