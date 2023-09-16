@@ -102,6 +102,7 @@ const TYPES = {
       overcrowded and ultimately disappears as the level of overcrowding increases.`,
   }
 };
+
 const CONSTRUCTION_TYPES = {
   [IDS.WAREHOUSE]: {
     constructionTime: 480,
@@ -227,12 +228,21 @@ const CONSTRUCTION_TYPES = {
     }
   }
 };
-const CONSTRUCTION_STATUSES = {
+
+const CONSTRUCTION_STATUS_IDS = {
   UNPLANNED: 0,
   PLANNED: 1,
   UNDER_CONSTRUCTION: 2,
   OPERATIONAL: 3,
 }
+
+const CONSTRUCTION_STATUSES = {
+  [CONSTRUCTION_STATUS_IDS.UNPLANNED]: 'Unplanned',
+  [CONSTRUCTION_STATUS_IDS.PLANNED]: 'Planned',
+  [CONSTRUCTION_STATUS_IDS.UNDER_CONSTRUCTION]: 'Under Construction',
+  [CONSTRUCTION_STATUS_IDS.OPERATIONAL]: 'Operational'
+};
+
 const GRACE_PERIOD = 86400;
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
@@ -254,6 +264,7 @@ const getConstructionTime = (buildingType, totalBonus = 1) => {
 export default {
   TYPES,
   CONSTRUCTION_TYPES,
+  CONSTRUCTION_STATUS_IDS,
   CONSTRUCTION_STATUSES,
   GRACE_PERIOD,
   IDS,
