@@ -1,4 +1,4 @@
-import Entity from './entity';
+import Entity from './entity.js';
 
 const fromEntityFormat = (loc) => {
   if (!loc) return null;
@@ -39,8 +39,6 @@ const toEntityFormat = (loc) => {
 };
 
 export default {
-  IDS,
-
   fromEntityFormat,
   toEntityFormat
 };
