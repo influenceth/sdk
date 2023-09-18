@@ -47,7 +47,7 @@ const formatEntity = function (value) {
 };
 
 const areEqual = function (entityA, entityB) {
-  if (!entityA?.id || !entityB?.label || !entityB?.id || !entityB.label) {
+  if (!entityA?.id || !entityB?.label || !entityB?.id || !entityB?.label) {
     throw new Error('Invalid entities');
   }
 
