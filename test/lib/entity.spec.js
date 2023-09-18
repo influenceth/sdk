@@ -16,4 +16,34 @@ describe('Entity library', function () {
     expect(entity.unpackEntity(80908641239044n)).to.deep.equal({ id: 1234567890, label: entity.IDS.LOT });
     expect(entity.unpackEntity(9007199254675463n)).to.deep.equal({ id: 137438953471, label: entity.IDS.DEPOSIT });
   });
+
+  describe('areEqual', function () {
+    it('should compare two entities', function () {
+      let result;
+      result = entity.areEqual(
+        { id: 1, label: 1 },
+        { id: 1, label: 1 }
+      );
+      expect(result).to.equal(true);
+
+      result = entity.areEqual(
+        { label: 5, id: 1 },
+        { id: 1, label: 5 }
+      );
+      expect(result).to.equal(true);
+
+      result = entity.areEqual(
+        { label: 5, id: 1 },
+        { id: 2, label: 5 }
+      );
+      expect(result).to.equal(false);
+    });
+
+    it('should throw an error if the values are not valid entities', function () {
+      const fn = function () {
+        entity.areEqual({ id: 1 }, { label: 5 });
+      };
+      expect(fn).to.throw('Invalid entities');
+    });
+  });
 });

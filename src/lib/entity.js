@@ -46,9 +46,18 @@ const formatEntity = function (value) {
   throw new Error('Invalid entity value');
 };
 
+const areEqual = function (entityA, entityB) {
+  if (!entityA?.id || !entityB?.label || !entityB?.id || !entityB.label) {
+    throw new Error('Invalid entities');
+  }
+
+  return entityA.id === entityB.id && entityA.label === entityB.label;
+};
+
 export default {
   IDS,
   TYPES,
+  areEqual,
   formatEntity,
   packEntity,
   unpackEntity
