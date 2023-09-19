@@ -34,10 +34,31 @@ const unpackEntity = function (value) {
   return { id, label };
 };
 
+const formatEntity = function (value) {
+  if (!value) throw new Error('Invalid entity value');
+
+  if (value.id && value.label) return { id: Number(value.id), label: Number(value.label) };
+  if (Number(value) > 0) {
+    const entity = unpackEntity(value);
+    if (entity.id > 0 && entity.label > 0) return entity;
+  }
+
+  throw new Error('Invalid entity value');
+};
+
+const areEqual = function (entityA, entityB) {
+  if (!entityA?.id || !entityB?.label || !entityB?.id || !entityB?.label) {
+    throw new Error('Invalid entities');
+  }
+
+  return entityA.id === entityB.id && entityA.label === entityB.label;
+};
+
 export default {
   IDS,
   TYPES,
-  
+  areEqual,
+  formatEntity,
   packEntity,
   unpackEntity
 };
