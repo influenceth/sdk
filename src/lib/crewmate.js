@@ -817,22 +817,22 @@ const nextArvadianTraits = (crewmateClass = null, traits = []) => {
       ];
     } else if (traits[0] === TRAIT_IDS.DRIVE_GLORY) {
       validTraits = [
-        TRAIT_IDS.RECKLESS.LOYAL,
-        TRAIT_IDS.SERIOUS.LOYAL,
-        TRAIT_IDS.IRRATIONAL.LOYAL,
-        TRAIT_IDS.RATIONAL.LOYAL,
-        TRAIT_IDS.INDEPENDENT.LOYAL,
-        TRAIT_IDS.FIERCE.LOYAL,
-        TRAIT_IDS.AMBITIOUS.LOYAL,
+        TRAIT_IDS.RECKLESS,
+        TRAIT_IDS.SERIOUS,
+        TRAIT_IDS.IRRATIONAL,
+        TRAIT_IDS.RATIONAL,
+        TRAIT_IDS.INDEPENDENT,
+        TRAIT_IDS.FIERCE,
+        TRAIT_IDS.AMBITIOUS,
         TRAIT_IDS.LOYAL
       ];
     } else if (traits[0] === TRAIT_IDS.DRIVE_COMMAND) {
       validTraits = [
-        TRAIT_IDS.ARROGANT.LOYAL,
-        TRAIT_IDS.HOPEFUL.LOYAL,
-        TRAIT_IDS.SERIOUS.LOYAL,
-        TRAIT_IDS.FIERCE.LOYAL,
-        TRAIT_IDS.AMBITIOUS.LOYAL,
+        TRAIT_IDS.ARROGANT,
+        TRAIT_IDS.HOPEFUL,
+        TRAIT_IDS.SERIOUS,
+        TRAIT_IDS.FIERCE,
+        TRAIT_IDS.AMBITIOUS,
         TRAIT_IDS.LOYAL
       ];
     }

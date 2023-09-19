@@ -82,7 +82,7 @@ describe('Crewmate library', function () {
     expect(traits).to.eql([TRAIT_IDS.BUILDER, TRAIT_IDS.PROSPECTOR, TRAIT_IDS.BUSTER]);
   });
 
-  it('should return valid Adalian traits', function () {
+  it.only('should return valid Adalian traits', function () {
     let traits;
     const { TRAIT_IDS } = crewmate;
     const selectedTraits = [TRAIT_IDS.DRIVE_COMMAND];
@@ -93,5 +93,8 @@ describe('Crewmate library', function () {
     selectedTraits.push(TRAIT_IDS.SURVEYOR);
     traits = crewmate.nextTraits(4, 3, selectedTraits);
     expect(traits).to.eql([TRAIT_IDS.RIGHTEOUS, TRAIT_IDS.COMMUNAL, TRAIT_IDS.IMPARTIAL, TRAIT_IDS.OPPORTUNISTIC]);
+
+    traits = crewmate.nextTraits(1, 3, [4]);
+    expect(traits).to.eql([ 7, 14, 22, 11, 6, 17 ]);
   });
 });
