@@ -1,4 +1,3 @@
-// TODO: remove in favor of TYPES?
 const IDS = {
   CREW: 1,
   CREWMATE: 2,
@@ -28,16 +27,17 @@ const packEntity = function ({ id, label }) {
 };
 
 const unpackEntity = function (value) {
-  const _value = Number(value);
-  const label = _value % 65536;
-  const id = Math.floor((_value - label) / 65536);
-  return { id, label };
+  value = BigInt(value);
+  const label = value % 65536n;
+  const id = (value - label) / 65536n;
+  return { id: Number(id), label: Number(label) };
 };
 
 const formatEntity = function (value) {
   if (!value) throw new Error('Invalid entity value');
 
   if (value.id && value.label) return { id: Number(value.id), label: Number(value.label) };
+
   if (Number(value) > 0) {
     const entity = unpackEntity(value);
     if (entity.id > 0 && entity.label > 0) return entity;
@@ -46,12 +46,34 @@ const formatEntity = function (value) {
   throw new Error('Invalid entity value');
 };
 
-const areEqual = function (entityA, entityB) {
-  if (!entityA?.id || !entityB?.label || !entityB?.id || !entityB?.label) {
-    throw new Error('Invalid entities');
-  }
+const fromPosition = ({ asteroidId, lotId }) => {
+  return { id: Number(asteroidId) + Number(lotId) * 2 ** 32, label: IDS.LOT };
+};
 
-  return entityA.id === entityB.id && entityA.label === entityB.label;
+const toPosition = (entity) => {
+  entity = formatEntity(entity);
+  if (entity.label !== IDS.LOT) throw new Error('Invalid entity label');
+
+  const split = 2 ** 32;
+
+  return {
+    asteroidId: entity.id % split,
+    lotId: Math.floor(entity.id / split)
+  };
+};
+
+const areEqual = function (entityA, entityB) {
+  if (!entityA && !entityB) throw new Error('Invalid entities');
+
+  if (typeof entityA === 'object' && typeof entityB === 'object') {
+    if (!entityA?.id || !entityB?.label || !entityB?.id || !entityB?.label) {
+      throw new Error('Invalid entities');
+    }
+
+    return Number(entityA.id) === Number(entityB.id) && Number(entityA.label) === Number(entityB.label);
+  } else {
+    return BigInt(entityA) === BigInt(entityB);
+  }
 };
 
 export default {
@@ -60,5 +82,7 @@ export default {
   areEqual,
   formatEntity,
   packEntity,
-  unpackEntity
+  unpackEntity,
+  fromPosition,
+  toPosition
 };

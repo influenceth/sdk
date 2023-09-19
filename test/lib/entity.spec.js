@@ -17,6 +17,16 @@ describe('Entity library', function () {
     expect(entity.unpackEntity(9007199254675463n)).to.deep.equal({ id: 137438953471, label: entity.IDS.DEPOSIT });
   });
 
+  it('should create entity from position', function () {
+    const expected = { id: 6881662889623553, label: entity.IDS.LOT };
+    expect(entity.fromPosition({ asteroidId: 1, lotId: 1602262 })).to.deep.equal(expected);
+  });
+
+  it('should create position from entity', function () {
+    const expected = { asteroidId: 1, lotId: 1602262 };
+    expect(entity.toPosition({ id: 6881662889623553, label: entity.IDS.LOT })).to.deep.equal(expected);
+  });
+
   describe('areEqual', function () {
     it('should compare two entities', function () {
       let result;
@@ -37,6 +47,13 @@ describe('Entity library', function () {
         { id: 2, label: 5 }
       );
       expect(result).to.equal(false);
+    });
+
+    it('should compare uuid entities', function () {
+      expect(entity.areEqual('1234', '1234')).to.equal(true);
+      expect(entity.areEqual('1234', '1235')).to.equal(false);
+      expect(entity.areEqual(1234, 1234)).to.equal(true);
+      expect(entity.areEqual(1234n, 1234n)).to.equal(true);
     });
 
     it('should throw an error if the values are not valid entities', function () {
