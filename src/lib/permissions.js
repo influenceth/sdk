@@ -30,7 +30,7 @@ const TYPES = {
   [IDS.ASSEMBLE_SHIP]: { label: 'ASSEMBLE_SHIP' }
 };
 
-module.exports = {
+export default {
   IDS,
   TYPES
 };
