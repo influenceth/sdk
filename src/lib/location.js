@@ -30,7 +30,7 @@ const toEntityFormat = (loc) => {
   } else if (loc.buildingId) {
     return { label: Entity.IDS.BUILDING, id: loc.buildingId };
   } else if (loc.asteroidId && loc.lotId) {
-    return { label: Entity.IDS.LOT, id: loc.lotId << 32 | loc.asteroidId };
+    return { label: Entity.IDS.LOT, id: loc.asteroidId + loc.lotId * 2 ** 32 };
   } else if (loc.asteroidId) {
     return { label: Entity.IDS.ASTEROID, id: loc.asteroidId };
   }
