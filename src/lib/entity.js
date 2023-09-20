@@ -19,7 +19,7 @@ const TYPES = {
   [IDS.SHIP]: { label: 'SHIP' },
   [IDS.DEPOSIT]: { label: 'DEPOSIT' },
   [IDS.ORDER]: { label: 'ORDER' },
-  [IDS.DELIVERY]: { label: 'DELIVERY' },
+  [IDS.DELIVERY]: { label: 'DELIVERY' }
 };
 
 const packEntity = function ({ id, label }) {
@@ -64,6 +64,7 @@ const toPosition = (entity) => {
 
 const areEqual = function (entityA, entityB) {
   if (!entityA && !entityB) throw new Error('Invalid entities');
+  if (!entityA || !entityB) return false;
 
   if (typeof entityA === 'object' && typeof entityB === 'object') {
     if (!entityA?.id || !entityB?.label || !entityB?.id || !entityB?.label) {
@@ -71,9 +72,8 @@ const areEqual = function (entityA, entityB) {
     }
 
     return Number(entityA.id) === Number(entityB.id) && Number(entityA.label) === Number(entityB.label);
-  } else {
-    return BigInt(entityA) === BigInt(entityB);
   }
+  return BigInt(entityA) === BigInt(entityB);
 };
 
 export default {

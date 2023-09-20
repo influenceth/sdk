@@ -3,25 +3,27 @@ import crewmate from '../../src/lib/crewmate.js';
 import { checkIdsAndTypes } from '../testUtils.js';
 
 describe('Crewmate library', function () {
-  checkIdsAndTypes(crewmate.ABILITY_IDS, crewmate.ABILITY_TYPES);
+  before(function () {
+    checkIdsAndTypes(crewmate.ABILITY_IDS, crewmate.ABILITY_TYPES);
+  });
 
   it('ability types should not reference an invalid class', function () {
     const invalidClass = !!Object.values(crewmate.ABILITY_TYPES).find((a) => a.class && !crewmate.getClass(a.class));
-    expect(invalidClass).to.be.false;
+    expect(invalidClass).to.eql(false);
   });
 
   it('ability types should not reference an invalid title', function () {
     const invalidTitle = !!Object.values(crewmate.ABILITY_TYPES).find((a) =>
       !!Object.keys(a.titles || {}).find((t) => !crewmate.getTitle(t))
     );
-    expect(invalidTitle).to.be.false;
+    expect(invalidTitle).to.eql(false);
   });
 
   it('ability types should not reference an invalid trait', function () {
     const invalidTrait = !!Object.values(crewmate.ABILITY_TYPES).find((a) =>
       !!Object.keys(a.traits || {}).find((t) => !crewmate.getTrait(t))
     );
-    expect(invalidTrait).to.be.false;
+    expect(invalidTrait).to.eql(false);
   });
 
   it('should unpack appearance', function () {
@@ -82,7 +84,7 @@ describe('Crewmate library', function () {
     expect(traits).to.eql([TRAIT_IDS.BUILDER, TRAIT_IDS.PROSPECTOR, TRAIT_IDS.BUSTER]);
   });
 
-  it.only('should return valid Adalian traits', function () {
+  it('should return valid Adalian traits', function () {
     let traits;
     const { TRAIT_IDS } = crewmate;
     const selectedTraits = [TRAIT_IDS.DRIVE_COMMAND];
@@ -95,6 +97,6 @@ describe('Crewmate library', function () {
     expect(traits).to.eql([TRAIT_IDS.RIGHTEOUS, TRAIT_IDS.COMMUNAL, TRAIT_IDS.IMPARTIAL, TRAIT_IDS.OPPORTUNISTIC]);
 
     traits = crewmate.nextTraits(1, 3, [4]);
-    expect(traits).to.eql([ 7, 14, 22, 11, 6, 17 ]);
+    expect(traits).to.eql([7, 14, 22, 11, 6, 17]);
   });
 });
