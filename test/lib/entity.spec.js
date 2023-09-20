@@ -3,7 +3,9 @@ import entity from '../../src/lib/entity.js';
 import { checkIdsAndTypes } from '../testUtils.js';
 
 describe('Entity library', function () {
-  checkIdsAndTypes(entity.IDS, entity.TYPES);
+  before(function () {
+    checkIdsAndTypes(entity.IDS, entity.TYPES);
+  });
 
   it('should pack entity', function () {
     expect(entity.packEntity({ id: 123, label: entity.IDS.ASTEROID })).to.equal(8060931n);
@@ -54,6 +56,15 @@ describe('Entity library', function () {
       expect(entity.areEqual('1234', '1235')).to.equal(false);
       expect(entity.areEqual(1234, 1234)).to.equal(true);
       expect(entity.areEqual(1234n, 1234n)).to.equal(true);
+    });
+
+    it('should return false if one of the two entities is empty', function () {
+      let result;
+      result = entity.areEqual({ id: 1, label: 1 }, null);
+      expect(result).to.equal(false);
+
+      result = entity.areEqual(null, { id: 1, label: 1 });
+      expect(result).to.equal(false);
     });
 
     it('should throw an error if the values are not valid entities', function () {
