@@ -824,7 +824,6 @@ export default {
   getRadius,
   getRarity,
   getRegionsOfLotPositions,
-  getScanned,
   getSeed,
   getSize,
   getSpectralType,

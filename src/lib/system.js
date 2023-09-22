@@ -1,4 +1,4 @@
-import { CallData } from 'starknet';
+import { CallData, uint256 } from 'starknet';
 import SystemData from '../contracts/starknet_systems.json' assert { type: 'json' };
 
 const parseCairoType = (cairoType) => {

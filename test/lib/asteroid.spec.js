@@ -154,13 +154,6 @@ describe('Asteroid library', function () {
     expect(typeName).to.equal('');
   });
 
-  it('should determine scan status based on bonuses', function () {
-    let scanned = asteroid.getScanned(0);
-    expect(scanned).to.be.false;
-    scanned = asteroid.getScanned(5);
-    expect(scanned).to.be.true;
-  });
-
   it('should get abundance at a specific lot', function () {
     const asteroidSeed = 3590329621830653642883442320016035471801660656180234502900732533901525272177n;
     const abundance = asteroid.getAbundanceAtLot(1000, asteroidSeed, 2096, 10, 0.212)
