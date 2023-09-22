@@ -11,9 +11,9 @@ const TYPES = {
 const getType = (entityType) => TYPES[entityType] ? { ...TYPES[entityType] } : null;
 
 const getTypeRegex = (entityType) => {
-  if (!Name.TYPES[entityType]) return null;
+  if (!TYPES[entityType]) return null;
 
-  const { min, max, alpha, num, sym } = Name.TYPES[entityType];
+  const { min, max, alpha, num, sym } = TYPES[entityType];
   let regexPart;
   if (sym) {
     if (alpha && num) regexPart = `[^\\s]`;
