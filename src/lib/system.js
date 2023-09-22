@@ -1,5 +1,4 @@
-// import { Calldata } from 'starknet';
-// import { Entity } from './entity.js';
+import { CallData } from 'starknet';
 import SystemData from '../contracts/starknet_systems.json' assert { type: 'json' };
 
 const parseCairoType = (cairoType) => {
@@ -14,7 +13,8 @@ const parseCairoType = (cairoType) => {
   let type;
   if (['influence::common::types::entity::Entity'].includes(cairoType)) type = 'Entity';
   else if (['core::starknet::contract_address::ContractAddress'].includes(cairoType)) type = 'ContractAddress';
-  else if (['core::integer::u64', 'core::integer::u128'].includes(cairoType)) type = 'Number';
+  else if (['core::integer::u64'].includes(cairoType)) type = 'Number';
+  else if (['core::integer::u128'].includes(cairoType)) type = 'BigNumber';
   else if (['influence::common::types::string::String', 'core::felt252'].includes(cairoType)) type = 'String';
   else throw new Error(`Unknown input type!`, type);
 
@@ -32,48 +32,70 @@ const Systems = Object.keys(SystemData).reduce((acc, name) => {
   return acc;
 }, {});
 
-Systems.ApproveEth = {
-  name: 'ApproveEth',
-  inputs: [{ name: 'amount', type: 'Number' }],
-  outputs: [],
-  isGetter: false
-};
-
-const formatCalldataType = (type, value) => {
+const formatCalldataValue = (type, value) => {
   if (type === 'ContractAddress') {
     return value;
   }
   else if (type === 'Entity') {
-    return value;
+    return [value.label, value.id];
   }
   else if (type === 'Number') {
-    return value;
+    return Number(value);
   }
   else if (type === 'String') {
     return value;
   }
+  else if (type === 'BigNumber') {
+    return BigInt(value);
+  }
+  else if (type === 'Ether') {
+    return uint256.bnToUint256(value);
+  }
 };
 
-// TODO: this needs a test
-// TODO: is this doing anything?
-const formatCalldata = (name, vars) => {
+// this is specific to the system's calldata format (i.e. not the full calldata of execute())
+const formatSystemCalldata = (name, vars) => {
   const system = Systems[name];
   if (!system) throw new Error(`Unknown system: ${name}`);
 
-  const calldata = Object.keys(vars).reduce((acc, key) => {
-    const inputConfig = system.inputs.find(input => input.name === key);
-    if (!inputConfig) throw new Error(`Unknown input key: ${name} > ${key}`);
-
-    const { type, isArray } = inputConfig;
-    acc[key] = isArray ? vars[key].map((v) => formatCalldataType(type, v)) : formatCalldataType(type, vars[key]);
+  return system.inputs.reduce((acc, { name, type, isArray }) => {
+    if (isArray) acc.push(vars[name]?.length || 0);
+    (isArray ? vars[name] : [vars[name]]).forEach((v) => {
+      const formattedVar = formatCalldataValue(type, v);
+      try {
+        (Array.isArray(formattedVar) ? formattedVar : [formattedVar]).forEach((val) => {
+          acc.push(val);
+        });
+      } catch (e) {
+        console.error(`${name} could not be formatted`, vars[name], e);
+      }
+    }, []);
     return acc;
   }, []);
-
-  return calldata;
 };
 
+const getApproveEthCall = (amount, erc20Address, dispatcherAddress) => ({
+  contractAddress: erc20Address,
+  entrypoint: 'approve',
+  calldata: CallData.compile([
+    formatCalldataValue('ContractAddress', dispatcherAddress),
+    formatCalldataValue('Ether', amount),
+  ])
+});
+
+const getRunSystemCall = (name, input, dispatcherAddress) => ({
+  contractAddress: dispatcherAddress,
+  entrypoint: 'run_system',
+  calldata: CallData.compile({
+    name,
+    calldata: formatSystemCalldata(name, input)
+  }),
+});
+
 export default {
-  formatCalldata,
+  getApproveEthCall,
+  getRunSystemCall,
+  
   Systems
 };
 

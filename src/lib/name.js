@@ -10,6 +10,23 @@ const TYPES = {
 
 const getType = (entityType) => TYPES[entityType] ? { ...TYPES[entityType] } : null;
 
+const getTypeRegex = (entityType) => {
+  if (!Name.TYPES[entityType]) return null;
+
+  const { min, max, alpha, num, sym } = Name.TYPES[entityType];
+  let regexPart;
+  if (sym) {
+    if (alpha && num) regexPart = `[^\\s]`;
+    else if (alpha && !num) regexPart = `[^0-9\\s]`;
+    else if (!alpha && num) regexPart = `[^a-zA-Z\\s]`;
+    else if (!alpha && !num) regexPart = `[^a-zA-Z0-9\\s]`;
+  } else {
+    regexPart = `[${alpha ? 'a-zA-Z' : ''}${num ? '0-9' : ''}]`;
+  }
+
+  return `^(?=.{${min},${max}}$)(${regexPart}+\\s)*${regexPart}+$`;
+};
+
 const getNameError = (name = '', config) => {
   if (!config) return 'Invalid type specified.'
   if (config.min && name.length < config.min) return `Name must have a minimum length of ${config.min}.`;
@@ -30,5 +47,6 @@ export default {
 
   getNameError,
   getType,
+  getTypeRegex,
   isNameValid
 };

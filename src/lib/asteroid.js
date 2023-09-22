@@ -514,15 +514,9 @@ Component.getSpectralType = (celestial) => getSpectralType(celestial.celestialTy
 Entity.getSpectralType = (asteroid) => Component.getSpectralType(asteroid.Celestial);
 
 /**
- * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
- * @param packed The bitpacked bonuses int
+ * @param asteroidId The asteroid identifier
+ * Returns a seed used to determine the asteroid topography, etc
  */
-const getScanned = (packed) => {
-  return ((packed & (1 << 0)) > 0);
-};
-Component.getScanned = (celestial) => getScanned(celestial.bonuses);
-Entity.getScanned = (asteroid) => Component.getScanned(asteroid.Celestial);
-
 const getSeed = (asteroidId) => {
   const masterSeed = ethers.encodeBytes32String('influence');
   return ethers.solidityPackedSha256(['bytes32', 'uint256'], [masterSeed, asteroidId]);
