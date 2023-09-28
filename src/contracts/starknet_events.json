@@ -1,437 +1,442 @@
 {
-  "ArrangeCrew": {
-    "type": "function",
-    "name": "ArrangeCrew",
-    "inputs": [
+  "CrewmatesArranged": {
+    "type": "event",
+    "name": "CrewmatesArranged",
+    "kind": "struct",
+    "members": [
       {
         "name": "composition",
-        "type": "core::array::Span::<core::integer::u64>"
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
       },
       {
         "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "AssignPublicPolicy": {
-    "type": "function",
-    "name": "AssignPublicPolicy",
-    "inputs": [
+  "PublicPolicyAssigned": {
+    "type": "event",
+    "name": "PublicPolicyAssigned",
+    "kind": "struct",
+    "members": [
       {
         "name": "entity",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
       },
       {
         "name": "permission",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "ChangeName": {
-    "type": "function",
-    "name": "ChangeName",
-    "inputs": [
+  "NameChanged": {
+    "type": "event",
+    "name": "NameChanged",
+    "kind": "struct",
+    "members": [
       {
         "name": "entity",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
       },
       {
         "name": "name",
-        "type": "influence::common::types::string::String"
+        "type": "influence::common::types::string::String",
+        "kind": "data"
       },
       {
         "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "ClaimPrepareForLaunchReward": {
-    "type": "function",
-    "name": "ClaimPrepareForLaunchReward",
-    "inputs": [
+  "PrepareForLaunchRewardClaimed": {
+    "type": "event",
+    "name": "PrepareForLaunchRewardClaimed",
+    "kind": "struct",
+    "members": [
       {
         "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
       },
       {
         "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "DelegateCrew": {
-    "type": "function",
-    "name": "DelegateCrew",
-    "inputs": [
+  "CrewDelegated": {
+    "type": "event",
+    "name": "CrewDelegated",
+    "kind": "struct",
+    "members": [
       {
         "name": "delegated_to",
-        "type": "core::starknet::contract_address::ContractAddress"
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       },
       {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
+        "name": "crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "ExchangeCrew": {
-    "type": "function",
-    "name": "ExchangeCrew",
-    "inputs": [
+  "CrewmatesExchanged": {
+    "type": "event",
+    "name": "CrewmatesExchanged",
+    "kind": "struct",
+    "members": [
       {
         "name": "crew1",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
       },
       {
-        "name": "comp1",
-        "type": "core::array::Span::<core::integer::u64>"
+        "name": "crew1_composition_old",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
       },
       {
-        "name": "_crew2",
-        "type": "influence::common::types::entity::Entity"
+        "name": "crew1_composition_new",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
       },
       {
-        "name": "comp2",
-        "type": "core::array::Span::<core::integer::u64>"
+        "name": "crew2",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "crew2_composition_old",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "crew2_composition_new",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "InitializeArvadian": {
-    "type": "function",
-    "name": "InitializeArvadian",
-    "inputs": [
+  "CrewmateRecruitedV1": {
+    "type": "event",
+    "name": "CrewmateRecruitedV1",
+    "kind": "struct",
+    "members": [
       {
         "name": "crewmate",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
       },
-      {
-        "name": "impactful",
-        "type": "core::array::Span::<core::integer::u64>"
-      },
-      {
-        "name": "cosmetic",
-        "type": "core::array::Span::<core::integer::u64>"
-      },
-      {
-        "name": "name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "station",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "InitializeAsteroid": {
-    "type": "function",
-    "name": "InitializeAsteroid",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "celestial_type",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "mass",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "radius",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "a",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "ecc",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "inc",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "raan",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "argp",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "m",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "purchase_order",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "scan_status",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "bonuses",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "merkle_proof",
-        "type": "core::array::Span::<core::felt252>"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ManageAsteroid": {
-    "type": "function",
-    "name": "ManageAsteroid",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "PurchaseAdalian": {
-    "type": "function",
-    "name": "PurchaseAdalian",
-    "inputs": [
       {
         "name": "collection",
-        "type": "core::integer::u64"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "PurchaseAsteroid": {
-    "type": "function",
-    "name": "PurchaseAsteroid",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ReadComponent": {
-    "type": "function",
-    "name": "ReadComponent",
-    "inputs": [
-      {
-        "name": "name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "path",
-        "type": "core::array::Span::<core::felt252>"
-      }
-    ],
-    "outputs": [
-      {
-        "type": "core::array::Span::<core::felt252>"
-      }
-    ],
-    "state_mutability": "view"
-  },
-  "RecruitAdalian": {
-    "type": "function",
-    "name": "RecruitAdalian",
-    "inputs": [
-      {
-        "name": "crewmate",
-        "type": "influence::common::types::entity::Entity"
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "class",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "title",
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "impactful",
-        "type": "core::array::Span::<core::integer::u64>"
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
       },
       {
         "name": "cosmetic",
-        "type": "core::array::Span::<core::integer::u64>"
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
       },
       {
         "name": "gender",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "body",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "face",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "hair",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "hair_color",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "clothes",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "head",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "item",
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "name",
-        "type": "core::felt252"
+        "type": "core::felt252",
+        "kind": "data"
       },
       {
         "name": "station",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
       },
       {
         "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "RemovePublicPolicy": {
-    "type": "function",
-    "name": "RemovePublicPolicy",
-    "inputs": [
+  "AsteroidInitialized": {
+    "type": "event",
+    "name": "AsteroidInitialized",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      }
+    ]
+  },
+  "AsteroidManaged": {
+    "type": "event",
+    "name": "AsteroidManaged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmatePurchased": {
+    "type": "event",
+    "name": "CrewmatePurchased",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "crewmate",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "AsteroidPurchased": {
+    "type": "event",
+    "name": "AsteroidPurchased",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PublicPolicyRemoved": {
+    "type": "event",
+    "name": "PublicPolicyRemoved",
+    "kind": "struct",
+    "members": [
       {
         "name": "entity",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
       },
       {
         "name": "permission",
-        "type": "core::integer::u64"
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "ScanSurfaceFinish": {
-    "type": "function",
-    "name": "ScanSurfaceFinish",
-    "inputs": [
+  "SurfaceScanFinished": {
+    "type": "event",
+    "name": "SurfaceScanFinished",
+    "kind": "struct",
+    "members": [
       {
         "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "bonuses",
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
+    ]
   },
-  "ScanSurfaceStart": {
-    "type": "function",
-    "name": "ScanSurfaceStart",
-    "inputs": [
+  "SurfaceScanStarted": {
+    "type": "event",
+    "name": "SurfaceScanStarted",
+    "kind": "struct",
+    "members": [
       {
         "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
       },
       {
         "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "SeedHabitat": {
-    "type": "function",
-    "name": "SeedHabitat",
-    "inputs": [],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "SeedAsteroids": {
-    "type": "function",
-    "name": "SeedAsteroids",
-    "inputs": [
-      {
-        "name": "asteroids",
-        "type": "core::array::Span::<influence::systems::seeding::seed_asteroids::SeedAsteroids::SeededAsteroid>"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "SeedCrewmates": {
-    "type": "function",
-    "name": "SeedCrewmates",
-    "inputs": [
-      {
-        "name": "crewmates",
-        "type": "core::array::Span::<influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate>"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "WriteComponent": {
-    "type": "function",
-    "name": "WriteComponent",
-    "inputs": [
-      {
-        "name": "name",
-        "type": "core::felt252"
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
       },
       {
-        "name": "path",
-        "type": "core::array::Span::<core::felt252>"
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionFinished": {
+    "type": "event",
+    "name": "ConstructionFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
       },
       {
-        "name": "data",
-        "type": "core::array::Span::<core::felt252>"
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
       }
-    ],
-    "outputs": [],
-    "state_mutability": "view"
+    ]
   }
 }
