@@ -21,6 +21,33 @@
       }
     ]
   },
+  "CrewmatesArrangedV1": {
+    "type": "event",
+    "name": "CrewmatesArrangedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "composition_old",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "composition_new",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "PublicPolicyAssigned": {
     "type": "event",
     "name": "PublicPolicyAssigned",
@@ -152,6 +179,98 @@
       {
         "name": "crew2_composition_new",
         "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmateRecruited": {
+    "type": "event",
+    "name": "CrewmateRecruited",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "crewmate",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "collection",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "class",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "title",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "gender",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "body",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "face",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "hair",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "hair_color",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "clothes",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "head",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "item",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
