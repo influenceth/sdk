@@ -24,6 +24,11 @@ describe('Time', function () {
     expect(t.unixTimeMS).to.equal(1654668000e3);
   });
 
+  it('should get time from unix time (if given in sec)', function () {
+    let t = Time.fromUnixTime(1654668000, false);
+    expect(t.unixTimeMS).to.equal(1654668000e3);
+  });
+
   it('should convert to game clock adays', function () {
     let t = Time.fromUnixTime(1654668000e3);
     expect(t.toGameClockADays()).to.equal(10000);
