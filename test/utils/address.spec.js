@@ -98,4 +98,11 @@ describe('Address library', function () {
       expect(addresses.areEqual(address1, address2, 'l1', 'l2')).to.be.false;
     });
   });
+
+  describe('getChain', function () {
+    it('should detect the correct chain', function () {
+      expect(addresses.getChain('0xb3f631d686b706d308bBd1F3259455e33e9e1E4E')).to.equal('ethereum');
+      expect(addresses.getChain('0x04a472fe795cc40e9dc838fe4f1608cb91bf027854d016675ec81e172a2e3599')).to.equal('starknet');
+    });
+  });
 });
