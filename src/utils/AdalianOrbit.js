@@ -18,12 +18,12 @@ class AdalianOrbit {
     let p = el.p; // Semi-latus rectum
     let nu = el.nu; // True anomaly
 
-    if (!p && a) {
+    if (isNaN(p) && !isNaN(a)) {
       const units = options.units === 'AU' ? constants.AU / 1000 : 1;
       p = el.a * (1 - e ** 2) * units; // Convert to semi-latus rectum in km
     }
 
-    if (!nu && m) nu = angles.M_to_nu(m, e); // Convert to true anomaly
+    if (isNaN(nu) && !isNaN(m)) nu = angles.M_to_nu(m, e); // Convert to true anomaly
     this.orbit = Orbit.fromClassicElements(MU, p, e, i, o, w, nu);
   }
 

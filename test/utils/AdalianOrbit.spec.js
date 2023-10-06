@@ -45,4 +45,18 @@ describe('Orbital library', function () {
     expect(almostEqual(pos.y, -223423094198.8061, 0, 1e-7)).to.be.true;
     expect(almostEqual(pos.z, 400973733.18174685, 0, 1e-7)).to.be.true;
   });
+
+  it('should parse a zero angle', function () {
+    const orbitalEl = {
+      a: 385513712.79389995,
+      argp: 6.1028927954485725,
+      ecc: 0.171,
+      inc: 0.0921533845053006,
+      m: 0,
+      raan: 4.47519873503866
+    };
+
+    const orbit = new AdalianOrbit(orbitalEl, { units: 'km' });
+    expect(orbit.orbit.nu === 0).to.be.true;
+  });
 });
