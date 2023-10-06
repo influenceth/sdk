@@ -118,19 +118,19 @@ const TYPES = {
   [IDS.CARGO_SMALL]: {
     i: IDS.CARGO_SMALL,
     massConstraint: 50e6,
-    volumeConstraint: 65e6,
+    volumeConstraint: 125e6,
     productConstraints: null
   },
   [IDS.CARGO_MEDIUM]: {
     i: IDS.CARGO_MEDIUM,
     massConstraint: 2000e6,
-    volumeConstraint: 1500e6,
+    volumeConstraint: 5000e6,
     productConstraints: null
   },
   [IDS.CARGO_LARGE]: {
     i: IDS.CARGO_LARGE,
     massConstraint: 12000e6,
-    volumeConstraint: 9000e6,
+    volumeConstraint: 30000e6,
     productConstraints: null
   },
 };

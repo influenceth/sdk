@@ -1,4 +1,5 @@
 import Product from './product.js';
+import Inventory from './inventory.js';
 
 const IDS = {
   ESCAPE_MODULE: 1,
@@ -27,7 +28,7 @@ const TYPES = {
     landing: false,
     docking: false,
     propellantSlot: 1,
-    cargoSlot: 0,
+    propellantInventoryType: Inventory.IDS.PROPELLANT_TINY,
     exhaustVelocity: 30000,
     hullMass: 5e6,
   },
@@ -37,7 +38,9 @@ const TYPES = {
     landing: false,
     docking: true,
     propellantSlot: 1,
+    propellantInventoryType: Inventory.IDS.PROPELLANT_SMALL,
     cargoSlot: 2,
+    cargoInventoryType: Inventory.IDS.CARGO_SMALL,
     exhaustVelocity: 30000,
     hullMass: 100e6,
   },
@@ -47,7 +50,9 @@ const TYPES = {
     landing: true,
     docking: true,
     propellantSlot: 1,
+    propellantInventoryType: Inventory.IDS.PROPELLANT_MEDIUM,
     cargoSlot: 2,
+    cargoInventoryType: Inventory.IDS.CARGO_MEDIUM,
     exhaustVelocity: 30000,
     hullMass: 180e6,
   },
@@ -57,7 +62,9 @@ const TYPES = {
     landing: false,
     docking: true,
     propellantSlot: 1,
+    propellantInventoryType: Inventory.IDS.PROPELLANT_LARGE,
     cargoSlot: 2,
+    cargoInventoryType: Inventory.IDS.CARGO_LARGE,
     exhaustVelocity: 30000,
     hullMass: 1000e6,
   },
