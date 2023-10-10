@@ -254,7 +254,7 @@ const TRAITS = {
   47: { name: 'Logistician', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased surface transport speed.' },
   48: { name: 'Experimenter', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next invention.' },
   49: { name: 'Builder', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased building construction speed.' },
-  50: { name: 'Prospector', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased viability gain per core sample.' }
+  50: { name: 'Prospector', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased core sample quality.' }
 };
 
 const TRAIT_IDS = {
@@ -365,7 +365,7 @@ const ABILITY_TYPES = {
       [TITLE_IDS.WAREHOUSE_WORKER]: 0.0125,
       [TITLE_IDS.LOGISTICS_SPECIALIST]: 0.025,
       [TITLE_IDS.WAREHOUSE_MANAGER]: 0.0375,
-      [TITLE_IDS.FACILITIES_SUPERVISOR]: 0.05,
+      [TITLE_IDS.LOGISTICS_MANAGER]: 0.05,
       [TITLE_IDS.CHIEF_STEWARD]: 0.0625,
       ...managementBonuses
     },
@@ -385,7 +385,7 @@ const ABILITY_TYPES = {
       [TITLE_IDS.WAREHOUSE_WORKER]: 0.0125,
       [TITLE_IDS.LOGISTICS_SPECIALIST]: 0.025,
       [TITLE_IDS.WAREHOUSE_MANAGER]: 0.0375,
-      [TITLE_IDS.FACILITIES_SUPERVISOR]: 0.05,
+      [TITLE_IDS.LOGISTICS_MANAGER]: 0.05,
       [TITLE_IDS.CHIEF_STEWARD]: 0.0625
     }
   },
