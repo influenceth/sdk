@@ -1,206 +1,72 @@
-import {
-  MASTER_SEED,
-  START_TIMESTAMP,
-  MAX_RADIUS,
-  TOTAL_ASTEROIDS,
-  REGIONS,
-  SPECTRAL_TYPES,
-  RARITIES,
-  SIZES,
-  BONUS_MAPS,
-  CREW_COLLECTIONS,
-  CREW_CLASSES,
-  CREW_CLASS_DESCRIPTIONS,
-  CREW_TITLES,
-  CREW_SEX,
-  CREW_OUTFIT,
-  CREW_HAIR,
-  CREW_HAIR_COLOR,
-  CREW_FACIAL_FEATURE,
-  CREW_HEAD_PIECE,
-  CREW_BONUS_ITEM,
-  CREW_TRAITS,
-  RESOURCES
-} from './constants.js';
+import Constants from './constants.js';
 
-import KeplerianOrbit from './lib/KeplerianOrbit.js';
-import Address from './lib/address.js';
-import Merkle from './lib/MerkleTree.js';
+import Assets from './lib/assets.js';
+import Asteroid from './lib/asteroid.js';
+import Building from './lib/building.js';
+import Crew from './lib/crew.js';
+import Crewmate from './lib/crewmate.js';
+import Delivery from './lib/delivery.js';
+import Deposit from './lib/deposit.js';
+import Dock from './lib/dock.js';
+import DryDock from './lib/dryDock.js';
+import Entity from './lib/entity.js';
+import Exchange from './lib/exchange.js';
+import Extractor from './lib/extractor.js';
+import Inventory from './lib/inventory.js';
+import Name from './lib/name.js';
+import Order from './lib/order.js';
+import Permissions from './lib/permissions.js';
+import * as Planet from './lib/planet.js';
+import Process from './lib/process.js';
+import Processor from './lib/processor.js';
+import Product from './lib/product.js';
+import Ship from './lib/ship.js';
+import Station from './lib/station.js';
+import System from './lib/system.js';
 
-/**
- * ABIs for client interaction with Influence
- */
-import ethereumContracts from './abis/contracts_ethereum.json' assert { type: 'json' };
-import starknetContracts from './abis/contracts_starknet.json' assert { type: 'json' };
+import Address from './utils/address.js';
+import AdalianOrbit from './utils/AdalianOrbit.js';
+import Fixed from './utils/fixed.js';
+import Merkle from './utils/MerkleTree.js';
+import Simplex from './utils/simplex.js';
+import Time from './utils/Time.js';
 
-/**
- * Returns the bonus information based on its position in the bitpacked bonuses int
- * @param num Position in the bitpacked bonuses int
- */
-export const toBonus = (num) => {
-  if (num < 1 || num > 14) return '';
-  let bonus;
+import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'json' };
+import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
-  for (const b of BONUS_MAPS) {
-    bonus = b.bonuses.find(p => p.position === num);
-    if (bonus?.position) return bonus;
-  }
-};
+// Utility libs
+export { AdalianOrbit, Address, Fixed, Merkle, Simplex, Time };
 
-/**
- * Converts packed bonuses into an array of bonus types including base types
- * @param spectralType The spectral type (int) of the asteroid
- * @param packed The bitpacked bonuses int
- */
-export const toBonuses = (packed, spectralType) => {
-  if (spectralType === undefined) throw new Error('Spectral type is required');
-
-  const bonuses = [];
-  let b, p, added;
-
-  for (b of BONUS_MAPS) {
-    if (b.spectralTypes.includes(spectralType)) {
-      added = false;
-
-      for (p of b.bonuses) {
-        if ((packed & (1 << p.position)) > 0) {
-          bonuses.push(p);
-          added = true;
-        }
-      }
-
-      if (!added) bonuses.push(b.base);
-    }
-  }
-
-  return bonuses;
-};
-
-/**
- * Returns the rarity level of the asteroid based on the bonuses and size
- * @param bonuses
- * @param radius
- */
-export const toRarity = (bonuses) => {
-  let rarity = 0;
-
-  for (const b of bonuses) {
-    rarity += b.level;
-  }
-
-  if (rarity <= 3) return RARITIES[rarity];
-  if (rarity <= 5) return RARITIES[4];
-  return RARITIES[5];
-};
-
-/**
- * Converts array of relative resources into an object based on the RESOURCES list
- * Result format: { RESOURCE_NAME: value }
- * @param resources array of float values (asc order by resource type)
- */
-export const toResources = (resources) => {
-  return resources.reduce((acc, value, index) => {
-    const { name } = RESOURCES[index + 1] || {};
-    if (!name) throw new Error('Invalid index/key');
-    acc[name] = value;
-    return acc;
-  }, {});
-};
-
-/**
- * Returns whether the asteroid has been scanned based on its bitpacked bonuses int
- * @param packed The bitpacked bonuses int
- */
-export const isScanned = (packed) => {
-  return ((packed & (1 << 0)) > 0);
-};
-
-/**
- * Returns the spectral type string based on its array value
- * @param num The spectral type int value
- */
-export const toSpectralType = (num) => {
-  if (num < 0 || num > 10) return '';
-  return SPECTRAL_TYPES[num];
-};
-
-/**
- * Returns the size string based on the asteroid radius
- * @param rad The asteroid radius int value
- */
-export const toSize = (rad) => {
-  if (rad <= 5000) return SIZES[0];
-  if (rad <= 20000) return SIZES[1];
-  if (rad <= 50000) return SIZES[2];
-  return SIZES[3];
-};
-
-/**
- * Returns the collection name the crew member is a part of
- * @param c The unpacked collection id
- */
-export const toCrewCollection = (c) => CREW_COLLECTIONS[c - 1];
-
-/**
- * Returns the crew class string based on the unpacked class id
- * @param c The unpacked class id
- */
-export const toCrewClass = (c) => CREW_CLASSES[c - 1];
-
-/**
- * Returns the crew class description string based on the unpacked class id
- * @param c The unpacked class id
- */
-export const toCrewClassDescription = (c) => CREW_CLASS_DESCRIPTIONS[c - 1];
-
-/**
- * Returns the crew title based on the unpacked title id
- * @param t The unpacked title id
- */
-export const toCrewTitle = (t) => CREW_TITLES[t - 1];
-
-export const toCrewSex = (s) => CREW_SEX[s - 1];
-export const toCrewOutfit = (o) => CREW_OUTFIT[o - 1];
-export const toCrewHair = (h) => CREW_HAIR[h];
-export const toCrewHairColor = (h) => CREW_HAIR_COLOR[h - 1];
-export const toCrewFacialFeature = (f) => CREW_FACIAL_FEATURE[f - 1];
-export const toCrewHeadPiece = (h) => CREW_HEAD_PIECE[h - 1];
-export const toCrewItem = (i) => CREW_BONUS_ITEM[i - 1];
-export const toCrewTrait = (t) => CREW_TRAITS[t - 1];
-
+// Game asset libs
 export {
-  MASTER_SEED,
-  START_TIMESTAMP,
-  MAX_RADIUS,
-  TOTAL_ASTEROIDS,
-  REGIONS,
-  SPECTRAL_TYPES,
-  RARITIES,
-  RESOURCES,
-  SIZES,
-  BONUS_MAPS,
-  CREW_COLLECTIONS,
-  CREW_CLASSES,
-  CREW_CLASS_DESCRIPTIONS,
-  CREW_TITLES,
-  CREW_SEX,
-  CREW_OUTFIT,
-  CREW_HAIR,
-  CREW_HAIR_COLOR,
-  CREW_FACIAL_FEATURE,
-  CREW_HEAD_PIECE,
-  CREW_BONUS_ITEM,
-  CREW_TRAITS
+  Assets,
+  Asteroid,
+  Building,
+  Crew,
+  Crewmate,
+  Delivery,
+  Entity,
+  Deposit,
+  Dock,
+  DryDock,
+  Exchange,
+  Extractor,
+  Inventory,
+  Name,
+  Order,
+  Permissions,
+  Planet,
+  Process,
+  Processor,
+  Product,
+  Ship,
+  Station,
+  System
 };
 
-export {
-  Address,
-  Merkle,
-  KeplerianOrbit
-};
+// Contract ABIs
+export { ethereumContracts, starknetContracts };
 
-export {
-  ethereumContracts as contracts, // (for backward compatibility)
-  ethereumContracts,
-  starknetContracts
-};
+export const ADALIA_MASS = Constants.ADALIA_MASS;
+export const GM_ADALIA = Constants.GM_ADALIA;
+export const SIMPLEX_POLY_FIT = Constants.SIMPLEX_POLY_FIT;

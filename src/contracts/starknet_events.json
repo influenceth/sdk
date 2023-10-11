@@ -1,0 +1,561 @@
+{
+  "CrewmatesArranged": {
+    "type": "event",
+    "name": "CrewmatesArranged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmatesArrangedV1": {
+    "type": "event",
+    "name": "CrewmatesArrangedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "composition_old",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "composition_new",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PublicPolicyAssigned": {
+    "type": "event",
+    "name": "PublicPolicyAssigned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "NameChanged": {
+    "type": "event",
+    "name": "NameChanged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "name",
+        "type": "influence::common::types::string::String",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepareForLaunchRewardClaimed": {
+    "type": "event",
+    "name": "PrepareForLaunchRewardClaimed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewDelegated": {
+    "type": "event",
+    "name": "CrewDelegated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "delegated_to",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmatesExchanged": {
+    "type": "event",
+    "name": "CrewmatesExchanged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "crew1",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "crew1_composition_old",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "crew1_composition_new",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "crew2",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "crew2_composition_old",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "crew2_composition_new",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmateRecruited": {
+    "type": "event",
+    "name": "CrewmateRecruited",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "crewmate",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "collection",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "class",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "title",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "gender",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "body",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "face",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "hair",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "hair_color",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "clothes",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "head",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "item",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmateRecruitedV1": {
+    "type": "event",
+    "name": "CrewmateRecruitedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "crewmate",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "collection",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "class",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "title",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "gender",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "body",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "face",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "hair",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "hair_color",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "clothes",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "head",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "item",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "AsteroidInitialized": {
+    "type": "event",
+    "name": "AsteroidInitialized",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      }
+    ]
+  },
+  "AsteroidManaged": {
+    "type": "event",
+    "name": "AsteroidManaged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmatePurchased": {
+    "type": "event",
+    "name": "CrewmatePurchased",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "crewmate",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "AsteroidPurchased": {
+    "type": "event",
+    "name": "AsteroidPurchased",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PublicPolicyRemoved": {
+    "type": "event",
+    "name": "PublicPolicyRemoved",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "SurfaceScanFinished": {
+    "type": "event",
+    "name": "SurfaceScanFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "bonuses",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "SurfaceScanStarted": {
+    "type": "event",
+    "name": "SurfaceScanStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionFinished": {
+    "type": "event",
+    "name": "ConstructionFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  }
+}

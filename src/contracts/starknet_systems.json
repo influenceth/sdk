@@ -1,0 +1,437 @@
+{
+  "ArrangeCrew": {
+    "type": "function",
+    "name": "ArrangeCrew",
+    "inputs": [
+      {
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AssignPublicPolicy": {
+    "type": "function",
+    "name": "AssignPublicPolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ChangeName": {
+    "type": "function",
+    "name": "ChangeName",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "name",
+        "type": "influence::common::types::string::String"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ClaimPrepareForLaunchReward": {
+    "type": "function",
+    "name": "ClaimPrepareForLaunchReward",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "DelegateCrew": {
+    "type": "function",
+    "name": "DelegateCrew",
+    "inputs": [
+      {
+        "name": "delegated_to",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ExchangeCrew": {
+    "type": "function",
+    "name": "ExchangeCrew",
+    "inputs": [
+      {
+        "name": "crew1",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "comp1",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "_crew2",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "comp2",
+        "type": "core::array::Span::<core::integer::u64>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "InitializeArvadian": {
+    "type": "function",
+    "name": "InitializeArvadian",
+    "inputs": [
+      {
+        "name": "crewmate",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "InitializeAsteroid": {
+    "type": "function",
+    "name": "InitializeAsteroid",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "celestial_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "mass",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "radius",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "a",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "ecc",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "inc",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "raan",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "argp",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "m",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "purchase_order",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "scan_status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "bonuses",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "merkle_proof",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ManageAsteroid": {
+    "type": "function",
+    "name": "ManageAsteroid",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "PurchaseAdalian": {
+    "type": "function",
+    "name": "PurchaseAdalian",
+    "inputs": [
+      {
+        "name": "collection",
+        "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "PurchaseAsteroid": {
+    "type": "function",
+    "name": "PurchaseAsteroid",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ReadComponent": {
+    "type": "function",
+    "name": "ReadComponent",
+    "inputs": [
+      {
+        "name": "name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "path",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "state_mutability": "view"
+  },
+  "RecruitAdalian": {
+    "type": "function",
+    "name": "RecruitAdalian",
+    "inputs": [
+      {
+        "name": "crewmate",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "class",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "gender",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "body",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "face",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "hair",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "hair_color",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "clothes",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "RemovePublicPolicy": {
+    "type": "function",
+    "name": "RemovePublicPolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ScanSurfaceFinish": {
+    "type": "function",
+    "name": "ScanSurfaceFinish",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ScanSurfaceStart": {
+    "type": "function",
+    "name": "ScanSurfaceStart",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SeedHabitat": {
+    "type": "function",
+    "name": "SeedHabitat",
+    "inputs": [],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SeedAsteroids": {
+    "type": "function",
+    "name": "SeedAsteroids",
+    "inputs": [
+      {
+        "name": "asteroids",
+        "type": "core::array::Span::<influence::systems::seeding::seed_asteroids::SeedAsteroids::SeededAsteroid>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SeedCrewmates": {
+    "type": "function",
+    "name": "SeedCrewmates",
+    "inputs": [
+      {
+        "name": "crewmates",
+        "type": "core::array::Span::<influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "WriteComponent": {
+    "type": "function",
+    "name": "WriteComponent",
+    "inputs": [
+      {
+        "name": "name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "path",
+        "type": "core::array::Span::<core::felt252>"
+      },
+      {
+        "name": "data",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "view"
+  }
+}
