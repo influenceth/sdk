@@ -234,7 +234,7 @@ const TRAITS = {
   27: { name: 'Independent Radical', type: TRAIT_TYPES.COSMETIC, description: 'You openly oppose the leadership of the Prime Council or the last High Commander of the Arvad. ' },
   28: { name: 'Navigator', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 2% increased propellant velocity.' },
   29: { name: 'Dietitian', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% decreased food consumption rate for your crew.' },
-  30: { name: 'Refiner', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% increased yield while refining materials.' },
+  30: { name: 'Refiner', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% increased refining speed while refining materials.' },
   31: { name: 'Surveyor', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% increased core sampling speed while surveying an asteroid.' },
   32: { name: 'Hauler', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased inventory mass capacity.' },
   33: { name: 'Optimistic', type: TRAIT_TYPES.COSMETIC, description: 'You know that no matter how dark it may seem now, dawn is just over the horizon.' },
