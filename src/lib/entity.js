@@ -22,8 +22,9 @@ const TYPES = {
   [IDS.DELIVERY]: { label: 'DELIVERY' }
 };
 
-const packEntity = function ({ id, label }) {
-  return BigInt(id) * 65536n + BigInt(label);
+const packEntity = function ({ id, label }, returnAsHex = true) {
+  const value = BigInt(id) * 65536n + BigInt(label);
+  return returnAsHex ? `0x${value.toString(16)}` : value;
 };
 
 const unpackEntity = function (value) {

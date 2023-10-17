@@ -8,12 +8,16 @@ describe('Entity library', function () {
   });
 
   it('should pack entity', function () {
-    expect(entity.packEntity({ id: 123, label: entity.IDS.ASTEROID })).to.equal(8060931n);
-    expect(entity.packEntity({ id: 1234567890, label: entity.IDS.LOT })).to.equal(80908641239044n);
-    expect(entity.packEntity({ id: 137438953471, label: entity.IDS.DEPOSIT })).to.equal(9007199254675463n);
+    expect(entity.packEntity({ id: 123, label: entity.IDS.ASTEROID })).to.equal('0x7b0003');
+    expect(entity.packEntity({ id: 123, label: entity.IDS.ASTEROID }, false)).to.equal(8060931n);
+    expect(entity.packEntity({ id: 1234567890, label: entity.IDS.LOT })).to.equal('0x499602d20004');
+    expect(entity.packEntity({ id: 1234567890, label: entity.IDS.LOT }, false)).to.equal(80908641239044n);
+    expect(entity.packEntity({ id: 137438953471, label: entity.IDS.DEPOSIT })).to.equal('0x1fffffffff0007');
+    expect(entity.packEntity({ id: 137438953471, label: entity.IDS.DEPOSIT }, false)).to.equal(9007199254675463n);
   });
 
   it('should unpack entity', function () {
+    expect(entity.unpackEntity('0x7b0003')).to.deep.equal({ id: 123, label: entity.IDS.ASTEROID });
     expect(entity.unpackEntity(8060931n)).to.deep.equal({ id: 123, label: entity.IDS.ASTEROID });
     expect(entity.unpackEntity(80908641239044n)).to.deep.equal({ id: 1234567890, label: entity.IDS.LOT });
     expect(entity.unpackEntity(9007199254675463n)).to.deep.equal({ id: 137438953471, label: entity.IDS.DEPOSIT });
