@@ -531,10 +531,13 @@ Entity.getSeed = (asteroid) => getSeed(asteroid.id);
  * @param resourceId The resource identifier (from Inventory lib)
  * @param abundance Asteroid-wide abundance for the given resource [0, 1]
  */
-const getAbundanceAtLot = (asteroidId, asteroidSeed, lotId, resourceId, abundance) => {
-  const settings = getAbundanceMapSettings(asteroidId, asteroidSeed, resourceId, abundance);
+const getAbundanceAtLot = (asteroidId, lotId, resourceId, abundances) => {
+  const settings = getAbundanceMapSettings(asteroidId, resourceId, abundances);
   const point = getLotPosition(asteroidId, lotId);
   return getAbundanceAtPosition(point, settings);
+};
+Entity.getAbundanceAtLot = (asteroid, lotId, resourceId) => {
+  return getAbundanceAtLot(asteroid.id, lotId, resourceId, asteroid.Celestial.abundances);
 };
 
 /**
@@ -572,14 +575,17 @@ const getAbundanceAtPosition = (point, settings) => {
  * @param resourceId The resource identifier
  * @param abundance The relative abundance (0 to 1)
  */
-const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance) => {
+const getAbundanceMapSettings = (asteroidId, resourceId, abundances) => {
   const radius = getRadius(asteroidId);
+  const octaves =  Math.floor(2 + 4 * Math.pow(radius / MAX_RADIUS, 1/3));
   const radiusRatio = radius / MAX_RADIUS;
-  const octaves = RESOURCE_OCTAVE_BASE + Math.floor(RESOURCE_OCTAVE_MUL * Math.pow(radiusRatio, 1 / 3));
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
   const polyParams = SIMPLEX_POLY_FIT[octaves];
 
-  const resourceSeed = ec.starkCurve.pedersen(BigInt(asteroidSeed), BigInt(resourceId));
+  const resourceSeed = ec.starkCurve.poseidonHashMany(
+    [ BigInt(asteroidId), BigInt(resourceId), BigInt(abundances) ]
+  );
+
   const xSeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 1n);
   const ySeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 2n);
   const zSeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 3n);
@@ -591,6 +597,7 @@ const getAbundanceMapSettings = (asteroidId, asteroidSeed, resourceId, abundance
   const yShift = procedural.realBetween(ySeed, lowShift, highShift);
   const zShift = procedural.realBetween(zSeed, lowShift, highShift);
 
+  const abundance = getAbundances(abundances)[resourceId];
   return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
 };
 
