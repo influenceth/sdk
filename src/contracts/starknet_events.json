@@ -1,4 +1,36 @@
 {
+  "EventAnnotated": {
+    "type": "event",
+    "name": "EventAnnotated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "transaction_hash",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "log_index",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "content_hash",
+        "type": "core::array::Span::<core::felt252>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "CrewmatesArranged": {
     "type": "event",
     "name": "CrewmatesArranged",
@@ -109,6 +141,141 @@
     "members": [
       {
         "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionPlanned": {
+    "type": "event",
+    "name": "ConstructionPlanned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "building_type",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "grace_period_end",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionStarted": {
+    "type": "event",
+    "name": "ConstructionStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionFinished": {
+    "type": "event",
+    "name": "ConstructionFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionDeconstructed": {
+    "type": "event",
+    "name": "ConstructionDeconstructed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionAbandoned": {
+    "type": "event",
+    "name": "ConstructionAbandoned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
@@ -482,6 +649,124 @@
       }
     ]
   },
+  "SamplingDepositStarted": {
+    "type": "event",
+    "name": "SamplingDepositStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "SamplingDepositFinished": {
+    "type": "event",
+    "name": "SamplingDepositFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "initial_yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ResourceScanStarted": {
+    "type": "event",
+    "name": "ResourceScanStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ResourceScanFinished": {
+    "type": "event",
+    "name": "ResourceScanFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "abundances",
+        "type": "core::array::Span::<core::integer::u128>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "SurfaceScanFinished": {
     "type": "event",
     "name": "SurfaceScanFinished",
@@ -522,28 +807,6 @@
       {
         "name": "finish_time",
         "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ConstructionFinished": {
-    "type": "event",
-    "name": "ConstructionFinished",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "building",
-        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {

@@ -1,4 +1,28 @@
 {
+  "AnnotateEvent": {
+    "type": "function",
+    "name": "AnnotateEvent",
+    "inputs": [
+      {
+        "name": "transaction_hash",
+        "type": "core::felt252"
+      },
+      {
+        "name": "log_index",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "content_hash",
+        "type": "core::array::Span::<core::felt252>"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "ArrangeCrew": {
     "type": "function",
     "name": "ArrangeCrew",
@@ -61,6 +85,90 @@
     "inputs": [
       {
         "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ConstructionPlan": {
+    "type": "function",
+    "name": "ConstructionPlan",
+    "inputs": [
+      {
+        "name": "building_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ConstructionStart": {
+    "type": "function",
+    "name": "ConstructionStart",
+    "inputs": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ConstructionFinish": {
+    "type": "function",
+    "name": "ConstructionFinish",
+    "inputs": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ConstructionDeconstruct": {
+    "type": "function",
+    "name": "ConstructionDeconstruct",
+    "inputs": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ConstructionAbandon": {
+    "type": "function",
+    "name": "ConstructionAbandon",
+    "inputs": [
+      {
+        "name": "building",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -342,6 +450,98 @@
       {
         "name": "permission",
         "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SampleDepositStart": {
+    "type": "function",
+    "name": "SampleDepositStart",
+    "inputs": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SampleDepositImprove": {
+    "type": "function",
+    "name": "SampleDepositImprove",
+    "inputs": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SampleDepositFinish": {
+    "type": "function",
+    "name": "SampleDepositFinish",
+    "inputs": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ScanResourcesStart": {
+    "type": "function",
+    "name": "ScanResourcesStart",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ScanResourcesFinish": {
+    "type": "function",
+    "name": "ScanResourcesFinish",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
       },
       {
         "name": "caller_crew",
