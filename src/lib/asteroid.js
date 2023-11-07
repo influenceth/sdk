@@ -527,17 +527,17 @@ Entity.getSeed = (asteroid) => getSeed(asteroid.id);
  * Returns the resource abundance at a specific lot
  * @param asteroidId The asteroid identifier
  * @param asteroidSeed The seed generated during resource scanning
- * @param lotId The lot identifier (1-indexed)
+ * @param lotIndex The lot identifier (1-indexed)
  * @param resourceId The resource identifier (from Inventory lib)
  * @param abundance Asteroid-wide abundance for the given resource [0, 1]
  */
-const getAbundanceAtLot = (asteroidId, lotId, resourceId, abundances) => {
+const getAbundanceAtLot = (asteroidId, lotIndex, resourceId, abundances) => {
   const settings = getAbundanceMapSettings(asteroidId, resourceId, abundances);
-  const point = getLotPosition(asteroidId, lotId);
+  const point = getLotPosition(asteroidId, lotIndex);
   return getAbundanceAtPosition(point, settings);
 };
-Entity.getAbundanceAtLot = (asteroid, lotId, resourceId) => {
-  return getAbundanceAtLot(asteroid.id, lotId, resourceId, asteroid.Celestial.abundances);
+Entity.getAbundanceAtLot = (asteroid, lotIndex, resourceId) => {
+  return getAbundanceAtLot(asteroid.id, lotIndex, resourceId, asteroid.Celestial.abundances);
 };
 
 /**
@@ -604,29 +604,29 @@ const getAbundanceMapSettings = (asteroidId, resourceId, abundances) => {
 /**
  * Calculates the distance (along surface of a sphere) between two lots on an asteroid
  * @param {integer} asteroidId The asteroid identifier
- * @param {integer} originLotIdThe starting lot identifier
- * @param {integer} destLotId The ending lot identifier
+ * @param {integer} originLotIndex The starting lot index (1-indexed)
+ * @param {integer} destLotIndex The ending lot index (1-indexed)
  * @return Distance in km
  */
-const getLotDistance = (asteroidId, originLotId, destLotId) => {
+const getLotDistance = (asteroidId, originLotIndex, destLotIndex) => {
   const radius = getRadius(asteroidId);
   const numLots = getSurfaceArea(asteroidId, radius);
-  const origin = multiply(getLotPosition(asteroidId, originLotId, numLots), radius);
-  const dest = multiply(getLotPosition(asteroidId, destLotId, numLots), radius);
+  const origin = multiply(getLotPosition(asteroidId, originLotIndex, numLots), radius);
+  const dest = multiply(getLotPosition(asteroidId, destLotIndex, numLots), radius);
   return radius * Math.acos(dot(origin, dest) / (radius * radius));
 };
 
 /**
  * Returns the Cartesian position of a lot on a (unit-radius spherical) asteroid
  * @param asteroidId The asteroid identifier
- * @param lotId The lot identifier
+ * @param lotIndex The lot index (1-indexed)
  * @param numLots Optional area / number of lots param (if precalculated)
  */
-const getLotPosition = (asteroidId, lotId, numLots = 0) => {
-  const theta = PHI * (lotId - 1);
+const getLotPosition = (asteroidId, lotIndex, numLots = 0) => {
+  const theta = PHI * (lotIndex - 1);
   numLots = numLots || getSurfaceArea(asteroidId);
-  if (lotId < 1 || lotId > numLots) throw new Error('Invalid lot id');
-  const lotFrac = (lotId - 1) / (numLots - 1);
+  if (lotIndex < 1 || lotIndex > numLots) throw new Error('Invalid lot id');
+  const lotFrac = (lotIndex - 1) / (numLots - 1);
   const y = 1 - (lotFrac * 2);
   const radius = Math.sqrt(1 - y * y); // radius at y
   const x = radius * Math.cos(theta);
@@ -678,8 +678,8 @@ const getRegionsOfLotPositions = (flatPositions, regionTally) => {
 
 /**
  * NOTE: either center OR centerLot should be provided, not both
- * @param center (int) The center position to search around
- * @param centerLot (int) The lot id to search around
+ * @param center ([float,float,float]) The center position to search around
+ * @param centerLot (int) The lot index to search around
  * @param lotTally (int) The number of regions on the asteroid
  * @param findTally (int) The number of regions on the asteroid
  * @returns
@@ -751,13 +751,13 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
 /**
  * Calculates the travel time between two lots considering an overall crew bonus
  * @param {integer} asteroidId The asteroid identifier
- * @param {integer} originLotIdThe starting lot identifier
- * @param {integer} destLotId The ending lot identifier
+ * @param {integer} originLotIndex The starting lot identifier
+ * @param {integer} destLotIndex The ending lot identifier
  * @param {float} totalBonus
  * @return Travel time in seconds
  */
-const getLotTravelTime = (asteroidId, originLotId, destLotId, totalBonus = 1) => {
-  const distance = getLotDistance(asteroidId, originLotId, destLotId);
+const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, totalBonus = 1) => {
+  const distance = getLotDistance(asteroidId, originLotIndex, destLotIndex);
   const time = distance <= FREE_TRANSPORT_RADIUS * totalBonus ? 0 : Math.ceil(distance * 60 / totalBonus);
   return time;
 };

@@ -47,8 +47,8 @@ const formatEntity = function (value) {
   throw new Error('Invalid entity value');
 };
 
-const fromPosition = ({ asteroidId, lotId }) => {
-  return { id: Number(asteroidId) + Number(lotId) * 2 ** 32, label: IDS.LOT };
+const fromPosition = ({ asteroidId, lotIndex }) => {
+  return { id: Number(asteroidId) + Number(lotIndex) * 2 ** 32, label: IDS.LOT };
 };
 
 const toPosition = (entity) => {
@@ -59,7 +59,7 @@ const toPosition = (entity) => {
 
   return {
     asteroidId: entity.id % split,
-    lotId: Math.floor(entity.id / split)
+    lotIndex: Math.floor(entity.id / split)
   };
 };
 

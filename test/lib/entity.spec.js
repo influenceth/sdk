@@ -25,11 +25,11 @@ describe('Entity library', function () {
 
   it('should create entity from position', function () {
     const expected = { id: 6881662889623553, label: entity.IDS.LOT };
-    expect(entity.fromPosition({ asteroidId: 1, lotId: 1602262 })).to.deep.equal(expected);
+    expect(entity.fromPosition({ asteroidId: 1, lotIndex: 1602262 })).to.deep.equal(expected);
   });
 
   it('should create position from entity', function () {
-    const expected = { asteroidId: 1, lotId: 1602262 };
+    const expected = { asteroidId: 1, lotIndex: 1602262 };
     expect(entity.toPosition({ id: 6881662889623553, label: entity.IDS.LOT })).to.deep.equal(expected);
   });
 

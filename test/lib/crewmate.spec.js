@@ -28,7 +28,6 @@ describe('Crewmate library', function () {
 
   it('should unpack appearance', function () {
     const appearance = crewmate.unpackAppearance('0x2000020007000000092');
-    console.log(appearance);
     expect(appearance).to.deep.equal({
       gender: 2,
       body: 9,
