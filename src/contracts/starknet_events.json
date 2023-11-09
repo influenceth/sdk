@@ -355,6 +355,110 @@
       }
     ]
   },
+  "ResourceExtractionStarted": {
+    "type": "event",
+    "name": "ResourceExtractionStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ResourceExtractionFinished": {
+    "type": "event",
+    "name": "ResourceExtractionFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "CrewmateRecruited": {
     "type": "event",
     "name": "CrewmateRecruited",
@@ -583,6 +687,90 @@
       }
     ]
   },
+  "MaterialProcessingStarted": {
+    "type": "event",
+    "name": "MaterialProcessingStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "processor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "processor_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "process",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "inputs",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "outputs",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "MaterialProcessingFinished": {
+    "type": "event",
+    "name": "MaterialProcessingFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "processor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "processor_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "CrewmatePurchased": {
     "type": "event",
     "name": "CrewmatePurchased",
@@ -649,9 +837,9 @@
       }
     ]
   },
-  "SamplingDepositStarted": {
+  "SamplingDepositStartedV1": {
     "type": "event",
-    "name": "SamplingDepositStarted",
+    "name": "SamplingDepositStartedV1",
     "kind": "struct",
     "members": [
       {
@@ -666,6 +854,21 @@
       },
       {
         "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "improving",
+        "type": "core::bool",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
         "type": "core::integer::u64",
         "kind": "data"
       },
@@ -807,6 +1010,80 @@
       {
         "name": "finish_time",
         "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DeliveryStarted": {
+    "type": "event",
+    "name": "DeliveryStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DeliveryFinished": {
+    "type": "event",
+    "name": "DeliveryFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {

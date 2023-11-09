@@ -487,7 +487,7 @@ const ABILITY_TYPES = {
   },
   [ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT]: {
     name: 'Marketplace Fee Enforcement',
-    traits: { [TRAIT_IDS.MOGUL]: 0.0175 }
+    traits: { [TRAIT_IDS.MOGUL]: 0.160 }
   },
   [ABILITY_IDS.MARKETPLACE_FEE_REDUCTION]: {
     name: 'Marketplace Fee Reduction',
