@@ -1,13 +1,15 @@
 import Crewmate from './crewmate.js';
 
 const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
+const CREWMATE_FOOD_PER_YEAR = 1000; // kg / year
+const STARVING_MULTIPLER = 0.25;
 
 /**
  * @param {integer} abilityId Crewmate ability identifier
  * @param {[object]} crewmates Array of crewmate objects including classId, traitIds, and titleId
  * @return The overall bonus to be applied to the ability
  */
-const getAbilityBonus = (abilityId, crewmates = []) => {
+const getAbilityBonus = (abilityId, crewmates = [], timeSinceFed = 0) => {
   const ability = Crewmate.getAbility(abilityId);
   const details = { name: ability.name, totalBonus: 1, traits: {}, titles: {} };
   if (ability.class) details.class = { classId: ability.class, matches: 0 };
@@ -54,11 +56,31 @@ const getAbilityBonus = (abilityId, crewmates = []) => {
     details.totalBonus *= details.class.multiplier;
   }
 
+  // Calculate food bonus
+  details.foodMultiplier = getFoodMultipler(timeSinceFed);
+  details.totalBonus *= details.foodMultiplier;
+
   return details;
 };
 
+/**
+ * @param {integer} timeSinceFed In-game seconds since the crew was last fed (adjust with acceleration first)
+ */
+const getCurrentFood = (timeSinceFed = 0) => {
+  const timeInYears = timeSinceFed / 31536000; // 60 * 60 * 24 * 365
+  const fullTime = CREWMATE_FOOD_PER_YEAR * (1 - timeInYears); // 1000 - 1000x
+  const fastTime = (CREWMATE_FOOD_PER_YEAR * 3 / 4) - ((CREWMATE_FOOD_PER_YEAR / 2) * timeInYears); // 750 - 500x
+  return Math.max(fullTime, fastTime, 0);
+};
+
+const getFoodMultipler = (timeSinceFed = 0) => {
+  return Math.min(Math.max(getCurrentFood(timeSinceFed) / (CREWMATE_FOOD_PER_YEAR / 2), STARVING_MULTIPLER), 1);
+}
+
 export default {
   CREWMATE_STACKING_BONUS_EFFICIENCY,
-  
+
   getAbilityBonus,
+  getCurrentFood,
+  getFoodMultipler
 };
