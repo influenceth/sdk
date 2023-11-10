@@ -152,7 +152,7 @@ const IDS = {
   STAINLESS_STEEL: 151,
   BARE_CIRCUIT_BOARD: 152,
   FERRITE_BEAD_INDUCTOR: 153,
-  CORE_DRILL_SAMPLER: 154,
+  CORE_DRILL_BIT: 154,
   CORE_DRILL_THRUSTER: 155,
   PARABOLIC_DISH: 156,
   PHOTOVOLTAIC_PANEL: 157,
@@ -1655,9 +1655,9 @@ const TYPES = {
     massPerUnit: 1000,
     isAtomic: false
   },
-  [IDS.CORE_DRILL_SAMPLER]: {
-    i: IDS.CORE_DRILL_SAMPLER,
-    name: "Core Drill Sampler",
+  [IDS.CORE_DRILL_BIT]: {
+    i: IDS.CORE_DRILL_BIT,
+    name: "Core Drill Bit",
     classification: CLASSIFICATIONS.COMPONENT,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 2000,

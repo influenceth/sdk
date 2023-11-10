@@ -169,7 +169,7 @@ export default {
     [Product.IDS.STAINLESS_STEEL]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.BARE_CIRCUIT_BOARD]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.FERRITE_BEAD_INDUCTOR]: { iconVersion: 1, modelVersion: 1 },
-    [Product.IDS.CORE_DRILL_SAMPLER]: { iconVersion: 1, modelVersion: 1 },
+    [Product.IDS.CORE_DRILL_BIT]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.CORE_DRILL_THRUSTER]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.PARABOLIC_DISH]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.PHOTOVOLTAIC_PANEL]: { iconVersion: 1, modelVersion: 1 },

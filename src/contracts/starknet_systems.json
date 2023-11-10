@@ -219,6 +219,62 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "ExtractResourceStart": {
+    "type": "function",
+    "name": "ExtractResourceStart",
+    "inputs": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ExtractResourceFinish": {
+    "type": "function",
+    "name": "ExtractResourceFinish",
+    "inputs": [
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "InitializeArvadian": {
     "type": "function",
     "name": "InitializeArvadian",
@@ -322,6 +378,74 @@
       {
         "name": "asteroid",
         "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ProcessProductsStart": {
+    "type": "function",
+    "name": "ProcessProductsStart",
+    "inputs": [
+      {
+        "name": "processor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "processor_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "process",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "target_output",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "recipes",
+        "type": "cubit::f64::types::fixed::Fixed"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ProcessProductsFinish": {
+    "type": "function",
+    "name": "ProcessProductsFinish",
+    "inputs": [
+      {
+        "name": "processor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "processor_slot",
+        "type": "core::integer::u64"
       },
       {
         "name": "caller_crew",
@@ -496,6 +620,14 @@
         "type": "influence::common::types::entity::Entity"
       },
       {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
       }
@@ -583,13 +715,6 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "SeedHabitat": {
-    "type": "function",
-    "name": "SeedHabitat",
-    "inputs": [],
-    "outputs": [],
-    "state_mutability": "external"
-  },
   "SeedAsteroids": {
     "type": "function",
     "name": "SeedAsteroids",
@@ -609,6 +734,73 @@
       {
         "name": "crewmates",
         "type": "core::array::Span::<influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SeedHabitat": {
+    "type": "function",
+    "name": "SeedHabitat",
+    "inputs": [],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SeedTestingWarehouse": {
+    "type": "function",
+    "name": "SeedTestingWarehouse",
+    "inputs": [
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "TransferInventoryStart": {
+    "type": "function",
+    "name": "TransferInventoryStart",
+    "inputs": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "TransferInventoryFinish": {
+    "type": "function",
+    "name": "TransferInventoryFinish",
+    "inputs": [
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
       }
     ],
     "outputs": [],
