@@ -1,4 +1,5 @@
 import Crewmate from './crewmate.js';
+import Station from './station.js';
 
 const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
 const CREWMATE_FOOD_PER_YEAR = 1000; // kg / year
@@ -7,11 +8,21 @@ const STARVING_MULTIPLER = 0.25;
 /**
  * @param {integer} abilityId Crewmate ability identifier
  * @param {[object]} crewmates Array of crewmate objects including classId, traitIds, and titleId
+ * @param {object} station Station object including station_type, and population
+ * @param {integer} timeSinceFed In-game seconds since the crew was last fed (adjust with acceleration first)
  * @return The overall bonus to be applied to the ability
  */
-const getAbilityBonus = (abilityId, crewmates = [], timeSinceFed = 0) => {
+const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed = 0) => {
   const ability = Crewmate.getAbility(abilityId);
-  const details = { name: ability.name, totalBonus: 1, traits: {}, titles: {} };
+  const details = {
+    name: ability.name,
+    totalBonus: 1,
+    traits: {},
+    titles: {},
+    foodMultiplier: 1,
+    stationMultiplier: 1
+  };
+
   if (ability.class) details.class = { classId: ability.class, matches: 0 };
 
   crewmates.forEach(crewmate => {
@@ -34,6 +45,12 @@ const getAbilityBonus = (abilityId, crewmates = [], timeSinceFed = 0) => {
       info.bonus += ability.titles[crewmateTitle];
       details.titles[crewmateTitle] = info;
       details.totalBonus += ability.titles[crewmateTitle];
+    }
+
+    // Get station bonus
+    if (station.stationType && station.population) {
+      details.stationMultiplier = Station.getEfficiency(station.stationType, station.population);
+      details.totalBonus *= details.stationMultiplier;
     }
 
     // Get traits bonuses
