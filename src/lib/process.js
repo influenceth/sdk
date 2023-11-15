@@ -113,7 +113,7 @@ const IDS = {
   STAINLESS_STEEL_ALLOYING: 131,
   BOARD_PRINTING: 132,
   FERRITE_BEAD_INDUCTOR_WINDING: 133,
-  CORE_DRILL_DRILL_MILLING: 134,
+  CORE_DRILL_BIT_MILLING: 134,
   CORE_DRILL_THRUSTER_ASSEMBLY: 135,
   PARABOLIC_DISH_ASSEMBLY: 136,
   PHOTOVOLTAIC_PANEL_AMORPHIZATION_AND_ASSEMBLY: 137,
@@ -1889,9 +1889,9 @@ const TYPES = {
       [Product.IDS.FERRITE_BEAD_INDUCTOR]: 10
     }
   },
-  [IDS.CORE_DRILL_DRILL_MILLING]: {
-    i: IDS.CORE_DRILL_DRILL_MILLING,
-    name: "Core Sampler Drill Milling",
+  [IDS.CORE_DRILL_BIT_MILLING]: {
+    i: IDS.CORE_DRILL_BIT_MILLING,
+    name: "Core Drill Bit Milling",
     processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
@@ -1904,7 +1904,7 @@ const TYPES = {
   },
   [IDS.CORE_DRILL_THRUSTER_ASSEMBLY]: {
     i: IDS.CORE_DRILL_THRUSTER_ASSEMBLY,
-    name: "Core Sampler Thruster Assembly",
+    name: "Core Drill Thruster Assembly",
     processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
@@ -2271,7 +2271,7 @@ const TYPES = {
   },
   [IDS.CORE_DRILL_ASSEMBLY]: {
     i: IDS.CORE_DRILL_ASSEMBLY,
-    name: "Core Sampler Assembly",
+    name: "Core Drill Assembly",
     processorType: Processor.IDS.FACTORY,
     setupTime: 0,
     recipeTime: 1,
