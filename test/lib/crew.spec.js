@@ -17,14 +17,14 @@ describe('Crew library', function () {
     expect(details.totalBonus.toFixed(4)).to.equal('1.0750');
   });
 
+  it('should accept entity structure for crewmate attributes', function () {
+    const details = Crew.getAbilityBonus(3, [ { Crewmate: { class: 3, title: 65 } }, { Crewmate: { class: 3, impactful: [ 47 ] } }]);
+    expect(details.totalBonus.toFixed(4)).to.equal('1.0750');
+  });
+
   it('should get bonus based on ability with class penalty', function () {
     const details = Crew.getAbilityBonus(1, [ { classId: 1 }, { classId: 2, traitIds: [ 31 ]}]);
     expect(details.totalBonus.toFixed(4)).to.equal('0.5500');
-  });
-
-  it('should accept alternative property names for crewmate attributes', function () {
-    const details = Crew.getAbilityBonus(3, [ { class: 3, title: 65 }, { class: 3, impactful: [ 47 ]}]);
-    expect(details.totalBonus.toFixed(4)).to.equal('1.0750');
   });
 
   it('should get current food', function () {
@@ -39,11 +39,11 @@ describe('Crew library', function () {
 
   it('should calculate the food multipler', function () {
     const accel = 24;
-    expect(Crew.getFoodMultipler(100000 * accel)).to.equal(1);
-    expect(Crew.getFoodMultipler(657000 * accel)).to.equal(1);
-    expect(Crew.getFoodMultipler(985500 * accel)).to.equal(0.75);
-    expect(Crew.getFoodMultipler(1314000 * accel)).to.equal(0.5);
-    expect(Crew.getFoodMultipler(1642500 * accel)).to.equal(0.25);
-    expect(Crew.getFoodMultipler(2628000 * accel)).to.equal(0.25);
+    expect(Crew.getFoodMultiplier(100000 * accel)).to.equal(1);
+    expect(Crew.getFoodMultiplier(657000 * accel)).to.equal(1);
+    expect(Crew.getFoodMultiplier(985500 * accel)).to.equal(0.75);
+    expect(Crew.getFoodMultiplier(1314000 * accel)).to.equal(0.5);
+    expect(Crew.getFoodMultiplier(1642500 * accel)).to.equal(0.25);
+    expect(Crew.getFoodMultiplier(2628000 * accel)).to.equal(0.25);
   });
 });

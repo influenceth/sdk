@@ -3,7 +3,7 @@ import Station from './station.js';
 
 const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
 const CREWMATE_FOOD_PER_YEAR = 1000; // kg / year
-const STARVING_MULTIPLER = 0.25;
+const STARVING_MULTIPLIER = 0.25;
 
 /**
  * @param {integer} abilityId Crewmate ability identifier
@@ -28,9 +28,9 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
   crewmates.forEach(crewmate => {
     if (!crewmate) return;
 
-    const crewmateClass = crewmate.classId || crewmate.class;
-    const crewmateTitle = crewmate.titleId || crewmate.title;
-    const crewmateTraits = crewmate.traitIds || crewmate.impactful || [];
+    const crewmateClass = crewmate.classId || crewmate.Crewmate?.class;
+    const crewmateTitle = crewmate.titleId || crewmate.Crewmate?.title;
+    const crewmateTraits = crewmate.traitIds || crewmate.Crewmate?.impactful || [];
 
     if (crewmateClass && ability.class && crewmateClass === ability.class) {
       const info = details.class || { matches: 0 };
@@ -74,7 +74,7 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
   }
 
   // Calculate food bonus
-  details.foodMultiplier = getFoodMultipler(timeSinceFed);
+  details.foodMultiplier = getFoodMultiplier(timeSinceFed);
   details.totalBonus *= details.foodMultiplier;
 
   return details;
@@ -90,14 +90,16 @@ const getCurrentFood = (timeSinceFed = 0) => {
   return Math.max(fullTime, fastTime, 0);
 };
 
-const getFoodMultipler = (timeSinceFed = 0) => {
-  return Math.min(Math.max(getCurrentFood(timeSinceFed) / (CREWMATE_FOOD_PER_YEAR / 2), STARVING_MULTIPLER), 1);
+const getFoodMultiplier = (timeSinceFed = 0) => {
+  return Math.min(Math.max(getCurrentFood(timeSinceFed) / (CREWMATE_FOOD_PER_YEAR / 2), STARVING_MULTIPLIER), 1);
 }
 
 export default {
   CREWMATE_STACKING_BONUS_EFFICIENCY,
+  CREWMATE_FOOD_PER_YEAR,
+  STARVING_MULTIPLIER,
 
   getAbilityBonus,
   getCurrentFood,
-  getFoodMultipler
+  getFoodMultiplier
 };
