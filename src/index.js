@@ -13,6 +13,7 @@ import Entity from './lib/entity.js';
 import Exchange from './lib/exchange.js';
 import Extractor from './lib/extractor.js';
 import Inventory from './lib/inventory.js';
+import Lot from './lib/lot.js';
 import Name from './lib/name.js';
 import Order from './lib/order.js';
 import Permissions from './lib/permissions.js';
@@ -52,6 +53,7 @@ export {
   Exchange,
   Extractor,
   Inventory,
+  Lot,
   Name,
   Order,
   Permissions,

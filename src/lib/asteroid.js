@@ -609,6 +609,7 @@ const getAbundanceMapSettings = (asteroidId, resourceId, abundances) => {
  * @return Distance in km
  */
 const getLotDistance = (asteroidId, originLotIndex, destLotIndex) => {
+  if (originLotIndex === destLotIndex) return 0;
   const radius = getRadius(asteroidId);
   const numLots = getSurfaceArea(asteroidId, radius);
   const origin = multiply(getLotPosition(asteroidId, originLotIndex, numLots), radius);

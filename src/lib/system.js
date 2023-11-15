@@ -13,10 +13,11 @@ const parseCairoType = (cairoType) => {
   let type;
   if (['influence::common::types::entity::Entity'].includes(cairoType)) type = 'Entity';
   else if (['core::starknet::contract_address::ContractAddress'].includes(cairoType)) type = 'ContractAddress';
-  else if (['core::integer::u64'].includes(cairoType)) type = 'Number';
-  else if (['core::integer::u128'].includes(cairoType)) type = 'BigNumber';
+  else if (['core::integer::u64','core::integer::u128'].includes(cairoType)) type = 'BigNumber';
   else if (['influence::common::types::string::String', 'core::felt252'].includes(cairoType)) type = 'String';
-  else throw new Error(`Unknown input type!`, type);
+  else if (['influence::common::types::inventory_item::InventoryItem'].includes(cairoType)) type = 'InventoryItem';
+  else if (['cubit::f64::types::fixed::Fixed'].includes(cairoType)) type = 'Raw'; // TODO: ...
+  else throw new Error(`Unknown input type! "${cairoType}"`);
 
   return { type };
 };
@@ -50,6 +51,12 @@ const formatCalldataValue = (type, value) => {
   }
   else if (type === 'Ether') {
     return uint256.bnToUint256(value);
+  }
+  else if (type === 'InventoryItem') {
+    return [value.product, value.amount];
+  }
+  else { // "Raw"
+    return value;
   }
 };
 
