@@ -47,12 +47,6 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
       details.totalBonus += ability.titles[crewmateTitle];
     }
 
-    // Get station bonus
-    if (station.stationType && station.population) {
-      details.stationMultiplier = Station.getEfficiency(station.stationType, station.population);
-      details.totalBonus *= details.stationMultiplier;
-    }
-
     // Get traits bonuses
     if (crewmateTraits.length > 0) {
       crewmateTraits.forEach((traitId) => {
@@ -71,6 +65,12 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
   if (details.class) {
     details.class.multiplier = CREWMATE_STACKING_BONUS_EFFICIENCY[details.class.matches];
     details.totalBonus *= details.class.multiplier;
+  }
+
+  // Get station bonus
+  if (station.stationType && station.population) {
+    details.stationMultiplier = Station.getEfficiency(station.stationType, station.population);
+    details.totalBonus *= details.stationMultiplier;
   }
 
   // Calculate food bonus
