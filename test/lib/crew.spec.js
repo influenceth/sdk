@@ -1,29 +1,36 @@
 import { expect } from 'chai';
 import Crew from '../../src/lib/crew.js';
 
-describe('Crew library', function () {
+describe.only('Crew library', function () {
   it('should get bonus based on ability', function () {
-    const details = Crew.getAbilityBonus(1, [ { classId: 3 }, { classId: 3, traitIds: [ 31 ]}]);
+    const details = Crew.getAbilityBonus(1, [ { classId: 3 }, { collectionId: 4, classId: 3, traitIds: [ 31 ]}]);
     expect(details.totalBonus.toFixed(4)).to.equal('1.3750');
   });
 
   it('should get bonus based on ability with title', function () {
-    const details = Crew.getAbilityBonus(1, [ { classId: 3, titleId: 65 }, { classId: 3, traitIds: [ 31 ]}]);
+    const details = Crew.getAbilityBonus(
+      1, [{ classId: 3, titleId: 65 }, { collectionId: 4, classId: 3, traitIds: [ 31 ]}]
+    );
     expect(details.totalBonus.toFixed(4)).to.equal('1.4063');
   });
 
   it('should get bonus based on ability with no class affinity', function () {
-    const details = Crew.getAbilityBonus(3, [ { classId: 3, titleId: 65 }, { classId: 3, traitIds: [ 47 ]}]);
+    const details = Crew.getAbilityBonus(
+      3, [{ classId: 3, titleId: 65 }, { collectionId: 4, classId: 3, traitIds: [ 47 ]}]
+    );
     expect(details.totalBonus.toFixed(4)).to.equal('1.0750');
   });
 
   it('should accept entity structure for crewmate attributes', function () {
-    const details = Crew.getAbilityBonus(3, [ { Crewmate: { class: 3, title: 65 } }, { Crewmate: { class: 3, impactful: [ 47 ] } }]);
+    const details = Crew.getAbilityBonus(3, [
+      { Crewmate: { collectionId: 4, class: 3, title: 65 } },
+      { Crewmate: { collectionId: 4, class: 3, impactful: [ 47 ] } }
+    ]);
     expect(details.totalBonus.toFixed(4)).to.equal('1.0750');
   });
 
   it('should get bonus based on ability with class penalty', function () {
-    const details = Crew.getAbilityBonus(1, [ { classId: 1 }, { classId: 2, traitIds: [ 31 ]}]);
+    const details = Crew.getAbilityBonus(1, [ { classId: 1 }, { collectionId: 4, classId: 2, traitIds: [ 31 ]}]);
     expect(details.totalBonus.toFixed(4)).to.equal('0.5500');
   });
 

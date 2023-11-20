@@ -62,71 +62,71 @@ const DEPARTMENT_IDS = {
 
 const TITLES = {
   0: { name: 'None' },
-  1: { name: 'Communications Officer' },
-  2: { name: 'Teaching Assistant' },
-  3: { name: 'Librarian' },
-  4: { name: 'Nurse' },
-  5: { name: 'Public Safety Officer' },
-  6: { name: 'Warehouse Worker' },
-  7: { name: 'Maintenance Technician' },
-  8: { name: 'Systems Administrator' },
-  9: { name: 'Structural Engineer' },
-  10: { name: 'Farmer' },
-  11: { name: 'Line Cook' },
-  12: { name: 'Artist' },
-  13: { name: 'Block Captain' },
-  14: { name: 'Observatory Technician' },
-  15: { name: 'Teacher' },
-  16: { name: 'Historian' },
-  17: { name: 'Physician Assistant' },
-  18: { name: 'Security Officer' },
-  19: { name: 'Logistics Specialist' },
-  20: { name: 'Electrician' },
-  21: { name: 'Software Engineer' },
-  22: { name: 'Life Support Engineer' },
-  23: { name: 'Field Botanist' },
-  24: { name: 'Section Cook' },
-  25: { name: 'Author' },
-  26: { name: 'Delegate' },
-  27: { name: 'Cartographer' },
-  28: { name: 'Professor' },
-  29: { name: 'Archivist' },
-  30: { name: 'Resident Physician' },
-  31: { name: 'Tactical Officer' },
-  32: { name: 'Warehouse Manager' },
-  33: { name: 'EVA Technician' },
-  34: { name: 'Embedded Engineer' },
-  35: { name: 'Propulsion Engineer' },
-  36: { name: 'Nutritionist' },
-  37: { name: 'Kitchen Manager' },
-  38: { name: 'Musician' },
-  39: { name: 'Councilor' },
-  40: { name: 'Navigator' },
-  41: { name: 'Distinguished Professor' },
-  42: { name: 'Curator' },
-  43: { name: 'Physician' },
-  44: { name: 'Intelligence Officer' },
-  45: { name: 'Logistics Manager' },
-  46: { name: 'Facilities Supervisor' },
-  47: { name: 'Systems Architect' },
-  48: { name: 'Reactor Engineer' },
-  49: { name: 'Plant Geneticist' },
-  50: { name: 'Chef' },
-  51: { name: 'Actor' },
-  52: { name: 'Justice' },
-  53: { name: 'Chief Navigator' },
-  54: { name: 'Provost' },
-  55: { name: 'Chief Archivist' },
-  56: { name: 'Chief Medical Officer' },
-  57: { name: 'Head of Security' },
-  58: { name: 'Chief Logistics Officer' },
-  59: { name: 'Chief Steward' },
-  60: { name: 'Chief Technology Officer' },
-  61: { name: 'Head of Engineering' },
-  62: { name: 'Chief Botanist' },
-  63: { name: 'Chief Cook' },
-  64: { name: 'Entertainment Director' },
-  65: { name: 'High Commander' },
+  1: { name: 'Communications Officer', department: DEPARTMENT_IDS.NAVIGATION, tier: 1 },
+  2: { name: 'Teaching Assistant', department: DEPARTMENT_IDS.EDUCATION, tier: 1 },
+  3: { name: 'Librarian', department: DEPARTMENT_IDS.KNOWLEDGE, tier: 1 },
+  4: { name: 'Nurse', department: DEPARTMENT_IDS.MEDICINE, tier: 1 },
+  5: { name: 'Public Safety Officer', department: DEPARTMENT_IDS.SECURITY, tier: 1 },
+  6: { name: 'Warehouse Worker', department: DEPARTMENT_IDS.LOGISTICS, tier: 1 },
+  7: { name: 'Maintenance Technician', department: DEPARTMENT_IDS.MAINTENANCE, tier: 1 },
+  8: { name: 'Systems Administrator', department: DEPARTMENT_IDS.TECHNOLOGY, tier: 1 },
+  9: { name: 'Structural Engineer', department: DEPARTMENT_IDS.ENGINEERING, tier: 1 },
+  10: { name: 'Farmer', department: DEPARTMENT_IDS.FOOD_PRODUCTION, tier: 1 },
+  11: { name: 'Line Cook', department: DEPARTMENT_IDS.FOOD_PREPARATION, tier: 1 },
+  12: { name: 'Artist', department: DEPARTMENT_IDS.ARTS_ENTERTAINMENT, tier: 1 },
+  13: { name: 'Block Captain', department: DEPARTMENT_IDS.MANAGEMENT, tier: 1 },
+  14: { name: 'Observatory Technician', department: DEPARTMENT_IDS.NAVIGATION, tier: 2 },
+  15: { name: 'Teacher', department: DEPARTMENT_IDS.EDUCATION, tier: 2 },
+  16: { name: 'Historian', department: DEPARTMENT_IDS.KNOWLEDGE, tier: 2 },
+  17: { name: 'Physician Assistant', department: DEPARTMENT_IDS.MEDICINE, tier: 2 },
+  18: { name: 'Security Officer', department: DEPARTMENT_IDS.SECURITY, tier: 2 },
+  19: { name: 'Logistics Specialist', department: DEPARTMENT_IDS.LOGISTICS, tier: 2 },
+  20: { name: 'Electrician', department: DEPARTMENT_IDS.MAINTENANCE, tier: 2 },
+  21: { name: 'Software Engineer', department: DEPARTMENT_IDS.TECHNOLOGY, tier: 2 },
+  22: { name: 'Life Support Engineer', department: DEPARTMENT_IDS.ENGINEERING, tier: 2 },
+  23: { name: 'Field Botanist', department: DEPARTMENT_IDS.FOOD_PRODUCTION, tier: 2 },
+  24: { name: 'Section Cook', department: DEPARTMENT_IDS.FOOD_PREPARATION, tier: 2 },
+  25: { name: 'Author', department: DEPARTMENT_IDS.ARTS_ENTERTAINMENT, tier: 2 },
+  26: { name: 'Delegate', department: DEPARTMENT_IDS.MANAGEMENT, tier: 2 },
+  27: { name: 'Cartographer', department: DEPARTMENT_IDS.NAVIGATION, tier: 3 },
+  28: { name: 'Professor', department: DEPARTMENT_IDS.EDUCATION, tier: 3 },
+  29: { name: 'Archivist', department: DEPARTMENT_IDS.KNOWLEDGE, tier: 3 },
+  30: { name: 'Resident Physician', department: DEPARTMENT_IDS.MEDICINE, tier: 3 },
+  31: { name: 'Tactical Officer', department: DEPARTMENT_IDS.SECURITY, tier: 3 },
+  32: { name: 'Warehouse Manager', department: DEPARTMENT_IDS.LOGISTICS, tier: 3 },
+  33: { name: 'EVA Technician', department: DEPARTMENT_IDS.MAINTENANCE, tier: 3 },
+  34: { name: 'Embedded Engineer', department: DEPARTMENT_IDS.TECHNOLOGY, tier: 3 },
+  35: { name: 'Propulsion Engineer', department: DEPARTMENT_IDS.ENGINEERING, tier: 3 },
+  36: { name: 'Nutritionist', department: DEPARTMENT_IDS.FOOD_PRODUCTION, tier: 3 },
+  37: { name: 'Kitchen Manager', department: DEPARTMENT_IDS.FOOD_PREPARATION, tier: 3 },
+  38: { name: 'Musician', department: DEPARTMENT_IDS.ARTS_ENTERTAINMENT, tier: 3 },
+  39: { name: 'Councilor', department: DEPARTMENT_IDS.MANAGEMENT, tier: 3 },
+  40: { name: 'Navigator', department: DEPARTMENT_IDS.NAVIGATION, tier: 4 },
+  41: { name: 'Distinguished Professor', department: DEPARTMENT_IDS.EDUCATION, tier: 4 },
+  42: { name: 'Curator', department: DEPARTMENT_IDS.KNOWLEDGE, tier: 4 },
+  43: { name: 'Physician', department: DEPARTMENT_IDS.MEDICINE, tier: 4 },
+  44: { name: 'Intelligence Officer', department: DEPARTMENT_IDS.SECURITY, tier: 4 },
+  45: { name: 'Logistics Manager', department: DEPARTMENT_IDS.LOGISTICS, tier: 4 },
+  46: { name: 'Facilities Supervisor', department: DEPARTMENT_IDS.MAINTENANCE, tier: 4 },
+  47: { name: 'Systems Architect', department: DEPARTMENT_IDS.TECHNOLOGY, tier: 4 },
+  48: { name: 'Reactor Engineer', department: DEPARTMENT_IDS.ENGINEERING, tier: 4 },
+  49: { name: 'Plant Geneticist', department: DEPARTMENT_IDS.FOOD_PRODUCTION, tier: 4 },
+  50: { name: 'Chef', department: DEPARTMENT_IDS.FOOD_PREPARATION, tier: 4 },
+  51: { name: 'Actor', department: DEPARTMENT_IDS.ARTS_ENTERTAINMENT, tier: 4 },
+  52: { name: 'Justice', department: DEPARTMENT_IDS.MANAGEMENT, tier: 4 },
+  53: { name: 'Chief Navigator', department: DEPARTMENT_IDS.NAVIGATION, tier: 5 },
+  54: { name: 'Provost', department: DEPARTMENT_IDS.EDUCATION, tier: 5 },
+  55: { name: 'Chief Archivist', department: DEPARTMENT_IDS.KNOWLEDGE, tier: 5 },
+  56: { name: 'Chief Medical Officer', department: DEPARTMENT_IDS.MEDICINE, tier: 5 },
+  57: { name: 'Head of Security', department: DEPARTMENT_IDS.SECURITY, tier: 5 },
+  58: { name: 'Chief Logistics Officer', department: DEPARTMENT_IDS.LOGISTICS, tier: 5 },
+  59: { name: 'Chief Steward', department: DEPARTMENT_IDS.MAINTENANCE, tier: 5 },
+  60: { name: 'Chief Technology Officer', department: DEPARTMENT_IDS.TECHNOLOGY, tier: 5 },
+  61: { name: 'Head of Engineering', department: DEPARTMENT_IDS.ENGINEERING, tier: 5 },
+  62: { name: 'Chief Botanist', department: DEPARTMENT_IDS.FOOD_PRODUCTION, tier: 5 },
+  63: { name: 'Chief Cook', department: DEPARTMENT_IDS.FOOD_PREPARATION, tier: 5 },
+  64: { name: 'Entertainment Director', department: DEPARTMENT_IDS.ARTS_ENTERTAINMENT, tier: 5 },
+  65: { name: 'High Commander', department: DEPARTMENT_IDS.MANAGEMENT, tier: 5 },
   66: { name: 'Adalian Prime Councilor' }
 };
 
@@ -346,7 +346,7 @@ const ABILITY_TYPES = {
   [ABILITY_IDS.CORE_SAMPLE_TIME]: {
     name: 'Core Sample Time',
     class: CLASS_IDS.MINER,
-    titles: { ...managementBonuses },
+    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 },
     traits: { [TRAIT_IDS.SURVEYOR]: 0.10 }
   },
   [ABILITY_IDS.CORE_SAMPLE_QUALITY]: {
@@ -357,17 +357,13 @@ const ABILITY_TYPES = {
   [ABILITY_IDS.EXTRACTION_TIME]: {
     name: 'Extraction Time',
     class: CLASS_IDS.MINER,
-    titles: { ...managementBonuses }
+    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 }
   },
   [ABILITY_IDS.HOPPER_TRANSPORT_TIME]: {
     name: 'Hopper Transport Time',
-    titles: {
-      [TITLE_IDS.WAREHOUSE_WORKER]: 0.0125,
-      [TITLE_IDS.LOGISTICS_SPECIALIST]: 0.025,
-      [TITLE_IDS.WAREHOUSE_MANAGER]: 0.0375,
-      [TITLE_IDS.LOGISTICS_MANAGER]: 0.05,
-      [TITLE_IDS.CHIEF_STEWARD]: 0.0625,
-      ...managementBonuses
+    departments: {
+      [DEPARTMENT_IDS.LOGISTICS]: 0.0125,
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
     },
     traits: { [TRAIT_IDS.LOGISTICIAN]: 0.05 }
   },
@@ -381,42 +377,24 @@ const ABILITY_TYPES = {
   },
   [ABILITY_IDS.INVENTORY_VOLUME_CAPACITY]: {
     name: 'Inventory Volume Capacity',
-    titles: {
-      [TITLE_IDS.WAREHOUSE_WORKER]: 0.0125,
-      [TITLE_IDS.LOGISTICS_SPECIALIST]: 0.025,
-      [TITLE_IDS.WAREHOUSE_MANAGER]: 0.0375,
-      [TITLE_IDS.LOGISTICS_MANAGER]: 0.05,
-      [TITLE_IDS.CHIEF_STEWARD]: 0.0625
-    }
+    departments: { [DEPARTMENT_IDS.LOGISTICS]: 0.0125 }
   },
   [ABILITY_IDS.PROPELLANT_EXHAUST_VELOCITY]: {
     name: 'Propellant Exhaust Velocity',
     class: CLASS_IDS.PILOT,
-    titles: {
-      [TITLE_IDS.COMMUNICATIONS_OFFICER]: 0.01,
-      [TITLE_IDS.OBSERVATORY_TECHNICIAN]: 0.02,
-      [TITLE_IDS.CARTOGRAPHER]: 0.03,
-      [TITLE_IDS.NAVIGATOR]: 0.04,
-      [TITLE_IDS.CHIEF_NAVIGATOR]: 0.05
-    },
+    departments: { [DEPARTMENT_IDS.NAVIGATION]: 0.01 },
     traits: { [TRAIT_IDS.NAVIGATOR]: 0.02 }
   },
   [ABILITY_IDS.PROPELLANT_FLOW_RATE]: {
     name: 'Propellant Flow Rate',
     class: CLASS_IDS.PILOT,
-    titles: {
-      [TITLE_IDS.COMMUNICATIONS_OFFICER]: 0.01,
-      [TITLE_IDS.OBSERVATORY_TECHNICIAN]: 0.02,
-      [TITLE_IDS.CARTOGRAPHER]: 0.03,
-      [TITLE_IDS.NAVIGATOR]: 0.04,
-      [TITLE_IDS.CHIEF_NAVIGATOR]: 0.05
-    },
+    departments: { [DEPARTMENT_IDS.NAVIGATION]: 0.01 },
     traits: { [TRAIT_IDS.BUSTER]: 0.02 }
   },
   [ABILITY_IDS.CONSTRUCTION_TIME]: {
     name: 'Construction Time',
     class: CLASS_IDS.ENGINEER,
-    titles: { ...managementBonuses },
+    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 },
     traits: { [TRAIT_IDS.BUILDER]: 0.05 }
   },
   [ABILITY_IDS.DECONSTRUCTION_YIELD]: {
@@ -426,13 +404,9 @@ const ABILITY_TYPES = {
   [ABILITY_IDS.REFINING_TIME]: {
     name: 'Refining Time',
     class: CLASS_IDS.ENGINEER,
-    titles: {
-      [TITLE_IDS.STRUCTURAL_ENGINEER]: 0.0125,
-      [TITLE_IDS.LIFE_SUPPORT_ENGINEER]: 0.025,
-      [TITLE_IDS.PROPULSION_ENGINEER]: 0.0375,
-      [TITLE_IDS.REACTOR_ENGINEER]: 0.05,
-      [TITLE_IDS.HEAD_OF_ENGINEERING]: 0.0625,
-      ...managementBonuses
+    departments: {
+      [DEPARTMENT_IDS.ENGINEERING]: 0.0125,
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
     },
     traits: { [TRAIT_IDS.REFINER]: 0.05 }
   },
@@ -443,46 +417,31 @@ const ABILITY_TYPES = {
   [ABILITY_IDS.MANUFACTURING_TIME]: {
     name: 'Manufacturing Time',
     class: CLASS_IDS.ENGINEER,
-    titles: {
-      [TITLE_IDS.STRUCTURAL_ENGINEER]: 0.0125,
-      [TITLE_IDS.LIFE_SUPPORT_ENGINEER]: 0.025,
-      [TITLE_IDS.PROPULSION_ENGINEER]: 0.0375,
-      [TITLE_IDS.REACTOR_ENGINEER]: 0.05,
-      [TITLE_IDS.HEAD_OF_ENGINEERING]: 0.0625,
-      ...managementBonuses
+    departments: {
+      [DEPARTMENT_IDS.ENGINEERING]: 0.0125,
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
     }
   },
   [ABILITY_IDS.REACTION_TIME]: {
     name: 'Reaction Time',
     class: CLASS_IDS.SCIENTIST,
-    titles: {
-      [TITLE_IDS.FARMER]: 0.025,
-      [TITLE_IDS.FIELD_BOTANIST]: 0.05,
-      [TITLE_IDS.NUTRITIONIST]: 0.075,
-      [TITLE_IDS.PLANT_GENETICIST]: 0.1,
-      [TITLE_IDS.CHIEF_BOTANIST]: 0.125,
-      ...managementBonuses
+    departments: {
+      [DEPARTMENT_IDS.FOOD_PRODUCTION]: 0.025,
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
     }
   },
   [ABILITY_IDS.FOOD_CONSUMPTION_TIME]: {
     name: 'Food Consumption Time',
-    title: {
-      [TITLE_IDS.LINE_COOK]: 0.025,
-      [TITLE_IDS.SECTION_COOK]: 0.05,
-      [TITLE_IDS.KITCHEN_MANAGER]: 0.075,
-      [TITLE_IDS.CHEF]: 0.1,
-      [TITLE_IDS.CHIEF_COOK]: 0.125,
-      ...managementBonuses },
+    departments: {
+      [DEPARTMENT_IDS.FOOD_PREPARATION]: 0.025,
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
+    },
     traits: { [TRAIT_IDS.DIETITIAN]: 0.05 }
   },
   [ABILITY_IDS.FOOD_RATIONING_PENALTY]: {
     name: 'Food Rationing Penalty',
-    title: {
-      [TITLE_IDS.NURSE]: 0.00833,
-      [TITLE_IDS.PHYSICIAN_ASSISTANT]: 0.01667,
-      [TITLE_IDS.RESIDENT_PHYSICIAN]: 0.025,
-      [TITLE_IDS.PHYSICIAN]: 0.0333,
-      [TITLE_IDS.CHIEF_MEDICAL_OFFICER]: 0.04167
+    departments: {
+      [DEPARTMENT_IDS.MEDICINE]: 0.00833,
     }
   },
   [ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT]: {
@@ -492,13 +451,7 @@ const ABILITY_TYPES = {
   [ABILITY_IDS.MARKETPLACE_FEE_REDUCTION]: {
     name: 'Marketplace Fee Reduction',
     class: CLASS_IDS.MERCHANT,
-    titles: {
-      [TITLE_IDS.ARTIST]: 0.05,
-      [TITLE_IDS.AUTHOR]: 0.1,
-      [TITLE_IDS.MUSICIAN]: 0.15,
-      [TITLE_IDS.ACTOR]: 0.2,
-      [TITLE_IDS.ENTERTAINMENT_DIRECTOR]: 0.25
-    }
+    departments: { [DEPARTMENT_IDS.ARTS_ENTERTAINMENT]: 0.05 }
   }
 };
 

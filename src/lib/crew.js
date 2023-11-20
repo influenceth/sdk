@@ -31,6 +31,7 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
     const crewmateClass = crewmate.classId || crewmate.Crewmate?.class;
     const crewmateTitle = crewmate.titleId || crewmate.Crewmate?.title;
     const crewmateTraits = crewmate.traitIds || crewmate.Crewmate?.impactful || [];
+    const crewmateCollection = crewmate.collectionId || crewmate.Crewmate?.collection || crewmate.Crewmate?.coll;
 
     if (crewmateClass && ability.class && crewmateClass === ability.class) {
       const info = details.class || { matches: 0 };
@@ -38,13 +39,18 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
       details.class = info;
     }
 
-    // If the crewmate has a title and it has a match in the ability
-    if (crewmateTitle && ability.titles && ability.titles[crewmateTitle]) {
-      const info = details.titles[crewmateTitle] || { matches: 0, bonusPerMatch: ability.titles[crewmateTitle], bonus: 0 };
+    // If the crewmate has a title and it has a match in the departments
+    const titleInfo = crewmateTitle ? Crewmate.getTitle(crewmateTitle): {};
+
+    // Includes a half tier department bonus for Arvad Specialists
+    if (titleInfo.department && ability.departments && ability.departments[titleInfo.department]) {
+      const tier = titleInfo.tier + (crewmateCollection === Crewmate.COLLECTION_IDS.ARVAD_SPECIALIST ? 0.5 : 0);
+      const bonusPerMatch = ability.departments[titleInfo.department] * tier;
+      const info = details.titles[crewmateTitle] || { matches: 0, bonusPerMatch, bonus: 0 };
       info.matches++;
-      info.bonus += ability.titles[crewmateTitle];
+      info.bonus += bonusPerMatch;
       details.titles[crewmateTitle] = info;
-      details.totalBonus += ability.titles[crewmateTitle];
+      details.totalBonus += bonusPerMatch;
     }
 
     // Get traits bonuses
