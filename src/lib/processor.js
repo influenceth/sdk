@@ -3,6 +3,7 @@ const IDS = {
   FACTORY: 2,
   BIOREACTOR: 3,
   SHIPYARD: 4,
+  DRY_DOCK: 5
 };
 
 const STATUSES = {
