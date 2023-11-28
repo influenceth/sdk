@@ -219,10 +219,7 @@ const IDS = {
   EPOXY_STOICHIOMETRY_AND_PACKAGING: 239,
   PEDOT_ALGAE_GROWING: 240,
   BPA_ALGAE_GROWING: 241,
-  NOVOLAK_ALGAE_GROWING: 242,
-  SHUTTLE_INTEGRATION: 250,
-  LIGHT_TRANSPORT_INTEGRATION: 251,
-  HEAVY_TRANSPORT_INTEGRATION: 252
+  NOVOLAK_ALGAE_GROWING: 242
 };
 
 const TYPES = {
@@ -3531,54 +3528,6 @@ const TYPES = {
     },
     outputs: {
       [Product.IDS.NOVOLAK_PREPOLYMER_RESIN]: 400
-    }
-  },
-  [IDS.SHUTTLE_INTEGRATION]: {
-    name: "Shuttle Integration",
-    processorType: Processor.IDS.DRY_DOCK,
-    setupTime: 0,
-    recipeTime: 576,
-    inputs: {
-      [Product.IDS.SHUTTLE_HULL]: 44600,
-      [Product.IDS.AVIONICS_MODULE]: 500,
-      [Product.IDS.ESCAPE_MODULE]: 19995,
-      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 660,
-      [Product.IDS.POWER_MODULE]: 2000,
-      [Product.IDS.THERMAL_MODULE]: 1000,
-      [Product.IDS.PROPULSION_MODULE]: 32000
-    }
-  },
-  [IDS.LIGHT_TRANSPORT_INTEGRATION]: {
-    name: "Light Transport Integration",
-    processorType: Processor.IDS.DRY_DOCK,
-    setupTime: 0,
-    recipeTime: 768,
-    inputs: {
-      [Product.IDS.LIGHT_TRANSPORT_HULL]: 74200,
-      [Product.IDS.TERRAIN_INTERFACE_MODULE]: 3840,
-      [Product.IDS.AVIONICS_MODULE]: 500,
-      [Product.IDS.ESCAPE_MODULE]: 6665,
-      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 1320,
-      [Product.IDS.POWER_MODULE]: 4000,
-      [Product.IDS.THERMAL_MODULE]: 1000,
-      [Product.IDS.PROPULSION_MODULE]: 64000,
-      [Product.IDS.CARGO_MODULE]: 30000
-    }
-  },
-  [IDS.HEAVY_TRANSPORT_INTEGRATION]: {
-    name: "Heavy Transport Integration",
-    processorType: Processor.IDS.DRY_DOCK,
-    setupTime: 0,
-    recipeTime: 1920,
-    inputs: {
-      [Product.IDS.HEAVY_TRANSPORT_HULL]: 480400,
-      [Product.IDS.AVIONICS_MODULE]: 1500,
-      [Product.IDS.ESCAPE_MODULE]: 6665,
-      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 3960,
-      [Product.IDS.POWER_MODULE]: 6000,
-      [Product.IDS.THERMAL_MODULE]: 3000,
-      [Product.IDS.PROPULSION_MODULE]: 288000,
-      [Product.IDS.CARGO_MODULE]: 180000
     }
   }
 };

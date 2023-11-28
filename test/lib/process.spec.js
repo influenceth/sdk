@@ -15,6 +15,7 @@ describe('Process library', function () {
 
   it('should have valid input and output products', async function () {
     Object.values(process.TYPES).forEach((p) => {
+      console.log('p', p)
       Object.keys(p.inputs).forEach((i) => {
         expect(!!product.TYPES[i]).to.be.true;
         expect(p.inputs[i]).to.be.greaterThan(0);
