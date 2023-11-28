@@ -330,16 +330,8 @@ const ABILITY_IDS = {
   MARKETPLACE_FEE_ENFORCEMENT: 16,
   MARKETPLACE_FEE_REDUCTION: 17,
   PROPELLANT_FLOW_RATE: 18,
-  INVENTORY_VOLUME_CAPACITY: 19
-};
-
-const managementBonusPerTier = 0.005;
-const managementBonuses = {
-  [TITLE_IDS.BLOCK_CAPTAIN]: managementBonusPerTier * 1,
-  [TITLE_IDS.DELEGATE]: managementBonusPerTier * 2,
-  [TITLE_IDS.COUNCILOR]: managementBonusPerTier * 3,
-  [TITLE_IDS.JUSTICE]: managementBonusPerTier * 4,
-  [TITLE_IDS.HIGH_COMMANDER]: managementBonusPerTier * 5
+  INVENTORY_VOLUME_CAPACITY: 19,
+  SHIP_INTEGRATION_TIME: 20
 };
 
 const ABILITY_TYPES = {
@@ -452,6 +444,14 @@ const ABILITY_TYPES = {
     name: 'Marketplace Fee Reduction',
     class: CLASS_IDS.MERCHANT,
     departments: { [DEPARTMENT_IDS.ARTS_ENTERTAINMENT]: 0.05 }
+  },
+  [ABILITY_IDS.SHIP_INTEGRATION_TIME]: {
+    name: 'Ship Integration Time',
+    class: CLASS_IDS.ENGINEER,
+    departments: {
+      [DEPARTMENT_IDS.ENGINEERING]: 0.0125,
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
+    }
   }
 };
 
