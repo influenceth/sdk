@@ -31,10 +31,10 @@ describe('Building library', function () {
   it('should get construction time', function () {
     // no bonus
     let time = building.getConstructionTime(building.IDS.WAREHOUSE);
-    expect(time).to.equal(480);
+    expect(time).to.equal(72000);
 
     // bonus
     time = building.getConstructionTime(building.IDS.HABITAT, 1.25);
-    expect(time).to.equal(3226);
+    expect(time).to.equal(483840);
   });
 });

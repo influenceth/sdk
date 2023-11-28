@@ -754,13 +754,14 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
  * @param {integer} asteroidId The asteroid identifier
  * @param {integer} originLotIndex The starting lot identifier
  * @param {integer} destLotIndex The ending lot identifier
- * @param {float} totalBonus
+ * @param {float} totalBonus Hopper transport time bonus for the crew (* timeAcceleration)
+ * @param {float} timeAcceleration Time acceleration
  * @return Travel time in seconds
  */
-const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, totalBonus = 1) => {
+const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, totalBonus = 1, timeAcceleration = 1) => {
   const distance = getLotDistance(asteroidId, originLotIndex, destLotIndex);
-  const time = distance <= FREE_TRANSPORT_RADIUS * totalBonus ? 0 : Math.ceil(distance * 60 / totalBonus);
-  return time;
+  const freeTransportRadius = FREE_TRANSPORT_RADIUS * totalBonus / timeAcceleration;
+  return distance <= freeTransportRadius ? 0 : Math.ceil(distance * 60 / totalBonus);
 };
 
 /**
