@@ -17,7 +17,7 @@ const TYPES = {
 
   [IDS.EXPANDED_QUARTERS]: {
     i: IDS.EXPANDED_QUARTERS,
-    cap: 20,
+    cap: 15,
     hardCap: true,
     recruitment: false,
     efficiency: 1

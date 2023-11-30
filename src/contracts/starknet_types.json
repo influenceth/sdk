@@ -1,0 +1,178 @@
+{
+  "core::array::Span::<core::felt252>": {
+    "type": "struct",
+    "name": "core::array::Span::<core::felt252>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<core::felt252>"
+      }
+    ]
+  },
+  "influence::common::types::entity::Entity": {
+    "type": "struct",
+    "name": "influence::common::types::entity::Entity",
+    "members": [
+      {
+        "name": "label",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "id",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::common::types::context::Context": {
+    "type": "struct",
+    "name": "influence::common::types::context::Context",
+    "members": [
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "now",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "payment_to",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "payment_amount",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "core::array::Span::<core::integer::u64>": {
+    "type": "struct",
+    "name": "core::array::Span::<core::integer::u64>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<core::integer::u64>"
+      }
+    ]
+  },
+  "core::integer::u256": {
+    "type": "struct",
+    "name": "core::integer::u256",
+    "members": [
+      {
+        "name": "low",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "high",
+        "type": "core::integer::u128"
+      }
+    ]
+  },
+  "influence::common::types::string::String": {
+    "type": "struct",
+    "name": "influence::common::types::string::String",
+    "members": [
+      {
+        "name": "value",
+        "type": "core::integer::u256"
+      }
+    ]
+  },
+  "cubit::f64::types::fixed::Fixed": {
+    "type": "struct",
+    "name": "cubit::f64::types::fixed::Fixed",
+    "members": [
+      {
+        "name": "mag",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "sign",
+        "type": "core::bool"
+      }
+    ]
+  },
+  "influence::common::types::inventory_item::InventoryItem": {
+    "type": "struct",
+    "name": "influence::common::types::inventory_item::InventoryItem",
+    "members": [
+      {
+        "name": "product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "core::array::Span::<influence::common::types::inventory_item::InventoryItem>": {
+    "type": "struct",
+    "name": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<influence::common::types::inventory_item::InventoryItem>"
+      }
+    ]
+  },
+  "core::array::Span::<core::integer::u128>": {
+    "type": "struct",
+    "name": "core::array::Span::<core::integer::u128>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<core::integer::u128>"
+      }
+    ]
+  },
+  "influence::systems::seeding::seed_asteroids::SeedAsteroids::SeededAsteroid": {
+    "type": "struct",
+    "name": "influence::systems::seeding::seed_asteroids::SeedAsteroids::SeededAsteroid",
+    "members": [
+      {
+        "name": "asteroid_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
+      }
+    ]
+  },
+  "core::array::Span::<influence::systems::seeding::seed_asteroids::SeedAsteroids::SeededAsteroid>": {
+    "type": "struct",
+    "name": "core::array::Span::<influence::systems::seeding::seed_asteroids::SeedAsteroids::SeededAsteroid>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<influence::systems::seeding::seed_asteroids::SeedAsteroids::SeededAsteroid>"
+      }
+    ]
+  },
+  "influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate": {
+    "type": "struct",
+    "name": "influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate",
+    "members": [
+      {
+        "name": "crewmate_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
+      }
+    ]
+  },
+  "core::array::Span::<influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate>": {
+    "type": "struct",
+    "name": "core::array::Span::<influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate>"
+      }
+    ]
+  }
+}
