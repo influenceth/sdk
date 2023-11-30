@@ -103,9 +103,11 @@ const TYPES = {
   }
 };
 
+// NOTE: constructionTime is unaccelerated real-world seconds -- i.e. in-game hours * (3600 / 24)
+const constructionTimeScale = 3600 / 24;
 const CONSTRUCTION_TYPES = {
   [IDS.WAREHOUSE]: {
-    constructionTime: 480,
+    constructionTime: 480 * constructionTimeScale,
     requirements: {
       [Product.IDS.CEMENT]: 700000,
       [Product.IDS.STEEL_BEAM]: 700000,
@@ -113,7 +115,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.EXTRACTOR]: {
-    constructionTime: 576,
+    constructionTime: 576 * constructionTimeScale,
     requirements: {
       [Product.IDS.CEMENT]: 400000,
       [Product.IDS.STEEL_BEAM]: 900000,
@@ -127,7 +129,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.REFINERY]: {
-    constructionTime: 1152,
+    constructionTime: 1152 * constructionTimeScale,
     requirements: {
       [Product.IDS.CEMENT]: 800000,
       [Product.IDS.STEEL_BEAM]: 600000,
@@ -141,7 +143,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.BIOREACTOR]: {
-    constructionTime: 960,
+    constructionTime: 960 * constructionTimeScale,
     requirements: {
       [Product.IDS.DEIONIZED_WATER]: 2900000,
       [Product.IDS.FUSED_QUARTZ]: 500000,
@@ -158,7 +160,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.FACTORY]: {
-    constructionTime: 1440,
+    constructionTime: 1440 * constructionTimeScale,
     requirements: {
       [Product.IDS.CEMENT]: 900000,
       [Product.IDS.STEEL_BEAM]: 1100000,
@@ -171,7 +173,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.SHIPYARD]: {
-    constructionTime: 2592,
+    constructionTime: 2592 * constructionTimeScale,
     requirements: {
       [Product.IDS.CEMENT]: 2000000,
       [Product.IDS.STEEL_BEAM]: 2400000,
@@ -184,7 +186,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.SPACEPORT]: {
-    constructionTime: 2592,
+    constructionTime: 2592 * constructionTimeScale,
     requirements: {
       [Product.IDS.CEMENT]: 4300000,
       [Product.IDS.STEEL_BEAM]: 2200000,
@@ -198,7 +200,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.MARKETPLACE]: {
-    constructionTime: 2880,
+    constructionTime: 2880 * constructionTimeScale,
     requirements: {
       [Product.IDS.CEMENT]: 3000000,
       [Product.IDS.STEEL_BEAM]: 2500000,
@@ -212,7 +214,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.HABITAT]: {
-    constructionTime: 4032,
+    constructionTime: 4032 * constructionTimeScale,
     requirements: {
       [Product.IDS.DEIONIZED_WATER]: 1500000,
       [Product.IDS.CEMENT]: 5000000,
@@ -229,21 +231,22 @@ const CONSTRUCTION_TYPES = {
   }
 };
 
-const CONSTRUCTION_STATUS_IDS = {
+const CONSTRUCTION_STATUSES = {
   UNPLANNED: 0,
   PLANNED: 1,
   UNDER_CONSTRUCTION: 2,
   OPERATIONAL: 3,
 }
 
-const CONSTRUCTION_STATUSES = {
-  [CONSTRUCTION_STATUS_IDS.UNPLANNED]: 'Unplanned',
-  [CONSTRUCTION_STATUS_IDS.PLANNED]: 'Planned',
-  [CONSTRUCTION_STATUS_IDS.UNDER_CONSTRUCTION]: 'Under Construction',
-  [CONSTRUCTION_STATUS_IDS.OPERATIONAL]: 'Operational'
+const CONSTRUCTION_STATUS_LABELS = {
+  [CONSTRUCTION_STATUSES.UNPLANNED]: 'Unplanned',
+  [CONSTRUCTION_STATUSES.PLANNED]: 'Planned',
+  [CONSTRUCTION_STATUSES.UNDER_CONSTRUCTION]: 'Under Construction',
+  [CONSTRUCTION_STATUSES.OPERATIONAL]: 'Operational'
 };
 
 const GRACE_PERIOD = 86400;
+const DECONSTRUCTION_PENALTY = 0.10;
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 const getConstructionType = (type) => CONSTRUCTION_TYPES[type] ? { ...CONSTRUCTION_TYPES[type] } : null;
@@ -264,8 +267,9 @@ const getConstructionTime = (buildingType, totalBonus = 1) => {
 export default {
   TYPES,
   CONSTRUCTION_TYPES,
-  CONSTRUCTION_STATUS_IDS,
   CONSTRUCTION_STATUSES,
+  CONSTRUCTION_STATUS_LABELS,
+  DECONSTRUCTION_PENALTY,
   GRACE_PERIOD,
   IDS,
 

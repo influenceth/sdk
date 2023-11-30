@@ -26,6 +26,12 @@ const STATUSES = {
   LOCKED: 2
 };
 
+const CATEGORIES = {
+  SITE: 'SITE',
+  PRIMARY: 'PRIMARY',
+  PROPELLANT: 'PROPELLANT'
+};
+
 // if massConstraint and volumeConstraint are Infinity, productConstraints should not be unconstrained
 // productConstraints specifies constraints on which products (and how much of each) can be stored in inventory
 //  - if product constraint is specified with a quantity of 0, then product amount is unconstrained (up to inventory capacity)
@@ -36,102 +42,119 @@ const TYPES = {
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.WAREHOUSE].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.EXTRACTOR_SITE]: {
     i: IDS.EXTRACTOR_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.EXTRACTOR].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.REFINERY_SITE]: {
     i: IDS.REFINERY_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.REFINERY].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.BIOREACTOR_SITE]: {
     i: IDS.BIOREACTOR_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.BIOREACTOR].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.FACTORY_SITE]: {
     i: IDS.FACTORY_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.FACTORY].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.SHIPYARD_SITE]: {
     i: IDS.SHIPYARD_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.SHIPYARD].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.SPACEPORT_SITE]: {
     i: IDS.SPACEPORT_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.SPACEPORT].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.MARKETPLACE_SITE]: {
     i: IDS.MARKETPLACE_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.MARKETPLACE].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.HABITAT_SITE]: {
     i: IDS.HABITAT_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.HABITAT].requirements,
+    category: CATEGORIES.SITE
   },
   [IDS.WAREHOUSE_PRIMARY]: {
     i: IDS.WAREHOUSE_PRIMARY,
     massConstraint: 1500000e6,
     volumeConstraint: 75000e6,
-    productConstraints: null
+    productConstraints: null,
+    category: CATEGORIES.PRIMARY
   },
   [IDS.PROPELLANT_TINY]: {
     i: IDS.PROPELLANT_TINY,
     massConstraint: 100e6,
     volumeConstraint: 1310e6,
-    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
+    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
+    category: CATEGORIES.PROPELLANT
   },
   [IDS.PROPELLANT_SMALL]: {
     i: IDS.PROPELLANT_SMALL,
     massConstraint: 1000e6,
     volumeConstraint: 13100e6,
-    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
+    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
+    category: CATEGORIES.PROPELLANT
   },
   [IDS.PROPELLANT_MEDIUM]: {
     i: IDS.PROPELLANT_MEDIUM,
     massConstraint: 2000e6,
     volumeConstraint: 26200e6,
-    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
+    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
+    category: CATEGORIES.PROPELLANT
   },
   [IDS.PROPELLANT_LARGE]: {
     i: IDS.PROPELLANT_LARGE,
     massConstraint: 12000e6,
     volumeConstraint: 157200e6,
-    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 }
+    productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
+    category: CATEGORIES.PROPELLANT
   },
   [IDS.CARGO_SMALL]: {
     i: IDS.CARGO_SMALL,
     massConstraint: 50e6,
     volumeConstraint: 125e6,
-    productConstraints: null
+    productConstraints: null,
+    category: CATEGORIES.PRIMARY
   },
   [IDS.CARGO_MEDIUM]: {
     i: IDS.CARGO_MEDIUM,
     massConstraint: 2000e6,
     volumeConstraint: 5000e6,
-    productConstraints: null
+    productConstraints: null,
+    category: CATEGORIES.PRIMARY
   },
   [IDS.CARGO_LARGE]: {
     i: IDS.CARGO_LARGE,
     massConstraint: 12000e6,
     volumeConstraint: 30000e6,
-    productConstraints: null
+    productConstraints: null,
+    category: CATEGORIES.PRIMARY
   },
 };
 
@@ -221,6 +244,7 @@ const getContents = (products, quantities = []) => {
 };
 
 export default {
+  CATEGORIES,
   IDS,
   STATUSES,
   TYPES,
