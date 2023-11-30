@@ -21,6 +21,7 @@ import * as Planet from './lib/planet.js';
 import Process from './lib/process.js';
 import Processor from './lib/processor.js';
 import Product from './lib/product.js';
+import RandomEvent from './lib/randomEvent.js';
 import Ship from './lib/ship.js';
 import Station from './lib/station.js';
 import System from './lib/system.js';
@@ -61,6 +62,7 @@ export {
   Process,
   Processor,
   Product,
+  RandomEvent,
   Ship,
   Station,
   System

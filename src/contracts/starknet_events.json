@@ -837,6 +837,43 @@
       }
     ]
   },
+  "RandomEventResolved": {
+    "type": "event",
+    "name": "RandomEventResolved",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "random_event",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "choice",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "action_type",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "action_target",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "SamplingDepositStartedV1": {
     "type": "event",
     "name": "SamplingDepositStartedV1",

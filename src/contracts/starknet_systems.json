@@ -583,6 +583,22 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "ResolveRandomEvent": {
+    "type": "function",
+    "name": "ResolveRandomEvent",
+    "inputs": [
+      {
+        "name": "choice",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "SampleDepositStart": {
     "type": "function",
     "name": "SampleDepositStart",
@@ -746,9 +762,9 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "SeedTestingWarehouse": {
+  "SeedWarehouse": {
     "type": "function",
-    "name": "SeedTestingWarehouse",
+    "name": "SeedWarehouse",
     "inputs": [
       {
         "name": "caller_crew",
