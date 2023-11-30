@@ -244,6 +244,7 @@ const getContents = (products, quantities = []) => {
 };
 
 export default {
+  CATEGORIES,
   IDS,
   STATUSES,
   TYPES,
