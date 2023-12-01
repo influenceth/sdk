@@ -22,8 +22,8 @@ const IDS = {
 };
 
 const STATUSES = {
+  UNAVAILABLE: 0,
   AVAILABLE: 1,
-  LOCKED: 2
 };
 
 const CATEGORIES = {
