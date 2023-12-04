@@ -9,7 +9,7 @@ const STARVING_MULTIPLIER = 0.25;
  * @param {integer} abilityId Crewmate ability identifier
  * @param {[object]} crewmates Array of crewmate objects including classId, traitIds, and titleId
  * @param {object} station Station object including station_type, and population
- * @param {integer} timeSinceFed In-game seconds since the crew was last fed (adjust with acceleration first)
+ * @param {integer} timeSinceFed In-game seconds since the crew was last fed
  * @return The overall bonus to be applied to the ability
  */
 const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed = 0) => {
@@ -87,7 +87,7 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
 };
 
 /**
- * @param {integer} timeSinceFed In-game seconds since the crew was last fed (adjust with acceleration first)
+ * @param {integer} timeSinceFed In-game seconds since the crew was last fed
  */
 const getCurrentFood = (timeSinceFed = 0) => {
   const timeInYears = timeSinceFed / 31536000; // 60 * 60 * 24 * 365

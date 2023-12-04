@@ -25,7 +25,7 @@ describe('CoreSample library', function () {
     expect(time).to.equal(Deposit.SAMPLE_TIME);
 
     time = Deposit.getSampleTime(1.3);
-    expect(time).to.equal(2770);
+    expect(time).to.equal(66462);
   });
 });
 

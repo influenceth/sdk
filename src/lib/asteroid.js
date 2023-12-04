@@ -22,7 +22,7 @@ const SCAN_STATUSES = {
   RESOURCE_SCANNED: 4
 };
 
-const SCANNING_TIME = 3600; // seconds
+const SCANNING_TIME = 86400; // in-game seconds
 const SIZES = ['Small', 'Medium', 'Large', 'Huge'];
 const TOTAL_ASTEROIDS = 250000;
 
@@ -754,14 +754,14 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
  * @param {integer} asteroidId The asteroid identifier
  * @param {integer} originLotIndex The starting lot identifier
  * @param {integer} destLotIndex The ending lot identifier
- * @param {float} totalBonus Hopper transport time bonus for the crew (* timeAcceleration)
- * @param {float} timeAcceleration Time acceleration
- * @return Travel time in seconds
+ * @param {float} totalBonus Hopper transport time bonus for the crew
+ * @return Travel time in in-game seconds
  */
-const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, totalBonus = 1, timeAcceleration = 1) => {
+const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, totalBonus = 1) => {
   const distance = getLotDistance(asteroidId, originLotIndex, destLotIndex);
-  const freeTransportRadius = FREE_TRANSPORT_RADIUS * totalBonus / timeAcceleration;
-  return distance <= freeTransportRadius ? 0 : Math.ceil(distance * 60 / totalBonus);
+  const freeTransportRadius = FREE_TRANSPORT_RADIUS * totalBonus;
+  const speed = 2.5 / 3600;  // in-game speed is 2.5 km/hr
+  return distance <= freeTransportRadius ? 0 : Math.ceil(distance / (totalBonus * speed));
 };
 
 /**

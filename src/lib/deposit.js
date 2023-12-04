@@ -1,5 +1,5 @@
 const MAX_YIELD = 10000e6; // 10000 tonnes in grams
-const SAMPLE_TIME = 3600;
+const SAMPLE_TIME = 86400; // in-game time in seconds
 
 const STATUSES = {
   UNDISCOVERED: 0,

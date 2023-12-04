@@ -40,7 +40,7 @@ export default {
     [Product.IDS.URANINITE]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.OXYGEN]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.DEIONIZED_WATER]: { iconVersion: 1, modelVersion: 1 },
-    [Product.IDS.SALTS]: { iconVersion: 1, modelVersion: 1 },
+    [Product.IDS.RAW_SALTS]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.SILICA]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.NAPHTHA]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.SODIUM_BICARBONATE]: { iconVersion: 1, modelVersion: 1 },
