@@ -54,4 +54,14 @@ describe('Time', function () {
     expect(Time.fromOrbitADays(10000).toOrbitADays()).to.equal(10000);
     expect(Time.fromUnixTime(1700000000e3).toDate().getTime()).to.equal(1700000000e3);
   });
+
+  it('should convert in-game seconds to real seconds', function () {
+    expect(Number(Time.toRealDuration(3600))).to.equal(150);
+    expect(Number(Time.toRealDuration(3600, 240))).to.equal(15);
+  });
+
+  it('should convert real seconds to in-game seconds', function () {
+    expect(Number(Time.toGameDuration(3600))).to.equal(86400);
+    expect(Number(Time.toGameDuration(3600, 240))).to.equal(864000);
+  });
 });

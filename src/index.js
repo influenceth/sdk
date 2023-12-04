@@ -26,8 +26,8 @@ import Ship from './lib/ship.js';
 import Station from './lib/station.js';
 import System from './lib/system.js';
 
-import Address from './utils/address.js';
 import AdalianOrbit from './utils/AdalianOrbit.js';
+import Address from './utils/address.js';
 import Fixed from './utils/fixed.js';
 import Merkle from './utils/MerkleTree.js';
 import Simplex from './utils/simplex.js';

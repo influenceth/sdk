@@ -3,6 +3,9 @@ class Time {
     this.unixTimeMS = unixTimeMS;
   }
 
+  // Default time acceleration (# of in-game seconds per real second)
+  static DEFAULT_TIME_ACCELERATION = 24;
+
   // Zero date timestamp for in-game clock display
   static CLOCK_ZERO_TIMESTAMP = 1618668000;
 
@@ -25,6 +28,14 @@ class Time {
 
   static fromUnixTime(unixTime, isMS = true) {
     return new Time(unixTime * (isMS ? 1 : 1000));
+  }
+
+  static toGameDuration(inRealityDuration, timeAcceleration) {
+    return inRealityDuration * (timeAcceleration || Time.DEFAULT_TIME_ACCELERATION);
+  }
+
+  static toRealDuration(inGameDuration, timeAcceleration) {
+    return inGameDuration / (timeAcceleration || Time.DEFAULT_TIME_ACCELERATION);
   }
 
   /**

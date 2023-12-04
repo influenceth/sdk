@@ -70,9 +70,10 @@ const TYPES = {
   },
 };
 
+// constructionTime is in in-game seconds
 const CONSTRUCTION_TYPES = {
   [IDS.SHUTTLE]: {
-    constructionTime: 108,
+    constructionTime: 2073600,
     requirements: {
       [Product.IDS.SHUTTLE_HULL]: 1,
       [Product.IDS.AVIONICS_MODULE]: 1,
@@ -84,7 +85,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.LIGHT_TRANSPORT]: {
-    constructionTime: 144,
+    constructionTime: 2764800,
     requirements: {
       [Product.IDS.CARGO_MODULE]: 6,
       [Product.IDS.LIGHT_TRANSPORT_HULL]: 1,
@@ -98,7 +99,7 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.HEAVY_TRANSPORT]: {
-    constructionTime: 360,
+    constructionTime: 6912000,
     requirements: {
       [Product.IDS.CARGO_MODULE]: 36,
       [Product.IDS.HEAVY_TRANSPORT_HULL]: 1,

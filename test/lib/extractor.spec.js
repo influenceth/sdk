@@ -12,10 +12,10 @@ describe('Extractor library', function () {
 
     // unbonused
     time = extractor.getExtractionTime(2000e6, extractor.MAX_YIELD_PER_RUN);
-    expect(time).to.equal(138723);
+    expect(time).to.equal(3329345);
 
     // bonused
     time = extractor.getExtractionTime(2000e6, extractor.MAX_YIELD_PER_RUN, 1.5);
-    expect(time).to.equal(92482);
+    expect(time).to.equal(2219563);
   });
 });
