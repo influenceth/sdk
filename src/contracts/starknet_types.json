@@ -1,14 +1,4 @@
 {
-  "core::array::Span::<core::felt252>": {
-    "type": "struct",
-    "name": "core::array::Span::<core::felt252>",
-    "members": [
-      {
-        "name": "snapshot",
-        "type": "@core::array::Array::<core::felt252>"
-      }
-    ]
-  },
   "influence::common::types::entity::Entity": {
     "type": "struct",
     "name": "influence::common::types::entity::Entity",
@@ -45,6 +35,16 @@
       }
     ]
   },
+  "core::array::Span::<core::felt252>": {
+    "type": "struct",
+    "name": "core::array::Span::<core::felt252>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<core::felt252>"
+      }
+    ]
+  },
   "core::array::Span::<core::integer::u64>": {
     "type": "struct",
     "name": "core::array::Span::<core::integer::u64>",
@@ -52,6 +52,30 @@
       {
         "name": "snapshot",
         "type": "@core::array::Array::<core::integer::u64>"
+      }
+    ]
+  },
+  "influence::common::types::inventory_item::InventoryItem": {
+    "type": "struct",
+    "name": "influence::common::types::inventory_item::InventoryItem",
+    "members": [
+      {
+        "name": "product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "core::array::Span::<influence::common::types::inventory_item::InventoryItem>": {
+    "type": "struct",
+    "name": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<influence::common::types::inventory_item::InventoryItem>"
       }
     ]
   },
@@ -90,30 +114,6 @@
       {
         "name": "sign",
         "type": "core::bool"
-      }
-    ]
-  },
-  "influence::common::types::inventory_item::InventoryItem": {
-    "type": "struct",
-    "name": "influence::common::types::inventory_item::InventoryItem",
-    "members": [
-      {
-        "name": "product",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "amount",
-        "type": "core::integer::u64"
-      }
-    ]
-  },
-  "core::array::Span::<influence::common::types::inventory_item::InventoryItem>": {
-    "type": "struct",
-    "name": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
-    "members": [
-      {
-        "name": "snapshot",
-        "type": "@core::array::Array::<influence::common::types::inventory_item::InventoryItem>"
       }
     ]
   },
@@ -172,6 +172,20 @@
       {
         "name": "snapshot",
         "type": "@core::array::Array::<influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate>"
+      }
+    ]
+  },
+  "cubit::f128::types::fixed::Fixed": {
+    "type": "struct",
+    "name": "cubit::f128::types::fixed::Fixed",
+    "members": [
+      {
+        "name": "mag",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "sign",
+        "type": "core::bool"
       }
     ]
   }
