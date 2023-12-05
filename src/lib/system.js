@@ -1,3 +1,5 @@
+// TODO: replace with types ABI and starknetjs
+
 import { CallData, uint256 } from 'starknet';
 import SystemData from '../contracts/starknet_systems.json' assert { type: 'json' };
 
@@ -16,6 +18,7 @@ const parseCairoType = (cairoType) => {
   else if (['core::integer::u64','core::integer::u128'].includes(cairoType)) type = 'BigNumber';
   else if (['influence::common::types::string::String', 'core::felt252'].includes(cairoType)) type = 'String';
   else if (['influence::common::types::inventory_item::InventoryItem'].includes(cairoType)) type = 'InventoryItem';
+  else if (['core::bool'].includes(cairoType)) type = 'Boolean';
   else if (['cubit::f64::types::fixed::Fixed'].includes(cairoType)) type = 'Raw'; // TODO: ...
   else throw new Error(`Unknown input type! "${cairoType}"`);
 
@@ -28,7 +31,7 @@ const Systems = Object.keys(SystemData).reduce((acc, name) => {
   const inputs = SystemData[name].inputs.map(({ name, type }) => ({ name, ...parseCairoType(type) }));
   const outputs = SystemData[name].outputs.map(({ name, type }) => ({ name, ...parseCairoType(type) }));
   const isGetter = SystemData[name].state_mutability === 'view';
-  
+
   acc[name] = { name, inputs, outputs, isGetter };
   return acc;
 }, {});
@@ -54,6 +57,9 @@ const formatCalldataValue = (type, value) => {
   }
   else if (type === 'InventoryItem') {
     return [value.product, value.amount];
+  }
+  else if (type === 'Boolean') {
+    return !!value;
   }
   else { // "Raw"
     return value;
@@ -102,7 +108,7 @@ const getRunSystemCall = (name, input, dispatcherAddress) => ({
 export default {
   getApproveEthCall,
   getRunSystemCall,
-  
+
   Systems
 };
 

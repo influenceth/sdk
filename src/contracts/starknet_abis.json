@@ -1591,6 +1591,10 @@
           "type": "core::felt252"
         },
         {
+          "name": "sender",
+          "type": "core::starknet::eth_address::EthAddress"
+        },
+        {
           "name": "to_address",
           "type": "core::starknet::contract_address::ContractAddress"
         },
@@ -3107,6 +3111,10 @@
         {
           "name": "from_address",
           "type": "core::felt252"
+        },
+        {
+          "name": "sender",
+          "type": "core::starknet::eth_address::EthAddress"
         },
         {
           "name": "to_address",
