@@ -19,7 +19,8 @@ const parseCairoType = (cairoType) => {
   else if (['influence::common::types::string::String', 'core::felt252'].includes(cairoType)) type = 'String';
   else if (['influence::common::types::inventory_item::InventoryItem'].includes(cairoType)) type = 'InventoryItem';
   else if (['core::bool'].includes(cairoType)) type = 'Boolean';
-  else if (['cubit::f64::types::fixed::Fixed'].includes(cairoType)) type = 'Raw'; // TODO: ...
+  else if (['cubit::f64::types::fixed::Fixed'].includes(cairoType)) type = 'Fixed64';
+  else if (['cubit::f128::types::fixed::Fixed'].includes(cairoType)) type = 'Fixed128';
   else throw new Error(`Unknown input type! "${cairoType}"`);
 
   return { type };
@@ -60,6 +61,16 @@ const formatCalldataValue = (type, value) => {
   }
   else if (type === 'Boolean') {
     return !!value;
+  }
+  else if (type === 'Fixed64') {
+    const mag = value < 0;
+    const val = BigInt(Math.abs(value)) * 2n ** 32n;
+    return [mag, val];
+  }
+  else if (type === 'Fixed128') {
+    const mag = value < 0;
+    const val = BigInt(Math.abs(value)) * 2n ** 64n;
+    return [mag, val];
   }
   else { // "Raw"
     return value;
