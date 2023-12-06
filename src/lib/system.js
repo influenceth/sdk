@@ -50,6 +50,9 @@ const formatCalldataValue = (type, value) => {
   else if (type === 'String') {
     return value;
   }
+  else if (type === 'Boolean') {
+    return value;
+  }
   else if (type === 'BigNumber') {
     return BigInt(value);
   }
