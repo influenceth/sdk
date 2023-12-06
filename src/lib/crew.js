@@ -4,6 +4,7 @@ import Station from './station.js';
 const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
 const CREWMATE_FOOD_PER_YEAR = 1000; // kg / year
 const STARVING_MULTIPLIER = 0.25;
+const YEAR_IN_SECONDS = 31536000; // 60 * 60 * 24 * 365
 
 /**
  * @param {integer} abilityId Crewmate ability identifier
@@ -87,18 +88,32 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
 };
 
 /**
- * @param {integer} timeSinceFed In-game seconds since the crew was last fed
+ * @param {integer} timeSinceFed In-game seconds since the crew was last fully fed
  */
-const getCurrentFood = (timeSinceFed = 0) => {
-  const timeInYears = timeSinceFed / 31536000; // 60 * 60 * 24 * 365
-  const fullTime = CREWMATE_FOOD_PER_YEAR * (1 - timeInYears); // 1000 - 1000x
-  const fastTime = (CREWMATE_FOOD_PER_YEAR * 3 / 4) - ((CREWMATE_FOOD_PER_YEAR / 2) * timeInYears); // 750 - 500x
-  return Math.max(fullTime, fastTime, 0);
+const getCurrentFoodRatio = (timeSinceFed = 0) => {
+  const timeSinceFedInYears = timeSinceFed / YEAR_IN_SECONDS;
+  return Math.min(
+    Math.max(
+      0,
+      1 - timeSinceFedInYears,          // (not fasting)
+      0.75 - 0.5 * timeSinceFedInYears  // (fasting)
+    ),
+    1
+  );
 };
 
 const getFoodMultiplier = (timeSinceFed = 0) => {
-  return Math.min(Math.max(getCurrentFood(timeSinceFed) / (CREWMATE_FOOD_PER_YEAR / 2), STARVING_MULTIPLIER), 1);
+  return Math.min(Math.max(getCurrentFoodRatio(timeSinceFed) / 0.5, STARVING_MULTIPLIER), 1);
 }
+
+/**
+ * Calculate virtual value for timeSinceFed from the current crew's food amount
+ * @param {integer} currentFoodRatio Crew's total food amount / max food amount
+ */
+const getTimeSinceFed = (currentFoodRatio) => {
+  if (currentFoodRatio >= 0.5) return (1 - currentFoodRatio) * YEAR_IN_SECONDS;
+  return (1.5 - 2 * currentFoodRatio) * YEAR_IN_SECONDS;
+};
 
 export default {
   CREWMATE_STACKING_BONUS_EFFICIENCY,
@@ -106,6 +121,7 @@ export default {
   STARVING_MULTIPLIER,
 
   getAbilityBonus,
-  getCurrentFood,
-  getFoodMultiplier
+  getCurrentFoodRatio,
+  getFoodMultiplier,
+  getTimeSinceFed
 };

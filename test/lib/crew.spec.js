@@ -43,12 +43,12 @@ describe('Crew library', function () {
 
   it('should get current food', function () {
     const accel = 24;
-    expect(Crew.getCurrentFood(0)).to.equal(1000);
-    expect(Crew.getCurrentFood(262800 * accel)).to.equal(800);
-    expect(Crew.getCurrentFood(657000 * accel)).to.equal(500);
-    expect(Crew.getCurrentFood(919800 * accel)).to.equal(400);
-    expect(Crew.getCurrentFood(1314000 * accel)).to.equal(250);
-    expect(Crew.getCurrentFood(2828000 * accel)).to.equal(0);
+    expect(Crew.getCurrentFoodRatio(0)).to.equal(1);
+    expect(Crew.getCurrentFoodRatio(262800 * accel)).to.equal(0.8);
+    expect(Crew.getCurrentFoodRatio(657000 * accel)).to.equal(0.5);
+    expect(Crew.getCurrentFoodRatio(919800 * accel)).to.equal(0.4);
+    expect(Crew.getCurrentFoodRatio(1314000 * accel)).to.equal(0.25);
+    expect(Crew.getCurrentFoodRatio(2828000 * accel)).to.equal(0);
   });
 
   it('should calculate the food multipler', function () {
