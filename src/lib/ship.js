@@ -20,6 +20,13 @@ const MODES = {
   EMERGENCY: 2,
 };
 
+const VARIANTS = {
+  STANDARD: 1,
+  COBALT_PIONEER: 2,
+  TITANIUM_PIONEER: 3,
+  AUREATE_PIONEER: 4
+};
+
 // exhaustVelocity is in m/s
 const TYPES = {
   [IDS.ESCAPE_MODULE]: {
@@ -70,6 +77,13 @@ const TYPES = {
   },
 };
 
+const VARIANT_TYPES = {
+  [VARIANTS.STANDARD]: { name: 'Standard' },
+  [VARIANTS.COBALT_PIONEER]: { name: 'Cobalt Pioneer' },
+  [VARIANTS.TITANIUM_PIONEER]: { name: 'Titanium Pioneer' },
+  [VARIANTS.AUREATE_PIONEER]: { name: 'Aureate Pioneer' }
+};
+
 // constructionTime is in in-game seconds
 const CONSTRUCTION_TYPES = {
   [IDS.SHUTTLE]: {
@@ -113,8 +127,20 @@ const CONSTRUCTION_TYPES = {
   }
 };
 
+const Entity = {};
+const Component = {};
+
 const getConstructionType = (type) => CONSTRUCTION_TYPES[type] ? { ...CONSTRUCTION_TYPES[type] } : null;
+Component.getConstructionType = (ship) => getConstructionType(ship.shipType);
+Entity.getConstructionType = (entity) => Component.getConstructionType(entity.Ship);
+
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
+Component.getType = (ship) => getType(ship.shipType);
+Entity.getType = (entity) => Component.getType(entity.Ship);
+
+const getVariant = (variant) => VARIANT_TYPES[variant] ? { ...VARIANT_TYPES[variant] } : null;
+Component.getVariant = (ship) => getVariant(ship.variant);
+Entity.getVariant = (entity) => Component.getVariant(entity.Ship);
 
 export default {
   CONSTRUCTION_TYPES,
@@ -125,4 +151,8 @@ export default {
 
   getConstructionType,
   getType,
+  getVariant,
+
+  Entity,
+  Component
 };

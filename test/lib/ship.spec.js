@@ -10,7 +10,7 @@ describe('Ship library', function () {
   });
 
   it('should not have any undefined CONSTRUCTION_TYPES requirements', function () {
-    const invalid = !!Object.values(ship.CONSTRUCTION_TYPES).find((ct) => 
+    const invalid = !!Object.values(ship.CONSTRUCTION_TYPES).find((ct) =>
       !!Object.keys(ct.requirements).find((k) => k === 'undefined')
     );
     expect(invalid).to.be.false;
@@ -26,5 +26,9 @@ describe('Ship library', function () {
     expect(construction.constructionTime).to.equal(ship.CONSTRUCTION_TYPES[ship.IDS.HEAVY_TRANSPORT].constructionTime);
     expect(construction.requirements).to.deep.equal(ship.CONSTRUCTION_TYPES[ship.IDS.HEAVY_TRANSPORT].requirements);
     expect(Object.keys(construction.requirements).length).to.be.greaterThan(0);
+  });
+
+  it('should get variants', function () {
+    expect(ship.getVariant(1).name).to.equal('Standard');
   });
 });
