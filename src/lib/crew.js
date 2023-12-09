@@ -14,14 +14,29 @@ const YEAR_IN_SECONDS = 31536000; // 60 * 60 * 24 * 365
  * @return The overall bonus to be applied to the ability
  */
 const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed = 0) => {
+  // Get crewmate bonuses
+  const details = getAbilityBonusFromCrewmates(abilityId, crewmates);
+
+  // Get station bonus
+  Object.assign(details, getAbilityBonusFromStation(station));
+
+  // Calculate food bonus
+  Object.assign(details, getAbilityBonusFromFood(timeSinceFed));
+
+  // Combine them all
+  details.totalBonus = details.crewmatesMultipler * details.stationMultiplier * details.foodMultiplier;
+
+  return details;
+};
+
+const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
   const ability = Crewmate.getAbility(abilityId);
   const details = {
     name: ability.name,
-    totalBonus: 1,
+    class: {},
     traits: {},
     titles: {},
-    foodMultiplier: 1,
-    stationMultiplier: 1
+    crewmatesMultipler: 1
   };
 
   if (ability.class) details.class = { classId: ability.class, matches: 0 };
@@ -51,7 +66,7 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
       info.matches++;
       info.bonus += bonusPerMatch;
       details.titles[crewmateTitle] = info;
-      details.totalBonus += bonusPerMatch;
+      details.crewmatesMultipler += bonusPerMatch;
     }
 
     // Get traits bonuses
@@ -62,27 +77,42 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
           info.matches++;
           info.bonus += ability.traits[traitId];
           details.traits[traitId] = info;
-          details.totalBonus += ability.traits[traitId];
+          details.crewmatesMultipler += ability.traits[traitId];
         }
       });
     }
   });
 
   // If there's a class affinity apply it
-  if (details.class) {
+  if (details.class.classId) {
     details.class.multiplier = CREWMATE_STACKING_BONUS_EFFICIENCY[details.class.matches];
-    details.totalBonus *= details.class.multiplier;
+    details.crewmatesMultipler *= details.class.multiplier;
   }
 
-  // Get station bonus
+  return details;
+};
+
+const getAbilityBonusFromStation = (station) => {
+  const details = { stationMultiplier: 1 };
+
   if (station.stationType && station.population) {
     details.stationMultiplier = Station.getEfficiency(station.stationType, station.population);
-    details.totalBonus *= details.stationMultiplier;
   }
 
-  // Calculate food bonus
-  details.foodMultiplier = getFoodMultiplier(timeSinceFed);
-  details.totalBonus *= details.foodMultiplier;
+  return details;
+};
+
+const getAbilityBonusFromFood = (timeSinceFed, crewmates = []) => {
+  const details = { foodMultiplier: 1 };
+  const { crewmatesMultipler: consumption } = getAbilityBonusFromCrewmates(
+    Crewmate.ABILITY_IDS.FOOD_CONSUMPTION_TIME, crewmates
+  );
+
+  const { crewmatesMultipler: rationing } = getAbilityBonusFromCrewmates(
+    Crewmate.ABILITY_IDS.FOOD_RATIONING_PENALTY, crewmates
+  );
+
+  details.foodMultiplier = getFoodMultiplier(timeSinceFed, consumption, rationing);
 
   return details;
 };
@@ -90,20 +120,24 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
 /**
  * @param {integer} timeSinceFed In-game seconds since the crew was last fully fed
  */
-const getCurrentFoodRatio = (timeSinceFed = 0) => {
+const getCurrentFoodRatio = (timeSinceFed = 0, consumption = 1) => {
   const timeSinceFedInYears = timeSinceFed / YEAR_IN_SECONDS;
+  const adjustedTimeSince = timeSinceFedInYears / consumption; // Simulates slower consumption
+
   return Math.min(
     Math.max(
       0,
-      1 - timeSinceFedInYears,          // (not fasting)
-      0.75 - 0.5 * timeSinceFedInYears  // (fasting)
+      1 - adjustedTimeSince,          // (not fasting)
+      0.75 - 0.5 * adjustedTimeSince  // (fasting)
     ),
     1
   );
 };
 
-const getFoodMultiplier = (timeSinceFed = 0) => {
-  return Math.min(Math.max(getCurrentFoodRatio(timeSinceFed) / 0.5, STARVING_MULTIPLIER), 1);
+const getFoodMultiplier = (timeSinceFed = 0, consumption = 1, rationing = 1) => {
+  const currentRatio = getCurrentFoodRatio(timeSinceFed, consumption, rationing);
+  const adjustedRatio = 1 - ((1 - currentRatio / 0.5) / rationing);
+  return Math.min(Math.max(adjustedRatio, STARVING_MULTIPLIER), 1);
 }
 
 /**

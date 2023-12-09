@@ -49,6 +49,10 @@ describe('Crew library', function () {
     expect(Crew.getCurrentFoodRatio(919800 * accel)).to.equal(0.4);
     expect(Crew.getCurrentFoodRatio(1314000 * accel)).to.equal(0.25);
     expect(Crew.getCurrentFoodRatio(2828000 * accel)).to.equal(0);
+
+    // Test with consumption modifier
+    expect(Crew.getCurrentFoodRatio(1314000 * accel, 1.25)).to.equal(0.35);
+    expect(Crew.getCurrentFoodRatio(2463749 * accel, 1.25) > 0).to.be.true;
   });
 
   it('should calculate the food multipler', function () {
@@ -59,5 +63,9 @@ describe('Crew library', function () {
     expect(Crew.getFoodMultiplier(1314000 * accel)).to.equal(0.5);
     expect(Crew.getFoodMultiplier(1642500 * accel)).to.equal(0.25);
     expect(Crew.getFoodMultiplier(2628000 * accel)).to.equal(0.25);
+
+    // Test with ratio modifier
+    expect(Crew.getFoodMultiplier(1314000 * accel, 1, 1.25)).to.equal(0.6);
+    expect(Crew.getFoodMultiplier(1642500 * accel, 1, 1.25)).to.equal(0.4);
   });
 });
