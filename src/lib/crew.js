@@ -144,9 +144,11 @@ const getFoodMultiplier = (timeSinceFed = 0, consumption = 1, rationing = 1) => 
  * Calculate virtual value for timeSinceFed from the current crew's food amount
  * @param {integer} currentFoodRatio Crew's total food amount / max food amount
  */
-const getTimeSinceFed = (currentFoodRatio) => {
-  if (currentFoodRatio >= 0.5) return (1 - currentFoodRatio) * YEAR_IN_SECONDS;
-  return (1.5 - 2 * currentFoodRatio) * YEAR_IN_SECONDS;
+const getTimeSinceFed = (currentFoodRatio, consumption = 1) => {
+  const adjustedRatio = currentFoodRatio * consumption;
+  const fullTime = consumption - adjustedRatio;
+  const halfTime = (1.5 * consumption) - (2 * adjustedRatio);
+  return Math.max(fullTime, halfTime) * YEAR_IN_SECONDS;
 };
 
 export default {

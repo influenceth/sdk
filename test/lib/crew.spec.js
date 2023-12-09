@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import Crew from '../../src/lib/crew.js';
 
-describe('Crew library', function () {
+describe.only('Crew library', function () {
   it('should get bonus based on ability', function () {
     const details = Crew.getAbilityBonus(1, [ { classId: 3 }, { collectionId: 4, classId: 3, traitIds: [ 31 ]}]);
     expect(details.totalBonus.toFixed(4)).to.equal('1.3750');
@@ -67,5 +67,19 @@ describe('Crew library', function () {
     // Test with ratio modifier
     expect(Crew.getFoodMultiplier(1314000 * accel, 1, 1.25)).to.equal(0.6);
     expect(Crew.getFoodMultiplier(1642500 * accel, 1, 1.25)).to.equal(0.4);
+  });
+
+  it('should return the correct time since fed', function () {
+    const accel = 24;
+    expect(Math.round(Crew.getTimeSinceFed(0) / accel)).to.equal(1971000);
+    expect(Math.round(Crew.getTimeSinceFed(0.25) / accel)).to.equal(1314000);
+    expect(Math.round(Crew.getTimeSinceFed(0.4) / accel)).to.equal(919800);
+    expect(Math.round(Crew.getTimeSinceFed(0.5) / accel)).to.equal(657000);
+    expect(Math.round(Crew.getTimeSinceFed(0.8) / accel)).to.equal(262800);
+    expect(Math.round(Crew.getTimeSinceFed(1) / accel)).to.equal(0);
+
+    // Test with consumption modifier
+    expect(Math.round(Crew.getTimeSinceFed(0.35, 1.25) / accel)).to.equal(1314000);
+    expect(Math.round(Crew.getTimeSinceFed(0, 1.25) / accel)).to.equal(2463750);
   });
 });
