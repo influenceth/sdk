@@ -84,10 +84,11 @@ const VARIANT_TYPES = {
   [VARIANTS.AUREATE_PIONEER]: { name: 'Aureate Pioneer' }
 };
 
-// constructionTime is in in-game seconds
+// setupTime and constructionTime is in in-game seconds
 const CONSTRUCTION_TYPES = {
   [IDS.SHUTTLE]: {
-    constructionTime: 2073600,
+    setupTime: 1658880,
+    constructionTime: 414720,
     requirements: {
       [Product.IDS.SHUTTLE_HULL]: 1,
       [Product.IDS.AVIONICS_MODULE]: 1,
@@ -99,7 +100,8 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.LIGHT_TRANSPORT]: {
-    constructionTime: 2764800,
+    setupTime: 2211840,
+    constructionTime: 552960,
     requirements: {
       [Product.IDS.CARGO_MODULE]: 6,
       [Product.IDS.LIGHT_TRANSPORT_HULL]: 1,
@@ -113,7 +115,8 @@ const CONSTRUCTION_TYPES = {
     }
   },
   [IDS.HEAVY_TRANSPORT]: {
-    constructionTime: 6912000,
+    setupTime: 5529600,
+    constructionTime: 1382400,
     requirements: {
       [Product.IDS.CARGO_MODULE]: 36,
       [Product.IDS.HEAVY_TRANSPORT_HULL]: 1,
