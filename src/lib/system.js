@@ -66,14 +66,14 @@ const formatCalldataValue = (type, value) => {
     return !!value;
   }
   else if (type === 'Fixed64') {
-    const mag = value < 0;
-    const val = BigInt(Math.abs(value)) * 2n ** 32n;
-    return [mag, val];
+    const neg = value < 0;
+    const val = BigInt(Math.floor(Math.abs(value) * 2 ** 32));
+    return [val, neg ? 1 : 0];
   }
   else if (type === 'Fixed128') {
-    const mag = value < 0;
-    const val = BigInt(Math.abs(value)) * 2n ** 64n;
-    return [mag, val];
+    const neg = value < 0;
+    const val = BigInt(Math.floor(Math.abs(value) * 2 ** 64));  // TODO: this will cause precision loss, use bignumber
+    return [val, neg ? 1 : 0];
   }
   else { // "Raw"
     return value;
