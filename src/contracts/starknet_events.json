@@ -285,6 +285,58 @@
       }
     ]
   },
+  "ShipAssemblyStartedV1": {
+    "type": "event",
+    "name": "ShipAssemblyStartedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "ship_type",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "dry_dock",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dry_dock_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "ShipAssemblyFinished": {
     "type": "event",
     "name": "ShipAssemblyFinished",
@@ -1509,6 +1561,73 @@
       }
     ]
   },
+  "MaterialProcessingStartedV1": {
+    "type": "event",
+    "name": "MaterialProcessingStartedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "processor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "processor_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "process",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "inputs",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "outputs",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "MaterialProcessingFinished": {
     "type": "event",
     "name": "MaterialProcessingFinished",
@@ -1781,6 +1900,43 @@
       },
       {
         "name": "last_fed",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "FoodSuppliedV1": {
+    "type": "event",
+    "name": "FoodSuppliedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "food",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "last_fed",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
         "type": "core::integer::u64",
         "kind": "data"
       },

@@ -1591,12 +1591,12 @@
           "type": "core::felt252"
         },
         {
-          "name": "sender",
-          "type": "core::starknet::eth_address::EthAddress"
-        },
-        {
           "name": "to_address",
           "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "sender",
+          "type": "core::starknet::eth_address::EthAddress"
         },
         {
           "name": "token_ids",
@@ -2521,6 +2521,65 @@
       ]
     }
   ],
+  "Designate": [
+    {
+      "type": "function",
+      "name": "designate",
+      "inputs": [
+        {
+          "name": "designee",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "function",
+      "name": "designee",
+      "inputs": [
+        {
+          "name": "designator",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::contracts::designate::Designate::Designated",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "designator",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        },
+        {
+          "name": "designee",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::contracts::designate::Designate::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "Designated",
+          "type": "influence::contracts::designate::Designate::Designated",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
   "Ship": [
     {
       "type": "constructor",
@@ -3113,12 +3172,12 @@
           "type": "core::felt252"
         },
         {
-          "name": "sender",
-          "type": "core::starknet::eth_address::EthAddress"
-        },
-        {
           "name": "to_address",
           "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "sender",
+          "type": "core::starknet::eth_address::EthAddress"
         },
         {
           "name": "token_ids",
