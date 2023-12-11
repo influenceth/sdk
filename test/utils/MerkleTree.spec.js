@@ -1,57 +1,57 @@
 import { expect } from 'chai';
 import Merkle from '../../src/utils/MerkleTree.js';
 
-const testValues = [1, 2, 3, 4, 5, 6];
+const testValues = ['0x1', '0x2', '0x3', '0x4', '0x5', '0x6'];
 const expected = {
   tree: [
-    [1, 2, 3, 4, 5, 6],
+    ['0x1', '0x2', '0x3', '0x4', '0x5', '0x6'],
     [
-      2592987851775965742543459319508348457290966253241455514226127639100457844774n,
-      1078504723311822443900992338775481548059850561756203702548080974952533155775n,
-      887847247223813684398612989470912626224213579404697697378648600264021898263n,
-      0
+      '0x5bb9440e27889a364bcb678b1f679ecd1347acdedcbf36e83494f857cc58026',
+      '0x262697b88544f733e5c6907c3e1763131e9f14c51ee7951258abbfb29415fbf',
+      '0x1f680f4b3e66b11ac6b827ef46e7d2da4075e0dc83b7e322d590dbb7687f417',
+      '0x0'
     ],
     [
-      1585031860307053614775232457055372934135351753486924178555528195594933887604n,
-      2642159642802802357817745026347077277988547597516177952258099282359767915971n
+      '0x38118a340bbba28e678413cd3b07a9436a5e60fd6a7cbda7db958a6d501e274',
+      '0x5d768cbfb58b59a888e5ae9fe5d55d83b9b0c1d9365e28e3fe4849f8135ddc3'
     ],
     [
-      89428389394322347504365134305502788910642935783044206274458641273419909977n
+      '0x329d5b51e352537e8424bfd85b34d0f30b77d213e9b09e2976e6f6374ecb59'
     ]
   ],
   proofs: [
     [
-      2n,
-      1078504723311822443900992338775481548059850561756203702548080974952533155775n,
-      2642159642802802357817745026347077277988547597516177952258099282359767915971n
+      '0x2',
+      '0x262697b88544f733e5c6907c3e1763131e9f14c51ee7951258abbfb29415fbf',
+      '0x5d768cbfb58b59a888e5ae9fe5d55d83b9b0c1d9365e28e3fe4849f8135ddc3'
     ],
     [
-      1n,
-      1078504723311822443900992338775481548059850561756203702548080974952533155775n,
-      2642159642802802357817745026347077277988547597516177952258099282359767915971n
+      '0x1',
+      '0x262697b88544f733e5c6907c3e1763131e9f14c51ee7951258abbfb29415fbf',
+      '0x5d768cbfb58b59a888e5ae9fe5d55d83b9b0c1d9365e28e3fe4849f8135ddc3'
     ],
     [
-      4n,
-      2592987851775965742543459319508348457290966253241455514226127639100457844774n,
-      2642159642802802357817745026347077277988547597516177952258099282359767915971n
+      '0x4',
+      '0x5bb9440e27889a364bcb678b1f679ecd1347acdedcbf36e83494f857cc58026',
+      '0x5d768cbfb58b59a888e5ae9fe5d55d83b9b0c1d9365e28e3fe4849f8135ddc3'
     ],
     [
-      3n,
-      2592987851775965742543459319508348457290966253241455514226127639100457844774n,
-      2642159642802802357817745026347077277988547597516177952258099282359767915971n
+      '0x3',
+      '0x5bb9440e27889a364bcb678b1f679ecd1347acdedcbf36e83494f857cc58026',
+      '0x5d768cbfb58b59a888e5ae9fe5d55d83b9b0c1d9365e28e3fe4849f8135ddc3'
     ],
     [
-      6n,
-      0n,
-      1585031860307053614775232457055372934135351753486924178555528195594933887604n
+      '0x6',
+      '0x0',
+      '0x38118a340bbba28e678413cd3b07a9436a5e60fd6a7cbda7db958a6d501e274'
     ],
     [
-      5n,
-      0n,
-      1585031860307053614775232457055372934135351753486924178555528195594933887604n
+      '0x5',
+      '0x0',
+      '0x38118a340bbba28e678413cd3b07a9436a5e60fd6a7cbda7db958a6d501e274'
     ]
   ]
-}
+};
 
 describe('Merkle Tree', function () {
   describe('generateRoot', function () {
@@ -64,7 +64,7 @@ describe('Merkle Tree', function () {
       root = Merkle.generateRoot([1n, 2n, 3n, 4n, 5n, 6n]);
       expect(root).to.eql(expectedRoot);
 
-      root = Merkle.generateRoot(['0x1','0x2','0x3','0x4','0x5','0x6']);
+      root = Merkle.generateRoot(['0x1', '0x2', '0x3', '0x4', '0x5', '0x6']);
       expect(root).to.eql(expectedRoot);
     });
   });
@@ -72,9 +72,9 @@ describe('Merkle Tree', function () {
   describe('generateTree', function () {
     it('should create a merkle tree correctly based on the values provided', function () {
       const tree = Merkle.generateTree([1, 2, 3, 4, 5, 6]);
-      expect(tree).to.have.lengthOf(4)
+      expect(tree).to.have.lengthOf(4);
       expect(tree[0].length).to.eql(6);
-      expect(tree[0]).to.include.members([1, 2, 3, 4, 5, 6]);
+      expect(tree[0]).to.include.members(['0x1', '0x2', '0x3', '0x4', '0x5', '0x6']);
       expect(tree[1]).to.include.members(expected.tree[1]);
       expect(tree[2]).to.include.members(expected.tree[2]);
       expect(tree[3]).to.include.members(expected.tree[3]);
@@ -116,7 +116,6 @@ describe('Merkle Tree', function () {
         const isValid = Merkle.verify(value, root, expected.proofs[index]);
         expect(isValid).to.eql(false);
       });
-
     });
   });
 });
