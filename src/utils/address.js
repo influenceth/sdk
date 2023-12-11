@@ -1,6 +1,6 @@
 // Standardizes addresses to the correct length, and all downcased
 export const toStandard = (address, explicitChain) => {
-  let intAddress = _parseAddress(address);
+  const intAddress = _parseAddress(address);
   const chain = explicitChain || _detectChain(intAddress);
 
   switch (chain) {
@@ -16,7 +16,7 @@ export const toStandard = (address, explicitChain) => {
 };
 
 export const getChain = (address) => {
-  let intAddress = _parseAddress(address);
+  const intAddress = _parseAddress(address);
   return _detectChain(intAddress);
 };
 

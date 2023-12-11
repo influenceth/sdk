@@ -1,5 +1,5 @@
-import Processor from "./processor.js";
-import Product from "./product.js";
+import Processor from './processor.js';
+import Product from './product.js';
 
 const IDS = {
   WATER_ELECTROLYSIS: 23,
@@ -225,7 +225,7 @@ const IDS = {
 const TYPES = {
   [IDS.WATER_ELECTROLYSIS]: {
     i: IDS.WATER_ELECTROLYSIS,
-    name: "Water Electrolysis",
+    name: 'Water Electrolysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 7200,
     recipeTime: 136.08,
@@ -240,7 +240,7 @@ const TYPES = {
   },
   [IDS.WATER_VACUUM_EVAPORATION_DESALINATION]: {
     i: IDS.WATER_VACUUM_EVAPORATION_DESALINATION,
-    name: "Water Vacuum-evaporation Desalination",
+    name: 'Water Vacuum-evaporation Desalination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 4.536,
@@ -255,7 +255,7 @@ const TYPES = {
   },
   [IDS.SABATIER_PROCESS]: {
     i: IDS.SABATIER_PROCESS,
-    name: "Sabatier Process",
+    name: 'Sabatier Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 3.744,
@@ -271,7 +271,7 @@ const TYPES = {
   },
   [IDS.OLIVINE_ENHANCED_WEATHERING]: {
     i: IDS.OLIVINE_ENHANCED_WEATHERING,
-    name: "Olivine Enhanced Weathering",
+    name: 'Olivine Enhanced Weathering',
     processorType: Processor.IDS.REFINERY,
     setupTime: 1209600,
     recipeTime: 464.4,
@@ -287,7 +287,7 @@ const TYPES = {
   },
   [IDS.BITUMEN_HYDRO_CRACKING]: {
     i: IDS.BITUMEN_HYDRO_CRACKING,
-    name: "Bitumen Hydro-cracking",
+    name: 'Bitumen Hydro-cracking',
     processorType: Processor.IDS.REFINERY,
     setupTime: 43200,
     recipeTime: 37.44,
@@ -302,7 +302,7 @@ const TYPES = {
   },
   [IDS.TAENITE_ELECTROLYTIC_REFINING]: {
     i: IDS.TAENITE_ELECTROLYTIC_REFINING,
-    name: "Taenite Electrolytic Refining",
+    name: 'Taenite Electrolytic Refining',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 27,
@@ -318,7 +318,7 @@ const TYPES = {
   },
   [IDS.CALCITE_CALCINATION]: {
     i: IDS.CALCITE_CALCINATION,
-    name: "Calcite Calcination",
+    name: 'Calcite Calcination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 7200,
     recipeTime: 7.2,
@@ -333,7 +333,7 @@ const TYPES = {
   },
   [IDS.HUELS_PROCESS]: {
     i: IDS.HUELS_PROCESS,
-    name: "Huels Process",
+    name: 'Huels Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 109.44,
@@ -347,7 +347,7 @@ const TYPES = {
   },
   [IDS.AMMONIA_CARBONATION]: {
     i: IDS.AMMONIA_CARBONATION,
-    name: "Ammonia Carbonation",
+    name: 'Ammonia Carbonation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 14400,
     recipeTime: 17.28,
@@ -363,7 +363,7 @@ const TYPES = {
   },
   [IDS.SALT_SULFIDIZATION_AND_PHOSPHORIZATION]: {
     i: IDS.SALT_SULFIDIZATION_AND_PHOSPHORIZATION,
-    name: "Salt Sulfidization and Phosphorization",
+    name: 'Salt Sulfidization and Phosphorization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 7200,
     recipeTime: 0.144,
@@ -380,7 +380,7 @@ const TYPES = {
   },
   [IDS.BASIC_FOOD_COOKING_AND_PACKAGING]: {
     i: IDS.BASIC_FOOD_COOKING_AND_PACKAGING,
-    name: "Basic Food Cooking and Packaging",
+    name: 'Basic Food Cooking and Packaging',
     processorType: Processor.IDS.FACTORY,
     setupTime: 144000,
     recipeTime: 2.16,
@@ -397,7 +397,7 @@ const TYPES = {
   },
   [IDS.TROILITE_CENTRIFUGAL_FROTH_FLOTATION]: {
     i: IDS.TROILITE_CENTRIFUGAL_FROTH_FLOTATION,
-    name: "Troilite Centrifugal Froth Flotation",
+    name: 'Troilite Centrifugal Froth Flotation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 43200,
     recipeTime: 14.544,
@@ -415,7 +415,7 @@ const TYPES = {
   },
   [IDS.SILICA_FUSING]: {
     i: IDS.SILICA_FUSING,
-    name: "Silica Fusing",
+    name: 'Silica Fusing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 43200,
     recipeTime: 0.479,
@@ -429,7 +429,7 @@ const TYPES = {
   },
   [IDS.SILICA_PULTRUSION]: {
     i: IDS.SILICA_PULTRUSION,
-    name: "Silica Pultrusion",
+    name: 'Silica Pultrusion',
     processorType: Processor.IDS.FACTORY,
     setupTime: 108000,
     recipeTime: 0.45,
@@ -443,7 +443,7 @@ const TYPES = {
   },
   [IDS.COPPER_WIRE_DRAWING]: {
     i: IDS.COPPER_WIRE_DRAWING,
-    name: "Copper Wire Drawing",
+    name: 'Copper Wire Drawing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 86400,
     recipeTime: 0.225,
@@ -457,7 +457,7 @@ const TYPES = {
   },
   [IDS.SALTY_CEMENT_MIXING]: {
     i: IDS.SALTY_CEMENT_MIXING,
-    name: "Salty Cement Mixing",
+    name: 'Salty Cement Mixing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 21600,
     recipeTime: 0.297,
@@ -472,7 +472,7 @@ const TYPES = {
   },
   [IDS.SALT_SELECTIVE_CRYSTALLIZATION]: {
     i: IDS.SALT_SELECTIVE_CRYSTALLIZATION,
-    name: "Salt Selective Crystallization",
+    name: 'Salt Selective Crystallization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 259200,
     recipeTime: 11.988,
@@ -491,7 +491,7 @@ const TYPES = {
   },
   [IDS.NAPHTHA_STEAM_CRACKING]: {
     i: IDS.NAPHTHA_STEAM_CRACKING,
-    name: "Naphtha Steam-cracking",
+    name: 'Naphtha Steam-cracking',
     processorType: Processor.IDS.REFINERY,
     setupTime: 36000,
     recipeTime: 0.72,
@@ -506,7 +506,7 @@ const TYPES = {
   },
   [IDS.STEEL_ALLOYING]: {
     i: IDS.STEEL_ALLOYING,
-    name: "Steel Alloying",
+    name: 'Steel Alloying',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 162,
@@ -522,7 +522,7 @@ const TYPES = {
   },
   [IDS.SILICA_CARBOTHERMIC_REDUCTION]: {
     i: IDS.SILICA_CARBOTHERMIC_REDUCTION,
-    name: "Silica Carbothermic Reduction",
+    name: 'Silica Carbothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 43200,
     recipeTime: 110.88,
@@ -538,7 +538,7 @@ const TYPES = {
   },
   [IDS.OSTWALD_PROCESS]: {
     i: IDS.OSTWALD_PROCESS,
-    name: "Ostwald Process",
+    name: 'Ostwald Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 54000,
     recipeTime: 10.8,
@@ -554,7 +554,7 @@ const TYPES = {
   },
   [IDS.WET_SULFURIC_ACID_PROCESS]: {
     i: IDS.WET_SULFURIC_ACID_PROCESS,
-    name: "Wet Sulfuric Acid Process",
+    name: 'Wet Sulfuric Acid Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 7.2,
@@ -570,7 +570,7 @@ const TYPES = {
   },
   [IDS.FUNGAL_SOILBUILDING]: {
     i: IDS.FUNGAL_SOILBUILDING,
-    name: "Fungal Soilbuilding",
+    name: 'Fungal Soilbuilding',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 108000,
     recipeTime: 10368000,
@@ -585,7 +585,7 @@ const TYPES = {
   },
   [IDS.IRON_OXIDE_AND_SILICA_CARBOTHERMIC_REDUCTION]: {
     i: IDS.IRON_OXIDE_AND_SILICA_CARBOTHERMIC_REDUCTION,
-    name: "Iron Oxide and Silica Carbothermic Reduction",
+    name: 'Iron Oxide and Silica Carbothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 802.8,
@@ -602,7 +602,7 @@ const TYPES = {
   },
   [IDS.METHANE_STEAM_REFORMING_AND_WATER_GAS_SHIFT]: {
     i: IDS.METHANE_STEAM_REFORMING_AND_WATER_GAS_SHIFT,
-    name: "Methane Steam Reforming and Water-gas Shift",
+    name: 'Methane Steam Reforming and Water-gas Shift',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 7.344,
@@ -618,7 +618,7 @@ const TYPES = {
   },
   [IDS.ACETYLENE_OXALIC_ACID_PRODUCTION]: {
     i: IDS.ACETYLENE_OXALIC_ACID_PRODUCTION,
-    name: "Acetylene Oxalic Acid Production",
+    name: 'Acetylene Oxalic Acid Production',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 29.7,
@@ -633,7 +633,7 @@ const TYPES = {
   },
   [IDS.LEAD_SULFIDE_SMELTING]: {
     i: IDS.LEAD_SULFIDE_SMELTING,
-    name: "Lead Sulfide Smelting",
+    name: 'Lead Sulfide Smelting',
     processorType: Processor.IDS.REFINERY,
     setupTime: 64800,
     recipeTime: 1224,
@@ -651,7 +651,7 @@ const TYPES = {
   },
   [IDS.TIN_SULFIDE_SMELTING]: {
     i: IDS.TIN_SULFIDE_SMELTING,
-    name: "Tin Sulfide Smelting",
+    name: 'Tin Sulfide Smelting',
     processorType: Processor.IDS.REFINERY,
     setupTime: 79200,
     recipeTime: 59.4,
@@ -670,7 +670,7 @@ const TYPES = {
   },
   [IDS.IRON_SULFIDE_ROASTING]: {
     i: IDS.IRON_SULFIDE_ROASTING,
-    name: "Iron Sulfide Roasting",
+    name: 'Iron Sulfide Roasting',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 38.16,
@@ -686,7 +686,7 @@ const TYPES = {
   },
   [IDS.HABER_BOSCH_PROCESS]: {
     i: IDS.HABER_BOSCH_PROCESS,
-    name: "Haber-Bosch Process",
+    name: 'Haber-Bosch Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 50400,
     recipeTime: 78.48,
@@ -701,7 +701,7 @@ const TYPES = {
   },
   [IDS.MOLYBDENUM_DISULFIDE_ROASTING]: {
     i: IDS.MOLYBDENUM_DISULFIDE_ROASTING,
-    name: "Molybdenum Disulfide Roasting",
+    name: 'Molybdenum Disulfide Roasting',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 58.68,
@@ -717,7 +717,7 @@ const TYPES = {
   },
   [IDS.SILICA_GAS_ATOMIZATION]: {
     i: IDS.SILICA_GAS_ATOMIZATION,
-    name: "Silica Gas Atomization",
+    name: 'Silica Gas Atomization',
     processorType: Processor.IDS.FACTORY,
     setupTime: 28800,
     recipeTime: 0.288,
@@ -731,7 +731,7 @@ const TYPES = {
   },
   [IDS.SOLDER_MANUFACTURING]: {
     i: IDS.SOLDER_MANUFACTURING,
-    name: "Solder Manufacturing",
+    name: 'Solder Manufacturing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 72000,
     recipeTime: 108,
@@ -747,7 +747,7 @@ const TYPES = {
   },
   [IDS.QUARTZ_FILAMENT_DRAWING_AND_WRAPPING]: {
     i: IDS.QUARTZ_FILAMENT_DRAWING_AND_WRAPPING,
-    name: "Quartz Filament Drawing and Wrapping",
+    name: 'Quartz Filament Drawing and Wrapping',
     processorType: Processor.IDS.FACTORY,
     setupTime: 144000,
     recipeTime: 360,
@@ -762,7 +762,7 @@ const TYPES = {
   },
   [IDS.STEEL_BEAM_ROLLING]: {
     i: IDS.STEEL_BEAM_ROLLING,
-    name: "Steel Beam Rolling",
+    name: 'Steel Beam Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 90000,
     recipeTime: 0.083,
@@ -776,7 +776,7 @@ const TYPES = {
   },
   [IDS.STEEL_SHEET_ROLLING]: {
     i: IDS.STEEL_SHEET_ROLLING,
-    name: "Steel Sheet Rolling",
+    name: 'Steel Sheet Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 79200,
     recipeTime: 0.09,
@@ -790,7 +790,7 @@ const TYPES = {
   },
   [IDS.STEEL_PIPE_ROLLING]: {
     i: IDS.STEEL_PIPE_ROLLING,
-    name: "Steel Pipe Rolling",
+    name: 'Steel Pipe Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 97200,
     recipeTime: 0.103,
@@ -804,7 +804,7 @@ const TYPES = {
   },
   [IDS.STEEL_WIRE_DRAWING]: {
     i: IDS.STEEL_WIRE_DRAWING,
-    name: "Steel Wire Drawing",
+    name: 'Steel Wire Drawing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 86400,
     recipeTime: 0.36,
@@ -818,7 +818,7 @@ const TYPES = {
   },
   [IDS.PROPYLENE_AMMOXIDATION]: {
     i: IDS.PROPYLENE_AMMOXIDATION,
-    name: "Propylene Ammoxidation",
+    name: 'Propylene Ammoxidation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 100800,
     recipeTime: 327.24,
@@ -836,7 +836,7 @@ const TYPES = {
   },
   [IDS.PROPYLENE_POLYMERIZATION]: {
     i: IDS.PROPYLENE_POLYMERIZATION,
-    name: "Propylene Polymerization",
+    name: 'Propylene Polymerization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 108000,
     recipeTime: 0.072,
@@ -850,7 +850,7 @@ const TYPES = {
   },
   [IDS.MAGNESIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS]: {
     i: IDS.MAGNESIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS,
-    name: "Magnesium Chloride Molten Salt Electrolysis",
+    name: 'Magnesium Chloride Molten Salt Electrolysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 172800,
     recipeTime: 378,
@@ -865,7 +865,7 @@ const TYPES = {
   },
   [IDS.SOLVAY_PROCESS]: {
     i: IDS.SOLVAY_PROCESS,
-    name: "Solvay Process",
+    name: 'Solvay Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 242.28,
@@ -881,7 +881,7 @@ const TYPES = {
   },
   [IDS.BORON_TRIOXIDE_HYDRATION]: {
     i: IDS.BORON_TRIOXIDE_HYDRATION,
-    name: "Boron Trioxide Hydration",
+    name: 'Boron Trioxide Hydration',
     processorType: Processor.IDS.REFINERY,
     setupTime: 36000,
     recipeTime: 44.64,
@@ -896,7 +896,7 @@ const TYPES = {
   },
   [IDS.PYROXENE_ACID_LEACHING_DIGESTION_AND_ION_EXCHANGE]: {
     i: IDS.PYROXENE_ACID_LEACHING_DIGESTION_AND_ION_EXCHANGE,
-    name: "Pyroxene Acid Leaching, Digestion, and Ion Exchange",
+    name: 'Pyroxene Acid Leaching, Digestion, and Ion Exchange',
     processorType: Processor.IDS.REFINERY,
     setupTime: 216000,
     recipeTime: 182.52,
@@ -913,7 +913,7 @@ const TYPES = {
   },
   [IDS.APATITE_ACID_EXTRACTION]: {
     i: IDS.APATITE_ACID_EXTRACTION,
-    name: "Apatite Acid Extraction",
+    name: 'Apatite Acid Extraction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 208800,
     recipeTime: 240.84,
@@ -930,7 +930,7 @@ const TYPES = {
   },
   [IDS.HYDROGEN_COMBUSTION]: {
     i: IDS.HYDROGEN_COMBUSTION,
-    name: "Hydrogen Combustion",
+    name: 'Hydrogen Combustion',
     processorType: Processor.IDS.REFINERY,
     setupTime: 21600,
     recipeTime: 0.324,
@@ -945,7 +945,7 @@ const TYPES = {
   },
   [IDS.CARBON_MONOXIDE_COMBUSTION]: {
     i: IDS.CARBON_MONOXIDE_COMBUSTION,
-    name: "Carbon Monoxide Combustion",
+    name: 'Carbon Monoxide Combustion',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 2.114,
@@ -960,7 +960,7 @@ const TYPES = {
   },
   [IDS.BORAX_ACID_EXTRACTION]: {
     i: IDS.BORAX_ACID_EXTRACTION,
-    name: "Borax Acid Extraction",
+    name: 'Borax Acid Extraction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 172800,
     recipeTime: 21.852,
@@ -977,7 +977,7 @@ const TYPES = {
   },
   [IDS.NITROGEN_CRYOCOOLING_AND_FRACTIONAL_DISTILLATION]: {
     i: IDS.NITROGEN_CRYOCOOLING_AND_FRACTIONAL_DISTILLATION,
-    name: "Nitrogen Cryocooling and Fractional Distillation",
+    name: 'Nitrogen Cryocooling and Fractional Distillation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 18000,
     recipeTime: 216.36,
@@ -993,7 +993,7 @@ const TYPES = {
   },
   [IDS.OLIVINE_ACID_LEACHING_AND_CALCINING]: {
     i: IDS.OLIVINE_ACID_LEACHING_AND_CALCINING,
-    name: "Olivine Acid Leaching and Calcining",
+    name: 'Olivine Acid Leaching and Calcining',
     processorType: Processor.IDS.REFINERY,
     setupTime: 230400,
     recipeTime: 2041.2,
@@ -1015,7 +1015,7 @@ const TYPES = {
   },
   [IDS.ANORTHITE_FELDSPAR_ACID_LEACHING_AND_CARBONATION]: {
     i: IDS.ANORTHITE_FELDSPAR_ACID_LEACHING_AND_CARBONATION,
-    name: "Anorthite Feldspar Acid Leaching and Carbonation",
+    name: 'Anorthite Feldspar Acid Leaching and Carbonation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 302400,
     recipeTime: 313.56,
@@ -1034,7 +1034,7 @@ const TYPES = {
   },
   [IDS.SODIUM_CHLORALKALAI_PROCESS]: {
     i: IDS.SODIUM_CHLORALKALAI_PROCESS,
-    name: "Sodium Chloralkalai Process",
+    name: 'Sodium Chloralkalai Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 64.8,
@@ -1051,7 +1051,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_CHLORALKALAI_PROCESS]: {
     i: IDS.POTASSIUM_CHLORALKALAI_PROCESS,
-    name: "Potassium Chloralkalai Process",
+    name: 'Potassium Chloralkalai Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 90.72,
@@ -1068,7 +1068,7 @@ const TYPES = {
   },
   [IDS.APATITE_ACID_RE_EXTRACTION]: {
     i: IDS.APATITE_ACID_RE_EXTRACTION,
-    name: "Apatite Acid Re-extraction",
+    name: 'Apatite Acid Re-extraction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 187200,
     recipeTime: 230.04,
@@ -1085,7 +1085,7 @@ const TYPES = {
   },
   [IDS.AMMONIUM_CARBONATE_OXALATION]: {
     i: IDS.AMMONIUM_CARBONATE_OXALATION,
-    name: "Ammonium Carbonate Oxalation",
+    name: 'Ammonium Carbonate Oxalation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 44.64,
@@ -1102,7 +1102,7 @@ const TYPES = {
   },
   [IDS.XENOTIME_HOT_ACID_LEACHING]: {
     i: IDS.XENOTIME_HOT_ACID_LEACHING,
-    name: "Xenotime Hot Acid Leaching",
+    name: 'Xenotime Hot Acid Leaching',
     processorType: Processor.IDS.REFINERY,
     setupTime: 93600,
     recipeTime: 446.4,
@@ -1118,7 +1118,7 @@ const TYPES = {
   },
   [IDS.MERRILLITE_HOT_ACID_LEACHING]: {
     i: IDS.MERRILLITE_HOT_ACID_LEACHING,
-    name: "Merrillite Hot Acid Leaching",
+    name: 'Merrillite Hot Acid Leaching',
     processorType: Processor.IDS.REFINERY,
     setupTime: 100800,
     recipeTime: 1674,
@@ -1136,7 +1136,7 @@ const TYPES = {
   },
   [IDS.AMMONIA_CATALYTIC_CRACKING]: {
     i: IDS.AMMONIA_CATALYTIC_CRACKING,
-    name: "Ammonia Catalytic Cracking",
+    name: 'Ammonia Catalytic Cracking',
     processorType: Processor.IDS.REFINERY,
     setupTime: 79200,
     recipeTime: 97.56,
@@ -1151,7 +1151,7 @@ const TYPES = {
   },
   [IDS.URANINITE_ACID_LEACHING_SOLVENT_EXTRACTION_AND_PRECIPITATION]: {
     i: IDS.URANINITE_ACID_LEACHING_SOLVENT_EXTRACTION_AND_PRECIPITATION,
-    name: "Uraninite Acid Leaching, Solvent Extraction, and Precipitation",
+    name: 'Uraninite Acid Leaching, Solvent Extraction, and Precipitation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 288000,
     recipeTime: 453.6,
@@ -1168,7 +1168,7 @@ const TYPES = {
   },
   [IDS.COFFINITE_ACID_LEACHING_SOLVENT_EXTRACTION_AND_PRECIPITATION]: {
     i: IDS.COFFINITE_ACID_LEACHING_SOLVENT_EXTRACTION_AND_PRECIPITATION,
-    name: "Coffinite Acid Leaching, Solvent Extraction, and Precipitation",
+    name: 'Coffinite Acid Leaching, Solvent Extraction, and Precipitation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 273600,
     recipeTime: 1054.8,
@@ -1188,7 +1188,7 @@ const TYPES = {
   },
   [IDS.ALUMINA_FORMING_AND_SINTERING]: {
     i: IDS.ALUMINA_FORMING_AND_SINTERING,
-    name: "Alumina Forming and Sintering",
+    name: 'Alumina Forming and Sintering',
     processorType: Processor.IDS.FACTORY,
     setupTime: 64800,
     recipeTime: 0.8,
@@ -1202,7 +1202,7 @@ const TYPES = {
   },
   [IDS.AUSTENITIC_NICHROME_ALLOYING]: {
     i: IDS.AUSTENITIC_NICHROME_ALLOYING,
-    name: "Austenitic Nichrome Alloying",
+    name: 'Austenitic Nichrome Alloying',
     processorType: Processor.IDS.REFINERY,
     setupTime: 50400,
     recipeTime: 2.16,
@@ -1218,7 +1218,7 @@ const TYPES = {
   },
   [IDS.COPPER_WIRE_INSULATING]: {
     i: IDS.COPPER_WIRE_INSULATING,
-    name: "Copper Wire Insulating",
+    name: 'Copper Wire Insulating',
     processorType: Processor.IDS.FACTORY,
     setupTime: 72000,
     recipeTime: 14.4,
@@ -1233,7 +1233,7 @@ const TYPES = {
   },
   [IDS.SILICON_CZOCHRALSKI_PROCESS_AND_WAFER_SLICING]: {
     i: IDS.SILICON_CZOCHRALSKI_PROCESS_AND_WAFER_SLICING,
-    name: "Silicon Czochralski Process and Wafer Slicing",
+    name: 'Silicon Czochralski Process and Wafer Slicing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 288000,
     recipeTime: 6480000,
@@ -1248,7 +1248,7 @@ const TYPES = {
   },
   [IDS.STEEL_CABLE_LAYING]: {
     i: IDS.STEEL_CABLE_LAYING,
-    name: "Steel Cable Laying",
+    name: 'Steel Cable Laying',
     processorType: Processor.IDS.FACTORY,
     setupTime: 72000,
     recipeTime: 0.3,
@@ -1262,7 +1262,7 @@ const TYPES = {
   },
   [IDS.ACRYLONITRILE_POLYMERIZATION]: {
     i: IDS.ACRYLONITRILE_POLYMERIZATION,
-    name: "Acrylonitrile Polymerization",
+    name: 'Acrylonitrile Polymerization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 9.18,
@@ -1277,7 +1277,7 @@ const TYPES = {
   },
   [IDS.SOYBEAN_GROWING]: {
     i: IDS.SOYBEAN_GROWING,
-    name: "Soybean Growing",
+    name: 'Soybean Growing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 115200,
     recipeTime: 6480000,
@@ -1296,7 +1296,7 @@ const TYPES = {
   },
   [IDS.BORIC_ACID_THERMAL_DECOMPOSITION]: {
     i: IDS.BORIC_ACID_THERMAL_DECOMPOSITION,
-    name: "Boric Acid Thermal Decomposition",
+    name: 'Boric Acid Thermal Decomposition',
     processorType: Processor.IDS.REFINERY,
     setupTime: 21600,
     recipeTime: 0.206,
@@ -1311,7 +1311,7 @@ const TYPES = {
   },
   [IDS.LITHIUM_CARBONATE_CHLORINATION]: {
     i: IDS.LITHIUM_CARBONATE_CHLORINATION,
-    name: "Lithium Carbonate Chlorination",
+    name: 'Lithium Carbonate Chlorination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 25200,
     recipeTime: 66.24,
@@ -1328,7 +1328,7 @@ const TYPES = {
   },
   [IDS.LITHIUM_SULFATE_CARBONATION]: {
     i: IDS.LITHIUM_SULFATE_CARBONATION,
-    name: "Lithium Sulfate Carbonation",
+    name: 'Lithium Sulfate Carbonation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 18000,
     recipeTime: 77.76,
@@ -1343,7 +1343,7 @@ const TYPES = {
   },
   [IDS.IRON_OXIDE_DIRECT_REDUCTION]: {
     i: IDS.IRON_OXIDE_DIRECT_REDUCTION,
-    name: "Iron Oxide Direct Reduction",
+    name: 'Iron Oxide Direct Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 40.32,
@@ -1359,7 +1359,7 @@ const TYPES = {
   },
   [IDS.ZINC_OXIDE_DIRECT_REDUCTION]: {
     i: IDS.ZINC_OXIDE_DIRECT_REDUCTION,
-    name: "Zinc Oxide Direct Reduction",
+    name: 'Zinc Oxide Direct Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 43200,
     recipeTime: 11.772,
@@ -1375,7 +1375,7 @@ const TYPES = {
   },
   [IDS.NICKEL_OXIDE_DIRECT_REDUCTION]: {
     i: IDS.NICKEL_OXIDE_DIRECT_REDUCTION,
-    name: "Nickel Oxide Direct Reduction",
+    name: 'Nickel Oxide Direct Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 12.24,
@@ -1391,7 +1391,7 @@ const TYPES = {
   },
   [IDS.PIDGEON_PROCESS]: {
     i: IDS.PIDGEON_PROCESS,
-    name: "Pidgeon Process",
+    name: 'Pidgeon Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 345.6,
@@ -1408,7 +1408,7 @@ const TYPES = {
   },
   [IDS.POLYPROPYLENE_CHLORINATION_AND_BASIFICATION]: {
     i: IDS.POLYPROPYLENE_CHLORINATION_AND_BASIFICATION,
-    name: "Polypropylene Chlorination and Basification",
+    name: 'Polypropylene Chlorination and Basification',
     processorType: Processor.IDS.REFINERY,
     setupTime: 54000,
     recipeTime: 0.76,
@@ -1427,7 +1427,7 @@ const TYPES = {
   },
   [IDS.POTATO_GROWING]: {
     i: IDS.POTATO_GROWING,
-    name: "Potato Growing",
+    name: 'Potato Growing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 129600,
     recipeTime: 7776000,
@@ -1446,7 +1446,7 @@ const TYPES = {
   },
   [IDS.RARE_EARTHS_OXALATION_AND_CALCINATION]: {
     i: IDS.RARE_EARTHS_OXALATION_AND_CALCINATION,
-    name: "Rare Earths Oxalation and Calcination",
+    name: 'Rare Earths Oxalation and Calcination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 21600,
     recipeTime: 392.4,
@@ -1466,7 +1466,7 @@ const TYPES = {
   },
   [IDS.AMMONIA_CHLORINATION]: {
     i: IDS.AMMONIA_CHLORINATION,
-    name: "Ammonia Chlorination",
+    name: 'Ammonia Chlorination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 0.458,
@@ -1481,7 +1481,7 @@ const TYPES = {
   },
   [IDS.HALL_HEROULT_PROCESS]: {
     i: IDS.HALL_HEROULT_PROCESS,
-    name: "Hall–Heroult Process",
+    name: 'Hall–Heroult Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 100800,
     recipeTime: 291.6,
@@ -1497,7 +1497,7 @@ const TYPES = {
   },
   [IDS.CALCIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS]: {
     i: IDS.CALCIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS,
-    name: "Calcium Chloride Molten Salt Electrolysis",
+    name: 'Calcium Chloride Molten Salt Electrolysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 319.68,
@@ -1512,7 +1512,7 @@ const TYPES = {
   },
   [IDS.CEMENT_MIXING]: {
     i: IDS.CEMENT_MIXING,
-    name: "Cement Mixing",
+    name: 'Cement Mixing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 14400,
     recipeTime: 0.36,
@@ -1527,7 +1527,7 @@ const TYPES = {
   },
   [IDS.NATURAL_FLAVORINGS_GROWING]: {
     i: IDS.NATURAL_FLAVORINGS_GROWING,
-    name: "Natural Flavorings Growing",
+    name: 'Natural Flavorings Growing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 288000,
     recipeTime: 31464000,
@@ -1546,7 +1546,7 @@ const TYPES = {
   },
   [IDS.YELLOWCAKE_DIGESTION_SOLVENT_EXTRACTION_AND_PRECIPITATION]: {
     i: IDS.YELLOWCAKE_DIGESTION_SOLVENT_EXTRACTION_AND_PRECIPITATION,
-    name: "Yellowcake Digestion, Solvent Extraction, and Precipitation",
+    name: 'Yellowcake Digestion, Solvent Extraction, and Precipitation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 194400,
     recipeTime: 177.48,
@@ -1562,7 +1562,7 @@ const TYPES = {
   },
   [IDS.HYDROFLUORIC_ACID_COLD_ELECTROLYSIS]: {
     i: IDS.HYDROFLUORIC_ACID_COLD_ELECTROLYSIS,
-    name: "Hydrofluoric Acid Cold Electrolysis",
+    name: 'Hydrofluoric Acid Cold Electrolysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 172800,
     recipeTime: 182.52,
@@ -1578,7 +1578,7 @@ const TYPES = {
   },
   [IDS.RHABDITE_ROASTING_AND_ACID_EXTRACTION]: {
     i: IDS.RHABDITE_ROASTING_AND_ACID_EXTRACTION,
-    name: "Rhabdite Roasting and Acid Extraction",
+    name: 'Rhabdite Roasting and Acid Extraction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 43200,
     recipeTime: 3506.4,
@@ -1595,7 +1595,7 @@ const TYPES = {
   },
   [IDS.FERRITE_SINTERING]: {
     i: IDS.FERRITE_SINTERING,
-    name: "Ferrite Sintering",
+    name: 'Ferrite Sintering',
     processorType: Processor.IDS.REFINERY,
     setupTime: 79200,
     recipeTime: 1285.2,
@@ -1612,7 +1612,7 @@ const TYPES = {
   },
   [IDS.DIODE_DOPING_AND_ASSEMBLY]: {
     i: IDS.DIODE_DOPING_AND_ASSEMBLY,
-    name: "Diode Doping and Assembly",
+    name: 'Diode Doping and Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 172800,
     recipeTime: 37800,
@@ -1628,7 +1628,7 @@ const TYPES = {
   },
   [IDS.BALL_VALVE_MACHINING]: {
     i: IDS.BALL_VALVE_MACHINING,
-    name: "Ball Valve Machining",
+    name: 'Ball Valve Machining',
     processorType: Processor.IDS.FACTORY,
     setupTime: 100800,
     recipeTime: 1.8,
@@ -1642,7 +1642,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_BEAM_ROLLING]: {
     i: IDS.ALUMINIUM_BEAM_ROLLING,
-    name: "Aluminium Beam Rolling",
+    name: 'Aluminium Beam Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 108000,
     recipeTime: 0.144,
@@ -1656,7 +1656,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_SHEET_ROLLING]: {
     i: IDS.ALUMINIUM_SHEET_ROLLING,
-    name: "Aluminium Sheet Rolling",
+    name: 'Aluminium Sheet Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 100800,
     recipeTime: 0.164,
@@ -1670,7 +1670,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_PIPE_ROLLING]: {
     i: IDS.ALUMINIUM_PIPE_ROLLING,
-    name: "Aluminium Pipe Rolling",
+    name: 'Aluminium Pipe Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 111600,
     recipeTime: 0.18,
@@ -1684,7 +1684,7 @@ const TYPES = {
   },
   [IDS.POLYACRYLONITRILE_WEAVING]: {
     i: IDS.POLYACRYLONITRILE_WEAVING,
-    name: "Polyacrylonitrile Weaving",
+    name: 'Polyacrylonitrile Weaving',
     processorType: Processor.IDS.FACTORY,
     setupTime: 72000,
     recipeTime: 1.8,
@@ -1698,7 +1698,7 @@ const TYPES = {
   },
   [IDS.COLD_GAS_THRUSTER_PRINTING]: {
     i: IDS.COLD_GAS_THRUSTER_PRINTING,
-    name: "Cold Gas Thruster Printing",
+    name: 'Cold Gas Thruster Printing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 57600,
     recipeTime: 14.4,
@@ -1712,7 +1712,7 @@ const TYPES = {
   },
   [IDS.POLYACRYLONITRILE_OXIDATION_AND_CARBONIZATION]: {
     i: IDS.POLYACRYLONITRILE_OXIDATION_AND_CARBONIZATION,
-    name: "Polyacrylonitrile Oxidation and Carbonization",
+    name: 'Polyacrylonitrile Oxidation and Carbonization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 4.716,
@@ -1728,7 +1728,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_SMALL_PROPELLANT_TANK_ASSEMBLY]: {
     i: IDS.ALUMINIUM_SMALL_PROPELLANT_TANK_ASSEMBLY,
-    name: "Aluminium Small Propellant Tank Assembly",
+    name: 'Aluminium Small Propellant Tank Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 64800,
     recipeTime: 7.2,
@@ -1742,7 +1742,7 @@ const TYPES = {
   },
   [IDS.BOROSILICATE_GLASSMAKING]: {
     i: IDS.BOROSILICATE_GLASSMAKING,
-    name: "Borosilicate Glassmaking",
+    name: 'Borosilicate Glassmaking',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 6.624,
@@ -1759,7 +1759,7 @@ const TYPES = {
   },
   [IDS.BALL_BEARING_MACHINING_AND_ASSEMBLY]: {
     i: IDS.BALL_BEARING_MACHINING_AND_ASSEMBLY,
-    name: "Ball Bearing Machining and Assembly",
+    name: 'Ball Bearing Machining and Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 129600,
     recipeTime: 65.88,
@@ -1774,7 +1774,7 @@ const TYPES = {
   },
   [IDS.LARGE_THRUST_BEARING_MACHINING_AND_ASSEMBLY]: {
     i: IDS.LARGE_THRUST_BEARING_MACHINING_AND_ASSEMBLY,
-    name: "Large Thrust Bearing Machining and Assembly",
+    name: 'Large Thrust Bearing Machining and Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 144000,
     recipeTime: 450,
@@ -1788,7 +1788,7 @@ const TYPES = {
   },
   [IDS.BORON_TRIOXIDE_MAGNESIOTHERMIC_REDUCTION]: {
     i: IDS.BORON_TRIOXIDE_MAGNESIOTHERMIC_REDUCTION,
-    name: "Boron Trioxide Magnesiothermic Reduction",
+    name: 'Boron Trioxide Magnesiothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 39.6,
@@ -1804,7 +1804,7 @@ const TYPES = {
   },
   [IDS.LITHIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS]: {
     i: IDS.LITHIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS,
-    name: "Lithium Chloride Molten Salt Electrolysis",
+    name: 'Lithium Chloride Molten Salt Electrolysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 144000,
     recipeTime: 277.92,
@@ -1820,7 +1820,7 @@ const TYPES = {
   },
   [IDS.DIEPOXY_STEP_GROWTH_POLYMERIZATION]: {
     i: IDS.DIEPOXY_STEP_GROWTH_POLYMERIZATION,
-    name: "Diepoxy Step Growth Polymerization",
+    name: 'Diepoxy Step Growth Polymerization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 108000,
     recipeTime: 323.64,
@@ -1838,7 +1838,7 @@ const TYPES = {
   },
   [IDS.RARE_EARTH_OXIDES_ION_EXCHANGE]: {
     i: IDS.RARE_EARTH_OXIDES_ION_EXCHANGE,
-    name: "Rare Earth Oxides Ion Exchange",
+    name: 'Rare Earth Oxides Ion Exchange',
     processorType: Processor.IDS.REFINERY,
     setupTime: 172800,
     recipeTime: 20.124,
@@ -1853,7 +1853,7 @@ const TYPES = {
   },
   [IDS.CALCIUM_OXIDE_ALUMINOTHERMIC_REDUCTION]: {
     i: IDS.CALCIUM_OXIDE_ALUMINOTHERMIC_REDUCTION,
-    name: "Calcium Oxide Aluminothermic Reduction",
+    name: 'Calcium Oxide Aluminothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 50400,
     recipeTime: 57.24,
@@ -1869,7 +1869,7 @@ const TYPES = {
   },
   [IDS.SODIUM_CHROMATE_ACIDIFICATION_AND_CRYSTALLIZATION]: {
     i: IDS.SODIUM_CHROMATE_ACIDIFICATION_AND_CRYSTALLIZATION,
-    name: "Sodium Chromate Acidification and Crystallization",
+    name: 'Sodium Chromate Acidification and Crystallization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 230400,
     recipeTime: 64.8,
@@ -1886,7 +1886,7 @@ const TYPES = {
   },
   [IDS.SULFURIC_ACID_HOT_CATALYTIC_REDUCTION]: {
     i: IDS.SULFURIC_ACID_HOT_CATALYTIC_REDUCTION,
-    name: "Sulfuric Acid Hot Catalytic Reduction",
+    name: 'Sulfuric Acid Hot Catalytic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 2.117,
@@ -1902,7 +1902,7 @@ const TYPES = {
   },
   [IDS.MOLYBDENUM_TRIOXIDE_ALUMINOTHERMIC_REDUCTION_AND_ALLOYING]: {
     i: IDS.MOLYBDENUM_TRIOXIDE_ALUMINOTHERMIC_REDUCTION_AND_ALLOYING,
-    name: "Molybdenum Trioxide Aluminothermic Reduction and Alloying",
+    name: 'Molybdenum Trioxide Aluminothermic Reduction and Alloying',
     processorType: Processor.IDS.REFINERY,
     setupTime: 54000,
     recipeTime: 3672,
@@ -1919,7 +1919,7 @@ const TYPES = {
   },
   [IDS.URANYL_NITRATE_REDOX_AND_PRECIPITATION]: {
     i: IDS.URANYL_NITRATE_REDOX_AND_PRECIPITATION,
-    name: "Uranyl Nitrate Redox and Precipitation",
+    name: 'Uranyl Nitrate Redox and Precipitation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 100800,
     recipeTime: 3513.6,
@@ -1935,7 +1935,7 @@ const TYPES = {
   },
   [IDS.SODIUM_TUNGSTATE_ION_EXCHANGE_PRECIPITATION_AND_CRYSTALLIZATION]: {
     i: IDS.SODIUM_TUNGSTATE_ION_EXCHANGE_PRECIPITATION_AND_CRYSTALLIZATION,
-    name: "Sodium Tungstate Ion Exchange, Precipitation, and Crystallization",
+    name: 'Sodium Tungstate Ion Exchange, Precipitation, and Crystallization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 172800,
     recipeTime: 70.56,
@@ -1952,7 +1952,7 @@ const TYPES = {
   },
   [IDS.STAINLESS_STEEL_ALLOYING]: {
     i: IDS.STAINLESS_STEEL_ALLOYING,
-    name: "Stainless Steel Alloying",
+    name: 'Stainless Steel Alloying',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 34.56,
@@ -1969,7 +1969,7 @@ const TYPES = {
   },
   [IDS.BOARD_PRINTING]: {
     i: IDS.BOARD_PRINTING,
-    name: "Board Printing",
+    name: 'Board Printing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 216000,
     recipeTime: 1198.8,
@@ -1986,7 +1986,7 @@ const TYPES = {
   },
   [IDS.FERRITE_BEAD_INDUCTOR_WINDING]: {
     i: IDS.FERRITE_BEAD_INDUCTOR_WINDING,
-    name: "Ferrite-bead Inductor Winding",
+    name: 'Ferrite-bead Inductor Winding',
     processorType: Processor.IDS.FACTORY,
     setupTime: 194400,
     recipeTime: 119.88,
@@ -2002,7 +2002,7 @@ const TYPES = {
   },
   [IDS.CORE_DRILL_BIT_MILLING]: {
     i: IDS.CORE_DRILL_BIT_MILLING,
-    name: "Core Drill Bit Milling",
+    name: 'Core Drill Bit Milling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 57600,
     recipeTime: 90,
@@ -2016,7 +2016,7 @@ const TYPES = {
   },
   [IDS.CORE_DRILL_THRUSTER_ASSEMBLY]: {
     i: IDS.CORE_DRILL_THRUSTER_ASSEMBLY,
-    name: "Core Drill Thruster Assembly",
+    name: 'Core Drill Thruster Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 43200,
     recipeTime: 299.88,
@@ -2033,7 +2033,7 @@ const TYPES = {
   },
   [IDS.PARABOLIC_DISH_ASSEMBLY]: {
     i: IDS.PARABOLIC_DISH_ASSEMBLY,
-    name: "Parabolic Dish Assembly",
+    name: 'Parabolic Dish Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 115200,
     recipeTime: 360,
@@ -2050,7 +2050,7 @@ const TYPES = {
   },
   [IDS.PHOTOVOLTAIC_PANEL_AMORPHIZATION_AND_ASSEMBLY]: {
     i: IDS.PHOTOVOLTAIC_PANEL_AMORPHIZATION_AND_ASSEMBLY,
-    name: "Photovoltaic Panel Amorphization and Assembly",
+    name: 'Photovoltaic Panel Amorphization and Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 115200,
     recipeTime: 180,
@@ -2067,7 +2067,7 @@ const TYPES = {
   },
   [IDS.LIPO_BATTERY_ASSEMBLY]: {
     i: IDS.LIPO_BATTERY_ASSEMBLY,
-    name: "LiPo Battery Assembly",
+    name: 'LiPo Battery Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 129600,
     recipeTime: 450,
@@ -2084,7 +2084,7 @@ const TYPES = {
   },
   [IDS.NEODYMIUM_OXIDE_CHLORINATION]: {
     i: IDS.NEODYMIUM_OXIDE_CHLORINATION,
-    name: "Neodymium Oxide Chlorination",
+    name: 'Neodymium Oxide Chlorination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 43200,
     recipeTime: 4.716,
@@ -2101,7 +2101,7 @@ const TYPES = {
   },
   [IDS.SODIUM_DICHROMATE_HOT_SULFUR_REDUCTION]: {
     i: IDS.SODIUM_DICHROMATE_HOT_SULFUR_REDUCTION,
-    name: "Sodium Dichromate Hot Sulfur Reduction",
+    name: 'Sodium Dichromate Hot Sulfur Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 108000,
     recipeTime: 36,
@@ -2116,7 +2116,7 @@ const TYPES = {
   },
   [IDS.PHOTORESIST_EPOXY_STOICHIOMETRY_AND_PACKAGING]: {
     i: IDS.PHOTORESIST_EPOXY_STOICHIOMETRY_AND_PACKAGING,
-    name: "Photoresist Epoxy Stoichiometry and Packaging",
+    name: 'Photoresist Epoxy Stoichiometry and Packaging',
     processorType: Processor.IDS.FACTORY,
     setupTime: 57600,
     recipeTime: 3.6,
@@ -2130,7 +2130,7 @@ const TYPES = {
   },
   [IDS.AMMONIUM_DIURANATE_CALCINATION_AND_HYDROGEN_REDUCTION]: {
     i: IDS.AMMONIUM_DIURANATE_CALCINATION_AND_HYDROGEN_REDUCTION,
-    name: "Ammonium Diuranate Calcination and Hydrogen Reduction",
+    name: 'Ammonium Diuranate Calcination and Hydrogen Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 100800,
     recipeTime: 63.36,
@@ -2147,7 +2147,7 @@ const TYPES = {
   },
   [IDS.AMMONIUM_PARATUNGSTATE_CALCINATION_AND_HYDROGEN_REDUCTION]: {
     i: IDS.AMMONIUM_PARATUNGSTATE_CALCINATION_AND_HYDROGEN_REDUCTION,
-    name: "Ammonium Paratungstate Calcination and Hydrogen Reduction",
+    name: 'Ammonium Paratungstate Calcination and Hydrogen Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 317.16,
@@ -2164,7 +2164,7 @@ const TYPES = {
   },
   [IDS.ENGINE_BELL_ADDITIVE_MANUFACTURING]: {
     i: IDS.ENGINE_BELL_ADDITIVE_MANUFACTURING,
-    name: "Engine Bell Additive Manufacturing",
+    name: 'Engine Bell Additive Manufacturing',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 345600,
     recipeTime: 61200,
@@ -2178,7 +2178,7 @@ const TYPES = {
   },
   [IDS.STEEL_TRUSS_CONSTRUCTION]: {
     i: IDS.STEEL_TRUSS_CONSTRUCTION,
-    name: "Steel Truss Construction",
+    name: 'Steel Truss Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 151200,
     recipeTime: 43200,
@@ -2192,7 +2192,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_HULL_PLATE_CONSTRUCTION]: {
     i: IDS.ALUMINIUM_HULL_PLATE_CONSTRUCTION,
-    name: "Aluminium Hull Plate Construction",
+    name: 'Aluminium Hull Plate Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 172800,
     recipeTime: 28800,
@@ -2206,7 +2206,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_TRUSS_CONSTRUCTION]: {
     i: IDS.ALUMINIUM_TRUSS_CONSTRUCTION,
-    name: "Aluminium Truss Construction",
+    name: 'Aluminium Truss Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 180000,
     recipeTime: 39600,
@@ -2220,7 +2220,7 @@ const TYPES = {
   },
   [IDS.CARGO_MODULE_CONSTRUCTION]: {
     i: IDS.CARGO_MODULE_CONSTRUCTION,
-    name: "Cargo Module Construction",
+    name: 'Cargo Module Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 288000,
     recipeTime: 50400,
@@ -2235,7 +2235,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_PRESSURE_VESSEL_CONSTRUCTION]: {
     i: IDS.ALUMINIUM_PRESSURE_VESSEL_CONSTRUCTION,
-    name: "Aluminium Pressure Vessel Construction",
+    name: 'Aluminium Pressure Vessel Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 576000,
     recipeTime: 79200,
@@ -2249,7 +2249,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_PROPELLANT_TANK_CONSTRUCTION]: {
     i: IDS.ALUMINIUM_PROPELLANT_TANK_CONSTRUCTION,
-    name: "Aluminium Propellant Tank Construction",
+    name: 'Aluminium Propellant Tank Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 302400,
     recipeTime: 57600,
@@ -2263,7 +2263,7 @@ const TYPES = {
   },
   [IDS.SHUTTLE_HULL_CONSTRUCTION]: {
     i: IDS.SHUTTLE_HULL_CONSTRUCTION,
-    name: "Shuttle Hull Construction",
+    name: 'Shuttle Hull Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 518400,
     recipeTime: 518400,
@@ -2280,7 +2280,7 @@ const TYPES = {
   },
   [IDS.LIGHT_TRANSPORT_HULL_CONSTRUCTION]: {
     i: IDS.LIGHT_TRANSPORT_HULL_CONSTRUCTION,
-    name: "Light Transport Hull Construction",
+    name: 'Light Transport Hull Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 691200,
     recipeTime: 691200,
@@ -2297,7 +2297,7 @@ const TYPES = {
   },
   [IDS.CARGO_RING_CONSTRUCTION]: {
     i: IDS.CARGO_RING_CONSTRUCTION,
-    name: "Cargo Ring Construction",
+    name: 'Cargo Ring Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 576000,
     recipeTime: 158400,
@@ -2312,7 +2312,7 @@ const TYPES = {
   },
   [IDS.HEAVY_TRANSPORT_HULL_CONSTRUCTION]: {
     i: IDS.HEAVY_TRANSPORT_HULL_CONSTRUCTION,
-    name: "Heavy Transport Hull Construction",
+    name: 'Heavy Transport Hull Construction',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 1728000,
     recipeTime: 1728000,
@@ -2330,7 +2330,7 @@ const TYPES = {
   },
   [IDS.TUNGSTEN_GAS_ATOMIZATION]: {
     i: IDS.TUNGSTEN_GAS_ATOMIZATION,
-    name: "Tungsten Gas Atomization",
+    name: 'Tungsten Gas Atomization',
     processorType: Processor.IDS.FACTORY,
     setupTime: 57600,
     recipeTime: 4.5,
@@ -2344,7 +2344,7 @@ const TYPES = {
   },
   [IDS.HYDROGEN_CRYOCOOLING_AND_REACTOR_CONSUMABLES_STOICHIOMETRY]: {
     i: IDS.HYDROGEN_CRYOCOOLING_AND_REACTOR_CONSUMABLES_STOICHIOMETRY,
-    name: "Hydrogen Cryocooling and Reactor Consumables Stoichiometry",
+    name: 'Hydrogen Cryocooling and Reactor Consumables Stoichiometry',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 72,
@@ -2360,7 +2360,7 @@ const TYPES = {
   },
   [IDS.STAINLESS_STEEL_SHEET_ROLLING]: {
     i: IDS.STAINLESS_STEEL_SHEET_ROLLING,
-    name: "Stainless Steel Sheet Rolling",
+    name: 'Stainless Steel Sheet Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 115200,
     recipeTime: 0.18,
@@ -2374,7 +2374,7 @@ const TYPES = {
   },
   [IDS.STAINLESS_STEEL_PIPE_ROLLING]: {
     i: IDS.STAINLESS_STEEL_PIPE_ROLLING,
-    name: "Stainless Steel Pipe Rolling",
+    name: 'Stainless Steel Pipe Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 115200,
     recipeTime: 0.18,
@@ -2388,7 +2388,7 @@ const TYPES = {
   },
   [IDS.SILICON_WAFER_CPU_PHOTOLITHOGRAPHY_BALL_BONDING_AND_ENCAPSULATION]: {
     i: IDS.SILICON_WAFER_CPU_PHOTOLITHOGRAPHY_BALL_BONDING_AND_ENCAPSULATION,
-    name: "Silicon Wafer CPU Photolithography, Ball Bonding, and Encapsulation",
+    name: 'Silicon Wafer CPU Photolithography, Ball Bonding, and Encapsulation',
     processorType: Processor.IDS.FACTORY,
     setupTime: 302400,
     recipeTime: 3672000,
@@ -2408,7 +2408,7 @@ const TYPES = {
   },
   [IDS.CORE_DRILL_ASSEMBLY]: {
     i: IDS.CORE_DRILL_ASSEMBLY,
-    name: "Core Drill Assembly",
+    name: 'Core Drill Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 21600,
     recipeTime: 119.88,
@@ -2424,7 +2424,7 @@ const TYPES = {
   },
   [IDS.NEODYMIUM_TRICHLORIDE_VACUUM_CALCIOTHERMIC_REDUCTION]: {
     i: IDS.NEODYMIUM_TRICHLORIDE_VACUUM_CALCIOTHERMIC_REDUCTION,
-    name: "Neodymium Trichloride Vacuum Calciothermic Reduction",
+    name: 'Neodymium Trichloride Vacuum Calciothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 64800,
     recipeTime: 248.4,
@@ -2440,7 +2440,7 @@ const TYPES = {
   },
   [IDS.NEODYMIUM_TRICHLORIDE_MOLTEN_SALT_ELECTROLYSIS]: {
     i: IDS.NEODYMIUM_TRICHLORIDE_MOLTEN_SALT_ELECTROLYSIS,
-    name: "Neodymium Trichloride Molten Salt Electrolysis",
+    name: 'Neodymium Trichloride Molten Salt Electrolysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 79200,
     recipeTime: 1112.4,
@@ -2456,7 +2456,7 @@ const TYPES = {
   },
   [IDS.CHROMIA_ALUMINOTHERMIC_REDUCTION]: {
     i: IDS.CHROMIA_ALUMINOTHERMIC_REDUCTION,
-    name: "Chromia Aluminothermic Reduction",
+    name: 'Chromia Aluminothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 50400,
     recipeTime: 61.92,
@@ -2472,7 +2472,7 @@ const TYPES = {
   },
   [IDS.URANIUM_DIOXIDE_OXIDATION]: {
     i: IDS.URANIUM_DIOXIDE_OXIDATION,
-    name: "Uranium Dioxide Oxidation",
+    name: 'Uranium Dioxide Oxidation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 5.04,
@@ -2488,7 +2488,7 @@ const TYPES = {
   },
   [IDS.LEACHED_COFFINITE_FROTH_FLOTATION_SOLVENT_EXTRACTION_AND_PRECIPITATION]: {
     i: IDS.LEACHED_COFFINITE_FROTH_FLOTATION_SOLVENT_EXTRACTION_AND_PRECIPITATION,
-    name: "Leached Coffinite Froth Flotation, Solvent Extraction, and Precipitation",
+    name: 'Leached Coffinite Froth Flotation, Solvent Extraction, and Precipitation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 129600,
     recipeTime: 84960,
@@ -2508,7 +2508,7 @@ const TYPES = {
   },
   [IDS.ND_YAG_CZOCHRALSKI_PROCESS]: {
     i: IDS.ND_YAG_CZOCHRALSKI_PROCESS,
-    name: "Nd:YAG Czochralski Process",
+    name: 'Nd:YAG Czochralski Process',
     processorType: Processor.IDS.FACTORY,
     setupTime: 288000,
     recipeTime: 1947600,
@@ -2524,7 +2524,7 @@ const TYPES = {
   },
   [IDS.NICHROME_ALLOYING]: {
     i: IDS.NICHROME_ALLOYING,
-    name: "Nichrome Alloying",
+    name: 'Nichrome Alloying',
     processorType: Processor.IDS.REFINERY,
     setupTime: 93600,
     recipeTime: 0.72,
@@ -2539,7 +2539,7 @@ const TYPES = {
   },
   [IDS.MAGNET_SINTERING_AND_MAGNETIZATION]: {
     i: IDS.MAGNET_SINTERING_AND_MAGNETIZATION,
-    name: "Magnet Sintering and Magnetization",
+    name: 'Magnet Sintering and Magnetization',
     processorType: Processor.IDS.FACTORY,
     setupTime: 86400,
     recipeTime: 119.88,
@@ -2555,7 +2555,7 @@ const TYPES = {
   },
   [IDS.URANIUM_TETRAFLUORIDE_FLUORIDATION]: {
     i: IDS.URANIUM_TETRAFLUORIDE_FLUORIDATION,
-    name: "Uranium Tetrafluoride Fluoridation",
+    name: 'Uranium Tetrafluoride Fluoridation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 129600,
     recipeTime: 1.52,
@@ -2570,7 +2570,7 @@ const TYPES = {
   },
   [IDS.URANIUM_HEXAFLUORIDE_CENTRIFUGE_CASCADE_ENRICHMENT]: {
     i: IDS.URANIUM_HEXAFLUORIDE_CENTRIFUGE_CASCADE_ENRICHMENT,
-    name: "Uranium Hexafluoride Centrifuge Cascade Enrichment",
+    name: 'Uranium Hexafluoride Centrifuge Cascade Enrichment',
     processorType: Processor.IDS.REFINERY,
     setupTime: 432000,
     recipeTime: 96120,
@@ -2584,7 +2584,7 @@ const TYPES = {
   },
   [IDS.ND_YAG_LASER_ASSEMBLY]: {
     i: IDS.ND_YAG_LASER_ASSEMBLY,
-    name: "Nd:YAG Laser Assembly",
+    name: 'Nd:YAG Laser Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 180000,
     recipeTime: 2055.6,
@@ -2601,7 +2601,7 @@ const TYPES = {
   },
   [IDS.THIN_FILM_RESISTOR_SPUTTERING_AND_LASER_TRIMMING]: {
     i: IDS.THIN_FILM_RESISTOR_SPUTTERING_AND_LASER_TRIMMING,
-    name: "Thin-film Resistor Sputtering and Laser-trimming",
+    name: 'Thin-film Resistor Sputtering and Laser-trimming',
     processorType: Processor.IDS.FACTORY,
     setupTime: 158400,
     recipeTime: 299880,
@@ -2617,7 +2617,7 @@ const TYPES = {
   },
   [IDS.HEUF6_MAGNESIOTHERMIC_REDUCTION_AND_FINE_DIVISION]: {
     i: IDS.HEUF6_MAGNESIOTHERMIC_REDUCTION_AND_FINE_DIVISION,
-    name: "HEUF6 Magnesiothermic Reduction and Fine Division",
+    name: 'HEUF6 Magnesiothermic Reduction and Fine Division',
     processorType: Processor.IDS.REFINERY,
     setupTime: 180000,
     recipeTime: 759.6,
@@ -2632,7 +2632,7 @@ const TYPES = {
   },
   [IDS.SPIRULINA_AND_CHLORELLA_ALGAE_GROWING]: {
     i: IDS.SPIRULINA_AND_CHLORELLA_ALGAE_GROWING,
-    name: "Spirulina and Chlorella Algae Growing",
+    name: 'Spirulina and Chlorella Algae Growing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 86400,
     recipeTime: 306000,
@@ -2652,7 +2652,7 @@ const TYPES = {
   },
   [IDS.PEDOT_BACTERIA_CULTURING]: {
     i: IDS.PEDOT_BACTERIA_CULTURING,
-    name: "PEDOT Bacteria Culturing",
+    name: 'PEDOT Bacteria Culturing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 86400,
     recipeTime: 54000,
@@ -2668,7 +2668,7 @@ const TYPES = {
   },
   [IDS.BPA_BACTERIA_CULTURING]: {
     i: IDS.BPA_BACTERIA_CULTURING,
-    name: "BPA Bacteria Culturing",
+    name: 'BPA Bacteria Culturing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 79200,
     recipeTime: 93600,
@@ -2683,7 +2683,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_HYDROXIDE_CARBONATION]: {
     i: IDS.POTASSIUM_HYDROXIDE_CARBONATION,
-    name: "Potassium Hydroxide Carbonation",
+    name: 'Potassium Hydroxide Carbonation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 28800,
     recipeTime: 0.843,
@@ -2699,7 +2699,7 @@ const TYPES = {
   },
   [IDS.NOVOLAK_BACTERIA_CULTURING]: {
     i: IDS.NOVOLAK_BACTERIA_CULTURING,
-    name: "Novolak Bacteria Culturing",
+    name: 'Novolak Bacteria Culturing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 115200,
     recipeTime: 108000,
@@ -2714,7 +2714,7 @@ const TYPES = {
   },
   [IDS.FERROCHROMIUM_ALLOYING]: {
     i: IDS.FERROCHROMIUM_ALLOYING,
-    name: "Ferrochromium Alloying",
+    name: 'Ferrochromium Alloying',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 0.339,
@@ -2729,7 +2729,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_CARBONATE_FLUORIDATION]: {
     i: IDS.POTASSIUM_CARBONATE_FLUORIDATION,
-    name: "Potassium Carbonate Fluoridation",
+    name: 'Potassium Carbonate Fluoridation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 36000,
     recipeTime: 0.641,
@@ -2746,7 +2746,7 @@ const TYPES = {
   },
   [IDS.RHABDITE_SLAG_ACID_LEACHING]: {
     i: IDS.RHABDITE_SLAG_ACID_LEACHING,
-    name: "Rhabdite Slag Acid Leaching",
+    name: 'Rhabdite Slag Acid Leaching',
     processorType: Processor.IDS.REFINERY,
     setupTime: 129600,
     recipeTime: 435.6,
@@ -2762,7 +2762,7 @@ const TYPES = {
   },
   [IDS.TANTALATE_NIOBATE_LIQUID_LIQUID_EXTRACTION_AND_REDOX]: {
     i: IDS.TANTALATE_NIOBATE_LIQUID_LIQUID_EXTRACTION_AND_REDOX,
-    name: "Tantalate-Niobate Liquid-Liquid Extraction and Redox",
+    name: 'Tantalate-Niobate Liquid-Liquid Extraction and Redox',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
     recipeTime: 698.4,
@@ -2778,7 +2778,7 @@ const TYPES = {
   },
   [IDS.CARBON_DIOXIDE_ARC_DECOMPOSITION]: {
     i: IDS.CARBON_DIOXIDE_ARC_DECOMPOSITION,
-    name: "Carbon Dioxide Arc Decomposition",
+    name: 'Carbon Dioxide Arc Decomposition',
     processorType: Processor.IDS.REFINERY,
     setupTime: 21600,
     recipeTime: 64.08,
@@ -2793,7 +2793,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_HEPTAFLUOROTANTALATE_SODIOTHERMIC_REDUCTION]: {
     i: IDS.POTASSIUM_HEPTAFLUOROTANTALATE_SODIOTHERMIC_REDUCTION,
-    name: "Potassium Heptafluorotantalate Sodiothermic Reduction",
+    name: 'Potassium Heptafluorotantalate Sodiothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 108000,
     recipeTime: 493.2,
@@ -2810,7 +2810,7 @@ const TYPES = {
   },
   [IDS.RHABDITE_CARBOTHERMIC_REDUCTION]: {
     i: IDS.RHABDITE_CARBOTHERMIC_REDUCTION,
-    name: "Rhabdite Carbothermic Reduction",
+    name: 'Rhabdite Carbothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 1368,
@@ -2827,7 +2827,7 @@ const TYPES = {
   },
   [IDS.POLYMER_TANTALUM_CAPACITOR_ASSEMBLY]: {
     i: IDS.POLYMER_TANTALUM_CAPACITOR_ASSEMBLY,
-    name: "Polymer Tantalum Capacitor Assembly",
+    name: 'Polymer Tantalum Capacitor Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 259200,
     recipeTime: 225000,
@@ -2846,7 +2846,7 @@ const TYPES = {
   },
   [IDS.SURFACE_MOUNT_DEVICE_REEL_ASSEMBLY]: {
     i: IDS.SURFACE_MOUNT_DEVICE_REEL_ASSEMBLY,
-    name: "Surface Mount Device Reel Assembly",
+    name: 'Surface Mount Device Reel Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 172800,
     recipeTime: 4.5,
@@ -2863,7 +2863,7 @@ const TYPES = {
   },
   [IDS.PICK_AND_PLACE_BOARD_POPULATION]: {
     i: IDS.PICK_AND_PLACE_BOARD_POPULATION,
-    name: "Pick-and-place Board Population",
+    name: 'Pick-and-place Board Population',
     processorType: Processor.IDS.FACTORY,
     setupTime: 288000,
     recipeTime: 47.88,
@@ -2879,7 +2879,7 @@ const TYPES = {
   },
   [IDS.MOTOR_STATOR_ASSEMBLY]: {
     i: IDS.MOTOR_STATOR_ASSEMBLY,
-    name: "Motor Stator Assembly",
+    name: 'Motor Stator Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 144000,
     recipeTime: 180,
@@ -2896,7 +2896,7 @@ const TYPES = {
   },
   [IDS.MOTOR_ROTOR_ASSEMBLY]: {
     i: IDS.MOTOR_ROTOR_ASSEMBLY,
-    name: "Motor Rotor Assembly",
+    name: 'Motor Rotor Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 108000,
     recipeTime: 45,
@@ -2912,7 +2912,7 @@ const TYPES = {
   },
   [IDS.BRUSHLESS_MOTOR_ASSEMBLY]: {
     i: IDS.BRUSHLESS_MOTOR_ASSEMBLY,
-    name: "Brushless Motor Assembly",
+    name: 'Brushless Motor Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 86400,
     recipeTime: 7.2,
@@ -2927,7 +2927,7 @@ const TYPES = {
   },
   [IDS.LANDING_LEG_ASSEMBLY]: {
     i: IDS.LANDING_LEG_ASSEMBLY,
-    name: "Landing Leg Assembly",
+    name: 'Landing Leg Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 288000,
     recipeTime: 28800,
@@ -2944,7 +2944,7 @@ const TYPES = {
   },
   [IDS.LANDING_AUGER_ASSEMBLY]: {
     i: IDS.LANDING_AUGER_ASSEMBLY,
-    name: "Landing Auger Assembly",
+    name: 'Landing Auger Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 108000,
     recipeTime: 7200,
@@ -2961,7 +2961,7 @@ const TYPES = {
   },
   [IDS.PUMP_ASSEMBLY]: {
     i: IDS.PUMP_ASSEMBLY,
-    name: "Pump Assembly",
+    name: 'Pump Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 72000,
     recipeTime: 119.88,
@@ -2977,7 +2977,7 @@ const TYPES = {
   },
   [IDS.ANTENNA_ASSEMBLY]: {
     i: IDS.ANTENNA_ASSEMBLY,
-    name: "Antenna Assembly",
+    name: 'Antenna Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 129600,
     recipeTime: 2401.2,
@@ -2993,7 +2993,7 @@ const TYPES = {
   },
   [IDS.FIBER_OPTIC_GYROSCOPE_ASSEMBLY]: {
     i: IDS.FIBER_OPTIC_GYROSCOPE_ASSEMBLY,
-    name: "Fiber Optic Gyroscope Assembly",
+    name: 'Fiber Optic Gyroscope Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 216000,
     recipeTime: 2998.8,
@@ -3009,7 +3009,7 @@ const TYPES = {
   },
   [IDS.STAR_TRACKER_ASSEMBLY]: {
     i: IDS.STAR_TRACKER_ASSEMBLY,
-    name: "Star Tracker Assembly",
+    name: 'Star Tracker Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 144000,
     recipeTime: 18000,
@@ -3026,7 +3026,7 @@ const TYPES = {
   },
   [IDS.COMPUTER_ASSEMBLY]: {
     i: IDS.COMPUTER_ASSEMBLY,
-    name: "Computer Assembly",
+    name: 'Computer Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 72000,
     recipeTime: 7200,
@@ -3041,7 +3041,7 @@ const TYPES = {
   },
   [IDS.CONTROL_MOMENT_GYROSCOPE_ASSEMBLY]: {
     i: IDS.CONTROL_MOMENT_GYROSCOPE_ASSEMBLY,
-    name: "Control Moment Gyroscope Assembly",
+    name: 'Control Moment Gyroscope Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 259200,
     recipeTime: 18000,
@@ -3058,7 +3058,7 @@ const TYPES = {
   },
   [IDS.ROBOTIC_ARM_ASSEMBLY]: {
     i: IDS.ROBOTIC_ARM_ASSEMBLY,
-    name: "Robotic Arm Assembly",
+    name: 'Robotic Arm Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 172800,
     recipeTime: 299.88,
@@ -3075,7 +3075,7 @@ const TYPES = {
   },
   [IDS.FELDSPAR_ALUMINIUM_HYDROXIDE_CALCINATION]: {
     i: IDS.FELDSPAR_ALUMINIUM_HYDROXIDE_CALCINATION,
-    name: "Feldspar Aluminium Hydroxide Calcination",
+    name: 'Feldspar Aluminium Hydroxide Calcination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 14400,
     recipeTime: 11.232,
@@ -3090,7 +3090,7 @@ const TYPES = {
   },
   [IDS.FERROCHROMIUM_ROASTING_AND_HOT_BASE_LEACHING]: {
     i: IDS.FERROCHROMIUM_ROASTING_AND_HOT_BASE_LEACHING,
-    name: "Ferrochromium Roasting and Hot Base Leaching",
+    name: 'Ferrochromium Roasting and Hot Base Leaching',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 5436,
@@ -3108,7 +3108,7 @@ const TYPES = {
   },
   [IDS.BERYLLIUM_CARBONATE_CALCINATION]: {
     i: IDS.BERYLLIUM_CARBONATE_CALCINATION,
-    name: "Beryllium Carbonate Calcination",
+    name: 'Beryllium Carbonate Calcination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 43200,
     recipeTime: 5.472,
@@ -3123,7 +3123,7 @@ const TYPES = {
   },
   [IDS.BERYLLIA_FORMING_AND_SINTERING]: {
     i: IDS.BERYLLIA_FORMING_AND_SINTERING,
-    name: "Beryllia Forming and Sintering",
+    name: 'Beryllia Forming and Sintering',
     processorType: Processor.IDS.FACTORY,
     setupTime: 216000,
     recipeTime: 2.002,
@@ -3137,7 +3137,7 @@ const TYPES = {
   },
   [IDS.SILICON_WAFER_CCD_PHOTOLITHOGRAPHY_BALL_BONDING_AND_PACKAGING]: {
     i: IDS.SILICON_WAFER_CCD_PHOTOLITHOGRAPHY_BALL_BONDING_AND_PACKAGING,
-    name: "Silicon Wafer CCD Photolithography, Ball Bonding, and Packaging",
+    name: 'Silicon Wafer CCD Photolithography, Ball Bonding, and Packaging',
     processorType: Processor.IDS.FACTORY,
     setupTime: 345600,
     recipeTime: 2250000,
@@ -3157,7 +3157,7 @@ const TYPES = {
   },
   [IDS.HEAT_EXCHANGER_ASSEMBLY]: {
     i: IDS.HEAT_EXCHANGER_ASSEMBLY,
-    name: "Heat Exchanger Assembly",
+    name: 'Heat Exchanger Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 252000,
     recipeTime: 25200,
@@ -3172,7 +3172,7 @@ const TYPES = {
   },
   [IDS.TURBOPUMP_ASSEMBLY]: {
     i: IDS.TURBOPUMP_ASSEMBLY,
-    name: "Turbopump Assembly",
+    name: 'Turbopump Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 576000,
     recipeTime: 720000,
@@ -3190,7 +3190,7 @@ const TYPES = {
   },
   [IDS.LASER_DIODE_DOPING_AMORPHIZATION_AND_ASSEMBLY]: {
     i: IDS.LASER_DIODE_DOPING_AMORPHIZATION_AND_ASSEMBLY,
-    name: "Laser Diode Doping, Amorphization, and Assembly",
+    name: 'Laser Diode Doping, Amorphization, and Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 216000,
     recipeTime: 5868000,
@@ -3208,7 +3208,7 @@ const TYPES = {
   },
   [IDS.SEPARATOR_CENTRIFUGE_ASSEMBLY]: {
     i: IDS.SEPARATOR_CENTRIFUGE_ASSEMBLY,
-    name: "Separator Centrifuge Assembly",
+    name: 'Separator Centrifuge Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 518400,
     recipeTime: 64800,
@@ -3226,7 +3226,7 @@ const TYPES = {
   },
   [IDS.FUEL_MAKE_UP_TANK_ASSEMBLY]: {
     i: IDS.FUEL_MAKE_UP_TANK_ASSEMBLY,
-    name: "Fuel Make-up Tank Assembly",
+    name: 'Fuel Make-up Tank Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 288000,
     recipeTime: 43200,
@@ -3244,7 +3244,7 @@ const TYPES = {
   },
   [IDS.NEON_MAKE_UP_TANK_ASSEMBLY]: {
     i: IDS.NEON_MAKE_UP_TANK_ASSEMBLY,
-    name: "Neon Make-up Tank Assembly",
+    name: 'Neon Make-up Tank Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 144000,
     recipeTime: 21600,
@@ -3261,7 +3261,7 @@ const TYPES = {
   },
   [IDS.LIGHTBULB_END_MODERATORS_ASSEMBLY]: {
     i: IDS.LIGHTBULB_END_MODERATORS_ASSEMBLY,
-    name: "Lightbulb End Moderators Assembly",
+    name: 'Lightbulb End Moderators Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 360000,
     recipeTime: 57600,
@@ -3277,7 +3277,7 @@ const TYPES = {
   },
   [IDS.COLD_GAS_TORQUE_THRUSTER_PRINTING]: {
     i: IDS.COLD_GAS_TORQUE_THRUSTER_PRINTING,
-    name: "Cold Gas Torque Thruster Printing",
+    name: 'Cold Gas Torque Thruster Printing',
     processorType: Processor.IDS.FACTORY,
     setupTime: 57600,
     recipeTime: 14.4,
@@ -3291,7 +3291,7 @@ const TYPES = {
   },
   [IDS.FUSED_QUARTZ_LIGHTBULB_ADDITIVE_SUBTRACTIVE_ASSEMBLY]: {
     i: IDS.FUSED_QUARTZ_LIGHTBULB_ADDITIVE_SUBTRACTIVE_ASSEMBLY,
-    name: "Fused Quartz Lightbulb Additive/Subtractive Assembly",
+    name: 'Fused Quartz Lightbulb Additive/Subtractive Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 432000,
     recipeTime: 57600,
@@ -3305,7 +3305,7 @@ const TYPES = {
   },
   [IDS.REACTOR_PLUMBING_ASSEMBLY_SQUARED]: {
     i: IDS.REACTOR_PLUMBING_ASSEMBLY_SQUARED,
-    name: "Reactor Plumbing Assembly Squared",
+    name: 'Reactor Plumbing Assembly Squared',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 950400,
     recipeTime: 216000,
@@ -3327,7 +3327,7 @@ const TYPES = {
   },
   [IDS.FLOW_DIVIDER_MODERATOR_ASSEMBLY]: {
     i: IDS.FLOW_DIVIDER_MODERATOR_ASSEMBLY,
-    name: "Flow Divider Moderator Assembly",
+    name: 'Flow Divider Moderator Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 864000,
     recipeTime: 172800,
@@ -3343,7 +3343,7 @@ const TYPES = {
   },
   [IDS.NUCLEAR_LIGHTBULB_ASSEMBLY]: {
     i: IDS.NUCLEAR_LIGHTBULB_ASSEMBLY,
-    name: "Nuclear Lightbulb Assembly",
+    name: 'Nuclear Lightbulb Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 316800,
     recipeTime: 46800,
@@ -3358,7 +3358,7 @@ const TYPES = {
   },
   [IDS.REACTOR_SHELL_ASSEMBLY]: {
     i: IDS.REACTOR_SHELL_ASSEMBLY,
-    name: "Reactor Shell Assembly",
+    name: 'Reactor Shell Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 648000,
     recipeTime: 194400,
@@ -3377,7 +3377,7 @@ const TYPES = {
   },
   [IDS.CLOSED_CYCLE_GAS_CORE_NUCLEAR_REACTOR_ENGINE_ASSEMBLY]: {
     i: IDS.CLOSED_CYCLE_GAS_CORE_NUCLEAR_REACTOR_ENGINE_ASSEMBLY,
-    name: "Closed-cycle Gas Core Nuclear Reactor Engine Assembly",
+    name: 'Closed-cycle Gas Core Nuclear Reactor Engine Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 1296000,
     recipeTime: 432000,
@@ -3395,7 +3395,7 @@ const TYPES = {
   },
   [IDS.HABITATION_MODULE_ASSEMBLY]: {
     i: IDS.HABITATION_MODULE_ASSEMBLY,
-    name: "Habitation Module Assembly",
+    name: 'Habitation Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 360000,
     recipeTime: 75600,
@@ -3412,7 +3412,7 @@ const TYPES = {
   },
   [IDS.MOBILITY_MODULE_ASSEMBLY]: {
     i: IDS.MOBILITY_MODULE_ASSEMBLY,
-    name: "Mobility Module Assembly",
+    name: 'Mobility Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 396000,
     recipeTime: 54000,
@@ -3430,7 +3430,7 @@ const TYPES = {
   },
   [IDS.FLUIDS_AUTOMATION_MODULE_ASSEMBLY]: {
     i: IDS.FLUIDS_AUTOMATION_MODULE_ASSEMBLY,
-    name: "Fluids Automation Module Assembly",
+    name: 'Fluids Automation Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 518400,
     recipeTime: 36000,
@@ -3449,7 +3449,7 @@ const TYPES = {
   },
   [IDS.SOLIDS_AUTOMATION_MODULE_ASSEMBLY]: {
     i: IDS.SOLIDS_AUTOMATION_MODULE_ASSEMBLY,
-    name: "Solids Automation Module Assembly",
+    name: 'Solids Automation Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 576000,
     recipeTime: 43200,
@@ -3468,7 +3468,7 @@ const TYPES = {
   },
   [IDS.TERRAIN_INTERFACE_MODULE_ASSEMBLY]: {
     i: IDS.TERRAIN_INTERFACE_MODULE_ASSEMBLY,
-    name: "Terrain Interface Module Assembly",
+    name: 'Terrain Interface Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 360000,
     recipeTime: 28800,
@@ -3483,7 +3483,7 @@ const TYPES = {
   },
   [IDS.AVIONICS_MODULE_ASSEMBLY]: {
     i: IDS.AVIONICS_MODULE_ASSEMBLY,
-    name: "Avionics Module Assembly",
+    name: 'Avionics Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 648000,
     recipeTime: 43200,
@@ -3501,7 +3501,7 @@ const TYPES = {
   },
   [IDS.ESCAPE_MODULE_ASSEMBLY]: {
     i: IDS.ESCAPE_MODULE_ASSEMBLY,
-    name: "Escape Module Assembly",
+    name: 'Escape Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 864000,
     recipeTime: 259200,
@@ -3520,7 +3520,7 @@ const TYPES = {
   },
   [IDS.ATTITUDE_CONTROL_MODULE_ASSEMBLY]: {
     i: IDS.ATTITUDE_CONTROL_MODULE_ASSEMBLY,
-    name: "Attitude Control Module Assembly",
+    name: 'Attitude Control Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 417600,
     recipeTime: 86400,
@@ -3537,7 +3537,7 @@ const TYPES = {
   },
   [IDS.POWER_MODULE_ASSEMBLY]: {
     i: IDS.POWER_MODULE_ASSEMBLY,
-    name: "Power Module Assembly",
+    name: 'Power Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 345600,
     recipeTime: 36000,
@@ -3554,7 +3554,7 @@ const TYPES = {
   },
   [IDS.THERMAL_MODULE_ASSEMBLY]: {
     i: IDS.THERMAL_MODULE_ASSEMBLY,
-    name: "Thermal Module Assembly",
+    name: 'Thermal Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 345600,
     recipeTime: 32400,
@@ -3571,7 +3571,7 @@ const TYPES = {
   },
   [IDS.PROPULSION_MODULE_ASSEMBLY]: {
     i: IDS.PROPULSION_MODULE_ASSEMBLY,
-    name: "Propulsion Module Assembly",
+    name: 'Propulsion Module Assembly',
     processorType: Processor.IDS.SHIPYARD,
     setupTime: 720000,
     recipeTime: 345600,
@@ -3588,7 +3588,7 @@ const TYPES = {
   },
   [IDS.SULFUR_DIOXIDE_PLASMA_CATALYSIS]: {
     i: IDS.SULFUR_DIOXIDE_PLASMA_CATALYSIS,
-    name: "Sulfur Dioxide Plasma Catalysis",
+    name: 'Sulfur Dioxide Plasma Catalysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 171.36,
@@ -3604,7 +3604,7 @@ const TYPES = {
   },
   [IDS.PARKES_PROCESS]: {
     i: IDS.PARKES_PROCESS,
-    name: "Parkes Process",
+    name: 'Parkes Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 79200,
     recipeTime: 1180.8,
@@ -3620,7 +3620,7 @@ const TYPES = {
   },
   [IDS.BICARBONATE_SOLVAY_PROCESS]: {
     i: IDS.BICARBONATE_SOLVAY_PROCESS,
-    name: "Bicarbonate Solvay Process",
+    name: 'Bicarbonate Solvay Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 93600,
     recipeTime: 321.48,
@@ -3638,7 +3638,7 @@ const TYPES = {
   },
   [IDS.SOLVAY_HOU_PROCESS]: {
     i: IDS.SOLVAY_HOU_PROCESS,
-    name: "Solvay-Hou Process",
+    name: 'Solvay-Hou Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 93600,
     recipeTime: 245.52,
@@ -3656,7 +3656,7 @@ const TYPES = {
   },
   [IDS.BICARBONATE_SOLVAY_HOU_PROCESS]: {
     i: IDS.BICARBONATE_SOLVAY_HOU_PROCESS,
-    name: "Bicarbonate Solvay-Hou Process",
+    name: 'Bicarbonate Solvay-Hou Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 100800,
     recipeTime: 326.88,
@@ -3674,7 +3674,7 @@ const TYPES = {
   },
   [IDS.SODIUM_BICARBONATE_CALCINATION]: {
     i: IDS.SODIUM_BICARBONATE_CALCINATION,
-    name: "Sodium Bicarbonate Calcination",
+    name: 'Sodium Bicarbonate Calcination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 10800,
     recipeTime: 9.072,
@@ -3690,7 +3690,7 @@ const TYPES = {
   },
   [IDS.EPOXY_STOICHIOMETRY_AND_PACKAGING]: {
     i: IDS.EPOXY_STOICHIOMETRY_AND_PACKAGING,
-    name: "Epoxy Stoichiometry and Packaging",
+    name: 'Epoxy Stoichiometry and Packaging',
     processorType: Processor.IDS.FACTORY,
     setupTime: 43200,
     recipeTime: 1.44,
@@ -3704,7 +3704,7 @@ const TYPES = {
   },
   [IDS.PEDOT_ALGAE_GROWING]: {
     i: IDS.PEDOT_ALGAE_GROWING,
-    name: "PEDOT Algae Growing",
+    name: 'PEDOT Algae Growing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 93600,
     recipeTime: 378000,
@@ -3720,7 +3720,7 @@ const TYPES = {
   },
   [IDS.BPA_ALGAE_GROWING]: {
     i: IDS.BPA_ALGAE_GROWING,
-    name: "BPA Algae Growing",
+    name: 'BPA Algae Growing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 79200,
     recipeTime: 414000,
@@ -3735,7 +3735,7 @@ const TYPES = {
   },
   [IDS.NOVOLAK_ALGAE_GROWING]: {
     i: IDS.NOVOLAK_ALGAE_GROWING,
-    name: "Novolak Algae Growing",
+    name: 'Novolak Algae Growing',
     processorType: Processor.IDS.BIOREACTOR,
     setupTime: 86400,
     recipeTime: 450000,

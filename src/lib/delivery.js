@@ -5,5 +5,5 @@ const STATUSES = {
 };
 
 export default {
-  STATUSES,
-}
+  STATUSES
+};

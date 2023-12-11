@@ -16,4 +16,4 @@ export default {
   TYPES,
 
   getType
-}
+};

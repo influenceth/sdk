@@ -5,7 +5,7 @@ const STATUSES = {
   UNDISCOVERED: 0,
   SAMPLING: 1,
   SAMPLED: 2,
-  USED: 3,
+  USED: 3
 };
 
 const getSampleBounds = (abundance, initialYield = 0, totalBonus = 1) => {
@@ -28,5 +28,5 @@ export default {
   STATUSES,
 
   getSampleBounds,
-  getSampleTime,
-}
+  getSampleTime
+};

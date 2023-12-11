@@ -30,7 +30,7 @@ const getExtractionTime = (targetYield, remainingYield, totalBonus = 1) => {
   const endTimeRatio = Math.sqrt((remainingYield - targetYield) / MAX_YIELD_PER_RUN);
   const time = (startTimeRatio - endTimeRatio) * MAX_EXTRACTION_TIME / totalBonus;
   return Math.ceil(time);
-}
+};
 
 export default {
   MAX_EXTRACTION_TIME,
@@ -42,4 +42,4 @@ export default {
 
   getExtractionTime,
   getType
-}
+};

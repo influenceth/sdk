@@ -18,12 +18,12 @@ const IDS = {
   PROPELLANT_LARGE: 14,
   CARGO_SMALL: 15,
   CARGO_MEDIUM: 16,
-  CARGO_LARGE: 17,
+  CARGO_LARGE: 17
 };
 
 const STATUSES = {
   UNAVAILABLE: 0,
-  AVAILABLE: 1,
+  AVAILABLE: 1
 };
 
 const CATEGORIES = {
@@ -155,7 +155,7 @@ const TYPES = {
     volumeConstraint: 30000e6,
     productConstraints: null,
     category: CATEGORIES.PRIMARY
-  },
+  }
 };
 
 // sum the product constraints mass and volume in case that is useful for progress bars
@@ -201,7 +201,7 @@ const getFilledCapacity = (inventoryType) => {
       ? config.productConstraintsTotalVolume
       : (config.volumeConstraint || Infinity)
   };
-}
+};
 
 /**
  * Converts a raw productIds / quantities array pair into a product details set
@@ -252,4 +252,4 @@ export default {
   getContents,
   getFilledCapacity,
   getType
-}
+};

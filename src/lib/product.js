@@ -241,69 +241,69 @@ const IDS = {
 };
 
 const CLASSIFICATIONS = {
-  ASSEMBLY: "Assembly",
-  CROP: "Crop",
-  MANUFACTURED_GOOD: "Manufactured Good",
-  RAW_MATERIAL: "Raw Material",
-  REFINED_MATERIAL: "Refined Material"
+  ASSEMBLY: 'Assembly',
+  CROP: 'Crop',
+  MANUFACTURED_GOOD: 'Manufactured Good',
+  RAW_MATERIAL: 'Raw Material',
+  REFINED_MATERIAL: 'Refined Material'
 };
 
 const CATEGORIES = {
-  ACID: "Acid",
-  ADHESIVE: "Adhesive",
-  ALLOY: "Alloy",
-  BASE: "Base",
-  CARBONATE: "Carbonate",
-  CERAMIC: "Ceramic",
-  CONSTRUCTION: "Construction",
-  CRYSTAL: "Crystal",
-  ELECTROMECHANICAL: "Electromechanical",
-  ELECTRONICS: "Electronics",
-  ELECTRO_OPTICAL: "Electro-optical",
-  ENGINE_PART: "Engine Part",
-  FABRIC: "Fabric",
-  FISSILE: "Fissile",
-  FLUORIDE: "Fluoride",
-  FOOD: "Food",
-  GROWN_ORGANIC: "Grown Organic",
-  HULL_MODULE: "Hull Module",
-  INGREDIENT: "Ingredient",
-  INTEGRATION_MODULE: "Integration Module",
-  MECHANISM: "Mechanism",
-  METAL: "Metal",
-  NITRATE: "Nitrate",
-  NONMETAL: "Nonmetal",
-  ORGANIC: "Organic",
-  ORGANIC_SUBSTRATE: "Organic Substrate",
-  OXIDE: "Oxide",
-  PHOSPHATE: "Phosphate",
-  POLYMER: "Polymer",
-  POWDER: "Powder",
-  PROCESSED_GLASS: "Processed Glass",
-  PROCESSED_METAL: "Processed Metal",
-  PROPELLANT: "Propellant",
-  RARE_EARTH: "Rare Earth",
-  REFINED_FISSILE: "Refined Fissile",
-  REFINED_GLASS: "Refined Glass",
-  REFINED_METAL: "Refined Metal",
-  REFINED_ORGANIC: "Refined Organic",
-  REFINED_RARE_EARTH: "Refined Rare Earth",
-  REFINED_VOLATILE: "Refined Volatile",
-  SALT: "Salt",
-  SEMI_REFINED: "Semi-refined",
-  SHIP_HULL: "Ship Hull",
-  SHIP_PART: "Ship Part",
-  SULFATE: "Sulfate",
-  SULFIDE: "Sulfide",
-  TOOL: "Tool",
-  VOLATILE: "Volatile"
+  ACID: 'Acid',
+  ADHESIVE: 'Adhesive',
+  ALLOY: 'Alloy',
+  BASE: 'Base',
+  CARBONATE: 'Carbonate',
+  CERAMIC: 'Ceramic',
+  CONSTRUCTION: 'Construction',
+  CRYSTAL: 'Crystal',
+  ELECTROMECHANICAL: 'Electromechanical',
+  ELECTRONICS: 'Electronics',
+  ELECTRO_OPTICAL: 'Electro-optical',
+  ENGINE_PART: 'Engine Part',
+  FABRIC: 'Fabric',
+  FISSILE: 'Fissile',
+  FLUORIDE: 'Fluoride',
+  FOOD: 'Food',
+  GROWN_ORGANIC: 'Grown Organic',
+  HULL_MODULE: 'Hull Module',
+  INGREDIENT: 'Ingredient',
+  INTEGRATION_MODULE: 'Integration Module',
+  MECHANISM: 'Mechanism',
+  METAL: 'Metal',
+  NITRATE: 'Nitrate',
+  NONMETAL: 'Nonmetal',
+  ORGANIC: 'Organic',
+  ORGANIC_SUBSTRATE: 'Organic Substrate',
+  OXIDE: 'Oxide',
+  PHOSPHATE: 'Phosphate',
+  POLYMER: 'Polymer',
+  POWDER: 'Powder',
+  PROCESSED_GLASS: 'Processed Glass',
+  PROCESSED_METAL: 'Processed Metal',
+  PROPELLANT: 'Propellant',
+  RARE_EARTH: 'Rare Earth',
+  REFINED_FISSILE: 'Refined Fissile',
+  REFINED_GLASS: 'Refined Glass',
+  REFINED_METAL: 'Refined Metal',
+  REFINED_ORGANIC: 'Refined Organic',
+  REFINED_RARE_EARTH: 'Refined Rare Earth',
+  REFINED_VOLATILE: 'Refined Volatile',
+  SALT: 'Salt',
+  SEMI_REFINED: 'Semi-refined',
+  SHIP_HULL: 'Ship Hull',
+  SHIP_PART: 'Ship Part',
+  SULFATE: 'Sulfate',
+  SULFIDE: 'Sulfide',
+  TOOL: 'Tool',
+  VOLATILE: 'Volatile'
 };
 
 // massPerUnit is g, volumePerUnit is mL
 const TYPES = {
   [IDS.WATER]: {
     i: IDS.WATER,
-    name: "Water",
+    name: 'Water',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
@@ -312,7 +312,7 @@ const TYPES = {
   },
   [IDS.HYDROGEN]: {
     i: IDS.HYDROGEN,
-    name: "Hydrogen",
+    name: 'Hydrogen',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
@@ -321,7 +321,7 @@ const TYPES = {
   },
   [IDS.AMMONIA]: {
     i: IDS.AMMONIA,
-    name: "Ammonia",
+    name: 'Ammonia',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
@@ -330,7 +330,7 @@ const TYPES = {
   },
   [IDS.NITROGEN]: {
     i: IDS.NITROGEN,
-    name: "Nitrogen",
+    name: 'Nitrogen',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
@@ -339,7 +339,7 @@ const TYPES = {
   },
   [IDS.SULFUR_DIOXIDE]: {
     i: IDS.SULFUR_DIOXIDE,
-    name: "Sulfur Dioxide",
+    name: 'Sulfur Dioxide',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
@@ -348,7 +348,7 @@ const TYPES = {
   },
   [IDS.CARBON_DIOXIDE]: {
     i: IDS.CARBON_DIOXIDE,
-    name: "Carbon Dioxide",
+    name: 'Carbon Dioxide',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
@@ -357,7 +357,7 @@ const TYPES = {
   },
   [IDS.CARBON_MONOXIDE]: {
     i: IDS.CARBON_MONOXIDE,
-    name: "Carbon Monoxide",
+    name: 'Carbon Monoxide',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
@@ -366,7 +366,7 @@ const TYPES = {
   },
   [IDS.METHANE]: {
     i: IDS.METHANE,
-    name: "Methane",
+    name: 'Methane',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.VOLATILE,
     massPerUnit: 1000,
@@ -375,7 +375,7 @@ const TYPES = {
   },
   [IDS.APATITE]: {
     i: IDS.APATITE,
-    name: "Apatite",
+    name: 'Apatite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.ORGANIC,
     massPerUnit: 1000,
@@ -384,7 +384,7 @@ const TYPES = {
   },
   [IDS.BITUMEN]: {
     i: IDS.BITUMEN,
-    name: "Bitumen",
+    name: 'Bitumen',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.ORGANIC,
     massPerUnit: 1000,
@@ -393,7 +393,7 @@ const TYPES = {
   },
   [IDS.CALCITE]: {
     i: IDS.CALCITE,
-    name: "Calcite",
+    name: 'Calcite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.ORGANIC,
     massPerUnit: 1000,
@@ -402,7 +402,7 @@ const TYPES = {
   },
   [IDS.FELDSPAR]: {
     i: IDS.FELDSPAR,
-    name: "Feldspar",
+    name: 'Feldspar',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.METAL,
     massPerUnit: 1000,
@@ -411,7 +411,7 @@ const TYPES = {
   },
   [IDS.OLIVINE]: {
     i: IDS.OLIVINE,
-    name: "Olivine",
+    name: 'Olivine',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.METAL,
     massPerUnit: 1000,
@@ -420,7 +420,7 @@ const TYPES = {
   },
   [IDS.PYROXENE]: {
     i: IDS.PYROXENE,
-    name: "Pyroxene",
+    name: 'Pyroxene',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.METAL,
     massPerUnit: 1000,
@@ -429,7 +429,7 @@ const TYPES = {
   },
   [IDS.COFFINITE]: {
     i: IDS.COFFINITE,
-    name: "Coffinite",
+    name: 'Coffinite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.FISSILE,
     massPerUnit: 1000,
@@ -438,7 +438,7 @@ const TYPES = {
   },
   [IDS.MERRILLITE]: {
     i: IDS.MERRILLITE,
-    name: "Merrillite",
+    name: 'Merrillite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.RARE_EARTH,
     massPerUnit: 1000,
@@ -447,7 +447,7 @@ const TYPES = {
   },
   [IDS.XENOTIME]: {
     i: IDS.XENOTIME,
-    name: "Xenotime",
+    name: 'Xenotime',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.RARE_EARTH,
     massPerUnit: 1000,
@@ -456,7 +456,7 @@ const TYPES = {
   },
   [IDS.RHABDITE]: {
     i: IDS.RHABDITE,
-    name: "Rhabdite",
+    name: 'Rhabdite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.METAL,
     massPerUnit: 1000,
@@ -465,7 +465,7 @@ const TYPES = {
   },
   [IDS.GRAPHITE]: {
     i: IDS.GRAPHITE,
-    name: "Graphite",
+    name: 'Graphite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.METAL,
     massPerUnit: 1000,
@@ -474,7 +474,7 @@ const TYPES = {
   },
   [IDS.TAENITE]: {
     i: IDS.TAENITE,
-    name: "Taenite",
+    name: 'Taenite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.METAL,
     massPerUnit: 1000,
@@ -483,7 +483,7 @@ const TYPES = {
   },
   [IDS.TROILITE]: {
     i: IDS.TROILITE,
-    name: "Troilite",
+    name: 'Troilite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.METAL,
     massPerUnit: 1000,
@@ -492,7 +492,7 @@ const TYPES = {
   },
   [IDS.URANINITE]: {
     i: IDS.URANINITE,
-    name: "Uraninite",
+    name: 'Uraninite',
     classification: CLASSIFICATIONS.RAW_MATERIAL,
     category: CATEGORIES.FISSILE,
     massPerUnit: 1000,
@@ -501,7 +501,7 @@ const TYPES = {
   },
   [IDS.OXYGEN]: {
     i: IDS.OXYGEN,
-    name: "Oxygen",
+    name: 'Oxygen',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
@@ -510,7 +510,7 @@ const TYPES = {
   },
   [IDS.DEIONIZED_WATER]: {
     i: IDS.DEIONIZED_WATER,
-    name: "Deionized Water",
+    name: 'Deionized Water',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_VOLATILE,
     massPerUnit: 1000,
@@ -519,7 +519,7 @@ const TYPES = {
   },
   [IDS.RAW_SALTS]: {
     i: IDS.RAW_SALTS,
-    name: "Raw Salts",
+    name: 'Raw Salts',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -528,7 +528,7 @@ const TYPES = {
   },
   [IDS.SILICA]: {
     i: IDS.SILICA,
-    name: "Silica",
+    name: 'Silica',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -537,7 +537,7 @@ const TYPES = {
   },
   [IDS.NAPHTHA]: {
     i: IDS.NAPHTHA,
-    name: "Naphtha",
+    name: 'Naphtha',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
@@ -546,7 +546,7 @@ const TYPES = {
   },
   [IDS.SODIUM_BICARBONATE]: {
     i: IDS.SODIUM_BICARBONATE,
-    name: "Sodium Bicarbonate",
+    name: 'Sodium Bicarbonate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
@@ -555,7 +555,7 @@ const TYPES = {
   },
   [IDS.IRON]: {
     i: IDS.IRON,
-    name: "Iron",
+    name: 'Iron',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -564,7 +564,7 @@ const TYPES = {
   },
   [IDS.COPPER]: {
     i: IDS.COPPER,
-    name: "Copper",
+    name: 'Copper',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -573,7 +573,7 @@ const TYPES = {
   },
   [IDS.NICKEL]: {
     i: IDS.NICKEL,
-    name: "Nickel",
+    name: 'Nickel',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -582,7 +582,7 @@ const TYPES = {
   },
   [IDS.QUICKLIME]: {
     i: IDS.QUICKLIME,
-    name: "Quicklime",
+    name: 'Quicklime',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -591,7 +591,7 @@ const TYPES = {
   },
   [IDS.ACETYLENE]: {
     i: IDS.ACETYLENE,
-    name: "Acetylene",
+    name: 'Acetylene',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
@@ -600,7 +600,7 @@ const TYPES = {
   },
   [IDS.AMMONIUM_CARBONATE]: {
     i: IDS.AMMONIUM_CARBONATE,
-    name: "Ammonium Carbonate",
+    name: 'Ammonium Carbonate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
@@ -609,7 +609,7 @@ const TYPES = {
   },
   [IDS.TRIPLE_SUPERPHOSPHATE]: {
     i: IDS.TRIPLE_SUPERPHOSPHATE,
-    name: "Triple Superphosphate",
+    name: 'Triple Superphosphate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.PHOSPHATE,
     massPerUnit: 1000,
@@ -618,7 +618,7 @@ const TYPES = {
   },
   [IDS.PHOSPHATE_AND_SULFATE_SALTS]: {
     i: IDS.PHOSPHATE_AND_SULFATE_SALTS,
-    name: "Phosphate and Sulfate Salts",
+    name: 'Phosphate and Sulfate Salts',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -627,7 +627,7 @@ const TYPES = {
   },
   [IDS.IRON_SULFIDE]: {
     i: IDS.IRON_SULFIDE,
-    name: "Iron Sulfide",
+    name: 'Iron Sulfide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SULFIDE,
     massPerUnit: 1000,
@@ -636,7 +636,7 @@ const TYPES = {
   },
   [IDS.LEAD_SULFIDE]: {
     i: IDS.LEAD_SULFIDE,
-    name: "Lead Sulfide",
+    name: 'Lead Sulfide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SULFIDE,
     massPerUnit: 1000,
@@ -645,7 +645,7 @@ const TYPES = {
   },
   [IDS.TIN_SULFIDE]: {
     i: IDS.TIN_SULFIDE,
-    name: "Tin Sulfide",
+    name: 'Tin Sulfide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SULFIDE,
     massPerUnit: 1000,
@@ -654,7 +654,7 @@ const TYPES = {
   },
   [IDS.MOLYBDENUM_DISULFIDE]: {
     i: IDS.MOLYBDENUM_DISULFIDE,
-    name: "Molybdenum Disulfide",
+    name: 'Molybdenum Disulfide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SULFIDE,
     massPerUnit: 1000,
@@ -663,7 +663,7 @@ const TYPES = {
   },
   [IDS.FUSED_QUARTZ]: {
     i: IDS.FUSED_QUARTZ,
-    name: "Fused Quartz",
+    name: 'Fused Quartz',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_GLASS,
     massPerUnit: 1000,
@@ -672,7 +672,7 @@ const TYPES = {
   },
   [IDS.FIBERGLASS]: {
     i: IDS.FIBERGLASS,
-    name: "Fiberglass",
+    name: 'Fiberglass',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.FABRIC,
     massPerUnit: 1000,
@@ -681,7 +681,7 @@ const TYPES = {
   },
   [IDS.BARE_COPPER_WIRE]: {
     i: IDS.BARE_COPPER_WIRE,
-    name: "Bare Copper Wire",
+    name: 'Bare Copper Wire',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -690,7 +690,7 @@ const TYPES = {
   },
   [IDS.CEMENT]: {
     i: IDS.CEMENT,
-    name: "Cement",
+    name: 'Cement',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.CONSTRUCTION,
     massPerUnit: 1000,
@@ -699,7 +699,7 @@ const TYPES = {
   },
   [IDS.SODIUM_CHLORIDE]: {
     i: IDS.SODIUM_CHLORIDE,
-    name: "Sodium Chloride",
+    name: 'Sodium Chloride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -708,7 +708,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_CHLORIDE]: {
     i: IDS.POTASSIUM_CHLORIDE,
-    name: "Potassium Chloride",
+    name: 'Potassium Chloride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -717,7 +717,7 @@ const TYPES = {
   },
   [IDS.BORAX]: {
     i: IDS.BORAX,
-    name: "Borax",
+    name: 'Borax',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -726,7 +726,7 @@ const TYPES = {
   },
   [IDS.LITHIUM_CARBONATE]: {
     i: IDS.LITHIUM_CARBONATE,
-    name: "Lithium Carbonate",
+    name: 'Lithium Carbonate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
@@ -735,7 +735,7 @@ const TYPES = {
   },
   [IDS.MAGNESIUM_CHLORIDE]: {
     i: IDS.MAGNESIUM_CHLORIDE,
-    name: "Magnesium Chloride",
+    name: 'Magnesium Chloride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -744,7 +744,7 @@ const TYPES = {
   },
   [IDS.PROPYLENE]: {
     i: IDS.PROPYLENE,
-    name: "Propylene",
+    name: 'Propylene',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
@@ -753,7 +753,7 @@ const TYPES = {
   },
   [IDS.SULFUR]: {
     i: IDS.SULFUR,
-    name: "Sulfur",
+    name: 'Sulfur',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
@@ -762,7 +762,7 @@ const TYPES = {
   },
   [IDS.STEEL]: {
     i: IDS.STEEL,
-    name: "Steel",
+    name: 'Steel',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
@@ -771,7 +771,7 @@ const TYPES = {
   },
   [IDS.SILICON]: {
     i: IDS.SILICON,
-    name: "Silicon",
+    name: 'Silicon',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
@@ -780,7 +780,7 @@ const TYPES = {
   },
   [IDS.NITRIC_ACID]: {
     i: IDS.NITRIC_ACID,
-    name: "Nitric Acid",
+    name: 'Nitric Acid',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ACID,
     massPerUnit: 1000,
@@ -789,7 +789,7 @@ const TYPES = {
   },
   [IDS.SULFURIC_ACID]: {
     i: IDS.SULFURIC_ACID,
-    name: "Sulfuric Acid",
+    name: 'Sulfuric Acid',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ACID,
     massPerUnit: 1000,
@@ -798,7 +798,7 @@ const TYPES = {
   },
   [IDS.SOIL]: {
     i: IDS.SOIL,
-    name: "Soil",
+    name: 'Soil',
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.ORGANIC_SUBSTRATE,
     massPerUnit: 1000,
@@ -807,7 +807,7 @@ const TYPES = {
   },
   [IDS.FERROSILICON]: {
     i: IDS.FERROSILICON,
-    name: "Ferrosilicon",
+    name: 'Ferrosilicon',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
@@ -816,7 +816,7 @@ const TYPES = {
   },
   [IDS.WEATHERED_OLIVINE]: {
     i: IDS.WEATHERED_OLIVINE,
-    name: "Weathered Olivine",
+    name: 'Weathered Olivine',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SEMI_REFINED,
     massPerUnit: 1000,
@@ -825,7 +825,7 @@ const TYPES = {
   },
   [IDS.OXALIC_ACID]: {
     i: IDS.OXALIC_ACID,
-    name: "Oxalic Acid",
+    name: 'Oxalic Acid',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ACID,
     massPerUnit: 1000,
@@ -834,7 +834,7 @@ const TYPES = {
   },
   [IDS.SILVER]: {
     i: IDS.SILVER,
-    name: "Silver",
+    name: 'Silver',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -843,7 +843,7 @@ const TYPES = {
   },
   [IDS.GOLD]: {
     i: IDS.GOLD,
-    name: "Gold",
+    name: 'Gold',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -852,7 +852,7 @@ const TYPES = {
   },
   [IDS.TIN]: {
     i: IDS.TIN,
-    name: "Tin",
+    name: 'Tin',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -861,7 +861,7 @@ const TYPES = {
   },
   [IDS.IRON_OXIDE]: {
     i: IDS.IRON_OXIDE,
-    name: "Iron Oxide",
+    name: 'Iron Oxide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -870,7 +870,7 @@ const TYPES = {
   },
   [IDS.SPIRULINA_AND_CHLORELLA_ALGAE]: {
     i: IDS.SPIRULINA_AND_CHLORELLA_ALGAE,
-    name: "Spirulina and Chlorella Algae",
+    name: 'Spirulina and Chlorella Algae',
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.INGREDIENT,
     massPerUnit: 1000,
@@ -879,7 +879,7 @@ const TYPES = {
   },
   [IDS.MOLYBDENUM_TRIOXIDE]: {
     i: IDS.MOLYBDENUM_TRIOXIDE,
-    name: "Molybdenum Trioxide",
+    name: 'Molybdenum Trioxide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -888,7 +888,7 @@ const TYPES = {
   },
   [IDS.SILICA_POWDER]: {
     i: IDS.SILICA_POWDER,
-    name: "Silica Powder",
+    name: 'Silica Powder',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.POWDER,
     massPerUnit: 1000,
@@ -897,7 +897,7 @@ const TYPES = {
   },
   [IDS.SOLDER]: {
     i: IDS.SOLDER,
-    name: "Solder",
+    name: 'Solder',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -906,7 +906,7 @@ const TYPES = {
   },
   [IDS.FIBER_OPTIC_CABLE]: {
     i: IDS.FIBER_OPTIC_CABLE,
-    name: "Fiber Optic Cable",
+    name: 'Fiber Optic Cable',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_GLASS,
     massPerUnit: 1000,
@@ -915,7 +915,7 @@ const TYPES = {
   },
   [IDS.STEEL_BEAM]: {
     i: IDS.STEEL_BEAM,
-    name: "Steel Beam",
+    name: 'Steel Beam',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -924,7 +924,7 @@ const TYPES = {
   },
   [IDS.STEEL_SHEET]: {
     i: IDS.STEEL_SHEET,
-    name: "Steel Sheet",
+    name: 'Steel Sheet',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -933,7 +933,7 @@ const TYPES = {
   },
   [IDS.STEEL_PIPE]: {
     i: IDS.STEEL_PIPE,
-    name: "Steel Pipe",
+    name: 'Steel Pipe',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -942,7 +942,7 @@ const TYPES = {
   },
   [IDS.STEEL_WIRE]: {
     i: IDS.STEEL_WIRE,
-    name: "Steel Wire",
+    name: 'Steel Wire',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -951,7 +951,7 @@ const TYPES = {
   },
   [IDS.ACRYLONITRILE]: {
     i: IDS.ACRYLONITRILE,
-    name: "Acrylonitrile",
+    name: 'Acrylonitrile',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
@@ -960,7 +960,7 @@ const TYPES = {
   },
   [IDS.POLYPROPYLENE]: {
     i: IDS.POLYPROPYLENE,
-    name: "Polypropylene",
+    name: 'Polypropylene',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.POLYMER,
     massPerUnit: 1000,
@@ -969,7 +969,7 @@ const TYPES = {
   },
   [IDS.MAGNESIUM]: {
     i: IDS.MAGNESIUM,
-    name: "Magnesium",
+    name: 'Magnesium',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -978,7 +978,7 @@ const TYPES = {
   },
   [IDS.CHLORINE]: {
     i: IDS.CHLORINE,
-    name: "Chlorine",
+    name: 'Chlorine',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
@@ -987,7 +987,7 @@ const TYPES = {
   },
   [IDS.SODIUM_CARBONATE]: {
     i: IDS.SODIUM_CARBONATE,
-    name: "Sodium Carbonate",
+    name: 'Sodium Carbonate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
@@ -996,7 +996,7 @@ const TYPES = {
   },
   [IDS.CALCIUM_CHLORIDE]: {
     i: IDS.CALCIUM_CHLORIDE,
-    name: "Calcium Chloride",
+    name: 'Calcium Chloride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1005,7 +1005,7 @@ const TYPES = {
   },
   [IDS.BORIA]: {
     i: IDS.BORIA,
-    name: "Boria",
+    name: 'Boria',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1014,7 +1014,7 @@ const TYPES = {
   },
   [IDS.LITHIUM_SULFATE]: {
     i: IDS.LITHIUM_SULFATE,
-    name: "Lithium Sulfate",
+    name: 'Lithium Sulfate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SULFATE,
     massPerUnit: 1000,
@@ -1023,7 +1023,7 @@ const TYPES = {
   },
   [IDS.HYDROCHLORIC_ACID]: {
     i: IDS.HYDROCHLORIC_ACID,
-    name: "Hydrochloric Acid",
+    name: 'Hydrochloric Acid',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ACID,
     massPerUnit: 1000,
@@ -1032,7 +1032,7 @@ const TYPES = {
   },
   [IDS.HYDROFLUORIC_ACID]: {
     i: IDS.HYDROFLUORIC_ACID,
-    name: "Hydrofluoric Acid",
+    name: 'Hydrofluoric Acid',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ACID,
     massPerUnit: 1000,
@@ -1041,7 +1041,7 @@ const TYPES = {
   },
   [IDS.PHOSPHORIC_ACID]: {
     i: IDS.PHOSPHORIC_ACID,
-    name: "Phosphoric Acid",
+    name: 'Phosphoric Acid',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ACID,
     massPerUnit: 1000,
@@ -1050,7 +1050,7 @@ const TYPES = {
   },
   [IDS.BORIC_ACID]: {
     i: IDS.BORIC_ACID,
-    name: "Boric Acid",
+    name: 'Boric Acid',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ACID,
     massPerUnit: 1000,
@@ -1059,7 +1059,7 @@ const TYPES = {
   },
   [IDS.ZINC_OXIDE]: {
     i: IDS.ZINC_OXIDE,
-    name: "Zinc Oxide",
+    name: 'Zinc Oxide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1068,7 +1068,7 @@ const TYPES = {
   },
   [IDS.NICKEL_OXIDE]: {
     i: IDS.NICKEL_OXIDE,
-    name: "Nickel Oxide",
+    name: 'Nickel Oxide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1077,7 +1077,7 @@ const TYPES = {
   },
   [IDS.MAGNESIA]: {
     i: IDS.MAGNESIA,
-    name: "Magnesia",
+    name: 'Magnesia',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1086,7 +1086,7 @@ const TYPES = {
   },
   [IDS.ALUMINA]: {
     i: IDS.ALUMINA,
-    name: "Alumina",
+    name: 'Alumina',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1095,7 +1095,7 @@ const TYPES = {
   },
   [IDS.SODIUM_HYDROXIDE]: {
     i: IDS.SODIUM_HYDROXIDE,
-    name: "Sodium Hydroxide",
+    name: 'Sodium Hydroxide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.BASE,
     massPerUnit: 1000,
@@ -1104,7 +1104,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_HYDROXIDE]: {
     i: IDS.POTASSIUM_HYDROXIDE,
-    name: "Potassium Hydroxide",
+    name: 'Potassium Hydroxide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.BASE,
     massPerUnit: 1000,
@@ -1113,7 +1113,7 @@ const TYPES = {
   },
   [IDS.SOYBEANS]: {
     i: IDS.SOYBEANS,
-    name: "Soybeans",
+    name: 'Soybeans',
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.INGREDIENT,
     massPerUnit: 1000,
@@ -1122,7 +1122,7 @@ const TYPES = {
   },
   [IDS.POTATOES]: {
     i: IDS.POTATOES,
-    name: "Potatoes",
+    name: 'Potatoes',
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.INGREDIENT,
     massPerUnit: 1000,
@@ -1131,7 +1131,7 @@ const TYPES = {
   },
   [IDS.AMMONIUM_OXALATE]: {
     i: IDS.AMMONIUM_OXALATE,
-    name: "Ammonium Oxalate",
+    name: 'Ammonium Oxalate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1140,7 +1140,7 @@ const TYPES = {
   },
   [IDS.RARE_EARTH_SULFATES]: {
     i: IDS.RARE_EARTH_SULFATES,
-    name: "Rare Earth Sulfates",
+    name: 'Rare Earth Sulfates',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SULFATE,
     massPerUnit: 1000,
@@ -1149,7 +1149,7 @@ const TYPES = {
   },
   [IDS.FERROCHROMIUM]: {
     i: IDS.FERROCHROMIUM,
-    name: "Ferrochromium",
+    name: 'Ferrochromium',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
@@ -1158,7 +1158,7 @@ const TYPES = {
   },
   [IDS.YELLOWCAKE]: {
     i: IDS.YELLOWCAKE,
-    name: "Yellowcake",
+    name: 'Yellowcake',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1167,7 +1167,7 @@ const TYPES = {
   },
   [IDS.ALUMINA_CERAMIC]: {
     i: IDS.ALUMINA_CERAMIC,
-    name: "Alumina Ceramic",
+    name: 'Alumina Ceramic',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.CERAMIC,
     massPerUnit: 1000,
@@ -1176,7 +1176,7 @@ const TYPES = {
   },
   [IDS.AUSTENITIC_NICHROME]: {
     i: IDS.AUSTENITIC_NICHROME,
-    name: "Austenitic Nichrome",
+    name: 'Austenitic Nichrome',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
@@ -1185,7 +1185,7 @@ const TYPES = {
   },
   [IDS.COPPER_WIRE]: {
     i: IDS.COPPER_WIRE,
-    name: "Copper Wire",
+    name: 'Copper Wire',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -1194,7 +1194,7 @@ const TYPES = {
   },
   [IDS.SILICON_WAFER]: {
     i: IDS.SILICON_WAFER,
-    name: "Silicon Wafer",
+    name: 'Silicon Wafer',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.CRYSTAL,
     massPerUnit: 1000,
@@ -1203,7 +1203,7 @@ const TYPES = {
   },
   [IDS.STEEL_CABLE]: {
     i: IDS.STEEL_CABLE,
-    name: "Steel Cable",
+    name: 'Steel Cable',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -1212,7 +1212,7 @@ const TYPES = {
   },
   [IDS.POLYACRYLONITRILE]: {
     i: IDS.POLYACRYLONITRILE,
-    name: "Polyacrylonitrile",
+    name: 'Polyacrylonitrile',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.POLYMER,
     massPerUnit: 1000,
@@ -1221,7 +1221,7 @@ const TYPES = {
   },
   [IDS.NATURAL_FLAVORINGS]: {
     i: IDS.NATURAL_FLAVORINGS,
-    name: "Natural Flavorings",
+    name: 'Natural Flavorings',
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.INGREDIENT,
     massPerUnit: 1000,
@@ -1230,7 +1230,7 @@ const TYPES = {
   },
   [IDS.PLATINUM]: {
     i: IDS.PLATINUM,
-    name: "Platinum",
+    name: 'Platinum',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -1239,7 +1239,7 @@ const TYPES = {
   },
   [IDS.LITHIUM_CHLORIDE]: {
     i: IDS.LITHIUM_CHLORIDE,
-    name: "Lithium Chloride",
+    name: 'Lithium Chloride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1248,7 +1248,7 @@ const TYPES = {
   },
   [IDS.ZINC]: {
     i: IDS.ZINC,
-    name: "Zinc",
+    name: 'Zinc',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -1257,7 +1257,7 @@ const TYPES = {
   },
   [IDS.EPICHLOROHYDRIN]: {
     i: IDS.EPICHLOROHYDRIN,
-    name: "Epichlorohydrin",
+    name: 'Epichlorohydrin',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
@@ -1266,7 +1266,7 @@ const TYPES = {
   },
   [IDS.BISPHENOL_A]: {
     i: IDS.BISPHENOL_A,
-    name: "Bisphenol A",
+    name: 'Bisphenol A',
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.GROWN_ORGANIC,
     massPerUnit: 1000,
@@ -1275,7 +1275,7 @@ const TYPES = {
   },
   [IDS.RARE_EARTH_OXIDES]: {
     i: IDS.RARE_EARTH_OXIDES,
-    name: "Rare Earth Oxides",
+    name: 'Rare Earth Oxides',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1284,7 +1284,7 @@ const TYPES = {
   },
   [IDS.AMMONIUM_CHLORIDE]: {
     i: IDS.AMMONIUM_CHLORIDE,
-    name: "Ammonium Chloride",
+    name: 'Ammonium Chloride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1293,7 +1293,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM]: {
     i: IDS.ALUMINIUM,
-    name: "Aluminium",
+    name: 'Aluminium',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -1302,7 +1302,7 @@ const TYPES = {
   },
   [IDS.CALCIUM]: {
     i: IDS.CALCIUM,
-    name: "Calcium",
+    name: 'Calcium',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -1311,7 +1311,7 @@ const TYPES = {
   },
   [IDS.SODIUM_CHROMATE]: {
     i: IDS.SODIUM_CHROMATE,
-    name: "Sodium Chromate",
+    name: 'Sodium Chromate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1320,7 +1320,7 @@ const TYPES = {
   },
   [IDS.LEACHED_COFFINITE]: {
     i: IDS.LEACHED_COFFINITE,
-    name: "Leached Coffinite",
+    name: 'Leached Coffinite',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SEMI_REFINED,
     massPerUnit: 1000,
@@ -1329,7 +1329,7 @@ const TYPES = {
   },
   [IDS.URANYL_NITRATE]: {
     i: IDS.URANYL_NITRATE,
-    name: "Uranyl Nitrate",
+    name: 'Uranyl Nitrate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.NITRATE,
     massPerUnit: 1000,
@@ -1338,7 +1338,7 @@ const TYPES = {
   },
   [IDS.FLUORINE]: {
     i: IDS.FLUORINE,
-    name: "Fluorine",
+    name: 'Fluorine',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
@@ -1347,7 +1347,7 @@ const TYPES = {
   },
   [IDS.SODIUM_TUNGSTATE]: {
     i: IDS.SODIUM_TUNGSTATE,
-    name: "Sodium Tungstate",
+    name: 'Sodium Tungstate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1356,7 +1356,7 @@ const TYPES = {
   },
   [IDS.FERRITE]: {
     i: IDS.FERRITE,
-    name: "Ferrite",
+    name: 'Ferrite',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
@@ -1365,7 +1365,7 @@ const TYPES = {
   },
   [IDS.DIODE]: {
     i: IDS.DIODE,
-    name: "Diode",
+    name: 'Diode',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -1374,7 +1374,7 @@ const TYPES = {
   },
   [IDS.LASER_DIODE]: {
     i: IDS.LASER_DIODE,
-    name: "Laser Diode",
+    name: 'Laser Diode',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -1383,7 +1383,7 @@ const TYPES = {
   },
   [IDS.BALL_VALVE]: {
     i: IDS.BALL_VALVE,
-    name: "Ball Valve",
+    name: 'Ball Valve',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 1000,
@@ -1392,7 +1392,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_BEAM]: {
     i: IDS.ALUMINIUM_BEAM,
-    name: "Aluminium Beam",
+    name: 'Aluminium Beam',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -1401,7 +1401,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_SHEET]: {
     i: IDS.ALUMINIUM_SHEET,
-    name: "Aluminium Sheet",
+    name: 'Aluminium Sheet',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -1410,7 +1410,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_PIPE]: {
     i: IDS.ALUMINIUM_PIPE,
-    name: "Aluminium Pipe",
+    name: 'Aluminium Pipe',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -1419,7 +1419,7 @@ const TYPES = {
   },
   [IDS.POLYACRYLONITRILE_FABRIC]: {
     i: IDS.POLYACRYLONITRILE_FABRIC,
-    name: "Polyacrylonitrile Fabric",
+    name: 'Polyacrylonitrile Fabric',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.FABRIC,
     massPerUnit: 1000,
@@ -1428,7 +1428,7 @@ const TYPES = {
   },
   [IDS.COLD_GAS_THRUSTER]: {
     i: IDS.COLD_GAS_THRUSTER,
-    name: "Cold Gas Thruster",
+    name: 'Cold Gas Thruster',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 3000,
@@ -1437,7 +1437,7 @@ const TYPES = {
   },
   [IDS.COLD_GAS_TORQUE_THRUSTER]: {
     i: IDS.COLD_GAS_TORQUE_THRUSTER,
-    name: "Cold Gas Torque Thruster",
+    name: 'Cold Gas Torque Thruster',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 3000,
@@ -1446,7 +1446,7 @@ const TYPES = {
   },
   [IDS.CARBON_FIBER]: {
     i: IDS.CARBON_FIBER,
-    name: "Carbon Fiber",
+    name: 'Carbon Fiber',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.FABRIC,
     massPerUnit: 1000,
@@ -1455,7 +1455,7 @@ const TYPES = {
   },
   [IDS.FOOD]: {
     i: IDS.FOOD,
-    name: "Food",
+    name: 'Food',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.FOOD,
     massPerUnit: 1000,
@@ -1464,7 +1464,7 @@ const TYPES = {
   },
   [IDS.SMALL_PROPELLANT_TANK]: {
     i: IDS.SMALL_PROPELLANT_TANK,
-    name: "Small Propellant Tank",
+    name: 'Small Propellant Tank',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 6000,
@@ -1473,7 +1473,7 @@ const TYPES = {
   },
   [IDS.BOROSILICATE_GLASS]: {
     i: IDS.BOROSILICATE_GLASS,
-    name: "Borosilicate Glass",
+    name: 'Borosilicate Glass',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_GLASS,
     massPerUnit: 1000,
@@ -1482,7 +1482,7 @@ const TYPES = {
   },
   [IDS.BALL_BEARING]: {
     i: IDS.BALL_BEARING,
-    name: "Ball Bearing",
+    name: 'Ball Bearing',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 1000,
@@ -1491,7 +1491,7 @@ const TYPES = {
   },
   [IDS.LARGE_THRUST_BEARING]: {
     i: IDS.LARGE_THRUST_BEARING,
-    name: "Large Thrust Bearing",
+    name: 'Large Thrust Bearing',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 2000000,
@@ -1500,7 +1500,7 @@ const TYPES = {
   },
   [IDS.BORON]: {
     i: IDS.BORON,
-    name: "Boron",
+    name: 'Boron',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.NONMETAL,
     massPerUnit: 1000,
@@ -1509,7 +1509,7 @@ const TYPES = {
   },
   [IDS.LITHIUM]: {
     i: IDS.LITHIUM,
-    name: "Lithium",
+    name: 'Lithium',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -1518,7 +1518,7 @@ const TYPES = {
   },
   [IDS.EPOXY]: {
     i: IDS.EPOXY,
-    name: "Epoxy",
+    name: 'Epoxy',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ADHESIVE,
     massPerUnit: 1000,
@@ -1527,7 +1527,7 @@ const TYPES = {
   },
   [IDS.NEODYMIUM_OXIDE]: {
     i: IDS.NEODYMIUM_OXIDE,
-    name: "Neodymium Oxide",
+    name: 'Neodymium Oxide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1536,7 +1536,7 @@ const TYPES = {
   },
   [IDS.YTTRIA]: {
     i: IDS.YTTRIA,
-    name: "Yttria",
+    name: 'Yttria',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1545,7 +1545,7 @@ const TYPES = {
   },
   [IDS.SODIUM_DICHROMATE]: {
     i: IDS.SODIUM_DICHROMATE,
-    name: "Sodium Dichromate",
+    name: 'Sodium Dichromate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1554,7 +1554,7 @@ const TYPES = {
   },
   [IDS.NOVOLAK_PREPOLYMER_RESIN]: {
     i: IDS.NOVOLAK_PREPOLYMER_RESIN,
-    name: "Novolak Prepolymer Resin",
+    name: 'Novolak Prepolymer Resin',
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.GROWN_ORGANIC,
     massPerUnit: 1000,
@@ -1563,7 +1563,7 @@ const TYPES = {
   },
   [IDS.FERROMOLYBDENUM]: {
     i: IDS.FERROMOLYBDENUM,
-    name: "Ferromolybdenum",
+    name: 'Ferromolybdenum',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
@@ -1572,7 +1572,7 @@ const TYPES = {
   },
   [IDS.AMMONIUM_DIURANATE]: {
     i: IDS.AMMONIUM_DIURANATE,
-    name: "Ammonium Diuranate",
+    name: 'Ammonium Diuranate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1581,7 +1581,7 @@ const TYPES = {
   },
   [IDS.AMMONIUM_PARATUNGSTATE]: {
     i: IDS.AMMONIUM_PARATUNGSTATE,
-    name: "Ammonium Paratungstate",
+    name: 'Ammonium Paratungstate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1590,7 +1590,7 @@ const TYPES = {
   },
   [IDS.ENGINE_BELL]: {
     i: IDS.ENGINE_BELL,
-    name: "Engine Bell",
+    name: 'Engine Bell',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 300000,
@@ -1599,7 +1599,7 @@ const TYPES = {
   },
   [IDS.STEEL_TRUSS]: {
     i: IDS.STEEL_TRUSS,
-    name: "Steel Truss",
+    name: 'Steel Truss',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 1500000,
@@ -1608,7 +1608,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_HULL_PLATE]: {
     i: IDS.ALUMINIUM_HULL_PLATE,
-    name: "Aluminium Hull Plate",
+    name: 'Aluminium Hull Plate',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 600000,
@@ -1617,7 +1617,7 @@ const TYPES = {
   },
   [IDS.ALUMINIUM_TRUSS]: {
     i: IDS.ALUMINIUM_TRUSS,
-    name: "Aluminium Truss",
+    name: 'Aluminium Truss',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 1000000,
@@ -1626,7 +1626,7 @@ const TYPES = {
   },
   [IDS.CARGO_MODULE]: {
     i: IDS.CARGO_MODULE,
-    name: "Cargo Module",
+    name: 'Cargo Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 5000000,
@@ -1635,7 +1635,7 @@ const TYPES = {
   },
   [IDS.PRESSURE_VESSEL]: {
     i: IDS.PRESSURE_VESSEL,
-    name: "Pressure Vessel",
+    name: 'Pressure Vessel',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 1850000,
@@ -1644,7 +1644,7 @@ const TYPES = {
   },
   [IDS.PROPELLANT_TANK]: {
     i: IDS.PROPELLANT_TANK,
-    name: "Propellant Tank",
+    name: 'Propellant Tank',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 3500000,
@@ -1653,7 +1653,7 @@ const TYPES = {
   },
   [IDS.STAINLESS_STEEL]: {
     i: IDS.STAINLESS_STEEL,
-    name: "Stainless Steel",
+    name: 'Stainless Steel',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
@@ -1662,7 +1662,7 @@ const TYPES = {
   },
   [IDS.BARE_CIRCUIT_BOARD]: {
     i: IDS.BARE_CIRCUIT_BOARD,
-    name: "Bare Circuit Board",
+    name: 'Bare Circuit Board',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -1671,7 +1671,7 @@ const TYPES = {
   },
   [IDS.FERRITE_BEAD_INDUCTOR]: {
     i: IDS.FERRITE_BEAD_INDUCTOR,
-    name: "Ferrite-bead Inductor",
+    name: 'Ferrite-bead Inductor',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -1680,7 +1680,7 @@ const TYPES = {
   },
   [IDS.CORE_DRILL_BIT]: {
     i: IDS.CORE_DRILL_BIT,
-    name: "Core Drill Bit",
+    name: 'Core Drill Bit',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 2000,
@@ -1689,7 +1689,7 @@ const TYPES = {
   },
   [IDS.CORE_DRILL_THRUSTER]: {
     i: IDS.CORE_DRILL_THRUSTER,
-    name: "Core Drill Thruster",
+    name: 'Core Drill Thruster',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 10000,
@@ -1698,7 +1698,7 @@ const TYPES = {
   },
   [IDS.PARABOLIC_DISH]: {
     i: IDS.PARABOLIC_DISH,
-    name: "Parabolic Dish",
+    name: 'Parabolic Dish',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 72000,
@@ -1707,7 +1707,7 @@ const TYPES = {
   },
   [IDS.PHOTOVOLTAIC_PANEL]: {
     i: IDS.PHOTOVOLTAIC_PANEL,
-    name: "Photovoltaic Panel",
+    name: 'Photovoltaic Panel',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 8000,
@@ -1716,7 +1716,7 @@ const TYPES = {
   },
   [IDS.LIPO_BATTERY]: {
     i: IDS.LIPO_BATTERY,
-    name: "LiPo Battery",
+    name: 'LiPo Battery',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 5000,
@@ -1725,7 +1725,7 @@ const TYPES = {
   },
   [IDS.NEODYMIUM_TRICHLORIDE]: {
     i: IDS.NEODYMIUM_TRICHLORIDE,
-    name: "Neodymium Trichloride",
+    name: 'Neodymium Trichloride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SALT,
     massPerUnit: 1000,
@@ -1734,7 +1734,7 @@ const TYPES = {
   },
   [IDS.CHROMIA]: {
     i: IDS.CHROMIA,
-    name: "Chromia",
+    name: 'Chromia',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1743,7 +1743,7 @@ const TYPES = {
   },
   [IDS.PHOTORESIST_EPOXY]: {
     i: IDS.PHOTORESIST_EPOXY,
-    name: "Photoresist Epoxy",
+    name: 'Photoresist Epoxy',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ADHESIVE,
     massPerUnit: 1000,
@@ -1752,7 +1752,7 @@ const TYPES = {
   },
   [IDS.URANIUM_DIOXIDE]: {
     i: IDS.URANIUM_DIOXIDE,
-    name: "Uranium Dioxide",
+    name: 'Uranium Dioxide',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -1761,7 +1761,7 @@ const TYPES = {
   },
   [IDS.TUNGSTEN]: {
     i: IDS.TUNGSTEN,
-    name: "Tungsten",
+    name: 'Tungsten',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -1770,7 +1770,7 @@ const TYPES = {
   },
   [IDS.SHUTTLE_HULL]: {
     i: IDS.SHUTTLE_HULL,
-    name: "Shuttle Hull",
+    name: 'Shuttle Hull',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_HULL,
     massPerUnit: 44600000,
@@ -1779,7 +1779,7 @@ const TYPES = {
   },
   [IDS.LIGHT_TRANSPORT_HULL]: {
     i: IDS.LIGHT_TRANSPORT_HULL,
-    name: "Light Transport Hull",
+    name: 'Light Transport Hull',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_HULL,
     massPerUnit: 74200000,
@@ -1788,7 +1788,7 @@ const TYPES = {
   },
   [IDS.CARGO_RING]: {
     i: IDS.CARGO_RING,
-    name: "Cargo Ring",
+    name: 'Cargo Ring',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 10000000,
@@ -1797,7 +1797,7 @@ const TYPES = {
   },
   [IDS.HEAVY_TRANSPORT_HULL]: {
     i: IDS.HEAVY_TRANSPORT_HULL,
-    name: "Heavy Transport Hull",
+    name: 'Heavy Transport Hull',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_HULL,
     massPerUnit: 480400000,
@@ -1806,7 +1806,7 @@ const TYPES = {
   },
   [IDS.TUNGSTEN_POWDER]: {
     i: IDS.TUNGSTEN_POWDER,
-    name: "Tungsten Powder",
+    name: 'Tungsten Powder',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.POWDER,
     massPerUnit: 1000,
@@ -1815,7 +1815,7 @@ const TYPES = {
   },
   [IDS.HYDROGEN_PROPELLANT]: {
     i: IDS.HYDROGEN_PROPELLANT,
-    name: "Hydrogen Propellant",
+    name: 'Hydrogen Propellant',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.PROPELLANT,
     massPerUnit: 1000,
@@ -1824,7 +1824,7 @@ const TYPES = {
   },
   [IDS.STAINLESS_STEEL_SHEET]: {
     i: IDS.STAINLESS_STEEL_SHEET,
-    name: "Stainless Steel Sheet",
+    name: 'Stainless Steel Sheet',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -1833,7 +1833,7 @@ const TYPES = {
   },
   [IDS.STAINLESS_STEEL_PIPE]: {
     i: IDS.STAINLESS_STEEL_PIPE,
-    name: "Stainless Steel Pipe",
+    name: 'Stainless Steel Pipe',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
@@ -1842,7 +1842,7 @@ const TYPES = {
   },
   [IDS.CCD]: {
     i: IDS.CCD,
-    name: "CCD",
+    name: 'CCD',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRO_OPTICAL,
     massPerUnit: 1000,
@@ -1851,7 +1851,7 @@ const TYPES = {
   },
   [IDS.COMPUTER_CHIP]: {
     i: IDS.COMPUTER_CHIP,
-    name: "Computer Chip",
+    name: 'Computer Chip',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -1860,7 +1860,7 @@ const TYPES = {
   },
   [IDS.CORE_DRILL]: {
     i: IDS.CORE_DRILL,
-    name: "Core Drill",
+    name: 'Core Drill',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.TOOL,
     massPerUnit: 30000,
@@ -1869,7 +1869,7 @@ const TYPES = {
   },
   [IDS.NEODYMIUM]: {
     i: IDS.NEODYMIUM,
-    name: "Neodymium",
+    name: 'Neodymium',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_RARE_EARTH,
     massPerUnit: 1000,
@@ -1878,7 +1878,7 @@ const TYPES = {
   },
   [IDS.CHROMIUM]: {
     i: IDS.CHROMIUM,
-    name: "Chromium",
+    name: 'Chromium',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -1887,7 +1887,7 @@ const TYPES = {
   },
   [IDS.URANIUM_TETRAFLUORIDE]: {
     i: IDS.URANIUM_TETRAFLUORIDE,
-    name: "Uranium Tetrafluoride",
+    name: 'Uranium Tetrafluoride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
@@ -1896,7 +1896,7 @@ const TYPES = {
   },
   [IDS.PURE_NITROGEN]: {
     i: IDS.PURE_NITROGEN,
-    name: "Pure Nitrogen",
+    name: 'Pure Nitrogen',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_VOLATILE,
     massPerUnit: 1000,
@@ -1905,7 +1905,7 @@ const TYPES = {
   },
   [IDS.ND_YAG_LASER_ROD]: {
     i: IDS.ND_YAG_LASER_ROD,
-    name: "Nd:YAG Laser Rod",
+    name: 'Nd:YAG Laser Rod',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.CRYSTAL,
     massPerUnit: 1000,
@@ -1914,7 +1914,7 @@ const TYPES = {
   },
   [IDS.NICHROME]: {
     i: IDS.NICHROME,
-    name: "Nichrome",
+    name: 'Nichrome',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
@@ -1923,7 +1923,7 @@ const TYPES = {
   },
   [IDS.NEODYMIUM_MAGNET]: {
     i: IDS.NEODYMIUM_MAGNET,
-    name: "Neodymium Magnet",
+    name: 'Neodymium Magnet',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 1000,
@@ -1932,7 +1932,7 @@ const TYPES = {
   },
   [IDS.UNENRICHED_URANIUM_HEXAFLUORIDE]: {
     i: IDS.UNENRICHED_URANIUM_HEXAFLUORIDE,
-    name: "Unenriched Uranium Hexafluoride",
+    name: 'Unenriched Uranium Hexafluoride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
@@ -1941,7 +1941,7 @@ const TYPES = {
   },
   [IDS.HIGHLY_ENRICHED_URANIUM_HEXAFLUORIDE]: {
     i: IDS.HIGHLY_ENRICHED_URANIUM_HEXAFLUORIDE,
-    name: "Highly Enriched Uranium Hexafluoride",
+    name: 'Highly Enriched Uranium Hexafluoride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
@@ -1950,7 +1950,7 @@ const TYPES = {
   },
   [IDS.ND_YAG_LASER]: {
     i: IDS.ND_YAG_LASER,
-    name: "Nd:YAG Laser",
+    name: 'Nd:YAG Laser',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRO_OPTICAL,
     massPerUnit: 1000,
@@ -1959,7 +1959,7 @@ const TYPES = {
   },
   [IDS.THIN_FILM_RESISTOR]: {
     i: IDS.THIN_FILM_RESISTOR,
-    name: "Thin-film Resistor",
+    name: 'Thin-film Resistor',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -1968,7 +1968,7 @@ const TYPES = {
   },
   [IDS.HIGHLY_ENRICHED_URANIUM_POWDER]: {
     i: IDS.HIGHLY_ENRICHED_URANIUM_POWDER,
-    name: "Highly Enriched Uranium Powder",
+    name: 'Highly Enriched Uranium Powder',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_FISSILE,
     massPerUnit: 1000,
@@ -1977,7 +1977,7 @@ const TYPES = {
   },
   [IDS.LEACHED_FELDSPAR]: {
     i: IDS.LEACHED_FELDSPAR,
-    name: "Leached Feldspar",
+    name: 'Leached Feldspar',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SEMI_REFINED,
     massPerUnit: 1000,
@@ -1986,7 +1986,7 @@ const TYPES = {
   },
   [IDS.ROASTED_RHABDITE]: {
     i: IDS.ROASTED_RHABDITE,
-    name: "Roasted Rhabdite",
+    name: 'Roasted Rhabdite',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SEMI_REFINED,
     massPerUnit: 1000,
@@ -1995,7 +1995,7 @@ const TYPES = {
   },
   [IDS.RHABDITE_SLAG]: {
     i: IDS.RHABDITE_SLAG,
-    name: "Rhabdite Slag",
+    name: 'Rhabdite Slag',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SEMI_REFINED,
     massPerUnit: 1000,
@@ -2004,7 +2004,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_CARBONATE]: {
     i: IDS.POTASSIUM_CARBONATE,
-    name: "Potassium Carbonate",
+    name: 'Potassium Carbonate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
@@ -2013,7 +2013,7 @@ const TYPES = {
   },
   [IDS.HYDROGEN_HEPTAFLUOROTANTALATE_AND_NIOBATE]: {
     i: IDS.HYDROGEN_HEPTAFLUOROTANTALATE_AND_NIOBATE,
-    name: "Hydrogen Heptafluorotantalate and Niobate",
+    name: 'Hydrogen Heptafluorotantalate and Niobate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
@@ -2022,7 +2022,7 @@ const TYPES = {
   },
   [IDS.LEAD]: {
     i: IDS.LEAD,
-    name: "Lead",
+    name: 'Lead',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -2031,7 +2031,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_FLUORIDE]: {
     i: IDS.POTASSIUM_FLUORIDE,
-    name: "Potassium Fluoride",
+    name: 'Potassium Fluoride',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
@@ -2040,7 +2040,7 @@ const TYPES = {
   },
   [IDS.POTASSIUM_HEPTAFLUOROTANTALATE]: {
     i: IDS.POTASSIUM_HEPTAFLUOROTANTALATE,
-    name: "Potassium Heptafluorotantalate",
+    name: 'Potassium Heptafluorotantalate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
@@ -2049,7 +2049,7 @@ const TYPES = {
   },
   [IDS.DIEPOXY_PREPOLYMER_RESIN]: {
     i: IDS.DIEPOXY_PREPOLYMER_RESIN,
-    name: "Diepoxy Prepolymer Resin",
+    name: 'Diepoxy Prepolymer Resin',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
@@ -2058,7 +2058,7 @@ const TYPES = {
   },
   [IDS.TANTALUM]: {
     i: IDS.TANTALUM,
-    name: "Tantalum",
+    name: 'Tantalum',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
@@ -2067,7 +2067,7 @@ const TYPES = {
   },
   [IDS.PEDOT]: {
     i: IDS.PEDOT,
-    name: "PEDOT",
+    name: 'PEDOT',
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.GROWN_ORGANIC,
     massPerUnit: 1000,
@@ -2076,7 +2076,7 @@ const TYPES = {
   },
   [IDS.POLYMER_TANTALUM_CAPACITOR]: {
     i: IDS.POLYMER_TANTALUM_CAPACITOR,
-    name: "Polymer Tantalum Capacitor",
+    name: 'Polymer Tantalum Capacitor',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -2085,7 +2085,7 @@ const TYPES = {
   },
   [IDS.SURFACE_MOUNT_DEVICE_REEL]: {
     i: IDS.SURFACE_MOUNT_DEVICE_REEL,
-    name: "Surface Mount Device Reel",
+    name: 'Surface Mount Device Reel',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 5000,
@@ -2094,7 +2094,7 @@ const TYPES = {
   },
   [IDS.CIRCUIT_BOARD]: {
     i: IDS.CIRCUIT_BOARD,
-    name: "Circuit Board",
+    name: 'Circuit Board',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -2103,7 +2103,7 @@ const TYPES = {
   },
   [IDS.BRUSHLESS_MOTOR_STATOR]: {
     i: IDS.BRUSHLESS_MOTOR_STATOR,
-    name: "Brushless Motor Stator",
+    name: 'Brushless Motor Stator',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 3000,
@@ -2112,7 +2112,7 @@ const TYPES = {
   },
   [IDS.BRUSHLESS_MOTOR_ROTOR]: {
     i: IDS.BRUSHLESS_MOTOR_ROTOR,
-    name: "Brushless Motor Rotor",
+    name: 'Brushless Motor Rotor',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 3000,
@@ -2121,7 +2121,7 @@ const TYPES = {
   },
   [IDS.BRUSHLESS_MOTOR]: {
     i: IDS.BRUSHLESS_MOTOR,
-    name: "Brushless Motor",
+    name: 'Brushless Motor',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 6000,
@@ -2130,7 +2130,7 @@ const TYPES = {
   },
   [IDS.LANDING_LEG]: {
     i: IDS.LANDING_LEG,
-    name: "Landing Leg",
+    name: 'Landing Leg',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_PART,
     massPerUnit: 816000,
@@ -2139,7 +2139,7 @@ const TYPES = {
   },
   [IDS.LANDING_AUGER]: {
     i: IDS.LANDING_AUGER,
-    name: "Landing Auger",
+    name: 'Landing Auger',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_PART,
     massPerUnit: 144000,
@@ -2148,7 +2148,7 @@ const TYPES = {
   },
   [IDS.PUMP]: {
     i: IDS.PUMP,
-    name: "Pump",
+    name: 'Pump',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 8000,
@@ -2157,7 +2157,7 @@ const TYPES = {
   },
   [IDS.RADIO_ANTENNA]: {
     i: IDS.RADIO_ANTENNA,
-    name: "Radio Antenna",
+    name: 'Radio Antenna',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 75000,
@@ -2166,7 +2166,7 @@ const TYPES = {
   },
   [IDS.FIBER_OPTIC_GYROSCOPE]: {
     i: IDS.FIBER_OPTIC_GYROSCOPE,
-    name: "Fiber Optic Gyroscope",
+    name: 'Fiber Optic Gyroscope',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRO_OPTICAL,
     massPerUnit: 2000,
@@ -2175,7 +2175,7 @@ const TYPES = {
   },
   [IDS.STAR_TRACKER]: {
     i: IDS.STAR_TRACKER,
-    name: "Star Tracker",
+    name: 'Star Tracker',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRO_OPTICAL,
     massPerUnit: 2000,
@@ -2184,7 +2184,7 @@ const TYPES = {
   },
   [IDS.COMPUTER]: {
     i: IDS.COMPUTER,
-    name: "Computer",
+    name: 'Computer',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
@@ -2193,7 +2193,7 @@ const TYPES = {
   },
   [IDS.CONTROL_MOMENT_GYROSCOPE]: {
     i: IDS.CONTROL_MOMENT_GYROSCOPE,
-    name: "Control Moment Gyroscope",
+    name: 'Control Moment Gyroscope',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 160000,
@@ -2202,7 +2202,7 @@ const TYPES = {
   },
   [IDS.ROBOTIC_ARM]: {
     i: IDS.ROBOTIC_ARM,
-    name: "Robotic Arm",
+    name: 'Robotic Arm',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 300000,
@@ -2211,7 +2211,7 @@ const TYPES = {
   },
   [IDS.BERYLLIUM_CARBONATE]: {
     i: IDS.BERYLLIUM_CARBONATE,
-    name: "Beryllium Carbonate",
+    name: 'Beryllium Carbonate',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
@@ -2220,7 +2220,7 @@ const TYPES = {
   },
   [IDS.BERYLLIA]: {
     i: IDS.BERYLLIA,
-    name: "Beryllia",
+    name: 'Beryllia',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
@@ -2229,7 +2229,7 @@ const TYPES = {
   },
   [IDS.BERYLLIA_CERAMIC]: {
     i: IDS.BERYLLIA_CERAMIC,
-    name: "Beryllia Ceramic",
+    name: 'Beryllia Ceramic',
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.CERAMIC,
     massPerUnit: 1000,
@@ -2238,7 +2238,7 @@ const TYPES = {
   },
   [IDS.NEON]: {
     i: IDS.NEON,
-    name: "Neon",
+    name: 'Neon',
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_VOLATILE,
     massPerUnit: 1000,
@@ -2247,7 +2247,7 @@ const TYPES = {
   },
   [IDS.HEAT_EXCHANGER]: {
     i: IDS.HEAT_EXCHANGER,
-    name: "Heat Exchanger",
+    name: 'Heat Exchanger',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 40000,
@@ -2256,7 +2256,7 @@ const TYPES = {
   },
   [IDS.TURBOPUMP]: {
     i: IDS.TURBOPUMP,
-    name: "Turbopump",
+    name: 'Turbopump',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 290000,
@@ -2265,7 +2265,7 @@ const TYPES = {
   },
   [IDS.NEON_FUEL_SEPARATOR_CENTRIFUGE]: {
     i: IDS.NEON_FUEL_SEPARATOR_CENTRIFUGE,
-    name: "Neon/Fuel Separator Centrifuge",
+    name: 'Neon/Fuel Separator Centrifuge',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 190000,
@@ -2274,7 +2274,7 @@ const TYPES = {
   },
   [IDS.FUEL_MAKE_UP_TANK]: {
     i: IDS.FUEL_MAKE_UP_TANK,
-    name: "Fuel Make-up Tank",
+    name: 'Fuel Make-up Tank',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 100000,
@@ -2283,7 +2283,7 @@ const TYPES = {
   },
   [IDS.NEON_MAKE_UP_TANK]: {
     i: IDS.NEON_MAKE_UP_TANK,
-    name: "Neon Make-up Tank",
+    name: 'Neon Make-up Tank',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 250000,
@@ -2292,7 +2292,7 @@ const TYPES = {
   },
   [IDS.LIGHTBULB_END_MODERATORS]: {
     i: IDS.LIGHTBULB_END_MODERATORS,
-    name: "Lightbulb End Moderators",
+    name: 'Lightbulb End Moderators',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 130000,
@@ -2301,7 +2301,7 @@ const TYPES = {
   },
   [IDS.FUSED_QUARTZ_LIGHTBULB_TUBE]: {
     i: IDS.FUSED_QUARTZ_LIGHTBULB_TUBE,
-    name: "Fused Quartz Lightbulb Tube",
+    name: 'Fused Quartz Lightbulb Tube',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 50000,
@@ -2310,7 +2310,7 @@ const TYPES = {
   },
   [IDS.REACTOR_PLUMBING_ASSEMBLY]: {
     i: IDS.REACTOR_PLUMBING_ASSEMBLY,
-    name: "Reactor Plumbing Assembly",
+    name: 'Reactor Plumbing Assembly',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 1942000,
@@ -2319,7 +2319,7 @@ const TYPES = {
   },
   [IDS.FLOW_DIVIDER_MODERATOR]: {
     i: IDS.FLOW_DIVIDER_MODERATOR,
-    name: "Flow Divider Moderator",
+    name: 'Flow Divider Moderator',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 18700000,
@@ -2328,7 +2328,7 @@ const TYPES = {
   },
   [IDS.NUCLEAR_LIGHTBULB]: {
     i: IDS.NUCLEAR_LIGHTBULB,
-    name: "Nuclear Lightbulb",
+    name: 'Nuclear Lightbulb',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 180000,
@@ -2337,7 +2337,7 @@ const TYPES = {
   },
   [IDS.COMPOSITE_OVERWRAPPED_REACTOR_SHELL]: {
     i: IDS.COMPOSITE_OVERWRAPPED_REACTOR_SHELL,
-    name: "Composite-overwrapped Reactor Shell",
+    name: 'Composite-overwrapped Reactor Shell',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 6000000,
@@ -2346,7 +2346,7 @@ const TYPES = {
   },
   [IDS.CLOSED_CYCLE_GAS_CORE_NUCLEAR_REACTOR_ENGINE]: {
     i: IDS.CLOSED_CYCLE_GAS_CORE_NUCLEAR_REACTOR_ENGINE,
-    name: "Closed-cycle Gas Core Nuclear Reactor Engine",
+    name: 'Closed-cycle Gas Core Nuclear Reactor Engine',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 30000000,
@@ -2355,7 +2355,7 @@ const TYPES = {
   },
   [IDS.HABITATION_MODULE]: {
     i: IDS.HABITATION_MODULE,
-    name: "Habitation Module",
+    name: 'Habitation Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 2200000,
@@ -2364,7 +2364,7 @@ const TYPES = {
   },
   [IDS.MOBILITY_MODULE]: {
     i: IDS.MOBILITY_MODULE,
-    name: "Mobility Module",
+    name: 'Mobility Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 2000000,
@@ -2373,7 +2373,7 @@ const TYPES = {
   },
   [IDS.FLUIDS_AUTOMATION_MODULE]: {
     i: IDS.FLUIDS_AUTOMATION_MODULE,
-    name: "Fluids Automation Module",
+    name: 'Fluids Automation Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 3600000,
@@ -2382,7 +2382,7 @@ const TYPES = {
   },
   [IDS.SOLIDS_AUTOMATION_MODULE]: {
     i: IDS.SOLIDS_AUTOMATION_MODULE,
-    name: "Solids Automation Module",
+    name: 'Solids Automation Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 3600000,
@@ -2391,7 +2391,7 @@ const TYPES = {
   },
   [IDS.TERRAIN_INTERFACE_MODULE]: {
     i: IDS.TERRAIN_INTERFACE_MODULE,
-    name: "Terrain Interface Module",
+    name: 'Terrain Interface Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 960000,
@@ -2400,7 +2400,7 @@ const TYPES = {
   },
   [IDS.AVIONICS_MODULE]: {
     i: IDS.AVIONICS_MODULE,
-    name: "Avionics Module",
+    name: 'Avionics Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 500000,
@@ -2409,7 +2409,7 @@ const TYPES = {
   },
   [IDS.ESCAPE_MODULE]: {
     i: IDS.ESCAPE_MODULE,
-    name: "Escape Module",
+    name: 'Escape Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 6665000,
@@ -2418,7 +2418,7 @@ const TYPES = {
   },
   [IDS.ATTITUDE_CONTROL_MODULE]: {
     i: IDS.ATTITUDE_CONTROL_MODULE,
-    name: "Attitude Control Module",
+    name: 'Attitude Control Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 660000,
@@ -2427,7 +2427,7 @@ const TYPES = {
   },
   [IDS.POWER_MODULE]: {
     i: IDS.POWER_MODULE,
-    name: "Power Module",
+    name: 'Power Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 2000000,
@@ -2436,7 +2436,7 @@ const TYPES = {
   },
   [IDS.THERMAL_MODULE]: {
     i: IDS.THERMAL_MODULE,
-    name: "Thermal Module",
+    name: 'Thermal Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 1000000,
@@ -2445,7 +2445,7 @@ const TYPES = {
   },
   [IDS.PROPULSION_MODULE]: {
     i: IDS.PROPULSION_MODULE,
-    name: "Propulsion Module",
+    name: 'Propulsion Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 32000000,
@@ -2464,7 +2464,7 @@ const getListByCategory = (category) => {
 const getListByClassification = (classification) => {
   return Object.values(IDS)
     .filter((i) => TYPES[i].classification === classification);
-}
+};
 
 export default {
   CATEGORIES,
@@ -2474,5 +2474,5 @@ export default {
 
   getListByCategory,
   getListByClassification,
-  getType,
+  getType
 };

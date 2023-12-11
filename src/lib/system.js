@@ -9,13 +9,13 @@ const parseCairoType = (cairoType) => {
     return {
       ...parseCairoType(matchGroup),
       isArray: true
-    }
+    };
   }
 
   let type;
   if (['influence::common::types::entity::Entity'].includes(cairoType)) type = 'Entity';
   else if (['core::starknet::contract_address::ContractAddress'].includes(cairoType)) type = 'ContractAddress';
-  else if (['core::integer::u64','core::integer::u128'].includes(cairoType)) type = 'BigNumber';
+  else if (['core::integer::u64', 'core::integer::u128'].includes(cairoType)) type = 'BigNumber';
   else if (['influence::common::types::string::String', 'core::felt252'].includes(cairoType)) type = 'String';
   else if (['influence::common::types::inventory_item::InventoryItem'].includes(cairoType)) type = 'InventoryItem';
   else if (['core::bool'].includes(cairoType)) type = 'Boolean';
@@ -40,42 +40,31 @@ const Systems = Object.keys(SystemData).reduce((acc, name) => {
 const formatCalldataValue = (type, value) => {
   if (type === 'ContractAddress') {
     return value;
-  }
-  else if (type === 'Entity') {
+  } else if (type === 'Entity') {
     return [value.label, value.id];
-  }
-  else if (type === 'Number') {
+  } else if (type === 'Number') {
     return Number(value);
-  }
-  else if (type === 'String') {
+  } else if (type === 'String') {
     return value;
-  }
-  else if (type === 'Boolean') {
+  } else if (type === 'Boolean') {
     return value;
-  }
-  else if (type === 'BigNumber') {
+  } else if (type === 'BigNumber') {
     return BigInt(value);
-  }
-  else if (type === 'Ether') {
+  } else if (type === 'Ether') {
     return uint256.bnToUint256(value);
-  }
-  else if (type === 'InventoryItem') {
+  } else if (type === 'InventoryItem') {
     return [value.product, value.amount];
-  }
-  else if (type === 'Boolean') {
+  } else if (type === 'Boolean') {
     return !!value;
-  }
-  else if (type === 'Fixed64') {
+  } else if (type === 'Fixed64') {
     const neg = value < 0;
     const val = BigInt(Math.floor(Math.abs(value) * 2 ** 32));
     return [val, neg ? 1 : 0];
-  }
-  else if (type === 'Fixed128') {
+  } else if (type === 'Fixed128') {
     const neg = value < 0;
-    const val = BigInt(Math.floor(Math.abs(value) * 2 ** 64));  // TODO: this will cause precision loss, use bignumber
+    const val = BigInt(Math.floor(Math.abs(value) * 2 ** 64)); // TODO: this will cause precision loss, use bignumber
     return [val, neg ? 1 : 0];
-  }
-  else { // "Raw"
+  } else { // "Raw"
     return value;
   }
 };
@@ -106,7 +95,7 @@ const getApproveEthCall = (amount, erc20Address, dispatcherAddress) => ({
   entrypoint: 'approve',
   calldata: CallData.compile([
     formatCalldataValue('ContractAddress', dispatcherAddress),
-    formatCalldataValue('Ether', amount),
+    formatCalldataValue('Ether', amount)
   ])
 });
 
@@ -116,13 +105,11 @@ const getRunSystemCall = (name, input, dispatcherAddress) => ({
   calldata: CallData.compile({
     name,
     calldata: formatSystemCalldata(name, input)
-  }),
+  })
 });
 
 export default {
   getApproveEthCall,
   getRunSystemCall,
-
   Systems
 };
-
