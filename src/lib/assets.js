@@ -13,7 +13,7 @@ export default {
     [Building.IDS.SHIPYARD]: { iconVersion: 1, modelVersion: 1 },
     [Building.IDS.SPACEPORT]: { iconVersion: 1, modelVersion: 1 },
     [Building.IDS.MARKETPLACE]: { iconVersion: 1, modelVersion: 1 },
-    [Building.IDS.HABITAT]: { iconVersion: 1, modelVersion: 1 },
+    [Building.IDS.HABITAT]: { iconVersion: 1, modelVersion: 1 }
   },
   Product: {
     [Product.IDS.WATER]: { iconVersion: 1, modelVersion: 1 },
@@ -254,12 +254,12 @@ export default {
     [Product.IDS.ATTITUDE_CONTROL_MODULE]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.POWER_MODULE]: { iconVersion: 1, modelVersion: 1 },
     [Product.IDS.THERMAL_MODULE]: { iconVersion: 1, modelVersion: 1 },
-    [Product.IDS.PROPULSION_MODULE]: { iconVersion: 1, modelVersion: 1 },
+    [Product.IDS.PROPULSION_MODULE]: { iconVersion: 1, modelVersion: 1 }
   },
   Ship: {
     [Ship.IDS.ESCAPE_MODULE]: { iconVersion: 1, modelVersion: 1 },
     [Ship.IDS.SHUTTLE]: { iconVersion: 1, modelVersion: 1 },
     [Ship.IDS.LIGHT_TRANSPORT]: { iconVersion: 1, modelVersion: 1 },
-    [Ship.IDS.HEAVY_TRANSPORT]: { iconVersion: 1, modelVersion: 1 },
-  },
+    [Ship.IDS.HEAVY_TRANSPORT]: { iconVersion: 1, modelVersion: 1 }
+  }
 };

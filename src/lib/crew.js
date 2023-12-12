@@ -1,7 +1,7 @@
 import Crewmate from './crewmate.js';
 import Station from './station.js';
 
-const CREWMATE_STACKING_BONUS_EFFICIENCY = [ 0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875 ];
+const CREWMATE_STACKING_BONUS_EFFICIENCY = [0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875];
 const CREWMATE_FOOD_PER_YEAR = 1000; // kg / year
 const STARVING_MULTIPLIER = 0.25;
 const YEAR_IN_SECONDS = 31536000; // 60 * 60 * 24 * 365
@@ -56,7 +56,7 @@ const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
     }
 
     // If the crewmate has a title and it has a match in the departments
-    const titleInfo = crewmateTitle ? Crewmate.getTitle(crewmateTitle): {};
+    const titleInfo = crewmateTitle ? Crewmate.getTitle(crewmateTitle) : {};
 
     // Includes a half tier department bonus for Arvad Specialists
     if (titleInfo.department && ability.departments && ability.departments[titleInfo.department]) {
@@ -127,8 +127,8 @@ const getCurrentFoodRatio = (timeSinceFed = 0, consumption = 1) => {
   return Math.min(
     Math.max(
       0,
-      1 - adjustedTimeSince,          // (not fasting)
-      0.75 - 0.5 * adjustedTimeSince  // (fasting)
+      1 - adjustedTimeSince, // (not fasting)
+      0.75 - 0.5 * adjustedTimeSince // (fasting)
     ),
     1
   );
@@ -138,7 +138,7 @@ const getFoodMultiplier = (timeSinceFed = 0, consumption = 1, rationing = 1) => 
   const currentRatio = getCurrentFoodRatio(timeSinceFed, consumption, rationing);
   const adjustedRatio = 1 - ((1 - currentRatio / 0.5) / rationing);
   return Math.min(Math.max(adjustedRatio, STARVING_MULTIPLIER), 1);
-}
+};
 
 /**
  * Calculate virtual value for timeSinceFed from the current crew's food amount

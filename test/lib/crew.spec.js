@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import Crew from '../../src/lib/crew.js';
 
-describe.only('Crew library', function () {
+describe('Crew library', function () {
   it('should get bonus based on ability', function () {
     const details = Crew.getAbilityBonus(1, [ { classId: 3 }, { collectionId: 4, classId: 3, traitIds: [ 31 ]}]);
     expect(details.totalBonus.toFixed(4)).to.equal('1.3750');

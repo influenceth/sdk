@@ -318,8 +318,8 @@ const BONUS_MAPS = [
 
 const PHI = Math.PI * (3 - Math.sqrt(5));
 const TWO_PI = 2 * Math.PI;
-const RESOURCE_OCTAVE_MUL = 5;
-const RESOURCE_OCTAVE_BASE = 3;
+// const RESOURCE_OCTAVE_MUL = 5;
+// const RESOURCE_OCTAVE_BASE = 3;
 const RESOURCE_SIZE_MUL = 0.75;
 const RESOURCE_SIZE_BASE = 0.375;
 
@@ -577,13 +577,13 @@ const getAbundanceAtPosition = (point, settings) => {
  */
 const getAbundanceMapSettings = (asteroidId, resourceId, abundances) => {
   const radius = getRadius(asteroidId);
-  const octaves =  Math.floor(2 + 4 * Math.pow(radius / MAX_RADIUS, 1/3));
+  const octaves = Math.floor(2 + 4 * Math.pow(radius / MAX_RADIUS, 1 / 3));
   const radiusRatio = radius / MAX_RADIUS;
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
   const polyParams = SIMPLEX_POLY_FIT[octaves];
 
   const resourceSeed = ec.starkCurve.poseidonHashMany(
-    [ BigInt(asteroidId), BigInt(resourceId), BigInt(abundances) ]
+    [BigInt(asteroidId), BigInt(resourceId), BigInt(abundances)]
   );
 
   const xSeed = ec.starkCurve.pedersen(BigInt(resourceSeed), 1n);
@@ -760,7 +760,7 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
 const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, totalBonus = 1) => {
   const distance = getLotDistance(asteroidId, originLotIndex, destLotIndex);
   const freeTransportRadius = FREE_TRANSPORT_RADIUS * totalBonus;
-  const speed = 2.5 / 3600;  // in-game speed is 2.5 km/hr
+  const speed = 2.5 / 3600; // in-game speed is 2.5 km/hr
   return distance <= freeTransportRadius ? 0 : Math.ceil(distance / (totalBonus * speed));
 };
 

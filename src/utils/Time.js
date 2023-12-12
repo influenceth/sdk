@@ -12,47 +12,47 @@ class Time {
   // Zero date timestamp for orbits
   static ORBIT_ZERO_TIMESTAMP = 1609459200;
 
-  static fromGameClockADays(adalianClockTime) {
-    // convert from adays to elapsed seconds, then shift to zero timestamp 
+  static fromGameClockADays (adalianClockTime) {
+    // convert from adays to elapsed seconds, then shift to zero timestamp
     return new Time(
       1000 * (adalianClockTime * 3600 + Time.CLOCK_ZERO_TIMESTAMP)
     );
   }
 
-  static fromOrbitADays(elapsedOrbitADays) {
+  static fromOrbitADays (elapsedOrbitADays) {
     // convert from adays to elapsed seconds, then shift to zero timestamp
     return new Time(
       1000 * (elapsedOrbitADays * 3600 + Time.ORBIT_ZERO_TIMESTAMP)
     );
   }
 
-  static fromUnixTime(unixTime, isMS = true) {
+  static fromUnixTime (unixTime, isMS = true) {
     return new Time(unixTime * (isMS ? 1 : 1000));
   }
 
-  static toGameDuration(inRealityDuration, timeAcceleration) {
+  static toGameDuration (inRealityDuration, timeAcceleration) {
     return inRealityDuration * (timeAcceleration || Time.DEFAULT_TIME_ACCELERATION);
   }
 
-  static toRealDuration(inGameDuration, timeAcceleration) {
+  static toRealDuration (inGameDuration, timeAcceleration) {
     return inGameDuration / (timeAcceleration || Time.DEFAULT_TIME_ACCELERATION);
   }
 
   /**
    * Return the game clock time (in adays)
-   * @returns 
+   * @returns
    */
-  toGameClockADays(format = false) {
+  toGameClockADays (format = false) {
     let adays = (this.unixTimeMS / 1000 - Time.CLOCK_ZERO_TIMESTAMP) / 3600;
-    if (format) adays = adays.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    if (format) adays = adays.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     return adays;
   }
 
   /**
    * Return elapsed orbit time (in adays)
-   * @returns 
+   * @returns
    */
-  toOrbitADays() {
+  toOrbitADays () {
     return (this.unixTimeMS / 1000 - Time.ORBIT_ZERO_TIMESTAMP) / 3600;
   }
 
@@ -60,7 +60,7 @@ class Time {
    * Returns a date object
    * @returns
    */
-  toDate() {
+  toDate () {
     return new Date(this.unixTimeMS);
   }
 }

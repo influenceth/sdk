@@ -11,28 +11,28 @@ const IDS = {
 
 const TYPES = {
   [IDS.STARDUST]: {
-    choices: [ 1 ]
+    choices: [1]
   },
   [IDS.GROUNDBREAKING]: {
-    choices: [ 1 ]
+    choices: [1]
   },
   [IDS.KEEP_EM_SEPARATED]: {
-    choices: [ 1 ]
+    choices: [1]
   },
   [IDS.NO_SOUND_IN_SPACE]: {
-    choices: [ 1 ]
+    choices: [1]
   },
   [IDS.THE_CAKE_IS_A_HALF_TRUTH]: {
-    choices: [ 1 ]
+    choices: [1]
   },
   [IDS.FLY_ME_TO_THE_MOON]: {
-    choices: [ 1 ]
+    choices: [1]
   },
   [IDS.ALWAYS_LEAVE_A_NOTE]: {
-    choices: [ 1 ]
+    choices: [1]
   },
   [IDS.GREATNESS]: {
-    choices: [ 1 ]
+    choices: [1]
   }
 };
 

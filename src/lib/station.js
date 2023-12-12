@@ -3,7 +3,7 @@ const MIN_EFFICIENCY = 0.75;
 const IDS = {
   STANDARD_QUARTERS: 1,
   EXPANDED_QUARTERS: 2,
-  HABITAT: 3,
+  HABITAT: 3
 };
 
 const TYPES = {
@@ -29,7 +29,7 @@ const TYPES = {
     hardCap: false,
     recruitment: true,
     efficiency: 1.2
-  },
+  }
 };
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
@@ -42,12 +42,11 @@ const getEfficiency = (stationType, population) => {
 
   const popRatio = (population - cap) / cap;
   return MIN_EFFICIENCY + (efficiency - MIN_EFFICIENCY) * (1 - popRatio);
-}
+};
 
 export default {
   IDS,
   TYPES,
-
   getType,
   getEfficiency
-}
+};

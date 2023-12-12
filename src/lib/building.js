@@ -10,7 +10,7 @@ const IDS = {
   SHIPYARD: 6,
   SPACEPORT: 7,
   MARKETPLACE: 8,
-  HABITAT: 9,
+  HABITAT: 9
 };
 
 /**
@@ -22,20 +22,20 @@ const TYPES = {
     name: 'Empty Lot',
     description: `The microgravity environment of asteroids affects the physical
       condition of asteroid material; for example, a bed of regolith will settle
-      and become more compacted than would be found on an asteroid.`,
+      and become more compacted than would be found on an asteroid.`
   },
   [IDS.WAREHOUSE]: {
     i: IDS.WAREHOUSE,
     name: 'Warehouse',
     description: `The Warehouse provides inventory space to store items: raw
-      materials, refined materials, process modules, or finished goods.`,
+      materials, refined materials, process modules, or finished goods.`
   },
   [IDS.EXTRACTOR]: {
     i: IDS.EXTRACTOR,
     name: 'Extractor',
     description: `The Extractor is responsible for extracting the raw materials from an
       asteroid. They are tied closely to the core sampling process, and rely
-      on the availability of a core sample to be able to operate efficiently.`,
+      on the availability of a core sample to be able to operate efficiently.`
   },
   [IDS.REFINERY]: {
     i: IDS.REFINERY,
@@ -44,12 +44,12 @@ const TYPES = {
       constituent refined materials. Effectively they are responsible for
       all intermediate and un-finished goods. They utilize process modules
       to modify the targeted output which defines the recipe, and therefore
-      required inputs.`,
+      required inputs.`
   },
   [IDS.BIOREACTOR]: {
     i: IDS.BIOREACTOR,
     name: 'Bioreactor',
-    description: '',  // TODO: ...
+    description: '' // TODO: ...
   },
   [IDS.FACTORY]: {
     i: IDS.FACTORY,
@@ -57,13 +57,13 @@ const TYPES = {
     description: `All finished goods, except for ships, are produced in the Factory based
       on their installed assembly process modules. The finished goods produced
       in Factories are primarily consumables, or serve to be assembled as new
-      buildings, or new ships.`,
+      buildings, or new ships.`
   },
   [IDS.SHIPYARD]: {
     i: IDS.SHIPYARD,
     name: 'Shipyard',
     description: `The Shipyard is a specialized Factory that are required for the final
-      construction and deconstruction of ships.`,
+      construction and deconstruction of ships.`
   },
   [IDS.SPACEPORT]: {
     i: IDS.SPACEPORT,
@@ -73,7 +73,7 @@ const TYPES = {
       the Light Transport. Spaceports provide for unlimited space to land ships
       and the only facilities on the asteroid capable of loading and unloading
       those ships. Although they have unlimited space, landing is subject to a
-      queue with one landing occurring every 4 Adalian hours (10 real minutes).`,
+      queue with one landing occurring every 4 Adalian hours (10 real minutes).`
   },
   [IDS.MARKETPLACE]: {
     i: IDS.MARKETPLACE,
@@ -86,7 +86,7 @@ const TYPES = {
       Marketplace owner is further able to provide incentives to sellers to
       encourage their use of a particular Marketplace. Buyers are able to access
       a single, asteroid-wide market interface displaying items for sale, but
-      any explicit buy-orders must be placed at a specific Marketplace.`,
+      any explicit buy-orders must be placed at a specific Marketplace.`
   },
   [IDS.HABITAT]: {
     i: IDS.HABITAT,
@@ -99,7 +99,7 @@ const TYPES = {
       Food consumption rate vs. crew stationed on their ship at Spaceports or in
       flight. Although there are no limits on the number of Crewmates stationed
       at a Habitat, the Food consumption bonus diminishes when Habitats become
-      overcrowded and ultimately disappears as the level of overcrowding increases.`,
+      overcrowded and ultimately disappears as the level of overcrowding increases.`
   }
 };
 
@@ -234,8 +234,8 @@ const CONSTRUCTION_STATUSES = {
   UNPLANNED: 0,
   PLANNED: 1,
   UNDER_CONSTRUCTION: 2,
-  OPERATIONAL: 3,
-}
+  OPERATIONAL: 3
+};
 
 const CONSTRUCTION_STATUS_LABELS = {
   [CONSTRUCTION_STATUSES.UNPLANNED]: 'Unplanned',
@@ -274,5 +274,5 @@ export default {
 
   getConstructionTime,
   getConstructionType,
-  getType,
-}
+  getType
+};

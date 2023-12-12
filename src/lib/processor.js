@@ -14,4 +14,4 @@ const STATUSES = {
 export default {
   IDS,
   STATUSES
-}
+};

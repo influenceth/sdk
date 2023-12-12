@@ -1,4 +1,4 @@
-import { ec } from 'starknet';
+import { num, ec } from 'starknet';
 
 class MerkleTree {
   /**
@@ -16,7 +16,7 @@ class MerkleTree {
       bSorted = BigInt(a);
     }
 
-    return BigInt(ec.starkCurve.pedersen(aSorted, bSorted));
+    return ec.starkCurve.pedersen(aSorted, bSorted);
   }
 
   static #getNextLevel (level) {
@@ -42,9 +42,9 @@ class MerkleTree {
         indexParent = Math.floor(i / 2);
 
         if (i % 2 === 0) {
-          proof.push(BigInt(level[index + 1]));
+          proof.push(num.toHex(level[index + 1]));
         } else {
-          proof.push(BigInt(level[index - 1]));
+          proof.push(num.toHex(level[index - 1]));
         }
       }
     }
@@ -55,7 +55,7 @@ class MerkleTree {
   static #generateProofFromTree (tree, index, currentLevel, proof) {
     const level = tree[currentLevel];
     if (level.length === 1) return proof;
-    if (level.length % 2 !== 0) level.push(0n);
+    if (level.length % 2 !== 0) level.push('0x0');
 
     currentLevel++;
     let indexParent = 0;
@@ -65,9 +65,9 @@ class MerkleTree {
         indexParent = Math.floor(i / 2);
 
         if (i % 2 === 0) {
-          proof.push(BigInt(level[index + 1]));
+          proof.push(num.toHex(level[index + 1]));
         } else {
-          proof.push(BigInt(level[index - 1]));
+          proof.push(num.toHex(level[index - 1]));
         }
       }
     }
@@ -83,8 +83,8 @@ class MerkleTree {
    * @return {BigInt}
   */
   static generateRoot (values) {
-    if (values.length === 1) return values[0];
-    if (values.length % 2 !== 0) values.push(0);
+    if (values.length === 1) return num.toHex(values[0]);
+    if (values.length % 2 !== 0) values.push('0x0');
 
     const nextLevel = MerkleTree.#getNextLevel(values);
     return MerkleTree.generateRoot(nextLevel);
@@ -98,13 +98,13 @@ class MerkleTree {
   */
   static generateTree (values, tree = []) {
     if (values.length === 1) {
-      tree.push(values);
+      tree.push(values.map(num.toHex));
       return tree;
     }
 
     if (values.length % 2 !== 0) values.push(0);
 
-    tree.push(values);
+    tree.push(values.map(num.toHex));
     const nextLevel = MerkleTree.#getNextLevel(values);
     return MerkleTree.generateTree(nextLevel, tree);
   };
