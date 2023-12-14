@@ -1,5 +1,5 @@
 import { ec } from 'starknet';
-import { multiply, dot } from 'mathjs';
+import { multiply, dot, i } from 'mathjs';
 import { ethers } from 'ethers';
 
 import procedural from '../utils/procedural.js';
@@ -11,6 +11,7 @@ import Product from './product.js';
  * Constants
  */
 const FREE_TRANSPORT_RADIUS = 5; // km
+const HOPPER_SPEED = 2.5 / 3600; // in-game speed is 2.5 km/hr
 const MAX_RADIUS = 375.142; // km
 const MAX_LOT_REGIONS = 5000;
 const RARITIES = ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable'];
@@ -610,11 +611,21 @@ const getAbundanceMapSettings = (asteroidId, resourceId, abundances) => {
  */
 const getLotDistance = (asteroidId, originLotIndex, destLotIndex) => {
   if (originLotIndex === destLotIndex) return 0;
+
   const radius = getRadius(asteroidId);
-  const numLots = getSurfaceArea(asteroidId, radius);
-  const origin = multiply(getLotPosition(asteroidId, originLotIndex, numLots), radius);
-  const dest = multiply(getLotPosition(asteroidId, destLotIndex, numLots), radius);
-  return radius * Math.acos(dot(origin, dest) / (radius * radius));
+
+  // if either lot is 0, this is a surface-orbit or orbit-orbit calculation...
+  // for which we use half the antipodal distance (i.e. 1/4 the circumference)
+  if (originLotIndex === 0 || destLotIndex === 0) {
+    return radius * Math.PI / 2;  // TODO: add test for this case
+
+  // else, surface-surface calculation
+  } else {
+    const numLots = getSurfaceArea(asteroidId, radius);
+    const origin = multiply(getLotPosition(asteroidId, originLotIndex, numLots), radius);
+    const dest = multiply(getLotPosition(asteroidId, destLotIndex, numLots), radius);
+    return radius * Math.acos(dot(origin, dest) / (radius * radius));
+  }
 };
 
 /**
@@ -750,6 +761,16 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
 };
 
 /**
+ * Calculates the travel time for a hopper over a distance
+ * @param {float} distance The travel distance (in km)
+ * @param {float} totalBonus Hopper transport time bonus for the crew
+ * @return Travel time in in-game seconds
+ */
+const getHopperTravelTime = (distance, totalBonus = 1) => {
+  return Math.ceil(distance / (totalBonus * HOPPER_SPEED));
+};
+
+/**
  * Calculates the travel time between two lots considering an overall crew bonus
  * @param {integer} asteroidId The asteroid identifier
  * @param {integer} originLotIndex The starting lot identifier
@@ -758,10 +779,9 @@ const getClosestLots = ({ center, centerLot, lotTally, findTally }) => {
  * @return Travel time in in-game seconds
  */
 const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, totalBonus = 1) => {
-  const distance = getLotDistance(asteroidId, originLotIndex, destLotIndex);
   const freeTransportRadius = FREE_TRANSPORT_RADIUS * totalBonus;
-  const speed = 2.5 / 3600; // in-game speed is 2.5 km/hr
-  return distance <= freeTransportRadius ? 0 : Math.ceil(distance / (totalBonus * speed));
+  const distance = getLotDistance(asteroidId, originLotIndex, destLotIndex);
+  return distance <= freeTransportRadius ? 0 : getHopperTravelTime(distance, totalBonus);
 };
 
 /**
@@ -805,6 +825,7 @@ const getBoostFromPurchaseOrder = function (purchaseOrder) {
 export default {
   BONUS_IDS,
   FREE_TRANSPORT_RADIUS,
+  HOPPER_SPEED,
   MAX_LOT_REGIONS,
   MAX_RADIUS,
   RARITIES,
@@ -825,6 +846,7 @@ export default {
   getBonuses,
   getBoostFromPurchaseOrder,
   getClosestLots,
+  getHopperTravelTime,
   getLotDistance,
   getLotPosition,
   getLotRegionTally,

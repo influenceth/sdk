@@ -15,11 +15,6 @@ const STATUSES = {
   DISABLED: 3
 };
 
-const MODES = {
-  NORMAL: 1,
-  EMERGENCY: 2
-};
-
 const VARIANTS = {
   STANDARD: 1,
   COBALT_PIONEER: 2,
@@ -148,7 +143,6 @@ Entity.getVariant = (entity) => Component.getVariant(entity.Ship);
 export default {
   CONSTRUCTION_TYPES,
   IDS,
-  MODES,
   STATUSES,
   TYPES,
 
