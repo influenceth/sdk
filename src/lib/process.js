@@ -3754,10 +3754,23 @@ const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
 const getListByProcessorType = (processorType) => Object.values(TYPES).filter(type => type.processorType === processorType);
 
+const getProcessingTime = (processId, recipes, totalBonus = 1) => {
+  if (!TYPES[processId]) return 0;
+  const recipeTimes = TYPES[processId].batched ? Math.ceil(recipes) : recipes;
+  return recipeTimes * TYPES[processId].recipeTime / totalBonus;
+}
+
+const getSetupTime = (processId, totalBonus = 1) => {
+  if (!TYPES[processId]) return 0;
+  return TYPES[processId].setupTime / totalBonus;
+}
+
 export default {
   IDS,
   TYPES,
 
   getListByProcessorType,
+  getProcessingTime,
+  getSetupTime,
   getType
 };
