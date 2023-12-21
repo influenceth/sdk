@@ -10,7 +10,29 @@ const STATUSES = {
   CANCELLED: 3
 };
 
+const calculatePayments = (price, count, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
+  const value = price * count;
+  const makerFees = Math.floor((value * makerFee) / 10000);
+  const scaledTakerFees = value * takerFee / 10000;
+  const takerFees = Math.ceil(scaledTakerFees / netEff(takerBonus, enforceBonus));
+
+  return {
+    toExchange: makerFees + takerFees,
+    toPlayer: value - takerFees
+  };
+};
+
+const netEff = (bonus, enforceBonus = 1) => {
+  if (bonus > 1 && enforceBonus > 1) {
+      return bonus - ((bonus - 1) * (enforceBonus - 1));
+  } else {
+      return bonus;
+  }
+}
+
 export default {
   IDS,
-  STATUSES
+  STATUSES,
+
+  calculatePayments
 };

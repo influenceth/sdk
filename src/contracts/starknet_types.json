@@ -93,13 +93,27 @@
       }
     ]
   },
-  "influence::common::types::string::String": {
+  "influence::systems::orders::fill_buy::Withdrawal": {
     "type": "struct",
-    "name": "influence::common::types::string::String",
+    "name": "influence::systems::orders::fill_buy::Withdrawal",
     "members": [
       {
-        "name": "value",
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "amount",
         "type": "core::integer::u256"
+      }
+    ]
+  },
+  "core::array::Span::<influence::systems::orders::fill_buy::Withdrawal>": {
+    "type": "struct",
+    "name": "core::array::Span::<influence::systems::orders::fill_buy::Withdrawal>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<influence::systems::orders::fill_buy::Withdrawal>"
       }
     ]
   },
@@ -186,6 +200,16 @@
       {
         "name": "sign",
         "type": "core::bool"
+      }
+    ]
+  },
+  "influence::common::types::string::String": {
+    "type": "struct",
+    "name": "influence::common::types::string::String",
+    "members": [
+      {
+        "name": "value",
+        "type": "core::integer::u256"
       }
     ]
   }

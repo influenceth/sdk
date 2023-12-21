@@ -140,252 +140,13 @@
       }
     ]
   },
-  "EmergencyActivated": {
+  "PrepaidAgreementExtended": {
     "type": "event",
-    "name": "EmergencyActivated",
+    "name": "PrepaidAgreementExtended",
     "kind": "struct",
     "members": [
       {
-        "name": "ship",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "EventAnnotated": {
-    "type": "event",
-    "name": "EventAnnotated",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "transaction_hash",
-        "type": "core::felt252",
-        "kind": "data"
-      },
-      {
-        "name": "log_index",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "content_hash",
-        "type": "core::array::Span::<core::felt252>",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "CrewmatesArranged": {
-    "type": "event",
-    "name": "CrewmatesArranged",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "composition",
-        "type": "core::array::Span::<core::integer::u64>",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "CrewmatesArrangedV1": {
-    "type": "event",
-    "name": "CrewmatesArrangedV1",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "composition_old",
-        "type": "core::array::Span::<core::integer::u64>",
-        "kind": "data"
-      },
-      {
-        "name": "composition_new",
-        "type": "core::array::Span::<core::integer::u64>",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ShipAssemblyStarted": {
-    "type": "event",
-    "name": "ShipAssemblyStarted",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "ship",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "dry_dock",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "dry_dock_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "ship_type",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "finish_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ShipAssemblyStartedV1": {
-    "type": "event",
-    "name": "ShipAssemblyStartedV1",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "ship",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "ship_type",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "dry_dock",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "dry_dock_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "finish_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ShipAssemblyFinished": {
-    "type": "event",
-    "name": "ShipAssemblyFinished",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "ship",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "dry_dock",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "dry_dock_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "finish_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ContractPolicyAssigned": {
-    "type": "event",
-    "name": "ContractPolicyAssigned",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
@@ -395,34 +156,12 @@
         "kind": "data"
       },
       {
-        "name": "contract",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
+        "name": "permitted",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "PrepaidPolicyAssigned": {
-    "type": "event",
-    "name": "PrepaidPolicyAssigned",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "permission",
+        "name": "term",
         "type": "core::integer::u64",
         "kind": "data"
       },
@@ -438,33 +177,6 @@
       },
       {
         "name": "notice_period",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "PublicPolicyAssigned": {
-    "type": "event",
-    "name": "PublicPolicyAssigned",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "permission",
         "type": "core::integer::u64",
         "kind": "data"
       },
@@ -517,108 +229,9 @@
       }
     ]
   },
-  "DeliveryStarted": {
+  "RemovedFromWhitelist": {
     "type": "event",
-    "name": "DeliveryStarted",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "products",
-        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
-        "kind": "data"
-      },
-      {
-        "name": "dest",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "dest_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "delivery",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "finish_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "SellOrderCancelled": {
-    "type": "event",
-    "name": "SellOrderCancelled",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "order",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "product",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "amount",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "exchange",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "NameChanged": {
-    "type": "event",
-    "name": "NameChanged",
+    "name": "RemovedFromWhitelist",
     "kind": "struct",
     "members": [
       {
@@ -627,82 +240,16 @@
         "kind": "data"
       },
       {
-        "name": "name",
-        "type": "influence::common::types::string::String",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ArrivalRewardClaimed": {
-    "type": "event",
-    "name": "ArrivalRewardClaimed",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "PrepareForLaunchRewardClaimed": {
-    "type": "event",
-    "name": "PrepareForLaunchRewardClaimed",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "EmergencyPropellantCollected": {
-    "type": "event",
-    "name": "EmergencyPropellantCollected",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "ship",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "amount",
+        "name": "permission",
         "type": "core::integer::u64",
         "kind": "data"
       },
       {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
@@ -714,13 +261,89 @@
       }
     ]
   },
-  "ShipCommandeered": {
+  "AddedToWhitelist": {
     "type": "event",
-    "name": "ShipCommandeered",
+    "name": "AddedToWhitelist",
     "kind": "struct",
     "members": [
       {
-        "name": "ship",
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionAbandoned": {
+    "type": "event",
+    "name": "ConstructionAbandoned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionDeconstructed": {
+    "type": "event",
+    "name": "ConstructionDeconstructed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ConstructionFinished": {
+    "type": "event",
+    "name": "ConstructionFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
@@ -805,137 +428,129 @@
       }
     ]
   },
-  "ConstructionFinished": {
+  "ShipCommandeered": {
     "type": "event",
-    "name": "ConstructionFinished",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "building",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ConstructionDeconstructed": {
-    "type": "event",
-    "name": "ConstructionDeconstructed",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "building",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ConstructionAbandoned": {
-    "type": "event",
-    "name": "ConstructionAbandoned",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "building",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "SellOrderCreated": {
-    "type": "event",
-    "name": "SellOrderCreated",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "order",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "product",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "amount",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "price",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "exchange",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "valid_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "EmergencyDeactivated": {
-    "type": "event",
-    "name": "EmergencyDeactivated",
+    "name": "ShipCommandeered",
     "kind": "struct",
     "members": [
       {
         "name": "ship",
         "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "AsteroidManaged": {
+    "type": "event",
+    "name": "AsteroidManaged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "LotReclaimed": {
+    "type": "event",
+    "name": "LotReclaimed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "BuildingRepossessed": {
+    "type": "event",
+    "name": "BuildingRepossessed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmatesArranged": {
+    "type": "event",
+    "name": "CrewmatesArranged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewmatesArrangedV1": {
+    "type": "event",
+    "name": "CrewmatesArrangedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "composition_old",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "composition_new",
+        "type": "core::array::Span::<core::integer::u64>",
         "kind": "data"
       },
       {
@@ -962,33 +577,6 @@
       },
       {
         "name": "crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ShipDocked": {
-    "type": "event",
-    "name": "ShipDocked",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "ship",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "dock",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
@@ -1064,209 +652,6 @@
       {
         "name": "crew2_composition_new",
         "type": "core::array::Span::<core::integer::u64>",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "PrepaidAgreementExtended": {
-    "type": "event",
-    "name": "PrepaidAgreementExtended",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "target",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "permitted",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "term",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "rate",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "initial_term",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "notice_period",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ResourceExtractionStarted": {
-    "type": "event",
-    "name": "ResourceExtractionStarted",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "deposit",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "resource",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "yield",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "extractor",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "extractor_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "destination_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "finish_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ResourceExtractionFinished": {
-    "type": "event",
-    "name": "ResourceExtractionFinished",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "extractor",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "extractor_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "resource",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "yield",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "destination_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "SellOrderFilled": {
-    "type": "event",
-    "name": "SellOrderFilled",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "order",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "product",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "amount",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "exchange",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "destination_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
@@ -1470,26 +855,1362 @@
       }
     ]
   },
-  "AsteroidInitialized": {
+  "FoodSupplied": {
     "type": "event",
-    "name": "AsteroidInitialized",
+    "name": "FoodSupplied",
     "kind": "struct",
     "members": [
       {
-        "name": "asteroid",
+        "name": "food",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "last_fed",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
         "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
         "kind": "data"
       }
     ]
   },
-  "AsteroidManaged": {
+  "FoodSuppliedV1": {
     "type": "event",
-    "name": "AsteroidManaged",
+    "name": "FoodSuppliedV1",
     "kind": "struct",
     "members": [
       {
-        "name": "asteroid",
+        "name": "food",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "last_fed",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
         "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "CrewStationed": {
+    "type": "event",
+    "name": "CrewStationed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DeliverySent": {
+    "type": "event",
+    "name": "DeliverySent",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DeliveryCancelled": {
+    "type": "event",
+    "name": "DeliveryCancelled",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DeliveryPackaged": {
+    "type": "event",
+    "name": "DeliveryPackaged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DeliveryReceived": {
+    "type": "event",
+    "name": "DeliveryReceived",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "SamplingDepositStartedV1": {
+    "type": "event",
+    "name": "SamplingDepositStartedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "improving",
+        "type": "core::bool",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "SamplingDepositFinished": {
+    "type": "event",
+    "name": "SamplingDepositFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "initial_yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DepositListedForSale": {
+    "type": "event",
+    "name": "DepositListedForSale",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DepositPurchased": {
+    "type": "event",
+    "name": "DepositPurchased",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DepositUnlistedForSale": {
+    "type": "event",
+    "name": "DepositUnlistedForSale",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "EmergencyActivated": {
+    "type": "event",
+    "name": "EmergencyActivated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "EmergencyPropellantCollected": {
+    "type": "event",
+    "name": "EmergencyPropellantCollected",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "EmergencyDeactivated": {
+    "type": "event",
+    "name": "EmergencyDeactivated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "SellOrderCreated": {
+    "type": "event",
+    "name": "SellOrderCreated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "valid_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "maker_fee",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "SellOrderFilled": {
+    "type": "event",
+    "name": "SellOrderFilled",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "seller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "SellOrderCancelled": {
+    "type": "event",
+    "name": "SellOrderCancelled",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "seller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "BuyOrderCreated": {
+    "type": "event",
+    "name": "BuyOrderCreated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "valid_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "maker_fee",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "BuyOrderFilled": {
+    "type": "event",
+    "name": "BuyOrderFilled",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "buyer_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "BuyOrderCancelled": {
+    "type": "event",
+    "name": "BuyOrderCancelled",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "buyer_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ContractPolicyAssigned": {
+    "type": "event",
+    "name": "ContractPolicyAssigned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "contract",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepaidMerklePolicyAssigned": {
+    "type": "event",
+    "name": "PrepaidMerklePolicyAssigned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "rate",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "initial_term",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "notice_period",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "merkle_root",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepaidPolicyAssigned": {
+    "type": "event",
+    "name": "PrepaidPolicyAssigned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "rate",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "initial_term",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "notice_period",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PublicPolicyAssigned": {
+    "type": "event",
+    "name": "PublicPolicyAssigned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ContractPolicyRemoved": {
+    "type": "event",
+    "name": "ContractPolicyRemoved",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepaidPolicyRemoved": {
+    "type": "event",
+    "name": "PrepaidPolicyRemoved",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepaidMerklePolicyRemoved": {
+    "type": "event",
+    "name": "PrepaidMerklePolicyRemoved",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PublicPolicyRemoved": {
+    "type": "event",
+    "name": "PublicPolicyRemoved",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ShipAssemblyFinished": {
+    "type": "event",
+    "name": "ShipAssemblyFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dry_dock",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dry_dock_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ShipAssemblyStarted": {
+    "type": "event",
+    "name": "ShipAssemblyStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dry_dock",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dry_dock_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "ship_type",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ShipAssemblyStartedV1": {
+    "type": "event",
+    "name": "ShipAssemblyStartedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "ship_type",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "dry_dock",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dry_dock_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ResourceExtractionFinished": {
+    "type": "event",
+    "name": "ResourceExtractionFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ResourceExtractionStarted": {
+    "type": "event",
+    "name": "ResourceExtractionStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "MaterialProcessingFinished": {
+    "type": "event",
+    "name": "MaterialProcessingFinished",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "processor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "processor_slot",
+        "type": "core::integer::u64",
         "kind": "data"
       },
       {
@@ -1628,19 +2349,29 @@
       }
     ]
   },
-  "MaterialProcessingFinished": {
+  "RandomEventResolved": {
     "type": "event",
-    "name": "MaterialProcessingFinished",
+    "name": "RandomEventResolved",
     "kind": "struct",
     "members": [
       {
-        "name": "processor",
-        "type": "influence::common::types::entity::Entity",
+        "name": "random_event",
+        "type": "core::integer::u64",
         "kind": "data"
       },
       {
-        "name": "processor_slot",
+        "name": "choice",
         "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "action_type",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "action_target",
+        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
@@ -1694,329 +2425,19 @@
       }
     ]
   },
-  "LotReclaimed": {
+  "ResourceScanFinished": {
     "type": "event",
-    "name": "LotReclaimed",
+    "name": "ResourceScanFinished",
     "kind": "struct",
     "members": [
       {
-        "name": "lot",
+        "name": "asteroid",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ContractPolicyRemoved": {
-    "type": "event",
-    "name": "ContractPolicyRemoved",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "RemovedFromWhitelist": {
-    "type": "event",
-    "name": "RemovedFromWhitelist",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "target",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "PrepaidPolicyRemoved": {
-    "type": "event",
-    "name": "PrepaidPolicyRemoved",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "PublicPolicyRemoved": {
-    "type": "event",
-    "name": "PublicPolicyRemoved",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "BuildingRepossessed": {
-    "type": "event",
-    "name": "BuildingRepossessed",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "building",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "RandomEventResolved": {
-    "type": "event",
-    "name": "RandomEventResolved",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "random_event",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "choice",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "action_type",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "action_target",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "FoodSupplied": {
-    "type": "event",
-    "name": "FoodSupplied",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "food",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "last_fed",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "FoodSuppliedV1": {
-    "type": "event",
-    "name": "FoodSuppliedV1",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "food",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "last_fed",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "SamplingDepositStartedV1": {
-    "type": "event",
-    "name": "SamplingDepositStartedV1",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "deposit",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "lot",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "resource",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "improving",
-        "type": "core::bool",
-        "kind": "data"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "finish_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "SamplingDepositFinished": {
-    "type": "event",
-    "name": "SamplingDepositFinished",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "deposit",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "initial_yield",
-        "type": "core::integer::u64",
+        "name": "abundances",
+        "type": "core::array::Span::<core::integer::u128>",
         "kind": "data"
       },
       {
@@ -2044,33 +2465,6 @@
       {
         "name": "finish_time",
         "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ResourceScanFinished": {
-    "type": "event",
-    "name": "ResourceScanFinished",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "abundances",
-        "type": "core::array::Span::<core::integer::u128>",
         "kind": "data"
       },
       {
@@ -2139,40 +2533,18 @@
       }
     ]
   },
-  "CrewStationed": {
+  "ShipDocked": {
     "type": "event",
-    "name": "CrewStationed",
+    "name": "ShipDocked",
     "kind": "struct",
     "members": [
       {
-        "name": "station",
+        "name": "ship",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
-        "name": "finish_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "DeliveryFinished": {
-    "type": "event",
-    "name": "DeliveryFinished",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "delivery",
+        "name": "dock",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
@@ -2188,39 +2560,34 @@
       }
     ]
   },
-  "DeliveryFinishedV1": {
+  "TransitFinished": {
     "type": "event",
-    "name": "DeliveryFinishedV1",
+    "name": "TransitFinished",
     "kind": "struct",
     "members": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
       {
         "name": "origin",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
-        "name": "origin_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "products",
-        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
-        "kind": "data"
-      },
-      {
-        "name": "dest",
+        "name": "destination",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
-        "name": "dest_slot",
+        "name": "departure",
         "type": "core::integer::u64",
         "kind": "data"
       },
       {
-        "name": "delivery",
-        "type": "influence::common::types::entity::Entity",
+        "name": "arrival",
+        "type": "core::integer::u64",
         "kind": "data"
       },
       {
@@ -2282,48 +2649,6 @@
       }
     ]
   },
-  "TransitFinished": {
-    "type": "event",
-    "name": "TransitFinished",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "ship",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "departure",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "arrival",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
   "ShipUndocked": {
     "type": "event",
     "name": "ShipUndocked",
@@ -2351,9 +2676,41 @@
       }
     ]
   },
-  "AddedToWhitelist": {
+  "EventAnnotated": {
     "type": "event",
-    "name": "AddedToWhitelist",
+    "name": "EventAnnotated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "transaction_hash",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "log_index",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "content_hash",
+        "type": "core::array::Span::<core::felt252>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "NameChanged": {
+    "type": "event",
+    "name": "NameChanged",
     "kind": "struct",
     "members": [
       {
@@ -2362,12 +2719,29 @@
         "kind": "data"
       },
       {
-        "name": "permission",
-        "type": "core::integer::u64",
+        "name": "name",
+        "type": "influence::common::types::string::String",
         "kind": "data"
       },
       {
-        "name": "target",
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ArrivalRewardClaimed": {
+    "type": "event",
+    "name": "ArrivalRewardClaimed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
@@ -2379,6 +2753,40 @@
       {
         "name": "caller",
         "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepareForLaunchRewardClaimed": {
+    "type": "event",
+    "name": "PrepareForLaunchRewardClaimed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "AsteroidInitialized": {
+    "type": "event",
+    "name": "AsteroidInitialized",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       }
     ]

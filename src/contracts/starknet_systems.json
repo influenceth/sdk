@@ -83,120 +83,12 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "ActivateEmergency": {
+  "ExtendPrepaidAgreement": {
     "type": "function",
-    "name": "ActivateEmergency",
+    "name": "ExtendPrepaidAgreement",
     "inputs": [
       {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "AnnotateEvent": {
-    "type": "function",
-    "name": "AnnotateEvent",
-    "inputs": [
-      {
-        "name": "transaction_hash",
-        "type": "core::felt252"
-      },
-      {
-        "name": "log_index",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "content_hash",
-        "type": "core::array::Span::<core::felt252>"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ArrangeCrew": {
-    "type": "function",
-    "name": "ArrangeCrew",
-    "inputs": [
-      {
-        "name": "composition",
-        "type": "core::array::Span::<core::integer::u64>"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "AssembleShipStart": {
-    "type": "function",
-    "name": "AssembleShipStart",
-    "inputs": [
-      {
-        "name": "dry_dock",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "dry_dock_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "ship_type",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "AssembleShipFinish": {
-    "type": "function",
-    "name": "AssembleShipFinish",
-    "inputs": [
-      {
-        "name": "dry_dock",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "dry_dock_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "AssignContractPolicy": {
-    "type": "function",
-    "name": "AssignContractPolicy",
-    "inputs": [
-      {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -204,59 +96,11 @@
         "type": "core::integer::u64"
       },
       {
-        "name": "contract",
-        "type": "core::starknet::contract_address::ContractAddress"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "AssignPrepaidPolicy": {
-    "type": "function",
-    "name": "AssignPrepaidPolicy",
-    "inputs": [
-      {
-        "name": "entity",
+        "name": "permitted",
         "type": "influence::common::types::entity::Entity"
       },
       {
-        "name": "permission",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "rate",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "initial_term",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "notice_period",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "AssignPublicPolicy": {
-    "type": "function",
-    "name": "AssignPublicPolicy",
-    "inputs": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "permission",
+        "name": "added_term",
         "type": "core::integer::u64"
       },
       {
@@ -291,56 +135,20 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "CancelSellOrder": {
+  "RemoveFromWhitelist": {
     "type": "function",
-    "name": "CancelSellOrder",
-    "inputs": [
-      {
-        "name": "order",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "exchange",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ChangeName": {
-    "type": "function",
-    "name": "ChangeName",
+    "name": "RemoveFromWhitelist",
     "inputs": [
       {
         "name": "entity",
         "type": "influence::common::types::entity::Entity"
       },
       {
-        "name": "name",
-        "type": "influence::common::types::string::String"
+        "name": "permission",
+        "type": "core::integer::u64"
       },
       {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ClaimArrivalReward": {
-    "type": "function",
-    "name": "ClaimArrivalReward",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "spaceport",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -351,12 +159,20 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "ClaimPrepareForLaunchReward": {
+  "Whitelist": {
     "type": "function",
-    "name": "ClaimPrepareForLaunchReward",
+    "name": "Whitelist",
     "inputs": [
       {
-        "name": "asteroid",
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -367,10 +183,14 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "CollectEmergencyPropellant": {
+  "ConstructionAbandon": {
     "type": "function",
-    "name": "CollectEmergencyPropellant",
+    "name": "ConstructionAbandon",
     "inputs": [
+      {
+        "name": "building",
+        "type": "influence::common::types::entity::Entity"
+      },
       {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
@@ -379,12 +199,28 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "CommandeerShip": {
+  "ConstructionDeconstruct": {
     "type": "function",
-    "name": "CommandeerShip",
+    "name": "ConstructionDeconstruct",
     "inputs": [
       {
-        "name": "ship",
+        "name": "building",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ConstructionFinish": {
+    "type": "function",
+    "name": "ConstructionFinish",
+    "inputs": [
+      {
+        "name": "building",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -431,9 +267,57 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "ConstructionFinish": {
+  "CommandeerShip": {
     "type": "function",
-    "name": "ConstructionFinish",
+    "name": "CommandeerShip",
+    "inputs": [
+      {
+        "name": "ship",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ManageAsteroid": {
+    "type": "function",
+    "name": "ManageAsteroid",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ReclaimLot": {
+    "type": "function",
+    "name": "ReclaimLot",
+    "inputs": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "RepossessBuilding": {
+    "type": "function",
+    "name": "RepossessBuilding",
     "inputs": [
       {
         "name": "building",
@@ -447,78 +331,14 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "ConstructionDeconstruct": {
+  "ArrangeCrew": {
     "type": "function",
-    "name": "ConstructionDeconstruct",
+    "name": "ArrangeCrew",
     "inputs": [
       {
-        "name": "building",
-        "type": "influence::common::types::entity::Entity"
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>"
       },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ConstructionAbandon": {
-    "type": "function",
-    "name": "ConstructionAbandon",
-    "inputs": [
-      {
-        "name": "building",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "CreateSellOrder": {
-    "type": "function",
-    "name": "CreateSellOrder",
-    "inputs": [
-      {
-        "name": "product",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "amount",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "price",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "exchange",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "DeactivateEmergency": {
-    "type": "function",
-    "name": "DeactivateEmergency",
-    "inputs": [
       {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
@@ -534,26 +354,6 @@
       {
         "name": "delegated_to",
         "type": "core::starknet::contract_address::ContractAddress"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "DockShip": {
-    "type": "function",
-    "name": "DockShip",
-    "inputs": [
-      {
-        "name": "target",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "powered",
-        "type": "core::bool"
       },
       {
         "name": "caller_crew",
@@ -603,122 +403,6 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "ExtendPrepaidAgreement": {
-    "type": "function",
-    "name": "ExtendPrepaidAgreement",
-    "inputs": [
-      {
-        "name": "target",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "permitted",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "added_term",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ExtractResourceStart": {
-    "type": "function",
-    "name": "ExtractResourceStart",
-    "inputs": [
-      {
-        "name": "deposit",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "yield",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "extractor",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "extractor_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "destination_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ExtractResourceFinish": {
-    "type": "function",
-    "name": "ExtractResourceFinish",
-    "inputs": [
-      {
-        "name": "extractor",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "extractor_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "FillSellOrder": {
-    "type": "function",
-    "name": "FillSellOrder",
-    "inputs": [
-      {
-        "name": "order",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "amount",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "exchange",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "destination_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
   "InitializeArvadian": {
     "type": "function",
     "name": "InitializeArvadian",
@@ -741,218 +425,6 @@
       },
       {
         "name": "station",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "InitializeAsteroid": {
-    "type": "function",
-    "name": "InitializeAsteroid",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "celestial_type",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "mass",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "radius",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "a",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "ecc",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "inc",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "raan",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "argp",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "m",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "purchase_order",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "scan_status",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "bonuses",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "merkle_proof",
-        "type": "core::array::Span::<core::felt252>"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ManageAsteroid": {
-    "type": "function",
-    "name": "ManageAsteroid",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ProcessProductsStart": {
-    "type": "function",
-    "name": "ProcessProductsStart",
-    "inputs": [
-      {
-        "name": "processor",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "processor_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "process",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "target_output",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "recipes",
-        "type": "cubit::f64::types::fixed::Fixed"
-      },
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "destination_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ProcessProductsFinish": {
-    "type": "function",
-    "name": "ProcessProductsFinish",
-    "inputs": [
-      {
-        "name": "processor",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "processor_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "PurchaseAdalian": {
-    "type": "function",
-    "name": "PurchaseAdalian",
-    "inputs": [
-      {
-        "name": "collection",
-        "type": "core::integer::u64"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "PurchaseAsteroid": {
-    "type": "function",
-    "name": "PurchaseAsteroid",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ReadComponent": {
-    "type": "function",
-    "name": "ReadComponent",
-    "inputs": [
-      {
-        "name": "name",
-        "type": "core::felt252"
-      },
-      {
-        "name": "path",
-        "type": "core::array::Span::<core::felt252>"
-      }
-    ],
-    "outputs": [
-      {
-        "type": "core::array::Span::<core::felt252>"
-      }
-    ],
-    "state_mutability": "view"
-  },
-  "ReclaimLot": {
-    "type": "function",
-    "name": "ReclaimLot",
-    "inputs": [
-      {
-        "name": "lot",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1023,122 +495,6 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "RemoveContractPolicy": {
-    "type": "function",
-    "name": "RemoveContractPolicy",
-    "inputs": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "RemoveFromWhitelist": {
-    "type": "function",
-    "name": "RemoveFromWhitelist",
-    "inputs": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "target",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "RemovePrepaidPolicy": {
-    "type": "function",
-    "name": "RemovePrepaidPolicy",
-    "inputs": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "RemovePublicPolicy": {
-    "type": "function",
-    "name": "RemovePublicPolicy",
-    "inputs": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "permission",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "RepossessBuilding": {
-    "type": "function",
-    "name": "RepossessBuilding",
-    "inputs": [
-      {
-        "name": "building",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ResolveRandomEvent": {
-    "type": "function",
-    "name": "ResolveRandomEvent",
-    "inputs": [
-      {
-        "name": "choice",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
   "ResupplyFood": {
     "type": "function",
     "name": "ResupplyFood",
@@ -1153,6 +509,138 @@
       },
       {
         "name": "food",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "StationCrew": {
+    "type": "function",
+    "name": "StationCrew",
+    "inputs": [
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AcceptDelivery": {
+    "type": "function",
+    "name": "AcceptDelivery",
+    "inputs": [
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "CancelDelivery": {
+    "type": "function",
+    "name": "CancelDelivery",
+    "inputs": [
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "PackageDelivery": {
+    "type": "function",
+    "name": "PackageDelivery",
+    "inputs": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ReceiveDelivery": {
+    "type": "function",
+    "name": "ReceiveDelivery",
+    "inputs": [
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SendDelivery": {
+    "type": "function",
+    "name": "SendDelivery",
+    "inputs": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "dest_slot",
         "type": "core::integer::u64"
       },
       {
@@ -1231,9 +719,733 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "ScanResourcesStart": {
+  "ListDepositForSale": {
     "type": "function",
-    "name": "ScanResourcesStart",
+    "name": "ListDepositForSale",
+    "inputs": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "PurchaseDeposit": {
+    "type": "function",
+    "name": "PurchaseDeposit",
+    "inputs": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "UnlistDepositForSale": {
+    "type": "function",
+    "name": "UnlistDepositForSale",
+    "inputs": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ActivateEmergency": {
+    "type": "function",
+    "name": "ActivateEmergency",
+    "inputs": [
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "CollectEmergencyPropellant": {
+    "type": "function",
+    "name": "CollectEmergencyPropellant",
+    "inputs": [
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "DeactivateEmergency": {
+    "type": "function",
+    "name": "DeactivateEmergency",
+    "inputs": [
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "CreateSellOrder": {
+    "type": "function",
+    "name": "CreateSellOrder",
+    "inputs": [
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "FillSellOrder": {
+    "type": "function",
+    "name": "FillSellOrder",
+    "inputs": [
+      {
+        "name": "seller_crew",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "CancelSellOrder": {
+    "type": "function",
+    "name": "CancelSellOrder",
+    "inputs": [
+      {
+        "name": "seller_crew",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "CreateBuyOrder": {
+    "type": "function",
+    "name": "CreateBuyOrder",
+    "inputs": [
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "escrow_caller",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "escrow_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "escrow_token",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "escrow_amount",
+        "type": "core::integer::u256"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "FillBuyOrder": {
+    "type": "function",
+    "name": "FillBuyOrder",
+    "inputs": [
+      {
+        "name": "buyer_crew",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "escrow_caller",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "escrow_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "escrow_token",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "escrow_withdrawals",
+        "type": "core::array::Span::<influence::systems::orders::fill_buy::Withdrawal>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AssignContractPolicy": {
+    "type": "function",
+    "name": "AssignContractPolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "contract",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AssignPrepaidMerklePolicy": {
+    "type": "function",
+    "name": "AssignPrepaidMerklePolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "rate",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "initial_term",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "notice_period",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "merkle_root",
+        "type": "core::felt252"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AssignPrepaidPolicy": {
+    "type": "function",
+    "name": "AssignPrepaidPolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "rate",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "initial_term",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "notice_period",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AssignPublicPolicy": {
+    "type": "function",
+    "name": "AssignPublicPolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "RemoveContractPolicy": {
+    "type": "function",
+    "name": "RemoveContractPolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "RemovePrepaidPolicy": {
+    "type": "function",
+    "name": "RemovePrepaidPolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "RemovePrepaidMerklePolicy": {
+    "type": "function",
+    "name": "RemovePrepaidMerklePolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "RemovePublicPolicy": {
+    "type": "function",
+    "name": "RemovePublicPolicy",
+    "inputs": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AssembleShipFinish": {
+    "type": "function",
+    "name": "AssembleShipFinish",
+    "inputs": [
+      {
+        "name": "dry_dock",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "dry_dock_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AssembleShipStart": {
+    "type": "function",
+    "name": "AssembleShipStart",
+    "inputs": [
+      {
+        "name": "dry_dock",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "dry_dock_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "ship_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ExtractResourceFinish": {
+    "type": "function",
+    "name": "ExtractResourceFinish",
+    "inputs": [
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ExtractResourceStart": {
+    "type": "function",
+    "name": "ExtractResourceStart",
+    "inputs": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ProcessProductsFinish": {
+    "type": "function",
+    "name": "ProcessProductsFinish",
+    "inputs": [
+      {
+        "name": "processor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "processor_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ProcessProductsStart": {
+    "type": "function",
+    "name": "ProcessProductsStart",
+    "inputs": [
+      {
+        "name": "processor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "processor_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "process",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "target_output",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "recipes",
+        "type": "cubit::f64::types::fixed::Fixed"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ResolveRandomEvent": {
+    "type": "function",
+    "name": "ResolveRandomEvent",
+    "inputs": [
+      {
+        "name": "choice",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "PurchaseAdalian": {
+    "type": "function",
+    "name": "PurchaseAdalian",
+    "inputs": [
+      {
+        "name": "collection",
+        "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "PurchaseAsteroid": {
+    "type": "function",
+    "name": "PurchaseAsteroid",
     "inputs": [
       {
         "name": "asteroid",
@@ -1250,6 +1462,22 @@
   "ScanResourcesFinish": {
     "type": "function",
     "name": "ScanResourcesFinish",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ScanResourcesStart": {
+    "type": "function",
+    "name": "ScanResourcesStart",
     "inputs": [
       {
         "name": "asteroid",
@@ -1338,13 +1566,17 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "StationCrew": {
+  "DockShip": {
     "type": "function",
-    "name": "StationCrew",
+    "name": "DockShip",
     "inputs": [
       {
-        "name": "destination",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "powered",
+        "type": "core::bool"
       },
       {
         "name": "caller_crew",
@@ -1354,46 +1586,10 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "TransferInventoryStart": {
+  "TransitBetweenFinish": {
     "type": "function",
-    "name": "TransferInventoryStart",
+    "name": "TransitBetweenFinish",
     "inputs": [
-      {
-        "name": "origin",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "origin_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "products",
-        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
-      },
-      {
-        "name": "dest",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "dest_slot",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "TransferInventoryFinish": {
-    "type": "function",
-    "name": "TransferInventoryFinish",
-    "inputs": [
-      {
-        "name": "delivery",
-        "type": "influence::common::types::entity::Entity"
-      },
       {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
@@ -1458,18 +1654,6 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "TransitBetweenFinish": {
-    "type": "function",
-    "name": "TransitBetweenFinish",
-    "inputs": [
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
   "UndockShip": {
     "type": "function",
     "name": "UndockShip",
@@ -1490,20 +1674,60 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "Whitelist": {
+  "AnnotateEvent": {
     "type": "function",
-    "name": "Whitelist",
+    "name": "AnnotateEvent",
+    "inputs": [
+      {
+        "name": "transaction_hash",
+        "type": "core::felt252"
+      },
+      {
+        "name": "log_index",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "content_hash",
+        "type": "core::array::Span::<core::felt252>"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ChangeName": {
+    "type": "function",
+    "name": "ChangeName",
     "inputs": [
       {
         "name": "entity",
         "type": "influence::common::types::entity::Entity"
       },
       {
-        "name": "permission",
-        "type": "core::integer::u64"
+        "name": "name",
+        "type": "influence::common::types::string::String"
       },
       {
-        "name": "target",
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ClaimArrivalReward": {
+    "type": "function",
+    "name": "ClaimArrivalReward",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "spaceport",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1513,6 +1737,106 @@
     ],
     "outputs": [],
     "state_mutability": "external"
+  },
+  "ClaimPrepareForLaunchReward": {
+    "type": "function",
+    "name": "ClaimPrepareForLaunchReward",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "InitializeAsteroid": {
+    "type": "function",
+    "name": "InitializeAsteroid",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "celestial_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "mass",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "radius",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "a",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "ecc",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "inc",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "raan",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "argp",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "m",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "purchase_order",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "scan_status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "bonuses",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "merkle_proof",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ReadComponent": {
+    "type": "function",
+    "name": "ReadComponent",
+    "inputs": [
+      {
+        "name": "name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "path",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "state_mutability": "view"
   },
   "WriteComponent": {
     "type": "function",
