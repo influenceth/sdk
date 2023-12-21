@@ -24,7 +24,7 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
   Object.assign(details, getAbilityBonusFromFood(timeSinceFed));
 
   // Combine them all
-  details.totalBonus = details.crewmatesMultipler * details.stationMultiplier * details.foodMultiplier;
+  details.totalBonus = details.crewmatesMultiplier * details.stationMultiplier * details.foodMultiplier;
 
   return details;
 };
@@ -36,7 +36,7 @@ const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
     class: {},
     traits: {},
     titles: {},
-    crewmatesMultipler: 1
+    crewmatesMultiplier: 1
   };
 
   if (ability.class) details.class = { classId: ability.class, matches: 0 };
@@ -66,7 +66,7 @@ const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
       info.matches++;
       info.bonus += bonusPerMatch;
       details.titles[crewmateTitle] = info;
-      details.crewmatesMultipler += bonusPerMatch;
+      details.crewmatesMultiplier += bonusPerMatch;
     }
 
     // Get traits bonuses
@@ -77,7 +77,7 @@ const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
           info.matches++;
           info.bonus += ability.traits[traitId];
           details.traits[traitId] = info;
-          details.crewmatesMultipler += ability.traits[traitId];
+          details.crewmatesMultiplier += ability.traits[traitId];
         }
       });
     }
@@ -86,7 +86,7 @@ const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
   // If there's a class affinity apply it
   if (details.class.classId) {
     details.class.multiplier = CREWMATE_STACKING_BONUS_EFFICIENCY[details.class.matches];
-    details.crewmatesMultipler *= details.class.multiplier;
+    details.crewmatesMultiplier *= details.class.multiplier;
   }
 
   return details;
@@ -104,11 +104,11 @@ const getAbilityBonusFromStation = (station) => {
 
 const getAbilityBonusFromFood = (timeSinceFed, crewmates = []) => {
   const details = { foodMultiplier: 1 };
-  const { crewmatesMultipler: consumption } = getAbilityBonusFromCrewmates(
+  const { crewmatesMultiplier: consumption } = getAbilityBonusFromCrewmates(
     Crewmate.ABILITY_IDS.FOOD_CONSUMPTION_TIME, crewmates
   );
 
-  const { crewmatesMultipler: rationing } = getAbilityBonusFromCrewmates(
+  const { crewmatesMultiplier: rationing } = getAbilityBonusFromCrewmates(
     Crewmate.ABILITY_IDS.FOOD_RATIONING_PENALTY, crewmates
   );
 
@@ -135,7 +135,7 @@ const getCurrentFoodRatio = (timeSinceFed = 0, consumption = 1) => {
 };
 
 const getFoodMultiplier = (timeSinceFed = 0, consumption = 1, rationing = 1) => {
-  const currentRatio = getCurrentFoodRatio(timeSinceFed, consumption, rationing);
+  const currentRatio = getCurrentFoodRatio(timeSinceFed, consumption);
   const adjustedRatio = 1 - ((1 - currentRatio / 0.5) / rationing);
   return Math.min(Math.max(adjustedRatio, STARVING_MULTIPLIER), 1);
 };
