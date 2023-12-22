@@ -163,8 +163,8 @@ describe('Asteroid library', function () {
     expect(Number(abundance.toFixed(5))).to.equal(0.0275);
 
     abundances = 163694267033613831154047584829516n;
-    abundance = asteroid.getAbundanceAtLot(1, 1626230, 7, abundances);
-    expect(Number(abundance.toFixed(4))).to.equal(0.0585);
+    abundance = asteroid.getAbundanceAtLot(1, 1758637, 7, abundances);
+    expect(Number(abundance.toFixed(4))).to.equal(0.9418);
   });
 
   it('should get abundances at a unit sphere position', function () {
