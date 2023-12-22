@@ -158,9 +158,13 @@ describe('Asteroid library', function () {
   });
 
   it('should get abundance at a specific lot', function () {
-    const abundances = 90591218639619085331542389405307898768942017548859450482229248055n;
-    const abundance = asteroid.getAbundanceAtLot(1, 4200, 1, abundances);
-    expect(Number(abundance.toFixed(5))).to.equal(0.06165);
+    let abundances = 90591218639619085331542389405307898768942017548859450482229248055n;
+    let abundance = asteroid.getAbundanceAtLot(1, 4200, 1, abundances);
+    expect(Number(abundance.toFixed(5))).to.equal(0.0275);
+
+    abundances = 163694267033613831154047584829516n;
+    abundance = asteroid.getAbundanceAtLot(1, 1626230, 7, abundances);
+    expect(Number(abundance.toFixed(4))).to.equal(0.0585);
   });
 
   it('should get abundances at a unit sphere position', function () {

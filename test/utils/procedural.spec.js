@@ -23,11 +23,12 @@ describe('Procedural library', function () {
   it('should return a real value between low and high', async () => {
     const low = 0;
     const high = 10;
+    let seed = procedural.derive(432352089298734n, 701022376584n);
 
-    for (let i = 1; i <= 10; i++) {
-      const entropy = Math.floor(2 ** 16 * Math.random());
-      const seed = procedural.derive(42, entropy);
+    for (let i = 100; i > 0; i--) {
+      seed = procedural.derive(seed, i);
       const result = procedural.realBetween(seed, low, high);
+
       expect(Number(result)).to.be.greaterThanOrEqual(low);
       expect(Number(result)).to.be.lessThan(high);
     }
