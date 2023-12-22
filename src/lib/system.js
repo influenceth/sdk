@@ -1,5 +1,4 @@
 // TODO: replace with types ABI and starknetjs
-
 import { CallData, uint256 } from 'starknet';
 import SystemData from '../contracts/starknet_systems.json' assert { type: 'json' };
 
@@ -15,9 +14,10 @@ const parseCairoType = (cairoType) => {
   let type;
   if (['influence::common::types::entity::Entity'].includes(cairoType)) type = 'Entity';
   else if (['core::starknet::contract_address::ContractAddress'].includes(cairoType)) type = 'ContractAddress';
-  else if (['core::integer::u64', 'core::integer::u128'].includes(cairoType)) type = 'BigNumber';
+  else if (['core::integer::u64', 'core::integer::u128', 'core::integer::u256'].includes(cairoType)) type = 'BigNumber';
   else if (['influence::common::types::string::String', 'core::felt252'].includes(cairoType)) type = 'String';
   else if (['influence::common::types::inventory_item::InventoryItem'].includes(cairoType)) type = 'InventoryItem';
+  else if (['influence::systems::orders::fill_buy::Withdrawal'].includes(cairoType)) type = 'Withdrawal';
   else if (['core::bool'].includes(cairoType)) type = 'Boolean';
   else if (['cubit::f64::types::fixed::Fixed'].includes(cairoType)) type = 'Fixed64';
   else if (['cubit::f128::types::fixed::Fixed'].includes(cairoType)) type = 'Fixed128';
@@ -54,6 +54,8 @@ const formatCalldataValue = (type, value) => {
     return uint256.bnToUint256(value);
   } else if (type === 'InventoryItem') {
     return [value.product, value.amount];
+  } else if (type === 'Withdrawal') {
+    return [value.recipient, BigInt(value.amount)];
   } else if (type === 'Boolean') {
     return !!value;
   } else if (type === 'Fixed64') {
