@@ -1,4 +1,5 @@
 const CLASSES = {
+  0: { name: 'Undecided', description: 'Currently going through assignment...' },
   1: { name: 'Pilot', description: 'Often restless, always ready for adventure, pilots are happiest when flying. Their expertise gets them and their crew where they want to go quickly, safely, efficiently.' },
   2: { name: 'Engineer', description: 'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.' },
   3: { name: 'Miner', description: 'On the surface it appears that miners value their strength over their brains, but like their quarry, the reality lies underneath: they are highly skilled and erudite in their area of expertise.' },
@@ -7,6 +8,7 @@ const CLASSES = {
 };
 
 const CLASS_IDS = {
+  UNDECIDED: 0,
   PILOT: 1,
   ENGINEER: 2,
   MINER: 3,
