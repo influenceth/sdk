@@ -16,8 +16,8 @@ describe('Lot library', function () {
     expect(lot.toIndex(6939301350735873)).to.equal(1615682);
   });
 
-  it('toIndex should fail with -1', function () {
-    expect(lot.toIndex(0)).to.equal(-1);
+  it('toIndex should fail with 0', function () {
+    expect(lot.toIndex(0)).to.equal(0);
   });
 
   it('toPosition should generate asteroidId and lotIndex from lotId', function () {

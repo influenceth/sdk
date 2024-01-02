@@ -5,7 +5,7 @@ const toId = (asteroidId, lotIndex) => {
 };
 
 const toIndex = (lotId) => {
-  return toPosition(lotId)?.lotIndex || -1;
+  return toPosition(lotId)?.lotIndex || 0;
 };
 
 const toPosition = (lotId) => {

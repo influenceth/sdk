@@ -1,6 +1,7 @@
 import { ec } from 'starknet';
 import { multiply, dot, i } from 'mathjs';
 import { ethers } from 'ethers';
+import { constants } from '@influenceth/astro';
 
 import procedural from '../utils/procedural.js';
 import { recursiveSNoise } from '../utils/simplex.js';
@@ -513,6 +514,17 @@ const getSpectralType = (spectralTypeId) => {
 };
 Component.getSpectralType = (celestial) => getSpectralType(celestial.celestialType);
 Entity.getSpectralType = (asteroid) => Component.getSpectralType(asteroid.Celestial);
+
+/**
+ * @param mass - mass of the asteroid in tonnes
+ * @param radius - radius of the asteroid in km
+ * Returns escape velocity in km/s
+ */
+const getEscapeVelocity = (mass, radius) => {
+  return Math.sqrt((2 * constants.G * mass) / radius) / 1000;  // div 1000 to convert m/s to km/s
+};
+Component.getEscapeVelocity = (celestial) => getEscapeVelocity(Component.getMass(celestial), celestial.radius);
+Entity.getEscapeVelocity = (asteroid) => Component.getEscapeVelocity(asteroid.Celestial);
 
 /**
  * @param asteroidId The asteroid identifier

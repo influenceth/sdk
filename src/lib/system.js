@@ -21,7 +21,11 @@ const parseCairoType = (cairoType) => {
   else if (['core::bool'].includes(cairoType)) type = 'Boolean';
   else if (['cubit::f64::types::fixed::Fixed'].includes(cairoType)) type = 'Fixed64';
   else if (['cubit::f128::types::fixed::Fixed'].includes(cairoType)) type = 'Fixed128';
-  else throw new Error(`Unknown input type! "${cairoType}"`);
+  // else throw new Error(`Unknown input type! "${cairoType}"`);
+  else {
+    console.warn(`Unknown input type! "${cairoType}"`);
+    type = 'Raw';
+  }
 
   return { type };
 };

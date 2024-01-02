@@ -182,7 +182,15 @@ Object.keys(TYPES).forEach((key) => {
   }
 });
 
-const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
+const getType = (type, totalBonus = 1) => {
+  if (TYPES[type]) {
+    return Object.keys(TYPES[type]).reduce((acc, k) => ({
+      ...acc,
+      [k]: ['massConstraint', 'volumeConstraint'].includes(k) ? TYPES[type][k] * totalBonus : TYPES[type][k]
+    }), {});
+  }
+  return null;
+};
 
 /**
  * Returns the mass and volume of a "full" version of the inventory
