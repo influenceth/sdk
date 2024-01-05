@@ -11,7 +11,7 @@ const IDS = {
 const STATUSES = {
   UNDER_CONSTRUCTION: 0,
   AVAILABLE: 1,
-  IN_FLIGHT: 2,
+  // IN_FLIGHT: 2, (deprecated)
   DISABLED: 3
 };
 
