@@ -20,39 +20,39 @@ describe('Time', function () {
   });
 
   it('should get time from unix time', function () {
-    let t = Time.fromUnixTime(1654668000e3);
+    let t = Time.fromUnixMilliseconds(1654668000e3);
     expect(t.unixTimeMS).to.equal(1654668000e3);
   });
 
   it('should get time from unix time (if given in sec)', function () {
-    let t = Time.fromUnixTime(1654668000, false);
+    let t = Time.fromUnixSeconds(1654668000);
     expect(t.unixTimeMS).to.equal(1654668000e3);
   });
 
   it('should convert to game clock adays', function () {
-    let t = Time.fromUnixTime(1654668000e3);
+    let t = Time.fromUnixMilliseconds(1654668000e3);
     expect(t.toGameClockADays()).to.equal(10000);
   });
 
   it('should convert to game clock adays (formatted)', function () {
-    let t = Time.fromUnixTime(1654668000e3);
+    let t = Time.fromUnixMilliseconds(1654668000e3);
     expect(t.toGameClockADays(true)).to.equal('10,000.00');
   });
 
   it('should convert to orbit adays', function () {
-    let t = Time.fromUnixTime(1654668000e3);
+    let t = Time.fromUnixMilliseconds(1654668000e3);
     expect(t.toOrbitADays()).to.equal(12558);
   });
 
   it('should convert to date', function () {
-    let t = Time.fromUnixTime(1654668000e3);
+    let t = Time.fromUnixMilliseconds(1654668000e3);
     expect(t.toDate().toISOString()).to.equal('2022-06-08T06:00:00.000Z');
   });
 
   it('should handle identities', function () {
     expect(Time.fromGameClockADays(10000).toGameClockADays()).to.equal(10000);
     expect(Time.fromOrbitADays(10000).toOrbitADays()).to.equal(10000);
-    expect(Time.fromUnixTime(1700000000e3).toDate().getTime()).to.equal(1700000000e3);
+    expect(Time.fromUnixMilliseconds(1700000000e3).toDate().getTime()).to.equal(1700000000e3);
   });
 
   it('should convert in-game seconds to real seconds', function () {
