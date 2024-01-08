@@ -3391,6 +3391,20 @@
       "state_mutability": "external"
     },
     {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
       "type": "function",
       "name": "transfer_and_forward",
       "inputs": [
@@ -3415,7 +3429,11 @@
           "type": "core::array::Array::<core::felt252>"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
       "state_mutability": "external"
     },
     {
@@ -3439,7 +3457,11 @@
           "type": "core::starknet::contract_address::ContractAddress"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
       "state_mutability": "external"
     },
     {
@@ -3467,7 +3489,11 @@
           "type": "core::starknet::contract_address::ContractAddress"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
       "state_mutability": "external"
     },
     {
@@ -3621,20 +3647,6 @@
       ],
       "outputs": [],
       "state_mutability": "external"
-    },
-    {
-      "type": "enum",
-      "name": "core::bool",
-      "variants": [
-        {
-          "name": "False",
-          "type": "()"
-        },
-        {
-          "name": "True",
-          "type": "()"
-        }
-      ]
     },
     {
       "type": "function",
@@ -3872,7 +3884,11 @@
           "type": "core::integer::u256"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
       "state_mutability": "external"
     },
     {
@@ -3892,7 +3908,11 @@
           "type": "core::integer::u256"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
       "state_mutability": "external"
     },
     {
@@ -3912,7 +3932,11 @@
           "type": "core::integer::u256"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
       "state_mutability": "external"
     },
     {
@@ -3947,12 +3971,12 @@
         {
           "name": "from",
           "type": "core::starknet::contract_address::ContractAddress",
-          "kind": "data"
+          "kind": "key"
         },
         {
           "name": "to",
           "type": "core::starknet::contract_address::ContractAddress",
-          "kind": "data"
+          "kind": "key"
         },
         {
           "name": "value",
@@ -3969,12 +3993,12 @@
         {
           "name": "owner",
           "type": "core::starknet::contract_address::ContractAddress",
-          "kind": "data"
+          "kind": "key"
         },
         {
           "name": "spender",
           "type": "core::starknet::contract_address::ContractAddress",
-          "kind": "data"
+          "kind": "key"
         },
         {
           "name": "value",

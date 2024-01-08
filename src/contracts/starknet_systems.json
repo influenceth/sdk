@@ -1431,6 +1431,22 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "CheckForRandomEvent": {
+    "type": "function",
+    "name": "CheckForRandomEvent",
+    "inputs": [
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "core::integer::u64"
+      }
+    ],
+    "state_mutability": "view"
+  },
   "PurchaseAdalian": {
     "type": "function",
     "name": "PurchaseAdalian",
