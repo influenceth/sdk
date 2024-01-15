@@ -110,28 +110,28 @@ const TYPES = {
   [IDS.PROPELLANT_TINY]: {
     i: IDS.PROPELLANT_TINY,
     massConstraint: 100e6,
-    volumeConstraint: 1310e6,
+    volumeConstraint: 1330e6,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
     category: CATEGORIES.PROPELLANT
   },
   [IDS.PROPELLANT_SMALL]: {
     i: IDS.PROPELLANT_SMALL,
     massConstraint: 1000e6,
-    volumeConstraint: 13100e6,
+    volumeConstraint: 13300e6,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
     category: CATEGORIES.PROPELLANT
   },
   [IDS.PROPELLANT_MEDIUM]: {
     i: IDS.PROPELLANT_MEDIUM,
     massConstraint: 2000e6,
-    volumeConstraint: 26200e6,
+    volumeConstraint: 26600e6,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
     category: CATEGORIES.PROPELLANT
   },
   [IDS.PROPELLANT_LARGE]: {
     i: IDS.PROPELLANT_LARGE,
     massConstraint: 12000e6,
-    volumeConstraint: 157200e6,
+    volumeConstraint: 159600e6,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
     category: CATEGORIES.PROPELLANT
   },
