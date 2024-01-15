@@ -29,6 +29,9 @@ const TYPES = {
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
+const Entity = {};
+const Component = {};
+
 const getEfficiency = (stationType, population) => {
   const { cap, efficiency } = getType(stationType);
   const softCap = 0.5 * cap;
@@ -37,10 +40,16 @@ const getEfficiency = (stationType, population) => {
   const efficiencyDrop = efficiency - 1.0;
   return efficiency - efficiencyDrop * (population - softCap) / softCap;
 };
+Component.getEfficiency = (station) => getEfficiency(station.stationType, station.population);
+Entity.getEfficiency = (stationable) => Component.getEfficiency(stationable.Station);
 
 export default {
   IDS,
   TYPES,
+
   getType,
-  getEfficiency
+  getEfficiency,
+
+  Entity,
+  Component
 };
