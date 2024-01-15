@@ -1,5 +1,3 @@
-const MIN_EFFICIENCY = 0.75;
-
 const IDS = {
   STANDARD_QUARTERS: 1,
   EXPANDED_QUARTERS: 2,
@@ -10,7 +8,6 @@ const TYPES = {
   [IDS.STANDARD_QUARTERS]: {
     i: IDS.STANDARD_QUARTERS,
     cap: 5,
-    hardCap: true,
     recruitment: false,
     efficiency: 1
   },
@@ -18,15 +15,13 @@ const TYPES = {
   [IDS.EXPANDED_QUARTERS]: {
     i: IDS.EXPANDED_QUARTERS,
     cap: 15,
-    hardCap: true,
     recruitment: false,
     efficiency: 1
   },
 
   [IDS.HABITAT]: {
     i: IDS.HABITAT,
-    cap: 250,
-    hardCap: false,
+    cap: 1000,
     recruitment: true,
     efficiency: 1.2
   }
@@ -35,13 +30,12 @@ const TYPES = {
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 
 const getEfficiency = (stationType, population) => {
-  const { cap, hardCap, efficiency } = getType(stationType);
-  if (hardCap) return efficiency;
-  if (population < cap) return efficiency;
-  if (population > cap * 2) return MIN_EFFICIENCY;
+  const { cap, efficiency } = getType(stationType);
+  const softCap = 0.5 * cap;
+  if (population <= softCap) return efficiency;
 
-  const popRatio = (population - cap) / cap;
-  return MIN_EFFICIENCY + (efficiency - MIN_EFFICIENCY) * (1 - popRatio);
+  const efficiencyDrop = efficiency - 1.0;
+  return efficiency - efficiencyDrop * (population - softCap) / softCap;
 };
 
 export default {

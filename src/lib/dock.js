@@ -5,7 +5,7 @@ const IDS = {
 const TYPES = {
   [IDS.BASIC]: {
     i: IDS.BASIC,
-    cap: 100
+    cap: 50
   }
 };
 
