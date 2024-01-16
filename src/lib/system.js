@@ -105,6 +105,17 @@ const getApproveEthCall = (amount, erc20Address, dispatcherAddress) => ({
   ])
 });
 
+const getTransferWithConfirmationCall = (recipient, amount, memo, consumerAddress, swayAddress) => ({
+  contractAddress: swayAddress,
+  entrypoint: 'transfer_with_confirmation',
+  calldata: CallData.compile([
+    formatCalldataValue('recipient', recipient),
+    formatCalldataValue('amount', amount),
+    formatCalldataValue('memo', memo),
+    formatCalldataValue('consumer', consumerAddress)
+  ])
+});
+
 const getRunSystemCall = (name, input, dispatcherAddress) => ({
   contractAddress: dispatcherAddress,
   entrypoint: 'run_system',
@@ -117,5 +128,6 @@ const getRunSystemCall = (name, input, dispatcherAddress) => ({
 export default {
   getApproveEthCall,
   getRunSystemCall,
+  getTransferWithConfirmationCall,
   Systems
 };
