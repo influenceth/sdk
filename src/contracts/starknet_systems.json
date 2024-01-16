@@ -1770,6 +1770,34 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "ConfigureExchange": {
+    "type": "function",
+    "name": "ConfigureExchange",
+    "inputs": [
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "maker_fee",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "taker_fee",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "allowed_products",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "InitializeAsteroid": {
     "type": "function",
     "name": "InitializeAsteroid",

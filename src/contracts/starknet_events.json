@@ -1092,6 +1092,58 @@
       }
     ]
   },
+  "DeliveryPackagedV1": {
+    "type": "event",
+    "name": "DeliveryPackagedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+        "kind": "data"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "delivery",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "DeliveryReceived": {
     "type": "event",
     "name": "DeliveryReceived",
@@ -2764,6 +2816,28 @@
     "members": [
       {
         "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ExchangeConfigured": {
+    "type": "event",
+    "name": "ExchangeConfigured",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "exchange",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
