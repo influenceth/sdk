@@ -4,7 +4,8 @@ const IDS = {
 
 const TYPES = {
   [IDS.BASIC]: {
-    i: IDS.BASIC
+    i: IDS.BASIC,
+    productCap: 20
   }
 };
 
