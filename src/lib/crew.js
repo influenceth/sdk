@@ -14,17 +14,25 @@ const YEAR_IN_SECONDS = 31536000; // 60 * 60 * 24 * 365
  * @return The overall bonus to be applied to the ability
  */
 const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed = 0) => {
+
   // Get crewmate bonuses
   const details = getAbilityBonusFromCrewmates(abilityId, crewmates);
 
-  // Get station bonus
-  Object.assign(details, getAbilityBonusFromStation(station));
+  const { notFurtherModified } = Crewmate.getAbility(abilityId);
 
-  // Calculate food bonus
-  Object.assign(details, getAbilityBonusFromFood(timeSinceFed));
+  if (notFurtherModified) {
+    // If the ability is not further modified, return the crewmates bonus on its own
+    details.totalBonus = details.crewmatesMultiplier;
+  } else {
+    // Get station bonus
+    Object.assign(details, getAbilityBonusFromStation(station));
 
-  // Combine them all
-  details.totalBonus = details.crewmatesMultiplier * details.stationMultiplier * details.foodMultiplier;
+    // Calculate food bonus
+    Object.assign(details, getAbilityBonusFromFood(timeSinceFed));
+
+    // Combine them all
+    details.totalBonus = details.crewmatesMultiplier * details.stationMultiplier * details.foodMultiplier;
+  }
 
   return details;
 };

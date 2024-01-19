@@ -7,7 +7,7 @@ class MerkleTree {
    * @param {Number<BigInt>|<String>}
    * @param {Number<BigInt>|<String>}
   */
-  static #sortedHash (a, b) {
+  static sortedHash (a, b) {
     let aSorted = BigInt(a);
     let bSorted = BigInt(b);
 
@@ -23,7 +23,7 @@ class MerkleTree {
     const nextLevel = [];
 
     for (let i = 0; i < level.length; i += 2) {
-      const node = MerkleTree.#sortedHash(level[i], level[i + 1]);
+      const node = MerkleTree.sortedHash(level[i], level[i + 1]);
       nextLevel.push(node);
     }
 
@@ -141,7 +141,7 @@ class MerkleTree {
     let curr = BigInt(leaf);
 
     for (const proofElem of proof) {
-      curr = MerkleTree.#sortedHash(curr, proofElem);
+      curr = MerkleTree.sortedHash(curr, proofElem);
     }
 
     return BigInt(curr) === BigInt(root);

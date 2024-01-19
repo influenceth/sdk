@@ -345,7 +345,8 @@ const ABILITY_TYPES = {
   [ABILITY_IDS.CORE_SAMPLE_QUALITY]: {
     name: 'Core Sample Quality',
     class: CLASS_IDS.MINER,
-    traits: { [TRAIT_IDS.PROSPECTOR]: 0.05 }
+    traits: { [TRAIT_IDS.PROSPECTOR]: 0.05 },
+    notFurtherModified: true
   },
   [ABILITY_IDS.EXTRACTION_TIME]: {
     name: 'Extraction Time',
@@ -366,23 +367,27 @@ const ABILITY_TYPES = {
   },
   [ABILITY_IDS.INVENTORY_MASS_CAPACITY]: {
     name: 'Inventory Mass Capacity',
-    traits: { [TRAIT_IDS.HAULER]: 0.05 }
+    traits: { [TRAIT_IDS.HAULER]: 0.05 },
+    notFurtherModified: true
   },
   [ABILITY_IDS.INVENTORY_VOLUME_CAPACITY]: {
     name: 'Inventory Volume Capacity',
-    departments: { [DEPARTMENT_IDS.LOGISTICS]: 0.0125 }
+    departments: { [DEPARTMENT_IDS.LOGISTICS]: 0.0125 },
+    notFurtherModified: true
   },
   [ABILITY_IDS.PROPELLANT_EXHAUST_VELOCITY]: {
     name: 'Propellant Exhaust Velocity',
     class: CLASS_IDS.PILOT,
     departments: { [DEPARTMENT_IDS.NAVIGATION]: 0.01 },
-    traits: { [TRAIT_IDS.NAVIGATOR]: 0.02 }
+    traits: { [TRAIT_IDS.NAVIGATOR]: 0.02 },
+    notFurtherModified: true
   },
   [ABILITY_IDS.PROPELLANT_FLOW_RATE]: {
     name: 'Propellant Flow Rate',
     class: CLASS_IDS.PILOT,
     departments: { [DEPARTMENT_IDS.NAVIGATION]: 0.01 },
-    traits: { [TRAIT_IDS.BUSTER]: 0.02 }
+    traits: { [TRAIT_IDS.BUSTER]: 0.02 },
+    notFurtherModified: true
   },
   [ABILITY_IDS.CONSTRUCTION_TIME]: {
     name: 'Construction Time',
@@ -439,7 +444,8 @@ const ABILITY_TYPES = {
   },
   [ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT]: {
     name: 'Marketplace Fee Enforcement',
-    traits: { [TRAIT_IDS.MOGUL]: 0.160 }
+    traits: { [TRAIT_IDS.MOGUL]: 0.160 },
+    notFurtherModified: true
   },
   [ABILITY_IDS.MARKETPLACE_FEE_REDUCTION]: {
     name: 'Marketplace Fee Reduction',
