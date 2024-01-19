@@ -34,5 +34,6 @@ export default {
   IDS,
   STATUSES,
 
-  calculatePayments
+  calculatePayments,
+  netEff
 };

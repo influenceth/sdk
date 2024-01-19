@@ -996,10 +996,6 @@
         "type": "core::integer::u64"
       },
       {
-        "name": "amount",
-        "type": "core::integer::u64"
-      },
-      {
         "name": "price",
         "type": "core::integer::u64"
       },
@@ -1009,6 +1005,10 @@
       },
       {
         "name": "storage_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
         "type": "core::integer::u64"
       },
       {
