@@ -14,7 +14,7 @@ const calculatePayments = (price, count, makerFee, takerFee, takerBonus = 1, enf
   const value = price * count;
   const makerFees = Math.floor((value * makerFee) / 10000);
   const scaledTakerFees = value * takerFee / 10000;
-  const takerFees = Math.ceil(scaledTakerFees / netEff(takerBonus, enforceBonus));
+  const takerFees = Math.ceil(scaledTakerFees / netEffFeeBonus(takerBonus, enforceBonus));
 
   return {
     toExchange: makerFees + takerFees,
@@ -22,7 +22,7 @@ const calculatePayments = (price, count, makerFee, takerFee, takerBonus = 1, enf
   };
 };
 
-const netEff = (bonus, enforceBonus = 1) => {
+const netEffFeeBonus = (bonus, enforceBonus = 1) => {
   if (bonus > 1 && enforceBonus > 1) {
       return bonus - ((bonus - 1) * (enforceBonus - 1));
   } else {
@@ -35,5 +35,5 @@ export default {
   STATUSES,
 
   calculatePayments,
-  netEff
+  netEffFeeBonus
 };
