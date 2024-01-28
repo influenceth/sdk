@@ -1,6 +1,8 @@
 // Standardizes addresses to the correct length, and all downcased
 export const toStandard = (address, explicitChain) => {
   const intAddress = _parseAddress(address);
+  if (intAddress === undefined) return undefined;
+
   const chain = explicitChain || _detectChain(intAddress);
 
   switch (chain) {
@@ -23,10 +25,13 @@ export const getChain = (address) => {
 // Check for equality, chain is optional but is useful if one or both addresses
 // may possibly be the null address (since the detection can't determine # of bits)
 export const areEqual = (address1, address2, chain1, chain2) => {
-  address1 = toStandard(address1, chain1);
-  address2 = toStandard(address2, chain2);
-
-  return address1 === address2;
+  try {
+    address1 = toStandard(address1, chain1);
+    address2 = toStandard(address2, chain2);
+    return address1 === address2;
+  } catch (e) {
+    return false;
+  }
 };
 
 const _parseAddress = (address) => {
