@@ -10,16 +10,22 @@ const STATUSES = {
   CANCELLED: 3
 };
 
-const calculatePayments = (price, count, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
-  const value = price * count;
+const calculatePayments = (orderType, value, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
   const makerFees = Math.floor((value * makerFee) / 10000);
   const scaledTakerFees = value * takerFee / 10000;
   const takerFees = Math.ceil(scaledTakerFees / netEffFeeBonus(takerBonus, enforceBonus));
 
-  return {
-    toExchange: makerFees + takerFees,
-    toPlayer: value - takerFees
-  };
+  if (orderType === IDS.LIMIT_BUY) {
+    return {
+      toExchange: makerFees + takerFees,
+      toPlayer: value - takerFees
+    }
+  } else {
+    return {
+      toExchange: makerFees + takerFees,
+      toPlayer: value - makerFees
+    };
+  }
 };
 
 const netEffFeeBonus = (bonus, enforceBonus = 1) => {
@@ -30,10 +36,15 @@ const netEffFeeBonus = (bonus, enforceBonus = 1) => {
   }
 }
 
+const adjustedFee = (fee, bonus = 1, enforceBonus = 1) => {
+  return Math.round(fee / netEffFeeBonus(bonus, enforceBonus));
+}
+
 export default {
   IDS,
   STATUSES,
 
   calculatePayments,
-  netEffFeeBonus
+  netEffFeeBonus,
+  adjustedFee
 };
