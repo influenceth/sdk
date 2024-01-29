@@ -17,20 +17,10 @@ describe('Entity library', function () {
   });
 
   it('should unpack entity', function () {
-    expect(entity.unpackEntity('0x7b0003')).to.deep.equal({ id: 123, label: entity.IDS.ASTEROID });
-    expect(entity.unpackEntity(8060931n)).to.deep.equal({ id: 123, label: entity.IDS.ASTEROID });
-    expect(entity.unpackEntity(80908641239044n)).to.deep.equal({ id: 1234567890, label: entity.IDS.LOT });
-    expect(entity.unpackEntity(9007199254675463n)).to.deep.equal({ id: 137438953471, label: entity.IDS.DEPOSIT });
-  });
-
-  it('should create entity from position', function () {
-    const expected = { id: 6881662889623553, label: entity.IDS.LOT };
-    expect(entity.fromPosition({ asteroidId: 1, lotIndex: 1602262 })).to.deep.equal(expected);
-  });
-
-  it('should create position from entity', function () {
-    const expected = { asteroidId: 1, lotIndex: 1602262 };
-    expect(entity.toPosition({ id: 6881662889623553, label: entity.IDS.LOT })).to.deep.equal(expected);
+    expect(entity.unpackEntity('0x7b0003')).to.deep.equal({ id: 123, label: entity.IDS.ASTEROID, uuid: 8060931n });
+    expect(entity.unpackEntity(8060931n)).to.deep.equal({ id: 123, label: entity.IDS.ASTEROID, uuid: 8060931n });
+    expect(entity.unpackEntity(80908641239044n)).to.deep.equal({ id: 1234567890, label: entity.IDS.LOT, uuid: 80908641239044n });
+    expect(entity.unpackEntity(9007199254675463n)).to.deep.equal({ id: 137438953471, label: entity.IDS.DEPOSIT, uuid: 9007199254675463n });
   });
 
   describe('areEqual', function () {
