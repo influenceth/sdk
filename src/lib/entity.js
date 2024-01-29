@@ -23,44 +23,30 @@ const TYPES = {
 };
 
 const packEntity = function ({ id, label }, returnAsHex = true) {
-  const value = BigInt(id) * 65536n + BigInt(label);
-  return returnAsHex ? `0x${value.toString(16)}` : value;
+  const uuidInt = BigInt(id) * 65536n + BigInt(label);
+  return returnAsHex ? `0x${uuidInt.toString(16)}` : uuidInt;
 };
 
-const unpackEntity = function (value) {
-  value = BigInt(value);
-  const label = value % 65536n;
-  const id = (value - label) / 65536n;
-  return { id: Number(id), label: Number(label) };
+const unpackEntity = function (uuid) {
+  value = BigInt(uuid);
+  const label = uuid % 65536n;
+  const id = (uuid - label) / 65536n;
+  return { id: Number(id), label: Number(label), uuid };
 };
 
 const formatEntity = function (value) {
   if (!value) throw new Error('Invalid entity value');
 
-  if (value.id && value.label) return { id: Number(value.id), label: Number(value.label) };
-
+  if (value.id && value.label) return { id: Number(value.id), label: Number(value.label), uuid: packEntity(value) };
+  
+  if (value.uuid) return unpackEntity(value.uuid);
+  
   if (Number(value) > 0) {
     const entity = unpackEntity(value);
     if (entity.id > 0 && entity.label > 0) return entity;
   }
 
   throw new Error('Invalid entity value');
-};
-
-const fromPosition = ({ asteroidId, lotIndex }) => {
-  return { id: Number(asteroidId) + Number(lotIndex) * 2 ** 32, label: IDS.LOT };
-};
-
-const toPosition = (entity) => {
-  entity = formatEntity(entity);
-  if (entity.label !== IDS.LOT) throw new Error('Invalid entity label');
-
-  const split = 2 ** 32;
-
-  return {
-    asteroidId: entity.id % split,
-    lotIndex: Math.floor(entity.id / split)
-  };
 };
 
 const areEqual = function (entityA, entityB) {
@@ -83,7 +69,5 @@ export default {
   areEqual,
   formatEntity,
   packEntity,
-  unpackEntity,
-  fromPosition,
-  toPosition
+  unpackEntity
 };
