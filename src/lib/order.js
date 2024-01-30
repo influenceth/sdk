@@ -10,16 +10,25 @@ const STATUSES = {
   CANCELLED: 3
 };
 
+const FEE_SCALE = 10000;
+
 // Calculates the required deposit for a limit buy order
-const requiredDeposit = (value, makerFee, makerBonus = 1, enforceBonus = 1) => {
-  const makerFees = Math.floor(adjustedFee(makerFee, makerBonus, enforceBonus) * value / 10000);
+const getBuyOrderDeposit = (value, makerFee, makerBonus = 1, enforceBonus = 1) => {
+  const makerFees = Math.floor(adjustedFee(makerFee, makerBonus, enforceBonus) * value / FEE_SCALE);
   return value + makerFees;
 };
 
-// Calculates the required withdrawals to player and exchange for filling a limit buy order (market sell)
-const requiredWithdrawals = (value, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
-  const makerFees = Math.floor((value * makerFee) / 10000); // not adjusted as it is cached at order creation
-  const takerFees = Math.floor(adjustedFee(takerFee, takerBonus, enforceBonus) * value / 10000);
+/**
+ * Calculates the required withdrawals to player and exchange for filling a limit buy order (market sell)
+ * @param {*} value is amount * unit price for the fillAmount, in microSway
+ * @param {*} makerFee is unscaled makerFee (i.e. 67 for 0.67%)
+ * @param {*} takerFee is unscaled takerFee (i.e. 67 for 0.67%)
+ * @param {*} takerBonus is feeReductionBonus of crew placing fill order
+ * @param {*} enforceBonus is feeEnforcementBonus of crew controlling exchange
+ */
+const getFillBuyOrderWithdrawals = (value, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
+  const makerFees = Math.floor((value * makerFee) / FEE_SCALE); // not adjusted as it is cached at order creation
+  const takerFees = Math.floor(adjustedFee(takerFee, takerBonus, enforceBonus) * value / FEE_SCALE);
 
   return {
     toExchange: makerFees + takerFees,
@@ -27,10 +36,17 @@ const requiredWithdrawals = (value, makerFee, takerFee, takerBonus = 1, enforceB
   }
 };
 
-// Calculates the required payments to player and exchange for filling a limit sell order (market buy)
-const requiredPayments = (value, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
-  const makerFees = Math.floor((value * makerFee) / 10000); // not adjusted as it is cached at order creation
-  const takerFees = Math.floor(adjustedFee(takerFee, takerBonus, enforceBonus) * value / 10000);
+/**
+ * Calculates the required payments to player and exchange for filling a limit sell order (market buy)
+ * @param {*} value is amount * unit price for the fillAmount, in microSway
+ * @param {*} makerFee is unscaled makerFee (i.e. 67 for 0.67%)
+ * @param {*} takerFee is unscaled takerFee (i.e. 67 for 0.67%)
+ * @param {*} takerBonus is feeReductionBonus of crew placing fill order
+ * @param {*} enforceBonus is feeEnforcementBonus of crew controlling exchange
+ */
+const getFillSellOrderPayments = (value, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
+  const makerFees = Math.floor((value * makerFee) / FEE_SCALE); // not adjusted as it is cached at order creation
+  const takerFees = Math.floor(adjustedFee(takerFee, takerBonus, enforceBonus) * value / FEE_SCALE);
 
   return {
     toExchange: makerFees + takerFees,
@@ -53,12 +69,13 @@ const netEffFeeBonus = (bonus, enforceBonus = 1) => {
 }
 
 export default {
+  FEE_SCALE,
   IDS,
   STATUSES,
 
-  requiredDeposit,
-  requiredWithdrawals,
-  requiredPayments,
+  getBuyOrderDeposit,
+  getFillBuyOrderWithdrawals,
+  getFillSellOrderPayments,
   adjustedFee,
   netEffFeeBonus
 };
