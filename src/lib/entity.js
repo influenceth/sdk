@@ -28,7 +28,7 @@ const packEntity = function ({ id, label }, returnAsHex = true) {
 };
 
 const unpackEntity = function (uuid) {
-  value = BigInt(uuid);
+  uuid = BigInt(uuid);
   const label = uuid % 65536n;
   const id = (uuid - label) / 65536n;
   return { id: Number(id), label: Number(label), uuid };
@@ -38,9 +38,9 @@ const formatEntity = function (value) {
   if (!value) throw new Error('Invalid entity value');
 
   if (value.id && value.label) return { id: Number(value.id), label: Number(value.label), uuid: packEntity(value) };
-  
+
   if (value.uuid) return unpackEntity(value.uuid);
-  
+
   if (Number(value) > 0) {
     const entity = unpackEntity(value);
     if (entity.id > 0 && entity.label > 0) return entity;

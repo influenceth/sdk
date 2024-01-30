@@ -12,13 +12,13 @@ const toIndex = (lotId) => {
 
 const toPosition = (entityOrLotId) => {
   let lotId;
-  if (typeof entityOrLotId === 'object') {
+  if (entityOrLotId && typeof entityOrLotId === 'object') {
     if (entityOrLotId.label !== Entity.IDS.LOT) throw new Error('Invalid entity label');
     lotId = entityOrLotId.id;
   } else {
     lotId = entityOrLotId;
   }
-  
+
   if (!lotId) return null;
 
   const split = 2 ** 32;

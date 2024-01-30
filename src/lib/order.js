@@ -10,24 +10,40 @@ const STATUSES = {
   CANCELLED: 3
 };
 
-const calculatePayments = (orderType, value, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
-  const makerFees = Math.floor((value * makerFee) / 10000);
-  const scaledTakerFees = value * takerFee / 10000;
-  const takerFees = Math.ceil(scaledTakerFees / netEffFeeBonus(takerBonus, enforceBonus));
+// Calculates the required deposit for a limit buy order
+const requiredDeposit = (value, makerFee, makerBonus = 1, enforceBonus = 1) => {
+  const makerFees = Math.floor(adjustedFee(makerFee, makerBonus, enforceBonus) * value / 10000);
+  return value + makerFees;
+};
 
-  if (orderType === IDS.LIMIT_BUY) {
-    return {
-      toExchange: makerFees + takerFees,
-      toPlayer: value - takerFees
-    }
-  } else {
-    return {
-      toExchange: makerFees + takerFees,
-      toPlayer: value - makerFees
-    };
+// Calculates the required withdrawals to player and exchange for filling a limit buy order (market sell)
+const requiredWithdrawals = (value, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
+  const makerFees = Math.floor((value * makerFee) / 10000); // not adjusted as it is cached at order creation
+  const takerFees = Math.floor(adjustedFee(takerFee, takerBonus, enforceBonus) * value / 10000);
+
+  return {
+    toExchange: makerFees + takerFees,
+    toPlayer: value - takerFees
   }
 };
 
+// Calculates the required payments to player and exchange for filling a limit sell order (market buy)
+const requiredPayments = (value, makerFee, takerFee, takerBonus = 1, enforceBonus = 1) => {
+  const makerFees = Math.floor((value * makerFee) / 10000); // not adjusted as it is cached at order creation
+  const takerFees = Math.floor(adjustedFee(takerFee, takerBonus, enforceBonus) * value / 10000);
+
+  return {
+    toExchange: makerFees + takerFees,
+    toPlayer: value - makerFees
+  };
+};
+
+// Adjusts a fee based on the player's and the exchange controller's fee bonuses
+const adjustedFee = (fee, bonus = 1, enforceBonus = 1) => {
+  return Math.round(fee / netEffFeeBonus(bonus, enforceBonus));
+}
+
+// Helper to calculate the effective bonus after applying the exchange controller's enforcement bonus
 const netEffFeeBonus = (bonus, enforceBonus = 1) => {
   if (bonus > 1 && enforceBonus > 1) {
       return bonus - ((bonus - 1) * (enforceBonus - 1));
@@ -36,15 +52,13 @@ const netEffFeeBonus = (bonus, enforceBonus = 1) => {
   }
 }
 
-const adjustedFee = (fee, bonus = 1, enforceBonus = 1) => {
-  return Math.round(fee / netEffFeeBonus(bonus, enforceBonus));
-}
-
 export default {
   IDS,
   STATUSES,
 
-  calculatePayments,
-  netEffFeeBonus,
-  adjustedFee
+  requiredDeposit,
+  requiredWithdrawals,
+  requiredPayments,
+  adjustedFee,
+  netEffFeeBonus
 };
