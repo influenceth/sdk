@@ -2941,8 +2941,8 @@
       "name": "constructor",
       "inputs": [
         {
-          "name": "salt",
-          "type": "core::felt252"
+          "name": "admin",
+          "type": "core::starknet::contract_address::ContractAddress"
         }
       ]
     },
@@ -4496,7 +4496,11 @@
           "type": "core::integer::u256"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
       "state_mutability": "external"
     },
     {

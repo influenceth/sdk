@@ -1191,6 +1191,43 @@
       }
     ]
   },
+  "SamplingDepositStarted": {
+    "type": "event",
+    "name": "SamplingDepositStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "SamplingDepositStartedV1": {
     "type": "event",
     "name": "SamplingDepositStartedV1",
@@ -2277,63 +2314,6 @@
       }
     ]
   },
-  "MaterialProcessingStarted": {
-    "type": "event",
-    "name": "MaterialProcessingStarted",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "processor",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "processor_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "process",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "inputs",
-        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
-        "kind": "data"
-      },
-      {
-        "name": "outputs",
-        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
-        "kind": "data"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "destination_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "finish_time",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
   "MaterialProcessingStartedV1": {
     "type": "event",
     "name": "MaterialProcessingStartedV1",
@@ -2429,6 +2409,67 @@
       {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ArrivalRewardClaimed": {
+    "type": "event",
+    "name": "ArrivalRewardClaimed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepareForLaunchRewardClaimed": {
+    "type": "event",
+    "name": "PrepareForLaunchRewardClaimed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "TestnetSwayClaimed": {
+    "type": "event",
+    "name": "TestnetSwayClaimed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "amount",
+        "type": "core::integer::u256",
         "kind": "data"
       },
       {
@@ -2571,6 +2612,33 @@
       {
         "name": "finish_time",
         "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "NameChanged": {
+    "type": "event",
+    "name": "NameChanged",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "entity",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "name",
+        "type": "influence::common::types::string::String",
         "kind": "data"
       },
       {
@@ -2746,77 +2814,6 @@
       {
         "name": "content_hash",
         "type": "core::array::Span::<core::felt252>",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "NameChanged": {
-    "type": "event",
-    "name": "NameChanged",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "entity",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "name",
-        "type": "influence::common::types::string::String",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "ArrivalRewardClaimed": {
-    "type": "event",
-    "name": "ArrivalRewardClaimed",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "PrepareForLaunchRewardClaimed": {
-    "type": "event",
-    "name": "PrepareForLaunchRewardClaimed",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {

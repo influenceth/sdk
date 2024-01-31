@@ -189,6 +189,16 @@
       }
     ]
   },
+  "influence::common::types::string::String": {
+    "type": "struct",
+    "name": "influence::common::types::string::String",
+    "members": [
+      {
+        "name": "value",
+        "type": "core::integer::u256"
+      }
+    ]
+  },
   "cubit::f128::types::fixed::Fixed": {
     "type": "struct",
     "name": "cubit::f128::types::fixed::Fixed",
@@ -200,16 +210,6 @@
       {
         "name": "sign",
         "type": "core::bool"
-      }
-    ]
-  },
-  "influence::common::types::string::String": {
-    "type": "struct",
-    "name": "influence::common::types::string::String",
-    "members": [
-      {
-        "name": "value",
-        "type": "core::integer::u256"
       }
     ]
   }

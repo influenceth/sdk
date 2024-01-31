@@ -1447,6 +1447,58 @@
     ],
     "state_mutability": "view"
   },
+  "ClaimArrivalReward": {
+    "type": "function",
+    "name": "ClaimArrivalReward",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "spaceport",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ClaimPrepareForLaunchReward": {
+    "type": "function",
+    "name": "ClaimPrepareForLaunchReward",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ClaimTestnetSway": {
+    "type": "function",
+    "name": "ClaimTestnetSway",
+    "inputs": [
+      {
+        "name": "proof",
+        "type": "core::array::Span::<core::felt252>"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u256"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "PurchaseAdalian": {
     "type": "function",
     "name": "PurchaseAdalian",
@@ -1558,6 +1610,22 @@
       {
         "name": "crewmates",
         "type": "core::array::Span::<influence::systems::seeding::seed_crewmates::SeedCrewmates::SeededCrewmate>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SeedColony": {
+    "type": "function",
+    "name": "SeedColony",
+    "inputs": [
+      {
+        "name": "colony",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "building_type",
+        "type": "core::integer::u64"
       }
     ],
     "outputs": [],
@@ -1725,42 +1793,6 @@
       {
         "name": "name",
         "type": "influence::common::types::string::String"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ClaimArrivalReward": {
-    "type": "function",
-    "name": "ClaimArrivalReward",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "spaceport",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ClaimPrepareForLaunchReward": {
-    "type": "function",
-    "name": "ClaimPrepareForLaunchReward",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
       },
       {
         "name": "caller_crew",
