@@ -19,9 +19,9 @@ class ProductionJSON {
     };
 
     /**
-     * Expected format: `{"1": "refinery", "2": "factory", ...}`
+     * Expected format: `{"1": 3, "2": 5, ...}`
      */
-    this.processorIdToNameLowercase = {};
+    this.processorIdToBuildingId = {};
 
     /**
      * Expected format: `{"1": "S1", "2": "S2", ...}`
@@ -47,18 +47,6 @@ class ProductionJSON {
   }
 
   /**
-   * NOTE: This function assumes that "buildings" is already populated in the JSON
-   */
-  getBuildingIdForProcessorId (processorId) {
-    for (const buildingData of Object.values(this.productionChainsJSON.buildings)) {
-      if (buildingData.name.toLowerCase() === this.processorIdToNameLowercase[processorId]) {
-        return buildingData.id;
-      }
-    }
-    return null;
-  }
-
-  /**
    * Returned format: [{"productId": "2", "unitsPerSR": 1}, {"productId": "23", "unitsPerSR": 8}, ...]
    */
   getFormattedInputsOrOutputs (inputsOrOutputs) {
@@ -81,8 +69,12 @@ class ProductionJSON {
    * may not match the IDs from older JSON files, released prior to 2024.
    */
   generateJSON () {
+    // Map processor IDs to matching building IDs, if any
     Object.entries(Processor.IDS).forEach(([key, value]) => {
-      this.processorIdToNameLowercase[value] = key.toLowerCase();
+      const matchingBuildingId = Building.IDS[key];
+      if (matchingBuildingId) {
+        this.processorIdToBuildingId[value] = matchingBuildingId;
+      }
     });
 
     /**
@@ -106,7 +98,7 @@ class ProductionJSON {
 
     // Add ships to "products" in the JSON
     Object.values(Ship.TYPES).forEach(shipData => {
-      if (shipData.name === 'Escape Module') {
+      if (shipData.i === Ship.IDS.ESCAPE_MODULE) {
         // Skip "Escape Module" because it already exists as a product
         return;
       }
@@ -128,11 +120,13 @@ class ProductionJSON {
 
     // Add buildings to "buildings" + "products" in the JSON
     Object.values(Building.TYPES).forEach(buildingData => {
+      // Add building to "buildings"
       this.productionChainsJSON.buildings.push({
         id: String(buildingData.i),
         name: buildingData.name
       });
-      if (buildingData.name === 'Empty Lot') {
+      // Add building to "products"
+      if (buildingData.i === Building.IDS.EMPTY_LOT) {
         // Skip "Empty Lot" because it is not a product
         return;
       }
@@ -162,7 +156,7 @@ class ProductionJSON {
     Object.values(Process.TYPES).forEach(processData => {
       this.productionChainsJSON.processes.push({
         bAdalianHoursPerAction: this.getHoursFromSeconds(processData.setupTime),
-        buildingId: this.getBuildingIdForProcessorId(processData.processorType),
+        buildingId: String(this.processorIdToBuildingId[processData.processorType]),
         id: String(processData.i),
         inputs: this.getFormattedInputsOrOutputs(processData.inputs),
         mAdalianHoursPerSR: this.getHoursFromSeconds(processData.recipeTime),
