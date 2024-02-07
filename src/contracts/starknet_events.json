@@ -2451,11 +2451,6 @@
         "kind": "data"
       },
       {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
         "name": "caller",
         "type": "core::starknet::contract_address::ContractAddress",
         "kind": "data"
@@ -2622,6 +2617,18 @@
       {
         "name": "caller",
         "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "AsteroidInitialized": {
+    "type": "event",
+    "name": "AsteroidInitialized",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       }
     ]
@@ -2846,18 +2853,6 @@
       {
         "name": "caller",
         "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "AsteroidInitialized": {
-    "type": "event",
-    "name": "AsteroidInitialized",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       }
     ]

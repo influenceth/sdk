@@ -1456,10 +1456,6 @@
         "type": "influence::common::types::entity::Entity"
       },
       {
-        "name": "spaceport",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
       }
@@ -1473,10 +1469,6 @@
     "inputs": [
       {
         "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
       }
     ],
@@ -1591,6 +1583,70 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "InitializeAsteroid": {
+    "type": "function",
+    "name": "InitializeAsteroid",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "celestial_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "mass",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "radius",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "a",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "ecc",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "inc",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "raan",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "argp",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "m",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "purchase_order",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "scan_status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "bonuses",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "merkle_proof",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "SeedAsteroids": {
     "type": "function",
     "name": "SeedAsteroids",
@@ -1635,18 +1691,6 @@
     "type": "function",
     "name": "SeedHabitat",
     "inputs": [],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "SeedWarehouse": {
-    "type": "function",
-    "name": "SeedWarehouse",
-    "inputs": [
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
     "outputs": [],
     "state_mutability": "external"
   },
@@ -1825,70 +1869,6 @@
       {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "InitializeAsteroid": {
-    "type": "function",
-    "name": "InitializeAsteroid",
-    "inputs": [
-      {
-        "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "celestial_type",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "mass",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "radius",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "a",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "ecc",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "inc",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "raan",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "argp",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "m",
-        "type": "core::integer::u128"
-      },
-      {
-        "name": "purchase_order",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "scan_status",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "bonuses",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "merkle_proof",
-        "type": "core::array::Span::<core::felt252>"
       }
     ],
     "outputs": [],
