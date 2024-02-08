@@ -27,15 +27,15 @@ const TYPES = {
   },
   [IDS.RUN_PROCESS]: {
     name: 'Run Processes',
-    isApplicable: (entity) => !!(entity.Processor || entity.Processors?.length)
+    isApplicable: (entity) => !!entity.Processors?.length
   },
   [IDS.ADD_PRODUCTS]: {
     name: 'Add Products',
-    isApplicable: (entity) => !!(entity.Inventory || entity.Inventories || [])?.find((i) => i.status === Inventory.STATUSES.AVAILABLE)
+    isApplicable: (entity) => !!(entity.Inventories || [])?.find((i) => i.status === Inventory.STATUSES.AVAILABLE)
   },
   [IDS.REMOVE_PRODUCTS]: {
     name: 'Remove Products',
-    isApplicable: (entity) => !!(entity.Inventory || entity.Inventories || [])?.find((i) => i.status === Inventory.STATUSES.AVAILABLE)
+    isApplicable: (entity) => !!(entity.Inventories || [])?.find((i) => i.status === Inventory.STATUSES.AVAILABLE)
   },
   [IDS.STATION_CREW]: {
     name: 'Station Crews',
@@ -67,11 +67,11 @@ const TYPES = {
   },
   [IDS.EXTRACT_RESOURCES]: {
     name: 'Extract Resources',
-    isApplicable: (entity) => !!(entity.Extractor || entity.Extractors?.length)
+    isApplicable: (entity) => !!entity.Extractors?.length
   },
   [IDS.ASSEMBLE_SHIP]: {
     name: 'Assemble Ships',
-    isApplicable: (entity) => !!(entity.DryDock || entity.DryDocks?.length)
+    isApplicable: (entity) => !!entity.DryDocks?.length
   }
 };
 
