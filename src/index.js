@@ -16,7 +16,7 @@ import Inventory from './lib/inventory.js';
 import Lot from './lib/lot.js';
 import Name from './lib/name.js';
 import Order from './lib/order.js';
-import Permissions from './lib/permissions.js';
+import Permission from './lib/permission.js';
 import * as Planet from './lib/planet.js';
 import Process from './lib/process.js';
 import Processor from './lib/processor.js';
@@ -57,7 +57,7 @@ export {
   Lot,
   Name,
   Order,
-  Permissions,
+  Permission,
   Planet,
   Process,
   Processor,
