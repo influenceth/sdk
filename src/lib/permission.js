@@ -176,7 +176,7 @@ const getPolicyDetails = (entity, crewId = null) => {
 Entity.getPolicyDetails = getPolicyDetails;
 
 // Retrieves the prepaid policy rate for the entity in SWAY / IRL hour
-Entity.getPrepaidPolicyRate = (entity) => {
+const getPrepaidPolicyRate = (entity) => {
   const policy = entity.PrepaidPolicies ? entity.PrepaidPolicies[0] : null;
   if (!policy) return 0;
 
@@ -197,6 +197,7 @@ Entity.getPrepaidPolicyRate = (entity) => {
 
   return policy.rate;
 };
+Entity.getPrepaidPolicyRate = getPrepaidPolicyRate;
 
 export default {
   IDS,
@@ -206,6 +207,7 @@ export default {
   MAX_POLICY_DURATION,
 
   getPolicyDetails,
+  getPrepaidPolicyRate,
 
   Entity
 };
