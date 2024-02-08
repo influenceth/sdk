@@ -1,6 +1,8 @@
-import Building from './building';
-import Entity from './entity';
-import Inventory from './inventory';
+import Asteroid from './asteroid.js';
+import Building from './building.js';
+import Entity from './entity.js';
+import Lot from './lot.js';
+import Inventory from './inventory.js';
 
 const IDS = {
   LOT_USE: 1,
@@ -171,6 +173,30 @@ const getPolicyDetails = (entity, crewId = null) => {
       };
     }, {});
 };
+Entity.getPolicyDetails = getPolicyDetails;
+
+// Retrieves the prepaid policy rate for the entity in SWAY / IRL hour
+Entity.getPrepaidPolicyRate = (entity) => {
+  const policy = entity.PrepaidPolicies ? entity.PrepaidPolicies[0] : null;
+  if (!policy) return 0;
+
+  if (entity.label === Entity.IDS.LOT && Lot.toPosition(entity).asteroidId === 1) {
+    // Return Adalia Prime's unique prepaid policy rate
+    const { lotIndex } = Lot.toPosition(entity);
+    const centers = [
+      457078, // Secondary colony
+      1096252, // Mining colony
+      1602262 // Primary colony
+    ];
+
+    const minDistance = Math.min(...centers.map((center) => Asteroid.getLotDistance(1, lotIndex, center)));
+    if (minDistance <= 5) return policy.rate;
+    const minRate = policy.rate / 100;
+    return Math.max(policy.rate - (minDistance - 5) * minRate, minRate);
+  }
+
+  return policy.rate;
+};
 
 export default {
   IDS,
@@ -179,5 +205,7 @@ export default {
   POLICY_TYPES,
   MAX_POLICY_DURATION,
 
-  getPolicyDetails
+  getPolicyDetails,
+
+  Entity
 };
