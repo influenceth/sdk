@@ -25,7 +25,8 @@ const MAX_POLICY_DURATION = 31536000; // 1 yr in IRL seconds
 const TYPES = {
   [IDS.LOT_USE]: {
     name: 'Use Lot',
-    isApplicable: (entity) => entity.label === Entity.IDS.LOT
+    isApplicable: (entity) => entity.label === Entity.IDS.ASTEROID || entity.label === Entity.IDS.LOT,
+    isExclusive: true
   },
   [IDS.RUN_PROCESS]: {
     name: 'Run Processes',
@@ -121,78 +122,94 @@ const POLICY_TYPES = {
   },
 };
 
+const getPermissionPolicy = (entity, rawPermId, crewId, adminCrewId) => {
+  const permId = Number(rawPermId);
+
+  // default perm policy to private
+  const permPolicy = {
+    policyType: POLICY_IDS.PRIVATE,
+    policyDetails: {},
+    agreements: [],
+  };
+
+  // if there is one, find and apply an active policy for the perm (and related agreements)
+  Object.keys(POLICY_TYPES).forEach((key) => {
+    const { policyKey, agreementKey } = POLICY_TYPES[key];
+    if (policyKey) {
+      const activePolicy = (entity[policyKey] || []).find((p) => p.permission === permId);
+      if (activePolicy) {
+        const { permission, ...policyDetails } = activePolicy;
+        permPolicy.policyType = Number(key);
+        permPolicy.policyDetails = policyDetails;
+      }
+
+      // agreement could be from previous policy, so need to attach agreements from any policy type (even if not active)
+      if (agreementKey) {
+        permPolicy.agreements.push(...(entity[agreementKey] || []).filter((a) => a.permission === permId));
+      }
+    }
+  });
+
+  // attach whitelist for the perm
+  permPolicy.allowlist = (entity.WhitelistAgreements || []).filter((a) => a.permission === permId).map((a) => a.permitted);
+
+  // attach crew agreement status (if crew provided)
+  permPolicy.crewStatus = '';
+  if (crewId) {
+    if (entity.Control?.controller?.id === crewId) permPolicy.crewStatus = 'controller';
+    // if not exclusive, policy is "granted" just by being public or on allowlist
+    else if (!TYPES[permId].isExclusive && permPolicy.policyType === POLICY_IDS.PUBLIC) permPolicy.crewStatus = 'granted';
+    else if (!TYPES[permId].isExclusive && permPolicy.allowlist.find((c) => c.id === crewId)) permPolicy.crewStatus = 'granted';
+    // else, granted if have explicit agreement
+    else if (permPolicy.agreements?.find((a) => a.permitted?.id === crewId)) permPolicy.crewStatus = 'granted';
+    // for exclusive perms, also worth noting when being excluded
+    else if (TYPES[permId].isExclusive && permPolicy.agreements?.length > 0) permPolicy.crewStatus = 'under contract';
+    else if (POLICY_TYPES[permPolicy.policyType]?.agreementKey) permPolicy.crewStatus = 'available';
+    else permPolicy.crewStatus = 'restricted';
+  }
+
+  return permPolicy;
+};
+
+// TODO: put this in Crew?
+const isPermitted = (crew, permission, hydratedTarget) => {
+  const policy = getPermissionPolicy(hydratedTarget, permission, crew.id);
+  return policy.crewStatus === 'controller' || policy.crewStatus === 'granted';
+}
+
 // get the applicable policies, agreements, and allowlists for this entity
 const getPolicyDetails = (entity, crewId = null) => {
   return Object.keys(TYPES)
     .filter((id) => TYPES[id].isApplicable(entity))
-    .reduce((acc, strPermId) => {
-      const permId = Number(strPermId);
-
-      // default perm policy to private
-      const permPolicy = {
-        policyType: POLICY_IDS.PRIVATE,
-        policyDetails: {},
-        agreements: [],
-      };
-
-      // if there is one, find and apply an active policy for the perm (and related agreements)
-      Object.keys(POLICY_TYPES).forEach((key) => {
-        const { policyKey, agreementKey } = POLICY_TYPES[key];
-        if (policyKey) {
-          const activePolicy = (entity[policyKey] || []).find((p) => p.permission === permId);
-          if (activePolicy) {
-            const { permission, ...policyDetails } = activePolicy;
-            permPolicy.policyType = Number(key);
-            permPolicy.policyDetails = policyDetails;
-          }
-
-          // agreement could be from previous policy, so need to attach agreements from any policy type (even if not active)
-          if (agreementKey) {
-            permPolicy.agreements.push(...(entity[agreementKey] || []).filter((a) => a.permission === permId));
-          }
-        }
-      });
-
-      // attach whitelist for the perm
-      permPolicy.allowlist = (entity.WhitelistAgreements || []).filter((a) => a.permission === permId).map((a) => a.permitted);
-
-      // attach crew agreement status (if crew provided)
-      permPolicy.crewStatus = '';
-      if (crewId) {
-        if (entity.Control?.controller?.id === crewId) permPolicy.crewStatus = 'controller';
-        else if (permPolicy.policyType === POLICY_IDS.PUBLIC) permPolicy.crewStatus = 'granted';
-        else if (permPolicy.allowlist.find((c) => c.id === crewId)) permPolicy.crewStatus = 'granted';
-        else if (permPolicy.agreements?.find((a) => a.permitted?.id === crewId)) permPolicy.crewStatus = 'granted';
-        else if (POLICY_TYPES[permPolicy.policyType]?.agreementKey) permPolicy.crewStatus = 'available';
-        else permPolicy.crewStatus = 'restricted';
-      }
-
-      return {
-        ...acc,
-        [permId]: permPolicy
-      };
-    }, {});
+    .reduce((acc, permId) => ({
+      ...acc,
+      [permId]: getPermissionPolicy(entity, permId, crewId)
+    }), {});
 };
 Entity.getPolicyDetails = getPolicyDetails;
+
+// Return Adalia Prime's unique prepaid policy rate
+const getAdaliaPrimeLotRate = (policy, lotIndex) => {
+  const centers = [
+    457078, // Secondary colony
+    1096252, // Mining colony
+    1602262 // Primary colony
+  ];
+
+  const minDistance = Math.min(...centers.map((center) => Asteroid.getLotDistance(1, lotIndex, center)));
+  if (minDistance <= 5) return policy.rate;
+  const minRate = policy.rate / 100;
+  return Math.max(policy.rate - (minDistance - 5) * minRate, minRate);
+};
 
 // Retrieves the prepaid policy rate for the entity in SWAY / IRL hour
 const getPrepaidPolicyRate = (entity) => {
   const policy = entity.PrepaidPolicies ? entity.PrepaidPolicies[0] : null;
   if (!policy) return 0;
 
-  if (entity.label === Entity.IDS.LOT && Lot.toPosition(entity).asteroidId === 1) {
-    // Return Adalia Prime's unique prepaid policy rate
-    const { lotIndex } = Lot.toPosition(entity);
-    const centers = [
-      457078, // Secondary colony
-      1096252, // Mining colony
-      1602262 // Primary colony
-    ];
-
-    const minDistance = Math.min(...centers.map((center) => Asteroid.getLotDistance(1, lotIndex, center)));
-    if (minDistance <= 5) return policy.rate;
-    const minRate = policy.rate / 100;
-    return Math.max(policy.rate - (minDistance - 5) * minRate, minRate);
+  const lotPos = Lot.toPosition(entity);
+  if (entity.label === Entity.IDS.LOT && lotPos.asteroidId === 1) {
+    return getAdaliaPrimeLotRate(policy, lotPos.lotIndex);
   }
 
   return policy.rate;
@@ -206,8 +223,10 @@ export default {
   POLICY_TYPES,
   MAX_POLICY_DURATION,
 
+  getAdaliaPrimeLotRate,
   getPolicyDetails,
   getPrepaidPolicyRate,
+  isPermitted,
 
   Entity
 };
