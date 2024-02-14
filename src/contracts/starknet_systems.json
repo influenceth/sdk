@@ -140,7 +140,7 @@
     "name": "RemoveFromWhitelist",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -148,7 +148,7 @@
         "type": "core::integer::u64"
       },
       {
-        "name": "target",
+        "name": "permitted",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -164,7 +164,7 @@
     "name": "Whitelist",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -172,7 +172,7 @@
         "type": "core::integer::u64"
       },
       {
-        "name": "target",
+        "name": "permitted",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -289,22 +289,6 @@
     "inputs": [
       {
         "name": "asteroid",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "ReclaimLot": {
-    "type": "function",
-    "name": "ReclaimLot",
-    "inputs": [
-      {
-        "name": "lot",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1691,6 +1675,22 @@
     "type": "function",
     "name": "SeedHabitat",
     "inputs": [],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "SeedOrders": {
+    "type": "function",
+    "name": "SeedOrders",
+    "inputs": [
+      {
+        "name": "market_lot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "warehouse_lot",
+        "type": "core::integer::u64"
+      }
+    ],
     "outputs": [],
     "state_mutability": "external"
   },

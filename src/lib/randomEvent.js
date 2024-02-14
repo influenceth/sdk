@@ -14,35 +14,35 @@ const IDS = {
 const TYPES = {
   [IDS.STARDUST]: {
     choices: [1],
-    maxChance: 0.01
+    maxChance: 0.75
   },
   [IDS.GROUNDBREAKING]: {
     choices: [1],
-    maxChance: 0.01
+    maxChance: 0.75
   },
   [IDS.KEEP_EM_SEPARATED]: {
     choices: [1],
-    maxChance: 0.01
+    maxChance: 0.75
   },
   [IDS.NO_SOUND_IN_SPACE]: {
     choices: [1],
-    maxChance: 0.01
+    maxChance: 0.75
   },
   [IDS.THE_CAKE_IS_A_HALF_TRUTH]: {
     choices: [1],
-    maxChance: 0.01
+    maxChance: 0.75
   },
   [IDS.FLY_ME_TO_THE_MOON]: {
     choices: [1],
-    maxChance: 0.01
+    maxChance: 0.75
   },
   [IDS.ALWAYS_LEAVE_A_NOTE]: {
     choices: [1],
-    maxChance: 0.01
+    maxChance: 0.75
   },
   [IDS.GREATNESS]: {
     choices: [1],
-    maxChance: 0.01
+    maxChance: 0.75
   }
 };
 

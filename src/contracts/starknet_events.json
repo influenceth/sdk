@@ -261,6 +261,38 @@
       }
     ]
   },
+  "RemovedFromWhitelistV1": {
+    "type": "event",
+    "name": "RemovedFromWhitelistV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "permitted",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "AddedToWhitelist": {
     "type": "event",
     "name": "AddedToWhitelist",
@@ -278,6 +310,38 @@
       },
       {
         "name": "target",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "AddedToWhitelistV1": {
+    "type": "event",
+    "name": "AddedToWhitelistV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "permitted",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
@@ -457,28 +521,6 @@
     "members": [
       {
         "name": "asteroid",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "LotReclaimed": {
-    "type": "event",
-    "name": "LotReclaimed",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "lot",
         "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
