@@ -32,7 +32,7 @@ const TYPES = {
     propellantSlot: 1,
     propellantInventoryType: Inventory.IDS.PROPELLANT_TINY,
     exhaustVelocity: 30000,
-    hullMass: 5e6
+    hullMass: 5000000
   },
   [IDS.SHUTTLE]: {
     i: IDS.SHUTTLE,
@@ -44,7 +44,7 @@ const TYPES = {
     cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_SMALL,
     exhaustVelocity: 30000,
-    hullMass: 100e6
+    hullMass: 100755000
   },
   [IDS.LIGHT_TRANSPORT]: {
     i: IDS.LIGHT_TRANSPORT,
@@ -56,7 +56,7 @@ const TYPES = {
     cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_MEDIUM,
     exhaustVelocity: 30000,
-    hullMass: 180e6
+    hullMass: 185525000
   },
   [IDS.HEAVY_TRANSPORT]: {
     i: IDS.HEAVY_TRANSPORT,
@@ -68,7 +68,7 @@ const TYPES = {
     cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_LARGE,
     exhaustVelocity: 30000,
-    hullMass: 1000e6
+    hullMass: 969525000
   }
 };
 
