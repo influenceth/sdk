@@ -162,7 +162,7 @@ const IDS = {
   POTASSIUM_CARBONATE_FLUORIDATION: 182,
   RHABDITE_SLAG_ACID_LEACHING: 183,
   TANTALATE_NIOBATE_LIQUID_LIQUID_EXTRACTION_AND_REDOX: 184,
-  CARBON_DIOXIDE_ARC_DECOMPOSITION: 185,
+  CARBON_DIOXIDE_FERROCATALYSIS: 185,
   POTASSIUM_HEPTAFLUOROTANTALATE_SODIOTHERMIC_REDUCTION: 186,
   RHABDITE_CARBOTHERMIC_REDUCTION: 187,
   POLYMER_TANTALUM_CAPACITOR_ASSEMBLY: 188,
@@ -481,12 +481,12 @@ const TYPES = {
       [Product.IDS.RAW_SALTS]: 100
     },
     outputs: {
-      [Product.IDS.SODIUM_CHLORIDE]: 85,
-      [Product.IDS.POTASSIUM_CHLORIDE]: 4,
-      [Product.IDS.BORAX]: 3,
-      [Product.IDS.LITHIUM_CARBONATE]: 4,
-      [Product.IDS.MAGNESIUM_CHLORIDE]: 2,
-      [Product.IDS.CALCIUM_CHLORIDE]: 2
+      [Product.IDS.SODIUM_CHLORIDE]: 46,
+      [Product.IDS.POTASSIUM_CHLORIDE]: 29,
+      [Product.IDS.BORAX]: 2,
+      [Product.IDS.LITHIUM_CARBONATE]: 13,
+      [Product.IDS.MAGNESIUM_CHLORIDE]: 6,
+      [Product.IDS.CALCIUM_CHLORIDE]: 5
     }
   },
   [IDS.NAPHTHA_STEAM_CRACKING]: {
@@ -1018,17 +1018,17 @@ const TYPES = {
     name: 'Anorthite Feldspar Acid Leaching and Carbonation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 302400,
-    recipeTime: 313.56,
+    recipeTime: 125.568,
     batched: false,
     inputs: {
-      [Product.IDS.FELDSPAR]: 2193,
+      [Product.IDS.FELDSPAR]: 1096,
       [Product.IDS.AMMONIUM_CARBONATE]: 96,
-      [Product.IDS.SULFURIC_ACID]: 784,
-      [Product.IDS.HYDROFLUORIC_ACID]: 1280
+      [Product.IDS.SULFURIC_ACID]: 392,
+      [Product.IDS.HYDROFLUORIC_ACID]: 160
     },
     outputs: {
-      [Product.IDS.DEIONIZED_WATER]: 288,
-      [Product.IDS.LEACHED_FELDSPAR]: 1248,
+      [Product.IDS.DEIONIZED_WATER]: 144,
+      [Product.IDS.LEACHED_FELDSPAR]: 624,
       [Product.IDS.BERYLLIUM_CARBONATE]: 69
     }
   },
@@ -1483,8 +1483,8 @@ const TYPES = {
     i: IDS.HALL_HEROULT_PROCESS,
     name: 'Hall–Heroult Process',
     processorType: Processor.IDS.REFINERY,
-    setupTime: 100800,
-    recipeTime: 291.6,
+    setupTime: 79200,
+    recipeTime: 97.2,
     batched: false,
     inputs: {
       [Product.IDS.GRAPHITE]: 36,
@@ -2350,12 +2350,12 @@ const TYPES = {
     recipeTime: 72,
     batched: false,
     inputs: {
-      [Product.IDS.HYDROGEN]: 47,
-      [Product.IDS.SILICA_POWDER]: 1,
-      [Product.IDS.TUNGSTEN_POWDER]: 2
+      [Product.IDS.HYDROGEN]: 97,
+      [Product.IDS.SILICA_POWDER]: 2,
+      [Product.IDS.TUNGSTEN_POWDER]: 1
     },
     outputs: {
-      [Product.IDS.HYDROGEN_PROPELLANT]: 50
+      [Product.IDS.HYDROGEN_PROPELLANT]: 100
     }
   },
   [IDS.STAINLESS_STEEL_SHEET_ROLLING]: {
@@ -2776,12 +2776,12 @@ const TYPES = {
       [Product.IDS.POTASSIUM_HEPTAFLUOROTANTALATE]: 392
     }
   },
-  [IDS.CARBON_DIOXIDE_ARC_DECOMPOSITION]: {
-    i: IDS.CARBON_DIOXIDE_ARC_DECOMPOSITION,
-    name: 'Carbon Dioxide Arc Decomposition',
+  [IDS.CARBON_DIOXIDE_FERROCATALYSIS]: {
+    i: IDS.CARBON_DIOXIDE_FERROCATALYSIS,
+    name: 'Carbon Dioxide Ferrocatalysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 21600,
-    recipeTime: 64.08,
+    recipeTime: 15.84,
     batched: false,
     inputs: {
       [Product.IDS.CARBON_DIOXIDE]: 11
@@ -3111,7 +3111,7 @@ const TYPES = {
     name: 'Beryllium Carbonate Calcination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 43200,
-    recipeTime: 5.472,
+    recipeTime: 2.736,
     batched: false,
     inputs: {
       [Product.IDS.BERYLLIUM_CARBONATE]: 69
@@ -3210,8 +3210,8 @@ const TYPES = {
     i: IDS.SEPARATOR_CENTRIFUGE_ASSEMBLY,
     name: 'Separator Centrifuge Assembly',
     processorType: Processor.IDS.SHIPYARD,
-    setupTime: 518400,
-    recipeTime: 64800,
+    setupTime: 410400,
+    recipeTime: 57600,
     batched: false,
     inputs: {
       [Product.IDS.COPPER_WIRE]: 2,
@@ -3307,8 +3307,8 @@ const TYPES = {
     i: IDS.REACTOR_PLUMBING_ASSEMBLY_SQUARED,
     name: 'Reactor Plumbing Assembly Squared',
     processorType: Processor.IDS.SHIPYARD,
-    setupTime: 950400,
-    recipeTime: 216000,
+    setupTime: 900000,
+    recipeTime: 201600,
     batched: false,
     inputs: {
       [Product.IDS.COPPER_WIRE]: 50,
@@ -3545,7 +3545,7 @@ const TYPES = {
     inputs: {
       [Product.IDS.COPPER_WIRE]: 74,
       [Product.IDS.PHOTOVOLTAIC_PANEL]: 250,
-      [Product.IDS.LIPO_BATTERY]: 1580,
+      [Product.IDS.LIPO_BATTERY]: 585,
       [Product.IDS.CIRCUIT_BOARD]: 1
     },
     outputs: {

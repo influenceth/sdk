@@ -1369,7 +1369,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 800,
     isAtomic: false
   },
   [IDS.LASER_DIODE]: {
@@ -1378,7 +1378,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 800,
     isAtomic: false
   },
   [IDS.BALL_VALVE]: {
@@ -1387,7 +1387,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 1480,
     isAtomic: false
   },
   [IDS.ALUMINIUM_BEAM]: {
@@ -1432,7 +1432,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 3000,
-    volumePerUnit: 0,
+    volumePerUnit: 1725,
     isAtomic: true
   },
   [IDS.COLD_GAS_TORQUE_THRUSTER]: {
@@ -1441,7 +1441,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 3000,
-    volumePerUnit: 0,
+    volumePerUnit: 1725,
     isAtomic: true
   },
   [IDS.CARBON_FIBER]: {
@@ -1468,7 +1468,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 6000,
-    volumePerUnit: 0,
+    volumePerUnit: 87000,
     isAtomic: true
   },
   [IDS.BOROSILICATE_GLASS]: {
@@ -1486,7 +1486,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 212,
     isAtomic: false
   },
   [IDS.LARGE_THRUST_BEARING]: {
@@ -1495,7 +1495,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 2000000,
-    volumePerUnit: 0,
+    volumePerUnit: 8640000,
     isAtomic: true
   },
   [IDS.BORON]: {
@@ -1594,7 +1594,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 300000,
-    volumePerUnit: 2490000,
+    volumePerUnit: 570000,
     isAtomic: true
   },
   [IDS.STEEL_TRUSS]: {
@@ -1603,7 +1603,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 1500000,
-    volumePerUnit: 19950000,
+    volumePerUnit: 21000000,
     isAtomic: true
   },
   [IDS.ALUMINIUM_HULL_PLATE]: {
@@ -1612,7 +1612,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 600000,
-    volumePerUnit: 49980000,
+    volumePerUnit: 50520000,
     isAtomic: true
   },
   [IDS.ALUMINIUM_TRUSS]: {
@@ -1621,7 +1621,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 1000000,
-    volumePerUnit: 20000000,
+    volumePerUnit: 21100000,
     isAtomic: true
   },
   [IDS.CARGO_MODULE]: {
@@ -1630,7 +1630,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 5000000,
-    volumePerUnit: 275000000,
+    volumePerUnit: 347500000,
     isAtomic: true
   },
   [IDS.PRESSURE_VESSEL]: {
@@ -1639,7 +1639,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 1850000,
-    volumePerUnit: 331150000,
+    volumePerUnit: 262700000,
     isAtomic: true
   },
   [IDS.PROPELLANT_TANK]: {
@@ -1648,7 +1648,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 3500000,
-    volumePerUnit: 2040500000,
+    volumePerUnit: 2047500000,
     isAtomic: true
   },
   [IDS.STAINLESS_STEEL]: {
@@ -1657,7 +1657,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
-    volumePerUnit: null,
+    volumePerUnit: 140,
     isAtomic: false
   },
   [IDS.BARE_CIRCUIT_BOARD]: {
@@ -1666,7 +1666,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 417,
     isAtomic: false
   },
   [IDS.FERRITE_BEAD_INDUCTOR]: {
@@ -1675,7 +1675,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 228,
     isAtomic: false
   },
   [IDS.CORE_DRILL_BIT]: {
@@ -1684,7 +1684,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 2000,
-    volumePerUnit: 150000,
+    volumePerUnit: 17260,
     isAtomic: true
   },
   [IDS.CORE_DRILL_THRUSTER]: {
@@ -1693,7 +1693,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 10000,
-    volumePerUnit: 250000,
+    volumePerUnit: 100000,
     isAtomic: true
   },
   [IDS.PARABOLIC_DISH]: {
@@ -1702,7 +1702,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.MECHANISM,
     massPerUnit: 72000,
-    volumePerUnit: 0,
+    volumePerUnit: 11808000,
     isAtomic: true
   },
   [IDS.PHOTOVOLTAIC_PANEL]: {
@@ -1711,7 +1711,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 8000,
-    volumePerUnit: 0,
+    volumePerUnit: 52640,
     isAtomic: true
   },
   [IDS.LIPO_BATTERY]: {
@@ -1720,7 +1720,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 5000,
-    volumePerUnit: 0,
+    volumePerUnit: 3160,
     isAtomic: true
   },
   [IDS.NEODYMIUM_TRICHLORIDE]: {
@@ -1774,7 +1774,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_HULL,
     massPerUnit: 44600000,
-    volumePerUnit: 0,
+    volumePerUnit: 16011400000,
     isAtomic: true
   },
   [IDS.LIGHT_TRANSPORT_HULL]: {
@@ -1783,7 +1783,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_HULL,
     massPerUnit: 74200000,
-    volumePerUnit: 0,
+    volumePerUnit: 35987000000,
     isAtomic: true
   },
   [IDS.CARGO_RING]: {
@@ -1792,7 +1792,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 10000000,
-    volumePerUnit: 0,
+    volumePerUnit: 1550000000,
     isAtomic: true
   },
   [IDS.HEAVY_TRANSPORT_HULL]: {
@@ -1801,7 +1801,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_HULL,
     massPerUnit: 480400000,
-    volumePerUnit: 0,
+    volumePerUnit: 60530400000,
     isAtomic: true
   },
   [IDS.TUNGSTEN_POWDER]: {
@@ -1828,7 +1828,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 150,
     isAtomic: false
   },
   [IDS.STAINLESS_STEEL_PIPE]: {
@@ -1837,7 +1837,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.PROCESSED_METAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 1200,
     isAtomic: false
   },
   [IDS.CCD]: {
@@ -1846,7 +1846,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRO_OPTICAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 84,
     isAtomic: false
   },
   [IDS.COMPUTER_CHIP]: {
@@ -1855,7 +1855,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 79,
     isAtomic: false
   },
   [IDS.CORE_DRILL]: {
@@ -1864,7 +1864,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.TOOL,
     massPerUnit: 30000,
-    volumePerUnit: 399000,
+    volumePerUnit: 107100,
     isAtomic: true
   },
   [IDS.NEODYMIUM]: {
@@ -1873,7 +1873,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_RARE_EARTH,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 178,
     isAtomic: false
   },
   [IDS.CHROMIUM]: {
@@ -1882,7 +1882,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 174,
     isAtomic: false
   },
   [IDS.URANIUM_TETRAFLUORIDE]: {
@@ -1891,7 +1891,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 271,
     isAtomic: false
   },
   [IDS.PURE_NITROGEN]: {
@@ -1900,7 +1900,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_VOLATILE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 1240,
     isAtomic: false
   },
   [IDS.ND_YAG_LASER_ROD]: {
@@ -1909,7 +1909,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.CRYSTAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 242,
     isAtomic: false
   },
   [IDS.NICHROME]: {
@@ -1918,7 +1918,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.ALLOY,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 143,
     isAtomic: false
   },
   [IDS.NEODYMIUM_MAGNET]: {
@@ -1927,7 +1927,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 142,
     isAtomic: false
   },
   [IDS.UNENRICHED_URANIUM_HEXAFLUORIDE]: {
@@ -1936,7 +1936,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 327,
     isAtomic: false
   },
   [IDS.HIGHLY_ENRICHED_URANIUM_HEXAFLUORIDE]: {
@@ -1945,7 +1945,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 327,
     isAtomic: false
   },
   [IDS.ND_YAG_LASER]: {
@@ -1954,7 +1954,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRO_OPTICAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 385,
     isAtomic: false
   },
   [IDS.THIN_FILM_RESISTOR]: {
@@ -1963,7 +1963,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 179,
     isAtomic: false
   },
   [IDS.HIGHLY_ENRICHED_URANIUM_POWDER]: {
@@ -1972,7 +1972,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_FISSILE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 96,
     isAtomic: false
   },
   [IDS.LEACHED_FELDSPAR]: {
@@ -1981,7 +1981,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SEMI_REFINED,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 689,
     isAtomic: false
   },
   [IDS.ROASTED_RHABDITE]: {
@@ -1990,7 +1990,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SEMI_REFINED,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 321,
     isAtomic: false
   },
   [IDS.RHABDITE_SLAG]: {
@@ -1999,7 +1999,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.SEMI_REFINED,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 561,
     isAtomic: false
   },
   [IDS.POTASSIUM_CARBONATE]: {
@@ -2008,7 +2008,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 686,
     isAtomic: false
   },
   [IDS.HYDROGEN_HEPTAFLUOROTANTALATE_AND_NIOBATE]: {
@@ -2017,7 +2017,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 397,
     isAtomic: false
   },
   [IDS.LEAD]: {
@@ -2026,7 +2026,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 110,
     isAtomic: false
   },
   [IDS.POTASSIUM_FLUORIDE]: {
@@ -2035,7 +2035,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 672,
     isAtomic: false
   },
   [IDS.POTASSIUM_HEPTAFLUOROTANTALATE]: {
@@ -2044,7 +2044,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.FLUORIDE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 365,
     isAtomic: false
   },
   [IDS.DIEPOXY_PREPOLYMER_RESIN]: {
@@ -2053,7 +2053,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_ORGANIC,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 833,
     isAtomic: false
   },
   [IDS.TANTALUM]: {
@@ -2062,7 +2062,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_METAL,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 75,
     isAtomic: false
   },
   [IDS.PEDOT]: {
@@ -2071,7 +2071,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.CROP,
     category: CATEGORIES.GROWN_ORGANIC,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 989,
     isAtomic: false
   },
   [IDS.POLYMER_TANTALUM_CAPACITOR]: {
@@ -2080,7 +2080,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 256,
     isAtomic: false
   },
   [IDS.SURFACE_MOUNT_DEVICE_REEL]: {
@@ -2089,7 +2089,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 5000,
-    volumePerUnit: 0,
+    volumePerUnit: 8550,
     isAtomic: true
   },
   [IDS.CIRCUIT_BOARD]: {
@@ -2098,7 +2098,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 500,
     isAtomic: false
   },
   [IDS.BRUSHLESS_MOTOR_STATOR]: {
@@ -2107,7 +2107,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 3000,
-    volumePerUnit: 0,
+    volumePerUnit: 906,
     isAtomic: true
   },
   [IDS.BRUSHLESS_MOTOR_ROTOR]: {
@@ -2116,7 +2116,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 3000,
-    volumePerUnit: 0,
+    volumePerUnit: 1308,
     isAtomic: true
   },
   [IDS.BRUSHLESS_MOTOR]: {
@@ -2125,7 +2125,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 6000,
-    volumePerUnit: 0,
+    volumePerUnit: 1572,
     isAtomic: true
   },
   [IDS.LANDING_LEG]: {
@@ -2134,7 +2134,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_PART,
     massPerUnit: 816000,
-    volumePerUnit: 0,
+    volumePerUnit: 1876800,
     isAtomic: true
   },
   [IDS.LANDING_AUGER]: {
@@ -2143,7 +2143,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.SHIP_PART,
     massPerUnit: 144000,
-    volumePerUnit: 0,
+    volumePerUnit: 982080,
     isAtomic: true
   },
   [IDS.PUMP]: {
@@ -2152,7 +2152,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 8000,
-    volumePerUnit: 0,
+    volumePerUnit: 6624,
     isAtomic: true
   },
   [IDS.RADIO_ANTENNA]: {
@@ -2161,7 +2161,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 75000,
-    volumePerUnit: 0,
+    volumePerUnit: 12150000,
     isAtomic: true
   },
   [IDS.FIBER_OPTIC_GYROSCOPE]: {
@@ -2170,7 +2170,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRO_OPTICAL,
     massPerUnit: 2000,
-    volumePerUnit: 0,
+    volumePerUnit: 118,
     isAtomic: true
   },
   [IDS.STAR_TRACKER]: {
@@ -2179,7 +2179,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRO_OPTICAL,
     massPerUnit: 2000,
-    volumePerUnit: 0,
+    volumePerUnit: 94200,
     isAtomic: true
   },
   [IDS.COMPUTER]: {
@@ -2188,7 +2188,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTRONICS,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 333,
     isAtomic: false
   },
   [IDS.CONTROL_MOMENT_GYROSCOPE]: {
@@ -2197,7 +2197,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 160000,
-    volumePerUnit: 0,
+    volumePerUnit: 808000,
     isAtomic: true
   },
   [IDS.ROBOTIC_ARM]: {
@@ -2206,7 +2206,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.ELECTROMECHANICAL,
     massPerUnit: 300000,
-    volumePerUnit: 0,
+    volumePerUnit: 3600000,
     isAtomic: true
   },
   [IDS.BERYLLIUM_CARBONATE]: {
@@ -2215,7 +2215,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.CARBONATE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 833,
     isAtomic: false
   },
   [IDS.BERYLLIA]: {
@@ -2224,7 +2224,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.OXIDE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 509,
     isAtomic: false
   },
   [IDS.BERYLLIA_CERAMIC]: {
@@ -2233,7 +2233,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.MANUFACTURED_GOOD,
     category: CATEGORIES.CERAMIC,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 414,
     isAtomic: false
   },
   [IDS.NEON]: {
@@ -2242,7 +2242,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.REFINED_MATERIAL,
     category: CATEGORIES.REFINED_VOLATILE,
     massPerUnit: 1000,
-    volumePerUnit: 0,
+    volumePerUnit: 7410,
     isAtomic: false
   },
   [IDS.HEAT_EXCHANGER]: {
@@ -2251,7 +2251,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 40000,
-    volumePerUnit: 0,
+    volumePerUnit: 25440,
     isAtomic: true
   },
   [IDS.TURBOPUMP]: {
@@ -2260,7 +2260,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 290000,
-    volumePerUnit: 0,
+    volumePerUnit: 220110,
     isAtomic: true
   },
   [IDS.NEON_FUEL_SEPARATOR_CENTRIFUGE]: {
@@ -2269,7 +2269,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 190000,
-    volumePerUnit: 0,
+    volumePerUnit: 63460,
     isAtomic: true
   },
   [IDS.FUEL_MAKE_UP_TANK]: {
@@ -2278,7 +2278,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 100000,
-    volumePerUnit: 0,
+    volumePerUnit: 23400,
     isAtomic: true
   },
   [IDS.NEON_MAKE_UP_TANK]: {
@@ -2287,7 +2287,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 250000,
-    volumePerUnit: 0,
+    volumePerUnit: 116750,
     isAtomic: true
   },
   [IDS.LIGHTBULB_END_MODERATORS]: {
@@ -2296,7 +2296,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 130000,
-    volumePerUnit: 0,
+    volumePerUnit: 112580,
     isAtomic: true
   },
   [IDS.FUSED_QUARTZ_LIGHTBULB_TUBE]: {
@@ -2305,7 +2305,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 50000,
-    volumePerUnit: 0,
+    volumePerUnit: 396000,
     isAtomic: true
   },
   [IDS.REACTOR_PLUMBING_ASSEMBLY]: {
@@ -2314,7 +2314,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 1942000,
-    volumePerUnit: 0,
+    volumePerUnit: 6991200,
     isAtomic: true
   },
   [IDS.FLOW_DIVIDER_MODERATOR]: {
@@ -2323,7 +2323,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 18700000,
-    volumePerUnit: 0,
+    volumePerUnit: 18139000,
     isAtomic: true
   },
   [IDS.NUCLEAR_LIGHTBULB]: {
@@ -2332,7 +2332,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 180000,
-    volumePerUnit: 0,
+    volumePerUnit: 583200,
     isAtomic: true
   },
   [IDS.COMPOSITE_OVERWRAPPED_REACTOR_SHELL]: {
@@ -2341,7 +2341,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 6000000,
-    volumePerUnit: 0,
+    volumePerUnit: 51600000,
     isAtomic: true
   },
   [IDS.CLOSED_CYCLE_GAS_CORE_NUCLEAR_REACTOR_ENGINE]: {
@@ -2350,7 +2350,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.ENGINE_PART,
     massPerUnit: 30000000,
-    volumePerUnit: 0,
+    volumePerUnit: 54600000,
     isAtomic: true
   },
   [IDS.HABITATION_MODULE]: {
@@ -2359,7 +2359,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 2200000,
-    volumePerUnit: 0,
+    volumePerUnit: 264000000,
     isAtomic: true
   },
   [IDS.MOBILITY_MODULE]: {
@@ -2368,7 +2368,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 2000000,
-    volumePerUnit: 0,
+    volumePerUnit: 4860000,
     isAtomic: true
   },
   [IDS.FLUIDS_AUTOMATION_MODULE]: {
@@ -2377,7 +2377,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 3600000,
-    volumePerUnit: 0,
+    volumePerUnit: 399600000,
     isAtomic: true
   },
   [IDS.SOLIDS_AUTOMATION_MODULE]: {
@@ -2386,7 +2386,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 3600000,
-    volumePerUnit: 0,
+    volumePerUnit: 11736000,
     isAtomic: true
   },
   [IDS.TERRAIN_INTERFACE_MODULE]: {
@@ -2395,7 +2395,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 960000,
-    volumePerUnit: 0,
+    volumePerUnit: 2976000,
     isAtomic: true
   },
   [IDS.AVIONICS_MODULE]: {
@@ -2404,7 +2404,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 500000,
-    volumePerUnit: 0,
+    volumePerUnit: 12200000,
     isAtomic: true
   },
   [IDS.ESCAPE_MODULE]: {
@@ -2413,7 +2413,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 6665000,
-    volumePerUnit: 0,
+    volumePerUnit: 339915000,
     isAtomic: true
   },
   [IDS.ATTITUDE_CONTROL_MODULE]: {
@@ -2422,7 +2422,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 660000,
-    volumePerUnit: 0,
+    volumePerUnit: 2976600,
     isAtomic: true
   },
   [IDS.POWER_MODULE]: {
@@ -2430,8 +2430,8 @@ const TYPES = {
     name: 'Power Module',
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
-    massPerUnit: 2000000,
-    volumePerUnit: 0,
+    massPerUnit: 1000000,
+    volumePerUnit: 3800000,
     isAtomic: true
   },
   [IDS.THERMAL_MODULE]: {
@@ -2440,7 +2440,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 1000000,
-    volumePerUnit: 0,
+    volumePerUnit: 399000,
     isAtomic: true
   },
   [IDS.PROPULSION_MODULE]: {
@@ -2449,7 +2449,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 32000000,
-    volumePerUnit: 0,
+    volumePerUnit: 106560000,
     isAtomic: true
   }
 };

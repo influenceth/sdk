@@ -116,46 +116,42 @@ const CONSTRUCTION_TYPES = {
   [IDS.EXTRACTOR]: {
     constructionTime: 2073600,
     requirements: {
-      [Product.IDS.CEMENT]: 400000,
-      [Product.IDS.STEEL_BEAM]: 900000,
-      [Product.IDS.STEEL_SHEET]: 200000,
+      [Product.IDS.CEMENT]: 450000,
+      [Product.IDS.STEEL_BEAM]: 600000,
       [Product.IDS.POLYACRYLONITRILE_FABRIC]: 3000,
-      [Product.IDS.MOBILITY_MODULE]: 5,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 4,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 4,
-      [Product.IDS.AVIONICS_MODULE]: 1,
-      [Product.IDS.POWER_MODULE]: 16
+      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 1,
+      [Product.IDS.POWER_MODULE]: 6
     }
   },
   [IDS.REFINERY]: {
     constructionTime: 4147200,
     requirements: {
       [Product.IDS.CEMENT]: 800000,
-      [Product.IDS.STEEL_BEAM]: 600000,
-      [Product.IDS.STEEL_SHEET]: 400000,
+      [Product.IDS.STEEL_BEAM]: 400000,
+      [Product.IDS.STEEL_SHEET]: 300000,
       [Product.IDS.PLATINUM]: 2,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 76,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 8,
-      [Product.IDS.AVIONICS_MODULE]: 6,
-      [Product.IDS.POWER_MODULE]: 160,
-      [Product.IDS.THERMAL_MODULE]: 20
+      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 12,
+      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 2,
+      [Product.IDS.AVIONICS_MODULE]: 2,
+      [Product.IDS.POWER_MODULE]: 16,
+      [Product.IDS.THERMAL_MODULE]: 4
     }
   },
   [IDS.BIOREACTOR]: {
     constructionTime: 3456000,
     requirements: {
-      [Product.IDS.DEIONIZED_WATER]: 2900000,
-      [Product.IDS.FUSED_QUARTZ]: 500000,
+      [Product.IDS.DEIONIZED_WATER]: 1400000,
+      [Product.IDS.FUSED_QUARTZ]: 300000,
       [Product.IDS.CEMENT]: 500000,
-      [Product.IDS.SOIL]: 500000,
+      [Product.IDS.SOIL]: 300000,
       [Product.IDS.STEEL_BEAM]: 100000,
       [Product.IDS.STEEL_SHEET]: 300000,
-      [Product.IDS.POLYPROPYLENE]: 50000,
+      [Product.IDS.POLYPROPYLENE]: 25000,
       [Product.IDS.PURE_NITROGEN]: 125000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 100,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 50,
-      [Product.IDS.AVIONICS_MODULE]: 4,
-      [Product.IDS.POWER_MODULE]: 46
+      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 16,
+      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 12,
+      [Product.IDS.AVIONICS_MODULE]: 3,
+      [Product.IDS.POWER_MODULE]: 8
     }
   },
   [IDS.FACTORY]: {
@@ -164,11 +160,11 @@ const CONSTRUCTION_TYPES = {
       [Product.IDS.CEMENT]: 900000,
       [Product.IDS.STEEL_BEAM]: 1100000,
       [Product.IDS.STEEL_SHEET]: 700000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 40,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 162,
+      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 4,
+      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 40,
       [Product.IDS.AVIONICS_MODULE]: 8,
-      [Product.IDS.POWER_MODULE]: 120,
-      [Product.IDS.THERMAL_MODULE]: 30
+      [Product.IDS.POWER_MODULE]: 20,
+      [Product.IDS.THERMAL_MODULE]: 6
     }
   },
   [IDS.SHIPYARD]: {
@@ -177,11 +173,11 @@ const CONSTRUCTION_TYPES = {
       [Product.IDS.CEMENT]: 2000000,
       [Product.IDS.STEEL_BEAM]: 2400000,
       [Product.IDS.STEEL_SHEET]: 1000000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 160,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 300,
+      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 8,
+      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 60,
       [Product.IDS.AVIONICS_MODULE]: 10,
-      [Product.IDS.POWER_MODULE]: 200,
-      [Product.IDS.THERMAL_MODULE]: 50
+      [Product.IDS.POWER_MODULE]: 24,
+      [Product.IDS.THERMAL_MODULE]: 6
     }
   },
   [IDS.SPACEPORT]: {
@@ -191,11 +187,11 @@ const CONSTRUCTION_TYPES = {
       [Product.IDS.STEEL_BEAM]: 2200000,
       [Product.IDS.STEEL_SHEET]: 3200000,
       [Product.IDS.STEEL_CABLE]: 200000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 160,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 180,
-      [Product.IDS.AVIONICS_MODULE]: 20,
-      [Product.IDS.POWER_MODULE]: 200,
-      [Product.IDS.THERMAL_MODULE]: 250
+      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 40,
+      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 120,
+      [Product.IDS.AVIONICS_MODULE]: 16,
+      [Product.IDS.POWER_MODULE]: 40,
+      [Product.IDS.THERMAL_MODULE]: 40
     }
   },
   [IDS.MARKETPLACE]: {
@@ -206,26 +202,26 @@ const CONSTRUCTION_TYPES = {
       [Product.IDS.STEEL_SHEET]: 3000000,
       [Product.IDS.STEEL_CABLE]: 500000,
       [Product.IDS.LARGE_THRUST_BEARING]: 6,
-      [Product.IDS.HABITATION_MODULE]: 204,
+      [Product.IDS.HABITATION_MODULE]: 8,
       [Product.IDS.AVIONICS_MODULE]: 12,
-      [Product.IDS.POWER_MODULE]: 120,
-      [Product.IDS.THERMAL_MODULE]: 204
+      [Product.IDS.POWER_MODULE]: 20,
+      [Product.IDS.THERMAL_MODULE]: 20
     }
   },
   [IDS.HABITAT]: {
     constructionTime: 14515200,
     requirements: {
-      [Product.IDS.DEIONIZED_WATER]: 1500000,
+      [Product.IDS.DEIONIZED_WATER]: 300000,
       [Product.IDS.CEMENT]: 5000000,
-      [Product.IDS.SOIL]: 1500000,
+      [Product.IDS.SOIL]: 200000,
       [Product.IDS.STEEL_BEAM]: 4000000,
       [Product.IDS.STEEL_SHEET]: 5000000,
       [Product.IDS.STEEL_CABLE]: 1000000,
       [Product.IDS.LARGE_THRUST_BEARING]: 12,
-      [Product.IDS.HABITATION_MODULE]: 340,
+      [Product.IDS.HABITATION_MODULE]: 16,
       [Product.IDS.AVIONICS_MODULE]: 20,
-      [Product.IDS.POWER_MODULE]: 200,
-      [Product.IDS.THERMAL_MODULE]: 340
+      [Product.IDS.POWER_MODULE]: 30,
+      [Product.IDS.THERMAL_MODULE]: 20
     }
   }
 };
