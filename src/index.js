@@ -30,7 +30,6 @@ import AdalianOrbit from './utils/AdalianOrbit.js';
 import Address from './utils/address.js';
 import Fixed from './utils/fixed.js';
 import Merkle from './utils/MerkleTree.js';
-import ProductionJSON from './utils/ProductionJSON.js';
 import Simplex from './utils/simplex.js';
 import Time from './utils/Time.js';
 
@@ -38,15 +37,7 @@ import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'j
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
 // Utility libs
-export {
-  AdalianOrbit,
-  Address,
-  Fixed,
-  Merkle,
-  ProductionJSON,
-  Simplex,
-  Time
-};
+export { AdalianOrbit, Address, Fixed, Merkle, Simplex, Time };
 
 // Game asset libs
 export {
