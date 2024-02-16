@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
+    "export-production-chains": "node ./src/scripts/exportProductionChains.js",
     "lint": "eslint ./src",
     "prepublishOnly": "npm run build",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive"
