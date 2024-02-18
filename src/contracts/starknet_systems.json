@@ -1032,7 +1032,7 @@
     "name": "AssignContractPolicy",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1056,7 +1056,7 @@
     "name": "AssignPrepaidMerklePolicy",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1092,7 +1092,7 @@
     "name": "AssignPrepaidPolicy",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1124,7 +1124,7 @@
     "name": "AssignPublicPolicy",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1144,7 +1144,7 @@
     "name": "RemoveContractPolicy",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1164,7 +1164,7 @@
     "name": "RemovePrepaidPolicy",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1184,7 +1184,7 @@
     "name": "RemovePrepaidMerklePolicy",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
@@ -1204,7 +1204,7 @@
     "name": "RemovePublicPolicy",
     "inputs": [
       {
-        "name": "entity",
+        "name": "target",
         "type": "influence::common::types::entity::Entity"
       },
       {
