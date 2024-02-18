@@ -13,15 +13,27 @@ describe('Permission library', function () {
       ]
     };
 
-    const rate = Permission.Entity.getPrepaidPolicyRate(entity);
+    let rate = Permission.Entity.getPrepaidPolicyRate(entity);
     expect(rate).to.equal(1000);
 
     entity.id = Lot.toId(1, 1598602);
-    const rate2 = Permission.Entity.getPrepaidPolicyRate(entity);
-    expect(rate2).to.be.lessThan(1000);
+    rate = Permission.Entity.getPrepaidPolicyRate(entity);
+    expect(rate).to.equal(1000);
 
-    entity.id = Lot.toId(1, 1);
-    const rate3 = Permission.Entity.getPrepaidPolicyRate(entity);
-    expect(rate3).to.equal(10);
+    entity.id = Lot.toId(1, 1580548);
+    rate = Permission.Entity.getPrepaidPolicyRate(entity);
+    expect(rate).to.equal(500);
+
+    entity.id = Lot.toId(1, 1547367);
+    rate = Permission.Entity.getPrepaidPolicyRate(entity);
+    expect(rate).to.equal(250);
+
+    entity.id = Lot.toId(1, 1501732);
+    rate = Permission.Entity.getPrepaidPolicyRate(entity);
+    expect(rate).to.equal(100);
+
+    entity.id = Lot.toId(1, 1470059);
+    rate = Permission.Entity.getPrepaidPolicyRate(entity);
+    expect(rate).to.equal(10);
   });
 });

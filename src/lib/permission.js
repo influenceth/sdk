@@ -197,9 +197,12 @@ const getAdaliaPrimeLotRate = (policy, lotIndex) => {
   ];
 
   const minDistance = Math.min(...centers.map((center) => Asteroid.getLotDistance(1, lotIndex, center)));
-  if (minDistance <= 5) return policy.rate;
-  const minRate = policy.rate / 100;
-  return Math.max(policy.rate - (minDistance - 5) * minRate, minRate);
+
+  if (minDistance < 20) return Math.floor(policy.rate);
+  if (minDistance < 50) return Math.floor(policy.rate / 2);
+  if (minDistance < 75) return Math.floor(policy.rate / 4);
+  if (minDistance < 100) return Math.floor(policy.rate / 10);
+  return Math.floor(policy.rate / 100);
 };
 
 // Retrieves the prepaid policy rate for the entity in SWAY / IRL hour
