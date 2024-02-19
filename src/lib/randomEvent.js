@@ -52,6 +52,8 @@ const TYPES = {
   }
 };
 
+const MIN_ROUNDS = 10;
+
 const ACTION_IDS = {
   SAMPLE_DEPOSIT_STARTED: 1,
   EXTRACT_RESOURCE_STARTED: 2,
@@ -79,6 +81,7 @@ const ACTION_TYPES = {
 };
 
 export default {
+  MIN_ROUNDS,
   IDS,
   TYPES,
   ACTION_IDS,
