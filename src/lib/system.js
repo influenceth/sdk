@@ -73,6 +73,8 @@ const formatCalldataValue = (type, value) => {
   } else if (type === 'EscrowHook') {
     if (!value) return { contract: 0, entry_point_selector: '0', calldata: [] };
     return { contract: value.contractAddress, entry_point_selector: value.entrypoint, calldata: value.calldata };
+  } else if (type === 'u256') {
+    return uint256.bnToUint256(value);
   } else { // "Raw"
     return value;
   }
@@ -102,71 +104,81 @@ const formatSystemCalldata = (name, vars, limitToVars = false) => {
   }, []);
 };
 
-const getApproveErc20Call = (amount, erc20Address, dispatcherAddress) => ({
-  contractAddress: erc20Address,
-  entrypoint: 'approve',
-  calldata: CallData.compile([
-    formatCalldataValue('ContractAddress', dispatcherAddress),
-    formatCalldataValue('Ether', amount)
-  ])
+const getFormattedCall = (contractAddress, entrypoint, calldata) => ({
+  contractAddress,
+  entrypoint,
+  calldata: CallData.compile(
+    calldata.map((entry) => {
+      const { value, type } = typeof entry === 'object' && entry.hasOwnProperty('value')
+        ? entry
+        : { value: entry };
+      return formatCalldataValue(type || 'Raw', value);
+    })
+  )
 });
 
-const getEscrowDepositCall = (amount, depositHook, withdrawHook, escrowAddress, swayAddress) => {
-  return {
-    contractAddress: escrowAddress,
-    entrypoint: 'deposit',
-    calldata: CallData.compile([
-      formatCalldataValue('ContractAddress', swayAddress),
-      formatCalldataValue('Ether', amount), // using Ether b/c should match u256
-      formatCalldataValue('EscrowHook', withdrawHook),
-      formatCalldataValue('EscrowHook', depositHook),
-    ])
-  };
-};
+const getApproveErc20Call = (amount, erc20Address, dispatcherAddress) => getFormattedCall(
+  erc20Address,
+  'approve',
+  [
+    { value: dispatcherAddress, type: 'ContractAddress' },
+    { value: amount, type: 'Ether' }
+  ]
+);
 
-const getEscrowWithdrawCall = (withdrawals, depositCaller, withdrawHook, withdrawData, escrowAddress, swayAddress) => {
-  return {
-    contractAddress: escrowAddress,
-    entrypoint: 'withdraw',
-    calldata: CallData.compile([
-      formatCalldataValue('ContractAddress', depositCaller),
-      formatCalldataValue('ContractAddress', swayAddress),
-      formatCalldataValue('EscrowHook', withdrawHook),
-      // withdrawal data (not part of initial hook)
-      withdrawData.length,
-      ...withdrawData,
-      // span of withdrawal structs
-      `${withdrawals.length}`,
-      ...withdrawals.map((w) => formatCalldataValue('Withdrawal', w)),
-    ])
-  };
-};
+const getEscrowDepositCall = (amount, depositHook, withdrawHook, escrowAddress, swayAddress) => getFormattedCall(
+  escrowAddress,
+  'deposit',
+  [
+    { value: swayAddress, type: 'ContractAddress' },
+    { value: amount, type: 'Ether' }, // using Ether b/c should match u256
+    { value: withdrawHook, type: 'EscrowHook' },
+    { value: depositHook, type: 'EscrowHook' }
+  ]
+);
 
-const getRunSystemCall = (name, input, dispatcherAddress, limitToVars = false) => ({
-  contractAddress: dispatcherAddress,
-  entrypoint: 'run_system',
-  calldata: CallData.compile({
+const getEscrowWithdrawCall = (withdrawals, depositCaller, withdrawHook, withdrawData, escrowAddress, swayAddress) => getFormattedCall(
+  escrowAddress,
+  'withdraw',
+  [
+    { value: depositCaller, type: 'ContractAddress' },
+    { value: swayAddress, type: 'ContractAddress' },
+    { value: withdrawHook, type: 'EscrowHook' },
+    // withdrawal data (not part of initial hook)
+    withdrawData.length,
+    ...withdrawData,
+    // span of withdrawal structs
+    withdrawals.length,
+    ...(withdrawals.map((w) => ({ value: w, type: 'Withdrawal' })))
+  ]
+);
+
+const getRunSystemCall = (name, input, dispatcherAddress, limitToVars = false) => getFormattedCall(
+  dispatcherAddress,
+  'run_system',
+  [
     name,
-    calldata: formatSystemCalldata(name, input, limitToVars)
-  })
-});
+    formatSystemCalldata(name, input, limitToVars)
+  ]
+);
 
-const getTransferWithConfirmationCall = (recipient, amount, memo, consumerAddress, swayAddress) => ({
-  contractAddress: swayAddress,
-  entrypoint: 'transfer_with_confirmation',
-  calldata: CallData.compile([
-    formatCalldataValue('recipient', recipient),
-    formatCalldataValue('amount', amount),
-    formatCalldataValue('memo', Array.isArray(memo) ? ec.starkCurve.poseidonHashMany(memo.map((v) => BigInt(v))) : memo),
-    formatCalldataValue('consumer', consumerAddress)
-  ])
-});
+const getTransferWithConfirmationCall = (recipient, amount, memo, consumerAddress, swayAddress) => getFormattedCall(
+  swayAddress,
+  'transfer_with_confirmation',
+  [
+    { value: recipient, type: 'ContractAddress' },
+    { value: amount, type: 'BigNumber' },
+    { value: Array.isArray(memo) ? ec.starkCurve.poseidonHashMany(memo.map((v) => BigInt(v))) : memo },
+    { value: consumerAddress, type: 'ContractAddress' }
+  ]
+);
 
 export default {
   formatSystemCalldata,
   getApproveErc20Call,
   getEscrowDepositCall,
   getEscrowWithdrawCall,
+  getFormattedCall,
   getRunSystemCall,
   getTransferWithConfirmationCall,
   Systems
