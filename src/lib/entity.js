@@ -7,7 +7,8 @@ const IDS = {
   SHIP: 6,
   DEPOSIT: 7,
   ORDER: 8,
-  DELIVERY: 9
+  DELIVERY: 9,
+  SPACE: 10
 };
 
 const TYPES = {
@@ -19,7 +20,8 @@ const TYPES = {
   [IDS.SHIP]: { label: 'SHIP' },
   [IDS.DEPOSIT]: { label: 'DEPOSIT' },
   [IDS.ORDER]: { label: 'ORDER' },
-  [IDS.DELIVERY]: { label: 'DELIVERY' }
+  [IDS.DELIVERY]: { label: 'DELIVERY' },
+  [IDS.SPACE]: { label: 'SPACE' }
 };
 
 const packEntity = function ({ id, label }, returnAsHex = true) {
