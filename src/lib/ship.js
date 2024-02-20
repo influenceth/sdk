@@ -23,20 +23,29 @@ const VARIANTS = {
 };
 
 // exhaustVelocity is in m/s
+// TODO: ship descriptions would ideally use config values
 const TYPES = {
   [IDS.ESCAPE_MODULE]: {
     i: IDS.ESCAPE_MODULE,
     name: 'Escape Module',
+    description: `The Escape Module is a tiny craft that serves as a lifeboat for emergencies,
+      and as temporary quarters when crews are going about their work off-base. Every crew in
+      Adalia has an Escape Module available to them at all times. It can sustain a single crew of up
+      to five crewmates in orbit, and is capable of limited travel between asteroids. It can deliver
+      its crew to a habitat or ship on the surface, but cannot be used as a base on its own.`,
     landing: false,
     docking: false,
     propellantSlot: 1,
     propellantInventoryType: Inventory.IDS.PROPELLANT_TINY,
     exhaustVelocity: 30000,
-    hullMass: 5000000
+    hullMass: 5000000,
   },
   [IDS.SHUTTLE]: {
     i: IDS.SHUTTLE,
     name: 'Shuttle',
+    description: `The Shuttle is a lean, light ship with a single engine, optimized for personnel
+      transportation. It can carry up to 15 crewmates at once, but also has space for a small
+      50-tonne cargo. The Shuttle requires a spaceport to land on an asteroid.`,
     landing: false,
     docking: true,
     propellantSlot: 1,
@@ -49,6 +58,10 @@ const TYPES = {
   [IDS.LIGHT_TRANSPORT]: {
     i: IDS.LIGHT_TRANSPORT,
     name: 'Light Transport',
+    description: `The Light Transport is a medium-sized ship with two engines that serves as the
+      pickup truck of the Belt. Its crewmate complement of up to five can use the ship to transport
+      up to 2000 tonnes of cargo. The Light Transport is uniquely able to land on any undeveloped
+      asteroid lot, not just in spaceports like the other ships of the Exploitation era.`,
     landing: true,
     docking: true,
     propellantSlot: 1,
@@ -61,6 +74,9 @@ const TYPES = {
   [IDS.HEAVY_TRANSPORT]: {
     i: IDS.HEAVY_TRANSPORT,
     name: 'Heavy Transport',
+    description: `The Heavy Transport is a huge, nine-engine ship specializing in bulk transportation
+      of goods. It can be used to haul up to a massive 12,000 tonnes of cargo, and has space for up
+      to five crewmates. The Heavy Transport requires a spaceport to land on an asteroid.`,
     landing: false,
     docking: true,
     propellantSlot: 1,

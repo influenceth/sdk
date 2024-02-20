@@ -49,7 +49,12 @@ const TYPES = {
   [IDS.BIOREACTOR]: {
     i: IDS.BIOREACTOR,
     name: 'Bioreactor',
-    description: '' // TODO: ...
+    description: `The Bioreactor, or as the Adalians lovingly call it, the Farm, is a
+      specialized building designed to provide a growing space for a variety of organic
+      products. It features transparent growing tunnels containing microgravity soil beds
+      for agricultural plants brought from Earth, as well as water tubes built into the
+      tunnel walls for bio-engineered algae and bacteria. Production of crops in the
+      Bioreactor necessarily occurs in batches.`
   },
   [IDS.FACTORY]: {
     i: IDS.FACTORY,
