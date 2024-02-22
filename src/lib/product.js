@@ -1648,7 +1648,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.HULL_MODULE,
     massPerUnit: 3500000,
-    volumePerUnit: 2047500000,
+    volumePerUnit: 511000000,
     isAtomic: true
   },
   [IDS.STAINLESS_STEEL]: {
