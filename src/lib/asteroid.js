@@ -373,16 +373,23 @@ Entity.getSurfaceArea = (asteroid) => Component.getSurfaceArea(asteroid.Celestia
  * @param packed The bitpacked abundances BigInt
  */
 const getAbundances = (packed) => {
+  let local = BigInt(packed) + 0n;
+
   const stride = 10n;
   const strideExp = 2n ** stride;
 
-  let local = BigInt(packed) + 0n;
   const abundances = {};
   const rawMaterials = Product.getListByClassification(Product.CLASSIFICATIONS.RAW_MATERIAL);
   for (let i = 1; i <= rawMaterials.length; i++) {
     abundances[i] = parseInt(local % strideExp) / 1000;
-    local = local >> stride;
+
+    if (i === 11) {
+      local = local >> (stride + 18n);
+    } else {
+      local = local >> stride;
+    }
   }
+
   return abundances;
 };
 Component.getAbundances = (celestial) => getAbundances(celestial.abundances);

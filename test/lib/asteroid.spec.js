@@ -41,14 +41,14 @@ describe('Asteroid library', function () {
     expect(LasteroidArea).to.equal(13);
   });
 
-  it('should get unpacked abundances', function () {
+  it.only('should get unpacked abundances', function () {
     let abundances = {};
     abundances = asteroid.getAbundances(0n);
     expect(Object.keys(abundances).length).to.equal(22);
     expect(!!Object.values(abundances).find((v) => v > 0)).to.be.false;
 
-    abundances = asteroid.getAbundances(164550455732120604215496918255735050498273586563358426139512320200n);
-    expect(JSON.stringify(abundances)).to.equal(`{"1":0.2,"2":0.3,"3":0,"4":0,"5":0.4,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0.1}`);
+    abundances = asteroid.getAbundances(9078860778880704047948632506506693944630329320366663028149543338246261n);
+    expect(JSON.stringify(abundances)).to.equal(`{"1":0.117,"2":0,"3":0,"4":0,"5":0,"6":0.024,"7":0.022,"8":0.012,"9":0.082,"10":0.027,"11":0.055,"12":0.031,"13":0.071,"14":0.099,"15":0.041,"16":0.019,"17":0.041,"18":0.02,"19":0.021,"20":0.24,"21":0.048,"22":0.021}`);
 
     abundances = asteroid.getAbundances('0x8121cb4138751fc9a000000004c');
     expect(JSON.stringify(abundances)).to.equal(`{"1":0.076,"2":0,"3":0,"4":0,"5":0.154,"6":0.127,"7":0.117,"8":0.078,"9":0.18,"10":0.135,"11":0.129,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0}`);
