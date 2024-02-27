@@ -1,4 +1,5 @@
 const MAX_EXTRACTION_TIME = 365 * 86400; // in-game seconds
+const EXTRACTION_SETUP_TIME = 4 * 86400; // in-game seconds
 const MAX_YIELD_PER_RUN = 10000e6; // 10000 tonnes in grams
 
 const IDS = {
@@ -33,6 +34,7 @@ const getExtractionTime = (targetYield, remainingYield, totalBonus = 1) => {
 };
 
 export default {
+  EXTRACTION_SETUP_TIME,
   MAX_EXTRACTION_TIME,
   MAX_YIELD_PER_RUN,
 
