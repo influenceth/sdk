@@ -182,12 +182,14 @@ Object.keys(TYPES).forEach((key) => {
   }
 });
 
-const getType = (type, totalBonus = 1) => {
-  if (TYPES[type]) {
-    return Object.keys(TYPES[type]).reduce((acc, k) => ({
-      ...acc,
-      [k]: ['massConstraint', 'volumeConstraint'].includes(k) ? TYPES[type][k] * totalBonus : TYPES[type][k]
-    }), {});
+const getType = (type, bonuses = { mass: 1, volume: 1 }) => {
+  if (type && TYPES[type]) {
+    return Object.keys(TYPES[type]).reduce((acc, k) => {
+      let v = TYPES[type][k];
+      if (k === 'massConstraint' && bonuses.mass !== 1) v *= bonuses.mass;
+      if (k === 'volumeConstraint' && bonuses.volume !== 1) v *= bonuses.volume;
+      return { ...acc, [k]: v };
+    }, {});
   }
   return null;
 };
@@ -199,15 +201,15 @@ const getType = (type, totalBonus = 1) => {
  * @param {integer} inventoryType
  * @returns {object} An object with filledMass and filledVolume (in grams and mL)
  */
-const getFilledCapacity = (inventoryType) => {
+const getFilledCapacity = (inventoryType, bonuses = { mass: 1, volume: 1 }) => {
   const config = TYPES[inventoryType] || {};
   return {
     filledMass: config.massConstraint === Infinity
       ? config.productConstraintsTotalMass
-      : (config.massConstraint || Infinity),
+      : ((config.massConstraint * bonuses.mass) || Infinity),
     filledVolume: config.volumeConstraint === Infinity
       ? config.productConstraintsTotalVolume
-      : (config.volumeConstraint || Infinity)
+      : ((config.volumeConstraint * bonuses.volume) || Infinity)
   };
 };
 
