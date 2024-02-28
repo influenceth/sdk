@@ -105,7 +105,7 @@ const CONSTRUCTION_TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 1,
       [Product.IDS.ESCAPE_MODULE]: 3,
       [Product.IDS.ATTITUDE_CONTROL_MODULE]: 1,
-      [Product.IDS.POWER_MODULE]: 1,
+      [Product.IDS.POWER_MODULE]: 2,
       [Product.IDS.THERMAL_MODULE]: 1,
       [Product.IDS.PROPULSION_MODULE]: 1
     }
@@ -120,7 +120,7 @@ const CONSTRUCTION_TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 1,
       [Product.IDS.ESCAPE_MODULE]: 1,
       [Product.IDS.ATTITUDE_CONTROL_MODULE]: 2,
-      [Product.IDS.POWER_MODULE]: 2,
+      [Product.IDS.POWER_MODULE]: 4,
       [Product.IDS.THERMAL_MODULE]: 1,
       [Product.IDS.PROPULSION_MODULE]: 2
     }
@@ -134,7 +134,7 @@ const CONSTRUCTION_TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 3,
       [Product.IDS.ESCAPE_MODULE]: 1,
       [Product.IDS.ATTITUDE_CONTROL_MODULE]: 6,
-      [Product.IDS.POWER_MODULE]: 3,
+      [Product.IDS.POWER_MODULE]: 6,
       [Product.IDS.THERMAL_MODULE]: 3,
       [Product.IDS.PROPULSION_MODULE]: 9
     }
