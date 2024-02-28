@@ -245,7 +245,7 @@ const CONSTRUCTION_STATUS_LABELS = {
   [CONSTRUCTION_STATUSES.OPERATIONAL]: 'Operational'
 };
 
-const GRACE_PERIOD = 86400;
+const GRACE_PERIOD = 86400 * 2; // 2 days in IRL time
 const DECONSTRUCTION_PENALTY = 0.10;
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
