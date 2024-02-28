@@ -122,7 +122,7 @@ const POLICY_TYPES = {
   },
 };
 
-const getPermissionPolicy = (entity, rawPermId, crewId, adminCrewId) => {
+const getPermissionPolicy = (entity, rawPermId, crewId) => {
   const permId = Number(rawPermId);
 
   // default perm policy to private
