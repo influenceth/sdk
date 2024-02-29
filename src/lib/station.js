@@ -35,10 +35,11 @@ const Component = {};
 const getEfficiency = (stationType, population) => {
   const { cap, efficiency } = getType(stationType);
   const softCap = 0.5 * cap;
-  if (population <= softCap) return efficiency;
-
-  const efficiencyDrop = efficiency - 1.0;
-  return efficiency - efficiencyDrop * (population - softCap) / softCap;
+  if (efficiency > 1 && population > softCap) {
+    const efficiencyBonus = efficiency - 1;
+    return efficiency - efficiencyBonus * (Math.min(population, cap) - softCap) / (cap - softCap);
+  }
+  return efficiency;
 };
 Component.getEfficiency = (station) => getEfficiency(station.stationType, station.population);
 Entity.getEfficiency = (stationable) => Component.getEfficiency(stationable.Station);
