@@ -1,5 +1,6 @@
 import Product from './product.js';
 import Inventory from './inventory.js';
+import Time from '../utils/Time.js';
 
 const IDS = {
   ESCAPE_MODULE: 1,
@@ -22,6 +23,9 @@ const VARIANTS = {
   AUREATE_PIONEER: 4
 };
 
+// in-game seconds to generate emergency prop % of tank from 0
+const EMERGENCY_PROP_GEN_TIME = 10368000;
+
 // exhaustVelocity is in m/s
 // TODO: ship descriptions would ideally use config values
 const TYPES = {
@@ -39,6 +43,7 @@ const TYPES = {
     propellantInventoryType: Inventory.IDS.PROPELLANT_TINY,
     exhaustVelocity: 30000,
     hullMass: 5000000,
+    emergencyPropellantCap: 1
   },
   [IDS.SHUTTLE]: {
     i: IDS.SHUTTLE,
@@ -53,7 +58,8 @@ const TYPES = {
     cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_SMALL,
     exhaustVelocity: 30000,
-    hullMass: 100755000
+    hullMass: 100755000,
+    emergencyPropellantCap: 0.1
   },
   [IDS.LIGHT_TRANSPORT]: {
     i: IDS.LIGHT_TRANSPORT,
@@ -69,7 +75,8 @@ const TYPES = {
     cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_MEDIUM,
     exhaustVelocity: 30000,
-    hullMass: 185525000
+    hullMass: 185525000,
+    emergencyPropellantCap: 0.1
   },
   [IDS.HEAVY_TRANSPORT]: {
     i: IDS.HEAVY_TRANSPORT,
@@ -84,7 +91,8 @@ const TYPES = {
     cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_LARGE,
     exhaustVelocity: 30000,
-    hullMass: 969525000
+    hullMass: 969525000,
+    emergencyPropellantCap: 0.1
   }
 };
 
@@ -186,29 +194,54 @@ Entity.propellantToDeltaV = (ship, propellantMass, totalBonus = 1) => {
   );
 };
 
-
-// in-game seconds to generate 10% of tank from 0
-const EMERGENCY_PROP_GEN_TIME = 10368000;
-const EMERGENCY_PROP_LIMIT = 0.1;
-
-const getEmergencyPropellantAmount = (generationTime, inventoryConfig, startingAmount, resourceId = Product.IDS.HYDROGEN_PROPELLANT) => {
-  const maxEmergencyPropellantAmount = EMERGENCY_PROP_LIMIT * inventoryConfig.massConstraint / Product.TYPES[resourceId].massPerUnit;
+const getEmergencyPropellantAmount = (generationTime, propLimit, inventoryConfig, startingAmount, resourceId = Product.IDS.HYDROGEN_PROPELLANT) => {
+  const maxEmergencyPropellantAmount = propLimit * inventoryConfig.massConstraint / Product.TYPES[resourceId].massPerUnit;
   const generationRate = maxEmergencyPropellantAmount / EMERGENCY_PROP_GEN_TIME;
   const uncappedGenerationAmount = generationRate * generationTime;
   return Math.min(maxEmergencyPropellantAmount, startingAmount + uncappedGenerationAmount);
 };
+Entity.getEmergencyPropellantAmount = (ship, inventoryBonuses = { mass: 1, volume: 1 }, timeAcceleration = Time.DEFAULT_TIME_ACCELERATION, resourceId = Product.IDS.HYDROGEN_PROPELLANT) => {
+  if (!ship || !ship.Ship || !ship.Inventories) return null;
+  const shipConfig = TYPES[ship.Ship.shipType];
+  if (!shipConfig) return null;
+  const propellantInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.propellantSlot);
+  if (!propellantInventory) return null;
+  const inventoryConfig = Inventory.getType(propellantInventory.inventoryType, inventoryBonuses);
+  if (!inventoryConfig) return null;
 
-const getTimeUntilEmergencyPropellantFull = (inventoryConfig, startingAmount, resourceId = Product.IDS.HYDROGEN_PROPELLANT) => {
-  const maxEmergencyPropellantAmount = EMERGENCY_PROP_LIMIT * inventoryConfig.massConstraint / Product.TYPES[resourceId].massPerUnit;
+  return getEmergencyPropellantAmount(
+    Time.toGameDuration(Date.now() / 1000 - ship.Ship.emergencyAt, timeAcceleration),
+    shipConfig.emergencyPropellantCap,
+    inventoryConfig,
+    propellantInventory.mass / Product.TYPES[resourceId].massPerUnit,
+  );
+};
+
+const getTimeUntilEmergencyPropellantFull = (inventoryConfig, propLimit, startingAmount, resourceId = Product.IDS.HYDROGEN_PROPELLANT) => {
+  const maxEmergencyPropellantAmount = propLimit * inventoryConfig.massConstraint / Product.TYPES[resourceId].massPerUnit;
   const maxAmountCanGenerate = maxEmergencyPropellantAmount - startingAmount;
   const generationRate = maxEmergencyPropellantAmount / EMERGENCY_PROP_GEN_TIME;
   return maxAmountCanGenerate / generationRate;
+};
+Entity.getTimeUntilEmergencyPropellantFull = (ship, inventoryBonuses = { mass: 1, volume: 1 }, resourceId = Product.IDS.HYDROGEN_PROPELLANT) => {
+  if (!ship || !ship.Ship || !ship.Inventories) return null;
+  const shipConfig = TYPES[ship.Ship.shipType];
+  if (!shipConfig) return null;
+  const propellantInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.propellantSlot);
+  if (!propellantInventory) return null;
+  const inventoryConfig = Inventory.getType(propellantInventory.inventoryType, inventoryBonuses);
+  if (!inventoryConfig) return null;
+
+  return getTimeUntilEmergencyPropellantFull(
+    inventoryConfig,
+    shipConfig.emergencyPropellantCap,
+    propellantInventory.mass / Product.TYPES[resourceId].massPerUnit,
+  );
 };
 
 export default {
   CONSTRUCTION_TYPES,
   EMERGENCY_PROP_GEN_TIME,
-  EMERGENCY_PROP_LIMIT,
   IDS,
   STATUSES,
   TYPES,
