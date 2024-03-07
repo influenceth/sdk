@@ -67,6 +67,10 @@ describe('Crew library', function () {
     // Test with ratio modifier
     expect(Crew.getFoodMultiplier(1314000 * accel, 1, 1.25)).to.equal(0.6);
     expect(Crew.getFoodMultiplier(1642500 * accel, 1, 1.25)).to.equal(0.4);
+
+    // Test with consumption modifier
+    expect(Crew.getFoodMultiplier(788400 * accel, 1.1, 1)).to.equal(1);
+    expect(Crew.getFoodMultiplier(900000 * accel, 1.1, 1)).to.be.lessThan(1);
   });
 
   it('should return the correct time since fed', function () {
