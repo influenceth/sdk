@@ -366,7 +366,8 @@ const ABILITY_TYPES = {
       [DEPARTMENT_IDS.FOOD_PREPARATION]: 0.025,
       [DEPARTMENT_IDS.MANAGEMENT]: 0.005
     },
-    traits: { [TRAIT_IDS.DIETITIAN]: 0.05 }
+    traits: { [TRAIT_IDS.DIETITIAN]: 0.05 },
+    notFurtherModified: true
   },
   [ABILITY_IDS.FOOD_RATIONING_PENALTY]: {
     name: 'Food Rationing Penalty',

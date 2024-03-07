@@ -41,7 +41,7 @@ describe('Asteroid library', function () {
     expect(LasteroidArea).to.equal(13);
   });
 
-  it.only('should get unpacked abundances', function () {
+  it('should get unpacked abundances', function () {
     let abundances = {};
     abundances = asteroid.getAbundances(0n);
     expect(Object.keys(abundances).length).to.equal(22);
