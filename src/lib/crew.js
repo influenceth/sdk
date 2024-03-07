@@ -28,7 +28,7 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
     Object.assign(details, getAbilityBonusFromStation(station));
 
     // Calculate food bonus
-    Object.assign(details, getAbilityBonusFromFood(timeSinceFed));
+    Object.assign(details, getAbilityBonusFromFood(timeSinceFed, crewmates));
 
     // Combine them all
     details.totalBonus = details.crewmatesMultiplier * details.stationMultiplier * details.foodMultiplier;
@@ -144,7 +144,8 @@ const getCurrentFoodRatio = (timeSinceFed = 0, consumption = 1) => {
 
 const getFoodMultiplier = (timeSinceFed = 0, consumption = 1, rationing = 1) => {
   const currentRatio = getCurrentFoodRatio(timeSinceFed, consumption);
-  const adjustedRatio = 1 - ((1 - currentRatio / 0.5) / rationing);
+  const consumptionRate = 0.5 / consumption;
+  const adjustedRatio = 1 - ((1 - currentRatio / consumptionRate) / rationing);
   return Math.min(Math.max(adjustedRatio, STARVING_MULTIPLIER), 1);
 };
 
@@ -167,5 +168,6 @@ export default {
   getAbilityBonus,
   getCurrentFoodRatio,
   getFoodMultiplier,
-  getTimeSinceFed
+  getTimeSinceFed,
+  getAbilityBonusFromFood
 };
