@@ -15,10 +15,11 @@ const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 const Entity = {};
 const Component = {};
 
-// Returns the time in
+// Delays only start once the dock is half full
 const getGroundDelay = (dockType, dockedShips) => {
-  const { delayPerShip } = getType(dockType);
-  return dockedShips * delayPerShip;
+  const { delayPerShip, cap } = getType(dockType);
+  const effectiveDockedShips = Math.max(0, dockedShips - cap / 2);
+  return effectiveDockedShips * delayPerShip;
 };
 Component.getGroundDelay = (dock) => getGroundDelay(dock.dockType, dock.dockedShips);
 Entity.getGroundDelay = (dockable) => Component.getGroundDelay(dockable.Dock);
