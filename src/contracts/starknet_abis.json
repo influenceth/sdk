@@ -2051,6 +2051,22 @@
       "state_mutability": "view"
     },
     {
+      "type": "function",
+      "name": "set_features",
+      "inputs": [
+        {
+          "name": "crewmate_id",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "features",
+          "type": "core::integer::u128"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
       "type": "struct",
       "name": "core::integer::u256",
       "members": [

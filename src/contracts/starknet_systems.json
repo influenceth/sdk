@@ -159,6 +159,30 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "RemoveAccountFromWhitelist": {
+    "type": "function",
+    "name": "RemoveAccountFromWhitelist",
+    "inputs": [
+      {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "permitted",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "Whitelist": {
     "type": "function",
     "name": "Whitelist",
@@ -174,6 +198,30 @@
       {
         "name": "permitted",
         "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "WhitelistAccount": {
+    "type": "function",
+    "name": "WhitelistAccount",
+    "inputs": [
+      {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "permitted",
+        "type": "core::starknet::contract_address::ContractAddress"
       },
       {
         "name": "caller_crew",

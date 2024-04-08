@@ -293,6 +293,38 @@
       }
     ]
   },
+  "RemovedAccountFromWhitelist": {
+    "type": "event",
+    "name": "RemovedAccountFromWhitelist",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "permitted",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "AddedToWhitelist": {
     "type": "event",
     "name": "AddedToWhitelist",
@@ -343,6 +375,38 @@
       {
         "name": "permitted",
         "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "AddedAccountToWhitelist": {
+    "type": "event",
+    "name": "AddedAccountToWhitelist",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "permitted",
+        "type": "core::starknet::contract_address::ContractAddress",
         "kind": "data"
       },
       {
@@ -1389,6 +1453,38 @@
       {
         "name": "price",
         "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DepositPurchasedV1": {
+    "type": "event",
+    "name": "DepositPurchasedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "seller_crew",
+        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
