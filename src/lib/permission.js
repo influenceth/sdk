@@ -122,7 +122,7 @@ const POLICY_TYPES = {
   },
 };
 
-const getPermissionPolicy = (entity, rawPermId, crewId) => {
+const getPermissionPolicy = (entity, rawPermId, crewId, account) => {
   const permId = Number(rawPermId);
 
   // default perm policy to private
@@ -152,6 +152,7 @@ const getPermissionPolicy = (entity, rawPermId, crewId) => {
 
   // attach whitelist for the perm
   permPolicy.allowlist = (entity.WhitelistAgreements || []).filter((a) => a.permission === permId).map((a) => a.permitted);
+  permPolicy.accountAllowlist = (entity.WhitelistAccountAgreements || []).filter((a) => a.permission === permId).map((a) => a.permitted);
 
   // attach crew agreement status (if crew provided)
   permPolicy.crewStatus = '';
@@ -160,6 +161,7 @@ const getPermissionPolicy = (entity, rawPermId, crewId) => {
     // if not exclusive, policy is "granted" just by being public or on allowlist
     else if (!TYPES[permId].isExclusive && permPolicy.policyType === POLICY_IDS.PUBLIC) permPolicy.crewStatus = 'granted';
     else if (!TYPES[permId].isExclusive && permPolicy.allowlist.find((c) => c.id === crewId)) permPolicy.crewStatus = 'granted';
+    else if (!TYPES[permId].isExclusive && account && permPolicy.accountAllowlist.find((a) => Address.areEqual(a, account))) permPolicy.crewStatus = 'granted';
     // else, granted if have explicit agreement
     else if (permPolicy.agreements?.find((a) => a.permitted?.id === crewId)) permPolicy.crewStatus = 'granted';
     // for exclusive perms, also worth noting when being excluded
@@ -172,18 +174,18 @@ const getPermissionPolicy = (entity, rawPermId, crewId) => {
 };
 
 // TODO: put this in Crew?
-const isPermitted = (crew, permission, hydratedTarget) => {
-  const policy = getPermissionPolicy(hydratedTarget, permission, crew.id);
+const isPermitted = (account, crew, permission, hydratedTarget) => {
+  const policy = getPermissionPolicy(hydratedTarget, permission, crew.id, account);
   return policy.crewStatus === 'controller' || policy.crewStatus === 'granted';
 }
 
 // get the applicable policies, agreements, and allowlists for this entity
-const getPolicyDetails = (entity, crewId = null) => {
+const getPolicyDetails = (entity, account = null, crewId = null) => {
   return Object.keys(TYPES)
     .filter((id) => TYPES[id].isApplicable(entity))
     .reduce((acc, permId) => ({
       ...acc,
-      [permId]: getPermissionPolicy(entity, permId, crewId)
+      [permId]: getPermissionPolicy(entity, permId, crewId, account)
     }), {});
 };
 Entity.getPolicyDetails = getPolicyDetails;
