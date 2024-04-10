@@ -1,4 +1,4 @@
-import Address from '../lib/asteroid.js';
+import Address from '../utils/address.js';
 import Asteroid from './asteroid.js';
 import Building from './building.js';
 import Entity from './entity.js';
