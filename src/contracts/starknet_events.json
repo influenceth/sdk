@@ -1025,6 +1025,68 @@
       }
     ]
   },
+  "SellOrderFilled": {
+    "type": "event",
+    "name": "SellOrderFilled",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "seller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "product",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "CrewStationed": {
     "type": "event",
     "name": "CrewStationed",
@@ -1634,68 +1696,6 @@
       },
       {
         "name": "maker_fee",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "SellOrderFilled": {
-    "type": "event",
-    "name": "SellOrderFilled",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "seller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "exchange",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "product",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "amount",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "price",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "storage",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "storage_slot",
-        "type": "core::integer::u64",
-        "kind": "data"
-      },
-      {
-        "name": "destination",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "destination_slot",
         "type": "core::integer::u64",
         "kind": "data"
       },

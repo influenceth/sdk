@@ -551,6 +551,42 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "ResupplyFoodFromExchange": {
+    "type": "function",
+    "name": "ResupplyFoodFromExchange",
+    "inputs": [
+      {
+        "name": "seller_crew",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "exchange",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "price",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "storage",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "storage_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "StationCrew": {
     "type": "function",
     "name": "StationCrew",
