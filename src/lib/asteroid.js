@@ -794,13 +794,14 @@ const getHopperTravelTime = (distance, totalBonus = 1) => {
  * @param {integer} asteroidId The asteroid identifier
  * @param {integer} originLotIndex The starting lot identifier
  * @param {integer} destLotIndex The ending lot identifier
- * @param {float} totalBonus Hopper transport time bonus for the crew
+ * @param {float} timeBonus Hopper transport time bonus for the crew
+ * @param {float} distBonus Free transport radius bonus for the crew
  * @return Travel time in in-game seconds
  */
-const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, totalBonus = 1) => {
-  const freeTransportRadius = FREE_TRANSPORT_RADIUS * totalBonus;
+const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, timeBonus = 1, distBonus = 1) => {
+  const freeTransportRadius = FREE_TRANSPORT_RADIUS * distBonus;
   const distance = getLotDistance(asteroidId, originLotIndex, destLotIndex);
-  return distance <= freeTransportRadius ? 0 : getHopperTravelTime(distance, totalBonus);
+  return distance <= freeTransportRadius ? 0 : getHopperTravelTime(distance, timeBonus);
 };
 
 /**
