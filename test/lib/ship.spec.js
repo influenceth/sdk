@@ -31,4 +31,12 @@ describe('Ship library', function () {
   it('should get variants', function () {
     expect(ship.getVariant(1).name).to.equal('Standard');
   });
+
+  it('should calculate delta-V', function () {
+    let deltaV = ship.propellantToDeltaV(ship.IDS.LIGHT_TRANSPORT, 1951773000 + 185525000, 1951773000, 0.5);
+    expect(Math.round(deltaV)).to.equal(36662);
+
+    deltaV = ship.propellantToDeltaV(ship.IDS.LIGHT_TRANSPORT, 1951773000 + 185525000, 1951773000, 1);
+    expect(Math.round(deltaV)).to.equal(73323);
+  });
 });

@@ -180,7 +180,7 @@ Entity.getPropellantRequirement = (ship, deltaV_ms, totalBonus = 1) => {
 }
 
 const propellantToDeltaV = (shipType, wetMass, propellantMass, totalBonus = 1) => {
-  return TYPES[shipType].exhaustVelocity * Math.log(1 / (1 - propellantMass * totalBonus / wetMass));
+  return TYPES[shipType].exhaustVelocity * totalBonus * Math.log(wetMass / (wetMass - propellantMass));
 };
 Entity.propellantToDeltaV = (ship, propellantMass, totalBonus = 1) => {
   const shipConfig = TYPES[ship.Ship.shipType] || {};
