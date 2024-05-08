@@ -180,17 +180,17 @@ Entity.getPropellantRequirement = (ship, deltaV_ms, exhaustBonus = 1) => {
   );
 }
 
-const propellantToDeltaV = (shipType, wetMass, propellantMass, exhaustBonus = 1) => {
-  return TYPES[shipType].exhaustVelocity * exhaustBonus * Math.log(wetMass / (wetMass - propellantMass));
+const propellantToDeltaV = (shipType, wetMass, usedPropellantMass, exhaustBonus = 1) => {
+  return TYPES[shipType].exhaustVelocity * exhaustBonus * Math.log(wetMass / (wetMass - usedPropellantMass));
 };
-Entity.propellantToDeltaV = (ship, propellantMass, exhaustBonus = 1) => {
+Entity.propellantToDeltaV = (ship, usedPropellantMass, exhaustBonus = 1) => {
   const shipConfig = TYPES[ship.Ship.shipType] || {};
   const cargoInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.cargoSlot);
   const propellantInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.propellantSlot);
   return propellantToDeltaV(
     ship.Ship.shipType,
     shipConfig.hullMass + (cargoInventory?.mass || 0) + (propellantInventory?.mass || 0),
-    propellantMass,
+    usedPropellantMass,
     exhaustBonus
   );
 };
