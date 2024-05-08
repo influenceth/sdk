@@ -164,10 +164,11 @@ const getVariant = (variant) => VARIANT_TYPES[variant] ? { ...VARIANT_TYPES[vari
 Component.getVariant = (ship) => getVariant(ship.variant);
 Entity.getVariant = (entity) => Component.getVariant(entity.Ship);
 
-const getPropellantRequirement = (shipType, wetMass, deltaV_ms, totalBonus = 1) => {
-  return wetMass * (1 - 1 / Math.exp(deltaV_ms / TYPES[shipType].exhaustVelocity)) / totalBonus;
+const getPropellantRequirement = (shipType, wetMass, deltaV_ms, exhaustBonus = 1) => {
+  const exhaustVelocity = TYPES[shipType].exhaustVelocity * exhaustBonus;
+  return wetMass * (1 - 1 / Math.exp(deltaV_ms / exhaustVelocity));
 };
-Entity.getPropellantRequirement = (ship, deltaV_ms, totalBonus = 1) => {
+Entity.getPropellantRequirement = (ship, deltaV_ms, exhaustBonus = 1) => {
   const shipConfig = TYPES[ship.Ship.shipType] || {};
   const cargoInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.cargoSlot);
   const propellantInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.propellantSlot);
@@ -175,14 +176,14 @@ Entity.getPropellantRequirement = (ship, deltaV_ms, totalBonus = 1) => {
     ship.Ship.shipType,
     shipConfig.hullMass + (cargoInventory?.mass || 0) + (propellantInventory?.mass || 0),
     deltaV_ms,
-    totalBonus
+    exhaustBonus
   );
 }
 
-const propellantToDeltaV = (shipType, wetMass, propellantMass, totalBonus = 1) => {
-  return TYPES[shipType].exhaustVelocity * totalBonus * Math.log(wetMass / (wetMass - propellantMass));
+const propellantToDeltaV = (shipType, wetMass, propellantMass, exhaustBonus = 1) => {
+  return TYPES[shipType].exhaustVelocity * exhaustBonus * Math.log(wetMass / (wetMass - propellantMass));
 };
-Entity.propellantToDeltaV = (ship, propellantMass, totalBonus = 1) => {
+Entity.propellantToDeltaV = (ship, propellantMass, exhaustBonus = 1) => {
   const shipConfig = TYPES[ship.Ship.shipType] || {};
   const cargoInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.cargoSlot);
   const propellantInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.propellantSlot);
@@ -190,7 +191,7 @@ Entity.propellantToDeltaV = (ship, propellantMass, totalBonus = 1) => {
     ship.Ship.shipType,
     shipConfig.hullMass + (cargoInventory?.mass || 0) + (propellantInventory?.mass || 0),
     propellantMass,
-    totalBonus
+    exhaustBonus
   );
 };
 

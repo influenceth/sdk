@@ -39,4 +39,12 @@ describe('Ship library', function () {
     deltaV = ship.propellantToDeltaV(ship.IDS.LIGHT_TRANSPORT, 1951773000 + 185525000, 1951773000, 1);
     expect(Math.round(deltaV)).to.equal(73323);
   });
+
+  it('should calculate required propellant', function () {
+    let res = ship.getPropellantRequirement(ship.IDS.LIGHT_TRANSPORT, 1951773000 + 185525000, 73323, 1);
+    expect((res - 1951773000) / 1951773000).to.be.lessThan(0.001);
+
+    res = ship.getPropellantRequirement(ship.IDS.LIGHT_TRANSPORT, 1951773000 + 185525000, 36662, 0.5);
+    expect((res - 1951773000) / 1951773000).to.be.lessThan(0.001);
+  });
 });
