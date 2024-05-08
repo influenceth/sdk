@@ -18,5 +18,6 @@ export const SIMPLEX_POLY_FIT = {
 export default {
   ADALIA_MASS,
   GM_ADALIA,
-  MASTER_SEED
+  MASTER_SEED,
+  SIMPLEX_POLY_FIT
 };

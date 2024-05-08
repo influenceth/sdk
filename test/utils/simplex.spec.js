@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { snoise, recursiveSNoise } from '../../src/utils/simplex.js';
+import { snoise, recursiveSNoise, percentileByOctaves } from '../../src/utils/simplex.js';
 
 describe('Simplex library', function () {
   it('should generate correct values for single octave', function () {
@@ -26,5 +26,16 @@ describe('Simplex library', function () {
     expect(Number(noise.toFixed(4))).to.equal(-0.3678);
     noise = recursiveSNoise([-0.005, 12.578, -2.87], 0.5, 6);
     expect(Number(noise.toFixed(4))).to.equal(-0.1822);
+  });
+
+  it('should return the correct percentile', function () {
+    let res = percentileByOctaves(0.7803629850968719, 2);
+    expect(res.toFixed(4)).to.equal('0.9821');
+
+    res = percentileByOctaves(0.7783138356171548, 3);
+    expect(res.toFixed(4)).to.equal('0.9920');
+
+    res =  percentileByOctaves(0.6535024207551032, 2);
+    expect(res.toFixed(4)).to.equal('0.8685');
   });
 });

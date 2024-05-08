@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import dock from '../../src/lib/dock.js';
 import { checkIdsAndTypes } from '../testUtils.js';
 
-describe.only('Dock library', function () {
+describe('Dock library', function () {
   checkIdsAndTypes(dock.IDS, dock.TYPES);
 
   it('should get the ground delay for a dock', function () {

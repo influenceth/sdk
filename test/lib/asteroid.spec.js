@@ -164,7 +164,7 @@ describe('Asteroid library', function () {
 
     abundances = 163694267033613831154047584829516n;
     abundance = asteroid.getAbundanceAtLot(1, 1758637, 7, abundances);
-    expect(Number(abundance.toFixed(4))).to.equal(0.9418);
+    expect(Number(abundance.toFixed(4))).to.equal(0.9338);
   });
 
   it('should get abundances at a unit sphere position', function () {
@@ -173,7 +173,7 @@ describe('Asteroid library', function () {
       abundance: 1, octaves: 6, polyParams: SIMPLEX_POLY_FIT[6], pointScale: 1, pointShift: [ -0.005, 11.578, -2.87 ]
     });
 
-    expect(Number(abundance.toFixed(5))).to.equal(0.59825)
+    expect(Number(abundance.toFixed(5))).to.equal(0.59835)
   });
 
   it('should calculate abundance map params', function () {
@@ -321,14 +321,17 @@ describe('Asteroid library', function () {
 
   it('should calculate the time to travel between lots with bonuses', function () {
     const argsList = [
-      { asteroid_id: 1, origin_lot: 2345, dest_lot: 345634, totalBonus: 1.5 },
-      { asteroid_id: 2500, origin_lot: 123, dest_lot: 342, totalBonus: 3.1 }
+      { asteroid_id: 1, origin_lot: 2345, dest_lot: 345634, timeBonus: 1.5, distBonus: 1 },
+      { asteroid_id: 2500, origin_lot: 123, dest_lot: 342, timeBonus: 1, distBonus: 3.2 }
     ];
 
     const expected = [333825, 0 ];
 
     for (const [ i, args ] of argsList.entries()) {
-      const distance = asteroid.getLotTravelTime(args.asteroid_id, args.origin_lot, args.dest_lot, args.totalBonus);
+      const distance = asteroid.getLotTravelTime(
+        args.asteroid_id, args.origin_lot, args.dest_lot, args.timeBonus, args.distBonus
+      );
+
       expect(Number(distance.toFixed(4))).to.equal(expected[i]);
     }
   });
