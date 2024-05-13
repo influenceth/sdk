@@ -342,7 +342,8 @@ const ABILITY_TYPES = {
   },
   [ABILITY_IDS.SECONDARY_REFINING_YIELD]: {
     name: 'Secondary Refining Yield',
-    class: CLASS_IDS.SCIENTIST
+    class: CLASS_IDS.SCIENTIST,
+    notFurtherModified: true
   },
   [ABILITY_IDS.MANUFACTURING_TIME]: {
     name: 'Manufacturing Time',
