@@ -3765,7 +3765,7 @@ const getOutputs = (processId, recipes, targetOuput = null, secondaryBonus = 1) 
   if (!TYPES[processId]) return {};
   const process = TYPES[processId];
   const actualTarget = targetOuput || Object.keys(process.outputs)[0];
-  const secondaryAdjust = 1 - 0.5 / secondaryBonus;
+  const secondaryAdjust = 1 - Math.min(0.5 / secondaryBonus, 1);
 
   return Object.keys(process.outputs).map(outputId => {
     if (Number(actualTarget) === Number(outputId)) {
