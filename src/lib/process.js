@@ -3760,6 +3760,28 @@ const getProcessingTime = (processId, recipes, totalBonus = 1) => {
   return recipeTimes * TYPES[processId].recipeTime / totalBonus;
 }
 
+// Calculates the units of each output for a process given a target product
+const getOutputs = (processId, recipes, targetOuput = null, secondaryBonus = 1) => {
+  if (!TYPES[processId]) return {};
+  const process = TYPES[processId];
+  const actualTarget = targetOuput || Object.keys(process.outputs)[0];
+  const secondaryAdjust = 1 - 0.5 / secondaryBonus;
+
+  return Object.keys(process.outputs).map(outputId => {
+    if (Number(actualTarget) === Number(outputId)) {
+      return {
+        id: Number(outputId),
+        amount: Math.floor(process.outputs[outputId] * recipes)
+      };
+    } else {
+      return {
+        id: Number(outputId),
+        amount: Math.floor(process.outputs[outputId] * recipes * secondaryAdjust)
+      };
+    }
+  });
+};
+
 const getSetupTime = (processId, totalBonus = 1) => {
   if (!TYPES[processId]) return 0;
   return TYPES[processId].setupTime / totalBonus;
@@ -3770,6 +3792,7 @@ export default {
   TYPES,
 
   getListByProcessorType,
+  getOutputs,
   getProcessingTime,
   getSetupTime,
   getType
