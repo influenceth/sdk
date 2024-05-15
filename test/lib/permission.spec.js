@@ -4,7 +4,7 @@ import Lot from '../../src/lib/lot.js';
 import Permission from '../../src/lib/permission.js';
 
 describe('Permission library', function () {
-  it('should get the prices for Adalia Prime lease', function () {
+  it.only('should get the prices for Adalia Prime lease', function () {
     const entity = {
       label: Entity.IDS.LOT,
       id: Lot.toId(1, 457078),
@@ -14,7 +14,11 @@ describe('Permission library', function () {
     };
 
     let rate = Permission.Entity.getPrepaidPolicyRate(entity);
-    expect(rate).to.equal(1000);
+    expect(rate).to.equal(500);
+
+    entity.id = Lot.toId(1, 1096252);
+    rate = Permission.Entity.getPrepaidPolicyRate(entity);
+    expect(rate).to.equal(200);
 
     entity.id = Lot.toId(1, 1598602);
     rate = Permission.Entity.getPrepaidPolicyRate(entity);

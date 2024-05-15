@@ -194,18 +194,28 @@ Entity.getPolicyDetails = getPolicyDetails;
 // Return Adalia Prime's unique prepaid policy rate
 const getAdaliaPrimeLotRate = (policy, lotIndex) => {
   const centers = [
-    457078, // Secondary colony
-    1096252, // Mining colony
-    1602262 // Primary colony
+    { lot: 457078, modifier: 2 }, // Secondary colony (Ya'axche)
+    { lot: 1096252, modifier: 5 }, // Mining colony (Saline)
+    { lot: 1602262, modifier: 1 } // Primary colony (Arkos)
   ];
 
-  const minDistance = Math.min(...centers.map((center) => Asteroid.getLotDistance(1, lotIndex, center)));
+  let minDistance = Infinity;
+  let modifier = 0;
 
-  if (minDistance < 20) return Math.floor(policy.rate);
-  if (minDistance < 50) return Math.floor(policy.rate / 2);
-  if (minDistance < 75) return Math.floor(policy.rate / 4);
-  if (minDistance < 100) return Math.floor(policy.rate / 10);
-  return Math.floor(policy.rate / 100);
+  centers.forEach((center) => {
+    const distance = Asteroid.getLotDistance(1, lotIndex, center.lot);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      modifier = center.modifier;
+    }
+  });
+
+  if (minDistance < 20) return Math.ceil(policy.rate / modifier);
+  if (minDistance < 50) return Math.ceil(policy.rate / (2 * modifier));
+  if (minDistance < 75) return Math.ceil(policy.rate / (4 * modifier));
+  if (minDistance < 100) return Math.ceil(policy.rate / (10 * modifier));
+  return Math.ceil(policy.rate / 100);
 };
 
 // Retrieves the prepaid policy rate for the entity in SWAY / IRL hour
