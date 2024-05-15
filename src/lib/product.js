@@ -2377,7 +2377,7 @@ const TYPES = {
     classification: CLASSIFICATIONS.ASSEMBLY,
     category: CATEGORIES.INTEGRATION_MODULE,
     massPerUnit: 3600000,
-    volumePerUnit: 399600000,
+    volumePerUnit: 301320000,
     isAtomic: true
   },
   [IDS.SOLIDS_AUTOMATION_MODULE]: {

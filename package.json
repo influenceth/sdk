@@ -1,6 +1,6 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.1.0-beta.94",
+  "version": "2.1.0-beta.95",
   "description": "Influence SDK",
   "type": "module",
   "module": "./build/index.js",

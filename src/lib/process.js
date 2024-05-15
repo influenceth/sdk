@@ -44,7 +44,7 @@ const IDS = {
   PROPYLENE_POLYMERIZATION: 62,
   MAGNESIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS: 63,
   SOLVAY_PROCESS: 64,
-  BORON_TRIOXIDE_HYDRATION: 65,
+  BORIA_HYDRATION: 65,
   PYROXENE_ACID_LEACHING_DIGESTION_AND_ION_EXCHANGE: 66,
   APATITE_ACID_EXTRACTION: 67,
   HYDROGEN_COMBUSTION: 68,
@@ -53,8 +53,8 @@ const IDS = {
   NITROGEN_CRYOCOOLING_AND_FRACTIONAL_DISTILLATION: 71,
   OLIVINE_ACID_LEACHING_AND_CALCINING: 72,
   ANORTHITE_FELDSPAR_ACID_LEACHING_AND_CARBONATION: 73,
-  SODIUM_CHLORALKALAI_PROCESS: 74,
-  POTASSIUM_CHLORALKALAI_PROCESS: 75,
+  SODIUM_CHLORALKALI_PROCESS: 74,
+  POTASSIUM_CHLORALKALI_PROCESS: 75,
   APATITE_ACID_RE_EXTRACTION: 76,
   AMMONIUM_CARBONATE_OXALATION: 77,
   XENOTIME_HOT_ACID_LEACHING: 78,
@@ -78,7 +78,7 @@ const IDS = {
   PIDGEON_PROCESS: 96,
   POLYPROPYLENE_CHLORINATION_AND_BASIFICATION: 97,
   POTATO_GROWING: 98,
-  RARE_EARTHS_OXALATION_AND_CALCINATION: 99,
+  RARE_EARTH_SULFATES_OXALATION_AND_CALCINATION: 99,
   AMMONIA_CHLORINATION: 100,
   HALL_HEROULT_PROCESS: 101,
   CALCIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS: 102,
@@ -100,7 +100,7 @@ const IDS = {
   BOROSILICATE_GLASSMAKING: 118,
   BALL_BEARING_MACHINING_AND_ASSEMBLY: 119,
   LARGE_THRUST_BEARING_MACHINING_AND_ASSEMBLY: 120,
-  BORON_TRIOXIDE_MAGNESIOTHERMIC_REDUCTION: 121,
+  BORIA_MAGNESIOTHERMIC_REDUCTION: 121,
   LITHIUM_CHLORIDE_MOLTEN_SALT_ELECTROLYSIS: 122,
   DIEPOXY_STEP_GROWTH_POLYMERIZATION: 123,
   RARE_EARTH_OXIDES_ION_EXCHANGE: 124,
@@ -148,7 +148,7 @@ const IDS = {
   ND_YAG_CZOCHRALSKI_PROCESS: 168,
   NICHROME_ALLOYING: 169,
   MAGNET_SINTERING_AND_MAGNETIZATION: 170,
-  URANIUM_TETRAFLUORIDE_FLUORIDATION: 171,
+  URANIUM_TETRAFLUORIDE_OXIDATION: 171,
   URANIUM_HEXAFLUORIDE_CENTRIFUGE_CASCADE_ENRICHMENT: 172,
   ND_YAG_LASER_ASSEMBLY: 173,
   THIN_FILM_RESISTOR_SPUTTERING_AND_LASER_TRIMMING: 174,
@@ -159,7 +159,7 @@ const IDS = {
   POTASSIUM_HYDROXIDE_CARBONATION: 179,
   NOVOLAK_BACTERIA_CULTURING: 180,
   FERROCHROMIUM_ALLOYING: 181,
-  POTASSIUM_CARBONATE_FLUORIDATION: 182,
+  POTASSIUM_CARBONATE_OXIDATION: 182,
   RHABDITE_SLAG_ACID_LEACHING: 183,
   TANTALATE_NIOBATE_LIQUID_LIQUID_EXTRACTION_AND_REDOX: 184,
   CARBON_DIOXIDE_FERROCATALYSIS: 185,
@@ -219,7 +219,12 @@ const IDS = {
   EPOXY_STOICHIOMETRY_AND_PACKAGING: 239,
   PEDOT_ALGAE_GROWING: 240,
   BPA_ALGAE_GROWING: 241,
-  NOVOLAK_ALGAE_GROWING: 242
+  NOVOLAK_ALGAE_GROWING: 242,
+  HYDROCHLORIC_REDOX: 243,
+  HYDROFLUORIC_REDOX: 244,
+  METHANE_COMBUSTION: 245,
+  CARBON_MONOXIDE_ARC_DECOMPOSITION: 246,
+  HYDROGEN_PROPELLANT_UNBUNDLING: 247
 };
 
 const TYPES = {
@@ -228,7 +233,7 @@ const TYPES = {
     name: 'Water Electrolysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 7200,
-    recipeTime: 136.08,
+    recipeTime: 18.72,
     batched: false,
     inputs: {
       [Product.IDS.DEIONIZED_WATER]: 9
@@ -383,16 +388,17 @@ const TYPES = {
     name: 'Basic Food Cooking and Packaging',
     processorType: Processor.IDS.FACTORY,
     setupTime: 144000,
-    recipeTime: 2.16,
+    recipeTime: 86.4,
     batched: false,
     inputs: {
-      [Product.IDS.SPIRULINA_AND_CHLORELLA_ALGAE]: 3,
-      [Product.IDS.SOYBEANS]: 4,
-      [Product.IDS.POTATOES]: 4,
-      [Product.IDS.NATURAL_FLAVORINGS]: 1
+      [Product.IDS.SODIUM_CHLORIDE]: 1,
+      [Product.IDS.SPIRULINA_AND_CHLORELLA_ALGAE]: 120,
+      [Product.IDS.SOYBEANS]: 160,
+      [Product.IDS.POTATOES]: 160,
+      [Product.IDS.NATURAL_FLAVORINGS]: 39
     },
     outputs: {
-      [Product.IDS.FOOD]: 12
+      [Product.IDS.FOOD]: 480
     }
   },
   [IDS.TROILITE_CENTRIFUGAL_FROTH_FLOTATION]: {
@@ -404,12 +410,12 @@ const TYPES = {
     batched: false,
     inputs: {
       [Product.IDS.TROILITE]: 100,
-      [Product.IDS.SULFURIC_ACID]: 1
+      [Product.IDS.SULFURIC_ACID]: 10
     },
     outputs: {
       [Product.IDS.IRON_SULFIDE]: 80,
       [Product.IDS.LEAD_SULFIDE]: 8,
-      [Product.IDS.TIN_SULFIDE]: 7,
+      [Product.IDS.TIN_SULFIDE]: 2,
       [Product.IDS.MOLYBDENUM_DISULFIDE]: 5
     }
   },
@@ -458,7 +464,7 @@ const TYPES = {
   [IDS.SALTY_CEMENT_MIXING]: {
     i: IDS.SALTY_CEMENT_MIXING,
     name: 'Salty Cement Mixing',
-    processorType: Processor.IDS.FACTORY,
+    processorType: Processor.IDS.REFINERY,
     setupTime: 21600,
     recipeTime: 0.297,
     batched: false,
@@ -475,7 +481,7 @@ const TYPES = {
     name: 'Salt Selective Crystallization',
     processorType: Processor.IDS.REFINERY,
     setupTime: 259200,
-    recipeTime: 11.988,
+    recipeTime: 36,
     batched: false,
     inputs: {
       [Product.IDS.RAW_SALTS]: 100
@@ -879,9 +885,9 @@ const TYPES = {
       [Product.IDS.CALCIUM_CHLORIDE]: 111
     }
   },
-  [IDS.BORON_TRIOXIDE_HYDRATION]: {
-    i: IDS.BORON_TRIOXIDE_HYDRATION,
-    name: 'Boron Trioxide Hydration',
+  [IDS.BORIA_HYDRATION]: {
+    i: IDS.BORIA_HYDRATION,
+    name: 'Boria Hydration',
     processorType: Processor.IDS.REFINERY,
     setupTime: 36000,
     recipeTime: 44.64,
@@ -1024,7 +1030,7 @@ const TYPES = {
       [Product.IDS.FELDSPAR]: 1096,
       [Product.IDS.AMMONIUM_CARBONATE]: 96,
       [Product.IDS.SULFURIC_ACID]: 392,
-      [Product.IDS.HYDROFLUORIC_ACID]: 160
+      [Product.IDS.HYDROFLUORIC_ACID]: 80
     },
     outputs: {
       [Product.IDS.DEIONIZED_WATER]: 144,
@@ -1032,9 +1038,9 @@ const TYPES = {
       [Product.IDS.BERYLLIUM_CARBONATE]: 69
     }
   },
-  [IDS.SODIUM_CHLORALKALAI_PROCESS]: {
-    i: IDS.SODIUM_CHLORALKALAI_PROCESS,
-    name: 'Sodium Chloralkalai Process',
+  [IDS.SODIUM_CHLORALKALI_PROCESS]: {
+    i: IDS.SODIUM_CHLORALKALI_PROCESS,
+    name: 'Sodium Chloralkali Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 64.8,
@@ -1049,9 +1055,9 @@ const TYPES = {
       [Product.IDS.SODIUM_HYDROXIDE]: 80
     }
   },
-  [IDS.POTASSIUM_CHLORALKALAI_PROCESS]: {
-    i: IDS.POTASSIUM_CHLORALKALAI_PROCESS,
-    name: 'Potassium Chloralkalai Process',
+  [IDS.POTASSIUM_CHLORALKALI_PROCESS]: {
+    i: IDS.POTASSIUM_CHLORALKALI_PROCESS,
+    name: 'Potassium Chloralkali Process',
     processorType: Processor.IDS.REFINERY,
     setupTime: 72000,
     recipeTime: 90.72,
@@ -1078,7 +1084,7 @@ const TYPES = {
       [Product.IDS.PHOSPHORIC_ACID]: 2743
     },
     outputs: {
-      [Product.IDS.TRIPLE_SUPERPHOSPHATE]: 4681,
+      [Product.IDS.TRIPLE_SUPERPHOSPHATE]: 468,
       [Product.IDS.HYDROCHLORIC_ACID]: 73,
       [Product.IDS.HYDROFLUORIC_ACID]: 40
     }
@@ -1444,9 +1450,9 @@ const TYPES = {
       [Product.IDS.POTATOES]: 75600
     }
   },
-  [IDS.RARE_EARTHS_OXALATION_AND_CALCINATION]: {
-    i: IDS.RARE_EARTHS_OXALATION_AND_CALCINATION,
-    name: 'Rare Earths Oxalation and Calcination',
+  [IDS.RARE_EARTH_SULFATES_OXALATION_AND_CALCINATION]: {
+    i: IDS.RARE_EARTH_SULFATES_OXALATION_AND_CALCINATION,
+    name: 'Rare Earth Sulfates Oxalation and Calcination',
     processorType: Processor.IDS.REFINERY,
     setupTime: 21600,
     recipeTime: 392.4,
@@ -1673,7 +1679,7 @@ const TYPES = {
     name: 'Aluminium Pipe Rolling',
     processorType: Processor.IDS.FACTORY,
     setupTime: 111600,
-    recipeTime: 0.18,
+    recipeTime: 18,
     batched: false,
     inputs: {
       [Product.IDS.ALUMINIUM]: 1
@@ -1762,7 +1768,7 @@ const TYPES = {
     name: 'Ball Bearing Machining and Assembly',
     processorType: Processor.IDS.FACTORY,
     setupTime: 129600,
-    recipeTime: 65.88,
+    recipeTime: 658.8,
     batched: false,
     inputs: {
       [Product.IDS.STEEL]: 53,
@@ -1786,9 +1792,9 @@ const TYPES = {
       [Product.IDS.LARGE_THRUST_BEARING]: 1
     }
   },
-  [IDS.BORON_TRIOXIDE_MAGNESIOTHERMIC_REDUCTION]: {
-    i: IDS.BORON_TRIOXIDE_MAGNESIOTHERMIC_REDUCTION,
-    name: 'Boron Trioxide Magnesiothermic Reduction',
+  [IDS.BORIA_MAGNESIOTHERMIC_REDUCTION]: {
+    i: IDS.BORIA_MAGNESIOTHERMIC_REDUCTION,
+    name: 'Boria Magnesiothermic Reduction',
     processorType: Processor.IDS.REFINERY,
     setupTime: 57600,
     recipeTime: 39.6,
@@ -1871,8 +1877,8 @@ const TYPES = {
     i: IDS.SODIUM_CHROMATE_ACIDIFICATION_AND_CRYSTALLIZATION,
     name: 'Sodium Chromate Acidification and Crystallization',
     processorType: Processor.IDS.REFINERY,
-    setupTime: 230400,
-    recipeTime: 64.8,
+    setupTime: 180000,
+    recipeTime: 194.4,
     batched: false,
     inputs: {
       [Product.IDS.HYDROCHLORIC_ACID]: 73,
@@ -2553,9 +2559,9 @@ const TYPES = {
       [Product.IDS.NEODYMIUM_MAGNET]: 100
     }
   },
-  [IDS.URANIUM_TETRAFLUORIDE_FLUORIDATION]: {
-    i: IDS.URANIUM_TETRAFLUORIDE_FLUORIDATION,
-    name: 'Uranium Tetrafluoride Fluoridation',
+  [IDS.URANIUM_TETRAFLUORIDE_OXIDATION]: {
+    i: IDS.URANIUM_TETRAFLUORIDE_OXIDATION,
+    name: 'Uranium Tetrafluoride Oxidation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 129600,
     recipeTime: 1.52,
@@ -2573,7 +2579,7 @@ const TYPES = {
     name: 'Uranium Hexafluoride Centrifuge Cascade Enrichment',
     processorType: Processor.IDS.REFINERY,
     setupTime: 432000,
-    recipeTime: 96120,
+    recipeTime: 6480000,
     batched: false,
     inputs: {
       [Product.IDS.UNENRICHED_URANIUM_HEXAFLUORIDE]: 530694
@@ -2727,9 +2733,9 @@ const TYPES = {
       [Product.IDS.FERROCHROMIUM]: 2
     }
   },
-  [IDS.POTASSIUM_CARBONATE_FLUORIDATION]: {
-    i: IDS.POTASSIUM_CARBONATE_FLUORIDATION,
-    name: 'Potassium Carbonate Fluoridation',
+  [IDS.POTASSIUM_CARBONATE_OXIDATION]: {
+    i: IDS.POTASSIUM_CARBONATE_OXIDATION,
+    name: 'Potassium Carbonate Oxidation',
     processorType: Processor.IDS.REFINERY,
     setupTime: 36000,
     recipeTime: 0.641,
@@ -2869,9 +2875,9 @@ const TYPES = {
     recipeTime: 47.88,
     batched: false,
     inputs: {
-      [Product.IDS.SOLDER]: 5,
+      [Product.IDS.SOLDER]: 8,
       [Product.IDS.BARE_CIRCUIT_BOARD]: 10,
-      [Product.IDS.SURFACE_MOUNT_DEVICE_REEL]: 1
+      [Product.IDS.SURFACE_MOUNT_DEVICE_REEL]: 2
     },
     outputs: {
       [Product.IDS.CIRCUIT_BOARD]: 20
@@ -2933,8 +2939,9 @@ const TYPES = {
     recipeTime: 28800,
     batched: false,
     inputs: {
+      [Product.IDS.SOLDER]: 4,
       [Product.IDS.STEEL_BEAM]: 500,
-      [Product.IDS.STEEL_SHEET]: 300,
+      [Product.IDS.STEEL_SHEET]: 296,
       [Product.IDS.COPPER_WIRE]: 4,
       [Product.IDS.BRUSHLESS_MOTOR]: 2
     },
@@ -2983,7 +2990,8 @@ const TYPES = {
     recipeTime: 2401.2,
     batched: false,
     inputs: {
-      [Product.IDS.COPPER_WIRE]: 30,
+      [Product.IDS.SOLDER]: 1,
+      [Product.IDS.COPPER_WIRE]: 29,
       [Product.IDS.PARABOLIC_DISH]: 10,
       [Product.IDS.CIRCUIT_BOARD]: 1
     },
@@ -3032,8 +3040,9 @@ const TYPES = {
     recipeTime: 7200,
     batched: false,
     inputs: {
-      [Product.IDS.COMPUTER_CHIP]: 2,
-      [Product.IDS.CIRCUIT_BOARD]: 5
+      [Product.IDS.ALUMINIUM]: 36,
+      [Product.IDS.COMPUTER_CHIP]: 4,
+      [Product.IDS.CIRCUIT_BOARD]: 10
     },
     outputs: {
       [Product.IDS.COMPUTER]: 50
@@ -3064,8 +3073,10 @@ const TYPES = {
     recipeTime: 299.88,
     batched: false,
     inputs: {
+      [Product.IDS.SOLDER]: 1,
       [Product.IDS.STEEL_BEAM]: 250,
       [Product.IDS.POLYPROPYLENE]: 19,
+      [Product.IDS.COPPER_WIRE]: 3,
       [Product.IDS.BRUSHLESS_MOTOR]: 5,
       [Product.IDS.COMPUTER]: 1
     },
@@ -3311,7 +3322,8 @@ const TYPES = {
     recipeTime: 201600,
     batched: false,
     inputs: {
-      [Product.IDS.COPPER_WIRE]: 50,
+      [Product.IDS.SOLDER]: 4,
+      [Product.IDS.COPPER_WIRE]: 46,
       [Product.IDS.BALL_VALVE]: 35,
       [Product.IDS.PUMP]: 7,
       [Product.IDS.COMPUTER]: 1,
@@ -3401,10 +3413,10 @@ const TYPES = {
     recipeTime: 75600,
     batched: false,
     inputs: {
-      [Product.IDS.OXYGEN]: 60,
+      [Product.IDS.OXYGEN]: 63,
       [Product.IDS.FUSED_QUARTZ]: 50,
       [Product.IDS.PRESSURE_VESSEL]: 1,
-      [Product.IDS.PURE_NITROGEN]: 240
+      [Product.IDS.PURE_NITROGEN]: 237
     },
     outputs: {
       [Product.IDS.HABITATION_MODULE]: 1
@@ -3436,6 +3448,7 @@ const TYPES = {
     recipeTime: 36000,
     batched: false,
     inputs: {
+      [Product.IDS.SOLDER]: 2,
       [Product.IDS.COPPER_WIRE]: 9,
       [Product.IDS.BALL_VALVE]: 20,
       [Product.IDS.STAINLESS_STEEL_SHEET]: 2490,
@@ -3455,6 +3468,7 @@ const TYPES = {
     recipeTime: 43200,
     batched: false,
     inputs: {
+      [Product.IDS.SOLDER]: 2,
       [Product.IDS.STEEL_BEAM]: 2000,
       [Product.IDS.STEEL_SHEET]: 910,
       [Product.IDS.COPPER_WIRE]: 10,
@@ -3489,7 +3503,8 @@ const TYPES = {
     recipeTime: 43200,
     batched: false,
     inputs: {
-      [Product.IDS.COPPER_WIRE]: 414,
+      [Product.IDS.SOLDER]: 10,
+      [Product.IDS.COPPER_WIRE]: 404,
       [Product.IDS.RADIO_ANTENNA]: 1,
       [Product.IDS.FIBER_OPTIC_GYROSCOPE]: 3,
       [Product.IDS.STAR_TRACKER]: 1,
@@ -3507,9 +3522,10 @@ const TYPES = {
     recipeTime: 259200,
     batched: false,
     inputs: {
-      [Product.IDS.DEIONIZED_WATER]: 104,
-      [Product.IDS.FOOD]: 1825,
+      [Product.IDS.DEIONIZED_WATER]: 124,
+      [Product.IDS.FOOD]: 1800,
       [Product.IDS.PHOTOVOLTAIC_PANEL]: 2,
+      [Product.IDS.LIPO_BATTERY]: 5,
       [Product.IDS.HABITATION_MODULE]: 1,
       [Product.IDS.MOBILITY_MODULE]: 1,
       [Product.IDS.AVIONICS_MODULE]: 1
@@ -3526,6 +3542,7 @@ const TYPES = {
     recipeTime: 86400,
     batched: false,
     inputs: {
+      [Product.IDS.SOLDER]: 1,
       [Product.IDS.COPPER_WIRE]: 3,
       [Product.IDS.ALUMINIUM_BEAM]: 16,
       [Product.IDS.COMPUTER]: 1,
@@ -3543,7 +3560,8 @@ const TYPES = {
     recipeTime: 36000,
     batched: false,
     inputs: {
-      [Product.IDS.COPPER_WIRE]: 74,
+      [Product.IDS.SOLDER]: 4,
+      [Product.IDS.COPPER_WIRE]: 70,
       [Product.IDS.PHOTOVOLTAIC_PANEL]: 250,
       [Product.IDS.LIPO_BATTERY]: 585,
       [Product.IDS.CIRCUIT_BOARD]: 1
@@ -3598,7 +3616,7 @@ const TYPES = {
       [Product.IDS.SULFUR_DIOXIDE]: 64
     },
     outputs: {
-      [Product.IDS.OXYGEN]: 36,
+      [Product.IDS.DEIONIZED_WATER]: 36,
       [Product.IDS.SULFUR]: 32
     }
   },
@@ -3747,6 +3765,83 @@ const TYPES = {
     outputs: {
       [Product.IDS.NOVOLAK_PREPOLYMER_RESIN]: 400
     }
+  },
+  [IDS.HYDROCHLORIC_REDOX]: {
+    i: IDS.HYDROCHLORIC_REDOX,
+    name: 'Hydrochloric Redox',
+    processorType: Processor.IDS.REFINERY,
+    setupTime: 28800,
+    recipeTime: 3.6,
+    batched: false,
+    inputs: {
+      [Product.IDS.HYDROGEN]: 2,
+      [Product.IDS.CHLORINE]: 71
+    },
+    outputs: {
+      [Product.IDS.HYDROCHLORIC_ACID]: 73
+    }
+  },
+  [IDS.HYDROFLUORIC_REDOX]: {
+    i: IDS.HYDROFLUORIC_REDOX,
+    name: 'Hydrofluoric Redox',
+    processorType: Processor.IDS.REFINERY,
+    setupTime: 115200,
+    recipeTime: 3.6,
+    batched: false,
+    inputs: {
+      [Product.IDS.HYDROGEN]: 2,
+      [Product.IDS.FLUORINE]: 38
+    },
+    outputs: {
+      [Product.IDS.HYDROFLUORIC_ACID]: 40
+    }
+  },
+  [IDS.METHANE_COMBUSTION]: {
+    i: IDS.METHANE_COMBUSTION,
+    name: 'Methane Combustion',
+    processorType: Processor.IDS.REFINERY,
+    setupTime: 14400,
+    recipeTime: 1.8,
+    batched: false,
+    inputs: {
+      [Product.IDS.METHANE]: 16,
+      [Product.IDS.OXYGEN]: 64
+    },
+    outputs: {
+      [Product.IDS.CARBON_DIOXIDE]: 44,
+      [Product.IDS.DEIONIZED_WATER]: 36
+    }
+  },
+  [IDS.CARBON_MONOXIDE_ARC_DECOMPOSITION]: {
+    i: IDS.CARBON_MONOXIDE_ARC_DECOMPOSITION,
+    name: 'Carbon Monoxide Arc Decomposition',
+    processorType: Processor.IDS.REFINERY,
+    setupTime: 93600,
+    recipeTime: 428.4,
+    batched: false,
+    inputs: {
+      [Product.IDS.CARBON_MONOXIDE]: 112
+    },
+    outputs: {
+      [Product.IDS.CARBON_DIOXIDE]: 44,
+      [Product.IDS.OXYGEN]: 32
+    }
+  },
+  [IDS.HYDROGEN_PROPELLANT_UNBUNDLING]: {
+    i: IDS.HYDROGEN_PROPELLANT_UNBUNDLING,
+    name: 'Hydrogen Propellant Unbundling',
+    processorType: Processor.IDS.REFINERY,
+    setupTime: 7200,
+    recipeTime: 144,
+    batched: false,
+    inputs: {
+      [Product.IDS.HYDROGEN_PROPELLANT]: 100
+    },
+    outputs: {
+      [Product.IDS.HYDROGEN]: 97,
+      [Product.IDS.SILICA_POWDER]: 2,
+      [Product.IDS.TUNGSTEN_POWDER]: 1
+    }
   }
 };
 
@@ -3765,7 +3860,7 @@ const getOutputs = (processId, recipes, targetOuput = null, secondaryBonus = 1) 
   if (!TYPES[processId]) return {};
   const process = TYPES[processId];
   const actualTarget = targetOuput || Object.keys(process.outputs)[0];
-  const secondaryAdjust = 1 - Math.min(0.5 / secondaryBonus, 1);
+  const secondaryAdjust = Math.max(0, 1 - 0.375 / secondaryBonus);
 
   return Object.keys(process.outputs).map(outputId => {
     if (Number(actualTarget) === Number(outputId)) {

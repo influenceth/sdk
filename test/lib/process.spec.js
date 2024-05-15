@@ -32,16 +32,20 @@ describe('Process library', function () {
   });
 
   it('should calculate outputs with target and bonus', function () {
-    let outputs = process.getOutputs(process.IDS.AMMONIA_CATALYTIC_CRACKING, 100, product.IDS.HYDROGEN);
+    let outputs = process.getOutputs(process.IDS.AMMONIA_CATALYTIC_CRACKING, 100, product.IDS.HYDROGEN, 0.5);
     expect(outputs.find(v => v.id == product.IDS.HYDROGEN).amount).to.equal(600);
-    expect(outputs.find(v => v.id == product.IDS.PURE_NITROGEN).amount).to.equal(1700);
+    expect(outputs.find(v => v.id == product.IDS.PURE_NITROGEN).amount).to.equal(850); // 25%
+
+    outputs = process.getOutputs(process.IDS.AMMONIA_CATALYTIC_CRACKING, 100, product.IDS.HYDROGEN, 1);
+    expect(outputs.find(v => v.id == product.IDS.HYDROGEN).amount).to.equal(600);
+    expect(outputs.find(v => v.id == product.IDS.PURE_NITROGEN).amount).to.equal(2125); // 62.5%
 
     outputs = process.getOutputs(process.IDS.AMMONIA_CATALYTIC_CRACKING, 100, product.IDS.HYDROGEN, 1.5);
     expect(outputs.find(v => v.id == product.IDS.HYDROGEN).amount).to.equal(600);
-    expect(outputs.find(v => v.id == product.IDS.PURE_NITROGEN).amount).to.equal(2266);
+    expect(outputs.find(v => v.id == product.IDS.PURE_NITROGEN).amount).to.equal(2550); // 75%
 
     outputs = process.getOutputs(process.IDS.AMMONIA_CATALYTIC_CRACKING, 100, product.IDS.PURE_NITROGEN, 1.5);
-    expect(outputs.find(v => v.id == product.IDS.HYDROGEN).amount).to.equal(400);
+    expect(outputs.find(v => v.id == product.IDS.HYDROGEN).amount).to.equal(450); // 75%
     expect(outputs.find(v => v.id == product.IDS.PURE_NITROGEN).amount).to.equal(3400);
   });
 });
