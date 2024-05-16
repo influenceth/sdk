@@ -224,7 +224,10 @@ const IDS = {
   HYDROFLUORIC_REDOX: 244,
   METHANE_COMBUSTION: 245,
   CARBON_MONOXIDE_ARC_DECOMPOSITION: 246,
-  HYDROGEN_PROPELLANT_UNBUNDLING: 247
+  HYDROGEN_PROPELLANT_UNBUNDLING: 247,
+  SHUTTLE_INTEGRATION: 250,
+  LIGHT_TRANSPORT_INTEGRATION: 251,
+  HEAVY_TRANSPORT_INTEGRATION: 252
 };
 
 const TYPES = {
@@ -3841,6 +3844,57 @@ const TYPES = {
       [Product.IDS.HYDROGEN]: 97,
       [Product.IDS.SILICA_POWDER]: 2,
       [Product.IDS.TUNGSTEN_POWDER]: 1
+    }
+  },
+  [IDS.SHUTTLE_INTEGRATION]: {
+    i: IDS.SHUTTLE_INTEGRATION,
+    name: 'Shuttle Integration',
+    processorType: Processor.IDS.DRY_DOCK,
+    setupTime: 1658880,
+    recipeTime: 414720,
+    inputs: {
+      [Product.IDS.SHUTTLE_HULL]: 1,
+      [Product.IDS.AVIONICS_MODULE]: 1,
+      [Product.IDS.ESCAPE_MODULE]: 3,
+      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 1,
+      [Product.IDS.POWER_MODULE]: 2,
+      [Product.IDS.THERMAL_MODULE]: 1,
+      [Product.IDS.PROPULSION_MODULE]: 1
+    }
+  },
+  [IDS.LIGHT_TRANSPORT_INTEGRATION]: {
+    i: IDS.LIGHT_TRANSPORT_INTEGRATION,
+    name: 'Light Transport Integration',
+    processorType: Processor.IDS.DRY_DOCK,
+    setupTime: 2211840,
+    recipeTime: 552960,
+    inputs: {
+      [Product.IDS.CARGO_MODULE]: 6,
+      [Product.IDS.LIGHT_TRANSPORT_HULL]: 1,
+      [Product.IDS.TERRAIN_INTERFACE_MODULE]: 4,
+      [Product.IDS.AVIONICS_MODULE]: 1,
+      [Product.IDS.ESCAPE_MODULE]: 1,
+      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 2,
+      [Product.IDS.POWER_MODULE]: 4,
+      [Product.IDS.THERMAL_MODULE]: 1,
+      [Product.IDS.PROPULSION_MODULE]: 2
+    }
+  },
+  [IDS.HEAVY_TRANSPORT_INTEGRATION]: {
+    i: IDS.HEAVY_TRANSPORT_INTEGRATION,
+    name: 'Heavy Transport Integration',
+    processorType: Processor.IDS.DRY_DOCK,
+    setupTime: 5529600,
+    recipeTime: 1382400,
+    inputs: {
+      [Product.IDS.CARGO_MODULE]: 36,
+      [Product.IDS.HEAVY_TRANSPORT_HULL]: 1,
+      [Product.IDS.AVIONICS_MODULE]: 3,
+      [Product.IDS.ESCAPE_MODULE]: 1,
+      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 6,
+      [Product.IDS.POWER_MODULE]: 6,
+      [Product.IDS.THERMAL_MODULE]: 3,
+      [Product.IDS.PROPULSION_MODULE]: 9
     }
   }
 };

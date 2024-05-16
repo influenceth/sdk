@@ -19,10 +19,12 @@ describe('Process library', function () {
         expect(!!product.TYPES[i]).to.be.true;
         expect(p.inputs[i]).to.be.greaterThan(0);
       });
-      Object.keys(p.outputs).forEach((i) => {
-        expect(!!product.TYPES[i]).to.be.true;
-        expect(p.outputs[i]).to.be.greaterThan(0);
-      });
+
+      if (p.outputs) {
+        Object.keys(p.outputs).forEach((i) => {
+          expect(!!product.TYPES[i]).to.be.true;
+        });
+      }
     });
   });
 

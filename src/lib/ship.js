@@ -1,3 +1,4 @@
+import Process from './process.js';
 import Product from './product.js';
 import Inventory from './inventory.js';
 import Time from '../utils/Time.js';
@@ -106,46 +107,19 @@ const VARIANT_TYPES = {
 // setupTime and constructionTime is in in-game seconds
 const CONSTRUCTION_TYPES = {
   [IDS.SHUTTLE]: {
-    setupTime: 1658880,
-    constructionTime: 414720,
-    requirements: {
-      [Product.IDS.SHUTTLE_HULL]: 1,
-      [Product.IDS.AVIONICS_MODULE]: 1,
-      [Product.IDS.ESCAPE_MODULE]: 3,
-      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 1,
-      [Product.IDS.POWER_MODULE]: 2,
-      [Product.IDS.THERMAL_MODULE]: 1,
-      [Product.IDS.PROPULSION_MODULE]: 1
-    }
+    setupTime: Process.TYPES[Process.IDS.SHUTTLE_INTEGRATION].setupTime,
+    constructionTime: Process.TYPES[Process.IDS.SHUTTLE_INTEGRATION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.SHUTTLE_INTEGRATION].inputs
   },
   [IDS.LIGHT_TRANSPORT]: {
-    setupTime: 2211840,
-    constructionTime: 552960,
-    requirements: {
-      [Product.IDS.CARGO_MODULE]: 6,
-      [Product.IDS.LIGHT_TRANSPORT_HULL]: 1,
-      [Product.IDS.TERRAIN_INTERFACE_MODULE]: 4,
-      [Product.IDS.AVIONICS_MODULE]: 1,
-      [Product.IDS.ESCAPE_MODULE]: 1,
-      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 2,
-      [Product.IDS.POWER_MODULE]: 4,
-      [Product.IDS.THERMAL_MODULE]: 1,
-      [Product.IDS.PROPULSION_MODULE]: 2
-    }
+    setupTime: Process.TYPES[Process.IDS.LIGHT_TRANSPORT_INTEGRATION].setupTime,
+    constructionTime: Process.TYPES[Process.IDS.LIGHT_TRANSPORT_INTEGRATION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.LIGHT_TRANSPORT_INTEGRATION].inputs
   },
   [IDS.HEAVY_TRANSPORT]: {
-    setupTime: 5529600,
-    constructionTime: 1382400,
-    requirements: {
-      [Product.IDS.CARGO_MODULE]: 36,
-      [Product.IDS.HEAVY_TRANSPORT_HULL]: 1,
-      [Product.IDS.AVIONICS_MODULE]: 3,
-      [Product.IDS.ESCAPE_MODULE]: 1,
-      [Product.IDS.ATTITUDE_CONTROL_MODULE]: 6,
-      [Product.IDS.POWER_MODULE]: 6,
-      [Product.IDS.THERMAL_MODULE]: 3,
-      [Product.IDS.PROPULSION_MODULE]: 9
-    }
+    setupTime: Process.TYPES[Process.IDS.HEAVY_TRANSPORT_INTEGRATION].setupTime,
+    constructionTime: Process.TYPES[Process.IDS.HEAVY_TRANSPORT_INTEGRATION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.HEAVY_TRANSPORT_INTEGRATION].inputs
   }
 };
 

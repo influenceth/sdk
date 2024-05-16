@@ -4,7 +4,7 @@ import Lot from '../../src/lib/lot.js';
 import Permission from '../../src/lib/permission.js';
 
 describe('Permission library', function () {
-  it.only('should get the prices for Adalia Prime lease', function () {
+  it('should get the prices for Adalia Prime lease', function () {
     const entity = {
       label: Entity.IDS.LOT,
       id: Lot.toId(1, 457078),
