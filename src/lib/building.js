@@ -1,4 +1,4 @@
-import Product from './product.js';
+import Process from './process.js';
 
 const IDS = {
   EMPTY_LOT: 0,
@@ -111,123 +111,40 @@ const TYPES = {
 // NOTE: constructionTime is in-game seconds
 const CONSTRUCTION_TYPES = {
   [IDS.WAREHOUSE]: {
-    constructionTime: 1728000,
-    requirements: {
-      [Product.IDS.CEMENT]: 700000,
-      [Product.IDS.STEEL_BEAM]: 700000,
-      [Product.IDS.STEEL_SHEET]: 400000
-    }
+    constructionTime: Process.TYPES[Process.IDS.WAREHOUSE_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.WAREHOUSE_CONSTRUCTION].inputs
   },
   [IDS.EXTRACTOR]: {
-    constructionTime: 2073600,
-    requirements: {
-      [Product.IDS.CEMENT]: 450000,
-      [Product.IDS.STEEL_BEAM]: 600000,
-      [Product.IDS.POLYACRYLONITRILE_FABRIC]: 3000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 1,
-      [Product.IDS.POWER_MODULE]: 6
-    }
+    constructionTime: Process.TYPES[Process.IDS.EXTRACTOR_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.EXTRACTOR_CONSTRUCTION].inputs
   },
   [IDS.REFINERY]: {
-    constructionTime: 4147200,
-    requirements: {
-      [Product.IDS.CEMENT]: 800000,
-      [Product.IDS.STEEL_BEAM]: 400000,
-      [Product.IDS.STEEL_SHEET]: 300000,
-      [Product.IDS.PLATINUM]: 2,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 12,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 2,
-      [Product.IDS.AVIONICS_MODULE]: 2,
-      [Product.IDS.POWER_MODULE]: 16,
-      [Product.IDS.THERMAL_MODULE]: 4
-    }
+    constructionTime: Process.TYPES[Process.IDS.REFINERY_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.REFINERY_CONSTRUCTION].inputs
   },
   [IDS.BIOREACTOR]: {
-    constructionTime: 3456000,
-    requirements: {
-      [Product.IDS.DEIONIZED_WATER]: 1400000,
-      [Product.IDS.FUSED_QUARTZ]: 300000,
-      [Product.IDS.CEMENT]: 500000,
-      [Product.IDS.SOIL]: 300000,
-      [Product.IDS.STEEL_BEAM]: 100000,
-      [Product.IDS.STEEL_SHEET]: 300000,
-      [Product.IDS.POLYPROPYLENE]: 25000,
-      [Product.IDS.PURE_NITROGEN]: 125000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 16,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 12,
-      [Product.IDS.AVIONICS_MODULE]: 3,
-      [Product.IDS.POWER_MODULE]: 8
-    }
+    constructionTime: Process.TYPES[Process.IDS.BIOREACTOR_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.BIOREACTOR_CONSTRUCTION].inputs
   },
   [IDS.FACTORY]: {
-    constructionTime: 5184000,
-    requirements: {
-      [Product.IDS.CEMENT]: 900000,
-      [Product.IDS.STEEL_BEAM]: 1100000,
-      [Product.IDS.STEEL_SHEET]: 700000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 4,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 40,
-      [Product.IDS.AVIONICS_MODULE]: 8,
-      [Product.IDS.POWER_MODULE]: 20,
-      [Product.IDS.THERMAL_MODULE]: 6
-    }
+    constructionTime: Process.TYPES[Process.IDS.FACTORY_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.FACTORY_CONSTRUCTION].inputs
   },
   [IDS.SHIPYARD]: {
-    constructionTime: 9331200,
-    requirements: {
-      [Product.IDS.CEMENT]: 2000000,
-      [Product.IDS.STEEL_BEAM]: 2400000,
-      [Product.IDS.STEEL_SHEET]: 1000000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 8,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 60,
-      [Product.IDS.AVIONICS_MODULE]: 10,
-      [Product.IDS.POWER_MODULE]: 24,
-      [Product.IDS.THERMAL_MODULE]: 6
-    }
+    constructionTime: Process.TYPES[Process.IDS.SHIPYARD_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.SHIPYARD_CONSTRUCTION].inputs
   },
   [IDS.SPACEPORT]: {
-    constructionTime: 9331200,
-    requirements: {
-      [Product.IDS.CEMENT]: 4300000,
-      [Product.IDS.STEEL_BEAM]: 2200000,
-      [Product.IDS.STEEL_SHEET]: 3200000,
-      [Product.IDS.STEEL_CABLE]: 200000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 40,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 120,
-      [Product.IDS.AVIONICS_MODULE]: 16,
-      [Product.IDS.POWER_MODULE]: 40,
-      [Product.IDS.THERMAL_MODULE]: 40
-    }
+    constructionTime: Process.TYPES[Process.IDS.SPACEPORT_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.SPACEPORT_CONSTRUCTION].inputs
   },
   [IDS.MARKETPLACE]: {
-    constructionTime: 10368000,
-    requirements: {
-      [Product.IDS.CEMENT]: 3000000,
-      [Product.IDS.STEEL_BEAM]: 2500000,
-      [Product.IDS.STEEL_SHEET]: 3000000,
-      [Product.IDS.STEEL_CABLE]: 500000,
-      [Product.IDS.LARGE_THRUST_BEARING]: 6,
-      [Product.IDS.HABITATION_MODULE]: 8,
-      [Product.IDS.AVIONICS_MODULE]: 12,
-      [Product.IDS.POWER_MODULE]: 20,
-      [Product.IDS.THERMAL_MODULE]: 20
-    }
+    constructionTime: Process.TYPES[Process.IDS.MARKETPLACE_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.MARKETPLACE_CONSTRUCTION].inputs
   },
   [IDS.HABITAT]: {
-    constructionTime: 14515200,
-    requirements: {
-      [Product.IDS.DEIONIZED_WATER]: 300000,
-      [Product.IDS.CEMENT]: 5000000,
-      [Product.IDS.SOIL]: 200000,
-      [Product.IDS.STEEL_BEAM]: 4000000,
-      [Product.IDS.STEEL_SHEET]: 5000000,
-      [Product.IDS.STEEL_CABLE]: 1000000,
-      [Product.IDS.LARGE_THRUST_BEARING]: 12,
-      [Product.IDS.HABITATION_MODULE]: 16,
-      [Product.IDS.AVIONICS_MODULE]: 20,
-      [Product.IDS.POWER_MODULE]: 30,
-      [Product.IDS.THERMAL_MODULE]: 20
-    }
+    constructionTime: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].recipeTime,
+    requirements: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].inputs
   }
 };
 

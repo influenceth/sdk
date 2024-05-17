@@ -8,7 +8,7 @@ describe('Inventory library', function () {
   it('should get filled capacity', function () {
     // no massConstraint, but product constraints
     let filled = inventory.getFilledCapacity(inventory.IDS.WAREHOUSE_SITE);
-    expect(filled).to.deep.equal({ filledMass: 1800e6, filledVolume: 1621e6 });
+    expect(filled).to.deep.equal({ filledMass: 950e6, filledVolume: 867e6 });
 
     // massConstraint, but no product constraints
     filled = inventory.getFilledCapacity(inventory.IDS.WAREHOUSE_PRIMARY);

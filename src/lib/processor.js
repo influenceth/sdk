@@ -1,4 +1,5 @@
 const IDS = {
+  CONSTRUCTION: 0,
   REFINERY: 1,
   FACTORY: 2,
   BIOREACTOR: 3,
