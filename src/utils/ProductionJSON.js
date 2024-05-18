@@ -150,8 +150,6 @@ class ProductionJSON {
     /**
      * Add "processes" to the JSON, initially without:
      * - raw materials (mining)
-     * - ships (integration)
-     * - buildings (construction)
      */
     Object.values(Process.TYPES).forEach(processData => {
       this.productionChainsJSON.processes.push({
@@ -204,48 +202,38 @@ class ProductionJSON {
     });
 
     /**
-     * Add ships (integration) to "processes" in the JSON
-     * - e.g. ship "Shuttle" => process "Shuttle Integration"
+     * Add ships-as-products to ship integration process outputs.
      */
     Object.entries(this.shipIdToProductId).forEach(([shipId, productId]) => {
       const setupTime = Ship.CONSTRUCTION_TYPES[shipId].setupTime;
       const constructionTime = Ship.CONSTRUCTION_TYPES[shipId].constructionTime;
-      const inputs = Ship.CONSTRUCTION_TYPES[shipId].requirements;
-      this.productionChainsJSON.processes.push({
-        bAdalianHoursPerAction: this.getHoursFromSeconds(setupTime),
-        buildingId: String(Building.IDS.SHIPYARD),
-        id: String(++maxProcessId),
-        inputs: this.getFormattedInputsOrOutputs(inputs),
-        mAdalianHoursPerSR: this.getHoursFromSeconds(constructionTime),
-        name: Ship.TYPES[shipId].name + ' Integration', // e.g. "Shuttle Integration"
-        outputs: [{
-          productId: String(productId),
-          unitsPerSR: '1'
-        }]
-      });
+      const process = this.productionChainsJSON.processes.find(p => p.name === Ship.TYPES[shipId].name + ' Integration');
+      process.bAdalianHoursPerAction = this.getHoursFromSeconds(setupTime);
+      process.buildingId = String(Building.IDS.SHIPYARD);
+      process.id = String(++maxProcessId);
+      process.mAdalianHoursPerSR = this.getHoursFromSeconds(constructionTime);
+      process.outputs = [{
+        productId: String(productId),
+        unitsPerSR: '1'
+      }];
     });
 
     /**
-     * Add buildings (construction) to "processes" in the JSON
-     * - e.g. building "Warehouse" => process "Warehouse Construction"
+     * Add buildings-as-products to building construction process outputs.
      */
     Object.entries(this.buildingIdToProductId).forEach(([buildingId, productId]) => {
-      // NOTE: "setupTime" not yet defined for buildings construction, as of v2.1.0-beta.52
+      // NOTE: "setupTime" not yet defined for buildings construction, as of v2.1.0-beta.99
       const setupTime = Building.CONSTRUCTION_TYPES[buildingId].setupTime;
       const constructionTime = Building.CONSTRUCTION_TYPES[buildingId].constructionTime;
-      const inputs = Building.CONSTRUCTION_TYPES[buildingId].requirements;
-      this.productionChainsJSON.processes.push({
-        bAdalianHoursPerAction: setupTime ? this.getHoursFromSeconds(setupTime) : 'N/A',
-        buildingId: String(Building.IDS.EMPTY_LOT),
-        id: String(++maxProcessId),
-        inputs: this.getFormattedInputsOrOutputs(inputs),
-        mAdalianHoursPerSR: this.getHoursFromSeconds(constructionTime),
-        name: Building.TYPES[buildingId].name + ' Construction', // e.g. "Warehouse Construction"
-        outputs: [{
-          productId: String(productId),
-          unitsPerSR: '1'
-        }]
-      });
+      const process = this.productionChainsJSON.processes.find(p => p.name === Building.TYPES[buildingId].name + ' Construction');
+      process.bAdalianHoursPerAction = setupTime ? this.getHoursFromSeconds(setupTime) : 'N/A';
+      process.buildingId = String(Building.IDS.EMPTY_LOT);
+      process.id = String(++maxProcessId);
+      process.mAdalianHoursPerSR = this.getHoursFromSeconds(constructionTime)
+      process.outputs = [{
+        productId: String(productId),
+        unitsPerSR: '1'
+      }];
     });
 
     /**
