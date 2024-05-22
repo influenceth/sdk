@@ -10,6 +10,7 @@ const STATUSES = {
 const TYPES = {
   [IDS.BASIC]: {
     i: IDS.BASIC,
+    name: 'Basic Dry Dock',
     maxMass: 1e6,
     maxVolume: 1e6
   }

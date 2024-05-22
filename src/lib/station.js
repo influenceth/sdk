@@ -7,6 +7,7 @@ const IDS = {
 const TYPES = {
   [IDS.STANDARD_QUARTERS]: {
     i: IDS.STANDARD_QUARTERS,
+    name: 'Standard Quarters',
     cap: 5,
     recruitment: false,
     efficiency: 1
@@ -14,6 +15,7 @@ const TYPES = {
 
   [IDS.EXPANDED_QUARTERS]: {
     i: IDS.EXPANDED_QUARTERS,
+    name: 'Expanded Quarters',
     cap: 15,
     recruitment: false,
     efficiency: 1
@@ -21,6 +23,7 @@ const TYPES = {
 
   [IDS.HABITAT]: {
     i: IDS.HABITAT,
+    name: 'Habitat',
     cap: 1000,
     recruitment: true,
     efficiency: 1.2

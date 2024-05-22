@@ -25,7 +25,7 @@ describe('Assets library', function () {
 
   it('all entries should specify an iconVersion and modelVersion', function () {
     let invalidFound = !!Object.values(assets).find((typeAssets) =>
-      !!Object.values(typeAssets).find((versions) => 
+      !!Object.values(typeAssets).find((versions) =>
         !versions.iconVersion || !versions.modelVersion
       )
     );

@@ -1,3 +1,4 @@
+import Inventory from './inventory.js';
 import Process from './process.js';
 
 const IDS = {
@@ -19,7 +20,10 @@ const IDS = {
 const TYPES = {
   [IDS.EMPTY_LOT]: {
     i: IDS.EMPTY_LOT,
-    name: 'Empty Lot',
+    nadme: 'Empty Lot',
+    processType: 0,
+    siteSlot: 0,
+    siteType: 0,
     description: `The microgravity environment of asteroids affects the physical
       condition of asteroid material; for example, a bed of regolith will settle
       and become more compacted than would be found on an asteroid.`
@@ -27,12 +31,18 @@ const TYPES = {
   [IDS.WAREHOUSE]: {
     i: IDS.WAREHOUSE,
     name: 'Warehouse',
+    processType: Process.IDS.WAREHOUSE_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.WAREHOUSE_SITE,
     description: `The Warehouse provides inventory space to store items: raw
       materials, refined materials, process modules, or finished goods.`
   },
   [IDS.EXTRACTOR]: {
     i: IDS.EXTRACTOR,
     name: 'Extractor',
+    processType: Process.IDS.EXTRACTOR_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.EXTRACTOR_SITE,
     description: `The Extractor is responsible for extracting the raw materials from an
       asteroid. They are tied closely to the core sampling process, and rely
       on the availability of a core sample to be able to operate efficiently.`
@@ -40,6 +50,9 @@ const TYPES = {
   [IDS.REFINERY]: {
     i: IDS.REFINERY,
     name: 'Refinery',
+    processType: Process.IDS.REFINERY_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.REFINERY_SITE,
     description: `The Refinery allows for the refining of raw materials into their
       constituent refined materials. Effectively they are responsible for
       all intermediate and un-finished goods. They utilize process modules
@@ -49,6 +62,9 @@ const TYPES = {
   [IDS.BIOREACTOR]: {
     i: IDS.BIOREACTOR,
     name: 'Bioreactor',
+    processType: Process.IDS.BIOREACTOR_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.BIOREACTOR_SITE,
     description: `The Bioreactor, or as the Adalians lovingly call it, the Farm, is a
       specialized building designed to provide a growing space for a variety of organic
       products. It features transparent growing tunnels containing microgravity soil beds
@@ -59,6 +75,9 @@ const TYPES = {
   [IDS.FACTORY]: {
     i: IDS.FACTORY,
     name: 'Factory',
+    processType: Process.IDS.FACTORY_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.FACTORY_SITE,
     description: `All finished goods, except for ships, are produced in the Factory based
       on their installed assembly process modules. The finished goods produced
       in Factories are primarily consumables, or serve to be assembled as new
@@ -67,12 +86,18 @@ const TYPES = {
   [IDS.SHIPYARD]: {
     i: IDS.SHIPYARD,
     name: 'Shipyard',
+    processType: Process.IDS.SHIPYARD_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.SHIPYARD_SITE,
     description: `The Shipyard is a specialized Factory that are required for the final
       construction and deconstruction of ships.`
   },
   [IDS.SPACEPORT]: {
     i: IDS.SPACEPORT,
     name: 'Spaceport',
+    processType: Process.IDS.SPACEPORT_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.SPACEPORT_SITE,
     description: `The Spaceport allows for the landing of all ship classes on an asteroid's
       surface, not just those capable of performing all-terrain landings like
       the Light Transport. Spaceports provide for unlimited space to land ships
@@ -83,6 +108,9 @@ const TYPES = {
   [IDS.MARKETPLACE]: {
     i: IDS.MARKETPLACE,
     name: 'Marketplace',
+    processType: Process.IDS.MARKETPLACE_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.MARKETPLACE_SITE,
     description: `The Marketplace serves as the central point of the Adalian economy. Once
       they are built on an asteroid they allow for the exchange of all local
       raw materials, refined materials, process modules, and finished goods.
@@ -96,6 +124,9 @@ const TYPES = {
   [IDS.HABITAT]: {
     i: IDS.HABITAT,
     name: 'Habitat',
+    processType: Process.IDS.HABITAT_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.HABITAT_SITE,
     description: `The Habitat is the only location which allows recruiting of new Crewmates
       and is required to support any Hab Modules not attached to ships.
       Additionally, Habitats are required for the storage of inactive crew, and

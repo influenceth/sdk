@@ -269,23 +269,27 @@ const ABILITY_IDS = {
 
 const ABILITY_TYPES = {
   [ABILITY_IDS.CORE_SAMPLE_TIME]: {
+    i: ABILITY_IDS.CORE_SAMPLE_TIME,
     name: 'Core Sample Time',
     class: CLASS_IDS.MINER,
     departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 },
     traits: { [TRAIT_IDS.SURVEYOR]: 0.10 }
   },
   [ABILITY_IDS.CORE_SAMPLE_QUALITY]: {
+    i: ABILITY_IDS.CORE_SAMPLE_QUALITY,
     name: 'Core Sample Quality',
     class: CLASS_IDS.MINER,
     traits: { [TRAIT_IDS.PROSPECTOR]: 0.05 },
     notFurtherModified: true
   },
   [ABILITY_IDS.EXTRACTION_TIME]: {
+    i: ABILITY_IDS.EXTRACTION_TIME,
     name: 'Extraction Time',
     class: CLASS_IDS.MINER,
     departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 }
   },
   [ABILITY_IDS.HOPPER_TRANSPORT_TIME]: {
+    i: ABILITY_IDS.HOPPER_TRANSPORT_TIME,
     name: 'Hopper Transport Time',
     departments: {
       [DEPARTMENT_IDS.LOGISTICS]: 0.0125,
@@ -294,20 +298,24 @@ const ABILITY_TYPES = {
     traits: { [TRAIT_IDS.LOGISTICIAN]: 0.05 }
   },
   [ABILITY_IDS.FREE_TRANSPORT_DISTANCE]: {
+    i: ABILITY_IDS.FREE_TRANSPORT_DISTANCE,
     name: 'Free Transport Distance',
     class: CLASS_IDS.MERCHANT
   },
   [ABILITY_IDS.INVENTORY_MASS_CAPACITY]: {
+    i: ABILITY_IDS.INVENTORY_MASS_CAPACITY,
     name: 'Inventory Mass Capacity',
     traits: { [TRAIT_IDS.HAULER]: 0.05 },
     notFurtherModified: true
   },
   [ABILITY_IDS.INVENTORY_VOLUME_CAPACITY]: {
+    i: ABILITY_IDS.INVENTORY_VOLUME_CAPACITY,
     name: 'Inventory Volume Capacity',
     departments: { [DEPARTMENT_IDS.LOGISTICS]: 0.0125 },
     notFurtherModified: true
   },
   [ABILITY_IDS.PROPELLANT_EXHAUST_VELOCITY]: {
+    i: ABILITY_IDS.PROPELLANT_EXHAUST_VELOCITY,
     name: 'Propellant Exhaust Velocity',
     class: CLASS_IDS.PILOT,
     departments: { [DEPARTMENT_IDS.NAVIGATION]: 0.01 },
@@ -315,6 +323,7 @@ const ABILITY_TYPES = {
     notFurtherModified: true
   },
   [ABILITY_IDS.PROPELLANT_FLOW_RATE]: {
+    i: ABILITY_IDS.PROPELLANT_FLOW_RATE,
     name: 'Propellant Flow Rate',
     class: CLASS_IDS.PILOT,
     departments: { [DEPARTMENT_IDS.NAVIGATION]: 0.01 },
@@ -322,16 +331,19 @@ const ABILITY_TYPES = {
     notFurtherModified: true
   },
   [ABILITY_IDS.CONSTRUCTION_TIME]: {
+    i: ABILITY_IDS.CONSTRUCTION_TIME,
     name: 'Construction Time',
     class: CLASS_IDS.ENGINEER,
     departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 },
     traits: { [TRAIT_IDS.BUILDER]: 0.05 }
   },
   [ABILITY_IDS.DECONSTRUCTION_YIELD]: {
+    i: ABILITY_IDS.DECONSTRUCTION_YIELD,
     name: 'Deconstruction Yield',
     traits: { [TRAIT_IDS.RECYCLER]: 0.1 }
   },
   [ABILITY_IDS.REFINING_TIME]: {
+    i: ABILITY_IDS.REFINING_TIME,
     name: 'Refining Time',
     class: CLASS_IDS.ENGINEER,
     departments: {
@@ -341,11 +353,13 @@ const ABILITY_TYPES = {
     traits: { [TRAIT_IDS.REFINER]: 0.05 }
   },
   [ABILITY_IDS.SECONDARY_REFINING_YIELD]: {
+    i: ABILITY_IDS.SECONDARY_REFINING_YIELD,
     name: 'Secondary Refining Yield',
     class: CLASS_IDS.SCIENTIST,
     notFurtherModified: true
   },
   [ABILITY_IDS.MANUFACTURING_TIME]: {
+    i: ABILITY_IDS.MANUFACTURING_TIME,
     name: 'Manufacturing Time',
     class: CLASS_IDS.ENGINEER,
     departments: {
@@ -354,6 +368,7 @@ const ABILITY_TYPES = {
     }
   },
   [ABILITY_IDS.REACTION_TIME]: {
+    i: ABILITY_IDS.REACTION_TIME,
     name: 'Reaction Time',
     class: CLASS_IDS.SCIENTIST,
     departments: {
@@ -362,6 +377,7 @@ const ABILITY_TYPES = {
     }
   },
   [ABILITY_IDS.FOOD_CONSUMPTION_TIME]: {
+    i: ABILITY_IDS.FOOD_CONSUMPTION_TIME,
     name: 'Food Consumption Time',
     departments: {
       [DEPARTMENT_IDS.FOOD_PREPARATION]: 0.025,
@@ -371,22 +387,26 @@ const ABILITY_TYPES = {
     notFurtherModified: true
   },
   [ABILITY_IDS.FOOD_RATIONING_PENALTY]: {
+    i: ABILITY_IDS.FOOD_RATIONING_PENALTY,
     name: 'Food Rationing Penalty',
     departments: {
-      [DEPARTMENT_IDS.MEDICINE]: 0.00833
+      [DEPARTMENT_IDS.MEDICINE]: 0.0083
     }
   },
   [ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT]: {
+    i: ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT,
     name: 'Marketplace Fee Enforcement',
     traits: { [TRAIT_IDS.MOGUL]: 0.160 },
     notFurtherModified: true
   },
   [ABILITY_IDS.MARKETPLACE_FEE_REDUCTION]: {
+    i: ABILITY_IDS.MARKETPLACE_FEE_REDUCTION,
     name: 'Marketplace Fee Reduction',
     class: CLASS_IDS.MERCHANT,
     departments: { [DEPARTMENT_IDS.ARTS_ENTERTAINMENT]: 0.05 }
   },
   [ABILITY_IDS.SHIP_INTEGRATION_TIME]: {
+    i: ABILITY_IDS.SHIP_INTEGRATION_TIME,
     name: 'Ship Integration Time',
     class: CLASS_IDS.ENGINEER,
     departments: {

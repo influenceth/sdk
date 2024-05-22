@@ -50,5 +50,4 @@ describe('Inventory library', function () {
     expect(totals.mass).to.equal(86908000);
     expect(totals.volume).to.equal(98825212);
   });
-
 });
