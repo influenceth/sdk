@@ -3869,7 +3869,8 @@ const TYPES = {
       [Product.IDS.POWER_MODULE]: 2,
       [Product.IDS.THERMAL_MODULE]: 1,
       [Product.IDS.PROPULSION_MODULE]: 1
-    }
+    },
+    outputs: {}
   },
   [IDS.LIGHT_TRANSPORT_INTEGRATION]: {
     i: IDS.LIGHT_TRANSPORT_INTEGRATION,
@@ -3887,7 +3888,8 @@ const TYPES = {
       [Product.IDS.POWER_MODULE]: 4,
       [Product.IDS.THERMAL_MODULE]: 1,
       [Product.IDS.PROPULSION_MODULE]: 2
-    }
+    },
+    outputs: {}
   },
   [IDS.HEAVY_TRANSPORT_INTEGRATION]: {
     i: IDS.HEAVY_TRANSPORT_INTEGRATION,
@@ -3904,7 +3906,8 @@ const TYPES = {
       [Product.IDS.POWER_MODULE]: 6,
       [Product.IDS.THERMAL_MODULE]: 3,
       [Product.IDS.PROPULSION_MODULE]: 9
-    }
+    },
+    outputs: {}
   },
   [IDS.WAREHOUSE_CONSTRUCTION]: {
     i: IDS.WAREHOUSE_CONSTRUCTION,
@@ -3916,7 +3919,8 @@ const TYPES = {
       [Product.IDS.CEMENT]: 400000,
       [Product.IDS.STEEL_BEAM]: 350000,
       [Product.IDS.STEEL_SHEET]: 200000
-    }
+    },
+    outputs: {}
   },
   [IDS.EXTRACTOR_CONSTRUCTION]: {
     i: IDS.EXTRACTOR_CONSTRUCTION,
@@ -3930,7 +3934,8 @@ const TYPES = {
       [Product.IDS.POLYACRYLONITRILE_FABRIC]: 3000,
       [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 1,
       [Product.IDS.POWER_MODULE]: 6
-    }
+    },
+    outputs: {}
   },
   [IDS.REFINERY_CONSTRUCTION]: {
     i: IDS.REFINERY_CONSTRUCTION,
@@ -3948,7 +3953,8 @@ const TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 2,
       [Product.IDS.POWER_MODULE]: 16,
       [Product.IDS.THERMAL_MODULE]: 4
-    }
+    },
+    outputs: {}
   },
   [IDS.BIOREACTOR_CONSTRUCTION]: {
     i: IDS.BIOREACTOR_CONSTRUCTION,
@@ -3969,7 +3975,8 @@ const TYPES = {
       [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 12,
       [Product.IDS.AVIONICS_MODULE]: 3,
       [Product.IDS.POWER_MODULE]: 8
-    }
+    },
+    outputs: {}
   },
   [IDS.FACTORY_CONSTRUCTION]: {
     i: IDS.FACTORY_CONSTRUCTION,
@@ -3986,7 +3993,8 @@ const TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 8,
       [Product.IDS.POWER_MODULE]: 20,
       [Product.IDS.THERMAL_MODULE]: 6
-    }
+    },
+    outputs: {}
   },
   [IDS.SHIPYARD_CONSTRUCTION]: {
     i: IDS.SHIPYARD_CONSTRUCTION,
@@ -4003,7 +4011,8 @@ const TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 10,
       [Product.IDS.POWER_MODULE]: 24,
       [Product.IDS.THERMAL_MODULE]: 6
-    }
+    },
+    outputs: {}
   },
   [IDS.SPACEPORT_CONSTRUCTION]: {
     i: IDS.SPACEPORT_CONSTRUCTION,
@@ -4021,7 +4030,8 @@ const TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 16,
       [Product.IDS.POWER_MODULE]: 40,
       [Product.IDS.THERMAL_MODULE]: 40
-    }
+    },
+    outputs: {}
   },
   [IDS.MARKETPLACE_CONSTRUCTION]: {
     i: IDS.MARKETPLACE_CONSTRUCTION,
@@ -4039,7 +4049,8 @@ const TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 12,
       [Product.IDS.POWER_MODULE]: 20,
       [Product.IDS.THERMAL_MODULE]: 20
-    }
+    },
+    outputs: {}
   },
   [IDS.HABITAT_CONSTRUCTION]: {
     i: IDS.HABITAT_CONSTRUCTION,
@@ -4059,7 +4070,8 @@ const TYPES = {
       [Product.IDS.AVIONICS_MODULE]: 20,
       [Product.IDS.POWER_MODULE]: 30,
       [Product.IDS.THERMAL_MODULE]: 20
-    }
+    },
+    outputs: {}
   }
 };
 
