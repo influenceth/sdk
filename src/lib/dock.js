@@ -5,6 +5,7 @@ const IDS = {
 const TYPES = {
   [IDS.BASIC]: {
     i: IDS.BASIC,
+    name: 'Basic Dock',
     cap: 50,
     delayPerShip: 720 // in in-game seconds
   }

@@ -1,6 +1,7 @@
+import Inventory from './inventory.js';
 import Process from './process.js';
 import Product from './product.js';
-import Inventory from './inventory.js';
+import Station from './station.js';
 import Time from '../utils/Time.js';
 
 const IDS = {
@@ -38,13 +39,14 @@ const TYPES = {
       Adalia has an Escape Module available to them at all times. It can sustain a single crew of up
       to five crewmates in orbit, and is capable of limited travel between asteroids. It can deliver
       its crew to a habitat or ship on the surface, but cannot be used as a base on its own.`,
-    landing: false,
     docking: false,
-    propellantSlot: 1,
-    propellantInventoryType: Inventory.IDS.PROPELLANT_TINY,
+    emergencyPropellantCap: 1,
     exhaustVelocity: 30000,
     hullMass: 5000000,
-    emergencyPropellantCap: 1
+    landing: false,
+    propellantInventoryType: Inventory.IDS.PROPELLANT_TINY,
+    propellantSlot: 1,
+    propellantType: Product.IDS.HYDROGEN_PROPELLANT
   },
   [IDS.SHUTTLE]: {
     i: IDS.SHUTTLE,
@@ -52,15 +54,18 @@ const TYPES = {
     description: `The Shuttle is a lean, light ship with a single engine, optimized for personnel
       transportation. It can carry up to 15 crewmates at once, but also has space for a small
       50-tonne cargo. The Shuttle requires a spaceport to land on an asteroid.`,
-    landing: false,
-    docking: true,
-    propellantSlot: 1,
-    propellantInventoryType: Inventory.IDS.PROPELLANT_SMALL,
-    cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_SMALL,
+    cargoSlot: 2,
+    docking: true,
+    emergencyPropellantCap: 0.1,
     exhaustVelocity: 30000,
     hullMass: 100755000,
-    emergencyPropellantCap: 0.1
+    landing: false,
+    process: Process.IDS.SHUTTLE_INTEGRATION,
+    propellantInventoryType: Inventory.IDS.PROPELLANT_SMALL,
+    propellantSlot: 1,
+    propellantType: Product.IDS.HYDROGEN_PROPELLANT,
+    stationType: Station.IDS.EXPANDED_QUARTERS
   },
   [IDS.LIGHT_TRANSPORT]: {
     i: IDS.LIGHT_TRANSPORT,
@@ -69,15 +74,18 @@ const TYPES = {
       pickup truck of the Belt. Its crewmate complement of up to five can use the ship to transport
       up to 2000 tonnes of cargo. The Light Transport is uniquely able to land on any undeveloped
       asteroid lot, not just in spaceports like the other ships of the Exploitation era.`,
-    landing: true,
-    docking: true,
-    propellantSlot: 1,
-    propellantInventoryType: Inventory.IDS.PROPELLANT_MEDIUM,
-    cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_MEDIUM,
+    cargoSlot: 2,
+    docking: true,
+    emergencyPropellantCap: 0.1,
     exhaustVelocity: 30000,
     hullMass: 185525000,
-    emergencyPropellantCap: 0.1
+    landing: true,
+    process: Process.IDS.LIGHT_TRANSPORT_INTEGRATION,
+    propellantInventoryType: Inventory.IDS.PROPELLANT_MEDIUM,
+    propellantSlot: 1,
+    propellantType: Product.IDS.HYDROGEN_PROPELLANT,
+    stationType: Station.IDS.STANDARD_QUARTERS
   },
   [IDS.HEAVY_TRANSPORT]: {
     i: IDS.HEAVY_TRANSPORT,
@@ -85,15 +93,18 @@ const TYPES = {
     description: `The Heavy Transport is a huge, nine-engine ship specializing in bulk transportation
       of goods. It can be used to haul up to a massive 12,000 tonnes of cargo, and has space for up
       to five crewmates. The Heavy Transport requires a spaceport to land on an asteroid.`,
-    landing: false,
-    docking: true,
-    propellantSlot: 1,
-    propellantInventoryType: Inventory.IDS.PROPELLANT_LARGE,
-    cargoSlot: 2,
     cargoInventoryType: Inventory.IDS.CARGO_LARGE,
+    cargoSlot: 2,
+    docking: true,
+    emergencyPropellantCap: 0.1,
     exhaustVelocity: 30000,
     hullMass: 969525000,
-    emergencyPropellantCap: 0.1
+    landing: false,
+    process: Process.IDS.HEAVY_TRANSPORT_INTEGRATION,
+    propellantInventoryType: Inventory.IDS.PROPELLANT_LARGE,
+    propellantSlot: 1,
+    propellantType: Product.IDS.HYDROGEN_PROPELLANT,
+    stationType: Station.IDS.STANDARD_QUARTERS
   }
 };
 

@@ -5,6 +5,7 @@ const IDS = {
 const TYPES = {
   [IDS.BASIC]: {
     i: IDS.BASIC,
+    name: 'Basic Exchange',
     productCap: 20
   }
 };

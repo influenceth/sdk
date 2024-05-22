@@ -1,4 +1,4 @@
-import Building from './building.js';
+import Process from './process.js';
 import Product from './product.js';
 
 const IDS = {
@@ -41,69 +41,79 @@ const TYPES = {
     i: IDS.WAREHOUSE_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.WAREHOUSE].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.WAREHOUSE_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.EXTRACTOR_SITE]: {
     i: IDS.EXTRACTOR_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.EXTRACTOR].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.EXTRACTOR_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.REFINERY_SITE]: {
     i: IDS.REFINERY_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.REFINERY].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.REFINERY_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.BIOREACTOR_SITE]: {
     i: IDS.BIOREACTOR_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.BIOREACTOR].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.BIOREACTOR_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.FACTORY_SITE]: {
     i: IDS.FACTORY_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.FACTORY].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.FACTORY_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.SHIPYARD_SITE]: {
     i: IDS.SHIPYARD_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.SHIPYARD].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.SHIPYARD_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.SPACEPORT_SITE]: {
     i: IDS.SPACEPORT_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.SPACEPORT].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.SPACEPORT_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.MARKETPLACE_SITE]: {
     i: IDS.MARKETPLACE_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.MARKETPLACE].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.MARKETPLACE_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.HABITAT_SITE]: {
     i: IDS.HABITAT_SITE,
     massConstraint: Infinity,
     volumeConstraint: Infinity,
-    productConstraints: Building.CONSTRUCTION_TYPES[Building.IDS.HABITAT].requirements,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
   [IDS.WAREHOUSE_PRIMARY]: {
     i: IDS.WAREHOUSE_PRIMARY,
     massConstraint: 1500000e6,
     volumeConstraint: 75000e6,
+    modifiable: true,
     productConstraints: null,
     category: CATEGORIES.PRIMARY
   },
@@ -111,6 +121,7 @@ const TYPES = {
     i: IDS.PROPELLANT_TINY,
     massConstraint: 200e6,
     volumeConstraint: 2660e6,
+    modifiable: true,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
     category: CATEGORIES.PROPELLANT
   },
@@ -118,6 +129,7 @@ const TYPES = {
     i: IDS.PROPELLANT_SMALL,
     massConstraint: 2000e6,
     volumeConstraint: 26600e6,
+    modifiable: true,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
     category: CATEGORIES.PROPELLANT
   },
@@ -125,6 +137,7 @@ const TYPES = {
     i: IDS.PROPELLANT_MEDIUM,
     massConstraint: 4000e6,
     volumeConstraint: 53200e6,
+    modifiable: true,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
     category: CATEGORIES.PROPELLANT
   },
@@ -132,6 +145,7 @@ const TYPES = {
     i: IDS.PROPELLANT_LARGE,
     massConstraint: 24000e6,
     volumeConstraint: 319200e6,
+    modifiable: true,
     productConstraints: { [Product.IDS.HYDROGEN_PROPELLANT]: 0 },
     category: CATEGORIES.PROPELLANT
   },
@@ -139,6 +153,7 @@ const TYPES = {
     i: IDS.CARGO_SMALL,
     massConstraint: 50e6,
     volumeConstraint: 125e6,
+    modifiable: true,
     productConstraints: null,
     category: CATEGORIES.PRIMARY
   },
@@ -146,6 +161,7 @@ const TYPES = {
     i: IDS.CARGO_MEDIUM,
     massConstraint: 2000e6,
     volumeConstraint: 5000e6,
+    modifiable: true,
     productConstraints: null,
     category: CATEGORIES.PRIMARY
   },
@@ -153,6 +169,7 @@ const TYPES = {
     i: IDS.CARGO_LARGE,
     massConstraint: 12000e6,
     volumeConstraint: 30000e6,
+    modifiable: true,
     productConstraints: null,
     category: CATEGORIES.PRIMARY
   }
