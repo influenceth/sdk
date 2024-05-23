@@ -39,6 +39,7 @@ const CATEGORIES = {
 const TYPES = {
   [IDS.WAREHOUSE_SITE]: {
     i: IDS.WAREHOUSE_SITE,
+    name: 'Warehouse Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -47,6 +48,7 @@ const TYPES = {
   },
   [IDS.EXTRACTOR_SITE]: {
     i: IDS.EXTRACTOR_SITE,
+    name: 'Extractor Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -55,6 +57,7 @@ const TYPES = {
   },
   [IDS.REFINERY_SITE]: {
     i: IDS.REFINERY_SITE,
+    name: 'Refinery Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -63,6 +66,7 @@ const TYPES = {
   },
   [IDS.BIOREACTOR_SITE]: {
     i: IDS.BIOREACTOR_SITE,
+    name: 'Bioreactor Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -71,6 +75,7 @@ const TYPES = {
   },
   [IDS.FACTORY_SITE]: {
     i: IDS.FACTORY_SITE,
+    name: 'Factory Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -79,6 +84,7 @@ const TYPES = {
   },
   [IDS.SHIPYARD_SITE]: {
     i: IDS.SHIPYARD_SITE,
+    name: 'Shipyard Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -87,6 +93,7 @@ const TYPES = {
   },
   [IDS.SPACEPORT_SITE]: {
     i: IDS.SPACEPORT_SITE,
+    name: 'Spaceport Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -95,6 +102,7 @@ const TYPES = {
   },
   [IDS.MARKETPLACE_SITE]: {
     i: IDS.MARKETPLACE_SITE,
+    name: 'Marketplace Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -103,6 +111,7 @@ const TYPES = {
   },
   [IDS.HABITAT_SITE]: {
     i: IDS.HABITAT_SITE,
+    name: 'Habitat Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
@@ -111,6 +120,7 @@ const TYPES = {
   },
   [IDS.WAREHOUSE_PRIMARY]: {
     i: IDS.WAREHOUSE_PRIMARY,
+    name: 'Warehouse Storage',
     massConstraint: 1500000e6,
     volumeConstraint: 75000e6,
     modifiable: true,
@@ -119,6 +129,7 @@ const TYPES = {
   },
   [IDS.PROPELLANT_TINY]: {
     i: IDS.PROPELLANT_TINY,
+    name: 'Tiny Propellant Tank',
     massConstraint: 200e6,
     volumeConstraint: 2660e6,
     modifiable: true,
@@ -127,6 +138,7 @@ const TYPES = {
   },
   [IDS.PROPELLANT_SMALL]: {
     i: IDS.PROPELLANT_SMALL,
+    name: 'Small Propellant Tank',
     massConstraint: 2000e6,
     volumeConstraint: 26600e6,
     modifiable: true,
@@ -135,6 +147,7 @@ const TYPES = {
   },
   [IDS.PROPELLANT_MEDIUM]: {
     i: IDS.PROPELLANT_MEDIUM,
+    name: 'Medium Propellant Tank',
     massConstraint: 4000e6,
     volumeConstraint: 53200e6,
     modifiable: true,
@@ -143,6 +156,7 @@ const TYPES = {
   },
   [IDS.PROPELLANT_LARGE]: {
     i: IDS.PROPELLANT_LARGE,
+    name: 'Large Propellant Tank',
     massConstraint: 24000e6,
     volumeConstraint: 319200e6,
     modifiable: true,
@@ -151,6 +165,7 @@ const TYPES = {
   },
   [IDS.CARGO_SMALL]: {
     i: IDS.CARGO_SMALL,
+    name: 'Small Cargo Hold',
     massConstraint: 50e6,
     volumeConstraint: 125e6,
     modifiable: true,
@@ -159,6 +174,7 @@ const TYPES = {
   },
   [IDS.CARGO_MEDIUM]: {
     i: IDS.CARGO_MEDIUM,
+    name: 'Medium Cargo Hold',
     massConstraint: 2000e6,
     volumeConstraint: 5000e6,
     modifiable: true,
@@ -167,6 +183,7 @@ const TYPES = {
   },
   [IDS.CARGO_LARGE]: {
     i: IDS.CARGO_LARGE,
+    name: 'Large Cargo Hold',
     massConstraint: 12000e6,
     volumeConstraint: 30000e6,
     modifiable: true,
