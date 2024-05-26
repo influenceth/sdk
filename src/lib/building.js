@@ -20,7 +20,7 @@ const IDS = {
 const TYPES = {
   [IDS.EMPTY_LOT]: {
     i: IDS.EMPTY_LOT,
-    nadme: 'Empty Lot',
+    name: 'Empty Lot',
     processType: 0,
     siteSlot: 0,
     siteType: 0,

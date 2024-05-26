@@ -229,7 +229,7 @@ class ProductionJSON {
       process.bAdalianHoursPerAction = setupTime ? this.getHoursFromSeconds(setupTime) : 'N/A';
       process.buildingId = String(Building.IDS.EMPTY_LOT);
       process.id = String(++maxProcessId);
-      process.mAdalianHoursPerSR = this.getHoursFromSeconds(constructionTime)
+      process.mAdalianHoursPerSR = this.getHoursFromSeconds(constructionTime);
       process.outputs = [{
         productId: String(productId),
         unitsPerSR: '1'
