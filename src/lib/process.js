@@ -1,6 +1,8 @@
 import Processor from './processor.js';
 import Product from './product.js';
 
+const MAX_PROCESS_TIME = 63072000; // in-game seconds
+
 const IDS = {
   WATER_ELECTROLYSIS: 23,
   WATER_VACUUM_EVAPORATION_DESALINATION: 24,
@@ -4115,6 +4117,7 @@ const getSetupTime = (processId, totalBonus = 1) => {
 export default {
   IDS,
   TYPES,
+  MAX_PROCESS_TIME,
 
   getListByProcessorType,
   getOutputs,

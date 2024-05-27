@@ -5,6 +5,8 @@ import Entity from './entity.js';
 import Lot from './lot.js';
 import Inventory from './inventory.js';
 
+const MAX_POLICY_DURATION = 31536000; // in IRL seconds
+
 const IDS = {
   USE_LOT: 1,
   RUN_PROCESS: 2,
@@ -20,8 +22,6 @@ const IDS = {
   EXTRACT_RESOURCES: 12,
   ASSEMBLE_SHIP: 13
 };
-
-const MAX_POLICY_DURATION = 31536000; // 1 yr in IRL seconds
 
 const TYPES = {
   [IDS.USE_LOT]: {

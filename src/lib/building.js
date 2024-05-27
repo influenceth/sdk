@@ -20,7 +20,7 @@ const IDS = {
 const TYPES = {
   [IDS.EMPTY_LOT]: {
     i: IDS.EMPTY_LOT,
-    nadme: 'Empty Lot',
+    name: 'Empty Lot',
     processType: 0,
     siteSlot: 0,
     siteType: 0,
@@ -142,39 +142,39 @@ const TYPES = {
 // NOTE: constructionTime is in-game seconds
 const CONSTRUCTION_TYPES = {
   [IDS.WAREHOUSE]: {
-    constructionTime: Process.TYPES[Process.IDS.WAREHOUSE_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.WAREHOUSE_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.WAREHOUSE_CONSTRUCTION].inputs
   },
   [IDS.EXTRACTOR]: {
-    constructionTime: Process.TYPES[Process.IDS.EXTRACTOR_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.EXTRACTOR_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.EXTRACTOR_CONSTRUCTION].inputs
   },
   [IDS.REFINERY]: {
-    constructionTime: Process.TYPES[Process.IDS.REFINERY_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.REFINERY_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.REFINERY_CONSTRUCTION].inputs
   },
   [IDS.BIOREACTOR]: {
-    constructionTime: Process.TYPES[Process.IDS.BIOREACTOR_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.BIOREACTOR_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.BIOREACTOR_CONSTRUCTION].inputs
   },
   [IDS.FACTORY]: {
-    constructionTime: Process.TYPES[Process.IDS.FACTORY_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.FACTORY_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.FACTORY_CONSTRUCTION].inputs
   },
   [IDS.SHIPYARD]: {
-    constructionTime: Process.TYPES[Process.IDS.SHIPYARD_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.SHIPYARD_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.SHIPYARD_CONSTRUCTION].inputs
   },
   [IDS.SPACEPORT]: {
-    constructionTime: Process.TYPES[Process.IDS.SPACEPORT_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.SPACEPORT_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.SPACEPORT_CONSTRUCTION].inputs
   },
   [IDS.MARKETPLACE]: {
-    constructionTime: Process.TYPES[Process.IDS.MARKETPLACE_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.MARKETPLACE_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.MARKETPLACE_CONSTRUCTION].inputs
   },
   [IDS.HABITAT]: {
-    constructionTime: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].recipeTime,
+    constructionTime: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].inputs
   }
 };
@@ -193,7 +193,7 @@ const CONSTRUCTION_STATUS_LABELS = {
   [CONSTRUCTION_STATUSES.OPERATIONAL]: 'Operational'
 };
 
-const GRACE_PERIOD = 86400 * 2; // 2 days in IRL time
+const CONSTRUCTION_GRACE_PERIOD = 86400 * 2; // 2 days in IRL time
 const DECONSTRUCTION_PENALTY = 0.10;
 
 const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
@@ -218,7 +218,8 @@ export default {
   CONSTRUCTION_STATUSES,
   CONSTRUCTION_STATUS_LABELS,
   DECONSTRUCTION_PENALTY,
-  GRACE_PERIOD,
+  GRACE_PERIOD: CONSTRUCTION_GRACE_PERIOD, // legacy
+  CONSTRUCTION_GRACE_PERIOD,
   IDS,
 
   getConstructionTime,
