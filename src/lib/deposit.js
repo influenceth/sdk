@@ -1,5 +1,5 @@
 const MAX_YIELD = 10000e6; // 10000 tonnes in grams
-const SAMPLE_TIME = 86400; // in-game time in seconds
+const CORE_SAMPLING_TIME = 86400; // in-game time in seconds
 
 const STATUSES = {
   UNDISCOVERED: 0,
@@ -19,12 +19,13 @@ const getSampleBounds = (abundance, initialYield = 0, totalBonus = 1) => {
 };
 
 const getSampleTime = (totalBonus = 1) => {
-  return Math.ceil(SAMPLE_TIME / totalBonus);
+  return Math.ceil(CORE_SAMPLING_TIME / totalBonus);
 };
 
 export default {
   MAX_YIELD,
-  SAMPLE_TIME,
+  CORE_SAMPLING_TIME,
+  SAMPLE_TIME: CORE_SAMPLING_TIME, // legacy
   STATUSES,
 
   getSampleBounds,

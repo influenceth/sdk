@@ -2,7 +2,8 @@ import Crewmate from './crewmate.js';
 import Station from './station.js';
 
 const CREWMATE_STACKING_BONUS_EFFICIENCY = [0.5, 1.0, 1.25, 1.375, 1.4375, 1.46875];
-const CREWMATE_FOOD_PER_YEAR = 1000; // kg / year
+const CREWMATE_FOOD_PER_YEAR = 1000; // kg / in-game year
+const CREW_SCHEDULE_BUFFER = 86400; // in IRL seconds
 const STARVING_MULTIPLIER = 0.25;
 const YEAR_IN_SECONDS = 31536000; // 60 * 60 * 24 * 365
 
@@ -163,6 +164,7 @@ const getTimeSinceFed = (currentFoodRatio, consumption = 1) => {
 export default {
   CREWMATE_STACKING_BONUS_EFFICIENCY,
   CREWMATE_FOOD_PER_YEAR,
+  CREW_SCHEDULE_BUFFER,
   STARVING_MULTIPLIER,
 
   getAbilityBonus,
