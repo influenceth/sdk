@@ -303,6 +303,23 @@
     },
     {
       "type": "event",
+      "name": "influence::contracts::dispatcher::Dispatcher::EntropyGenerated",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "entropy",
+          "type": "core::felt252",
+          "kind": "data"
+        },
+        {
+          "name": "round",
+          "type": "core::integer::u64",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
       "name": "influence::contracts::dispatcher::Dispatcher::Event",
       "kind": "enum",
       "variants": [
@@ -319,6 +336,11 @@
         {
           "name": "SystemRegistered",
           "type": "influence::contracts::dispatcher::Dispatcher::SystemRegistered",
+          "kind": "nested"
+        },
+        {
+          "name": "EntropyGenerated",
+          "type": "influence::contracts::dispatcher::Dispatcher::EntropyGenerated",
           "kind": "nested"
         }
       ]
@@ -4198,38 +4220,6 @@
           "type": "()"
         }
       ]
-    },
-    {
-      "type": "function",
-      "name": "transfer_and_forward",
-      "inputs": [
-        {
-          "name": "recipient",
-          "type": "core::starknet::contract_address::ContractAddress"
-        },
-        {
-          "name": "amount",
-          "type": "core::integer::u128"
-        },
-        {
-          "name": "target_contract",
-          "type": "core::starknet::contract_address::ContractAddress"
-        },
-        {
-          "name": "entry_point_selector",
-          "type": "core::felt252"
-        },
-        {
-          "name": "data",
-          "type": "core::array::Array::<core::felt252>"
-        }
-      ],
-      "outputs": [
-        {
-          "type": "core::bool"
-        }
-      ],
-      "state_mutability": "external"
     },
     {
       "type": "function",

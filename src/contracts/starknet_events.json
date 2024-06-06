@@ -1114,6 +1114,38 @@
       }
     ]
   },
+  "CrewStationedV1": {
+    "type": "event",
+    "name": "CrewStationedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "origin_station",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_station",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "DeliverySent": {
     "type": "event",
     "name": "DeliverySent",
@@ -1152,6 +1184,38 @@
       {
         "name": "finish_time",
         "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "DeliveryDumped": {
+    "type": "event",
+    "name": "DeliveryDumped",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
         "kind": "data"
       },
       {
@@ -1471,6 +1535,33 @@
       {
         "name": "caller",
         "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "Debug_DepositBounds": {
+    "type": "event",
+    "name": "Debug_DepositBounds",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "lot_abundance",
+        "type": "cubit::f64::types::fixed::Fixed",
+        "kind": "data"
+      },
+      {
+        "name": "initial_yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "lower_bound",
+        "type": "cubit::f64::types::fixed::Fixed",
+        "kind": "data"
+      },
+      {
+        "name": "upper_bound",
+        "type": "cubit::f64::types::fixed::Fixed",
         "kind": "data"
       }
     ]

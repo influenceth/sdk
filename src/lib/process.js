@@ -247,7 +247,7 @@ const TYPES = {
     name: 'Water Electrolysis',
     processorType: Processor.IDS.REFINERY,
     setupTime: 7200,
-    recipeTime: 18.72,
+    recipeTime: 56.16,
     batched: false,
     inputs: {
       [Product.IDS.DEIONIZED_WATER]: 9
@@ -424,7 +424,7 @@ const TYPES = {
     batched: false,
     inputs: {
       [Product.IDS.TROILITE]: 100,
-      [Product.IDS.SULFURIC_ACID]: 10
+      [Product.IDS.SULFURIC_ACID]: 94
     },
     outputs: {
       [Product.IDS.IRON_SULFIDE]: 80,
@@ -625,7 +625,7 @@ const TYPES = {
     name: 'Methane Steam Reforming and Water-gas Shift',
     processorType: Processor.IDS.REFINERY,
     setupTime: 86400,
-    recipeTime: 7.344,
+    recipeTime: 22.032,
     batched: false,
     inputs: {
       [Product.IDS.METHANE]: 16,
