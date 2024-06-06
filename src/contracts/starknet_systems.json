@@ -619,6 +619,30 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "DumpDelivery": {
+    "type": "function",
+    "name": "DumpDelivery",
+    "inputs": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "CancelDelivery": {
     "type": "function",
     "name": "CancelDelivery",
@@ -1105,7 +1129,7 @@
       },
       {
         "name": "escrow_withdrawals",
-        "type": "core::array::Span::<influence::systems::orders::fill_buy::Withdrawal>"
+        "type": "core::array::Span::<influence::interfaces::escrow::Withdrawal>"
       }
     ],
     "outputs": [],

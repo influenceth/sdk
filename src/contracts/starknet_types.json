@@ -79,6 +79,20 @@
       }
     ]
   },
+  "cubit::f64::types::fixed::Fixed": {
+    "type": "struct",
+    "name": "cubit::f64::types::fixed::Fixed",
+    "members": [
+      {
+        "name": "mag",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "sign",
+        "type": "core::bool"
+      }
+    ]
+  },
   "core::integer::u256": {
     "type": "struct",
     "name": "core::integer::u256",
@@ -93,9 +107,9 @@
       }
     ]
   },
-  "influence::systems::orders::fill_buy::Withdrawal": {
+  "influence::interfaces::escrow::Withdrawal": {
     "type": "struct",
-    "name": "influence::systems::orders::fill_buy::Withdrawal",
+    "name": "influence::interfaces::escrow::Withdrawal",
     "members": [
       {
         "name": "recipient",
@@ -107,27 +121,13 @@
       }
     ]
   },
-  "core::array::Span::<influence::systems::orders::fill_buy::Withdrawal>": {
+  "core::array::Span::<influence::interfaces::escrow::Withdrawal>": {
     "type": "struct",
-    "name": "core::array::Span::<influence::systems::orders::fill_buy::Withdrawal>",
+    "name": "core::array::Span::<influence::interfaces::escrow::Withdrawal>",
     "members": [
       {
         "name": "snapshot",
-        "type": "@core::array::Array::<influence::systems::orders::fill_buy::Withdrawal>"
-      }
-    ]
-  },
-  "cubit::f64::types::fixed::Fixed": {
-    "type": "struct",
-    "name": "cubit::f64::types::fixed::Fixed",
-    "members": [
-      {
-        "name": "mag",
-        "type": "core::integer::u64"
-      },
-      {
-        "name": "sign",
-        "type": "core::bool"
+        "type": "@core::array::Array::<influence::interfaces::escrow::Withdrawal>"
       }
     ]
   },
