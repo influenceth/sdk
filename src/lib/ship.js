@@ -109,10 +109,30 @@ const TYPES = {
 };
 
 const VARIANT_TYPES = {
-  [VARIANTS.STANDARD]: { name: 'Standard' },
-  [VARIANTS.COBALT_PIONEER]: { name: 'Cobalt Pioneer' },
-  [VARIANTS.TITANIUM_PIONEER]: { name: 'Titanium Pioneer' },
-  [VARIANTS.AUREATE_PIONEER]: { name: 'Aureate Pioneer' }
+  [VARIANTS.STANDARD]: {
+    i: VARIANTS.STANDARD,
+    name: 'Standard',
+    shipType: null, // applies to all base ships
+    exhaustVelocityModifier: 0
+  },
+  [VARIANTS.COBALT_PIONEER]: {
+    i: VARIANTS.COBALT_PIONEER,
+    name: 'Cobalt Pioneer',
+    shipType: IDS.LIGHT_TRANSPORT,
+    exhaustVelocityModifier: 0.1
+  },
+  [VARIANTS.TITANIUM_PIONEER]: {
+    i: VARIANTS.TITANIUM_PIONEER,
+    name: 'Titanium Pioneer',
+    shipType: IDS.LIGHT_TRANSPORT,
+    exhaustVelocityModifier: 0.15
+  },
+  [VARIANTS.AUREATE_PIONEER]: {
+    i: VARIANTS.AUREATE_PIONEER,
+    name: 'Aureate Pioneer',
+    shipType: IDS.LIGHT_TRANSPORT,
+    exhaustVelocityModifier: 0.175
+  }
 };
 
 // setupTime and constructionTime is in in-game seconds
@@ -154,6 +174,9 @@ const getPropellantRequirement = (shipType, wetMass, deltaV_ms, exhaustBonus = 1
   return wetMass * (1 - 1 / Math.exp(deltaV_ms / exhaustVelocity));
 };
 Entity.getPropellantRequirement = (ship, deltaV_ms, exhaustBonus = 1) => {
+  const variant = Entity.getVariant(ship);
+  if (variant && variant.exhaustVelocityModifier) exhaustBonus *= (1 + variant.exhaustVelocityModifier);
+
   const shipConfig = TYPES[ship.Ship.shipType] || {};
   const cargoInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.cargoSlot);
   const propellantInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.propellantSlot);
@@ -169,6 +192,9 @@ const propellantToDeltaV = (shipType, wetMass, usedPropellantMass, exhaustBonus 
   return TYPES[shipType].exhaustVelocity * exhaustBonus * Math.log(wetMass / (wetMass - usedPropellantMass));
 };
 Entity.propellantToDeltaV = (ship, usedPropellantMass, exhaustBonus = 1) => {
+  const variant = Entity.getVariant(ship);
+  if (variant && variant.exhaustVelocityModifier) exhaustBonus *= (1 + variant.exhaustVelocityModifier);
+
   const shipConfig = TYPES[ship.Ship.shipType] || {};
   const cargoInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.cargoSlot);
   const propellantInventory = ship.Inventories.find((inventory) => inventory.slot === shipConfig.propellantSlot);
@@ -231,6 +257,8 @@ export default {
   IDS,
   STATUSES,
   TYPES,
+  VARIANTS,
+  VARIANT_TYPES,
 
   getConstructionType,
   getEmergencyPropellantAmount,

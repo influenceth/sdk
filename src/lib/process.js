@@ -4027,11 +4027,11 @@ const TYPES = {
       [Product.IDS.STEEL_BEAM]: 1600000,
       [Product.IDS.STEEL_SHEET]: 2500000,
       [Product.IDS.STEEL_CABLE]: 200000,
-      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 40,
-      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 120,
-      [Product.IDS.AVIONICS_MODULE]: 16,
-      [Product.IDS.POWER_MODULE]: 40,
-      [Product.IDS.THERMAL_MODULE]: 40
+      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 50,
+      [Product.IDS.SOLIDS_AUTOMATION_MODULE]: 180,
+      [Product.IDS.AVIONICS_MODULE]: 40,
+      [Product.IDS.POWER_MODULE]: 150,
+      [Product.IDS.THERMAL_MODULE]: 60
     },
     outputs: {}
   },
@@ -4047,10 +4047,10 @@ const TYPES = {
       [Product.IDS.STEEL_SHEET]: 3000000,
       [Product.IDS.STEEL_CABLE]: 500000,
       [Product.IDS.LARGE_THRUST_BEARING]: 6,
-      [Product.IDS.HABITATION_MODULE]: 8,
-      [Product.IDS.AVIONICS_MODULE]: 12,
-      [Product.IDS.POWER_MODULE]: 20,
-      [Product.IDS.THERMAL_MODULE]: 20
+      [Product.IDS.HABITATION_MODULE]: 80,
+      [Product.IDS.AVIONICS_MODULE]: 160,
+      [Product.IDS.POWER_MODULE]: 60,
+      [Product.IDS.THERMAL_MODULE]: 40
     },
     outputs: {}
   },
@@ -4068,10 +4068,10 @@ const TYPES = {
       [Product.IDS.STEEL_SHEET]: 5000000,
       [Product.IDS.STEEL_CABLE]: 1000000,
       [Product.IDS.LARGE_THRUST_BEARING]: 12,
-      [Product.IDS.HABITATION_MODULE]: 16,
-      [Product.IDS.AVIONICS_MODULE]: 20,
-      [Product.IDS.POWER_MODULE]: 30,
-      [Product.IDS.THERMAL_MODULE]: 20
+      [Product.IDS.HABITATION_MODULE]: 240,
+      [Product.IDS.AVIONICS_MODULE]: 200,
+      [Product.IDS.POWER_MODULE]: 240,
+      [Product.IDS.THERMAL_MODULE]: 320
     },
     outputs: {}
   }
