@@ -1,0 +1,874 @@
+{
+  "influence::components::building::Building": {
+    "type": "struct",
+    "name": "influence::components::building::Building",
+    "members": [
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "building_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "planned_at",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::building_type::BuildingType": {
+    "type": "struct",
+    "name": "influence::components::building_type::BuildingType",
+    "members": [
+      {
+        "name": "process_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "site_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "site_type",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::celestial::Celestial": {
+    "type": "struct",
+    "name": "influence::components::celestial::Celestial",
+    "members": [
+      {
+        "name": "celestial_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "mass",
+        "type": "cubit::f128::types::fixed::Fixed"
+      },
+      {
+        "name": "radius",
+        "type": "cubit::f64::types::fixed::Fixed"
+      },
+      {
+        "name": "purchase_order",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "scan_status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "scan_finish_time",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "bonuses",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "abundances",
+        "type": "core::felt252"
+      }
+    ]
+  },
+  "influence::components::control::Control": {
+    "type": "struct",
+    "name": "influence::components::control::Control",
+    "members": [
+      {
+        "name": "controller",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ]
+  },
+  "influence::components::crew::Crew": {
+    "type": "struct",
+    "name": "influence::components::crew::Crew",
+    "members": [
+      {
+        "name": "delegated_to",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "roster",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "last_fed",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "ready_at",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "action_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "action_target",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "action_round",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "action_weight",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "action_strategy",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::crewmate::Crewmate": {
+    "type": "struct",
+    "name": "influence::components::crewmate::Crewmate",
+    "members": [
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "collection",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "class",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "title",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "appearance",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>"
+      }
+    ]
+  },
+  "influence::components::delivery::Delivery": {
+    "type": "struct",
+    "name": "influence::components::delivery::Delivery",
+    "members": [
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "dest",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "dest_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "contents",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      }
+    ]
+  },
+  "influence::components::deposit::Deposit": {
+    "type": "struct",
+    "name": "influence::components::deposit::Deposit",
+    "members": [
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "initial_yield",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "remaining_yield",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "yield_eff",
+        "type": "cubit::f64::types::fixed::Fixed"
+      }
+    ]
+  },
+  "influence::components::dock::Dock": {
+    "type": "struct",
+    "name": "influence::components::dock::Dock",
+    "members": [
+      {
+        "name": "dock_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "docked_ships",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "ready_at",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::dock_type::DockType": {
+    "type": "struct",
+    "name": "influence::components::dock_type::DockType",
+    "members": [
+      {
+        "name": "cap",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "delay",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::dry_dock::DryDock": {
+    "type": "struct",
+    "name": "influence::components::dry_dock::DryDock",
+    "members": [
+      {
+        "name": "dry_dock_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "output_ship",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::dry_dock_type::DryDockType": {
+    "type": "struct",
+    "name": "influence::components::dry_dock_type::DryDockType",
+    "members": [
+      {
+        "name": "max_mass",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "max_volume",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::exchange::Exchange": {
+    "type": "struct",
+    "name": "influence::components::exchange::Exchange",
+    "members": [
+      {
+        "name": "exchange_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "maker_fee",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "taker_fee",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "orders",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "allowed_products",
+        "type": "core::array::Span::<core::integer::u64>"
+      }
+    ]
+  },
+  "influence::components::exchange_type::ExchangeType": {
+    "type": "struct",
+    "name": "influence::components::exchange_type::ExchangeType",
+    "members": [
+      {
+        "name": "allowed_products",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::extractor::Extractor": {
+    "type": "struct",
+    "name": "influence::components::extractor::Extractor",
+    "members": [
+      {
+        "name": "extractor_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "output_product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::inventory::Inventory": {
+    "type": "struct",
+    "name": "influence::components::inventory::Inventory",
+    "members": [
+      {
+        "name": "inventory_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "mass",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "volume",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "reserved_mass",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "reserved_volume",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "contents",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      },
+      {
+        "name": "reservations",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      }
+    ]
+  },
+  "influence::components::inventory_type::InventoryType": {
+    "type": "struct",
+    "name": "influence::components::inventory_type::InventoryType",
+    "members": [
+      {
+        "name": "mass",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "volume",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "modifiable",
+        "type": "core::bool"
+      },
+      {
+        "name": "products",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      }
+    ]
+  },
+  "influence::components::location::Location": {
+    "type": "struct",
+    "name": "influence::components::location::Location",
+    "members": [
+      {
+        "name": "location",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ]
+  },
+  "influence::components::modifier_type::ModifierType": {
+    "type": "struct",
+    "name": "influence::components::modifier_type::ModifierType",
+    "members": [
+      {
+        "name": "class",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "dept_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "dept_eff",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "mgmt_eff",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "trait_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "trait_eff",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "further_modified",
+        "type": "core::bool"
+      }
+    ]
+  },
+  "influence::components::name::Name": {
+    "type": "struct",
+    "name": "influence::components::name::Name",
+    "members": [
+      {
+        "name": "name",
+        "type": "influence::common::types::string::String"
+      }
+    ]
+  },
+  "influence::components::orbit::Orbit": {
+    "type": "struct",
+    "name": "influence::components::orbit::Orbit",
+    "members": [
+      {
+        "name": "a",
+        "type": "cubit::f128::types::fixed::Fixed"
+      },
+      {
+        "name": "ecc",
+        "type": "cubit::f128::types::fixed::Fixed"
+      },
+      {
+        "name": "inc",
+        "type": "cubit::f128::types::fixed::Fixed"
+      },
+      {
+        "name": "raan",
+        "type": "cubit::f128::types::fixed::Fixed"
+      },
+      {
+        "name": "argp",
+        "type": "cubit::f128::types::fixed::Fixed"
+      },
+      {
+        "name": "m",
+        "type": "cubit::f128::types::fixed::Fixed"
+      }
+    ]
+  },
+  "influence::components::order::Order": {
+    "type": "struct",
+    "name": "influence::components::order::Order",
+    "members": [
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "valid_time",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "maker_fee",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::private_sale::PrivateSale": {
+    "type": "struct",
+    "name": "influence::components::private_sale::PrivateSale",
+    "members": [
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::process_type::ProcessType": {
+    "type": "struct",
+    "name": "influence::components::process_type::ProcessType",
+    "members": [
+      {
+        "name": "setup_time",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "recipe_time",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "batched",
+        "type": "core::bool"
+      },
+      {
+        "name": "processor_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "inputs",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      },
+      {
+        "name": "outputs",
+        "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+      }
+    ]
+  },
+  "influence::components::processor::Processor": {
+    "type": "struct",
+    "name": "influence::components::processor::Processor",
+    "members": [
+      {
+        "name": "processor_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "running_process",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "output_product",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "recipes",
+        "type": "cubit::f64::types::fixed::Fixed"
+      },
+      {
+        "name": "secondary_eff",
+        "type": "cubit::f64::types::fixed::Fixed"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::product_type::ProductType": {
+    "type": "struct",
+    "name": "influence::components::product_type::ProductType",
+    "members": [
+      {
+        "name": "mass",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "volume",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::ship::Ship": {
+    "type": "struct",
+    "name": "influence::components::ship::Ship",
+    "members": [
+      {
+        "name": "ship_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "ready_at",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "variant",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "emergency_at",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "transit_origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "transit_departure",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "transit_destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "transit_arrival",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::ship_type::ShipType": {
+    "type": "struct",
+    "name": "influence::components::ship_type::ShipType",
+    "members": [
+      {
+        "name": "cargo_inventory_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "cargo_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "docking",
+        "type": "core::bool"
+      },
+      {
+        "name": "exhaust_velocity",
+        "type": "cubit::f128::types::fixed::Fixed"
+      },
+      {
+        "name": "hull_mass",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "landing",
+        "type": "core::bool"
+      },
+      {
+        "name": "process_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "propellant_emergency_divisor",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "propellant_inventory_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "propellant_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "propellant_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "station_type",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::ship_variant_type::ShipVariantType": {
+    "type": "struct",
+    "name": "influence::components::ship_variant_type::ShipVariantType",
+    "members": [
+      {
+        "name": "ship_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "exhaust_velocity_modifier",
+        "type": "cubit::f64::types::fixed::Fixed"
+      }
+    ]
+  },
+  "influence::components::station::Station": {
+    "type": "struct",
+    "name": "influence::components::station::Station",
+    "members": [
+      {
+        "name": "station_type",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "population",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::station_type::StationType": {
+    "type": "struct",
+    "name": "influence::components::station_type::StationType",
+    "members": [
+      {
+        "name": "cap",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "recruitment",
+        "type": "core::bool"
+      },
+      {
+        "name": "efficiency",
+        "type": "cubit::f64::types::fixed::Fixed"
+      }
+    ]
+  },
+  "influence::components::unique::Unique": {
+    "type": "struct",
+    "name": "influence::components::unique::Unique",
+    "members": [
+      {
+        "name": "unique",
+        "type": "core::felt252"
+      }
+    ]
+  },
+  "influence::components::policies::contract::ContractPolicy": {
+    "type": "struct",
+    "name": "influence::components::policies::contract::ContractPolicy",
+    "members": [
+      {
+        "name": "address",
+        "type": "core::starknet::contract_address::ContractAddress"
+      }
+    ]
+  },
+  "influence::components::policies::prepaid::PrepaidPolicy": {
+    "type": "struct",
+    "name": "influence::components::policies::prepaid::PrepaidPolicy",
+    "members": [
+      {
+        "name": "rate",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "initial_term",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "notice_period",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::policies::public::PublicPolicy": {
+    "type": "struct",
+    "name": "influence::components::policies::public::PublicPolicy",
+    "members": [
+      {
+        "name": "public",
+        "type": "core::bool"
+      }
+    ]
+  },
+  "influence::components::agreements::contract::ContractAgreement": {
+    "type": "struct",
+    "name": "influence::components::agreements::contract::ContractAgreement",
+    "members": [
+      {
+        "name": "address",
+        "type": "core::starknet::contract_address::ContractAddress"
+      }
+    ]
+  },
+  "influence::components::agreements::prepaid::PrepaidAgreement": {
+    "type": "struct",
+    "name": "influence::components::agreements::prepaid::PrepaidAgreement",
+    "members": [
+      {
+        "name": "rate",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "initial_term",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "notice_period",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "start_time",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "end_time",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "notice_time",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::agreements::whitelist::WhitelistAgreement": {
+    "type": "struct",
+    "name": "influence::components::agreements::whitelist::WhitelistAgreement",
+    "members": [
+      {
+        "name": "whitelisted",
+        "type": "core::bool"
+      }
+    ]
+  }
+}

@@ -4906,6 +4906,18 @@
     },
     {
       "type": "event",
+      "name": "influence::contracts::sway::Sway::L1BridgeUpdated",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "address",
+          "type": "core::starknet::eth_address::EthAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
       "name": "influence::contracts::sway::Sway::Event",
       "kind": "enum",
       "variants": [
@@ -4937,6 +4949,11 @@
         {
           "name": "ReceiptConfirmed",
           "type": "influence::contracts::sway::Sway::ReceiptConfirmed",
+          "kind": "nested"
+        },
+        {
+          "name": "L1BridgeUpdated",
+          "type": "influence::contracts::sway::Sway::L1BridgeUpdated",
           "kind": "nested"
         }
       ]
