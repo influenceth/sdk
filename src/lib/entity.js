@@ -6,7 +6,6 @@ const IDS = {
   BUILDING: 5,
   SHIP: 6,
   DEPOSIT: 7,
-  // ORDER: 8,
   DELIVERY: 9,
   SPACE: 10
 };
@@ -19,7 +18,6 @@ const TYPES = {
   [IDS.BUILDING]: { label: 'BUILDING' },
   [IDS.SHIP]: { label: 'SHIP' },
   [IDS.DEPOSIT]: { label: 'DEPOSIT' },
-  // [IDS.ORDER]: { label: 'ORDER' },
   [IDS.DELIVERY]: { label: 'DELIVERY' },
   [IDS.SPACE]: { label: 'SPACE' }
 };

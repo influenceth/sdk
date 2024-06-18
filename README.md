@@ -12,7 +12,12 @@ Smart contract ABIs can be included with `import { starknetContracts, ethereumCo
 ### Components
 All state in Influence is stored as components on the Dispatcher contract and can be accessed via a special system action `ReadComponent`.
 Components are addressed by a key, typically the entity, and component name. For some components, the key is complex and includes multiple fields.
-Call the `ReadComponent` system like: `Dispatcher.run_system('ReadComponent', { name: 'ComponentName', path: [ entity, key2, ... ]}`
+For example, the `Crew` component is addressed by the crew's packed entity UUID:
+```js
+Dispatcher.call('run_system', Dispatcher.callData.compile('run_system', {
+  name: 'ReadComponent', calldata: [ 'Crew', 1, Entity.packEntity({ label: Entity.IDS.CREW, id: 4938 }) ]
+}));
+```
 
 ABI types / schemas for all components can be found in `./contracts/starknet_components.json`.
 
