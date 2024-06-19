@@ -34,7 +34,9 @@ import ProductionJSON from './utils/ProductionJSON.js';
 import Simplex from './utils/simplex.js';
 import Time from './utils/Time.js';
 
+import ethereumAddresses from './contracts/ethereum_addresses.json' assert { type: 'json' };
 import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'json' };
+import starknetAddresses from './contracts/starknet_addresses.json' assert { type: 'json' };
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
 // Utility libs
@@ -78,7 +80,7 @@ export {
 };
 
 // Contract ABIs
-export { ethereumContracts, starknetContracts };
+export { ethereumAddresses, ethereumContracts, starknetAddresses, starknetContracts };
 
 export const ADALIA_MASS = Constants.ADALIA_MASS;
 export const GM_ADALIA = Constants.GM_ADALIA;

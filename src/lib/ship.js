@@ -165,7 +165,9 @@ const getType = (type) => TYPES[type] ? { ...TYPES[type] } : null;
 Component.getType = (ship) => getType(ship.shipType);
 Entity.getType = (entity) => Component.getType(entity.Ship);
 
-const getVariant = (variant) => VARIANT_TYPES[variant] ? { ...VARIANT_TYPES[variant] } : null;
+const getVariant = (variant) => {
+  return VARIANT_TYPES[variant] ? { ...VARIANT_TYPES[variant] } : { ...VARIANT_TYPES[VARIANTS.STANDARD] };
+};
 Component.getVariant = (ship) => getVariant(ship.variant);
 Entity.getVariant = (entity) => Component.getVariant(entity.Ship);
 
