@@ -131,7 +131,7 @@ const VARIANT_TYPES = {
     i: VARIANTS.AUREATE_PIONEER,
     name: 'Aureate Pioneer',
     shipType: IDS.LIGHT_TRANSPORT,
-    exhaustVelocityModifier: 0.175
+    exhaustVelocityModifier: 0.2
   }
 };
 

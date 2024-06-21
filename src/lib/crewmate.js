@@ -272,7 +272,7 @@ const ABILITY_TYPES = {
     i: ABILITY_IDS.CORE_SAMPLE_TIME,
     name: 'Core Sample Time',
     class: CLASS_IDS.MINER,
-    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 },
+    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.01 },
     traits: { [TRAIT_IDS.SURVEYOR]: 0.10 }
   },
   [ABILITY_IDS.CORE_SAMPLE_QUALITY]: {
@@ -286,7 +286,7 @@ const ABILITY_TYPES = {
     i: ABILITY_IDS.EXTRACTION_TIME,
     name: 'Extraction Time',
     class: CLASS_IDS.MINER,
-    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 }
+    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.01 }
   },
   [ABILITY_IDS.HOPPER_TRANSPORT_TIME]: {
     i: ABILITY_IDS.HOPPER_TRANSPORT_TIME,
@@ -318,7 +318,10 @@ const ABILITY_TYPES = {
     i: ABILITY_IDS.PROPELLANT_EXHAUST_VELOCITY,
     name: 'Propellant Exhaust Velocity',
     class: CLASS_IDS.PILOT,
-    departments: { [DEPARTMENT_IDS.NAVIGATION]: 0.01 },
+    departments: {
+      [DEPARTMENT_IDS.NAVIGATION]: 0.01,
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.01
+    },
     traits: { [TRAIT_IDS.NAVIGATOR]: 0.02 },
     notFurtherModified: true
   },
@@ -334,7 +337,7 @@ const ABILITY_TYPES = {
     i: ABILITY_IDS.CONSTRUCTION_TIME,
     name: 'Construction Time',
     class: CLASS_IDS.ENGINEER,
-    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.005 },
+    departments: { [DEPARTMENT_IDS.MANAGEMENT]: 0.01 },
     traits: { [TRAIT_IDS.BUILDER]: 0.05 }
   },
   [ABILITY_IDS.DECONSTRUCTION_YIELD]: {
@@ -348,7 +351,7 @@ const ABILITY_TYPES = {
     class: CLASS_IDS.ENGINEER,
     departments: {
       [DEPARTMENT_IDS.ENGINEERING]: 0.0125,
-      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.0075
     },
     traits: { [TRAIT_IDS.REFINER]: 0.05 }
   },
@@ -364,7 +367,7 @@ const ABILITY_TYPES = {
     class: CLASS_IDS.ENGINEER,
     departments: {
       [DEPARTMENT_IDS.ENGINEERING]: 0.0125,
-      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.0075
     }
   },
   [ABILITY_IDS.REACTION_TIME]: {
@@ -373,17 +376,14 @@ const ABILITY_TYPES = {
     class: CLASS_IDS.SCIENTIST,
     departments: {
       [DEPARTMENT_IDS.FOOD_PRODUCTION]: 0.025,
-      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.0075
     }
   },
   [ABILITY_IDS.FOOD_CONSUMPTION_TIME]: {
     i: ABILITY_IDS.FOOD_CONSUMPTION_TIME,
     name: 'Food Consumption Time',
-    departments: {
-      [DEPARTMENT_IDS.FOOD_PREPARATION]: 0.025,
-      [DEPARTMENT_IDS.MANAGEMENT]: 0.005
-    },
-    traits: { [TRAIT_IDS.DIETITIAN]: 0.05 },
+    departments: { [DEPARTMENT_IDS.FOOD_PREPARATION]: 0.05 },
+    traits: { [TRAIT_IDS.DIETITIAN]: 0.1 },
     notFurtherModified: true
   },
   [ABILITY_IDS.FOOD_RATIONING_PENALTY]: {
@@ -403,7 +403,10 @@ const ABILITY_TYPES = {
     i: ABILITY_IDS.MARKETPLACE_FEE_REDUCTION,
     name: 'Marketplace Fee Reduction',
     class: CLASS_IDS.MERCHANT,
-    departments: { [DEPARTMENT_IDS.ARTS_ENTERTAINMENT]: 0.05 }
+    departments: {
+      [DEPARTMENT_IDS.ARTS_ENTERTAINMENT]: 0.05,
+      [DEPARTMENT_IDS.MANAGEMENT]: 0.025
+    }
   },
   [ABILITY_IDS.SHIP_INTEGRATION_TIME]: {
     i: ABILITY_IDS.SHIP_INTEGRATION_TIME,
