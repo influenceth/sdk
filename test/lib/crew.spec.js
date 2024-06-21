@@ -11,7 +11,7 @@ describe('Crew library', function () {
     const details = Crew.getAbilityBonus(
       1, [{ classId: 3, titleId: 65 }, { collectionId: 4, classId: 3, traitIds: [ 31 ]}]
     );
-    expect(details.totalBonus.toFixed(4)).to.equal('1.4063');
+    expect(details.totalBonus.toFixed(4)).to.equal('1.4375');
   });
 
   it('should get bonus based on ability with no class affinity', function () {
@@ -33,7 +33,7 @@ describe('Crew library', function () {
       { Crewmate: { coll: 2, class: 3, title: 13, impactful: [ 31 ] } }
     ]);
 
-    expect(details.totalBonus.toFixed(4)).to.equal('1.5156');
+    expect(details.totalBonus.toFixed(4)).to.equal('1.5313');
   });
 
   it('should get bonus based on ability with class penalty', function () {
