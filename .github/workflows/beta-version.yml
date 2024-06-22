@@ -1,0 +1,45 @@
+name: Build beta version
+
+on:
+  push:
+    branches:
+      -master
+
+jobs:
+  create-beta-version:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Increment Beta Version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          BASE_VERSION=$(echo $VERSION | sed 's/-beta\.[0-9]*//')
+          BETA_NUMBER=$(echo $VERSION | sed -n 's/.*-beta\.\([0-9]*\)/\1/p')
+          NEW_BETA_NUMBER=$((BETA_NUMBER + 1))
+          NEW_VERSION="$BASE_VERSION-beta.$NEW_BETA_NUMBER"
+          npm version $NEW_VERSION --no-git-tag-version
+          echo "New version: $NEW_VERSION"
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add package.json
+          git commit -m "Create beta version $NEW_VERSION"
+          git push
