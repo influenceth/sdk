@@ -1,14 +1,9 @@
 name: Build and Publish SDK
 
 on:
-  push:
-    branches:
-      - main
-
-# on:
-#   release:
-#     types:
-#       - published
+  release:
+    types:
+      - published
 
 jobs:
   build-and-publish:
