@@ -180,7 +180,7 @@ const TRAITS = {
   39: { name: 'Enterprising', type: TRAIT_TYPES.COSMETIC, description: 'You are resourceful and able to build on the ideas of others.' },
   40: { name: 'Opportunistic', type: TRAIT_TYPES.COSMETIC, description: 'You believe in taking advantage of being in the right place at the right time.' },
   41: { name: 'Buster', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 2% increased propellant flow rate.' },
-  42: { name: 'Mogul', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 1.6% increased fee enforcement on market orders.' },
+  42: { name: 'Mogul', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 16% increased fee enforcement on market orders.' },
   43: { name: 'Scholar', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next technology.' },
   44: { name: 'Recycler', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% decreased loss when deconstructing buildings.' },
   45: { name: 'Mechanic', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased cost for ship repair.' },
