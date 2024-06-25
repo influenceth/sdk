@@ -52,8 +52,8 @@ const TYPES = {
     i: IDS.SHUTTLE,
     name: 'Shuttle',
     description: `The Shuttle is a lean, light ship with a single engine, optimized for personnel
-      transportation. It can carry up to 15 crewmates at once, but also has space for a small
-      50-tonne cargo. The Shuttle requires a spaceport to land on an asteroid.`,
+      transportation. It can carry up to 15 crewmates at once, but also nominally has space for a 
+      small 50-tonne cargo. The Shuttle requires a Spaceport to land on an asteroid.`,
     cargoInventoryType: Inventory.IDS.CARGO_SMALL,
     cargoSlot: 2,
     docking: true,
@@ -72,8 +72,8 @@ const TYPES = {
     name: 'Light Transport',
     description: `The Light Transport is a medium-sized ship with two engines that serves as the
       pickup truck of the Belt. Its crewmate complement of up to five can use the ship to transport
-      up to 2000 tonnes of cargo. The Light Transport is uniquely able to land on any undeveloped
-      asteroid lot, not just in spaceports like the other ships of the Exploitation era.`,
+      up to a nominal 2000 tonnes of cargo. The Light Transport is uniquely able to land on any 
+      undeveloped asteroid lot, not just in Spaceports like the other ships of the Exploitation era.`,
     cargoInventoryType: Inventory.IDS.CARGO_MEDIUM,
     cargoSlot: 2,
     docking: true,
@@ -91,8 +91,8 @@ const TYPES = {
     i: IDS.HEAVY_TRANSPORT,
     name: 'Heavy Transport',
     description: `The Heavy Transport is a huge, nine-engine ship specializing in bulk transportation
-      of goods. It can be used to haul up to a massive 12,000 tonnes of cargo, and has space for up
-      to five crewmates. The Heavy Transport requires a spaceport to land on an asteroid.`,
+      of goods. It can nominally be used to haul up to a massive 12,000 tonnes of cargo, and has space 
+      for up to five crewmates. The Heavy Transport requires a Spaceport to land on an asteroid.`,
     cargoInventoryType: Inventory.IDS.CARGO_LARGE,
     cargoSlot: 2,
     docking: true,
