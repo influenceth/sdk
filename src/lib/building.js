@@ -24,9 +24,8 @@ const TYPES = {
     processType: 0,
     siteSlot: 0,
     siteType: 0,
-    description: `The microgravity environment of asteroids affects the physical
-      condition of asteroid material; for example, a bed of regolith will settle
-      and become more compacted than would be found on an asteroid.`
+    description: `An empty expanse of regolith in microgravity, blasted by cosmic rays and 
+    stellar wind and slowly tilled by micrometeorite impacts for billions of years.`
   },
   [IDS.WAREHOUSE]: {
     i: IDS.WAREHOUSE,
@@ -34,8 +33,8 @@ const TYPES = {
     processType: Process.IDS.WAREHOUSE_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.WAREHOUSE_SITE,
-    description: `The Warehouse provides inventory space to store items: raw
-      materials, refined materials, process modules, or finished goods.`
+    description: `The Warehouse provides inventory space to store products: raw
+      materials, refined materials, crops, manufactured goods, or assemblies.`
   },
   [IDS.EXTRACTOR]: {
     i: IDS.EXTRACTOR,
@@ -43,9 +42,11 @@ const TYPES = {
     processType: Process.IDS.EXTRACTOR_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.EXTRACTOR_SITE,
-    description: `The Extractor is responsible for extracting the raw materials from an
-      asteroid. They are tied closely to the core sampling process, and rely
-      on the availability of a core sample to be able to operate efficiently.`
+    description: `The Extractor is responsible for extracting raw materials from an
+      asteroid. Extractors cannot operate without a core sample pointing to a mineable
+      deposit of a raw material. They consist of a large, mobile drilling rig and a fixed
+      section that separates the ores and packages them for shipping. Extractors are best 
+      operated by Miners.`
   },
   [IDS.REFINERY]: {
     i: IDS.REFINERY,
@@ -53,11 +54,11 @@ const TYPES = {
     processType: Process.IDS.REFINERY_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.REFINERY_SITE,
-    description: `The Refinery allows for the refining of raw materials into their
-      constituent refined materials. Effectively they are responsible for
-      all intermediate and un-finished goods. They utilize process modules
-      to modify the targeted output which defines the recipe, and therefore
-      required inputs.`
+    description: `The Refinery allows for the refining of products into refined 
+      materials. Refineries utilize chemical reactions or state changes to
+      accomplish their work. They are built around a very large, thermally controlled
+      centrifuge which simulates gravity for the many processes that require it. 
+      Refineries are best operated by Engineers and Scientists.`
   },
   [IDS.BIOREACTOR]: {
     i: IDS.BIOREACTOR,
@@ -67,10 +68,10 @@ const TYPES = {
     siteType: Inventory.IDS.BIOREACTOR_SITE,
     description: `The Bioreactor, or as the Adalians lovingly call it, the Farm, is a
       specialized building designed to provide a growing space for a variety of organic
-      products. It features transparent growing tunnels containing microgravity soil beds
-      for agricultural plants brought from Earth, as well as water tubes built into the
-      tunnel walls for bio-engineered algae and bacteria. Production of crops in the
-      Bioreactor necessarily occurs in batches.`
+      products. Bioreactors feature transparent growing tunnels containing microgravity soil 
+      beds for agricultural plants brought from Earth, as well as water tubes built into the
+      tunnel walls for bio-engineered algae and bacteria. Production of crops in
+      Bioreactors necessarily occurs in batches. They are best operated by Scientists.`
   },
   [IDS.FACTORY]: {
     i: IDS.FACTORY,
@@ -78,10 +79,9 @@ const TYPES = {
     processType: Process.IDS.FACTORY_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.FACTORY_SITE,
-    description: `All finished goods, except for ships, are produced in the Factory based
-      on their installed assembly process modules. The finished goods produced
-      in Factories are primarily consumables, or serve to be assembled as new
-      buildings, or new ships.`
+    description: `The Factory produces manufactured goods. It contains a number of flexible
+      assembly stations, through which mobile robotic arms move to perform work. 
+      Factories are best operated by Engineers.`
   },
   [IDS.SHIPYARD]: {
     i: IDS.SHIPYARD,
@@ -89,8 +89,12 @@ const TYPES = {
     processType: Process.IDS.SHIPYARD_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.SHIPYARD_SITE,
-    description: `The Shipyard is a specialized Factory that are required for the final
-      construction and deconstruction of ships.`
+    description: `The Shipyard is a specialized type of factory that can manufacture
+    assemblies, the most specialized and complex type of products. These are typically used
+    in the construction of ships and buildings. Shipyards additionally feature large
+    mobile gantries which allow for the construction of ship hulls, and the final integration 
+    of modules onto those hulls to create ships. Those two types of work can be performed
+    in parallel, unlike with other buildings. Shipyards are best operated by Engineers. `
   },
   [IDS.SPACEPORT]: {
     i: IDS.SPACEPORT,
@@ -98,12 +102,12 @@ const TYPES = {
     processType: Process.IDS.SPACEPORT_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.SPACEPORT_SITE,
-    description: `The Spaceport allows for the landing of all ship classes on an asteroid's
+    description: `The Spaceport allows for the docking of all ship classes on an asteroid's
       surface, not just those capable of performing all-terrain landings like
-      the Light Transport. Spaceports provide for unlimited space to land ships
-      and the only facilities on the asteroid capable of loading and unloading
-      those ships. Although they have unlimited space, landing is subject to a
-      queue with one landing occurring every 4 Adalian hours (10 real minutes).`
+      the Light Transport. Spaceports are constructed as a large well leading to underground
+      ship parking areas, and are therefore limited in space. The more ships they store,
+      the slower docking and undocking becomes. Ships docked in a Spaceport can load and unload
+      their cargoes and propellant, and can host Crews doing work.`
   },
   [IDS.MARKETPLACE]: {
     i: IDS.MARKETPLACE,
@@ -113,13 +117,13 @@ const TYPES = {
     siteType: Inventory.IDS.MARKETPLACE_SITE,
     description: `The Marketplace serves as the central point of the Adalian economy. Once
       they are built on an asteroid they allow for the exchange of all local
-      raw materials, refined materials, process modules, and finished goods.
-      Items are placed on the Marketplace by the seller, and once purchased by
-      the buyer generate fees that accrue to the owner of the Marketplace. The
-      Marketplace owner is further able to provide incentives to sellers to
-      encourage their use of a particular Marketplace. Buyers are able to access
-      a single, asteroid-wide market interface displaying items for sale, but
-      any explicit buy-orders must be placed at a specific Marketplace.`
+      raw materials, refined materials, crops, manufactured goods, and assemblies.
+      Marketplaces feature large spinning rings which provide artificial gravity for traders
+      who work there on a temporary basis, much like a conference center. They support both 
+      limit and market orders, for both buying and selling, and allow a limited number of 
+      products which may be traded, and which their owner can configure, along with fees. 
+      When trades are matched, those fees accrue to the owner. Marketplaces are best managed 
+      by Merchants.`
   },
   [IDS.HABITAT]: {
     i: IDS.HABITAT,
@@ -127,15 +131,14 @@ const TYPES = {
     processType: Process.IDS.HABITAT_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.HABITAT_SITE,
-    description: `The Habitat is the only location which allows recruiting of new Crewmates
-      and is required to support any Hab Modules not attached to ships.
-      Additionally, Habitats are required for the storage of inactive crew, and
-      therefore grant the ability to switch out / modify crew loadouts. Finally,
-      active crew can be stationed at Habitats resulting in a bonus to their
-      Food consumption rate vs. crew stationed on their ship at Spaceports or in
-      flight. Although there are no limits on the number of Crewmates stationed
-      at a Habitat, the Food consumption bonus diminishes when Habitats become
-      overcrowded and ultimately disappears as the level of overcrowding increases.`
+    description: `The Habitat is the city of Adalia. Habitats are constructed of large,
+      well-appointed spinning rings to provide artificial gravity, and the inner edge of
+      those rings is populated by many Habitation Modules, which are used for homes and public
+      buildings. In addition to allowing the stationing of Crews, they are the only location 
+      which allows new Crewmates to be recruited, from the pool of work-ready young adults
+      who grew up at that Habitat. Habitats do not have unlimited space, and once they are more
+      than half full, the productivity boost which they grant to Crews stationed there begins
+      to drop due to overcrowding, until it is completely gone at full capacity.`
   }
 };
 
