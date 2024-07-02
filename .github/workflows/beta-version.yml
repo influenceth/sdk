@@ -3,7 +3,7 @@ name: Build beta version
 on:
   push:
     branches:
-      -master
+      - master
 
 jobs:
   create-beta-version:
