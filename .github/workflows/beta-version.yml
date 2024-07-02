@@ -1,13 +1,14 @@
 name: Build beta version
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types:
+      - closed
 
 jobs:
   create-beta-version:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
 
     strategy:
       matrix:
