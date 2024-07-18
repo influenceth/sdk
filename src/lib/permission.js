@@ -123,7 +123,8 @@ const POLICY_TYPES = {
   },
 };
 
-const getPermissionPolicy = (entity, rawPermId, crew) => {
+const getPermissionPolicy = (entity, rawPermId, crew, blockTime = null) => {
+  const nowTime = blockTime || Math.floor(Date.now() / 1000);
   const permId = Number(rawPermId);
 
   // default perm policy to private
@@ -146,7 +147,11 @@ const getPermissionPolicy = (entity, rawPermId, crew) => {
 
       // agreement could be from previous policy, so need to attach agreements from any policy type (even if not active)
       if (agreementKey) {
-        permPolicy.agreements.push(...(entity[agreementKey] || []).filter((a) => a.permission === permId));
+        permPolicy.agreements.push(
+          ...(entity[agreementKey] || [])
+            .filter((a) => a.permission === permId)
+            .filter((a) => !a.endTime || a.endTime > nowTime)
+        );
       }
     }
   });
@@ -175,18 +180,21 @@ const getPermissionPolicy = (entity, rawPermId, crew) => {
 };
 
 // TODO: put this in Crew?
-const isPermitted = (crew, permission, hydratedTarget) => {
-  const policy = getPermissionPolicy(hydratedTarget, permission, crew);
-  return policy.crewStatus === 'controller' || policy.crewStatus === 'granted';
+const isPermitted = (crew, permission, hydratedTarget, blockTime = null) => {
+  try {
+    const policy = getPermissionPolicy(hydratedTarget, permission, crew, blockTime);
+    return policy.crewStatus === 'controller' || policy.crewStatus === 'granted';
+  } catch {}
+  return false;
 }
 
 // get the applicable policies, agreements, and allowlists for this entity
-const getPolicyDetails = (entity, crew = null) => {
+const getPolicyDetails = (entity, crew = null, blockTime = null) => {
   return Object.keys(TYPES)
     .filter((id) => TYPES[id].isApplicable(entity))
     .reduce((acc, permId) => ({
       ...acc,
-      [permId]: getPermissionPolicy(entity, permId, crew)
+      [permId]: getPermissionPolicy(entity, permId, crew, blockTime)
     }), {});
 };
 Entity.getPolicyDetails = getPolicyDetails;
