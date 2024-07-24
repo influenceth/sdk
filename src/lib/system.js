@@ -41,6 +41,8 @@ const Systems = Object.keys(SystemData).reduce((acc, name) => {
   return acc;
 }, {});
 
+const toBigInt = (value) => BigInt(Math.round(Number(value || 0)));
+
 const formatCalldataValue = (type, value) => {
   if (type === 'ContractAddress') {
     return value;
@@ -53,22 +55,22 @@ const formatCalldataValue = (type, value) => {
   } else if (type === 'Boolean') {
     return value;
   } else if (type === 'BigNumber') {
-    return BigInt(value);
+    return toBigInt(value);
   } else if (type === 'Ether') {
     return uint256.bnToUint256(value);
   } else if (type === 'InventoryItem') {
     return [value.product, value.amount];
   } else if (type === 'Withdrawal') {
-    return { recipient: value.recipient, amount: uint256.bnToUint256(BigInt(value.amount)) };
+    return { recipient: value.recipient, amount: uint256.bnToUint256(toBigInt(value.amount)) };
   } else if (type === 'Boolean') {
     return !!value;
   } else if (type === 'Fixed64') {
     const neg = value < 0;
-    const val = BigInt(Math.floor(Math.abs(value) * 2 ** 32));
+    const val = toBigInt(Math.floor(Math.abs(value) * 2 ** 32));
     return [val, neg ? 1 : 0];
   } else if (type === 'Fixed128') {
     const neg = value < 0;
-    const val = BigInt(Math.floor(Math.abs(value) * 2 ** 64)); // TODO: this will cause precision loss, use bignumber
+    const val = toBigInt(Math.floor(Math.abs(value) * 2 ** 64)); // TODO: this will cause precision loss, use bignumber
     return [val, neg ? 1 : 0];
   } else if (type === 'EscrowHook') {
     if (!value) return { contract: 0, entry_point_selector: '0', calldata: [] };
@@ -168,7 +170,7 @@ const getTransferWithConfirmationCall = (recipient, amount, memo, consumerAddres
   [
     { value: recipient, type: 'ContractAddress' },
     { value: amount, type: 'BigNumber' },
-    { value: Array.isArray(memo) ? ec.starkCurve.poseidonHashMany(memo.map((v) => BigInt(v))) : memo },
+    { value: Array.isArray(memo) ? ec.starkCurve.poseidonHashMany(memo.map((v) => toBigInt(v))) : memo },
     { value: consumerAddress, type: 'ContractAddress' }
   ]
 );
