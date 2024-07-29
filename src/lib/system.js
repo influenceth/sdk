@@ -41,7 +41,13 @@ const Systems = Object.keys(SystemData).reduce((acc, name) => {
   return acc;
 }, {});
 
-const toBigInt = (value) => BigInt(Math.round(Number(value || 0)));
+const toBigInt = (value) => {
+  try {
+    return BigInt(value);
+  } catch (e) {
+    return BigInt(Math.round(Number(value || 0)));
+  }
+};
 
 const formatCalldataValue = (type, value) => {
   if (type === 'ContractAddress') {
@@ -183,5 +189,6 @@ export default {
   getFormattedCall,
   getRunSystemCall,
   getTransferWithConfirmationCall,
+  toBigInt,
   Systems
 };
