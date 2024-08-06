@@ -238,7 +238,8 @@ const IDS = {
   SHIPYARD_CONSTRUCTION: 305,
   SPACEPORT_CONSTRUCTION: 306,
   MARKETPLACE_CONSTRUCTION: 307,
-  HABITAT_CONSTRUCTION: 308
+  HABITAT_CONSTRUCTION: 308,
+  FLUIDS_STORAGE_CONSTRUCTION: 309
 };
 
 const TYPES = {
@@ -4074,6 +4075,20 @@ const TYPES = {
       [Product.IDS.THERMAL_MODULE]: 320
     },
     outputs: {}
+  },
+  [IDS.FLUIDS_STORAGE_CONSTRUCTION]: {
+    i: IDS.FLUIDS_STORAGE_CONSTRUCTION,
+    name: 'Fluids Storage Construction',
+    processorType: Processor.IDS.CONSTRUCTION,
+    setupTime: 3110400,
+    recipeTime: 0,
+    inputs: {
+      [Product.IDS.CEMENT]: 200000,
+      [Product.IDS.STEEL_BEAM]: 50000,
+      [Product.IDS.STEEL_SHEET]: 50000,
+      [Product.IDS.STAINLESS_STEEL_SHEET]: 200000,
+      [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 2
+    }
   }
 };
 

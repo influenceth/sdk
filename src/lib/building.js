@@ -11,7 +11,20 @@ const IDS = {
   SHIPYARD: 6,
   SPACEPORT: 7,
   MARKETPLACE: 8,
-  HABITAT: 9
+  HABITAT: 9,
+  FLUIDS_STORAGE: 10
+};
+
+const CATEGORIES = {
+  STORAGE: 1,
+  EXTRACTION: 2,
+  REFINING: 3,
+  AGRICULTURE: 4,
+  MANUFACTURING: 5,
+  SHIPBUILDING: 6,
+  TRANSPORT: 7,
+  TRADE: 8,
+  HOUSING: 9
 };
 
 /**
@@ -21,15 +34,17 @@ const TYPES = {
   [IDS.EMPTY_LOT]: {
     i: IDS.EMPTY_LOT,
     name: 'Empty Lot',
+    category: 0,
     processType: 0,
     siteSlot: 0,
     siteType: 0,
-    description: `An empty expanse of regolith in microgravity, blasted by cosmic rays and 
+    description: `An empty expanse of regolith in microgravity, blasted by cosmic rays and
     stellar wind and slowly tilled by micrometeorite impacts for billions of years.`
   },
   [IDS.WAREHOUSE]: {
     i: IDS.WAREHOUSE,
     name: 'Warehouse',
+    category: CATEGORIES.STORAGE,
     processType: Process.IDS.WAREHOUSE_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.WAREHOUSE_SITE,
@@ -39,36 +54,39 @@ const TYPES = {
   [IDS.EXTRACTOR]: {
     i: IDS.EXTRACTOR,
     name: 'Extractor',
+    category: CATEGORIES.EXTRACTION,
     processType: Process.IDS.EXTRACTOR_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.EXTRACTOR_SITE,
     description: `The Extractor is responsible for extracting raw materials from an
       asteroid. Extractors cannot operate without a core sample pointing to a mineable
       deposit of a raw material. They consist of a large, mobile drilling rig and a fixed
-      section that separates the ores and packages them for shipping. Extractors are best 
+      section that separates the ores and packages them for shipping. Extractors are best
       operated by Miners.`
   },
   [IDS.REFINERY]: {
     i: IDS.REFINERY,
     name: 'Refinery',
+    category: CATEGORIES.REFINING,
     processType: Process.IDS.REFINERY_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.REFINERY_SITE,
-    description: `The Refinery allows for the refining of products into refined 
+    description: `The Refinery allows for the refining of products into refined
       materials. Refineries utilize chemical reactions or state changes to
       accomplish their work. They are built around a very large, thermally controlled
-      centrifuge which simulates gravity for the many processes that require it. 
+      centrifuge which simulates gravity for the many processes that require it.
       Refineries are best operated by Engineers and Scientists.`
   },
   [IDS.BIOREACTOR]: {
     i: IDS.BIOREACTOR,
     name: 'Bioreactor',
+    category: CATEGORIES.AGRICULTURE,
     processType: Process.IDS.BIOREACTOR_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.BIOREACTOR_SITE,
     description: `The Bioreactor, or as the Adalians lovingly call it, the Farm, is a
       specialized building designed to provide a growing space for a variety of organic
-      products. Bioreactors feature transparent growing tunnels containing microgravity soil 
+      products. Bioreactors feature transparent growing tunnels containing microgravity soil
       beds for agricultural plants brought from Earth, as well as water tubes built into the
       tunnel walls for bio-engineered algae and bacteria. Production of crops in
       Bioreactors necessarily occurs in batches. They are best operated by Scientists.`
@@ -76,29 +94,32 @@ const TYPES = {
   [IDS.FACTORY]: {
     i: IDS.FACTORY,
     name: 'Factory',
+    category: CATEGORIES.MANUFACTURING,
     processType: Process.IDS.FACTORY_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.FACTORY_SITE,
     description: `The Factory produces manufactured goods. It contains a number of flexible
-      assembly stations, through which mobile robotic arms move to perform work. 
+      assembly stations, through which mobile robotic arms move to perform work.
       Factories are best operated by Engineers.`
   },
   [IDS.SHIPYARD]: {
     i: IDS.SHIPYARD,
     name: 'Shipyard',
+    category: CATEGORIES.SHIPBUILDING,
     processType: Process.IDS.SHIPYARD_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.SHIPYARD_SITE,
     description: `The Shipyard is a specialized type of factory that can manufacture
     assemblies, the most specialized and complex type of products. These are typically used
     in the construction of ships and buildings. Shipyards additionally feature large
-    mobile gantries which allow for the construction of ship hulls, and the final integration 
+    mobile gantries which allow for the construction of ship hulls, and the final integration
     of modules onto those hulls to create ships. Those two types of work can be performed
     in parallel, unlike with other buildings. Shipyards are best operated by Engineers. `
   },
   [IDS.SPACEPORT]: {
     i: IDS.SPACEPORT,
     name: 'Spaceport',
+    category: CATEGORIES.TRANSPORT,
     processType: Process.IDS.SPACEPORT_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.SPACEPORT_SITE,
@@ -112,6 +133,7 @@ const TYPES = {
   [IDS.MARKETPLACE]: {
     i: IDS.MARKETPLACE,
     name: 'Marketplace',
+    category: CATEGORIES.TRADE,
     processType: Process.IDS.MARKETPLACE_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.MARKETPLACE_SITE,
@@ -119,26 +141,36 @@ const TYPES = {
       they are built on an asteroid they allow for the exchange of all local
       raw materials, refined materials, crops, manufactured goods, and assemblies.
       Marketplaces feature large spinning rings which provide artificial gravity for traders
-      who work there on a temporary basis, much like a conference center. They support both 
-      limit and market orders, for both buying and selling, and allow a limited number of 
-      products which may be traded, and which their owner can configure, along with fees. 
-      When trades are matched, those fees accrue to the owner. Marketplaces are best managed 
+      who work there on a temporary basis, much like a conference center. They support both
+      limit and market orders, for both buying and selling, and allow a limited number of
+      products which may be traded, and which their owner can configure, along with fees.
+      When trades are matched, those fees accrue to the owner. Marketplaces are best managed
       by Merchants.`
   },
   [IDS.HABITAT]: {
     i: IDS.HABITAT,
     name: 'Habitat',
+    category: CATEGORIES.HOUSING,
     processType: Process.IDS.HABITAT_CONSTRUCTION,
     siteSlot: 1,
     siteType: Inventory.IDS.HABITAT_SITE,
     description: `The Habitat is the city of Adalia. Habitats are constructed of large,
       well-appointed spinning rings to provide artificial gravity, and the inner edge of
       those rings is populated by many Habitation Modules, which are used for homes and public
-      buildings. In addition to allowing the stationing of Crews, they are the only location 
+      buildings. In addition to allowing the stationing of Crews, they are the only location
       which allows new Crewmates to be recruited, from the pool of work-ready young adults
       who grew up at that Habitat. Habitats do not have unlimited space, and once they are more
       than half full, the productivity boost which they grant to Crews stationed there begins
       to drop due to overcrowding, until it is completely gone at full capacity.`
+  },
+  [IDS.FLUIDS_STORAGE]: {
+    i: IDS.FLUIDS_STORAGE,
+    name: 'Fluids Storage Terminal',
+    category: CATEGORIES.STORAGE,
+    processType: Process.IDS.FLUIDS_STORAGE_CONSTRUCTION,
+    siteSlot: 1,
+    siteType: Inventory.IDS.FLUIDS_STORAGE_SITE,
+    description: 'pending'
   }
 };
 
@@ -179,6 +211,10 @@ const CONSTRUCTION_TYPES = {
   [IDS.HABITAT]: {
     constructionTime: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].inputs
+  },
+  [IDS.FLUIDS_STORAGE]: {
+    constructionTime: Process.TYPES[Process.IDS.FLUIDS_STORAGE_CONSTRUCTION].setupTime,
+    requirements: Process.TYPES[Process.IDS.FLUIDS_STORAGE_CONSTRUCTION].inputs
   }
 };
 
@@ -217,6 +253,7 @@ const getConstructionTime = (buildingType, totalBonus = 1) => {
 
 export default {
   TYPES,
+  CATEGORIES,
   CONSTRUCTION_TYPES,
   CONSTRUCTION_STATUSES,
   CONSTRUCTION_STATUS_LABELS,

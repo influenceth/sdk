@@ -18,7 +18,9 @@ const IDS = {
   PROPELLANT_LARGE: 14,
   CARGO_SMALL: 15,
   CARGO_MEDIUM: 16,
-  CARGO_LARGE: 17
+  CARGO_LARGE: 17,
+  FLUIDS_STORAGE_SITE: 18,
+  FLUIDS_STORAGE_PRIMARY: 19
 };
 
 const STATUSES = {
@@ -186,6 +188,24 @@ const TYPES = {
     name: 'Large Cargo Hold',
     massConstraint: 12000e6,
     volumeConstraint: 30000e6,
+    modifiable: true,
+    productConstraints: null,
+    category: CATEGORIES.PRIMARY
+  },
+  [IDS.FLUIDS_STORAGE_SITE]: {
+    i: IDS.FLUIDS_STORAGE_SITE,
+    name: 'Fluids Storage Site',
+    massConstraint: Infinity,
+    volumeConstraint: Infinity,
+    modifiable: false,
+    productConstraints: Process.TYPES[Process.IDS.FLUIDS_STORAGE_CONSTRUCTION].inputs,
+    category: CATEGORIES.SITE
+  },
+  [IDS.FLUIDS_STORAGE_PRIMARY]: {
+    i: IDS.FLUIDS_STORAGE_PRIMARY,
+    name: 'Fluids Storage',
+    massConstraint: 75000e6,
+    volumeConstraint: 997500e6,
     modifiable: true,
     productConstraints: null,
     category: CATEGORIES.PRIMARY

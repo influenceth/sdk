@@ -13,7 +13,8 @@ export default {
     [Building.IDS.SHIPYARD]: { iconVersion: 1, modelVersion: 1 },
     [Building.IDS.SPACEPORT]: { iconVersion: 1, modelVersion: 1 },
     [Building.IDS.MARKETPLACE]: { iconVersion: 1, modelVersion: 1 },
-    [Building.IDS.HABITAT]: { iconVersion: 1, modelVersion: 1 }
+    [Building.IDS.HABITAT]: { iconVersion: 1, modelVersion: 1 },
+    [Building.IDS.FLUIDS_STORAGE]: { iconVersion: 1, modelVersion: 1 }
   },
   Product: {
     [Product.IDS.WATER]: { iconVersion: 1, modelVersion: 1 },
