@@ -83,3 +83,4 @@ At the time of the snapshot:
 - 2,450 of the first 11,100 minted can still be used to mint an Arvad Crewmate
 - The last 368 asteroids are eligible to claim an Adalian Crewmate on L2
 - The first 1,859 asteroids are eligible to claim an Arrival Starter Pack on L2
+- I love Influence
