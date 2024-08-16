@@ -12,7 +12,7 @@ const IDS = {
   SPACEPORT: 7,
   MARKETPLACE: 8,
   HABITAT: 9,
-  FLUIDS_STORAGE: 10
+  TANK_FARM: 10
 };
 
 const CATEGORIES = {
@@ -163,14 +163,15 @@ const TYPES = {
       than half full, the productivity boost which they grant to Crews stationed there begins
       to drop due to overcrowding, until it is completely gone at full capacity.`
   },
-  [IDS.FLUIDS_STORAGE]: {
-    i: IDS.FLUIDS_STORAGE,
-    name: 'Fluids Storage Terminal',
+  [IDS.TANK_FARM]: {
+    i: IDS.TANK_FARM,
+    name: 'Tank Farm',
     category: CATEGORIES.STORAGE,
-    processType: Process.IDS.FLUIDS_STORAGE_CONSTRUCTION,
+    processType: Process.IDS.TANK_FARM_CONSTRUCTION,
     siteSlot: 1,
-    siteType: Inventory.IDS.FLUIDS_STORAGE_SITE,
-    description: 'pending'
+    siteType: Inventory.IDS.TANK_FARM_SITE,
+    description: `The Tank Farm provides inventory space to store bulky gases and liquids in large
+      tanks. It also provides some small storage space for select other solid products.`
   }
 };
 
@@ -212,9 +213,9 @@ const CONSTRUCTION_TYPES = {
     constructionTime: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].setupTime,
     requirements: Process.TYPES[Process.IDS.HABITAT_CONSTRUCTION].inputs
   },
-  [IDS.FLUIDS_STORAGE]: {
-    constructionTime: Process.TYPES[Process.IDS.FLUIDS_STORAGE_CONSTRUCTION].setupTime,
-    requirements: Process.TYPES[Process.IDS.FLUIDS_STORAGE_CONSTRUCTION].inputs
+  [IDS.TANK_FARM]: {
+    constructionTime: Process.TYPES[Process.IDS.TANK_FARM_CONSTRUCTION].setupTime,
+    requirements: Process.TYPES[Process.IDS.TANK_FARM_CONSTRUCTION].inputs
   }
 };
 

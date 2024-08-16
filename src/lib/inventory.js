@@ -19,8 +19,8 @@ const IDS = {
   CARGO_SMALL: 15,
   CARGO_MEDIUM: 16,
   CARGO_LARGE: 17,
-  FLUIDS_STORAGE_SITE: 18,
-  FLUIDS_STORAGE_PRIMARY: 19
+  TANK_FARM_SITE: 18,
+  TANK_FARM_PRIMARY: 19
 };
 
 const STATUSES = {
@@ -192,22 +192,46 @@ const TYPES = {
     productConstraints: null,
     category: CATEGORIES.PRIMARY
   },
-  [IDS.FLUIDS_STORAGE_SITE]: {
-    i: IDS.FLUIDS_STORAGE_SITE,
-    name: 'Fluids Storage Site',
+  [IDS.TANK_FARM_SITE]: {
+    i: IDS.TANK_FARM_SITE,
+    name: 'Tank Farm Site',
     massConstraint: Infinity,
     volumeConstraint: Infinity,
     modifiable: false,
-    productConstraints: Process.TYPES[Process.IDS.FLUIDS_STORAGE_CONSTRUCTION].inputs,
+    productConstraints: Process.TYPES[Process.IDS.TANK_FARM_CONSTRUCTION].inputs,
     category: CATEGORIES.SITE
   },
-  [IDS.FLUIDS_STORAGE_PRIMARY]: {
-    i: IDS.FLUIDS_STORAGE_PRIMARY,
-    name: 'Fluids Storage',
+  [IDS.TANK_FARM_PRIMARY]: {
+    i: IDS.TANK_FARM_PRIMARY,
+    name: 'Tank Farm Storage',
     massConstraint: 75000e6,
     volumeConstraint: 997500e6,
     modifiable: true,
-    productConstraints: null,
+    productConstraints: {
+      [Product.IDS.WATER]: 0,
+      [Product.IDS.HYDROGEN]: 0,
+      [Product.IDS.AMMONIA]: 0,
+      [Product.IDS.NITROGEN]: 0,
+      [Product.IDS.SULFUR_DIOXIDE]: 0,
+      [Product.IDS.CARBON_DIOXIDE]: 0,
+      [Product.IDS.CARBON_MONOXIDE]: 0,
+      [Product.IDS.METHANE]: 0,
+      [Product.IDS.OXYGEN]: 0,
+      [Product.IDS.DEIONIZED_WATER]: 0,
+      [Product.IDS.NAPHTHA]: 0,
+      [Product.IDS.ACETYLENE]: 0,
+      [Product.IDS.PROPYLENE]: 0,
+      [Product.IDS.SILICA_POWDER]: 0,
+      [Product.IDS.ACRYLONITRILE]: 0,
+      [Product.IDS.CHLORINE]: 0,
+      [Product.IDS.FLUORINE]: 0,
+      [Product.IDS.TUNGSTEN_POWDER]: 0,
+      [Product.IDS.HYDROGEN_PROPELLANT]: 0,
+      [Product.IDS.PURE_NITROGEN]: 0,
+      [Product.IDS.UNENRICHED_URANIUM_HEXAFLUORIDE]: 0,
+      [Product.IDS.HIGHLY_ENRICHED_URANIUM_HEXAFLUORIDE]: 0,
+      [Product.IDS.NEON]: 0
+    },
     category: CATEGORIES.PRIMARY
   }
 };

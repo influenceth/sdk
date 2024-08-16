@@ -239,7 +239,7 @@ const IDS = {
   SPACEPORT_CONSTRUCTION: 306,
   MARKETPLACE_CONSTRUCTION: 307,
   HABITAT_CONSTRUCTION: 308,
-  FLUIDS_STORAGE_CONSTRUCTION: 309
+  TANK_FARM_CONSTRUCTION: 309
 };
 
 const TYPES = {
@@ -4076,9 +4076,9 @@ const TYPES = {
     },
     outputs: {}
   },
-  [IDS.FLUIDS_STORAGE_CONSTRUCTION]: {
-    i: IDS.FLUIDS_STORAGE_CONSTRUCTION,
-    name: 'Fluids Storage Construction',
+  [IDS.TANK_FARM_CONSTRUCTION]: {
+    i: IDS.TANK_FARM_CONSTRUCTION,
+    name: 'Tank Farm Construction',
     processorType: Processor.IDS.CONSTRUCTION,
     setupTime: 3110400,
     recipeTime: 0,
