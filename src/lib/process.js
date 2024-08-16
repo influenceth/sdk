@@ -4088,7 +4088,8 @@ const TYPES = {
       [Product.IDS.STEEL_SHEET]: 50000,
       [Product.IDS.STAINLESS_STEEL_SHEET]: 200000,
       [Product.IDS.FLUIDS_AUTOMATION_MODULE]: 2
-    }
+    },
+    outputs: {}
   }
 };
 
