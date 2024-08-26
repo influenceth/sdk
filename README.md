@@ -37,6 +37,28 @@ Dispatcher.call('run_system', Dispatcher.callData.compile('run_system', {
 
 ABI types / schemas for all components can be found in `./contracts/starknet_components.json`.
 
+## Install
+
+```sh
+npm install @influenceth/sdk
+```
+
+## Usage
+
+```js
+import * as InfluenceSDK from '@influenceth/sdk';
+
+// Access game assets data and logic
+const resourcesClassification = InfluenceSDK.Product.CLASSIFICATIONS.RAW_MATERIAL;
+const allResourcesIds = InfluenceSDK.Product.getListByClassification(resourcesClassification);
+
+const resourcesBySpectralId = {};
+const spectralTypesData = InfluenceSDK.Asteroid.SPECTRAL_TYPES;
+for (const [spectralId, spectralData] of Object.entries(spectralTypesData)) {
+  resourcesBySpectralId[spectralId] = spectralData.resources;
+}
+```
+
 ## API
 1. The API is whitelist only, please request access to the #community-devs channel in the Influence Discord: https://discord.gg/influenceth to receive an API key.
 2. If possible, prefer using the exports here: https://www.dropbox.com/sh/5g3ww8wi9n0p4s6/AADcR0lgL8iKTQrpiWUC37Oxa?dl=0 rather than adding additional load to the API.
