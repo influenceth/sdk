@@ -384,7 +384,7 @@ export const percentileByOctaves = (noise, octaves) => {
   const raws = SIMPLEX_OCTAVES[octaves].find((b) => BigInt(Math.round(noiseArg * 2 ** 32)) < b[0]);
   const [ limit, whole, low, high ] = raws.map((n) => Number(n) / 2 ** 32);
 
-  if (whole === 0 && noiseArg <= low) return 0;
+  if (whole === 0 && noiseArg <= low) noiseArg = low;
 
   const partial = (noiseArg - low) / (100 * (high - low));
   const percentile = whole + partial;
