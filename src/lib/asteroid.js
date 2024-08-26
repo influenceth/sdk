@@ -5,7 +5,7 @@ import { constants } from '@influenceth/astro';
 
 import procedural from '../utils/procedural.js';
 import { SIMPLEX_POLY_FIT } from '../constants.js';
-import { percentileByOctaves, recursiveSNoise } from '../utils/simplex.js';
+import { percentileByOctaves, recursiveSNoise, SIMPLEX_OCTAVES } from '../utils/simplex.js';
 import Product from './product.js';
 
 /**
@@ -595,6 +595,7 @@ const getAbundanceMapSettings = (asteroidId, resourceId, abundances) => {
   const radiusRatio = radius / MAX_RADIUS;
   const pointScale = RESOURCE_SIZE_BASE + (RESOURCE_SIZE_MUL * radiusRatio);
   const polyParams = SIMPLEX_POLY_FIT[octaves];
+  const polyLimit = 1 - Number(SIMPLEX_OCTAVES[octaves][0][2]) / 2 ** 32;
 
   const resourceSeed = ec.starkCurve.poseidonHashMany(
     [BigInt(asteroidId), BigInt(resourceId), BigInt(abundances)]
@@ -612,7 +613,7 @@ const getAbundanceMapSettings = (asteroidId, resourceId, abundances) => {
   const zShift = procedural.realBetween(zSeed, lowShift, highShift);
 
   const abundance = getAbundances(abundances)[resourceId];
-  return { abundance, octaves, polyParams, pointScale, pointShift: [xShift, yShift, zShift] };
+  return { abundance, octaves, polyParams, polyLimit, pointScale, pointShift: [xShift, yShift, zShift] };
 };
 
 /**

@@ -113,7 +113,7 @@ export const recursiveSNoise = (p, pers, octaves) => {
   return noise;
 };
 
-const SIMPLEX_OCTAVES = {
+export const SIMPLEX_OCTAVES = {
   2: [
     [ 848946201n, 0n, 573229616n, 848946201n ],
     [ 968908012n, 42949673n, 848946201n, 968908012n ],

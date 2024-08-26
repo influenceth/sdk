@@ -182,11 +182,11 @@ describe('Asteroid library', function () {
 
   it('should calculate abundance map params', function () {
     const abundances = 90591218639619085331542389405307898768942017548859450482229248055n;
-    let settings = asteroid.getAbundanceMapSettings(1, 42, 1, abundances);
+    let settings = asteroid.getAbundanceMapSettings(1, 1, abundances);
     expect(settings.octaves).to.equal(6);
-    settings = asteroid.getAbundanceMapSettings(104, 42, 1, abundances);
+    settings = asteroid.getAbundanceMapSettings(104, 1, abundances);
     expect(settings.octaves).to.equal(3);
-    settings = asteroid.getAbundanceMapSettings(250000, 42, 1, 0.25);
+    settings = asteroid.getAbundanceMapSettings(250000, 1, abundances);
     expect(settings.octaves).to.equal(2);
   });
 
