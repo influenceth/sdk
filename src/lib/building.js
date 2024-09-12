@@ -175,6 +175,36 @@ const TYPES = {
   }
 };
 
+const CATEGORY_TYPES = {
+  [CATEGORIES.STORAGE]: {
+    name: 'Storage',
+  },
+  [CATEGORIES.EXTRACTION]: {
+    name: 'Extraction',
+  },
+  [CATEGORIES.REFINING]: {
+    name: 'Refining',
+  },
+  [CATEGORIES.AGRICULTURE]: {
+    name: 'Agriculture',
+  },
+  [CATEGORIES.MANUFACTURING]: {
+    name: 'Manufacturing',
+  },
+  [CATEGORIES.SHIPBUILDING]: {
+    name: 'Shipbuilding',
+  },
+  [CATEGORIES.TRANSPORT]: {
+    name: 'Transport',
+  },
+  [CATEGORIES.TRADE]: {
+    name: 'Trade',
+  },
+  [CATEGORIES.HOUSING]: {
+    name: 'Housing',
+  },
+}
+
 // NOTE: constructionTime is in-game seconds
 const CONSTRUCTION_TYPES = {
   [IDS.WAREHOUSE]: {
@@ -255,6 +285,7 @@ const getConstructionTime = (buildingType, totalBonus = 1) => {
 export default {
   TYPES,
   CATEGORIES,
+  CATEGORY_TYPES,
   CONSTRUCTION_TYPES,
   CONSTRUCTION_STATUSES,
   CONSTRUCTION_STATUS_LABELS,
