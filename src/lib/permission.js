@@ -164,15 +164,20 @@ const getPermissionPolicy = (entity, rawPermId, crew, blockTime = null) => {
   permPolicy.crewStatus = '';
   if (crew) {
     if (entity.Control?.controller?.id === crew.id) permPolicy.crewStatus = 'controller';
+    else if ((crew._siblingCrewIds || []).includes(entity.Control?.controller?.id)) permPolicy.crewStatus = 'controller';
+
     // if not exclusive, policy is "granted" just by being public or on allowlist
     else if (!TYPES[permId].isExclusive && permPolicy.policyType === POLICY_IDS.PUBLIC) permPolicy.crewStatus = 'granted';
     else if (!TYPES[permId].isExclusive && permPolicy.allowlist.find((c) => c.id === crew.id)) permPolicy.crewStatus = 'granted';
     else if (!TYPES[permId].isExclusive && crew?.Crew?.delegatedTo && permPolicy.accountAllowlist.find((a) => Address.areEqual(a, crew?.Crew?.delegatedTo))) permPolicy.crewStatus = 'granted';
+
     // else, granted if have explicit agreement
     else if (permPolicy.agreements?.find((a) => a.permitted?.id === crew.id)) permPolicy.crewStatus = 'granted';
+    
     // for exclusive perms, also worth noting when being excluded
     else if (TYPES[permId].isExclusive && permPolicy.agreements?.length > 0) permPolicy.crewStatus = 'under contract';
     else if (POLICY_TYPES[permPolicy.policyType]?.agreementKey) permPolicy.crewStatus = 'available';
+    
     else permPolicy.crewStatus = 'restricted';
   }
 
