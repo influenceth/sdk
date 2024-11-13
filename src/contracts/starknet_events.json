@@ -3032,6 +3032,50 @@
       }
     ]
   },
+  "DirectMessageSent": {
+    "type": "event",
+    "name": "DirectMessageSent",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "content_hash",
+        "type": "core::array::Span::<core::felt252>",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "RekeyedInbox": {
+    "type": "event",
+    "name": "RekeyedInbox",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "messaging_key_x",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "messaging_key_y",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "EventAnnotated": {
     "type": "event",
     "name": "EventAnnotated",

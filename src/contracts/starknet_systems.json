@@ -1583,6 +1583,42 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "GrantAdalians": {
+    "type": "function",
+    "name": "GrantAdalians",
+    "inputs": [
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "count",
+        "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "GrantStarterPack": {
+    "type": "function",
+    "name": "GrantStarterPack",
+    "inputs": [
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "crewmates",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "tokens",
+        "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "PurchaseAdalian": {
     "type": "function",
     "name": "PurchaseAdalian",
@@ -1905,6 +1941,38 @@
       {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "DirectMessage": {
+    "type": "function",
+    "name": "DirectMessage",
+    "inputs": [
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "content_hash",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "RekeyInbox": {
+    "type": "function",
+    "name": "RekeyInbox",
+    "inputs": [
+      {
+        "name": "messaging_key_x",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "messaging_key_y",
+        "type": "core::integer::u256"
       }
     ],
     "outputs": [],
