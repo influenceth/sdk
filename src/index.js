@@ -41,13 +41,11 @@ import starknetAddresses from './contracts/starknet_addresses.json' assert { typ
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
 (async function() {
-  const isNode = typeof process !== 'undefined' && 
-                 process.versions != null && 
-                 process.versions.node != null;
+  const isNode = process?.versions?.node != null;
   if (isNode && !globalThis.crypto) {
     const { webcrypto } = await import('crypto');
-    if (!globalThis.crypto) {
-        globalThis.crypto = webcrypto;
+    if (webcrypto) {
+      globalThis.crypto = webcrypto;
     }
   }
 })();
