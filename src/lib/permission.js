@@ -20,7 +20,8 @@ const IDS = {
   LIMIT_BUY: 10,
   LIMIT_SELL: 11,
   EXTRACT_RESOURCES: 12,
-  ASSEMBLE_SHIP: 13
+  ASSEMBLE_SHIP: 13,
+  USE_DEPOSIT: 14
 };
 
 const TYPES = {
@@ -76,6 +77,10 @@ const TYPES = {
   [IDS.ASSEMBLE_SHIP]: {
     name: 'Assemble Ships',
     isApplicable: (entity) => !!entity.DryDocks?.length
+  },
+  [IDS.USE_DEPOSIT]: {
+    name: 'Use Deposit',
+    isApplicable: (entity) => !!entity.Deposit
   }
 };
 
