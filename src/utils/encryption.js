@@ -20,18 +20,18 @@ export function generateSeed() {
   return Array.from(array).map(byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
-export function publicKeyToMessageKeys(publicKey) {
+export function publicKeyToMessagingKeys(publicKey) {
   if (publicKey?.length === 130) {
     return {
-      message_key_x: BigInt(`0x${publicKey.substr(2, 64)}`),
-      message_key_y: BigInt(`0x${publicKey.substr(66)}`),
+      messaging_key_x: BigInt(`0x${publicKey.substr(2, 64)}`),
+      messaging_key_y: BigInt(`0x${publicKey.substr(66)}`),
     };
   }
 }
 
-export function messageKeysToPublicKey({ message_key_x, message_key_y }) {
-  if (message_key_x && message_key_y) {
-    return `04${BigInt(message_key_x).toString(16).padStart(64, '0')}${BigInt(message_key_y).toString(16).padStart(64, '0')}`;
+export function messagingKeysToPublicKey({ messaging_key_x, messaging_key_y }) {
+  if (messaging_key_x && messaging_key_y) {
+    return `04${BigInt(messaging_key_x).toString(16).padStart(64, '0')}${BigInt(messaging_key_y).toString(16).padStart(64, '0')}`;
   }
   return null;
 }
@@ -106,18 +106,16 @@ export async function encryptContent(recipientPublicKeyHex, message) {
   const encryptedBytes = new Uint8Array(encryptedBuffer);
 
   // Return encrypted data: ephemeralPublicKey, iv, encryptedMessage
-  const payload = {
+  return {
     ephemeralPublicKey: bytesToHex(ephemeralPublicKey),
     iv: bytesToHex(iv),
     encryptedMessage: bytesToHex(encryptedBytes),
   };
-
-  return btoa(JSON.stringify(payload));
 }
 
 // Function to decrypt message
 export async function decryptContent(privateKey, encryptedData) {
-  const { ephemeralPublicKey, iv, encryptedMessage } = JSON.parse(atob(encryptedData));
+  const { ephemeralPublicKey, iv, encryptedMessage } = encryptedData;
 
   // Convert data from hex to Uint8Array
   const ephemeralPublicKeyBytes = hexToBytes(ephemeralPublicKey);
@@ -160,8 +158,8 @@ export default {
   generateSeed,
   generatePrivateKeyFromSeed,
   getPublicKeyFromPrivateKey,
-  publicKeyToMessageKeys,
-  messageKeysToPublicKey,
+  publicKeyToMessagingKeys,
+  messagingKeysToPublicKey,
   encryptContent,
   decryptContent,
 }
