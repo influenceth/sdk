@@ -28,6 +28,7 @@ import System from './lib/system.js';
 
 import AdalianOrbit from './utils/AdalianOrbit.js';
 import Address from './utils/address.js';
+import Encryption from './utils/encryption.js';
 import Fixed from './utils/fixed.js';
 import Merkle from './utils/MerkleTree.js';
 import ProductionJSON from './utils/ProductionJSON.js';
@@ -39,10 +40,21 @@ import ethereumContracts from './contracts/ethereum_abis.json' assert { type: 'j
 import starknetAddresses from './contracts/starknet_addresses.json' assert { type: 'json' };
 import starknetContracts from './contracts/starknet_abis.json' assert { type: 'json' };
 
+(async function() {
+  const isNode = typeof process !== 'undefined' && !!process?.versions?.node;
+  if (isNode && !globalThis.crypto) {
+    const { webcrypto } = await import('crypto');
+    if (webcrypto) {
+      globalThis.crypto = webcrypto;
+    }
+  }
+})();
+
 // Utility libs
 export {
   AdalianOrbit,
   Address,
+  Encryption,
   Fixed,
   Merkle,
   ProductionJSON,

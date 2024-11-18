@@ -14,7 +14,8 @@ const parseCairoType = (cairoType) => {
   let type;
   if (['influence::common::types::entity::Entity'].includes(cairoType)) type = 'Entity';
   else if (['core::starknet::contract_address::ContractAddress'].includes(cairoType)) type = 'ContractAddress';
-  else if (['core::integer::u64', 'core::integer::u128', 'core::integer::u256'].includes(cairoType)) type = 'BigNumber';
+  else if (['core::integer::u64', 'core::integer::u128'].includes(cairoType)) type = 'BigNumber';
+  else if (['core::integer::u256'].includes(cairoType)) type = 'u256';
   else if (['influence::common::types::string::String', 'core::felt252'].includes(cairoType)) type = 'String';
   else if (['influence::common::types::inventory_item::InventoryItem'].includes(cairoType)) type = 'InventoryItem';
   else if (['influence::interfaces::escrow::Withdrawal'].includes(cairoType)) type = 'Withdrawal';
@@ -101,9 +102,12 @@ const formatSystemCalldata = (name, vars, limitToVars = false) => {
     (isArray ? vars[name] : [vars[name]]).forEach((v) => {
       const formattedVar = formatCalldataValue(type, v);
       try {
-        (Array.isArray(formattedVar) ? formattedVar : [formattedVar]).forEach((val) => {
-          acc.push(val);
-        });
+        let parts;
+        if (Array.isArray(formattedVar)) parts = formattedVar;
+        else if (typeof formattedVar === 'object') parts = Object.values(formattedVar);
+        else parts = [formattedVar];
+        
+        parts.forEach((val) => acc.push(val));
       } catch (e) {
         console.error(`${name} could not be formatted`, vars[name], e);
       }
@@ -130,7 +134,7 @@ const getApproveErc20Call = (amount, erc20Address, dispatcherAddress) => getForm
   'approve',
   [
     { value: dispatcherAddress, type: 'ContractAddress' },
-    { value: amount, type: 'Ether' }
+    { value: amount, type: 'u256' }
   ]
 );
 
@@ -139,7 +143,7 @@ const getEscrowDepositCall = (amount, depositHook, withdrawHook, escrowAddress, 
   'deposit',
   [
     { value: swayAddress, type: 'ContractAddress' },
-    { value: amount, type: 'Ether' }, // using Ether b/c should match u256
+    { value: amount, type: 'u256' },
     { value: withdrawHook, type: 'EscrowHook' },
     { value: depositHook, type: 'EscrowHook' }
   ]

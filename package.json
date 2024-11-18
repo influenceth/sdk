@@ -1,12 +1,15 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.3.4",
+  "version": "2.3.6",
   "description": "Influence SDK",
   "type": "module",
   "module": "./build/index.js",
   "exports": {
     "import": "./build/index.js",
     "require": "./build/index.cjs"
+  },
+  "browser": {
+    "crypto": false
   },
   "files": [
     "build/*"
