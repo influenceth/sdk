@@ -8,6 +8,9 @@
     "import": "./build/index.js",
     "require": "./build/index.cjs"
   },
+  "browser": {
+    "crypto": false
+  },
   "files": [
     "build/*"
   ],
