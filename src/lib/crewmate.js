@@ -389,9 +389,8 @@ const ABILITY_TYPES = {
   [ABILITY_IDS.FOOD_RATIONING_PENALTY]: {
     i: ABILITY_IDS.FOOD_RATIONING_PENALTY,
     name: 'Food Rationing Penalty',
-    departments: {
-      [DEPARTMENT_IDS.MEDICINE]: 0.0083
-    }
+    departments: { [DEPARTMENT_IDS.MEDICINE]: 0.0083 },
+    notFurtherModified: true
   },
   [ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT]: {
     i: ABILITY_IDS.MARKETPLACE_FEE_ENFORCEMENT,
