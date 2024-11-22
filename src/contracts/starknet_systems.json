@@ -183,6 +183,34 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "TransferPrepaidAgreement": {
+    "type": "function",
+    "name": "TransferPrepaidAgreement",
+    "inputs": [
+      {
+        "name": "target",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "permission",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "permitted",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "new_permitted",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "Whitelist": {
     "type": "function",
     "name": "Whitelist",
