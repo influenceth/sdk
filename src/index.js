@@ -24,6 +24,7 @@ import Product from './lib/product.js';
 import RandomEvent from './lib/randomEvent.js';
 import Ship from './lib/ship.js';
 import Station from './lib/station.js';
+import Component from './lib/Component.js';
 import System from './lib/system.js';
 
 import AdalianOrbit from './utils/AdalianOrbit.js';
@@ -67,6 +68,7 @@ export {
   Assets,
   Asteroid,
   Building,
+  Component,
   Crew,
   Crewmate,
   Delivery,
