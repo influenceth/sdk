@@ -59,6 +59,161 @@ for (const [spectralId, spectralData] of Object.entries(spectralTypesData)) {
 }
 ```
 
+### Examples
+
+#### Working with Entities
+
+Entities in Influence are identified by a label (type) and numeric ID, packed into a single UUID.
+
+```js
+import { Entity } from '@influenceth/sdk';
+
+// Pack an entity into a hex UUID
+const crewUuid = Entity.packEntity({ label: Entity.IDS.CREW, id: 4938 });
+console.log(crewUuid); // '0x134a0001'
+
+// Unpack a UUID back into label and id
+const entity = Entity.unpackEntity(crewUuid);
+console.log(entity); // { id: 4938, label: 1 }
+
+// Format from various inputs (object, uuid, or bigint)
+const formatted = Entity.formatEntity({ label: Entity.IDS.ASTEROID, id: 1 });
+console.log(formatted); // { id: 1, label: 3, uuid: '0x10003' }
+
+// Compare two entities
+const isSame = Entity.areEqual(
+  { label: Entity.IDS.SHIP, id: 42 },
+  { label: Entity.IDS.SHIP, id: 42 }
+);
+console.log(isSame); // true
+```
+
+#### Querying Products and Resources
+
+```js
+import { Product } from '@influenceth/sdk';
+
+// Get all raw materials
+const rawMaterials = Product.getListByClassification(Product.CLASSIFICATIONS.RAW_MATERIAL);
+console.log(`${rawMaterials.length} raw materials available`);
+
+// Look up a specific product by ID
+const water = Product.TYPES[Product.IDS.WATER];
+console.log(water.name);           // 'Water'
+console.log(water.classification); // 1 (RAW_MATERIAL)
+console.log(water.category);       // 1 (VOLATILE)
+
+// Get all products in a category
+const metals = Object.entries(Product.TYPES)
+  .filter(([, p]) => p.category === Product.CATEGORIES.METAL);
+console.log(`${metals.length} metal products`);
+```
+
+#### Asteroid Spectral Types
+
+```js
+import { Asteroid, Product } from '@influenceth/sdk';
+
+// List all spectral types and their available resources
+for (const [id, spectral] of Object.entries(Asteroid.SPECTRAL_TYPES)) {
+  const resourceNames = spectral.resources.map(rId => Product.TYPES[rId].name);
+  console.log(`${spectral.name}-type (density: ${spectral.density}): ${resourceNames.join(', ')}`);
+}
+
+// Get asteroid size and rarity classifications
+console.log(Asteroid.SIZES);    // ['Small', 'Medium', 'Large', 'Huge']
+console.log(Asteroid.RARITIES); // ['Common', 'Uncommon', 'Rare', 'Superior', 'Exceptional', 'Incomparable']
+```
+
+#### Buildings and Processes
+
+```js
+import { Building, Process } from '@influenceth/sdk';
+
+// List building types
+for (const [id, building] of Object.entries(Building.TYPES)) {
+  if (building.name) {
+    console.log(`${building.name} (category: ${building.category})`);
+  }
+}
+
+// Look up a specific process
+const electrolysis = Process.TYPES[Process.IDS.WATER_ELECTROLYSIS];
+console.log(electrolysis.name); // 'Water Electrolysis'
+```
+
+#### Ships and Propellant
+
+```js
+import { Ship } from '@influenceth/sdk';
+
+// Get ship type details
+const lightTransport = Ship.getType(Ship.IDS.LIGHT_TRANSPORT);
+console.log(lightTransport.name);
+
+// Calculate propellant needed for a journey
+const propellantKg = Ship.getPropellantRequirement(
+  Ship.IDS.LIGHT_TRANSPORT,
+  50000,   // wet mass in kg
+  500      // delta-v in m/s
+);
+console.log(`Propellant required: ${propellantKg} kg`);
+```
+
+#### Time Conversions
+
+The in-game clock runs at 24x real time by default.
+
+```js
+import { Time } from '@influenceth/sdk';
+
+// Convert real-world duration to in-game duration
+const realSeconds = 3600; // 1 real hour
+const gameSeconds = Time.toGameDuration(realSeconds);
+console.log(`1 real hour = ${gameSeconds} in-game seconds (${gameSeconds / 3600} in-game hours)`);
+
+// Convert in-game duration to real-world duration
+const gameDuration = 86400; // 1 in-game day
+const realDuration = Time.toRealDuration(gameDuration);
+console.log(`1 in-game day = ${realDuration} real seconds (${realDuration / 60} real minutes)`);
+```
+
+#### Using Contract ABIs
+
+```js
+import { starknetContracts, ethereumContracts, starknetAddresses, Entity } from '@influenceth/sdk';
+
+// Access Starknet contract ABIs for use with starknet.js
+console.log('Available Starknet contracts:', Object.keys(starknetContracts));
+
+// Read a component from the Dispatcher contract
+// Example: reading a Crew component using starknet.js
+// const provider = new Provider({ nodeUrl: 'YOUR_RPC_URL' });
+// const dispatcher = new Contract(starknetContracts.Dispatcher, starknetAddresses.Dispatcher, provider);
+// const crewData = await dispatcher.call('run_system', {
+//   name: 'ReadComponent',
+//   calldata: ['Crew', 1, Entity.packEntity({ label: Entity.IDS.CREW, id: 4938 })]
+// });
+```
+
+#### Crew Ability Bonuses
+
+```js
+import { Crew, Crewmate } from '@influenceth/sdk';
+
+// Calculate ability bonus for a crew
+const crewmates = [
+  { classId: 1, traitIds: [1, 2], titleId: 0 },
+  { classId: 2, traitIds: [3], titleId: 1 }
+];
+
+const station = { stationType: 1, population: 100 };
+const timeSinceFed = 0; // well-fed crew
+
+const bonus = Crew.getAbilityBonus(1, crewmates, station, timeSinceFed);
+console.log(`Total bonus multiplier: ${bonus.totalBonus}`);
+```
+
 ## API
 1. The API is whitelist only, please request access to the #community-devs channel in the Influence Discord: https://discord.gg/influenceth to receive an API key.
 2. If possible, prefer using the exports here: https://www.dropbox.com/sh/5g3ww8wi9n0p4s6/AADcR0lgL8iKTQrpiWUC37Oxa?dl=0 rather than adding additional load to the API.
