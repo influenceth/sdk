@@ -90,11 +90,10 @@ bonuses, purchase order, spectral type, radius, and orbital elements were saved 
 of the information on Starknet.
 
 Copies of both snapshots and the asteroid Merkle tree are preserved on IPFS here:
-- Asteroids snapshot: https://influence.infura-ipfs.io/ipfs/QmdJ7kY74efg8PvcbZ7AzuVdfZAksUiAVUL7koznvYWUq4
-- Asteroids Merkle Tree: https://influence.infura-ipfs.io/ipfs/QmVS9yNQWMumTJ6wJLrMetKxyiEysuKZaoGjaTMQJTmjty
-- Crewmate snapshot: https://influence.infura-ipfs.io/ipfs/QmPjtFx2b8gx4kBEX3xZmCafmyWdfDj8UkNqfQGmFvtg4U
+- Asteroids snapshot: https://developed-white-hedgehog.myfilebase.com/ipfs/QmdJ7kY74efg8PvcbZ7AzuVdfZAksUiAVUL7koznvYWUq4
+- Crewmate snapshot: https://developed-white-hedgehog.myfilebase.com/ipfs/QmPjtFx2b8gx4kBEX3xZmCafmyWdfDj8UkNqfQGmFvtg4U
 
-A utility is also available at `utils/generateAsteroidMerkle.js` to generate the Merkle tree from the snapshot.
+A utility is available at `utils/generateAsteroidMerkle.js` to generate the Merkle tree from the snapshot.
 
 ## Snapshot Details
 At the time of the snapshot:
