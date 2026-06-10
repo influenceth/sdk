@@ -1,0 +1,52 @@
+{
+  "name": "crewmates-collection-v1-250w",
+  "targetWidth": 250,
+  "image": "crewmates-collection-v1-250w.png",
+  "width": 500,
+  "height": 258,
+  "count": 4,
+  "frames": {
+    "collection1": {
+      "x": 0,
+      "y": 0,
+      "w": 250,
+      "h": 129,
+      "sourceW": 800,
+      "sourceH": 413,
+      "scale": 0.3125,
+      "path": "collection/collection1.png"
+    },
+    "collection2": {
+      "x": 250,
+      "y": 0,
+      "w": 250,
+      "h": 129,
+      "sourceW": 800,
+      "sourceH": 413,
+      "scale": 0.3125,
+      "path": "collection/collection2.png"
+    },
+    "collection3": {
+      "x": 0,
+      "y": 129,
+      "w": 250,
+      "h": 129,
+      "sourceW": 800,
+      "sourceH": 413,
+      "scale": 0.3125,
+      "path": "collection/collection3.png"
+    },
+    "collection4": {
+      "x": 250,
+      "y": 129,
+      "w": 250,
+      "h": 129,
+      "sourceW": 800,
+      "sourceH": 413,
+      "scale": 0.3125,
+      "path": "collection/collection4.png"
+    }
+  },
+  "type": "crewmate",
+  "category": "collection"
+}

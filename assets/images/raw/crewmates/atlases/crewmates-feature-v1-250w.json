@@ -1,0 +1,1512 @@
+{
+  "name": "crewmates-feature-v1-250w",
+  "targetWidth": 250,
+  "image": "crewmates-feature-v1-250w.png",
+  "width": 3750,
+  "height": 3330,
+  "count": 150,
+  "frames": {
+    "feature3_hairColor1_body1": {
+      "x": 0,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor1_body1.png"
+    },
+    "feature3_hairColor1_body2": {
+      "x": 250,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor1_body2.png"
+    },
+    "feature3_hairColor1_body3": {
+      "x": 500,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor1_body3.png"
+    },
+    "feature3_hairColor1_body4": {
+      "x": 750,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor1_body4.png"
+    },
+    "feature3_hairColor1_body5": {
+      "x": 1000,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor1_body5.png"
+    },
+    "feature3_hairColor1_body6": {
+      "x": 1250,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor1_body6.png"
+    },
+    "feature3_hairColor2_body1": {
+      "x": 1500,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor2_body1.png"
+    },
+    "feature3_hairColor2_body2": {
+      "x": 1750,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor2_body2.png"
+    },
+    "feature3_hairColor2_body3": {
+      "x": 2000,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor2_body3.png"
+    },
+    "feature3_hairColor2_body4": {
+      "x": 2250,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor2_body4.png"
+    },
+    "feature3_hairColor2_body5": {
+      "x": 2500,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor2_body5.png"
+    },
+    "feature3_hairColor2_body6": {
+      "x": 2750,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor2_body6.png"
+    },
+    "feature3_hairColor3_body1": {
+      "x": 3000,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor3_body1.png"
+    },
+    "feature3_hairColor3_body2": {
+      "x": 3250,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor3_body2.png"
+    },
+    "feature3_hairColor3_body3": {
+      "x": 3500,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor3_body3.png"
+    },
+    "feature3_hairColor3_body4": {
+      "x": 0,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor3_body4.png"
+    },
+    "feature3_hairColor3_body5": {
+      "x": 250,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor3_body5.png"
+    },
+    "feature3_hairColor3_body6": {
+      "x": 500,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor3_body6.png"
+    },
+    "feature3_hairColor4_body1": {
+      "x": 750,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor4_body1.png"
+    },
+    "feature3_hairColor4_body2": {
+      "x": 1000,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor4_body2.png"
+    },
+    "feature3_hairColor4_body3": {
+      "x": 1250,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor4_body3.png"
+    },
+    "feature3_hairColor4_body4": {
+      "x": 1500,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor4_body4.png"
+    },
+    "feature3_hairColor4_body5": {
+      "x": 1750,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor4_body5.png"
+    },
+    "feature3_hairColor4_body6": {
+      "x": 2000,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor4_body6.png"
+    },
+    "feature3_hairColor5_body1": {
+      "x": 2250,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor5_body1.png"
+    },
+    "feature3_hairColor5_body2": {
+      "x": 2500,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor5_body2.png"
+    },
+    "feature3_hairColor5_body3": {
+      "x": 2750,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor5_body3.png"
+    },
+    "feature3_hairColor5_body4": {
+      "x": 3000,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor5_body4.png"
+    },
+    "feature3_hairColor5_body5": {
+      "x": 3250,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor5_body5.png"
+    },
+    "feature3_hairColor5_body6": {
+      "x": 3500,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature3_hairColor5_body6.png"
+    },
+    "feature4_hairColor1_body1": {
+      "x": 0,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor1_body1.png"
+    },
+    "feature4_hairColor1_body2": {
+      "x": 250,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor1_body2.png"
+    },
+    "feature4_hairColor1_body3": {
+      "x": 500,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor1_body3.png"
+    },
+    "feature4_hairColor1_body4": {
+      "x": 750,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor1_body4.png"
+    },
+    "feature4_hairColor1_body5": {
+      "x": 1000,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor1_body5.png"
+    },
+    "feature4_hairColor1_body6": {
+      "x": 1250,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor1_body6.png"
+    },
+    "feature4_hairColor2_body1": {
+      "x": 1500,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor2_body1.png"
+    },
+    "feature4_hairColor2_body2": {
+      "x": 1750,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor2_body2.png"
+    },
+    "feature4_hairColor2_body3": {
+      "x": 2000,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor2_body3.png"
+    },
+    "feature4_hairColor2_body4": {
+      "x": 2250,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor2_body4.png"
+    },
+    "feature4_hairColor2_body5": {
+      "x": 2500,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor2_body5.png"
+    },
+    "feature4_hairColor2_body6": {
+      "x": 2750,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor2_body6.png"
+    },
+    "feature4_hairColor3_body1": {
+      "x": 3000,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor3_body1.png"
+    },
+    "feature4_hairColor3_body2": {
+      "x": 3250,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor3_body2.png"
+    },
+    "feature4_hairColor3_body3": {
+      "x": 3500,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor3_body3.png"
+    },
+    "feature4_hairColor3_body4": {
+      "x": 0,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor3_body4.png"
+    },
+    "feature4_hairColor3_body5": {
+      "x": 250,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor3_body5.png"
+    },
+    "feature4_hairColor3_body6": {
+      "x": 500,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor3_body6.png"
+    },
+    "feature4_hairColor4_body1": {
+      "x": 750,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor4_body1.png"
+    },
+    "feature4_hairColor4_body2": {
+      "x": 1000,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor4_body2.png"
+    },
+    "feature4_hairColor4_body3": {
+      "x": 1250,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor4_body3.png"
+    },
+    "feature4_hairColor4_body4": {
+      "x": 1500,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor4_body4.png"
+    },
+    "feature4_hairColor4_body5": {
+      "x": 1750,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor4_body5.png"
+    },
+    "feature4_hairColor4_body6": {
+      "x": 2000,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor4_body6.png"
+    },
+    "feature4_hairColor5_body1": {
+      "x": 2250,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor5_body1.png"
+    },
+    "feature4_hairColor5_body2": {
+      "x": 2500,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor5_body2.png"
+    },
+    "feature4_hairColor5_body3": {
+      "x": 2750,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor5_body3.png"
+    },
+    "feature4_hairColor5_body4": {
+      "x": 3000,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor5_body4.png"
+    },
+    "feature4_hairColor5_body5": {
+      "x": 3250,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor5_body5.png"
+    },
+    "feature4_hairColor5_body6": {
+      "x": 3500,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature4_hairColor5_body6.png"
+    },
+    "feature5_hairColor1_body1": {
+      "x": 0,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor1_body1.png"
+    },
+    "feature5_hairColor1_body2": {
+      "x": 250,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor1_body2.png"
+    },
+    "feature5_hairColor1_body3": {
+      "x": 500,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor1_body3.png"
+    },
+    "feature5_hairColor1_body4": {
+      "x": 750,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor1_body4.png"
+    },
+    "feature5_hairColor1_body5": {
+      "x": 1000,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor1_body5.png"
+    },
+    "feature5_hairColor1_body6": {
+      "x": 1250,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor1_body6.png"
+    },
+    "feature5_hairColor2_body1": {
+      "x": 1500,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor2_body1.png"
+    },
+    "feature5_hairColor2_body2": {
+      "x": 1750,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor2_body2.png"
+    },
+    "feature5_hairColor2_body3": {
+      "x": 2000,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor2_body3.png"
+    },
+    "feature5_hairColor2_body4": {
+      "x": 2250,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor2_body4.png"
+    },
+    "feature5_hairColor2_body5": {
+      "x": 2500,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor2_body5.png"
+    },
+    "feature5_hairColor2_body6": {
+      "x": 2750,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor2_body6.png"
+    },
+    "feature5_hairColor3_body1": {
+      "x": 3000,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor3_body1.png"
+    },
+    "feature5_hairColor3_body2": {
+      "x": 3250,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor3_body2.png"
+    },
+    "feature5_hairColor3_body3": {
+      "x": 3500,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor3_body3.png"
+    },
+    "feature5_hairColor3_body4": {
+      "x": 0,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor3_body4.png"
+    },
+    "feature5_hairColor3_body5": {
+      "x": 250,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor3_body5.png"
+    },
+    "feature5_hairColor3_body6": {
+      "x": 500,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor3_body6.png"
+    },
+    "feature5_hairColor4_body1": {
+      "x": 750,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor4_body1.png"
+    },
+    "feature5_hairColor4_body2": {
+      "x": 1000,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor4_body2.png"
+    },
+    "feature5_hairColor4_body3": {
+      "x": 1250,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor4_body3.png"
+    },
+    "feature5_hairColor4_body4": {
+      "x": 1500,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor4_body4.png"
+    },
+    "feature5_hairColor4_body5": {
+      "x": 1750,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor4_body5.png"
+    },
+    "feature5_hairColor4_body6": {
+      "x": 2000,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor4_body6.png"
+    },
+    "feature5_hairColor5_body1": {
+      "x": 2250,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor5_body1.png"
+    },
+    "feature5_hairColor5_body2": {
+      "x": 2500,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor5_body2.png"
+    },
+    "feature5_hairColor5_body3": {
+      "x": 2750,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor5_body3.png"
+    },
+    "feature5_hairColor5_body4": {
+      "x": 3000,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor5_body4.png"
+    },
+    "feature5_hairColor5_body5": {
+      "x": 3250,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor5_body5.png"
+    },
+    "feature5_hairColor5_body6": {
+      "x": 3500,
+      "y": 1665,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature5_hairColor5_body6.png"
+    },
+    "feature6_hairColor1_body1": {
+      "x": 0,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor1_body1.png"
+    },
+    "feature6_hairColor1_body2": {
+      "x": 250,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor1_body2.png"
+    },
+    "feature6_hairColor1_body3": {
+      "x": 500,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor1_body3.png"
+    },
+    "feature6_hairColor1_body4": {
+      "x": 750,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor1_body4.png"
+    },
+    "feature6_hairColor1_body5": {
+      "x": 1000,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor1_body5.png"
+    },
+    "feature6_hairColor1_body6": {
+      "x": 1250,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor1_body6.png"
+    },
+    "feature6_hairColor2_body1": {
+      "x": 1500,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor2_body1.png"
+    },
+    "feature6_hairColor2_body2": {
+      "x": 1750,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor2_body2.png"
+    },
+    "feature6_hairColor2_body3": {
+      "x": 2000,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor2_body3.png"
+    },
+    "feature6_hairColor2_body4": {
+      "x": 2250,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor2_body4.png"
+    },
+    "feature6_hairColor2_body5": {
+      "x": 2500,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor2_body5.png"
+    },
+    "feature6_hairColor2_body6": {
+      "x": 2750,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor2_body6.png"
+    },
+    "feature6_hairColor3_body1": {
+      "x": 3000,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor3_body1.png"
+    },
+    "feature6_hairColor3_body2": {
+      "x": 3250,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor3_body2.png"
+    },
+    "feature6_hairColor3_body3": {
+      "x": 3500,
+      "y": 1998,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor3_body3.png"
+    },
+    "feature6_hairColor3_body4": {
+      "x": 0,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor3_body4.png"
+    },
+    "feature6_hairColor3_body5": {
+      "x": 250,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor3_body5.png"
+    },
+    "feature6_hairColor3_body6": {
+      "x": 500,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor3_body6.png"
+    },
+    "feature6_hairColor4_body1": {
+      "x": 750,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor4_body1.png"
+    },
+    "feature6_hairColor4_body2": {
+      "x": 1000,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor4_body2.png"
+    },
+    "feature6_hairColor4_body3": {
+      "x": 1250,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor4_body3.png"
+    },
+    "feature6_hairColor4_body4": {
+      "x": 1500,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor4_body4.png"
+    },
+    "feature6_hairColor4_body5": {
+      "x": 1750,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor4_body5.png"
+    },
+    "feature6_hairColor4_body6": {
+      "x": 2000,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor4_body6.png"
+    },
+    "feature6_hairColor5_body1": {
+      "x": 2250,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor5_body1.png"
+    },
+    "feature6_hairColor5_body2": {
+      "x": 2500,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor5_body2.png"
+    },
+    "feature6_hairColor5_body3": {
+      "x": 2750,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor5_body3.png"
+    },
+    "feature6_hairColor5_body4": {
+      "x": 3000,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor5_body4.png"
+    },
+    "feature6_hairColor5_body5": {
+      "x": 3250,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor5_body5.png"
+    },
+    "feature6_hairColor5_body6": {
+      "x": 3500,
+      "y": 2331,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature6_hairColor5_body6.png"
+    },
+    "feature7_hairColor1_body1": {
+      "x": 0,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor1_body1.png"
+    },
+    "feature7_hairColor1_body2": {
+      "x": 250,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor1_body2.png"
+    },
+    "feature7_hairColor1_body3": {
+      "x": 500,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor1_body3.png"
+    },
+    "feature7_hairColor1_body4": {
+      "x": 750,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor1_body4.png"
+    },
+    "feature7_hairColor1_body5": {
+      "x": 1000,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor1_body5.png"
+    },
+    "feature7_hairColor1_body6": {
+      "x": 1250,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor1_body6.png"
+    },
+    "feature7_hairColor2_body1": {
+      "x": 1500,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor2_body1.png"
+    },
+    "feature7_hairColor2_body2": {
+      "x": 1750,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor2_body2.png"
+    },
+    "feature7_hairColor2_body3": {
+      "x": 2000,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor2_body3.png"
+    },
+    "feature7_hairColor2_body4": {
+      "x": 2250,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor2_body4.png"
+    },
+    "feature7_hairColor2_body5": {
+      "x": 2500,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor2_body5.png"
+    },
+    "feature7_hairColor2_body6": {
+      "x": 2750,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor2_body6.png"
+    },
+    "feature7_hairColor3_body1": {
+      "x": 3000,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor3_body1.png"
+    },
+    "feature7_hairColor3_body2": {
+      "x": 3250,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor3_body2.png"
+    },
+    "feature7_hairColor3_body3": {
+      "x": 3500,
+      "y": 2664,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor3_body3.png"
+    },
+    "feature7_hairColor3_body4": {
+      "x": 0,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor3_body4.png"
+    },
+    "feature7_hairColor3_body5": {
+      "x": 250,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor3_body5.png"
+    },
+    "feature7_hairColor3_body6": {
+      "x": 500,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor3_body6.png"
+    },
+    "feature7_hairColor4_body1": {
+      "x": 750,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor4_body1.png"
+    },
+    "feature7_hairColor4_body2": {
+      "x": 1000,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor4_body2.png"
+    },
+    "feature7_hairColor4_body3": {
+      "x": 1250,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor4_body3.png"
+    },
+    "feature7_hairColor4_body4": {
+      "x": 1500,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor4_body4.png"
+    },
+    "feature7_hairColor4_body5": {
+      "x": 1750,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor4_body5.png"
+    },
+    "feature7_hairColor4_body6": {
+      "x": 2000,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor4_body6.png"
+    },
+    "feature7_hairColor5_body1": {
+      "x": 2250,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor5_body1.png"
+    },
+    "feature7_hairColor5_body2": {
+      "x": 2500,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor5_body2.png"
+    },
+    "feature7_hairColor5_body3": {
+      "x": 2750,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor5_body3.png"
+    },
+    "feature7_hairColor5_body4": {
+      "x": 3000,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor5_body4.png"
+    },
+    "feature7_hairColor5_body5": {
+      "x": 3250,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor5_body5.png"
+    },
+    "feature7_hairColor5_body6": {
+      "x": 3500,
+      "y": 2997,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "feature/feature7_hairColor5_body6.png"
+    }
+  },
+  "type": "crewmate",
+  "category": "feature"
+}

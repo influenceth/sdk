@@ -1,0 +1,412 @@
+{
+  "name": "crewmates-item-v1-250w",
+  "targetWidth": 250,
+  "image": "crewmates-item-v1-250w.png",
+  "width": 2000,
+  "height": 1665,
+  "count": 40,
+  "frames": {
+    "item1_outfit10_sex1": {
+      "x": 0,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit10_sex1.png"
+    },
+    "item1_outfit10_sex2": {
+      "x": 250,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit10_sex2.png"
+    },
+    "item1_outfit11_sex1": {
+      "x": 500,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit11_sex1.png"
+    },
+    "item1_outfit11_sex2": {
+      "x": 750,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit11_sex2.png"
+    },
+    "item1_outfit12_sex1": {
+      "x": 1000,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit12_sex1.png"
+    },
+    "item1_outfit12_sex2": {
+      "x": 1250,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit12_sex2.png"
+    },
+    "item1_outfit13_sex1": {
+      "x": 1500,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit13_sex1.png"
+    },
+    "item1_outfit13_sex2": {
+      "x": 1750,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit13_sex2.png"
+    },
+    "item1_outfit14_sex1": {
+      "x": 0,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit14_sex1.png"
+    },
+    "item1_outfit14_sex2": {
+      "x": 250,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit14_sex2.png"
+    },
+    "item1_outfit15_sex1": {
+      "x": 500,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit15_sex1.png"
+    },
+    "item1_outfit15_sex2": {
+      "x": 750,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit15_sex2.png"
+    },
+    "item1_outfit16_sex1": {
+      "x": 1000,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit16_sex1.png"
+    },
+    "item1_outfit16_sex2": {
+      "x": 1250,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit16_sex2.png"
+    },
+    "item1_outfit17_sex1": {
+      "x": 1500,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit17_sex1.png"
+    },
+    "item1_outfit17_sex2": {
+      "x": 1750,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit17_sex2.png"
+    },
+    "item1_outfit18_sex1": {
+      "x": 0,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit18_sex1.png"
+    },
+    "item1_outfit18_sex2": {
+      "x": 250,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit18_sex2.png"
+    },
+    "item1_outfit1_sex1": {
+      "x": 500,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit1_sex1.png"
+    },
+    "item1_outfit1_sex2": {
+      "x": 750,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit1_sex2.png"
+    },
+    "item1_outfit2_sex1": {
+      "x": 1000,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit2_sex1.png"
+    },
+    "item1_outfit2_sex2": {
+      "x": 1250,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit2_sex2.png"
+    },
+    "item1_outfit3_sex1": {
+      "x": 1500,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit3_sex1.png"
+    },
+    "item1_outfit3_sex2": {
+      "x": 1750,
+      "y": 666,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit3_sex2.png"
+    },
+    "item1_outfit4_sex1": {
+      "x": 0,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit4_sex1.png"
+    },
+    "item1_outfit4_sex2": {
+      "x": 250,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit4_sex2.png"
+    },
+    "item1_outfit5_sex1": {
+      "x": 500,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit5_sex1.png"
+    },
+    "item1_outfit5_sex2": {
+      "x": 750,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit5_sex2.png"
+    },
+    "item1_outfit6_sex1": {
+      "x": 1000,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit6_sex1.png"
+    },
+    "item1_outfit6_sex2": {
+      "x": 1250,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit6_sex2.png"
+    },
+    "item1_outfit7_sex1": {
+      "x": 1500,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit7_sex1.png"
+    },
+    "item1_outfit7_sex2": {
+      "x": 1750,
+      "y": 999,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit7_sex2.png"
+    },
+    "item1_outfit8_sex1": {
+      "x": 0,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit8_sex1.png"
+    },
+    "item1_outfit8_sex2": {
+      "x": 250,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit8_sex2.png"
+    },
+    "item1_outfit9_sex1": {
+      "x": 500,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit9_sex1.png"
+    },
+    "item1_outfit9_sex2": {
+      "x": 750,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item1_outfit9_sex2.png"
+    },
+    "item2": {
+      "x": 1000,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item2.png"
+    },
+    "item3": {
+      "x": 1250,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item3.png"
+    },
+    "item4": {
+      "x": 1500,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item4.png"
+    },
+    "item5": {
+      "x": 1750,
+      "y": 1332,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "item/item5.png"
+    }
+  },
+  "type": "crewmate",
+  "category": "item"
+}

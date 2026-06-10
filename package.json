@@ -5,18 +5,25 @@
   "type": "module",
   "module": "./build/index.js",
   "exports": {
-    "import": "./build/index.js",
-    "require": "./build/index.cjs"
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.cjs"
+    },
+    "./images/manifests/images.v1.json": "./assets/images/manifests/images.v1.json",
+    "./images/manifests/latest.json": "./assets/images/manifests/latest.json"
   },
   "browser": {
     "crypto": false
   },
   "files": [
-    "build/*"
+    "build/*",
+    "assets/images/manifests/images.v1.json",
+    "assets/images/manifests/latest.json"
   ],
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
     "export-production-chains": "node ./src/scripts/exportProductionChains.js",
+    "images:build": "node ./assets/images/tools/build-images.js --version v1 --clean",
     "lint": "eslint ./src",
     "prepublishOnly": "npm run build",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive",
