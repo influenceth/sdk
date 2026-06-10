@@ -1,0 +1,72 @@
+{
+  "name": "crewmates-class-v1-250w",
+  "targetWidth": 250,
+  "image": "crewmates-class-v1-250w.png",
+  "width": 750,
+  "height": 666,
+  "count": 6,
+  "frames": {
+    "class0": {
+      "x": 0,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "class/class0.png"
+    },
+    "class1": {
+      "x": 250,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "class/class1.png"
+    },
+    "class2": {
+      "x": 500,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "class/class2.png"
+    },
+    "class3": {
+      "x": 0,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "class/class3.png"
+    },
+    "class4": {
+      "x": 250,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "class/class4.png"
+    },
+    "class5": {
+      "x": 500,
+      "y": 333,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "class/class5.png"
+    }
+  },
+  "type": "crewmate",
+  "category": "class"
+}

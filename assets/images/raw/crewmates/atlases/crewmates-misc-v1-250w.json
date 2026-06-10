@@ -1,0 +1,32 @@
+{
+  "name": "crewmates-misc-v1-250w",
+  "targetWidth": 250,
+  "image": "crewmates-misc-v1-250w.png",
+  "width": 500,
+  "height": 333,
+  "count": 2,
+  "frames": {
+    "texture": {
+      "x": 0,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "texture.png"
+    },
+    "transparent": {
+      "x": 250,
+      "y": 0,
+      "w": 250,
+      "h": 333,
+      "sourceW": 900,
+      "sourceH": 1200,
+      "scale": 0.2777777777777778,
+      "path": "transparent.png"
+    }
+  },
+  "type": "crewmate",
+  "category": "misc"
+}
