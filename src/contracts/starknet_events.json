@@ -229,6 +229,60 @@
       }
     ]
   },
+  "PrepaidAgreementAuctionCancelled": {
+    "type": "event",
+    "name": "PrepaidAgreementAuctionCancelled",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepaidAgreementAuctionConfigured": {
+    "type": "event",
+    "name": "PrepaidAgreementAuctionConfigured",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "mode",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "grace_period",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
   "RemovedFromWhitelist": {
     "type": "event",
     "name": "RemovedFromWhitelist",
@@ -311,6 +365,33 @@
       {
         "name": "permitted",
         "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepaidAgreementAuctionStarted": {
+    "type": "event",
+    "name": "PrepaidAgreementAuctionStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "start_time",
+        "type": "core::integer::u64",
         "kind": "data"
       },
       {

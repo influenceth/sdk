@@ -135,6 +135,46 @@
     "outputs": [],
     "state_mutability": "external"
   },
+  "CancelPrepaidAgreementAuction": {
+    "type": "function",
+    "name": "CancelPrepaidAgreementAuction",
+    "inputs": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ConfigurePrepaidAuction": {
+    "type": "function",
+    "name": "ConfigurePrepaidAuction",
+    "inputs": [
+      {
+        "name": "asteroid",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "mode",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "grace_period",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
   "RemoveFromWhitelist": {
     "type": "function",
     "name": "RemoveFromWhitelist",
@@ -174,6 +214,22 @@
       {
         "name": "permitted",
         "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "StartPrepaidAgreementAuction": {
+    "type": "function",
+    "name": "StartPrepaidAgreementAuction",
+    "inputs": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
       },
       {
         "name": "caller_crew",

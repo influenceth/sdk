@@ -861,6 +861,34 @@
       }
     ]
   },
+  "influence::components::agreements::prepaid_auction::PrepaidAgreementAuction": {
+    "type": "struct",
+    "name": "influence::components::agreements::prepaid_auction::PrepaidAgreementAuction",
+    "members": [
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "start_time",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::agreements::prepaid_auction::PrepaidAgreementAuctionSettings": {
+    "type": "struct",
+    "name": "influence::components::agreements::prepaid_auction::PrepaidAgreementAuctionSettings",
+    "members": [
+      {
+        "name": "mode",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "grace_period",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
   "influence::components::agreements::whitelist::WhitelistAgreement": {
     "type": "struct",
     "name": "influence::components::agreements::whitelist::WhitelistAgreement",
