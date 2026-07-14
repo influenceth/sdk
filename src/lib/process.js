@@ -227,6 +227,8 @@ const IDS = {
   METHANE_COMBUSTION: 245,
   CARBON_MONOXIDE_ARC_DECOMPOSITION: 246,
   HYDROGEN_PROPELLANT_UNBUNDLING: 247,
+  SULFUR_COMBUSTION: 248,
+  TRIPLE_SUPERPHOSPHATE_ACID_EXTRACTION: 249,
   SHUTTLE_INTEGRATION: 250,
   LIGHT_TRANSPORT_INTEGRATION: 251,
   HEAVY_TRANSPORT_INTEGRATION: 252,
@@ -424,14 +426,14 @@ const TYPES = {
     recipeTime: 14.544,
     batched: false,
     inputs: {
-      [Product.IDS.TROILITE]: 100,
-      [Product.IDS.SULFURIC_ACID]: 94
+      [Product.IDS.TROILITE]: 200,
+      [Product.IDS.SULFURIC_ACID]: 193
     },
     outputs: {
-      [Product.IDS.IRON_SULFIDE]: 80,
-      [Product.IDS.LEAD_SULFIDE]: 8,
-      [Product.IDS.TIN_SULFIDE]: 2,
-      [Product.IDS.MOLYBDENUM_DISULFIDE]: 5
+      [Product.IDS.IRON_SULFIDE]: 160,
+      [Product.IDS.LEAD_SULFIDE]: 16,
+      [Product.IDS.TIN_SULFIDE]: 4,
+      [Product.IDS.MOLYBDENUM_DISULFIDE]: 10
     }
   },
   [IDS.SILICA_FUSING]: {
@@ -1145,14 +1147,16 @@ const TYPES = {
     recipeTime: 1674,
     batched: false,
     inputs: {
-      [Product.IDS.MERRILLITE]: 4623,
-      [Product.IDS.SULFURIC_ACID]: 1176,
-      [Product.IDS.HYDROCHLORIC_ACID]: 2625
+      [Product.IDS.MERRILLITE]: 9314,
+      [Product.IDS.SULFURIC_ACID]: 1177,
+      [Product.IDS.HYDROCHLORIC_ACID]: 5542
     },
     outputs: {
-      [Product.IDS.CALCIUM_CHLORIDE]: 3996,
-      [Product.IDS.PHOSPHORIC_ACID]: 2744,
-      [Product.IDS.RARE_EARTH_SULFATES]: 2006
+      [Product.IDS.RARE_EARTH_SULFATES]: 2078,
+      [Product.IDS.CALCIUM_CHLORIDE]: 7991,
+      [Product.IDS.PHOSPHORIC_ACID]: 5488,
+      [Product.IDS.HYDROGEN]: 8,
+      [Product.IDS.SODIUM_CHLORIDE]: 468
     }
   },
   [IDS.AMMONIA_CATALYTIC_CRACKING]: {
@@ -2205,7 +2209,8 @@ const TYPES = {
     recipeTime: 43200,
     batched: false,
     inputs: {
-      [Product.IDS.STEEL_BEAM]: 1500
+      [Product.IDS.STEEL_BEAM]: 750,
+      [Product.IDS.STEEL_PIPE]: 750
     },
     outputs: {
       [Product.IDS.STEEL_TRUSS]: 1
@@ -2710,12 +2715,12 @@ const TYPES = {
     recipeTime: 0.843,
     batched: false,
     inputs: {
-      [Product.IDS.CARBON_DIOXIDE]: 112,
-      [Product.IDS.POTASSIUM_HYDROXIDE]: 44
+      [Product.IDS.CARBON_DIOXIDE]: 44,
+      [Product.IDS.POTASSIUM_HYDROXIDE]: 112
     },
     outputs: {
-      [Product.IDS.DEIONIZED_WATER]: 18,
-      [Product.IDS.POTASSIUM_CARBONATE]: 138
+      [Product.IDS.POTASSIUM_CARBONATE]: 138,
+      [Product.IDS.DEIONIZED_WATER]: 18
     }
   },
   [IDS.NOVOLAK_BACTERIA_CULTURING]: {
@@ -3856,6 +3861,37 @@ const TYPES = {
       [Product.IDS.HYDROGEN]: 97,
       [Product.IDS.SILICA_POWDER]: 2,
       [Product.IDS.TUNGSTEN_POWDER]: 1
+    }
+  },
+  [IDS.SULFUR_COMBUSTION]: {
+    i: IDS.SULFUR_COMBUSTION,
+    name: 'Sulfur Combustion',
+    processorType: Processor.IDS.REFINERY,
+    setupTime: 36000,
+    recipeTime: 0.36,
+    batched: false,
+    inputs: {
+      [Product.IDS.OXYGEN]: 32,
+      [Product.IDS.SULFUR]: 32
+    },
+    outputs: {
+      [Product.IDS.SULFUR_DIOXIDE]: 64
+    }
+  },
+  [IDS.TRIPLE_SUPERPHOSPHATE_ACID_EXTRACTION]: {
+    i: IDS.TRIPLE_SUPERPHOSPHATE_ACID_EXTRACTION,
+    name: 'Triple Superphosphate Acid Extraction',
+    processorType: Processor.IDS.REFINERY,
+    setupTime: 259200,
+    recipeTime: 7.2,
+    batched: false,
+    inputs: {
+      [Product.IDS.TRIPLE_SUPERPHOSPHATE]: 234,
+      [Product.IDS.SULFURIC_ACID]: 98,
+      [Product.IDS.DEIONIZED_WATER]: 36
+    },
+    outputs: {
+      [Product.IDS.PHOSPHORIC_ACID]: 64
     }
   },
   [IDS.SHUTTLE_INTEGRATION]: {

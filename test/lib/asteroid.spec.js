@@ -341,6 +341,8 @@ describe('Asteroid library', function () {
   });
 
   it('should unpack binary asteroid details data', async function () {
+    this.timeout(5000);
+
     const url = 'https://d1c1daundk1ax0.cloudfront.net/influence/goerli/data/asteroids.bin';
     const { data: buffer } = await axios({ url, method: 'GET', responseType: 'arraybuffer' });
     const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);

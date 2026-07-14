@@ -1,16 +1,15 @@
 import cleanup from 'rollup-plugin-cleanup';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
-import { importAssertionsPlugin } from 'rollup-plugin-import-assert';
-import { importAssertions } from 'acorn-import-assertions';
+import json from '@rollup/plugin-json';
 
 const { env: { NODE_ENV } } = process;
 
 const input = './src/index.js';
 
 const output = [
-  { file: './build/index.cjs', format: 'cjs', sourcemap: (NODE_ENV !== 'production') },
-  { file: './build/index.js', format: 'es', sourcemap: (NODE_ENV !== 'production') }
+  { file: './build/index.cjs', format: 'cjs', sourcemap: (NODE_ENV !== 'production'), importAttributesKey: 'with' },
+  { file: './build/index.js', format: 'es', sourcemap: (NODE_ENV !== 'production'), importAttributesKey: 'with' }
 ];
 
 const plugins = [
@@ -18,8 +17,8 @@ const plugins = [
     comments: 'none',
     extensions: ['*']
   }),
-  getBabelOutputPlugin({ presets: ['@babel/preset-env'] }),
-  importAssertionsPlugin()
+  json(),
+  getBabelOutputPlugin({ presets: ['@babel/preset-env'] })
 ];
 
 // Minify code when publishing, this significantly decreases the module
@@ -27,7 +26,6 @@ const plugins = [
 if (process.env.NODE_ENV === 'production') plugins.push(terser());
 
 export default {
-  acornInjectPlugins: [importAssertions],
   input,
   output,
   plugins

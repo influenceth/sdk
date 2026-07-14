@@ -1,6 +1,6 @@
 // TODO: replace with types ABI and starknetjs
 import { CallData, ec, uint256 } from 'starknet';
-import SystemData from '../contracts/starknet_systems.json' assert { type: 'json' };
+import SystemData from '../contracts/starknet_systems.json' with { type: 'json' };
 
 const parseCairoType = (cairoType) => {
   const [match, matchGroup] = cairoType.match(/core::array::Span::<(.+)>/) || [];
