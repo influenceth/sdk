@@ -104,22 +104,28 @@ describe('Permission library', function () {
     expect(Permission.getPrepaidAgreementPaymentAmount(1, 3601)).to.equal(2n);
 
     expect(Permission.getLeaseLapseAmount(3600, 7200)).to.equal(7200n);
+    expect(Permission.getLeaseLapseAmount(3600, 7201)).to.equal(10800n);
     expect(Permission.getLeaseLapseAmount(3600, Permission.MAX_LEASE_LAPSE_SECONDS + 7200)).to.equal(
       BigInt(Permission.MAX_LEASE_LAPSE_SECONDS)
     );
 
     expect(Permission.getPrepaidAgreementExtensionPaymentAmount({ rate: 3600, endTime: 1000 }, 3600, 4600)).to.equal(
-      7200n
+      3600n
     );
     expect(Permission.getPrepaidAgreementExtensionPaymentAmount({ rate: 3600, end_time: 10000 }, 3600, 4600)).to.equal(
       3600n
+    );
+
+    expect(Permission.getAuctionLeaseLapseAmount(3600, 7201)).to.equal(10800n);
+    expect(Permission.getAuctionLeaseLapseAmount(3600, Permission.MAX_AUCTION_LEASE_LAPSE_SECONDS + 7200)).to.equal(
+      BigInt(Permission.MAX_AUCTION_LEASE_LAPSE_SECONDS)
     );
   });
 
   it('should split auction payments according to lapse and controller availability', function () {
     expect(Permission.getAuctionPaymentSplit({
       auctionAmount: 1000n,
-      leaseLapseAmount: 300n
+      auctionLeaseLapseAmount: 300n
     })).to.deep.equal({
       toController: 300n,
       toBuildingController: 700n
@@ -127,7 +133,7 @@ describe('Permission library', function () {
 
     expect(Permission.getAuctionPaymentSplit({
       auctionAmount: 1000n,
-      leaseLapseAmount: 300n,
+      auctionLeaseLapseAmount: 300n,
       hasBuildingController: false
     })).to.deep.equal({
       toController: 1000n,
@@ -136,7 +142,7 @@ describe('Permission library', function () {
 
     expect(Permission.getAuctionPaymentSplit({
       auctionAmount: 1000n,
-      leaseLapseAmount: 1200n
+      auctionLeaseLapseAmount: 1200n
     })).to.deep.equal({
       toController: 1000n,
       toBuildingController: 0n
@@ -171,6 +177,7 @@ describe('Permission library', function () {
       auctionStep: 0
     });
     expect(expiredStatus.auctionPrice).to.equal(1000000000000000000n);
-    expect(expiredStatus.leaseLapseAmount).to.equal(4100n);
+    expect(expiredStatus.leaseLapseAmount).to.equal(7200n);
+    expect(expiredStatus.auctionLeaseLapseAmount).to.equal(7200n);
   });
 });

@@ -8,6 +8,7 @@ import Inventory from './inventory.js';
 
 const MAX_POLICY_DURATION = 31536000; // in IRL seconds
 const MAX_LEASE_LAPSE_SECONDS = 31536000;
+const MAX_AUCTION_LEASE_LAPSE_SECONDS = 15768000;
 
 const AUCTION_STEPS = 168;
 const AUCTION_STEP_SECONDS = 3600;
@@ -202,6 +203,8 @@ const divCeil = (numerator, denominator) => {
   return numerator === 0n ? 0n : (numerator - 1n) / denominator + 1n;
 };
 
+const getRoundedHours = (seconds) => divCeil(toBigInt(seconds), 3600n);
+
 const toFelt = (value) => {
   if (value && typeof value === 'object' && value.id !== undefined && value.label !== undefined) {
     return Entity.packEntity(value);
@@ -292,25 +295,25 @@ const getAuctionStep = (settings, elapsed) => {
 
 const getAuctionPrice = (settings, elapsed) => getAuctionPriceAtStep(getAuctionStep(settings, elapsed));
 
-const getLeaseLapseAmount = (rate, elapsed) => (
-  divCeil(toBigInt(rate) * BigInt(Math.min(Number(elapsed || 0), MAX_LEASE_LAPSE_SECONDS)), 3600n)
+const getLeaseLapseAmount = (rate, elapsed, maxElapsed = MAX_LEASE_LAPSE_SECONDS) => (
+  toBigInt(rate) * getRoundedHours(Math.min(Number(elapsed || 0), maxElapsed))
 );
 
-const getPrepaidAgreementPaymentAmount = (rate, term) => divCeil(toBigInt(rate) * toBigInt(term), 3600n);
+const getAuctionLeaseLapseAmount = (rate, elapsed) => (
+  getLeaseLapseAmount(rate, elapsed, MAX_AUCTION_LEASE_LAPSE_SECONDS)
+);
 
-const getPrepaidAgreementExtensionPaymentAmount = (agreement, addedTerm, now) => {
-  const agreementEndTime = agreement?.endTime ?? agreement?.end_time;
-  const elapsed = agreementEndTime && Number(agreementEndTime) <= Number(now)
-    ? Number(now) - Number(agreementEndTime)
-    : 0;
-  return getPrepaidAgreementPaymentAmount(agreement?.rate || 0, Number(addedTerm || 0) + elapsed);
+const getPrepaidAgreementPaymentAmount = (rate, term) => toBigInt(rate) * getRoundedHours(term);
+
+const getPrepaidAgreementExtensionPaymentAmount = (agreement, addedTerm) => {
+  return getPrepaidAgreementPaymentAmount(agreement?.rate || 0, addedTerm);
 };
 
-const getAuctionPaymentSplit = ({ auctionAmount, leaseLapseAmount, hasBuildingController = true }) => {
+const getAuctionPaymentSplit = ({ auctionAmount, auctionLeaseLapseAmount, leaseLapseAmount, hasBuildingController = true }) => {
   auctionAmount = toBigInt(auctionAmount);
-  leaseLapseAmount = toBigInt(leaseLapseAmount);
+  auctionLeaseLapseAmount = toBigInt(auctionLeaseLapseAmount ?? leaseLapseAmount);
 
-  let toController = auctionAmount < leaseLapseAmount ? auctionAmount : leaseLapseAmount;
+  let toController = auctionAmount < auctionLeaseLapseAmount ? auctionAmount : auctionLeaseLapseAmount;
   let toBuildingController = auctionAmount - toController;
 
   if (!hasBuildingController && toBuildingController > 0n) {
@@ -341,7 +344,8 @@ const getPrepaidAgreementStatus = ({ agreement = null, auction = null, settings 
     auctionElapsed,
     auctionStep: getAuctionStep(resolvedSettings, auctionElapsed),
     auctionPrice: getAuctionPrice(resolvedSettings, auctionElapsed),
-    leaseLapseAmount: agreement ? getLeaseLapseAmount(agreement.rate, elapsed) : 0n
+    leaseLapseAmount: agreement ? getLeaseLapseAmount(agreement.rate, elapsed) : 0n,
+    auctionLeaseLapseAmount: agreement ? getAuctionLeaseLapseAmount(agreement.rate, elapsed) : 0n
   };
 };
 
@@ -476,6 +480,7 @@ export default {
   AUCTION_STEPS,
   IDS,
   DEFAULT_PREPAID_AGREEMENT_AUCTION_SETTINGS,
+  MAX_AUCTION_LEASE_LAPSE_SECONDS,
   MAX_LEASE_LAPSE_SECONDS,
   TYPES,
   POLICY_IDS,
@@ -486,6 +491,7 @@ export default {
   getAgreementPath,
   getAuctionBuildingMemo,
   getAuctionControllerMemo,
+  getAuctionLeaseLapseAmount,
   getAuctionPaymentSplit,
   getAuctionPrice,
   getAuctionPriceAtStep,
