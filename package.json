@@ -1,8 +1,11 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.4.4",
+  "version": "2.5.0",
   "description": "Influence SDK",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "module": "./build/index.js",
   "exports": {
     ".": {
@@ -84,6 +87,6 @@
     "buffer": "^6.0.3",
     "ethers": "^6.7.1",
     "mathjs": "^11.4.0",
-    "starknet": "^5.14.1"
+    "starknet": "^10.8.0"
   }
 }

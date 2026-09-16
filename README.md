@@ -39,6 +39,9 @@ ABI types / schemas for all components can be found in `./contracts/starknet_com
 
 ## Install
 
+Requires Node.js 22 or later and uses starknet.js v10. Applications using the SDK's
+Starknet calls should also use starknet.js v10.
+
 ```sh
 npm install @influenceth/sdk
 ```
