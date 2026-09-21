@@ -19,6 +19,21 @@ const getBuyOrderDeposit = (value, makerFee, makerBonus = 1, enforceBonus = 1) =
 };
 
 /**
+ * Calculates the cancellation refund in microSway, rounded up.
+ * @param {number} remainingAmount unfilled order quantity, as a nonnegative safe integer
+ * @param {number} integerPrice unit price in microSway, as a nonnegative safe integer
+ * @param {number} makerFee stored integer maker fee, already adjusted at order creation
+ * @returns {number} refund as a safe integer
+ */
+const getBuyOrderCancellationRefund = (remainingAmount, integerPrice, makerFee) => {
+  const scale = BigInt(FEE_SCALE);
+  const numerator = BigInt(remainingAmount) * BigInt(integerPrice) * (scale + BigInt(makerFee));
+  const refund = Number((numerator + scale - 1n) / scale);
+  if (!Number.isSafeInteger(refund)) throw new RangeError('Cancellation refund exceeds the safe integer range');
+  return refund;
+};
+
+/**
  * Calculates the required withdrawals to player and exchange for filling a limit buy order (market sell)
  * @param {*} value is amount * unit price for the fillAmount, in microSway
  * @param {*} makerFee is unscaled makerFee (i.e. 67 for 0.67%)
@@ -74,6 +89,7 @@ export default {
   STATUSES,
 
   getBuyOrderDeposit,
+  getBuyOrderCancellationRefund,
   getFillBuyOrderWithdrawals,
   getFillSellOrderPayments,
   adjustedFee,
