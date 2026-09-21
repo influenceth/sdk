@@ -3,8 +3,8 @@ import order from '../../src/lib/order.js';
 
 describe('Order library', function () {
   describe('buy order cancellation refund', function () {
-    it('rounds fractional fees up while leaving deposits rounded down', function () {
-      expect(order.getBuyOrderCancellationRefund(3, 101, 67)).to.equal(306);
+    it('rounds fractional fees down to match the deposited amount', function () {
+      expect(order.getBuyOrderCancellationRefund(3, 101, 67)).to.equal(305);
       expect(order.getBuyOrderDeposit(3 * 101, 67)).to.equal(305);
     });
 
@@ -18,7 +18,18 @@ describe('Order library', function () {
 
     it('uses only the unfilled amount and the stored maker fee', function () {
       const remainingAmount = 1000 - 333 - 333;
-      expect(order.getBuyOrderCancellationRefund(remainingAmount, 1234, 67)).to.equal(414918);
+      expect(order.getBuyOrderCancellationRefund(remainingAmount, 1234, 67)).to.equal(414917);
+    });
+
+    it('does not exceed the remaining escrow after a partial fill', function () {
+      const deposit = order.getBuyOrderDeposit(3 * 101, 67);
+      const withdrawals = order.getFillBuyOrderWithdrawals(2 * 101, 67, 200);
+      const remainingEscrow = deposit - withdrawals.toPlayer - withdrawals.toExchange;
+      const refund = order.getBuyOrderCancellationRefund(1, 101, 67);
+
+      expect(remainingEscrow).to.equal(102);
+      expect(refund).to.equal(101);
+      expect(refund).to.be.at.most(remainingEscrow);
     });
 
     it('returns zero when no amount remains', function () {
@@ -26,7 +37,7 @@ describe('Order library', function () {
     });
 
     it('preserves precision when the intermediate numerator exceeds the safe integer range', function () {
-      expect(order.getBuyOrderCancellationRefund(1, 9000000000000001, 1)).to.equal(9000900000000002);
+      expect(order.getBuyOrderCancellationRefund(1, 9000000000000001, 1)).to.equal(9000900000000001);
     });
 
     it('rejects refunds that cannot be represented as safe integers', function () {

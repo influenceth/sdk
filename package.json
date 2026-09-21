@@ -1,6 +1,6 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "Influence SDK",
   "type": "module",
   "engines": {
