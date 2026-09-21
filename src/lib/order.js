@@ -19,7 +19,7 @@ const getBuyOrderDeposit = (value, makerFee, makerBonus = 1, enforceBonus = 1) =
 };
 
 /**
- * Calculates the cancellation refund in microSway, rounded up.
+ * Calculates the cancellation refund in microSway, rounded down.
  * @param {number} remainingAmount unfilled order quantity, as a nonnegative safe integer
  * @param {number} integerPrice unit price in microSway, as a nonnegative safe integer
  * @param {number} makerFee stored integer maker fee, already adjusted at order creation
@@ -28,7 +28,7 @@ const getBuyOrderDeposit = (value, makerFee, makerBonus = 1, enforceBonus = 1) =
 const getBuyOrderCancellationRefund = (remainingAmount, integerPrice, makerFee) => {
   const scale = BigInt(FEE_SCALE);
   const numerator = BigInt(remainingAmount) * BigInt(integerPrice) * (scale + BigInt(makerFee));
-  const refund = Number((numerator + scale - 1n) / scale);
+  const refund = Number(numerator / scale);
   if (!Number.isSafeInteger(refund)) throw new RangeError('Cancellation refund exceeds the safe integer range');
   return refund;
 };
