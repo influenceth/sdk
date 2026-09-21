@@ -2,6 +2,38 @@ import { expect } from 'chai';
 import order from '../../src/lib/order.js';
 
 describe('Order library', function () {
+  describe('buy order cancellation refund', function () {
+    it('rounds fractional fees up while leaving deposits rounded down', function () {
+      expect(order.getBuyOrderCancellationRefund(3, 101, 67)).to.equal(306);
+      expect(order.getBuyOrderDeposit(3 * 101, 67)).to.equal(305);
+    });
+
+    it('does not add a unit when the division is exact', function () {
+      expect(order.getBuyOrderCancellationRefund(100, 100, 67)).to.equal(10067);
+    });
+
+    it('refunds the remaining value when fees are zero', function () {
+      expect(order.getBuyOrderCancellationRefund(3, 101, 0)).to.equal(303);
+    });
+
+    it('uses only the unfilled amount and the stored maker fee', function () {
+      const remainingAmount = 1000 - 333 - 333;
+      expect(order.getBuyOrderCancellationRefund(remainingAmount, 1234, 67)).to.equal(414918);
+    });
+
+    it('returns zero when no amount remains', function () {
+      expect(order.getBuyOrderCancellationRefund(0, 1234, 67)).to.equal(0);
+    });
+
+    it('preserves precision when the intermediate numerator exceeds the safe integer range', function () {
+      expect(order.getBuyOrderCancellationRefund(1, 9000000000000001, 1)).to.equal(9000900000000002);
+    });
+
+    it('rejects refunds that cannot be represented as safe integers', function () {
+      expect(() => order.getBuyOrderCancellationRefund(1, Number.MAX_SAFE_INTEGER, 1)).to.throw(RangeError);
+    });
+  });
+
   it('should get the correct withdrawals for filling a limit buy', function () {
     let withdrawals = order.getFillBuyOrderWithdrawals(1000000 * 1000, 67, 200, 1, 1);
     expect(withdrawals.toExchange).to.equal(26700000);
