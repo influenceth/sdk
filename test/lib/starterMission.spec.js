@@ -13,8 +13,11 @@ describe('StarterMission library', function () {
     for (const [key, id] of Object.entries(StarterMission.IDS)) {
       cumulative += rewards[id];
       expect(StarterMission.TYPES[id]).to.include({
-        id, key, prerequisiteId: id === 0 ? null : id - 1,
-        reward: rewards[id], cumulativeReward: cumulative
+        id,
+        key,
+        prerequisiteId: id === 0 ? null : id - 1,
+        reward: rewards[id],
+        cumulativeReward: cumulative
       });
       expect(StarterMission.getRewardAmount(id)).to.equal(BigInt(rewards[id]) * 1_000_000n);
     }
@@ -42,8 +45,12 @@ describe('StarterMission library', function () {
       [6, Building.IDS.FACTORY, Processor.IDS.FACTORY]
     ]) {
       expect(types[id].requirements).to.deep.equal({
-        buildingType, processorType, requiresCampaignConstruction: true,
-        requiresOperational: true, requiresCrewControl: true, minRecipes: 1
+        buildingType,
+        processorType,
+        requiresCampaignConstruction: true,
+        requiresOperational: true,
+        requiresCrewControl: true,
+        minRecipes: 1
       });
     }
     expect(types[7].requirements).to.include({ minRecipesPerStage: 1, requiresStage1FinishedBeforeStage2Start: true, requiresEconomicUse: true });
@@ -67,5 +74,62 @@ describe('StarterMission library', function () {
     for (const routeId of [-1, 5, '0', undefined]) {
       expect(() => StarterMission.getRouteOutputProductIds(routeId)).to.throw(RangeError);
     }
+  });
+
+  describe('State decoding', function () {
+    it('separates earned flags, sample count, and upstream route flags', function () {
+      const word = 0x4781n; // Earned 0 and 7; three samples; upstream routes 0 and 4.
+      for (const value of [word, '18305', '0x4781']) {
+        expect(StarterMission.unpackProgress(value)).to.deep.equal({
+          earned: [true, false, false, false, false, false, false, true],
+          sampleCount: 3,
+          upstreamRoutes: [true, false, false, false, true]
+        });
+      }
+      expect(StarterMission.unpackProgress(0)).to.deep.equal({
+        earned: Array(8).fill(false), sampleCount: 0, upstreamRoutes: Array(5).fill(false)
+      });
+      for (let count = 0; count <= 3; count++) {
+        expect(StarterMission.unpackProgress(count * 256).sampleCount).to.equal(count);
+      }
+      expect(StarterMission.unpackProgress(1n << 127n).earned).to.deep.equal(Array(8).fill(false));
+    });
+
+    it('decodes final-product pages at 127/128 and 255/256 boundaries', function () {
+      for (const [product, slot] of [[0, 100], [127, 100], [128, 101], [129, 101], [255, 101], [256, 102]]) {
+        expect(StarterMission.getFinalProductSlot(product)).to.equal(BigInt(slot));
+        expect(StarterMission.unpackFinalProducts(1n << BigInt(product % 128), slot)).to.deep.equal([BigInt(product)]);
+      }
+      expect(StarterMission.unpackFinalProducts('0x80000000000000000000000000000003', 101))
+        .to.deep.equal([128n, 129n, 255n]);
+      expect(StarterMission.unpackFinalProducts(0, 100)).to.deep.equal([]);
+      const maximumProduct = (1n << 64n) - 1n;
+      expect(StarterMission.unpackFinalProducts(1n << 127n, StarterMission.getFinalProductSlot(maximumProduct)))
+        .to.deep.equal([maximumProduct]);
+      expect(() => StarterMission.unpackFinalProducts(1, 99)).to.throw(RangeError);
+      expect(() => StarterMission.unpackFinalProducts(1n << 128n, 100)).to.throw(RangeError);
+      expect(() => StarterMission.getFinalProductSlot(-1)).to.throw(RangeError);
+    });
+
+    it('builds crew-global invalidation and participation paths', function () {
+      expect(StarterMission.getInvalidPath(42)).to.deep.equal([0x53746172746572496e76616c6964n, 2752513n]);
+      expect(StarterMission.getParticipatedPath(42)).to.deep.equal([0x53746172746572506172746963697061746564n, 2752513n]);
+    });
+
+    it('requires an active campaign, strictly newer manned crew, and no invalidation', function () {
+      const state = { campaign: '0x123', cutoff: '100', crewId: 101, roster: [42], invalidated: 0 };
+      expect(StarterMission.isEligible(state)).to.equal(true);
+      for (const change of [
+        { campaign: 0 }, { crewId: 100 }, { crewId: 99 }, { roster: [] },
+        { invalidated: true }, { invalidated: '0x2' }, { invalidated: 1n }
+      ]) expect(StarterMission.isEligible({ ...state, ...change })).to.equal(false);
+      expect(StarterMission.isEligible({ ...state, invalidated: false })).to.equal(true);
+      expect(StarterMission.isEligible({ ...state, cutoff: '9007199254740992', crewId: '9007199254740993' })).to.equal(true);
+      for (const field of Object.keys(state)) {
+        const incomplete = { ...state };
+        delete incomplete[field];
+        expect(() => StarterMission.isEligible(incomplete)).to.throw();
+      }
+    });
   });
 });

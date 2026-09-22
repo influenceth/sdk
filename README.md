@@ -176,3 +176,72 @@ entitlements survive later invalidation. Membership exchanges can invalidate
 participating crews and propagate invalidity to recipients; clean, unused crews
 can exchange members. Fresh Adalian recruitment and roster reordering are allowed;
 Arvadian initialization invalidates eligibility.
+
+### Mission storage decoding
+
+`Mission.getLifecyclePath(assignment)` and
+`Mission.getEvidencePath({ campaign, subject }, slot)` return unhashed `Mission`
+component paths as arrays of `bigint`, suitable for `ReadComponent`. Evidence is
+shared by the campaign and subject, independent of the assignment's mission ID.
+
+`Mission.getPath({ type, ...fields })` also builds these explicit path shapes:
+
+| Type | Fields |
+| --- | --- |
+| `Lifecycle` | `campaign`, `subject`, `page` |
+| `Evidence` | `campaign`, `subject`, `slot` |
+| `Definition`, `DefinitionCount` | `campaign` |
+| `ExecutionLock` | None |
+| `StarterInvalid`, `StarterParticipated` | `subject` |
+
+`Mission.parsePath(path)` reverses those paths. It returns `null` for an unknown
+prefix and throws for a malformed known path. Campaigns, slots, and subject IDs
+remain `bigint`; subject labels and lifecycle page numbers are numbers.
+It accepts numeric, decimal-string, or hex-string path elements. Large values
+must be strings or `bigint`; unsafe JavaScript numbers are rejected.
+
+```js
+const lifecyclePath = Mission.getLifecyclePath(assignment);
+const lifecycle = Mission.unpackLifecycle(lifecycleValue, assignment.mission);
+// { accepted: boolean, completed: boolean, claimed: boolean }
+
+const progressPath = Mission.getEvidencePath(
+  assignment, StarterMission.EVIDENCE_SLOTS.PROGRESS
+);
+const progress = StarterMission.unpackProgress(progressValue);
+// { earned: boolean[8], sampleCount: number, upstreamRoutes: boolean[5] }
+
+const foodSlot = StarterMission.getFinalProductSlot(Product.IDS.FOOD); // 101n
+const recordedProducts = StarterMission.unpackFinalProducts(foodBitmapValue, foodSlot);
+// bigint product IDs from this word only, including any recorded secondary outputs
+```
+
+Lifecycle pages cover 32 missions: accepted bits 0–31, completed bits 32–63,
+claimed bits 64–95. Pass the word from the mission's page to `unpackLifecycle`.
+Starter progress uses evidence slot 0: earned bits 0–7, sample count bits 8–9,
+and upstream-route bits 10–14. Earned flags are evidence, not lifecycle completion;
+upstream-route flags indicate stage 1 evidence, not completion of both stages.
+Slot 1 contains the campaign Warehouse ID. Final-product slots start at 100,
+with 128 product IDs per word (`100 + floor(productId / 128)`).
+Decoders accept unsigned 128-bit words and ignore unrelated bits. Supply zero
+explicitly when a component is absent; missing data is not silently treated as zero.
+
+`StarterMission.getInvalidPath(crewId)` and `getParticipatedPath(crewId)` build
+crew-global paths, which have no campaign element. Eligibility can be checked
+against explicitly supplied configuration and current crew state:
+
+```js
+const eligible = StarterMission.isEligible({
+  campaign: config.STARTER_MISSION_CAMPAIGN,
+  cutoff: config.STARTER_MISSION_CUTOFF,
+  crewId,
+  roster: crew.roster,
+  invalidated: invalidationValue // boolean or raw component value; any nonzero value invalidates
+});
+```
+
+An enabled campaign, crew ID strictly above the cutoff, nonempty roster, and no
+invalidation are all required. This helper does not infer contamination from
+roster history or check caller authorization. Do not use current eligibility to
+gate claiming an already-completed entitlement: those survive invalidation.
+The server remains responsible for fetching state, event ordering, and persistence.

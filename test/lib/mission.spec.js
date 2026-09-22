@@ -57,4 +57,62 @@ describe('Mission library', function () {
       });
     }
   }
+
+  describe('State decoding', function () {
+    const subject = { label: 1, id: 42 };
+    const campaign = '0x123';
+
+    it('builds contract lifecycle and evidence paths, including page boundaries', function () {
+      expect(Mission.getLifecyclePath({ campaign, subject, mission: 31 }))
+        .to.deep.equal([0x4c6966656379636c65n, 291n, 2752513n, 0n]);
+      expect(Mission.getLifecyclePath({ campaign, subject, mission: 32 }))
+        .to.deep.equal([0x4c6966656379636c65n, 291n, 2752513n, 1n]);
+      expect(Mission.getLifecyclePath({ campaign, subject, mission: 0xffffffff })[3]).to.equal(134217727n);
+      expect(Mission.getEvidencePath({ campaign, subject }, '0x64'))
+        .to.deep.equal([0x45766964656e6365n, 291n, 2752513n, 100n]);
+    });
+
+    it('parses all supported paths without losing large felt or entity values', function () {
+      const large = (1n << 200n) + 7n;
+      const largeSubject = { label: 1, id: (1n << 64n) - 1n };
+      for (const descriptor of [
+        { type: 'Lifecycle', campaign: large, subject: largeSubject, page: 1 },
+        { type: 'Evidence', campaign: large, subject: largeSubject, slot: large },
+        { type: 'Definition', campaign: large },
+        { type: 'DefinitionCount', campaign: large },
+        { type: 'StarterInvalid', subject: largeSubject },
+        { type: 'StarterParticipated', subject: largeSubject },
+        { type: 'ExecutionLock' }
+      ]) {
+        const path = Mission.getPath(descriptor);
+        for (const encoded of [path, path.map(String), path.map((n) => `0x${n.toString(16)}`)]) {
+          expect(Mission.parsePath(encoded)).to.deep.equal(descriptor);
+        }
+      }
+    });
+
+    it('decodes independent lifecycle flags across the 32-mission page boundary', function () {
+      const word = (1n << 31n) | (1n << 32n) | (1n << 95n);
+      for (const value of [word, word.toString(), `0x${word.toString(16)}`]) {
+        expect(Mission.unpackLifecycle(value, 31)).to.deep.equal({ accepted: true, completed: false, claimed: true });
+        expect(Mission.unpackLifecycle(value, 32)).to.deep.equal({ accepted: false, completed: true, claimed: false });
+        expect(Mission.unpackLifecycle(value, 1)).to.deep.equal({ accepted: false, completed: false, claimed: false });
+      }
+      expect(Mission.unpackLifecycle(0, 0)).to.deep.equal({ accepted: false, completed: false, claimed: false });
+      expect(Mission.unpackLifecycle((1n << 128n) - 1n, 0xffffffff)).to.deep.equal({ accepted: true, completed: true, claimed: true });
+    });
+
+    it('rejects malformed known paths and unsafe packed values', function () {
+      expect(Mission.parsePath([0])).to.equal(null);
+      expect(() => Mission.parsePath([])).to.throw(TypeError);
+      expect(() => Mission.parsePath([0x4c6966656379636c65n])).to.throw(RangeError);
+      expect(() => Mission.getPath({ type: 'Unknown' })).to.throw(RangeError);
+      expect(() => Mission.getEvidencePath({ campaign: (1n << 251n) + 17n * (1n << 192n) + 1n, subject }, 0)).to.throw(RangeError);
+      expect(() => Mission.getPath({ type: 'Lifecycle', campaign, subject, page: 2 ** 27 })).to.throw(RangeError);
+      for (const value of [-1, 1.5, Number.MAX_SAFE_INTEGER + 1, '', null, true, 1n << 128n]) {
+        expect(() => Mission.unpackLifecycle(value, 0)).to.throw();
+      }
+      expect(() => Mission.unpackLifecycle(0, 2 ** 32)).to.throw(RangeError);
+    });
+  });
 });

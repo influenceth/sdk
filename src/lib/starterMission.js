@@ -1,6 +1,6 @@
 import Building from './building.js';
 import Entity from './entity.js';
-import Mission from './mission.js';
+import Mission, { toUnsignedBigInt } from './mission.js';
 import Process from './process.js';
 import Processor from './processor.js';
 import Product from './product.js';
@@ -224,12 +224,59 @@ const getRouteOutputProductIds = (routeId) => {
     .map(([productId]) => Number(productId));
 };
 
+// Layout from systems/missions/starter.cairo; evidence is shared across assignments.
+const EVIDENCE_SLOTS = { PROGRESS: 0, WAREHOUSE: 1, FINAL_PRODUCTS: 100 };
+
+const unpackProgress = (value) => {
+  const word = toUnsignedBigInt(value, 128);
+  return {
+    earned: Object.values(IDS).map((id) => (word & (1n << BigInt(id))) !== 0n),
+    sampleCount: Number((word >> 8n) & 3n),
+    upstreamRoutes: Object.values(ROUTE_IDS).map((id) => (word & (1n << BigInt(10 + id))) !== 0n)
+  };
+};
+
+const getFinalProductSlot = (productId) => BigInt(EVIDENCE_SLOTS.FINAL_PRODUCTS) + toUnsignedBigInt(productId, 64) / 128n;
+
+/** Decode a single final-product word. Returned product IDs are bigint. */
+const unpackFinalProducts = (value, slot) => {
+  const word = toUnsignedBigInt(value, 128);
+  const page = toUnsignedBigInt(slot, 64) - BigInt(EVIDENCE_SLOTS.FINAL_PRODUCTS);
+  if (page < 0n || page > ((1n << 64n) - 1n) / 128n) throw new RangeError('Invalid final-product slot');
+  const products = [];
+  for (let bit = 0n; bit < 128n; bit++) {
+    if ((word & (1n << bit)) !== 0n) products.push(page * 128n + bit);
+  }
+  return products;
+};
+
+const getInvalidPath = (crewId) => Mission.getPath({ type: 'StarterInvalid', subject: { label: Entity.IDS.CREW, id: crewId } });
+const getParticipatedPath = (crewId) => Mission.getPath({ type: 'StarterParticipated', subject: { label: Entity.IDS.CREW, id: crewId } });
+
+/** Current eligibility only: completed reward entitlements survive later invalidation. */
+const isEligible = ({ campaign, cutoff, crewId, roster, invalidated }) => {
+  // Validate every supplied input, even when a disabled campaign would return false.
+  const configuredCampaign = toUnsignedBigInt(campaign, 252);
+  const minimumCrewId = toUnsignedBigInt(cutoff, 64);
+  const id = toUnsignedBigInt(crewId, 64);
+  if (!Array.isArray(roster)) throw new TypeError('A crew roster array is required');
+  const invalid = typeof invalidated === 'boolean' ? invalidated : toUnsignedBigInt(invalidated, 252) !== 0n;
+  return configuredCampaign !== 0n && id > minimumCrewId && roster.length > 0 && !invalid;
+};
+
 export default {
   IDS,
   TYPES,
   ROUTE_IDS,
   ROUTE_TYPES,
   REWARD_SCALE,
+  EVIDENCE_SLOTS,
+  unpackProgress,
+  getFinalProductSlot,
+  unpackFinalProducts,
+  getInvalidPath,
+  getParticipatedPath,
+  isEligible,
   getAssignment,
   getRewardAmount,
   getRouteOutputProductIds
