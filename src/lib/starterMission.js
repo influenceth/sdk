@@ -1,4 +1,5 @@
 import Building from './building.js';
+import Bindings from './starterMissionBindings.js';
 import Entity from './entity.js';
 import Mission, { toUnsignedBigInt } from './mission.js';
 import Process from './process.js';
@@ -265,6 +266,7 @@ const isEligible = ({ campaign, cutoff, crewId, roster, invalidated }) => {
 };
 
 export default {
+  ...Bindings,
   IDS,
   TYPES,
   ROUTE_IDS,

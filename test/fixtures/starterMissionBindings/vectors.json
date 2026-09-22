@@ -1,0 +1,580 @@
+[
+  {
+    "name": "Built",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Built",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "285437684852",
+      "590295810358705717253",
+      "2"
+    ],
+    "hash": "2446762104573334566716391093345485695265191413096606562478319587701870504957"
+  },
+  {
+    "name": "Sample",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Sample",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "91677913017445",
+      "590295810358705717253",
+      "2"
+    ],
+    "hash": "1386996816364151965333369713882474604176726712831626352521989635940460834385"
+  },
+  {
+    "name": "Extraction",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Extraction",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "328065287482986193317742",
+      "590295810358705717253",
+      "2"
+    ],
+    "hash": "2693149302423603520358358948323394067603531690514028602998097505537692057162"
+  },
+  {
+    "name": "Process",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Process",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "22643820871381875",
+      "590295810358705717253",
+      "2"
+    ],
+    "hash": "394171334055758595569968431629988432789604491433779634805849640244710284925"
+  },
+  {
+    "name": "Downstream",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Downstream",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "323177115370199559004525",
+      "590295810358705717253",
+      "2"
+    ],
+    "hash": "2905557281224906546073577308834876013381975702390481217929899240692402599390"
+  },
+  {
+    "name": "Delivery",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Delivery",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "4928464567440601721",
+      "590295810358705717253",
+      "2"
+    ],
+    "hash": "3197215719022870055429447452467163917663194761118974876926659477374006076283"
+  },
+  {
+    "name": "EconomicDelivery",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "EconomicDelivery",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "92233029195203131754225526116591170169",
+      "590295810358705717253",
+      "2"
+    ],
+    "hash": "953323636600779462372123127352700025674895411188643256756977788269880023659"
+  },
+  {
+    "name": "key_label",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Process",
+        "entity": {
+          "label": 7,
+          "id": "9007199254740993"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "22643820871381875",
+      "590295810358705717255",
+      "2"
+    ],
+    "hash": "1506306282809206836355165978246727371387586904245203576223225715953725495817"
+  },
+  {
+    "name": "key_id",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Process",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740994"
+        },
+        "slot": 2
+      }
+    ],
+    "serialized": [
+      "22643820871381875",
+      "590295810358705782789",
+      "2"
+    ],
+    "hash": "3195649974721533693798449232892237823266049190384066525010265918764426812861"
+  },
+  {
+    "name": "key_slot",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Process",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 3
+      }
+    ],
+    "serialized": [
+      "22643820871381875",
+      "590295810358705717253",
+      "3"
+    ],
+    "hash": "2365194545437696215175427928802590047780156051620220867724526512399147314582"
+  },
+  {
+    "name": "key_zero",
+    "helper": "getActionEvidenceSlot",
+    "args": [
+      {
+        "kind": "Built",
+        "entity": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "slot": 0
+      }
+    ],
+    "serialized": [
+      "285437684852",
+      "590295810358705717253",
+      "0"
+    ],
+    "hash": "1218720288969850365524197898452610058937934040556230977903629969447379454670"
+  },
+  {
+    "name": "building",
+    "helper": "getBuildingFingerprint",
+    "args": [
+      {
+        "label": 5,
+        "id": "9007199254740993"
+      },
+      {
+        "building_type": 5,
+        "planned_at": 1700000000,
+        "finish_time": 1700001000
+      }
+    ],
+    "serialized": [
+      "5",
+      "9007199254740993",
+      "5",
+      "1700000000",
+      "1700001000"
+    ],
+    "hash": "2995167034220702674489839733528277756956123945344217043555096976645107201277"
+  },
+  {
+    "name": "sample",
+    "helper": "getSampleFingerprint",
+    "args": [
+      {
+        "status": 1,
+        "resource": 6,
+        "initial_yield": 500001,
+        "remaining_yield": 450000,
+        "finish_time": 1700001001,
+        "yield_eff": {
+          "mag": "9007199254740993",
+          "sign": true
+        }
+      }
+    ],
+    "serialized": [
+      "1",
+      "6",
+      "500001",
+      "450000",
+      "1700001001",
+      "9007199254740993",
+      "1"
+    ],
+    "hash": "3348657287006974126970958141478350615540007261406273802235803768405230992691"
+  },
+  {
+    "name": "sample_changed",
+    "helper": "getSampleFingerprint",
+    "args": [
+      {
+        "status": 1,
+        "resource": 6,
+        "initial_yield": 500001,
+        "remaining_yield": 450000,
+        "finish_time": 1700001002,
+        "yield_eff": {
+          "mag": "9007199254740993",
+          "sign": true
+        }
+      }
+    ],
+    "serialized": [
+      "1",
+      "6",
+      "500001",
+      "450000",
+      "1700001002",
+      "9007199254740993",
+      "1"
+    ],
+    "hash": "2740275493839948913350840671301718958494919678736290182473562447780671965379"
+  },
+  {
+    "name": "extraction",
+    "helper": "getExtractionFingerprint",
+    "args": [
+      {
+        "extractor_type": 1,
+        "status": 1,
+        "output_product": 6,
+        "yield": 123456789,
+        "destination": {
+          "label": 5,
+          "id": 77
+        },
+        "destination_slot": 2,
+        "finish_time": 1700001002
+      }
+    ],
+    "serialized": [
+      "1",
+      "1",
+      "6",
+      "123456789",
+      "5",
+      "77",
+      "2",
+      "1700001002"
+    ],
+    "hash": "2380603401066428107353995262058796593418349859264890538231451907663460598822"
+  },
+  {
+    "name": "process",
+    "helper": "getProcessFingerprint",
+    "args": [
+      {
+        "processor_type": 1,
+        "status": 1,
+        "running_process": 23,
+        "output_product": 2,
+        "recipes": {
+          "mag": "9007199254740995",
+          "sign": false
+        },
+        "secondary_eff": {
+          "mag": "5368709121",
+          "sign": true
+        },
+        "destination": {
+          "label": 5,
+          "id": 77
+        },
+        "destination_slot": 2,
+        "finish_time": 1700001003
+      },
+      {
+        "setup_time": 7200,
+        "recipe_time": 56160,
+        "batched": false,
+        "processor_type": 1,
+        "inputs": [
+          {
+            "product": 24,
+            "amount": 1800
+          },
+          {
+            "product": 1,
+            "amount": 3
+          }
+        ],
+        "outputs": [
+          {
+            "product": 23,
+            "amount": 1600
+          },
+          {
+            "product": 2,
+            "amount": 200
+          }
+        ]
+      }
+    ],
+    "serialized": [
+      "1",
+      "1",
+      "23",
+      "2",
+      "9007199254740995",
+      "0",
+      "5368709121",
+      "1",
+      "5",
+      "77",
+      "2",
+      "1700001003",
+      "7200",
+      "56160",
+      "0",
+      "1",
+      "2",
+      "24",
+      "1800",
+      "1",
+      "3",
+      "2",
+      "23",
+      "1600",
+      "2",
+      "200"
+    ],
+    "hash": "1836511383489211777332865215942234370001709882735599519878465069550768535383"
+  },
+  {
+    "name": "process_changed",
+    "helper": "getProcessFingerprint",
+    "args": [
+      {
+        "processor_type": 1,
+        "status": 1,
+        "running_process": 23,
+        "output_product": 2,
+        "recipes": {
+          "mag": "9007199254740995",
+          "sign": false
+        },
+        "secondary_eff": {
+          "mag": "5368709121",
+          "sign": true
+        },
+        "destination": {
+          "label": 5,
+          "id": 77
+        },
+        "destination_slot": 2,
+        "finish_time": 1700001003
+      },
+      {
+        "setup_time": 7200,
+        "recipe_time": 56161,
+        "batched": false,
+        "processor_type": 1,
+        "inputs": [
+          {
+            "product": 24,
+            "amount": 1800
+          },
+          {
+            "product": 1,
+            "amount": 3
+          }
+        ],
+        "outputs": [
+          {
+            "product": 23,
+            "amount": 1600
+          },
+          {
+            "product": 2,
+            "amount": 200
+          }
+        ]
+      }
+    ],
+    "serialized": [
+      "1",
+      "1",
+      "23",
+      "2",
+      "9007199254740995",
+      "0",
+      "5368709121",
+      "1",
+      "5",
+      "77",
+      "2",
+      "1700001003",
+      "7200",
+      "56161",
+      "0",
+      "1",
+      "2",
+      "24",
+      "1800",
+      "1",
+      "3",
+      "2",
+      "23",
+      "1600",
+      "2",
+      "200"
+    ],
+    "hash": "3585637902237581565589927547847641610088072832644636525342172169875469256550"
+  },
+  {
+    "name": "delivery",
+    "helper": "getDeliveryFingerprint",
+    "args": [
+      {
+        "status": 4,
+        "origin": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "origin_slot": 2,
+        "dest": {
+          "label": 5,
+          "id": 77
+        },
+        "dest_slot": 3,
+        "finish_time": 1700001004,
+        "contents": [
+          {
+            "product": 129,
+            "amount": "9007199254740993"
+          },
+          {
+            "product": 2,
+            "amount": 7
+          }
+        ]
+      }
+    ],
+    "serialized": [
+      "5",
+      "9007199254740993",
+      "2",
+      "5",
+      "77",
+      "3",
+      "1700001004",
+      "2",
+      "129",
+      "9007199254740993",
+      "2",
+      "7"
+    ],
+    "hash": "2015228966702577207506141670456480079549669795352086185292078035679738867455"
+  },
+  {
+    "name": "delivery_complete",
+    "helper": "getDeliveryFingerprint",
+    "args": [
+      {
+        "status": 2,
+        "origin": {
+          "label": 5,
+          "id": "9007199254740993"
+        },
+        "origin_slot": 2,
+        "dest": {
+          "label": 5,
+          "id": 77
+        },
+        "dest_slot": 3,
+        "finish_time": 1700001004,
+        "contents": [
+          {
+            "product": 129,
+            "amount": "9007199254740993"
+          },
+          {
+            "product": 2,
+            "amount": 7
+          }
+        ]
+      }
+    ],
+    "serialized": [
+      "5",
+      "9007199254740993",
+      "2",
+      "5",
+      "77",
+      "3",
+      "1700001004",
+      "2",
+      "129",
+      "9007199254740993",
+      "2",
+      "7"
+    ],
+    "hash": "2015228966702577207506141670456480079549669795352086185292078035679738867455"
+  }
+]

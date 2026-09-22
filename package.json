@@ -1,6 +1,6 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "Influence SDK",
   "type": "module",
   "engines": {
@@ -30,6 +30,7 @@
     "lint": "eslint ./src",
     "prepublishOnly": "npm run build",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive",
+    "test:mission-bindings-build": "npm run build && node src/scripts/testStarterMissionBindingsBuild.mjs",
     "publish-sdk": "npm run build && npm publish --access public"
   },
   "repository": {

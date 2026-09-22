@@ -245,3 +245,9 @@ invalidation are all required. This helper does not infer contamination from
 roster history or check caller authorization. Do not use current eligibility to
 gate claiming an already-completed entitlement: those survive invalidation.
 The server remains responsible for fetching state, event ordering, and persistence.
+
+### Starter mission action bindings
+
+SDK 2.6.3 adds exact action evidence slots and component fingerprints. See
+[the binding helper reference](docs/starter-mission-bindings.md) for signatures,
+input examples, Cairo fixture provenance, and required server precision changes.
