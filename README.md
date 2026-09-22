@@ -166,9 +166,9 @@ requires a recorded positive actual output, not merely appearing in this list.
 
 Economic use requires a positive amount of an eligible output: consumption by
 `ProcessProductsStart`, actual materials consumed by `ConstructionStart`, actual
-inventory FOOD consumed by `ResupplyFood`, a completed delivery to a different
-entity, or a successful `FillSellOrder`. Allowance-only construction/resupply,
-in-flight deliveries, listings, and `FillBuyOrder` do not count. Delivery
+inventory FOOD consumed by `ResupplyFood`, or a completed delivery to a different
+entity. Allowance-only construction/resupply, in-flight deliveries, and market
+transactions (including listings, `FillSellOrder`, and `FillBuyOrder`) do not count. Delivery
 completion can be credited by `ReceiveDelivery` or `MissionValidate` reconciliation.
 
 Claims are once per mission and paid to the crew's current delegate. Completed

@@ -86,7 +86,7 @@ const DEFINITIONS = {
     id: 7,
     key: 'CLOSE_THE_PRODUCTION_LOOP',
     title: 'Close the Production Loop',
-    description: 'Complete an approved two-stage production route, then consume, deliver, or sell some of its final output.',
+    description: 'Complete an approved two-stage production route, then use or deliver some of its final output.',
     prerequisiteId: 6,
     reward: 25_000
   }
