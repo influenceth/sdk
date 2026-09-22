@@ -50,26 +50,16 @@ const getExtractionFingerprint = (extractor) => fingerprint({
   finish_time: u64(extractor.finish_time)
 });
 
-const getProcessFingerprint = (processor, processDefinition) => fingerprint({
-  processor: {
-    processor_type: u64(processor.processor_type),
-    status: u64(processor.status),
-    running_process: u64(processor.running_process),
-    output_product: u64(processor.output_product),
-    recipes: fixedFields(processor.recipes),
-    secondary_eff: fixedFields(processor.secondary_eff),
-    destination: entityFields(processor.destination),
-    destination_slot: u64(processor.destination_slot),
-    finish_time: u64(processor.finish_time)
-  },
-  definition: {
-    setup_time: u64(processDefinition.setup_time),
-    recipe_time: u64(processDefinition.recipe_time),
-    batched: boolean(processDefinition.batched),
-    processor_type: u64(processDefinition.processor_type),
-    inputs: inventoryFields(processDefinition.inputs),
-    outputs: inventoryFields(processDefinition.outputs)
-  }
+const getProcessFingerprint = (processor) => fingerprint({
+  processor_type: u64(processor.processor_type),
+  status: u64(processor.status),
+  running_process: u64(processor.running_process),
+  output_product: u64(processor.output_product),
+  recipes: fixedFields(processor.recipes),
+  secondary_eff: fixedFields(processor.secondary_eff),
+  destination: entityFields(processor.destination),
+  destination_slot: u64(processor.destination_slot),
+  finish_time: u64(processor.finish_time)
 });
 
 const getDeliveryFingerprint = (delivery) => fingerprint({

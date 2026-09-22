@@ -1,4 +1,4 @@
-# Starter mission action bindings (SDK 2.6.3)
+# Starter mission action bindings (SDK 2.6.4)
 
 All six helpers are exported on `StarterMission`, in both ESM and CommonJS.
 They are pure and return `bigint`. A matching commitment establishes only that
@@ -52,10 +52,6 @@ StarterMission.getProcessFingerprint({
   recipes: { mag: '4294967297', sign: false },
   secondary_eff: { mag: '5368709121', sign: false },
   destination, destination_slot: 2, finish_time: 1700001000
-}, {
-  setup_time: 7200, recipe_time: 56160, batched: false, processor_type: 1,
-  inputs: [{ product: 24, amount: 1800 }],
-  outputs: [{ product: 2, amount: 200 }, { product: 23, amount: 1600 }]
 });
 StarterMission.getDeliveryFingerprint({
   origin: entity, origin_slot: 2, dest: destination, dest_slot: 2,
@@ -71,7 +67,14 @@ The helper uses Starknet `CallData.compile` for ordered structs, spans and boole
 and Starknet Poseidon for hashing; it does not encode storage-packed components.
 
 Building excludes status. Sample and Extraction include the entire component.
-Process includes the entire Processor and the **supplied on-chain ProcessType**.
+`getProcessFingerprint(processor)` includes only the entire Processor: exactly
+12 felts in this order: `processor_type`, `status`, `running_process`,
+`output_product`, `recipes.mag`, `recipes.sign`, `secondary_eff.mag`,
+`secondary_eff.sign`, `destination.label`, `destination.id`, `destination_slot`,
+`finish_time`. Boolean signs encode as 0/1. There is no array-length prefix.
+Recipe definitions, component versions, building IDs, and processor slots are
+excluded. Building and slot remain in the unchanged action evidence key.
+Changing recipe configuration alone does not change this fingerprint.
 Delivery excludes status and preserves contents order. Callers must supply the
 component snapshot at the relevant start/finish stage, not a post-reset snapshot.
 
@@ -107,15 +110,8 @@ also needs its entity as the first argument. Delivery's own entity is not hashed
   strings through decoding and Mongoose schemas. Safe integer values map directly.
 * `Handler._entityFromData` replaces an entity with null when either member is
   zero. Preserve both raw members for commitments; do not guess them from null.
-* ProcessType has no indexed component handler/model in the reviewed server.
-  Supply its exact ordered on-chain definition. SDK `Process.TYPES` is display/
-  calculation metadata: `recipeTime` is seconds while Cairo `recipe_time` is
-  milliseconds; inputs/outputs are product-keyed objects, not ordered spans.
-  The deployment script converts recipe time with `Math.round(recipeTime * 1000)`
-  and iterates those objects, but deployed definitions can change. Consequently
-  the fingerprint helper requires an explicit definition and does not substitute
-  SDK metadata or infer array order. Track definitions and their relevant state
-  in the server when computing historical bindings.
+* ProcessType is not needed for production binding checks. The server supplies
+  only the exact Processor snapshot; no recipe definition lookup is required.
 
 These SDK additions do not modify the server. No approximate fallback is provided.
 
@@ -125,6 +121,6 @@ See `test/fixtures/starterMissionBindings/` for the generator, inputs, serialize
 felt arrays, hashes, source revisions, and reproduction instructions. The generator
 uses the actual Cairo component types and Serde, not JavaScript-generated hashes.
 
-Validation: `nvm use && npm test` (237 passing);
+Validation: `nvm use && npm test` (240 passing);
 `npm run test:mission-bindings-build` builds both formats and checks all Cairo
 vectors through both public exports. Changed helper/test files pass ESLint.

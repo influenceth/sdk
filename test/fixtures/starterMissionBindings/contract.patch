@@ -1,0 +1,34 @@
+diff --git a/src/systems/missions/starter.cairo b/src/systems/missions/starter.cairo
+index 789ada1..65d91cf 100644
+--- a/src/systems/missions/starter.cairo
++++ b/src/systems/missions/starter.cairo
+@@ -141,11 +141,6 @@ fn new_entity(label: u64, scope: felt252, before: u64) -> Entity {
+     EntityTrait::new(label, after)
+ }
+ 
+-fn process_commit(data: Processor) -> felt252 {
+-    let cfg = ProcessTypeTrait::by_type(data.running_process);
+-    hash(@(data, cfg))
+-}
+-
+ fn routes(index: u32) -> (u64, u64, u64) {
+     if index == 0 {
+         (
+@@ -387,7 +382,7 @@ fn action(a: Assignment, name: felt252, args: Span<felt252>, context: Context) {
+         let processor = components::get::<Processor>(array![building.into(), slot.into()].span())
+             .unwrap();
+         assert(processor.finish_time > context.now, 'zero duration');
+-        missions::set_state(a, key('Process', building, slot), process_commit(processor));
++        missions::set_state(a, key('Process', building, slot), hash(@processor));
+         missions::set_state(a, key('Downstream', building, slot), downstream.into());
+         economic(a, inputs);
+     } else if name == 'ProcessProductsFinish' {
+@@ -396,7 +391,7 @@ fn action(a: Assignment, name: felt252, args: Span<felt252>, context: Context) {
+         let processor = components::get::<Processor>(array![building.into(), slot.into()].span())
+             .expect('processor missing');
+         assert(
+-            missions::state(a, key('Process', building, slot)) == process_commit(processor),
++            missions::state(a, key('Process', building, slot)) == hash(@processor),
+             'unbound process'
+         );
+         let downstream = missions::state(a, key('Downstream', building, slot)).try_into().unwrap();

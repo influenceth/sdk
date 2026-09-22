@@ -31,13 +31,53 @@ describe('Starter mission action bindings (Cairo fixtures)', function () {
     expect(new Set(keys).size).to.equal(keys.length);
   });
 
-  it('commits changed sample and process definition fields but excludes delivery status', function () {
+  it('commits changed sample and processor fields but excludes delivery status', function () {
     expect(run(fixture('sample'))).not.to.equal(run(fixture('sample_changed')));
     expect(run(fixture('process'))).not.to.equal(run(fixture('process_changed')));
     expect(run(fixture('delivery'))).to.equal(run(fixture('delivery_complete')));
     const [delivery] = fixture('delivery').args;
     expect(StarterMission.getDeliveryFingerprint({ ...delivery, contents: [...delivery.contents].reverse() }))
       .not.to.equal(run(fixture('delivery')));
+  });
+
+  it('hashes exactly the twelve processor felts without a length prefix', function () {
+    expect(fixture('process').serialized).to.deep.equal([
+      '1', '1', '23', '2', '9007199254740995', '0', '5368709121', '1',
+      '5', '77', '2', '1700001003'
+    ]);
+    expect(StarterMission.getProcessFingerprint.length).to.equal(1);
+  });
+
+  it('ignores recipe configuration and noncommitted component/path metadata', function () {
+    const [processor] = fixture('process').args;
+    const expected = run(fixture('process'));
+    // A second argument from an older caller has no effect on the new commitment.
+    for (const definition of [undefined, { recipe_time: 1 }, { recipe_time: 2, outputs: [] }]) {
+      expect(StarterMission.getProcessFingerprint(processor, definition)).to.equal(expected);
+    }
+    expect(StarterMission.getProcessFingerprint({
+      ...processor,
+      version: 99,
+      building: { label: 5, id: 123 },
+      slot: 7,
+      processDefinition: { recipe_time: 3 }
+    })).to.equal(expected);
+  });
+
+  it('commits each of the twelve processor fields, including raw magnitude low bits', function () {
+    const [processor] = fixture('process').args;
+    for (const path of [
+      ['processor_type'], ['status'], ['running_process'], ['output_product'],
+      ['recipes', 'mag'], ['recipes', 'sign'], ['secondary_eff', 'mag'],
+      ['secondary_eff', 'sign'], ['destination', 'label'], ['destination', 'id'],
+      ['destination_slot'], ['finish_time']
+    ]) {
+      const changed = structuredClone(processor);
+      const parent = path.length === 2 ? changed[path[0]] : changed;
+      const field = path.at(-1);
+      parent[field] = typeof parent[field] === 'boolean' ? !parent[field] : BigInt(parent[field]) + 1n;
+      expect(StarterMission.getProcessFingerprint(changed), path.join('.')).not.to.equal(run(fixture('process')));
+    }
   });
 
   it('rejects unsupported kinds and invalid key inputs', function () {
@@ -71,12 +111,11 @@ describe('Starter mission action bindings (Cairo fixtures)', function () {
     }
   });
 
-  it('rejects lossy fixed values, nonboolean signs, missing definitions and unsafe amounts', function () {
+  it('rejects lossy fixed values, nonboolean signs and unsafe amounts', function () {
     const [sample] = fixture('sample').args;
     for (const yieldEff of [1.25, null, { mag: 1, sign: 0 }, { mag: 2 ** 53, sign: false }, { mag: -1, sign: false }]) {
       expect(() => StarterMission.getSampleFingerprint({ ...sample, yield_eff: yieldEff })).to.throw();
     }
-    expect(() => StarterMission.getProcessFingerprint(fixture('process').args[0])).to.throw();
     const [delivery] = fixture('delivery').args;
     expect(() => StarterMission.getDeliveryFingerprint({ ...delivery, contents: [{ product: 1, amount: 2 ** 53 }] })).to.throw();
     expect(() => StarterMission.getDeliveryFingerprint({ ...delivery, contents: {} })).to.throw();
