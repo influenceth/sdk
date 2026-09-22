@@ -229,28 +229,6 @@
       }
     ]
   },
-  "PrepaidAgreementAuctionCancelled": {
-    "type": "event",
-    "name": "PrepaidAgreementAuctionCancelled",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "lot",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
   "PrepaidAgreementAuctionConfigured": {
     "type": "event",
     "name": "PrepaidAgreementAuctionConfigured",
@@ -269,6 +247,55 @@
       {
         "name": "grace_period",
         "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepaidAgreementAuctionStarted": {
+    "type": "event",
+    "name": "PrepaidAgreementAuctionStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "start_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "PrepaidAgreementAuctionCancelled": {
+    "type": "event",
+    "name": "PrepaidAgreementAuctionCancelled",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
         "kind": "data"
       },
       {
@@ -365,33 +392,6 @@
       {
         "name": "permitted",
         "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "caller",
-        "type": "core::starknet::contract_address::ContractAddress",
-        "kind": "data"
-      }
-    ]
-  },
-  "PrepaidAgreementAuctionStarted": {
-    "type": "event",
-    "name": "PrepaidAgreementAuctionStarted",
-    "kind": "struct",
-    "members": [
-      {
-        "name": "lot",
-        "type": "influence::common::types::entity::Entity",
-        "kind": "data"
-      },
-      {
-        "name": "start_time",
-        "type": "core::integer::u64",
         "kind": "data"
       },
       {
@@ -555,6 +555,82 @@
       {
         "name": "caller",
         "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "MissionAccepted": {
+    "type": "event",
+    "name": "MissionAccepted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "campaign",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "subject",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "mission",
+        "type": "core::integer::u32",
+        "kind": "data"
+      }
+    ]
+  },
+  "MissionCompleted": {
+    "type": "event",
+    "name": "MissionCompleted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "campaign",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "subject",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "mission",
+        "type": "core::integer::u32",
+        "kind": "data"
+      }
+    ]
+  },
+  "MissionRewardClaimed": {
+    "type": "event",
+    "name": "MissionRewardClaimed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "campaign",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "subject",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "mission",
+        "type": "core::integer::u32",
+        "kind": "data"
+      },
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u128",
         "kind": "data"
       }
     ]
@@ -2849,6 +2925,180 @@
       {
         "name": "crewmate",
         "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "OffchainCrewmateGranted": {
+    "type": "event",
+    "name": "OffchainCrewmateGranted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "external_ref",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "crewmate",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "collection",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "class",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "title",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "gender",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "body",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "face",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "hair",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "hair_color",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "clothes",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "head",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "item",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "restricted_until",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "OffchainStarterPackGranted": {
+    "type": "event",
+    "name": "OffchainStarterPackGranted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "external_ref",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "product_id",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "composition",
+        "type": "core::array::Span::<core::integer::u64>",
+        "kind": "data"
+      },
+      {
+        "name": "restricted_until",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "lot_allowance",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "food_reload_allowance",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "core_sample_allowance",
+        "type": "core::integer::u64",
         "kind": "data"
       },
       {

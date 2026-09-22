@@ -1,4 +1,14 @@
 {
+  "influence::components::mission::Mission": {
+    "type": "struct",
+    "name": "influence::components::mission::Mission",
+    "members": [
+      {
+        "name": "value",
+        "type": "core::felt252"
+      }
+    ]
+  },
   "influence::components::building::Building": {
     "type": "struct",
     "name": "influence::components::building::Building",

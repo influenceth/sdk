@@ -1249,6 +1249,106 @@
       "state_mutability": "external"
     },
     {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "is_restricted",
+      "inputs": [
+        {
+          "name": "token_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::contracts::crew::TransferRestriction",
+      "members": [
+        {
+          "name": "restricted_until",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "restriction_authority",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "restriction",
+      "inputs": [
+        {
+          "name": "token_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::contracts::crew::TransferRestriction"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "transfer_with_restriction",
+      "inputs": [
+        {
+          "name": "from",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "token_id",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "restricted_until",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "restriction_authority",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "function",
+      "name": "recall_restricted",
+      "inputs": [
+        {
+          "name": "token_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
       "type": "function",
       "name": "add_grant",
       "inputs": [
@@ -1263,20 +1363,6 @@
       ],
       "outputs": [],
       "state_mutability": "external"
-    },
-    {
-      "type": "enum",
-      "name": "core::bool",
-      "variants": [
-        {
-          "name": "False",
-          "type": "()"
-        },
-        {
-          "name": "True",
-          "type": "()"
-        }
-      ]
     },
     {
       "type": "function",
@@ -2146,6 +2232,106 @@
       "state_mutability": "external"
     },
     {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "is_restricted",
+      "inputs": [
+        {
+          "name": "token_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::bool"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::contracts::crewmate::TransferRestriction",
+      "members": [
+        {
+          "name": "restricted_until",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "restriction_authority",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "restriction",
+      "inputs": [
+        {
+          "name": "token_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::contracts::crewmate::TransferRestriction"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "transfer_with_restriction",
+      "inputs": [
+        {
+          "name": "from",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "token_id",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "restricted_until",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "restriction_authority",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "function",
+      "name": "recall_restricted",
+      "inputs": [
+        {
+          "name": "token_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
       "type": "function",
       "name": "add_grant",
       "inputs": [
@@ -2160,20 +2346,6 @@
       ],
       "outputs": [],
       "state_mutability": "external"
-    },
-    {
-      "type": "enum",
-      "name": "core::bool",
-      "variants": [
-        {
-          "name": "False",
-          "type": "()"
-        },
-        {
-          "name": "True",
-          "type": "()"
-        }
-      ]
     },
     {
       "type": "function",
