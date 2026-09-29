@@ -795,7 +795,7 @@ const getHopperTravelTime = (distance, totalBonus = 1) => {
 const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, timeBonus = 1, distBonus = 1) => {
   const freeTransportRadius = FREE_TRANSPORT_RADIUS * distBonus;
   const distance = getLotDistance(asteroidId, originLotIndex, destLotIndex);
-  return distance <= freeTransportRadius ? 0 : getHopperTravelTime(distance, timeBonus);
+  return distance / timeBonus <= freeTransportRadius ? 0 : getHopperTravelTime(distance, timeBonus);
 };
 
 /**

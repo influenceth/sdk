@@ -340,6 +340,35 @@ describe('Asteroid library', function () {
     }
   });
 
+  describe('free transport bonuses', function () {
+    // Same route as contracts/src/common/position.cairo's free-distance boundary test.
+    const route = [1, 1602262, 1613996];
+
+    it('includes the exact speed-adjusted boundary and distinguishes either side', function () {
+      const distance = asteroid.getLotDistance(...route);
+      const boundaryBonus = distance / asteroid.FREE_TRANSPORT_RADIUS;
+      expect(distance / boundaryBonus).to.equal(asteroid.FREE_TRANSPORT_RADIUS);
+      expect(asteroid.getLotTravelTime(...route, boundaryBonus)).to.equal(0);
+      expect(asteroid.getLotTravelTime(...route, boundaryBonus * (1 + 1e-9))).to.equal(0);
+      expect(asteroid.getLotTravelTime(...route, boundaryBonus * (1 - 1e-9))).to.be.greaterThan(0);
+      expect(asteroid.getLotTravelTime(...route)).to.be.greaterThan(0);
+    });
+
+    it('stacks speed and distance bonuses to make a trip free', function () {
+      expect(asteroid.getLotTravelTime(...route, 2, 1)).to.be.greaterThan(0);
+      expect(asteroid.getLotTravelTime(...route, 1, 2)).to.be.greaterThan(0);
+      expect(asteroid.getLotTravelTime(...route, 2, 2)).to.equal(0);
+    });
+
+    it('applies speed exactly once and no distance discount to nonfree travel', function () {
+      const distance = asteroid.getLotDistance(...route);
+      const expected = Math.ceil(distance / (2 * asteroid.HOPPER_SPEED));
+      expect(asteroid.getLotTravelTime(...route, 2, 1)).to.equal(expected);
+      expect(asteroid.getLotTravelTime(...route, 2, 1.5)).to.equal(expected);
+      expect(asteroid.getHopperTravelTime(distance, 2)).to.equal(expected);
+    });
+  });
+
   it('should unpack binary asteroid details data', async function () {
     this.timeout(5000);
 
