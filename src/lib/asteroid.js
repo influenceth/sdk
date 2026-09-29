@@ -1,3 +1,4 @@
+import Time from '../utils/Time.js';
 import { ec } from 'starknet';
 import { multiply, dot, i } from 'mathjs';
 import { ethers } from 'ethers';
@@ -798,6 +799,11 @@ const getLotTravelTime = (asteroidId, originLotIndex, destLotIndex, timeBonus = 
   return distance / timeBonus <= freeTransportRadius ? 0 : getHopperTravelTime(distance, timeBonus);
 };
 
+/** Returns a single travel leg in whole real-time seconds. */
+const getLotTravelTimeReal = (asteroidId, originLotIndex, destLotIndex, timeBonus = 1, distBonus = 1, timeAcceleration) => (
+  Time.toRealDurationCeil(getLotTravelTime(asteroidId, originLotIndex, destLotIndex, timeBonus, distBonus), timeAcceleration)
+);
+
 /**
  * Unpacks a packed set of static asteroid data including orbital elements and spectral type
  * @param {Uint32Array} packed 32 bit array of packed asteroid details (3 elements per asteroid)
@@ -865,6 +871,7 @@ export default {
   getLotPosition,
   getLotRegionTally,
   getLotTravelTime,
+  getLotTravelTimeReal,
   getMass,
   getRadius,
   getRarity,

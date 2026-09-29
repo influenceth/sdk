@@ -1,3 +1,4 @@
+import Time from '../utils/Time.js';
 import Processor from './processor.js';
 import Product from './product.js';
 
@@ -4166,6 +4167,15 @@ const getSetupTime = (processId, totalBonus = 1) => {
   return TYPES[processId].setupTime / totalBonus;
 }
 
+/** Whole real-time seconds, rounded independently for each production phase. */
+const getSetupTimeReal = (processId, totalBonus = 1, timeAcceleration) => (
+  Time.toRealDurationCeil(getSetupTime(processId, totalBonus), timeAcceleration)
+);
+
+const getProcessingTimeReal = (processId, recipes, totalBonus = 1, timeAcceleration) => (
+  Time.toRealDurationCeil(getProcessingTime(processId, recipes, totalBonus), timeAcceleration)
+);
+
 export default {
   IDS,
   TYPES,
@@ -4174,6 +4184,8 @@ export default {
   getListByProcessorType,
   getOutputs,
   getProcessingTime,
+  getProcessingTimeReal,
   getSetupTime,
+  getSetupTimeReal,
   getType
 };

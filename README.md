@@ -260,3 +260,9 @@ and `unresolved`; missing snapshots and failed external policy reads are never e
 permission. See the [contract audit and client migration guide](docs/authorization.md)
 for snapshot requirements, action APIs, the current local contract baseline, and the
 breaking unresolved behavior of legacy boolean helpers.
+
+### Real-time action durations
+
+SDK 2.7.2 adds helpers that round each travel leg and production phase to whole
+real-time seconds before calculating completion. Use these same durations for
+estimates and lease authorization; see the [timing guide](docs/timing.md).
