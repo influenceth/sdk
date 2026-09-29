@@ -14,6 +14,7 @@ import Exchange from './lib/exchange.js';
 import Extractor from './lib/extractor.js';
 import Inventory from './lib/inventory.js';
 import Lot from './lib/lot.js';
+import Mission from './lib/mission.js';
 import Name from './lib/name.js';
 import Order from './lib/order.js';
 import Permission from './lib/permission.js';
@@ -24,6 +25,7 @@ import Product from './lib/product.js';
 import RandomEvent from './lib/randomEvent.js';
 import Ship from './lib/ship.js';
 import Station from './lib/station.js';
+import StarterMission from './lib/starterMission.js';
 import System from './lib/system.js';
 
 import AdalianOrbit from './utils/AdalianOrbit.js';
@@ -78,6 +80,7 @@ export {
   Extractor,
   Inventory,
   Lot,
+  Mission,
   Name,
   Order,
   Permission,
@@ -88,6 +91,7 @@ export {
   RandomEvent,
   Ship,
   Station,
+  StarterMission,
   System
 };
 

@@ -107,3 +107,147 @@ At the time of the snapshot:
 - 2,450 of the first 11,100 minted can still be used to mint an Arvad Crewmate
 - The last 368 asteroids are eligible to claim an Adalian Crewmate on L2
 - The first 1,859 asteroids are eligible to claim an Arrival Starter Pack on L2
+
+### Starter missions
+
+`StarterMission.IDS` and `StarterMission.TYPES` describe the eight zero-based
+missions. Rewards and cumulative rewards are in whole SWAY;
+`StarterMission.getRewardAmount(missionId)` returns micro-SWAY as a `bigint`.
+Requirement fields name their units explicitly. Building and processor types use
+separate namespaces. All native processes for the required processor qualify;
+use `Process.getListByProcessorType` to list them.
+
+```js
+import { StarterMission, System } from '@influenceth/sdk';
+
+const assignment = StarterMission.getAssignment({
+  campaign: configuredStarterMissionCampaign,
+  crewId,
+  missionId: StarterMission.IDS.MAKE_LANDFALL
+});
+const call = System.getRunSystemCall('AcceptMission', { assignment }, dispatcherAddress);
+```
+
+`Mission.getAssignment({ campaign, subject, mission })` also supports generic
+campaigns. Campaign IDs and the starter crew cutoff are deployment configuration,
+not universal SDK constants. `MissionAction` takes `assignment`, `action`, and an
+`arguments` array; `MissionValidate` takes `assignment` and `arguments`.
+`ClaimMissionReward` takes `assignment`; `ReadMissionState` takes `assignment` and
+`slot`. The ABI marks `ReadMissionState` external, not view. The SDK does not assign
+meanings to its returned tuple or application-specific state slots.
+
+Completion is authoritative on-chain. The same Crew participates throughout;
+it must be manned, not invalidated, and have an ID strictly above the configured
+cutoff. Acceptance is explicit and sequential: the previous mission must be
+completed but need not be claimed. Early evidence captured through the campaign
+wrapper persists; ordinary historical gameplay is not automatically credited.
+Production buildings require campaign construction evidence and crew control at
+qualifying use. Purchased inputs count.
+
+Make Landfall records a Warehouse plan; construction need not have started.
+Prospecting requires three distinct initial sampling start/finish sequences with
+at least 500,000 kg initial yield each. Extraction requires one completed run of
+at least 100,000 kg of raw product (IDs 1–22); neither the qualifying samples nor
+the campaign Warehouse are required as its source or destination. Storage requires
+the recorded Warehouse to be constructed and operational: after a qualifying
+receipt, slot 2 must hold at least 100,000 kg of current inventory. Mixed and
+purchased goods count; reserved/incoming mass and cumulative throughput do not.
+Refining, biological, and manufacturing runs require at least one full recipe or
+batch, even when native scheduling rounds a fractional batch's duration upward.
+
+`StarterMission.ROUTE_IDS` and `ROUTE_TYPES` describe the five approved capstone
+routes. Stage 1 must finish before stage 2 starts, producing a positive amount of
+the intermediate that stage 2 consumes. Both stages require at least one full
+recipe/batch. The same building may perform both stages where supported; Silica
+Fusing uses a Factory. Purchased intermediates and replacement goods count;
+there is no batch tracing. `getRouteOutputProductIds(routeId)` lists possible
+second-stage outputs for previews, including secondary products. Eligibility
+requires a recorded positive actual output, not merely appearing in this list.
+
+Economic use requires a positive amount of an eligible output: consumption by
+`ProcessProductsStart`, actual materials consumed by `ConstructionStart`, actual
+inventory FOOD consumed by `ResupplyFood`, or a completed delivery to a different
+entity. Allowance-only construction/resupply, in-flight deliveries, and market
+transactions (including listings, `FillSellOrder`, and `FillBuyOrder`) do not count. Delivery
+completion can be credited by `ReceiveDelivery` or `MissionValidate` reconciliation.
+
+Claims are once per mission and paid to the crew's current delegate. Completed
+entitlements survive later invalidation. Membership exchanges can invalidate
+participating crews and propagate invalidity to recipients; clean, unused crews
+can exchange members. Fresh Adalian recruitment and roster reordering are allowed;
+Arvadian initialization invalidates eligibility.
+
+### Mission storage decoding
+
+`Mission.getLifecyclePath(assignment)` and
+`Mission.getEvidencePath({ campaign, subject }, slot)` return unhashed `Mission`
+component paths as arrays of `bigint`, suitable for `ReadComponent`. Evidence is
+shared by the campaign and subject, independent of the assignment's mission ID.
+
+`Mission.getPath({ type, ...fields })` also builds these explicit path shapes:
+
+| Type | Fields |
+| --- | --- |
+| `Lifecycle` | `campaign`, `subject`, `page` |
+| `Evidence` | `campaign`, `subject`, `slot` |
+| `Definition`, `DefinitionCount` | `campaign` |
+| `ExecutionLock` | None |
+| `StarterInvalid`, `StarterParticipated` | `subject` |
+
+`Mission.parsePath(path)` reverses those paths. It returns `null` for an unknown
+prefix and throws for a malformed known path. Campaigns, slots, and subject IDs
+remain `bigint`; subject labels and lifecycle page numbers are numbers.
+It accepts numeric, decimal-string, or hex-string path elements. Large values
+must be strings or `bigint`; unsafe JavaScript numbers are rejected.
+
+```js
+const lifecyclePath = Mission.getLifecyclePath(assignment);
+const lifecycle = Mission.unpackLifecycle(lifecycleValue, assignment.mission);
+// { accepted: boolean, completed: boolean, claimed: boolean }
+
+const progressPath = Mission.getEvidencePath(
+  assignment, StarterMission.EVIDENCE_SLOTS.PROGRESS
+);
+const progress = StarterMission.unpackProgress(progressValue);
+// { earned: boolean[8], sampleCount: number, upstreamRoutes: boolean[5] }
+
+const foodSlot = StarterMission.getFinalProductSlot(Product.IDS.FOOD); // 101n
+const recordedProducts = StarterMission.unpackFinalProducts(foodBitmapValue, foodSlot);
+// bigint product IDs from this word only, including any recorded secondary outputs
+```
+
+Lifecycle pages cover 32 missions: accepted bits 0–31, completed bits 32–63,
+claimed bits 64–95. Pass the word from the mission's page to `unpackLifecycle`.
+Starter progress uses evidence slot 0: earned bits 0–7, sample count bits 8–9,
+and upstream-route bits 10–14. Earned flags are evidence, not lifecycle completion;
+upstream-route flags indicate stage 1 evidence, not completion of both stages.
+Slot 1 contains the campaign Warehouse ID. Final-product slots start at 100,
+with 128 product IDs per word (`100 + floor(productId / 128)`).
+Decoders accept unsigned 128-bit words and ignore unrelated bits. Supply zero
+explicitly when a component is absent; missing data is not silently treated as zero.
+
+`StarterMission.getInvalidPath(crewId)` and `getParticipatedPath(crewId)` build
+crew-global paths, which have no campaign element. Eligibility can be checked
+against explicitly supplied configuration and current crew state:
+
+```js
+const eligible = StarterMission.isEligible({
+  campaign: config.STARTER_MISSION_CAMPAIGN,
+  cutoff: config.STARTER_MISSION_CUTOFF,
+  crewId,
+  roster: crew.roster,
+  invalidated: invalidationValue // boolean or raw component value; any nonzero value invalidates
+});
+```
+
+An enabled campaign, crew ID strictly above the cutoff, nonempty roster, and no
+invalidation are all required. This helper does not infer contamination from
+roster history or check caller authorization. Do not use current eligibility to
+gate claiming an already-completed entitlement: those survive invalidation.
+The server remains responsible for fetching state, event ordering, and persistence.
+
+### Starter mission action bindings
+
+SDK 2.6.3 adds exact action evidence slots and component fingerprints. See
+[the binding helper reference](docs/starter-mission-bindings.md) for signatures,
+input examples, Cairo fixture provenance, and required server precision changes.

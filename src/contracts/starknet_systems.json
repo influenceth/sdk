@@ -135,22 +135,6 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "CancelPrepaidAgreementAuction": {
-    "type": "function",
-    "name": "CancelPrepaidAgreementAuction",
-    "inputs": [
-      {
-        "name": "lot",
-        "type": "influence::common::types::entity::Entity"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
   "ConfigurePrepaidAuction": {
     "type": "function",
     "name": "ConfigurePrepaidAuction",
@@ -166,6 +150,38 @@
       {
         "name": "grace_period",
         "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "StartPrepaidAgreementAuction": {
+    "type": "function",
+    "name": "StartPrepaidAgreementAuction",
+    "inputs": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "CancelPrepaidAgreementAuction": {
+    "type": "function",
+    "name": "CancelPrepaidAgreementAuction",
+    "inputs": [
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
       },
       {
         "name": "caller_crew",
@@ -214,22 +230,6 @@
       {
         "name": "permitted",
         "type": "core::starknet::contract_address::ContractAddress"
-      },
-      {
-        "name": "caller_crew",
-        "type": "influence::common::types::entity::Entity"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
-  "StartPrepaidAgreementAuction": {
-    "type": "function",
-    "name": "StartPrepaidAgreementAuction",
-    "inputs": [
-      {
-        "name": "lot",
-        "type": "influence::common::types::entity::Entity"
       },
       {
         "name": "caller_crew",
@@ -310,6 +310,122 @@
       {
         "name": "caller_crew",
         "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "RegisterMissionCampaign": {
+    "type": "function",
+    "name": "RegisterMissionCampaign",
+    "inputs": [
+      {
+        "name": "campaign",
+        "type": "core::felt252"
+      },
+      {
+        "name": "implementation",
+        "type": "core::starknet::class_hash::ClassHash"
+      },
+      {
+        "name": "mission_count",
+        "type": "core::integer::u32"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "AcceptMission": {
+    "type": "function",
+    "name": "AcceptMission",
+    "inputs": [
+      {
+        "name": "assignment",
+        "type": "influence::common::missions::Assignment"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "MissionAction": {
+    "type": "function",
+    "name": "MissionAction",
+    "inputs": [
+      {
+        "name": "assignment",
+        "type": "influence::common::missions::Assignment"
+      },
+      {
+        "name": "action",
+        "type": "core::felt252"
+      },
+      {
+        "name": "arguments",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "MissionValidate": {
+    "type": "function",
+    "name": "MissionValidate",
+    "inputs": [
+      {
+        "name": "assignment",
+        "type": "influence::common::missions::Assignment"
+      },
+      {
+        "name": "arguments",
+        "type": "core::array::Span::<core::felt252>"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ClaimMissionReward": {
+    "type": "function",
+    "name": "ClaimMissionReward",
+    "inputs": [
+      {
+        "name": "assignment",
+        "type": "influence::common::missions::Assignment"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ReadMissionState": {
+    "type": "function",
+    "name": "ReadMissionState",
+    "inputs": [
+      {
+        "name": "assignment",
+        "type": "influence::common::missions::Assignment"
+      },
+      {
+        "name": "slot",
+        "type": "core::felt252"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "(core::bool, core::bool, core::bool, core::felt252)"
+      }
+    ],
+    "state_mutability": "external"
+  },
+  "ConfigureStarterMissions": {
+    "type": "function",
+    "name": "ConfigureStarterMissions",
+    "inputs": [
+      {
+        "name": "campaign",
+        "type": "core::felt252"
+      },
+      {
+        "name": "crew_cutoff",
+        "type": "core::integer::u64"
       }
     ],
     "outputs": [],
@@ -1678,6 +1794,142 @@
       {
         "name": "count",
         "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "GrantOffchainCrewmate": {
+    "type": "function",
+    "name": "GrantOffchainCrewmate",
+    "inputs": [
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "external_ref",
+        "type": "core::felt252"
+      },
+      {
+        "name": "restricted_until",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "class",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "gender",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "body",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "face",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "hair",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "hair_color",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "clothes",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "GrantOffchainStarterPack": {
+    "type": "function",
+    "name": "GrantOffchainStarterPack",
+    "inputs": [
+      {
+        "name": "recipient",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "external_ref",
+        "type": "core::felt252"
+      },
+      {
+        "name": "product_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "restricted_until",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "station",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "classes",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "impactful",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "cosmetic",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "genders",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "bodies",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "faces",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "hairs",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "hair_colors",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "clothes",
+        "type": "core::array::Span::<core::integer::u64>"
+      },
+      {
+        "name": "names",
+        "type": "core::array::Span::<core::felt252>"
       }
     ],
     "outputs": [],

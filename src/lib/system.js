@@ -12,11 +12,15 @@ const parseCairoType = (cairoType) => {
   }
 
   let type;
+  if (cairoType === 'influence::common::missions::Assignment') return { type: 'MissionAssignment' };
+  if (cairoType === 'core::integer::u32') return { type: 'Number' };
+  // ReadMissionState returns a tuple; this registry describes, but does not decode, outputs.
+  if (cairoType === '(core::bool, core::bool, core::bool, core::felt252)') return { type: 'Raw' };
   if (['influence::common::types::entity::Entity'].includes(cairoType)) type = 'Entity';
   else if (['core::starknet::contract_address::ContractAddress'].includes(cairoType)) type = 'ContractAddress';
   else if (['core::integer::u64', 'core::integer::u128'].includes(cairoType)) type = 'BigNumber';
   else if (['core::integer::u256'].includes(cairoType)) type = 'u256';
-  else if (['influence::common::types::string::String', 'core::felt252'].includes(cairoType)) type = 'String';
+  else if (['influence::common::types::string::String', 'core::felt252', 'core::starknet::class_hash::ClassHash'].includes(cairoType)) type = 'String';
   else if (['influence::common::types::inventory_item::InventoryItem'].includes(cairoType)) type = 'InventoryItem';
   else if (['influence::interfaces::escrow::Withdrawal'].includes(cairoType)) type = 'Withdrawal';
   else if (['core::bool'].includes(cairoType)) type = 'Boolean';
@@ -55,6 +59,8 @@ const formatCalldataValue = (type, value) => {
     return value;
   } else if (type === 'Entity') {
     return [value.label, value.id];
+  } else if (type === 'MissionAssignment') {
+    return [value.campaign, value.subject.label, value.subject.id, value.mission];
   } else if (type === 'Number') {
     return Number(value);
   } else if (type === 'String') {

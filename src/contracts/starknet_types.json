@@ -45,6 +45,24 @@
       }
     ]
   },
+  "influence::common::missions::Assignment": {
+    "type": "struct",
+    "name": "influence::common::missions::Assignment",
+    "members": [
+      {
+        "name": "campaign",
+        "type": "core::felt252"
+      },
+      {
+        "name": "subject",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "mission",
+        "type": "core::integer::u32"
+      }
+    ]
+  },
   "core::array::Span::<core::integer::u64>": {
     "type": "struct",
     "name": "core::array::Span::<core::integer::u64>",
