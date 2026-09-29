@@ -1,6 +1,7 @@
 import Constants from './constants.js';
 
 import Assets from './lib/assets.js';
+import Authorization from './lib/authorization.js';
 import Asteroid from './lib/asteroid.js';
 import Building from './lib/building.js';
 import Crew from './lib/crew.js';
@@ -67,6 +68,7 @@ export {
 // Game asset libs
 export {
   Assets,
+  Authorization,
   Asteroid,
   Building,
   Crew,

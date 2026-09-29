@@ -251,3 +251,12 @@ The server remains responsible for fetching state, event ordering, and persisten
 SDK 2.6.3 adds exact action evidence slots and component fingerprints. See
 [the binding helper reference](docs/starter-mission-bindings.md) for signatures,
 input examples, Cairo fixture provenance, and required server precision changes.
+
+### Authorization
+
+Use `Authorization.create({ entities, evaluationTime, policyResults })` for deterministic,
+contract-matched permission and action checks. Results distinguish `allowed`, `denied`,
+and `unresolved`; missing snapshots and failed external policy reads are never eviction
+permission. See the [contract audit and client migration guide](docs/authorization.md)
+for snapshot requirements, action APIs, the current local contract baseline, and the
+breaking unresolved behavior of legacy boolean helpers.
