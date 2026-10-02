@@ -29,7 +29,7 @@ export const getPrepaidAgreementEndTime = (agreement) => {
 /**
  * Evaluate a single coherent snapshot. Undefined components are unloaded; null or []
  * mean confirmed absence. Collections must contain all records for the entity.
- * No network calls or implicit clock reads occur here. See docs/authorization.md.
+ * No network calls or implicit clock reads occur here.
  */
 const create = ({ entities = [], evaluationTime, policyResults = {} }) => {
   const index = new Map(entities

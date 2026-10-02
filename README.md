@@ -257,9 +257,12 @@ input examples, Cairo fixture provenance, and required server precision changes.
 Use `Authorization.create({ entities, evaluationTime, policyResults })` for deterministic,
 contract-matched permission and action checks. Results distinguish `allowed`, `denied`,
 and `unresolved`; missing snapshots and failed external policy reads are never eviction
-permission. See the [contract audit and client migration guide](docs/authorization.md)
-for snapshot requirements, action APIs, the current local contract baseline, and the
-breaking unresolved behavior of legacy boolean helpers.
+permission. Legacy boolean helpers throw when authorization is unresolved.
+
+The authorization audit on 2026-09-29 used the local `contracts` working tree at
+commit `d02abf79c47cdd9b2b095a74d88b1c5d2feba1ef`, including the local delivery,
+sample-improvement, and active-tenant repossession fixes. The working tree,
+rather than the commit alone, was the parity target.
 
 ### Real-time action durations
 
