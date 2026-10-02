@@ -11,6 +11,23 @@ class Time {
     return inGameDuration / (timeAcceleration || Time.DEFAULT_TIME_ACCELERATION);
   }
 
+  // Apply per phase or travel leg, before summing durations or taking their maximum.
+  static toRealDurationCeil (inGameDuration, timeAcceleration = Time.DEFAULT_TIME_ACCELERATION) {
+    if (!Number.isSafeInteger(timeAcceleration) || timeAcceleration <= 0) throw new Error('Invalid time acceleration');
+    return Math.ceil(inGameDuration / timeAcceleration);
+  }
+
+  static getCrewLaborDuration (productionDuration) {
+    return Math.ceil(productionDuration / 8);
+  }
+
+  static getProductionCompletionTime (blockTime, readyAt, duration) {
+    if (![blockTime, readyAt, duration].every((value) => Number.isSafeInteger(value) && value >= 0)) {
+      throw new Error('Completion time requires whole real-time seconds');
+    }
+    return Math.max(blockTime, readyAt) + duration;
+  }
+
   static getSecondsPerAday (timeAcceleration = null) {
     return 86400 / (timeAcceleration || Time.DEFAULT_TIME_ACCELERATION);
   }

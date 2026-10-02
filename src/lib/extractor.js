@@ -1,3 +1,5 @@
+import Time from '../utils/Time.js';
+
 const MAX_EXTRACTION_TIME = 365 * 86400; // in-game seconds
 const MAX_YIELD_PER_RUN = 10000e6; // 10000 tonnes in grams
 
@@ -32,6 +34,11 @@ const getExtractionTime = (targetYield, remainingYield, totalBonus = 1) => {
   return Math.ceil(time);
 };
 
+/** Returns the extraction phase in whole real-time seconds. */
+const getExtractionTimeReal = (targetYield, remainingYield, totalBonus = 1, timeAcceleration) => (
+  Time.toRealDurationCeil(getExtractionTime(targetYield, remainingYield, totalBonus), timeAcceleration)
+);
+
 export default {
   MAX_EXTRACTION_TIME,
   MAX_YIELD_PER_RUN,
@@ -41,5 +48,6 @@ export default {
   TYPES,
 
   getExtractionTime,
+  getExtractionTimeReal,
   getType
 };

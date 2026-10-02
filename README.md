@@ -251,3 +251,21 @@ The server remains responsible for fetching state, event ordering, and persisten
 SDK 2.6.3 adds exact action evidence slots and component fingerprints. See
 [the binding helper reference](docs/starter-mission-bindings.md) for signatures,
 input examples, Cairo fixture provenance, and required server precision changes.
+
+### Authorization
+
+Use `Authorization.create({ entities, evaluationTime, policyResults })` for deterministic,
+contract-matched permission and action checks. Results distinguish `allowed`, `denied`,
+and `unresolved`; missing snapshots and failed external policy reads are never eviction
+permission. Legacy boolean helpers throw when authorization is unresolved.
+
+The authorization audit on 2026-09-29 used the local `contracts` working tree at
+commit `d02abf79c47cdd9b2b095a74d88b1c5d2feba1ef`, including the local delivery,
+sample-improvement, and active-tenant repossession fixes. The working tree,
+rather than the commit alone, was the parity target.
+
+### Real-time action durations
+
+SDK 2.7.2 adds helpers that round each travel leg and production phase to whole
+real-time seconds before calculating completion. Use these same durations for
+estimates and lease authorization; see the [timing guide](docs/timing.md).

@@ -1,5 +1,6 @@
+import IDS, { validatePermission } from './permissionIds.js';
+import Authorization, { getPrepaidAgreementEndTime } from './authorization.js';
 import { shortString } from 'starknet';
-import Address from '../utils/address.js';
 import Asteroid from './asteroid.js';
 import Building from './building.js';
 import Entity from './entity.js';
@@ -73,23 +74,6 @@ const AUCTION_PRICES = [
   3184153n, 2698595n, 2287080n, 1938318n,
   1642740n, 1392235n, 1179930n, 1000000n
 ];
-
-const IDS = {
-  USE_LOT: 1,
-  RUN_PROCESS: 2,
-  ADD_PRODUCTS: 3,
-  REMOVE_PRODUCTS: 4,
-  STATION_CREW: 5,
-  RECRUIT_CREWMATE: 6,
-  DOCK_SHIP: 7,
-  BUY: 8,
-  SELL: 9,
-  LIMIT_BUY: 10,
-  LIMIT_SELL: 11,
-  EXTRACT_RESOURCES: 12,
-  ASSEMBLE_SHIP: 13,
-  USE_DEPOSIT: 14
-};
 
 const TYPES = {
   [IDS.USE_LOT]: {
@@ -212,33 +196,6 @@ const toFelt = (value) => {
   return value;
 };
 
-const validatePermission = (target, permission) => {
-  if (!target?.label) throw new Error('Invalid target entity');
-
-  if (target.label === Entity.IDS.ASTEROID || target.label === Entity.IDS.LOT) {
-    if (permission === IDS.USE_LOT) return;
-  } else if (target.label === Entity.IDS.BUILDING) {
-    if ([
-      IDS.RUN_PROCESS,
-      IDS.ADD_PRODUCTS,
-      IDS.REMOVE_PRODUCTS,
-      IDS.STATION_CREW,
-      IDS.RECRUIT_CREWMATE,
-      IDS.DOCK_SHIP,
-      IDS.BUY,
-      IDS.SELL,
-      IDS.LIMIT_BUY,
-      IDS.LIMIT_SELL,
-      IDS.EXTRACT_RESOURCES,
-      IDS.ASSEMBLE_SHIP
-    ].includes(permission)) return;
-  } else if (target.label === Entity.IDS.SHIP) {
-    if ([IDS.ADD_PRODUCTS, IDS.REMOVE_PRODUCTS, IDS.STATION_CREW].includes(permission)) return;
-  }
-
-  throw new Error('Invalid permission');
-};
-
 const validateLot = (lot) => {
   if (!lot || lot.label !== Entity.IDS.LOT) throw new Error('Invalid lot entity');
 };
@@ -349,8 +306,8 @@ const getPrepaidAgreementStatus = ({ agreement = null, auction = null, settings 
   };
 };
 
-const getPermissionPolicy = (entity, rawPermId, crew, blockTime = null) => {
-  const nowTime = blockTime || Math.floor(Date.now() / 1000);
+const getPermissionPolicy = (entity, rawPermId, crew, blockTime = null, options = {}) => {
+  const nowTime = blockTime ?? Math.floor(Date.now() / 1000);
   const permId = Number(rawPermId);
 
   // default perm policy to private
@@ -376,7 +333,11 @@ const getPermissionPolicy = (entity, rawPermId, crew, blockTime = null) => {
         permPolicy.agreements.push(
           ...(entity[agreementKey] || [])
             .filter((a) => a.permission === permId)
-            .filter((a) => !a.endTime || a.endTime > nowTime)
+            .filter((a) => {
+              if (agreementKey !== 'PrepaidAgreements') return true;
+              const end = getPrepaidAgreementEndTime(a);
+              return end === undefined || (end > 0n && BigInt(nowTime) <= end);
+            })
         );
       }
     }
@@ -386,46 +347,52 @@ const getPermissionPolicy = (entity, rawPermId, crew, blockTime = null) => {
   permPolicy.allowlist = (entity.WhitelistAgreements || []).filter((a) => a.permission === permId).map((a) => a.permitted);
   permPolicy.accountAllowlist = (entity.WhitelistAccountAgreements || []).filter((a) => a.permission === permId).map((a) => a.permitted);
 
-  // attach crew agreement status (if crew provided)
+  // Policy descriptions are presentation data; authorization comes from the shared evaluator.
   permPolicy.crewStatus = '';
   if (crew) {
-    if (entity.Control?.controller?.id === crew.id) permPolicy.crewStatus = 'controller';
-    else if ((crew._siblingCrewIds || []).includes(entity.Control?.controller?.id)) permPolicy.crewStatus = 'controller';
-
-    // if not exclusive, policy is "granted" just by being public or on allowlist
-    else if (!TYPES[permId].isExclusive && permPolicy.policyType === POLICY_IDS.PUBLIC) permPolicy.crewStatus = 'granted';
-    else if (!TYPES[permId].isExclusive && permPolicy.allowlist.find((c) => c.id === crew.id)) permPolicy.crewStatus = 'granted';
-    else if (!TYPES[permId].isExclusive && crew?.Crew?.delegatedTo && permPolicy.accountAllowlist.find((a) => Address.areEqual(a, crew?.Crew?.delegatedTo))) permPolicy.crewStatus = 'granted';
-
-    // else, granted if have explicit agreement
-    else if (permPolicy.agreements?.find((a) => a.permitted?.id === crew.id)) permPolicy.crewStatus = 'granted';
-
-    // for exclusive perms, also worth noting when being excluded
-    else if (TYPES[permId].isExclusive && permPolicy.agreements?.length > 0) permPolicy.crewStatus = 'under contract';
-    else if (POLICY_TYPES[permPolicy.policyType]?.agreementKey) permPolicy.crewStatus = 'available';
-
-    else permPolicy.crewStatus = 'restricted';
+    const authorization = evaluateLegacy(crew, permId, entity, nowTime, options);
+    permPolicy.authorization = authorization;
+    if (authorization.status === 'unresolved') permPolicy.crewStatus = 'unresolved';
+    else if (authorization.status === 'allowed') {
+      permPolicy.crewStatus = ['controller', 'shared-delegate', 'exact-entity'].includes(authorization.reason)
+        ? 'controller'
+        : 'granted';
+    } else {
+      permPolicy.crewStatus = POLICY_TYPES[permPolicy.policyType]?.agreementKey ? 'available' : 'restricted';
+    }
   }
 
   return permPolicy;
 };
 
-// TODO: put this in Crew?
-const isPermitted = (crew, permission, hydratedTarget, blockTime = null) => {
-  try {
-    const policy = getPermissionPolicy(hydratedTarget, permission, crew, blockTime);
-    return policy.crewStatus === 'controller' || policy.crewStatus === 'granted';
-  } catch {}
-  return false;
+const evaluateLegacy = (crew, permission, target, blockTime, options = {}) => Authorization.evaluate({
+  ...options,
+  entities: [...(options.entities || []), crew, target].filter(Boolean),
+  evaluationTime: blockTime ?? Math.floor(Date.now() / 1000),
+  permitted: crew,
+  target,
+  permission
+});
+
+// Deprecated for action authorization: a boolean cannot represent missing data safely.
+const isPermitted = (crew, permission, hydratedTarget, blockTime = null, options = {}) => {
+  const evaluation = evaluateLegacy(crew, permission, hydratedTarget, blockTime, options);
+  if (evaluation.status === 'unresolved') {
+    const error = new Error(`Unresolved authorization: ${evaluation.reason}`);
+    error.name = 'UnresolvedAuthorizationError';
+    error.evaluation = evaluation;
+    throw error;
+  }
+  return evaluation.status === 'allowed';
 };
 
 // get the applicable policies, agreements, and allowlists for this entity
-const getPolicyDetails = (entity, crew = null, blockTime = null) => {
+const getPolicyDetails = (entity, crew = null, blockTime = null, options = {}) => {
   return Object.keys(TYPES)
     .filter((id) => TYPES[id].isApplicable(entity))
     .reduce((acc, permId) => ({
       ...acc,
-      [permId]: getPermissionPolicy(entity, permId, crew, blockTime)
+      [permId]: getPermissionPolicy(entity, permId, crew, blockTime, options)
     }), {});
 };
 Entity.getPolicyDetails = getPolicyDetails;
@@ -472,6 +439,8 @@ const getPrepaidPolicyRate = (entity) => {
 Entity.getPrepaidPolicyRate = getPrepaidPolicyRate;
 
 export default {
+  Authorization,
+  evaluate: Authorization.evaluate,
   AUCTION_DESCENDING_PERIOD,
   AUCTION_MODES,
   AUCTION_PRICES,
