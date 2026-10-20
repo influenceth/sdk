@@ -1,10 +1,8 @@
 import IDS, { validatePermission } from './permissionIds.js';
 import Authorization, { getPrepaidAgreementEndTime } from './authorization.js';
 import { shortString } from 'starknet';
-import Asteroid from './asteroid.js';
 import Building from './building.js';
 import Entity from './entity.js';
-import Lot from './lot.js';
 import Inventory from './inventory.js';
 
 const MAX_POLICY_DURATION = 31536000; // in IRL seconds
@@ -397,42 +395,10 @@ const getPolicyDetails = (entity, crew = null, blockTime = null, options = {}) =
 };
 Entity.getPolicyDetails = getPolicyDetails;
 
-// Return Adalia Prime's unique prepaid policy rate
-const getAdaliaPrimeLotRate = (policy, lotIndex) => {
-  const centers = [
-    { lot: 457078, modifier: 2 }, // Secondary colony (Ya'axche)
-    { lot: 1096252, modifier: 5 }, // Mining colony (Saline)
-    { lot: 1602262, modifier: 1 } // Primary colony (Arkos)
-  ];
-
-  let minDistance = Infinity;
-  let modifier = 0;
-
-  centers.forEach((center) => {
-    const distance = Asteroid.getLotDistance(1, lotIndex, center.lot);
-
-    if (distance < minDistance) {
-      minDistance = distance;
-      modifier = center.modifier;
-    }
-  });
-
-  if (minDistance < 20) return Math.ceil(policy.rate / modifier);
-  if (minDistance < 50) return Math.ceil(policy.rate / (2 * modifier));
-  if (minDistance < 75) return Math.ceil(policy.rate / (4 * modifier));
-  if (minDistance < 100) return Math.ceil(policy.rate / (10 * modifier));
-  return Math.ceil(policy.rate / 100);
-};
-
 // Retrieves the prepaid policy rate for the entity in SWAY / IRL hour
 const getPrepaidPolicyRate = (entity) => {
   const policy = entity.PrepaidPolicies ? entity.PrepaidPolicies[0] : null;
   if (!policy) return 0;
-
-  const lotPos = Lot.toPosition(entity);
-  if (entity.label === Entity.IDS.LOT && lotPos.asteroidId === 1) {
-    return getAdaliaPrimeLotRate(policy, lotPos.lotIndex);
-  }
 
   return policy.rate;
 };
@@ -456,7 +422,6 @@ export default {
   POLICY_TYPES,
   MAX_POLICY_DURATION,
 
-  getAdaliaPrimeLotRate,
   getAgreementPath,
   getAuctionBuildingMemo,
   getAuctionControllerMemo,
