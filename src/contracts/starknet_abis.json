@@ -208,6 +208,41 @@
     },
     {
       "type": "function",
+      "name": "begin_observation",
+      "inputs": [
+        {
+          "name": "policy",
+          "type": "core::felt252"
+        },
+        {
+          "name": "name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "arguments_hash",
+          "type": "core::felt252"
+        },
+        {
+          "name": "expected_caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "policy_data",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "function",
+      "name": "end_observation",
+      "inputs": [],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "function",
       "name": "run_system",
       "inputs": [
         {
@@ -4805,6 +4840,280 @@
           "kind": "nested"
         }
       ]
+    }
+  ],
+  "StarterMissionCampaign": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::missions::Assignment",
+      "members": [
+        {
+          "name": "campaign",
+          "type": "core::felt252"
+        },
+        {
+          "name": "subject",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "mission",
+          "type": "core::integer::u32"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "evaluate",
+      "inputs": [
+        {
+          "name": "assignment",
+          "type": "influence::common::missions::Assignment"
+        },
+        {
+          "name": "operation",
+          "type": "core::integer::u32"
+        },
+        {
+          "name": "action_name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "args",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "(core::starknet::contract_address::ContractAddress, core::integer::u128)"
+        }
+      ],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::missions::starter::StarterMissionCampaign::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "ColonizationMissionCampaign": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::missions::Assignment",
+      "members": [
+        {
+          "name": "campaign",
+          "type": "core::felt252"
+        },
+        {
+          "name": "subject",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "mission",
+          "type": "core::integer::u32"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "evaluate",
+      "inputs": [
+        {
+          "name": "a",
+          "type": "influence::common::missions::Assignment"
+        },
+        {
+          "name": "operation",
+          "type": "core::integer::u32"
+        },
+        {
+          "name": "action_name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "args",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "(core::starknet::contract_address::ContractAddress, core::integer::u128)"
+        }
+      ],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::missions::colonization::ColonizationMissionCampaign::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "MissionObserver": [
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "before",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "data",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "targets",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "state_mutability": "external"
+    },
+    {
+      "type": "function",
+      "name": "after",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "data",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "snapshot",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "result",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::missions::observer::MissionObserver::Event",
+      "kind": "enum",
+      "variants": []
     }
   ]
 }

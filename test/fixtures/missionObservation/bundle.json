@@ -1,0 +1,171 @@
+{
+  "manifest": {
+    "version": 2,
+    "observerPolicy": "MissionObserver",
+    "observationTargets": {
+      "maxGroups": 8,
+      "encoding": "[campaign, packedSubject + missionMask * 2^80] per group",
+      "candidateFields": [
+        "campaign",
+        "subject.label",
+        "subject.id",
+        "mission"
+      ]
+    },
+    "swayDecimals": 6,
+    "colonization": {
+      "campaignConstant": "COLONIZATION_CAMPAIGN",
+      "subject": "ASTEROID",
+      "missions": [
+        {
+          "id": 0,
+          "name": "Claim a New World",
+          "reward": "150000000000"
+        },
+        {
+          "id": 1,
+          "name": "Build a Habitat",
+          "reward": "250000000000"
+        },
+        {
+          "id": 2,
+          "name": "Connect the Colony",
+          "reward": "300000000000"
+        },
+        {
+          "id": 3,
+          "name": "Establish Commerce",
+          "reward": "350000000000"
+        },
+        {
+          "id": 4,
+          "name": "Found a Colony",
+          "reward": "450000000000"
+        }
+      ],
+      "evidenceSlots": {
+        "1": "qualifying used Habitat ID",
+        "2": "qualifying used Spaceport ID",
+        "3": "qualifying used Marketplace ID",
+        "Colonizer": "original enrolled account",
+        "ScanStarted": "pending scan fingerprint",
+        "ScanFinished": "successful surface scan completion timestamp",
+        "Earned": "bits 0..3: scan, habitat, spaceport, marketplace"
+      },
+      "observedSystems": [
+        "ScanSurfaceStart",
+        "ScanSurfaceFinish",
+        "ConstructionStart",
+        "ConstructionFinish",
+        "StationCrew",
+        "DockShip",
+        "FillBuyOrder",
+        "FillSellOrder"
+      ]
+    },
+    "starter": {
+      "campaignConstant": "STARTER_MISSION_CAMPAIGN",
+      "subject": "CREW",
+      "observedSystems": [
+        "ConstructionPlan",
+        "ConstructionStart",
+        "ConstructionFinish",
+        "SampleDepositStart",
+        "SampleDepositFinish",
+        "ExtractResourceStart",
+        "ExtractResourceFinish",
+        "ProcessProductsStart",
+        "ProcessProductsFinish",
+        "SendDelivery",
+        "ReceiveDelivery",
+        "ResupplyFood",
+        "FillSellOrder"
+      ]
+    },
+    "lifecycleEvents": [
+      "MissionAccepted",
+      "MissionCompleted",
+      "MissionRewardClaimed"
+    ],
+    "contracts": {
+      "Dispatcher": {
+        "classHash": "0x2487ca9e3d4bf1173ba564bdbf8febfd08c878b302add69014bd905348b91e4",
+        "abi": "Dispatcher.abi.json"
+      },
+      "MissionObserver": {
+        "classHash": "0x74bf8991731421653bbf6fe454c9f82ab6ad3341ffb3135127a46cf30cc0f1",
+        "abi": "MissionObserver.abi.json"
+      },
+      "StarterMissionCampaign": {
+        "classHash": "0xc15a6543bdeb54dc5bc555a3357923c0d917909f1dad779cb82626de8c51ce",
+        "abi": "StarterMissionCampaign.abi.json"
+      },
+      "ColonizationMissionCampaign": {
+        "classHash": "0x5e4efb70fc48b73167ad57f20d079b76717a0a1ce1e5916134aa58da1a2ca0a",
+        "abi": "ColonizationMissionCampaign.abi.json"
+      },
+      "RegisterMissionCampaign": {
+        "classHash": "0x41504cc4349c79fbe5f96b87ded6c29c782ff825b12251f2c1c1b1596982f80",
+        "abi": "RegisterMissionCampaign.abi.json"
+      },
+      "UpgradeMissionCampaign": {
+        "classHash": "0x6b2195229db4e09b6a9975fc983bb36627a668263eeec60bdb3044b45b0097d",
+        "abi": "UpgradeMissionCampaign.abi.json"
+      },
+      "ConfigureStarterMissions": {
+        "classHash": "0x1277c5735bfde8ccb7add06fbc92559a0f8e84c7c3e106f311f78a816fc12a2",
+        "abi": "ConfigureStarterMissions.abi.json"
+      },
+      "ConfigureColonizationMissions": {
+        "classHash": "0x4896b4610c6cf1848b6675908882d13d565f5af73a30874f9280ee87b0a7c3a",
+        "abi": "ConfigureColonizationMissions.abi.json"
+      },
+      "MigrateStarterObserver": {
+        "classHash": "0x172cc057affa442dcb9a755098ebc9277c7ead7388f4346893d97183b5a7bb2",
+        "abi": "MigrateStarterObserver.abi.json"
+      },
+      "AcceptMission": {
+        "classHash": "0x3f7cae49bd1ac824a661179adf7313c2433e7606fa49c6309e3760d35435247",
+        "abi": "AcceptMission.abi.json"
+      },
+      "MissionValidate": {
+        "classHash": "0x6de91427e2535f4a06a7673b51100eb428756d7f702619e183ea095919f1869",
+        "abi": "MissionValidate.abi.json"
+      },
+      "ReadMissionState": {
+        "classHash": "0x3a826cd382d5211a8bbd7ce818ab676dbf759b4036cd36e5a437faccdd9175",
+        "abi": "ReadMissionState.abi.json"
+      },
+      "ClaimMissionReward": {
+        "classHash": "0x3bb03f1942419628c76767ded22bcb18143b89977e1fbb47278db686657be5b",
+        "abi": "ClaimMissionReward.abi.json"
+      }
+    },
+    "network": "sepolia",
+    "deployment": "sepolia-deployment.json"
+  },
+  "sha256": {
+    "ConfigureColonizationMissions.abi.json": "ccc561c336802867e472a0a4165cd57af18dc6fbd9ea3cf492bd690fc122a247",
+    "starknet_types.json": "7c2d235186e3ec9a4ef7816364c4eccf97dd02cf9f833cdaba7cedde250a4e94",
+    "ConfigureStarterMissions.abi.json": "7ded55bdfbe49c3d503fcf8161c0f312fcd29832514219176b7872fe22f0f66d",
+    "starknet_abis.json": "c1e3a51d1e498ecae95c38105cce41b6c5f4af4901a69325657d51bf46080232",
+    "Dispatcher.abi.json": "29ea38661503291194aa42d613b2d3eeffc692ce74ab3d32b0469875b3fa10ba",
+    "starknet_systems.json": "02cc6d9440e05c58f45d9cf006e46396286dc943937c564a8484f9f9d52e762e",
+    "MigrateStarterObserver.abi.json": "28d356336e01fbeb6ac56e93b0231add025868779ea6450923b9509756965752",
+    "missionObservation.js": "d8b8e4e08015225b2d76e129b66a18f87dba0a2532f1743bd36797241caf6e30",
+    "starknet_events.json": "19fa7eb81231496a3c40860abd0e18578b209ff833471c6849c6df208863f2a4",
+    "starknet_components.json": "8b19814b2d6661fc6634102ce2c98b93930c53f4583ee206f1844cea403f1d2c",
+    "README.md": "c9c8fa1f2a0f911eb9f6a9d6e2097cc4b4ff3526ba1e5520c2d3e912a1893985",
+    "UpgradeMissionCampaign.abi.json": "b75c8205cc9b8a52ebfd76dbacc941f9fc2ce2ef6fe81bd89eeaf8a0912605b3",
+    "RegisterMissionCampaign.abi.json": "cad2fc0838dd6a2f996d3ee1b2c6820ec1167cfcfb1002652795e7681b8a71f1",
+    "MissionObserver.abi.json": "0225f4fd9eba1a6f93b9545de036db1958b99fe538cc42b9a16fd27ef1c3aa02",
+    "manifest.json": "8b3e28945dcce34fa7c42e090ca13d8c7de15bca49c2fd8c7655bd90d746d789",
+    "ReadMissionState.abi.json": "3f83fc358b18c6c1965631e834c372f7fe0da6ee1074caf386fc369419275d1b",
+    "ClaimMissionReward.abi.json": "d12a4b167601915c0b13d5ecf9d74915817c2bb20ecb35ed64aac4c31d9c78fe",
+    "StarterMissionCampaign.abi.json": "d898ae98081506fa1e695ca6f27f0edbf72ecca37cc67f4218cd384795348abf",
+    "AcceptMission.abi.json": "0e694d5b2c556ecaa5ff53466c0644742532e96f635586e69a3e8207b637374c",
+    "ColonizationMissionCampaign.abi.json": "0953d94511baa3aa1b2133bda357572891345fbc81c7f953fff3afe8feb3a5ad",
+    "sepolia-deployment.json": "1b17c8541bb2aef6b765ca2409b698933caaa41da98e00342882508b7e917165",
+    "MissionValidate.abi.json": "a8f72f93c00860568a5c2cfdbe0f22a12074259d5019d6a0624e20bdf359f307"
+  }
+}

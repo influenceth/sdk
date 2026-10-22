@@ -1,3 +1,5 @@
+import ColonizationMission from './lib/colonizationMission.js';
+import MissionObservation from './lib/missionObservation.js';
 import Constants from './constants.js';
 
 import Assets from './lib/assets.js';
@@ -83,6 +85,8 @@ export {
   Inventory,
   Lot,
   Mission,
+  MissionObservation,
+  ColonizationMission,
   Name,
   Order,
   Permission,

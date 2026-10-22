@@ -1,5 +1,5 @@
-import { CallData, ec, shortString } from 'starknet';
-import Entity from './entity.js';
+import { CallData, ec } from 'starknet';
+import { getActionEvidenceSlot as getSharedActionEvidenceSlot, getBuildingFingerprint } from './missionBindings.js';
 import { toUnsignedBigInt } from './mission.js';
 
 const ACTION_KINDS = ['Built', 'Sample', 'Extraction', 'Process', 'Downstream', 'Delivery', 'EconomicDelivery'];
@@ -18,18 +18,10 @@ const inventoryFields = (items) => {
 // Ordered objects are Cairo structs/tuples; CallData adds lengths only for spans.
 const fingerprint = (fields) => BigInt(ec.starkCurve.poseidonHashMany(CallData.compile(fields).map(BigInt)));
 
-const getActionEvidenceSlot = ({ kind, entity, slot = 0 }) => {
-  if (!ACTION_KINDS.includes(kind)) throw new RangeError(`Unsupported action evidence kind: ${kind}`);
-  const packed = Entity.packEntity({ label: toUnsignedBigInt(entity.label, 16), id: u64(entity.id) }, false);
-  return BigInt(ec.starkCurve.poseidonHashMany([BigInt(shortString.encodeShortString(kind)), packed, u64(slot)]));
+const getActionEvidenceSlot = (input) => {
+  if (!ACTION_KINDS.includes(input.kind)) throw new RangeError(`Unsupported action evidence kind: ${input.kind}`);
+  return getSharedActionEvidenceSlot(input);
 };
-
-const getBuildingFingerprint = (entity, building) => fingerprint({
-  entity: entityFields(entity),
-  building_type: u64(building.building_type),
-  planned_at: u64(building.planned_at),
-  finish_time: u64(building.finish_time)
-});
 
 const getSampleFingerprint = (deposit) => fingerprint({
   status: u64(deposit.status),
