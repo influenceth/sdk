@@ -6,6 +6,8 @@ const CREWMATE_FOOD_PER_YEAR = 1000; // kg / in-game year
 const CREW_SCHEDULE_BUFFER = 86400; // in IRL seconds
 const STARVING_MULTIPLIER = 0.25;
 const YEAR_IN_SECONDS = 31536000; // 60 * 60 * 24 * 365
+const DMIL = 429496; // Contract representation of 0.0001 at a 2^32 scale
+const FIXED_POINT_SCALE = 2 ** 32;
 
 /**
  * @param {integer} abilityId Crewmate ability identifier
@@ -15,7 +17,6 @@ const YEAR_IN_SECONDS = 31536000; // 60 * 60 * 24 * 365
  * @return The overall bonus to be applied to the ability
  */
 const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed = 0) => {
-
   // Get crewmate bonuses
   const details = getAbilityBonusFromCrewmates(abilityId, crewmates);
 
@@ -40,6 +41,11 @@ const getAbilityBonus = (abilityId, crewmates = [], station = {}, timeSinceFed =
 
 const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
   const ability = Crewmate.getAbility(abilityId);
+  const isCapacity = abilityId === Crewmate.ABILITY_IDS.INVENTORY_MASS_CAPACITY ||
+    abilityId === Crewmate.ABILITY_IDS.INVENTORY_VOLUME_CAPACITY;
+  const toBonus = (bonus, tier = 1) => isCapacity
+    ? Math.floor(Math.round(bonus * 10000) * DMIL * tier) / FIXED_POINT_SCALE
+    : bonus * tier;
   const details = {
     name: ability.name,
     class: {},
@@ -70,7 +76,7 @@ const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
     // Includes a half tier department bonus for Arvad Specialists
     if (titleInfo.department && ability.departments && ability.departments[titleInfo.department]) {
       const tier = titleInfo.tier + (crewmateCollection === Crewmate.COLLECTION_IDS.ARVAD_SPECIALIST ? 0.5 : 0);
-      const bonusPerMatch = ability.departments[titleInfo.department] * tier;
+      const bonusPerMatch = toBonus(ability.departments[titleInfo.department], tier);
       const info = details.titles[crewmateTitle] || { matches: 0, bonusPerMatch, bonus: 0 };
       info.matches++;
       info.bonus += bonusPerMatch;
@@ -82,11 +88,12 @@ const getAbilityBonusFromCrewmates = (abilityId, crewmates = []) => {
     if (crewmateTraits.length > 0) {
       crewmateTraits.forEach((traitId) => {
         if (traitId && ability.traits && ability.traits[traitId]) {
-          const info = details.traits[traitId] || { matches: 0, bonusPerMatch: ability.traits[traitId], bonus: 0 };
+          const bonusPerMatch = toBonus(ability.traits[traitId]);
+          const info = details.traits[traitId] || { matches: 0, bonusPerMatch, bonus: 0 };
           info.matches++;
-          info.bonus += ability.traits[traitId];
+          info.bonus += bonusPerMatch;
           details.traits[traitId] = info;
-          details.crewmatesMultiplier += ability.traits[traitId];
+          details.crewmatesMultiplier += bonusPerMatch;
         }
       });
     }

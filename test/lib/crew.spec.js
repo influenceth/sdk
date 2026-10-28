@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import Crew from '../../src/lib/crew.js';
+import Crewmate from '../../src/lib/crewmate.js';
 
 describe('Crew library', function () {
   it('should get bonus based on ability', function () {
@@ -39,6 +40,39 @@ describe('Crew library', function () {
   it('should get bonus based on ability with class penalty', function () {
     const details = Crew.getAbilityBonus(1, [ { classId: 1 }, { collectionId: 4, classId: 2, traitIds: [ 31 ]}]);
     expect(details.totalBonus.toFixed(4)).to.equal('0.5500');
+  });
+
+  it('should use contract precision for stacked capacity traits', function () {
+    const traitId = Crewmate.TRAIT_IDS.HAULER;
+    const crewmates = Array.from({ length: 5 }, () => ({ traitIds: [traitId] }));
+    const details = Crew.getAbilityBonus(Crewmate.ABILITY_IDS.INVENTORY_MASS_CAPACITY, crewmates);
+    const perMatch = Number(500n * 429496n) / 2 ** 32;
+    expect(details.traits[traitId]).to.deep.equal({ matches: 5, bonusPerMatch: perMatch, bonus: 5 * perMatch });
+    expect(details.crewmatesMultiplier).to.equal(1 + 5 * perMatch);
+    expect(details.totalBonus).to.equal(1 + 5 * perMatch);
+  });
+
+  it('should use contract precision for Logistics titles and specialist half tiers', function () {
+    for (const titleId of [6, 19, 32, 45, 58]) {
+      for (const collectionId of [Crewmate.COLLECTION_IDS.ARVAD_CITIZEN, Crewmate.COLLECTION_IDS.ARVAD_SPECIALIST]) {
+        const tier = Crewmate.getTitle(titleId).tier;
+        const rank = 2 * tier + (collectionId === Crewmate.COLLECTION_IDS.ARVAD_SPECIALIST ? 1 : 0);
+        const perMatch = Number(BigInt(rank) * 125n * 429496n / 2n) / 2 ** 32;
+        const details = Crew.getAbilityBonus(Crewmate.ABILITY_IDS.INVENTORY_VOLUME_CAPACITY, [
+          { titleId, collectionId },
+          { Crewmate: { title: titleId, coll: collectionId } }
+        ], { stationType: 1, population: 1 }, 31536000);
+        expect(details.titles[titleId]).to.deep.equal({ matches: 2, bonusPerMatch: perMatch, bonus: 2 * perMatch });
+        expect(details.totalBonus).to.equal(1 + 2 * perMatch);
+        expect(details.crewmatesMultiplier).to.equal(details.totalBonus);
+      }
+    }
+  });
+
+  it('should leave unbonused capacities at one', function () {
+    for (const ability of [Crewmate.ABILITY_IDS.INVENTORY_MASS_CAPACITY, Crewmate.ABILITY_IDS.INVENTORY_VOLUME_CAPACITY]) {
+      expect(Crew.getAbilityBonus(ability).totalBonus).to.equal(1);
+    }
   });
 
   it('should get current food', function () {
