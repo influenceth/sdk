@@ -130,8 +130,8 @@ const call = System.getRunSystemCall('AcceptMission', { assignment }, dispatcher
 
 `Mission.getAssignment({ campaign, subject, mission })` also supports generic
 campaigns. Campaign IDs and the starter crew cutoff are deployment configuration,
-not universal SDK constants. `MissionAction` takes `assignment`, `action`, and an
-`arguments` array; `MissionValidate` takes `assignment` and `arguments`.
+not universal SDK constants. `MissionAction` has been removed in SDK 2.8.0. Use `MissionObservation` around native
+gameplay calls. `MissionValidate` takes `assignment` and `arguments`.
 `ClaimMissionReward` takes `assignment`; `ReadMissionState` takes `assignment` and
 `slot`. The ABI marks `ReadMissionState` external, not view. The SDK does not assign
 meanings to its returned tuple or application-specific state slots.
@@ -139,8 +139,7 @@ meanings to its returned tuple or application-specific state slots.
 Completion is authoritative on-chain. The same Crew participates throughout;
 it must be manned, not invalidated, and have an ID strictly above the configured
 cutoff. Acceptance is explicit and sequential: the previous mission must be
-completed but need not be claimed. Early evidence captured through the campaign
-wrapper persists; ordinary historical gameplay is not automatically credited.
+completed but need not be claimed. Early evidence captured through campaign observation persists; ordinary historical gameplay is not automatically credited.
 Production buildings require campaign construction evidence and crew control at
 qualifying use. Purchased inputs count.
 
@@ -269,3 +268,5 @@ rather than the commit alone, was the parity target.
 SDK 2.7.2 adds helpers that round each travel leg and production phase to whole
 real-time seconds before calculating completion. Use these same durations for
 estimates and lease authorization; see the [timing guide](docs/timing.md).
+
+See [Mission observation and colonization](docs/mission-observation.md) for SDK 2.8.0 transaction construction, candidate coverage, colony evidence, and deployment migration.

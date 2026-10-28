@@ -347,26 +347,6 @@
     "outputs": [],
     "state_mutability": "external"
   },
-  "MissionAction": {
-    "type": "function",
-    "name": "MissionAction",
-    "inputs": [
-      {
-        "name": "assignment",
-        "type": "influence::common::missions::Assignment"
-      },
-      {
-        "name": "action",
-        "type": "core::felt252"
-      },
-      {
-        "name": "arguments",
-        "type": "core::array::Span::<core::felt252>"
-      }
-    ],
-    "outputs": [],
-    "state_mutability": "external"
-  },
   "MissionValidate": {
     "type": "function",
     "name": "MissionValidate",
@@ -2425,5 +2405,53 @@
     ],
     "outputs": [],
     "state_mutability": "view"
+  },
+  "ConfigureColonizationMissions": {
+    "type": "function",
+    "name": "ConfigureColonizationMissions",
+    "inputs": [
+      {
+        "name": "campaign",
+        "type": "core::felt252"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "MigrateStarterObserver": {
+    "type": "function",
+    "name": "MigrateStarterObserver",
+    "inputs": [
+      {
+        "name": "expected_old",
+        "type": "core::starknet::class_hash::ClassHash"
+      },
+      {
+        "name": "replacement",
+        "type": "core::starknet::class_hash::ClassHash"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "UpgradeMissionCampaign": {
+    "type": "function",
+    "name": "UpgradeMissionCampaign",
+    "inputs": [
+      {
+        "name": "campaign",
+        "type": "core::felt252"
+      },
+      {
+        "name": "expected",
+        "type": "core::starknet::class_hash::ClassHash"
+      },
+      {
+        "name": "replacement_name",
+        "type": "core::felt252"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
   }
 }

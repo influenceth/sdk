@@ -46,11 +46,10 @@ describe('Mission library', function () {
       expect(System.Systems[name].inputs[0].type).to.equal('MissionAssignment');
     });
   }
-  for (const name of ['MissionAction', 'MissionValidate']) {
+  for (const name of ['MissionValidate']) {
     for (const args of [[], [7n, 8n]]) {
       it(`serializes ${name} with ${args.length} arguments`, function () {
         const expected = ['291', '1', '42', '0'];
-        if (name === 'MissionAction') expected.push('9');
         expected.push(String(args.length), ...args.map(String));
         expect(System.getRunSystemCall(name, { assignment, action: '0x9', arguments: args }, '0x456').calldata.slice(1))
           .to.deep.equal([String(expected.length), ...expected]);

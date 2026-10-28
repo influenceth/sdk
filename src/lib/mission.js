@@ -33,13 +33,15 @@ const PATH_FIELDS = {
   Definition: ['campaign'],
   DefinitionCount: ['campaign'],
   ExecutionLock: [],
+  ColonyReward: ['campaign', 'mission'],
+  StarterObserverMigrated: ['campaign'],
   StarterInvalid: ['subject'],
   StarterParticipated: ['subject']
 };
 const PATH_PREFIXES = Object.fromEntries(Object.keys(PATH_FIELDS)
   .map((type) => [type, shortString.encodeShortString(type)]));
 
-const toFelt = (value) => {
+export const toFelt = (value) => {
   const result = toUnsignedBigInt(value, 252);
   if (result >= (1n << 251n) + 17n * (1n << 192n) + 1n) throw new RangeError('Invalid felt');
   return result;
@@ -54,6 +56,7 @@ const getPath = ({ type, ...values }) => {
       const id = toUnsignedBigInt(values.subject.id, 64);
       return Entity.packEntity({ label, id }, false);
     }
+    if (field === 'mission') return toUnsignedBigInt(values.mission, 32);
     if (field === 'page') return toUnsignedBigInt(values.page, 27);
     return toFelt(values[field]);
   })];
@@ -73,6 +76,8 @@ const parsePath = (path) => {
     if (field === 'subject') {
       toUnsignedBigInt(value, 80);
       result.subject = { label: Number(value & 65535n), id: value >> 16n };
+    } else if (field === 'mission') {
+      result.mission = Number(toUnsignedBigInt(value, 32));
     } else if (field === 'page') {
       result.page = Number(toUnsignedBigInt(value, 27));
     } else {
