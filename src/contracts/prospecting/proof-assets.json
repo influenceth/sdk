@@ -1,0 +1,211 @@
+{
+  "circuit": "fieldwork-r7-volume150-v1",
+  "developmentOnly": true,
+  "samples": {
+    "1": {
+      "sampleCount": 1,
+      "wasm": {
+        "file": "campaign1volume150.wasm",
+        "bytes": 161213,
+        "sha256": "c59283811e792ccb1b722bf71a75179f1386eb96bb20f9f61b3a8c3c631c8d56"
+      },
+      "zkey": {
+        "file": "campaign1volume150.zkey",
+        "bytes": 2972504,
+        "sha256": "8d18b001d8923cd029bc7213ccb10764991b148a026f4196f1541e72cbcaf759"
+      },
+      "vk": {
+        "file": "campaign1volume150.vk.json",
+        "bytes": 2595,
+        "sha256": "08a1d8debe117808b5e900513310598805504dbe451de5cc48c7414bb1016b8e"
+      },
+      "proveMs": 1271.5970420000012,
+      "r1csBytes": 1471440
+    },
+    "2": {
+      "sampleCount": 2,
+      "wasm": {
+        "file": "campaign2volume150.wasm",
+        "bytes": 204810,
+        "sha256": "ffe28bdb42dfe30644d5323f15e8277dbdd220d3381bf9248b64751823946a51"
+      },
+      "zkey": {
+        "file": "campaign2volume150.zkey",
+        "bytes": 4945212,
+        "sha256": "5402254df3283f529020854fa2e244632bee126da68e14a773f6289c54776801"
+      },
+      "vk": {
+        "file": "campaign2volume150.vk.json",
+        "bytes": 2595,
+        "sha256": "93e24a6ddb024fb5136aba8c51cea03cb1358195d1f28618b34e7e6554dc63cf"
+      },
+      "proveMs": 1606.3983329999974,
+      "r1csBytes": 2613468
+    },
+    "3": {
+      "sampleCount": 3,
+      "wasm": {
+        "file": "campaign3volume150.wasm",
+        "bytes": 248243,
+        "sha256": "955b7dc6172ac5dce2b08427146f694e372a4488a28f4d936e4ba1b462c2456e"
+      },
+      "zkey": {
+        "file": "campaign3volume150.zkey",
+        "bytes": 7656476,
+        "sha256": "2fabcfb3f1aeac6e91f09cb85bb331dfc03bf148116343383e15f11dfcdc7852"
+      },
+      "vk": {
+        "file": "campaign3volume150.vk.json",
+        "bytes": 2597,
+        "sha256": "59af9b78eb91d47d052bd7b90a61935b907d813ceccb07ee90e3fcfd17cf70f0"
+      },
+      "proveMs": 2480.4777500000055,
+      "r1csBytes": 3928336
+    },
+    "4": {
+      "sampleCount": 4,
+      "wasm": {
+        "file": "campaign4volume150.wasm",
+        "bytes": 293262,
+        "sha256": "8a0ea52aa82e555d538e5162090f9ae6ccdd747a9484619b798750056d2990f0"
+      },
+      "zkey": {
+        "file": "campaign4volume150.zkey",
+        "bytes": 9917208,
+        "sha256": "21a081c5d7fc46bcf307dd78bfa9d5af8267be243b420b9c894f44657d1c6bae"
+      },
+      "vk": {
+        "file": "campaign4volume150.vk.json",
+        "bytes": 2592,
+        "sha256": "f3702bec8b59593629c4ee0cf0581dddb68475beb1656239e63c977aabe42ede"
+      },
+      "proveMs": 2881.0842910000065,
+      "r1csBytes": 5279652
+    },
+    "5": {
+      "sampleCount": 5,
+      "wasm": {
+        "file": "campaign5volume150.wasm",
+        "bytes": 336138,
+        "sha256": "ec02058a64e79ca5ff011907a5fc82937ca74147eee36db0065a06f70188119c"
+      },
+      "zkey": {
+        "file": "campaign5volume150.zkey",
+        "bytes": 13153752,
+        "sha256": "2b3d4f66856dc88c31056c13789b67b5499fe900fd066c3e0b28cafcb24d29a8"
+      },
+      "vk": {
+        "file": "campaign5volume150.vk.json",
+        "bytes": 2596,
+        "sha256": "6c34938c91dbf6317054d93f85e1d9f626332c6a05397ad3f8bb524b8a90ce02"
+      },
+      "proveMs": 4128.003375,
+      "r1csBytes": 6538404
+    },
+    "6": {
+      "sampleCount": 6,
+      "wasm": {
+        "file": "campaign6volume150.wasm",
+        "bytes": 381528,
+        "sha256": "e5b5e385efaf9b68a448f08b428cd0a41c3ae4ba8057c191106ed87a774d4fe5"
+      },
+      "zkey": {
+        "file": "campaign6volume150.zkey",
+        "bytes": 15552492,
+        "sha256": "1c678918f9eaba7b30736a0b355e1d1c853555a35a3599cc4d5c9fa12c84ef83"
+      },
+      "vk": {
+        "file": "campaign6volume150.vk.json",
+        "bytes": 2593,
+        "sha256": "56e4d2175412303cb1bf79a2e5e5898be86445110fae4129563ec28263f9d50b"
+      },
+      "proveMs": 4493.082875000022,
+      "r1csBytes": 7957324
+    },
+    "7": {
+      "sampleCount": 7,
+      "wasm": {
+        "file": "campaign7volume150.wasm",
+        "bytes": 426427,
+        "sha256": "ea59d7acea5f88b6e04def99d1c6adb8b97ed0c8a25c88dd9436c0c6c3012ce7"
+      },
+      "zkey": {
+        "file": "campaign7volume150.zkey",
+        "bytes": 18024988,
+        "sha256": "0f84e0020646525acbbb5fc7089c552daa9185e18fee5cf99070f9785c8cfdf5"
+      },
+      "vk": {
+        "file": "campaign7volume150.vk.json",
+        "bytes": 2596,
+        "sha256": "74c8cdb343455e429a3cbf52149d7e87ca1095f38bb88155208ab435e17490c1"
+      },
+      "proveMs": 4893.971250000002,
+      "r1csBytes": 9412692
+    },
+    "8": {
+      "sampleCount": 8,
+      "wasm": {
+        "file": "campaign8volume150.wasm",
+        "bytes": 469810,
+        "sha256": "8a5b5b53b4fe2d62b1227343ddae7d830f3c07e03dfea69f59d5d9df3e99ab98"
+      },
+      "zkey": {
+        "file": "campaign8volume150.zkey",
+        "bytes": 22521872,
+        "sha256": "d2e02bce3fa6ac3f39f246bbb951c08b9776f6b99fbbcc06cb4b8bfa7cd969ad"
+      },
+      "vk": {
+        "file": "campaign8volume150.vk.json",
+        "bytes": 2594,
+        "sha256": "bdf64c7d723800ec646b46b9fc8ca650967e2a6e5a25e79536ba753a4578f82d"
+      },
+      "proveMs": 7257.944957999978,
+      "r1csBytes": 10775496
+    },
+    "9": {
+      "sampleCount": 9,
+      "wasm": {
+        "file": "campaign9volume150.wasm",
+        "bytes": 516615,
+        "sha256": "1b0b9ba0005d64c44da1ab78d246651ae44f97865e76079fdc150bdad45e7087"
+      },
+      "zkey": {
+        "file": "campaign9volume150.zkey",
+        "bytes": 25132376,
+        "sha256": "527375b182afe19879d95bdd377d0d63c854584c2e2d182595510eb0b424a0af"
+      },
+      "vk": {
+        "file": "campaign9volume150.vk.json",
+        "bytes": 2592,
+        "sha256": "2ada8ba108a0015c910862cec1abefaa278ba3e6a099f610133d1d1733cd255d"
+      },
+      "proveMs": 7815.1528339999495,
+      "r1csBytes": 12298468
+    },
+    "10": {
+      "sampleCount": 10,
+      "wasm": {
+        "file": "campaign10volume150.wasm",
+        "bytes": 562967,
+        "sha256": "e82b7c825fef8423f956bafa16827d893c7111c839e306640173264d217aaab0"
+      },
+      "zkey": {
+        "file": "campaign10volume150.zkey",
+        "bytes": 27816636,
+        "sha256": "de6baf3c4f99b9cbcb7436a98421e4fec26c0dda4881132aada927295abd8617"
+      },
+      "vk": {
+        "file": "campaign10volume150.vk.json",
+        "bytes": 2594,
+        "sha256": "beb9bb8347bc269bef5c6cea3bd77bbad8f9f1127e8fc40d166fc9d0def23745"
+      },
+      "proveMs": 8258.268875000009,
+      "r1csBytes": 13857888
+    }
+  },
+  "library": {
+    "file": "snarkjs.min.js",
+    "bytes": 688758,
+    "sha256": "3f61bbd9ac0a10173902eaef65b510fa4e9a2c057f759c7f18a6d0446b20fd06"
+  }
+}

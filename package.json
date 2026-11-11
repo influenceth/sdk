@@ -1,6 +1,6 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.8.1",
+  "version": "2.9.0-rc.0",
   "description": "Influence SDK",
   "type": "module",
   "engines": {
@@ -13,15 +13,25 @@
       "require": "./build/index.cjs"
     },
     "./images/manifests/images.v1.json": "./assets/images/manifests/images.v1.json",
-    "./images/manifests/latest.json": "./assets/images/manifests/latest.json"
+    "./images/manifests/latest.json": "./assets/images/manifests/latest.json",
+    "./prospecting/artifacts": "./src/contracts/prospecting/manifest.json",
+    "./prospecting/contracts": "./src/contracts/prospecting/fieldwork.json",
+    "./prospecting/verifiers": "./src/contracts/prospecting/verifiers.json",
+    "./prospecting/proof-assets": "./src/contracts/prospecting/proof-assets.json",
+    "./prospecting/claim-component": "./src/contracts/prospecting/claim-component.json",
+    "./contracts/components": "./src/contracts/starknet_components.json"
   },
   "browser": {
     "crypto": false
   },
   "files": [
-    "build/*",
+    "build/index.js",
+    "build/index.cjs",
     "assets/images/manifests/images.v1.json",
-    "assets/images/manifests/latest.json"
+    "assets/images/manifests/latest.json",
+    "src/contracts/prospecting/*.json",
+    "src/contracts/starknet_components.json",
+    "docs/prospecting.md"
   ],
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
@@ -31,7 +41,11 @@
     "prepublishOnly": "npm run build",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive",
     "test:mission-bindings-build": "npm run build && node src/scripts/testStarterMissionBindingsBuild.mjs",
-    "publish-sdk": "npm run build && npm publish --access public"
+    "publish-sdk": "npm run build && npm publish --access public",
+    "export-prospecting": "node ./src/scripts/exportProspectingArtifacts.js",
+    "build:release": "NODE_ENV=production npm run build",
+    "test:prospecting": "NODE_ENV=test mocha test/lib/prospecting.spec.js test/lib/prospectingBindings.spec.js test/lib/claimMining.spec.js test/lib/privateData.spec.js",
+    "test:prospecting-build": "node src/scripts/testProspectingBuild.mjs"
   },
   "repository": {
     "type": "git",
@@ -63,8 +77,8 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.19.6",
-    "@babel/eslint-parser": "^7.19.1",
+    "@babel/core": "7.28.5",
+    "@babel/eslint-parser": "7.28.5",
     "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "@babel/preset-env": "^7.19.4",
     "@rollup/plugin-babel": "^7.1.0",
@@ -85,8 +99,11 @@
   },
   "dependencies": {
     "@influenceth/astro": "^0.2.6",
+    "@libp2p/crypto": "5.2.0",
+    "@zkpassport/poseidon2": "0.6.2",
     "buffer": "^6.0.3",
     "ethers": "^6.7.1",
+    "garaga": "1.1.0",
     "mathjs": "^11.4.0",
     "starknet": "^10.8.0"
   }

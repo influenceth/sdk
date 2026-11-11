@@ -270,3 +270,11 @@ real-time seconds before calculating completion. Use these same durations for
 estimates and lease authorization; see the [timing guide](docs/timing.md).
 
 See [Mission observation and colonization](docs/mission-observation.md) for SDK 2.8.0 transaction construction, candidate coverage, colony evidence, and deployment migration.
+
+
+## Prospecting and claims (2.9 release candidate)
+
+Shared `Prospecting`, `Claim`, `Mining` and `PrivateData` APIs, migration-compatible
+claim metadata, single-campaign starter mission metadata, and generated development
+protocol artifacts are documented in [the prospecting integration guide](docs/prospecting.md).
+Production gameplay activation is a separate contracts/client/server integration.

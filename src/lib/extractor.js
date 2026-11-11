@@ -1,4 +1,5 @@
 import Time from '../utils/Time.js';
+import Mining from './mining.js';
 
 const MAX_EXTRACTION_TIME = 365 * 86400; // in-game seconds
 const MAX_YIELD_PER_RUN = 10000e6; // 10000 tonnes in grams
@@ -46,6 +47,12 @@ export default {
   STATUSES,
   IDS,
   TYPES,
+
+  getRunningJob: Mining.getRunningJob,
+  quote: Mining.quote,
+  quoteClaim: Mining.quoteEntity,
+  getMaxQuantity: Mining.getMaxQuantity,
+  isSamplingBlocked: Mining.isSamplingBlocked,
 
   getExtractionTime,
   getExtractionTimeReal,

@@ -908,5 +908,27 @@
         "type": "core::bool"
       }
     ]
+  },
+  "influence::components::claim::Claim": {
+    "type": "struct",
+    "name": "influence::components::claim::Claim",
+    "members": [
+      {
+        "name": "rules_version",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "rate_bps",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "reference_abundance_ppm",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      }
+    ]
   }
 }

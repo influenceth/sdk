@@ -1,4 +1,7 @@
 import Building from './building.js';
+import Claim from './claim.js';
+import { integer } from './prospecting/validation.js';
+import { PROSPECTING_MISSION_MIN_QUANTITY } from './prospecting/config.js';
 import Bindings from './starterMissionBindings.js';
 import Entity from './entity.js';
 import Mission, { toUnsignedBigInt } from './mission.js';
@@ -33,7 +36,7 @@ const DEFINITIONS = {
     id: 1,
     key: 'PROSPECT_THE_SURFACE',
     title: 'Prospect the Surface',
-    description: 'Complete three distinct core samples, each revealing a deposit with an initial yield of at least 500,000 kg.',
+    description: 'Complete one prospecting campaign and finalize a claim containing at least 1,000 tonnes.',
     prerequisiteId: 0,
     reward: 20_000
   },
@@ -42,7 +45,7 @@ const DEFINITIONS = {
     id: 2,
     key: 'BEGIN_EXTRACTION',
     title: 'Begin Extraction',
-    description: 'Construct an Extractor and complete a single extraction of at least 100,000 kg of a raw resource from a sampled deposit.',
+    description: 'Construct an Extractor and complete a single extraction of at least 100,000 kg of a raw resource.',
     prerequisiteId: 1,
     reward: 30_000
   },
@@ -109,9 +112,9 @@ const REQUIREMENTS = {
     requiresConstructionPlan: true
   },
   [IDS.PROSPECT_THE_SURFACE]: {
-    distinctDeposits: 3,
-    requiresInitialSampling: true,
-    minInitialYieldKg: 500_000
+    completedCampaigns: 1,
+    requiresProspectingFinalization: true,
+    minInitialYieldKg: PROSPECTING_MISSION_MIN_QUANTITY
   },
   [IDS.BEGIN_EXTRACTION]: {
     buildingType: Building.IDS.EXTRACTOR,
@@ -265,6 +268,22 @@ const isEligible = ({ campaign, cutoff, crewId, roster, invalidated }) => {
   return configuredCampaign !== 0n && id > minimumCrewId && roster.length > 0 && !invalid;
 };
 
+const getProspectingDefinition = ({ minimumClaimQuantity = PROSPECTING_MISSION_MIN_QUANTITY } = {}) => {
+  const minimum = integer(minimumClaimQuantity, 1, 4294967295, 'prospecting mission target');
+  return {
+    ...getMission(IDS.PROSPECT_THE_SURFACE),
+    description: `Complete one prospecting campaign and finalize a claim containing at least ${minimum.toLocaleString('en-US')} kg.`,
+    requirements: { completedCampaigns: 1, minInitialYieldKg: minimum, requiresProspectingFinalization: true }
+  };
+};
+const isProspectingClaimQualified = ({ entity, campaignId, minimumClaimQuantity = PROSPECTING_MISSION_MIN_QUANTITY }) => {
+  const { requirements } = getProspectingDefinition({ minimumClaimQuantity });
+  if (!entity.Claim || ![2, 3].includes(entity.Deposit?.status)) return false;
+  const parameters = Claim.getParameters(entity);
+  return parameters.campaignId === toUnsignedBigInt(campaignId, 64).toString() &&
+    toUnsignedBigInt(entity.Deposit.initialYield, 64) >= BigInt(requirements.minInitialYieldKg);
+};
+
 export default {
   ...Bindings,
   IDS,
@@ -281,5 +300,7 @@ export default {
   isEligible,
   getAssignment,
   getRewardAmount,
-  getRouteOutputProductIds
+  getRouteOutputProductIds,
+  getProspectingDefinition,
+  isProspectingClaimQualified
 };

@@ -1,0 +1,487 @@
+[
+  {
+    "type": "impl",
+    "name": "Impl",
+    "interface_name": "fieldwork_campaign::IFieldwork"
+  },
+  {
+    "type": "struct",
+    "name": "core::integer::u256",
+    "members": [
+      {
+        "name": "low",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "high",
+        "type": "core::integer::u128"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "core::array::Span::<core::felt252>",
+    "members": [
+      {
+        "name": "snapshot",
+        "type": "@core::array::Array::<core::felt252>"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": "core::bool",
+    "variants": [
+      {
+        "name": "False",
+        "type": "()"
+      },
+      {
+        "name": "True",
+        "type": "()"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "fieldwork_campaign::Campaign",
+    "members": [
+      {
+        "name": "owner",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "origin",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "context",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "count",
+        "type": "core::integer::u32"
+      },
+      {
+        "name": "pending",
+        "type": "core::bool"
+      },
+      {
+        "name": "closed",
+        "type": "core::bool"
+      },
+      {
+        "name": "replaceable",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "lot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "quantity",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "rate",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "fieldwork_campaign::Core",
+    "members": [
+      {
+        "name": "commitment",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "meta",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "blockedApproaches",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "random",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "target",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "ready",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "lot",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "fieldwork_campaign::IFieldwork",
+    "items": [
+      {
+        "type": "function",
+        "name": "create",
+        "inputs": [
+          {
+            "name": "origin",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "resource",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u64"
+          }
+        ],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "commit",
+        "inputs": [
+          {
+            "name": "id",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "lot",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "commitment",
+            "type": "core::integer::u256"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "commit_checked",
+        "inputs": [
+          {
+            "name": "id",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "lot",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "expected_index",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "commitment",
+            "type": "core::integer::u256"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "finalize",
+        "inputs": [
+          {
+            "name": "id",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "lot",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "quantity",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "multiplier",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "proof",
+            "type": "core::array::Span::<core::felt252>"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "abandon",
+        "inputs": [
+          {
+            "name": "id",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "set_permission",
+        "inputs": [
+          {
+            "name": "lot",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "owner",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "set_extraction",
+        "inputs": [
+          {
+            "name": "lot",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "status",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "preview_sample",
+        "inputs": [
+          {
+            "name": "id",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "lot",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "(core::integer::u256, core::integer::u256)"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "rate_preview",
+        "inputs": [
+          {
+            "name": "abundance_ppm",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "multiplier",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u64"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "get_campaign",
+        "inputs": [
+          {
+            "name": "id",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "fieldwork_campaign::Campaign"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "get_core",
+        "inputs": [
+          {
+            "name": "id",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "index",
+            "type": "core::integer::u32"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "fieldwork_campaign::Core"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "preview_randomness",
+        "inputs": [
+          {
+            "name": "id",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u64"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "metadata",
+        "inputs": [
+          {
+            "name": "origin",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "lot",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "resource",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u256"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "get_drills",
+        "inputs": [
+          {
+            "name": "owner",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u64"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "set_verifier",
+        "inputs": [
+          {
+            "name": "samples",
+            "type": "core::integer::u32"
+          },
+          {
+            "name": "verifier",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "reset_metadata",
+        "inputs": [
+          {
+            "name": "origin",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "lot",
+            "type": "core::integer::u64"
+          },
+          {
+            "name": "resource",
+            "type": "core::integer::u64"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      }
+    ]
+  },
+  {
+    "type": "constructor",
+    "name": "constructor",
+    "inputs": [
+      {
+        "name": "admin",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "domain",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "asteroid",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "radius",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "packed",
+        "type": "core::felt252"
+      },
+      {
+        "name": "one",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "three",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "five",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "ten",
+        "type": "core::starknet::contract_address::ContractAddress"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "fieldwork_campaign::FieldworkCampaign::Event",
+    "kind": "enum",
+    "variants": []
+  }
+]

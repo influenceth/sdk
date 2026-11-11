@@ -128,7 +128,7 @@ const TYPES = {
     isApplicable: (entity) => !!entity.DryDocks?.length
   },
   [IDS.USE_DEPOSIT]: {
-    name: 'Use Deposit',
+    name: 'Use Claim',
     isApplicable: (entity) => !!entity.Deposit
   }
 };

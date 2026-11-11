@@ -2,6 +2,10 @@ import ColonizationMission from './lib/colonizationMission.js';
 import MissionObservation from './lib/missionObservation.js';
 import Constants from './constants.js';
 
+import Claim from './lib/claim.js';
+import Mining from './lib/mining.js';
+import PrivateData from './lib/privateData.js';
+import Prospecting from './lib/prospecting.js';
 import Assets from './lib/assets.js';
 import Authorization from './lib/authorization.js';
 import Asteroid from './lib/asteroid.js';
@@ -45,7 +49,7 @@ import ethereumContracts from './contracts/ethereum_abis.json' with { type: 'jso
 import starknetAddresses from './contracts/starknet_addresses.json' with { type: 'json' };
 import starknetContracts from './contracts/starknet_abis.json' with { type: 'json' };
 
-(async function() {
+(async function () {
   const isNode = typeof process !== 'undefined' && !!process?.versions?.node;
   if (isNode && !globalThis.crypto) {
     const { webcrypto } = await import('crypto');
@@ -69,6 +73,10 @@ export {
 
 // Game asset libs
 export {
+  Claim,
+  Mining,
+  PrivateData,
+  Prospecting,
   Assets,
   Authorization,
   Asteroid,

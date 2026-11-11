@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import Claim from '../../src/lib/claim.js';
 import StarterMission from '../../src/lib/starterMission.js';
 import Building from '../../src/lib/building.js';
 import Process from '../../src/lib/process.js';
@@ -36,7 +37,7 @@ describe('StarterMission library', function () {
 
   it('keeps threshold units and building/processor namespaces explicit', function () {
     const types = StarterMission.TYPES;
-    expect(types[1].requirements).to.include({ distinctDeposits: 3, minInitialYieldKg: 500000, requiresInitialSampling: true });
+    expect(types[1].requirements).to.include({ completedCampaigns: 1, minInitialYieldKg: 1000000, requiresProspectingFinalization: true });
     expect(types[2].requirements).to.include({ minExtractionMassGrams: 100000000, rawProductIdMin: 1, rawProductIdMax: 22 });
     expect(types[3].requirements).to.include({ minStoredMassGrams: 100000000, inventorySlot: 2, requiresCampaignWarehouse: true, requiresQualifyingReceipt: true });
     for (const [id, buildingType, processorType] of [
@@ -131,5 +132,21 @@ describe('StarterMission library', function () {
         expect(() => StarterMission.isEligible(incomplete)).to.throw();
       }
     });
+  });
+});
+
+describe('Prospecting starter mission transition', function () {
+  it('keeps the mission ID/reward and requires one adequately sized finalized campaign', function () {
+    const definition = StarterMission.getProspectingDefinition();
+    expect(definition.id).to.equal(StarterMission.IDS.PROSPECT_THE_SURFACE);
+    expect(definition.reward).to.equal(20000);
+    expect(definition.requirements).to.deep.equal({ completedCampaigns: 1, minInitialYieldKg: 1000000, requiresProspectingFinalization: true });
+    const entity = Claim.getComponents({ quantity: 1000000, rateBps: 9000, resource: 1, referenceAbundancePpm: 600000, campaignId: 7 });
+    expect(StarterMission.isProspectingClaimQualified({ entity, campaignId: 7 })).to.equal(true);
+    entity.Deposit.remainingYield = 0;
+    entity.Deposit.status = 3;
+    expect(StarterMission.isProspectingClaimQualified({ entity, campaignId: 7 })).to.equal(true);
+    expect(StarterMission.isProspectingClaimQualified({ entity, campaignId: 8 })).to.equal(false);
+    expect(StarterMission.isProspectingClaimQualified({ entity: { Deposit: entity.Deposit }, campaignId: 7 })).to.equal(false);
   });
 });

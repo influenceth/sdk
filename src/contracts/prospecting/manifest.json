@@ -1,0 +1,76 @@
+{
+  "protocol": "fieldwork-sandbox-v1",
+  "circuit": "fieldwork-r7-volume150-v1",
+  "developmentOnly": true,
+  "checkedCommitments": true,
+  "rulesVersion": 7,
+  "quantityMultiplierBps": 15000,
+  "fieldwork": {
+    "file": "fieldwork.json",
+    "source": "optimization/fieldwork-contracts/target/dev/fieldwork_campaign_FieldworkCampaign.contract_class.json",
+    "classHash": "0x6d3544235cb405b79e759b98df91b8e2fc3d42ab2a15b9a69cd6bd63485a8e4",
+    "sha256": "2c8f9b22015f6bcd3d56fb206e38642feb24d00d6f68a866d81edd7c9c7a9938"
+  },
+  "verifiers": {
+    "1": {
+      "classHash": "0x3e90b58ca778e1960bf48d14f8138e1a8e97786612ddc1d98e62cc880bb1a7e",
+      "sha256": "d60cd496595d45704da11075342fdfcf5d4047e78057848eda9de2c49cca6a43",
+      "source": "optimization/fieldwork/volume150/verifier1/target/dev/verifier1_Groth16VerifierBN254.contract_class.json"
+    },
+    "2": {
+      "classHash": "0x771994836b78037b5e77f885d0166a60b9058e3003866f3423ecd9d507e9b7e",
+      "sha256": "d1128afb8029500cf654ea39e1e06db6cfe184f2cd7d43913cabcb0008b96fa4",
+      "source": "optimization/fieldwork/volume150/verifier2/target/dev/verifier2_Groth16VerifierBN254.contract_class.json"
+    },
+    "3": {
+      "classHash": "0x3a804b92e73c1eee37a67c8d1238f9d82a872ab74c46f106e4e3b9b0130a6c6",
+      "sha256": "d6c09022a3dc49091c8a0b435d0f658f6cecfd980be981fea01500350e735b96",
+      "source": "optimization/fieldwork/volume150/verifier3/target/dev/verifier3_Groth16VerifierBN254.contract_class.json"
+    },
+    "4": {
+      "classHash": "0x64cc315fc29c7232a52dfac62f32934734c1303cf77938a35513e3c30543a8b",
+      "sha256": "bb4c4cee3c185c688222076f55730bf8e9a97a7b6f0662fa4b1beb4ac6e27ab6",
+      "source": "optimization/fieldwork/volume150/verifier4/target/dev/verifier4_Groth16VerifierBN254.contract_class.json"
+    },
+    "5": {
+      "classHash": "0x3c2e65774f9360edb37a02a1d783bd9f06b12c6b0e1129b48f96002354dd700",
+      "sha256": "c62a41905352ae25b1ac4b4e90b91f84373640c1505809a1e8930f1c5a9f987e",
+      "source": "optimization/fieldwork/volume150/verifier5/target/dev/verifier5_Groth16VerifierBN254.contract_class.json"
+    },
+    "6": {
+      "classHash": "0x3c2b488eb9fc0c3d46618eed05cb233b0cc4b710ab4ae1301cf80964dd78e6a",
+      "sha256": "3cf6c784b8fa7c391afac88873636b6240b9890c75f186460a28fb4ed09b30e7",
+      "source": "optimization/fieldwork/volume150/verifier6/target/dev/verifier6_Groth16VerifierBN254.contract_class.json"
+    },
+    "7": {
+      "classHash": "0x5da154413013b4fe46ed1dc97c4f6b2c0b1c400903c9f4e3442d7bdd1220a5",
+      "sha256": "c43cbe5fd71fad93d3b6630e1fa7fe4f972a5ce4cb816f86c952283c26cc7eda",
+      "source": "optimization/fieldwork/volume150/verifier7/target/dev/verifier7_Groth16VerifierBN254.contract_class.json"
+    },
+    "8": {
+      "classHash": "0x6ce259270f472caf634a1422aa586080e1858b9a5c496b479cdc1a2b778bc13",
+      "sha256": "7692c7fba6b809ce9c1034fd1d1f5dfd2faa48b52d2ad574db0daef0b51db603",
+      "source": "optimization/fieldwork/volume150/verifier8/target/dev/verifier8_Groth16VerifierBN254.contract_class.json"
+    },
+    "9": {
+      "classHash": "0x3858db0cec5610e4b8fbc2718afe75e92aa68646e31a2db5d1fb216739bd5dd",
+      "sha256": "6d53821c884bd07171c30344eb7f01fc8525eda16269f9266dc5d9a2b483e6cc",
+      "source": "optimization/fieldwork/volume150/verifier9/target/dev/verifier9_Groth16VerifierBN254.contract_class.json"
+    },
+    "10": {
+      "classHash": "0x424ad5f5092854d913e8e21088b4e8200f3c5288a8133561bdb17a4d30b8db9",
+      "sha256": "52372c21f4fa400834180192f94f0386468e43dd37ef627212ccd6551a4f1b84",
+      "source": "optimization/fieldwork/volume150/verifier10/target/dev/verifier10_Groth16VerifierBN254.contract_class.json"
+    }
+  },
+  "claimComponent": {
+    "file": "claim-component.json",
+    "type": "influence::components::claim::Claim",
+    "source": "src/components/claim.cairo",
+    "sourceSha256": "82040f9184fc483160beeccb917aed239fecc822bca21b4759257a88b5473d1e",
+    "typeComponentClassHash": "0x15937f189e1bd9d8ece075c442a1f511a82ff0ba5bbc6f051b8a3ab01b9f3c0",
+    "storageFelts": 1,
+    "storageBits": 116
+  },
+  "productionSystemsAvailable": false
+}
