@@ -4,6 +4,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { hash } from 'starknet';
+import { exportProspectingProof } from './exportProspectingProof.js';
 
 const sdk = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const source = process.argv[2];
@@ -12,7 +13,7 @@ const contracts = resolve(source);
 const exported = resolve(contracts, 'target/prospecting');
 const readJSON = async (file) => JSON.parse(await readFile(file, 'utf8'));
 const manifest = await readJSON(resolve(exported, 'manifest.json'));
-if (manifest.version !== 1 || manifest.rules !== 'fieldwork-r7-volume150-v1' || manifest.deployment !== 'undeployed') {
+if (manifest.version !== 2 || manifest.rules !== 'fieldwork-r7-volume150-v1' || manifest.deployment !== 'undeployed') {
   throw new Error('Unsupported prospecting artifact manifest');
 }
 
@@ -26,9 +27,7 @@ const componentName = 'influence::components::claim::Claim';
 
 // Validate every exported ABI against its compiled class before replacing any SDK files.
 for (const [name, descriptor] of Object.entries(manifest.contracts)) {
-  const file = name === 'ProspectingVerifier'
-    ? 'proofs/fieldwork/target/dev/prospecting_verifier_ProspectingVerifier.contract_class.json'
-    : `target/dev/contract_${name}.contract_class.json`;
+  const file = descriptor.artifact;
   const bytes = await readFile(resolve(contracts, file));
   const artifact = JSON.parse(bytes);
   const abi = await readJSON(resolve(exported, descriptor.abi));
@@ -69,3 +68,4 @@ await writeFile(resolve(sdk, 'src/contracts/prospecting/gameplay.json'), json(ga
 await writeFile(resolve(sdk, 'src/contracts/prospecting/gameplay-manifest.json'), json(manifest));
 await writeFile(resolve(sdk, 'src/contracts/prospecting/claim-component.json'), json(registries.components[componentName]));
 console.log(`Exported ${Object.keys(gameplay).length} gameplay ABIs, schemas and class hashes; deployment addresses unchanged`);
+await exportProspectingProof(contracts);

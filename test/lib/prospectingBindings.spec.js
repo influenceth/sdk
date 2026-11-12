@@ -16,6 +16,11 @@ describe('Generated prospecting protocol bindings', function () {
       expect(Prospecting.Proof.getAssets(n).developmentOnly).to.equal(true);
     }
     expect(() => Prospecting.Proof.getAssets(11)).to.throw();
+    const first = Prospecting.Proof.getAssets(1);
+    const last = Prospecting.Proof.getAssets(10);
+    expect(first.maxSamples).to.equal(10);
+    expect(first.zkey).to.deep.equal(last.zkey);
+    expect(first.vk).to.deep.equal(last.vk);
   });
   it('requires an explicit expected sample index on commitment calls', function () {
     const call = Prospecting.Contracts.getCommitCall({ address: '0x1', campaignId: 7, lot: 14, index: 2, commitment: '123' });

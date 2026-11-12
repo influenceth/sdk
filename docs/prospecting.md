@@ -1,4 +1,4 @@
-# Prospecting SDK — 2.9.0-rc.1
+# Prospecting SDK — 2.9.0-rc.2
 
 This release supplies shared prospecting/claim APIs for the client and server.
 It does not activate the production gameplay cutover. Existing legacy sampling
@@ -36,7 +36,7 @@ wallet connection UI and libp2p connections; the server owns retention/indexing.
   fractional bits), never both. Time acceleration is applied separately.
 - Block timestamps/durations are real seconds. Private-envelope `updatedAt` follows
   the existing protocol's integer JavaScript timestamp convention.
-- Rules v7/circuit `fieldwork-r7-volume150-v1` support 1–10 paid samples, a +50%
+- Rules v7/circuit `fieldwork-r7-volume150-p10-v1` support 1–10 paid samples, a +50%
   quantity adjustment, five depth bands, 1.5 km step reach and 3.5 km origin reach.
   The original integer quantity is floored before multiplying by 3/2 and flooring
   again. `getClaim` already includes this bonus: do not apply it a second time.
@@ -147,6 +147,27 @@ Groth16 hints and builds a call using the compiled ABI. An optional pinned
 atomically at execution. Its finalization calldata contains the verifier span length
 exactly once. It does not broadcast or claim a proof is verified by generating hints.
 
+## Single padded proof format
+
+`getProofPacket` returns the actual `sampleCount` and a witness with `count` plus
+nine input arrays of length ten. Unused entries are constrained to zero; inactive
+steps preserve state. The private record schema and gameplay rules stay unchanged,
+so saved rc.1 records can be replayed without conversion. The active transcript's
+public digest is unchanged and includes the real sample count. Padding is neither
+stored nor transmitted on chain.
+
+`Proof.getAssets(n)` validates n in 1–10 and returns the same WASM, proving key and
+verification key descriptors for every length. The exported `verifiers` JSON is
+now one `{ abi, verificationKey }` object rather than a map indexed by length.
+The circuit ID `fieldwork-r7-volume150-p10-v1` separates these assets from rc.1;
+old proofs/keys cannot be combined with the new verifier. Historical standalone
+sandbox metadata remains separate from the current `Game` and `Proof` APIs.
+
+The contract adapter constructor takes one Groth16 verifier address. A shared
+prefix sponge keeps the existing variable-length on-chain transcript and gas cost.
+Production setup remains deferred; published verification keys describe disposable
+local development assets.
+
 ## Gameplay contract bindings
 
 Use `Prospecting.Game` for the Influence Dispatcher systems. Its builders return
@@ -249,7 +270,7 @@ The package exports `./prospecting/artifacts`, `./prospecting/contracts`,
 `./contracts/{abis,systems,events,types,components}` JSON subpaths.
 
 Artifacts include the genuine Cairo Claim schema, compiled TypeComponent class
-provenance, the compiled sandbox campaign ABI, ten verifier ABIs/verification keys,
+provenance, the historical sandbox campaign ABI, one current verifier ABI/verification key,
 class hashes and hashed proof-asset descriptors. WASM, proving keys and full
 Sierra/CASM programs are not bundled into npm. Host the development assets separately.
 Existing sandbox proof setup keys remain development-only. The game bindings are
@@ -262,8 +283,7 @@ Production setup remains deferred. Existing deployed addresses are not changed.
 Regenerate from the two compiled repositories:
 
 ```sh
-npm run export-prospecting -- /path/to/mining-prototype /path/to/influence-starknet
-npm run export-prospecting-gameplay -- /path/to/influence-starknet
+npm run export-prospecting -- /path/to/influence-starknet
 npm test
 npm run build:release
 npm run test:prospecting-build
@@ -271,11 +291,15 @@ npm run test:prospecting-build
 
 The gameplay exporter verifies each ABI, class hash and artifact SHA-256 against
 the current compiled contracts before updating any registry. Run the gameplay
-exporter after the sandbox exporter when refreshing both families.
+exporter after building/exporting the contracts and proof package. It also refreshes
+the single proof key and asset descriptors. `export-prospecting-sandbox` is a separate
+historical adapter export and cannot overwrite current proof assets.
 
 The gameplay contracts now implement crew/drill accounting, atomic claim creation,
 baseline/claim extraction, legacy completion and the updated mission observer.
-Client transaction flows and server indexing still need to adopt these bindings.
+Client transaction flows and server indexing adopt these bindings. Publish/install
+rc.2 in both consumers before rebuilding containers; the old rc.1 lockfiles cannot
+produce this new proof format.
 Sepolia declaration/deployment may be staged for integration testing with matching
 development proving keys. Do not register/activate the shared gameplay cutover until
 client/server consumers understand the new components/events and have passed the

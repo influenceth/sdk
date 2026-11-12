@@ -1,6 +1,6 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.9.0-rc.1",
+  "version": "2.9.0-rc.2",
   "description": "Influence SDK",
   "type": "module",
   "engines": {
@@ -52,11 +52,13 @@
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive",
     "test:mission-bindings-build": "npm run build && node src/scripts/testStarterMissionBindingsBuild.mjs",
     "publish-sdk": "npm run build && npm publish --access public",
-    "export-prospecting": "node ./src/scripts/exportProspectingArtifacts.js",
+    "export-prospecting": "node ./src/scripts/exportProspectingGameplay.js",
     "build:release": "NODE_ENV=production npm run build",
     "test:prospecting": "NODE_ENV=test mocha test/lib/prospecting.spec.js test/lib/prospectingBindings.spec.js test/lib/prospectingGame.spec.js test/lib/claimMining.spec.js test/lib/privateData.spec.js",
     "test:prospecting-build": "node src/scripts/testProspectingBuild.mjs",
-    "export-prospecting-gameplay": "node ./src/scripts/exportProspectingGameplay.js"
+    "export-prospecting-gameplay": "node ./src/scripts/exportProspectingGameplay.js",
+    "export-prospecting-proof": "node ./src/scripts/exportProspectingProof.js",
+    "export-prospecting-sandbox": "node ./src/scripts/exportProspectingArtifacts.js"
   },
   "repository": {
     "type": "git",

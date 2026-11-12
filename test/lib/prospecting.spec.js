@@ -25,7 +25,12 @@ describe('Prospecting SDK', function () {
     it(`replays the real ${fixture.n}-sample browser proof statement exactly`, function () {
       const record = recordFor(fixture); const packet = Prospecting.getProofPacket(record);
       expect(packet.expectedPublicSignals).to.deep.equal(fixture.publicSignals);
-      expect(packet.input.commitments).to.deep.equal(fixture.input.commitments.map(String));
+      expect(packet.input.count).to.equal(String(fixture.n));
+      expect(packet.input.commitments.slice(0, fixture.n)).to.deep.equal(fixture.input.commitments.map(String));
+      for (const key of ['meta', 'blockedApproaches', 'commitments', 'randomness', 'methods', 'targets', 'sources', 'depths', 'salts']) {
+        expect(packet.input[key]).to.have.length(10);
+        expect(packet.input[key].slice(fixture.n).every(value => value === '0')).to.equal(true);
+      }
       const result = Prospecting.replayCampaign(record).finalized;
       expect(result.quantity).to.equal(fixture.result.quantity);
       expect(result.rate).to.equal(fixture.result.rate);

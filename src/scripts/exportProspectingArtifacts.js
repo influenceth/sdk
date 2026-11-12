@@ -53,16 +53,11 @@ const manifest = {
   productionSystemsAvailable: false
 };
 await writeFile(resolve(destination, 'fieldwork.json'), JSON.stringify(fieldwork.abi, null, 2) + '\n');
-const verifiers = {};
+// This exporter retains the historical standalone sandbox ABI only. Current
+// gameplay proof assets are exported by exportProspectingProof.js.
 for (let n = 1; n <= 10; n++) {
   const verifier = await artifact(`optimization/fieldwork/volume150/verifier${n}/target/dev/verifier${n}_Groth16VerifierBN254.contract_class.json`);
-  const vk = JSON.parse(await readFile(resolve(sandbox, `optimization/fieldwork/volume150/artifacts/campaign${n}volume150.vk.json`), 'utf8'));
   manifest.verifiers[n] = { classHash: verifier.classHash, sha256: verifier.sha256, source: verifier.source };
-  verifiers[n] = { abi: verifier.abi, verificationKey: vk };
 }
-await writeFile(resolve(destination, 'verifiers.json'), JSON.stringify(verifiers, null, 2) + '\n');
-const assets = JSON.parse(await readFile(resolve(sandbox, 'optimization/fieldwork/volume150/artifacts/manifest.json'), 'utf8'));
-if (assets.circuit !== manifest.circuit || !assets.developmentOnly || Object.keys(assets.samples).length !== 10) throw new Error('Incomplete proof asset family');
-await writeFile(resolve(destination, 'proof-assets.json'), JSON.stringify(assets, null, 2) + '\n');
 await writeFile(resolve(destination, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
 console.log(`Exported development-only protocol ABI and ten verifiers to ${destination}`);

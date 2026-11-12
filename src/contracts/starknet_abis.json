@@ -7116,22 +7116,12 @@
       ]
     },
     {
-      "type": "struct",
-      "name": "core::array::Span::<core::starknet::contract_address::ContractAddress>",
-      "members": [
-        {
-          "name": "snapshot",
-          "type": "@core::array::Array::<core::starknet::contract_address::ContractAddress>"
-        }
-      ]
-    },
-    {
       "type": "constructor",
       "name": "constructor",
       "inputs": [
         {
-          "name": "verifiers",
-          "type": "core::array::Span::<core::starknet::contract_address::ContractAddress>"
+          "name": "verifier",
+          "type": "core::starknet::contract_address::ContractAddress"
         }
       ]
     },

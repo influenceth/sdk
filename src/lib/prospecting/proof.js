@@ -7,7 +7,8 @@ import verifiers from '../../contracts/prospecting/verifiers.json' with { type: 
 let garaga;
 export function getAssets (sampleCount) {
   const n = integer(sampleCount, 1, 10, 'sample count');
-  return { circuit: CIRCUIT, developmentOnly: true, library: assets.library, ...assets.samples[n] };
+  if (assets.circuit !== CIRCUIT || assets.maxSamples !== 10) throw new Error('Incompatible padded proof assets');
+  return { ...assets, sampleCount: n };
 }
 export function assertProofStatement (packet, publicSignals) {
   if (packet.circuit !== CIRCUIT || !Array.isArray(publicSignals) || publicSignals.length !== 1 ||
@@ -22,7 +23,7 @@ export async function getVerifierCalldata ({ record, proof, publicSignals }) {
   const module = await garaga;
   const data = module.getGroth16CallData(
     module.parseGroth16ProofFromObject(proof, publicSignals),
-    module.parseGroth16VerifyingKeyFromObject(verifiers[packet.sampleCount].verificationKey),
+    module.parseGroth16VerifyingKeyFromObject(verifiers.verificationKey),
     module.CurveId.BN254
   ).map(String);
   if (Number(data[0]) !== data.length - 1) throw new Error('Invalid verifier span encoding');

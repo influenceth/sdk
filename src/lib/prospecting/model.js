@@ -109,6 +109,7 @@ export function finalizeRecord (record, claimIndex) {
 export function getProofPacket (record, identity = record.identity) {
   if (record.pending || record.claimIndex === null || !record.actions.length) throw new Error('Finalize a fully resolved campaign before proving');
   const state = replayCampaign(record, identity);
+  const sampleCount = record.actions.length;
   const input = {
     context: state.context,
     origin: String(identity.originIndex),
@@ -124,13 +125,18 @@ export function getProofPacket (record, identity = record.identity) {
     salts: state.history.map(({ action }) => action.salt),
     selected: String(record.claimIndex)
   };
+  const expectedPublicSignals = [Kernel.digest(input.context, input.quality, input.origin, input.meta,
+    input.blockedApproaches, input.commitments, input.randomness, state.finalized)];
+  for (const key of ['meta', 'blockedApproaches', 'commitments', 'randomness', 'methods', 'targets', 'sources', 'depths', 'salts']) {
+    input[key] = [...input[key], ...Array(Config.MAX_SAMPLES - sampleCount).fill('0')];
+  }
+  input.count = String(sampleCount);
   return {
     circuit: Config.CIRCUIT,
     mode: record.mode,
-    sampleCount: record.actions.length,
+    sampleCount,
     input,
-    expectedPublicSignals: [Kernel.digest(input.context, input.quality, input.origin, input.meta,
-      input.blockedApproaches, input.commitments, input.randomness, state.finalized)]
+    expectedPublicSignals
   };
 }
 export function assertChainTranscript (record, campaign, cores, { pendingRandomness } = {}) {

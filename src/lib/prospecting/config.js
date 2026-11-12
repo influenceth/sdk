@@ -1,6 +1,6 @@
 export const RULES_VERSION = 7;
 export const CLAIM_RULES_VERSION = 1;
-export const CIRCUIT = 'fieldwork-r7-volume150-v1';
+export const CIRCUIT = 'fieldwork-r7-volume150-p10-v1';
 export const MAX_SAMPLES = 10;
 export const DEPTH_BANDS_METRES = Object.freeze([100, 200, 300, 400, 500]);
 export const MAX_ORIGIN_DISTANCE_METRES = 3500;
