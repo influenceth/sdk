@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "deployment": "undeployed",
+  "rules": "fieldwork-r7-volume150-v1",
+  "gameCompiler": "2.7.0",
+  "verifierCompiler": "2.16.1",
+  "activation": "ConfigureProspecting",
+  "activationConstant": "PROSPECTING_ENABLED",
+  "verifierRegistry": "ProspectingVerifier",
+  "trustedSetup": "deferred; no production keys selected",
+  "sampleLimit": 10,
+  "replacementSeconds": 86400,
+  "quantityMultiplierBps": 15000,
+  "samplingQualityBps": 10000,
+  "baselineThresholdPpm": 50000,
+  "baselineRateBps": 2500,
+  "legacyRateBps": 12000,
+  "missionMinimumQuantityKg": 1000000,
+  "contracts": {
+    "ConfigureProspecting": {
+      "abi": "ConfigureProspecting.abi.json",
+      "classHash": "0x34f55e1afba0574b103c8447b079d20bddca7c26220fa405aa75ae8a6078f08",
+      "artifactSha256": "b61c5bba2f7556ace0f58c234ee581b16e0dacd303cfd7c231dac764f8e6d636"
+    },
+    "ProspectingStart": {
+      "abi": "ProspectingStart.abi.json",
+      "classHash": "0x5c65c965e495319f627d765a822482a4500f08dd84c0c0edde9534e4528eecd",
+      "artifactSha256": "f890f685e4a7d8c9d2b4accb916b51eb3894083ee9c6be3dea65a907ebd0d3b2"
+    },
+    "ProspectingSample": {
+      "abi": "ProspectingSample.abi.json",
+      "classHash": "0x36698eaecc016268095557e8c91cad57d53eab384a90bf9471bc867edbcec00",
+      "artifactSha256": "c6bc2612bf71f557b3dcce7d4e63dd8f23ee05c4233040271f965ba873cda065"
+    },
+    "ProspectingFinalize": {
+      "abi": "ProspectingFinalize.abi.json",
+      "classHash": "0x42bf2f760270e3ab43a85b0654aa0ec9b0459b1c7f144da88848afcaffc2d7b",
+      "artifactSha256": "7e39402edbb61611bb9883c32c8c7456760b266b6eabfade8c3884b40383437f"
+    },
+    "ProspectingAbandon": {
+      "abi": "ProspectingAbandon.abi.json",
+      "classHash": "0x3dd1f6b4fd1438e064483a6f15e5e08d66904cbf384ec71f9c4a23f5d0f8020",
+      "artifactSha256": "c50604c03896be60a5a0b034de28cb2745e005fff24893554ecb78d81942072d"
+    },
+    "ReadProspectingCampaign": {
+      "abi": "ReadProspectingCampaign.abi.json",
+      "classHash": "0x2f10ca15878d2cb33cdc551b42aac765de96a9f103fed3c054bded9ce33d4c4",
+      "artifactSha256": "d0f4660f1288bb136a4ef25420d3cb14fa187c1228e02d9b3b38bc8550f43ef9"
+    },
+    "ReadProspectingSample": {
+      "abi": "ReadProspectingSample.abi.json",
+      "classHash": "0x6695e8697c4c986aaa1023f4d5711653c9d2c1e34e249e49347aecb189b5fff",
+      "artifactSha256": "f158282878707abf6bd2dc821df66082df3fd2f08a42a59938ddf3ce6f36c117"
+    },
+    "ReadProspectingRandomness": {
+      "abi": "ReadProspectingRandomness.abi.json",
+      "classHash": "0x721ed91b4cc8d10c6074364cd632f63cee77587cc2131feb71a11765351bc32",
+      "artifactSha256": "27f406f9f34c76ee65a3dc1e6dad175ddf9de8d271123b731a93bc7adb4a32aa"
+    },
+    "ReadProspectingOrigin": {
+      "abi": "ReadProspectingOrigin.abi.json",
+      "classHash": "0x4acb756c72306e9b8ef357cda985e0773ea75e6d630df7f54eb9258884bd586",
+      "artifactSha256": "711052751ae8e5fc2407770234e1adee2d1ef925dc503a6355e919a1fe8af731"
+    },
+    "PreviewProspectingSample": {
+      "abi": "PreviewProspectingSample.abi.json",
+      "classHash": "0x3e55fc5af9800bffb4200db5449679a0ca1b25be0947040311291ff9908e017",
+      "artifactSha256": "75bdf5f7bc331635588e0684498a5cade5ea15eacfa4211294b80c7cbc4a5ff4"
+    },
+    "BaselineExtractResourceStart": {
+      "abi": "BaselineExtractResourceStart.abi.json",
+      "classHash": "0x2e01542bdd67dca428d6fc003b338c6617dc832ae669d118c68c603c62d46f4",
+      "artifactSha256": "8417a18bd4b2183fd2a99d229608b9147baf9991e00a64f837f2ea7c0ea23832"
+    },
+    "ExtractResourceStart": {
+      "abi": "ExtractResourceStart.abi.json",
+      "classHash": "0x1f1495d3529151a026b88b74e8228526176268e5af09160f10d50058b8c7343",
+      "artifactSha256": "bca14cb5bf37d6787e99bc901a10423f814f9f97f25f74523ec41b6ee08e6509"
+    },
+    "ExtractResourceFinish": {
+      "abi": "ExtractResourceFinish.abi.json",
+      "classHash": "0x4e43783d453d478db4951ecba0f1f633481c90942618184d4ad25c87b0b77d6",
+      "artifactSha256": "34e4046ee84212e440a192d4a15511bb38fd7e9ec0c5931b55df6f3bb306d7f0"
+    },
+    "SampleDepositStart": {
+      "abi": "SampleDepositStart.abi.json",
+      "classHash": "0x710708895b2bd5dc641cccf75eceb237bc1f248eb253725b8b665d8c017cf6b",
+      "artifactSha256": "52aa6457fe41d2bc14df2d3e7901398f20cae1165b951fc689ba5f024d06ea08"
+    },
+    "SampleDepositImprove": {
+      "abi": "SampleDepositImprove.abi.json",
+      "classHash": "0x76f61a536a18b822cf9d9a5a81e0602e1709c28defd7517ca684733c5ea6bed",
+      "artifactSha256": "119c41f9a9b13da8d510741d81f011f711032c1701c81656fafb1e07db08d74f"
+    },
+    "SampleDepositFinish": {
+      "abi": "SampleDepositFinish.abi.json",
+      "classHash": "0x4d18235af527344f39ede1fe88e3b61efa8b8b1dd3c460391bccc0e3d28f5aa",
+      "artifactSha256": "01a60e4513713fa761d41d3859bea1682f19ee548d1dfe563b3e290245cd93f5"
+    },
+    "Abundance": {
+      "abi": "Abundance.abi.json",
+      "classHash": "0x476d47d540f435ab1b40a16aa768b8d51acf58d15911fd132260f5d23a9cac1",
+      "artifactSha256": "c1da4ed10d5f9cb47cccb68349c7a163a5325cbcb16f8819784559bdef9a93fb"
+    },
+    "ConstructionFinish": {
+      "abi": "ConstructionFinish.abi.json",
+      "classHash": "0x5d0b354d55f7dac75c1241e214ccc75e5fd185afe3e1ac66ed5d2c84e9c53ef",
+      "artifactSha256": "b919b7418d9de8cdada0f95cace2e76f379930c4a12d73ba42c13bd5f1808f08"
+    },
+    "ConstructionDeconstruct": {
+      "abi": "ConstructionDeconstruct.abi.json",
+      "classHash": "0x154fc03b6619b80382ae1d2d95ae7ebe7974502f309b947324696f2f3f92a7",
+      "artifactSha256": "0f42f16a2bb2272289ee9c796cbff7ef97abe2aa7e50f0439eed9bc60843effb"
+    },
+    "TypeComponent": {
+      "abi": "TypeComponent.abi.json",
+      "classHash": "0x5f430d52d758e010c8be1afe532e9b01a75efc28bba69b602b9727ebade348a",
+      "artifactSha256": "4b440dd3c7e7af493258d26fd8c615f6664b3111ba3af4abfb337c16e9f103ee"
+    },
+    "ReadComponent": {
+      "abi": "ReadComponent.abi.json",
+      "classHash": "0x63c03766734bac163d7ddbfcace2df186dcda758620e94abdb5f7ef225aa79d",
+      "artifactSha256": "c6408163eb618c5b231f55e630a491960d3826671dac5f3b9c3d32542db60df4"
+    },
+    "WriteComponent": {
+      "abi": "WriteComponent.abi.json",
+      "classHash": "0x329840d0070aba8586186ff689fd48241b8d1314435a42093a715f1f19d9c0e",
+      "artifactSha256": "3132b091abe2c89d79f623e3dc28a3c3fe4a43b9fcbc55436e83bf9333e52efb"
+    },
+    "MissionObserver": {
+      "abi": "MissionObserver.abi.json",
+      "classHash": "0x69d174040cf27fa24eac4172e138c2e57db8f5cdebf2a1943a392d4fb5d276f",
+      "artifactSha256": "c190d9c20ce940cd0b1129426e89a89d554b71d857853d8e3a76e2fcccd71f6c"
+    },
+    "StarterMissionCampaign": {
+      "abi": "StarterMissionCampaign.abi.json",
+      "classHash": "0xc15a6543bdeb54dc5bc555a3357923c0d917909f1dad779cb82626de8c51ce",
+      "artifactSha256": "a7f8ee688f5f672bf394228f8154d9f0065469bca23f21e7c09b32d17433bf9b"
+    },
+    "ProspectingVerifier": {
+      "abi": "ProspectingVerifier.abi.json",
+      "classHash": "0x7468289b375a2af4150152b891c0db792a4dfffa55cd87e6f3f0317cd3344cf",
+      "artifactSha256": "2be74bad6d494c973459f9b960440254a4cc0893d3da9718317b84c3117ee12c"
+    }
+  }
+}

@@ -930,5 +930,109 @@
         "type": "core::integer::u64"
       }
     ]
+  },
+  "influence::components::prospecting_campaign::ProspectingCampaign": {
+    "type": "struct",
+    "name": "influence::components::prospecting_campaign::ProspectingCampaign",
+    "members": [
+      {
+        "name": "crew",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "creator",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "context",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "quality_bps",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "verifier",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "count",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "pending",
+        "type": "core::bool"
+      },
+      {
+        "name": "status",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "replaceable_at",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "claim",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ]
+  },
+  "influence::components::prospecting_core::ProspectingCore": {
+    "type": "struct",
+    "name": "influence::components::prospecting_core::ProspectingCore",
+    "members": [
+      {
+        "name": "commitment",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "meta",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "blocked_approaches",
+        "type": "core::integer::u16"
+      },
+      {
+        "name": "randomness",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "target_block",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "ready_at",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::prospecting_origin::ProspectingOrigin": {
+    "type": "struct",
+    "name": "influence::components::prospecting_origin::ProspectingOrigin",
+    "members": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      }
+    ]
+  },
+  "influence::components::extractor_slots::ExtractorSlots": {
+    "type": "struct",
+    "name": "influence::components::extractor_slots::ExtractorSlots",
+    "members": [
+      {
+        "name": "count",
+        "type": "core::integer::u8"
+      }
+    ]
   }
 }

@@ -64,6 +64,9 @@ export function isSampleReady ({ readyAt, targetBlock }, { now, blockNumber }) {
 
 // A mature sample can remain pending in storage until the next transaction resolves it.
 export function getCampaignReadiness ({ campaign, pendingCore, now, blockNumber }) {
+  if ([STATUSES.FINALIZED, STATUSES.CANCELLED, STATUSES.REPLACED].includes(campaign.status)) {
+    return { ...campaign, sampleCount: Number(campaign.count) + (campaign.pending ? 1 : 0) };
+  }
   if (campaign.closed) {
     return {
       ...campaign,

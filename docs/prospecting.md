@@ -1,15 +1,17 @@
-# Prospecting SDK — 2.9.0 release candidate
+# Prospecting SDK — 2.9.0-rc.1
 
 This release supplies shared prospecting/claim APIs for the client and server.
 It does not activate the production gameplay cutover. Existing legacy sampling
-and extraction APIs remain compatible. New campaign calls explicitly target the
-compiled **sandbox** protocol, not fictional production systems or addresses.
+and extraction APIs remain compatible. `Prospecting.Game` targets the compiled
+Influence gameplay systems through an explicitly supplied Dispatcher address.
+`Prospecting.Contracts` retains the standalone development sandbox adapter.
+No deployed addresses or activation flags are changed by installing this release.
 
 ## Public modules
 
 | Module | Purpose |
 | --- | --- |
-| `Prospecting` | Rules, probability tables, reach previews, transcript replay, durable sample intents, proof packets and sandbox bindings. |
+| `Prospecting` | Rules, probability tables, reach previews, transcript replay, durable sample intents, proof packets and separate game/sandbox bindings. |
 | `Claim` | One view of legacy/new deposits; versioned rate metadata and exact Cairo storage codecs. |
 | `Mining` | Baseline eligibility, constant-rate quotes, per-run limits and extraction blockers. |
 | `PrivateData` | Existing wallet key derivation, record encryption, stable peer identity, signatures and recovery. |
@@ -114,7 +116,7 @@ Local simulation records keep schema 1 for recovery compatibility. Chain records
 use schema 2 because a pending commitment may have no randomness or receipt yet.
 Neither record format stores a plaintext encryption key.
 
-The chain adapter should follow this ordering:
+The standalone sandbox adapter follows this ordering:
 
 1. Start the campaign and obtain its authoritative ID/context. Use `createRecord`
    with `mode: 'chain'` and the account/chain/game identity.
@@ -144,6 +146,69 @@ Groth16 hints and builds a call using the compiled ABI. An optional pinned
 `blockIdentifier` keeps its reads at one snapshot; the contract rechecks authority
 atomically at execution. Its finalization calldata contains the verifier span length
 exactly once. It does not broadcast or claim a proof is verified by generating hints.
+
+## Gameplay contract bindings
+
+Use `Prospecting.Game` for the Influence Dispatcher systems. Its builders return
+ordinary Starknet calls and do not broadcast. They reuse `System.getRunSystemCall`
+and the generated system registry; the Dispatcher appends the authoritative Context.
+Always supply full lot entities, not the sandbox's local lot indices. `rateBps`
+is a basis-point value such as `12000`, not the sandbox's `rate: 120`.
+
+```js
+const game = Prospecting.Game.createClient({ dispatcher, provider });
+const origin = { label: Entity.IDS.LOT, id: Lot.toId(asteroidId, originIndex) };
+const start = Prospecting.Game.getStartCall({ dispatcher, origin, resource, crew });
+// Submit using the player's normal transaction/session and mission-observation flow.
+const campaign = await game.campaign(campaignId, { blockIdentifier });
+const { meta, blockedApproaches } = await game.previewSample(campaignId, targetLot);
+const core = await game.core(campaignId, sampleIndex);
+```
+
+Builders are `getStartCall`, `getSampleCall`, `getFinalizeCall`, `getAbandonCall`,
+`getBaselineExtractionCall`, `getClaimExtractionCall` and `getExtractionFinishCall`.
+`getCall({ dispatcher, system, input })` exposes the underlying generated system
+encoding for reads and administration. All writes take a `crew` entity; callers
+remain responsible for permissions, availability checks and submission.
+
+`getSampleCall` takes `campaignId, lot, index, commitment, inventoryOrigin,
+originSlot`. Explicitly pass `{ label: 0, id: 0 }` and slot `0` to consume a starter
+sample allowance; otherwise pass an actual building/ship inventory. The expected
+index and both `u256` commitment limbs are encoded without number precision loss.
+
+Read methods are `campaign`, `core`, `randomness`, `origin` and `previewSample`.
+They decode both Dispatcher and system return values with the compiled ABIs.
+`campaign` exposes the originating crew, creator as `owner`, full `originLot`,
+local `origin` index, `asteroidId`, pinned context/quality/verifier, resolved
+`count`, accepted `sampleCount`, pending bit, replacement deadline and resulting
+claim entity. `chainStatus` is the numeric Cairo status; `status` uses shared
+`STATUSES`. Use `getCampaignReadiness` to distinguish a mature pending draw from
+work that is still waiting. It never reopens cancelled/replaced/finalized records.
+`core` returns the same `commitment, meta, blockedApproaches, random, target, ready`
+shape accepted by `acceptSample` and transcript reconciliation.
+
+`Game.getCampaignContext` and `Game.getBlockRandomness` implement the actual game's
+chain/Dispatcher/crew/verifier domain separation, distinct from the sandbox helpers.
+Read the authoritative context returned by the game when creating a private record.
+The current game pins sampling quality to neutral **10000 BPS**; later probability
+bonuses require a separately versioned model/circuit update.
+
+`Game.prepareFinalizeCall({ client: game, record, proof, publicSignals,
+blockIdentifier })` checks the record's chain, Dispatcher, asteroid, owner, quality,
+campaign and every accepted core, including a mature unresolved last sample. It
+builds the final proof call with the campaign's crew and the selected claim's full
+lot entity. All reads honor the supplied block snapshot. A sample inventory,
+permission or extractor-status change is still enforced atomically by the contract.
+
+The standard `System.Systems` registry includes the new campaign/read/baseline
+systems. Existing `MissionObservation` helpers can therefore wrap
+`ProspectingFinalize` and `BaselineExtractResourceStart` without custom encoding.
+The event registry preserves historical extraction events alongside
+`ResourceExtractionStartedV1` and the four new campaign events. Component schemas
+include `Claim`, `ProspectingCampaign`, `ProspectingCore`, `ProspectingOrigin` and
+`ExtractorSlots`. Server indexing must handle campaign/sample paths separately
+from entity UUID paths. Private records must also retain each campaign by its ID;
+the existing origin/account scope alone must not overwrite finalized claim records.
 
 ## Private-data compatibility
 
@@ -179,13 +244,16 @@ provenance and exactly-once credit; this helper does not grant rewards. Historic
 
 The package exports `./prospecting/artifacts`, `./prospecting/contracts`,
 `./prospecting/verifiers`, `./prospecting/proof-assets`,
-`./prospecting/claim-component` and `./contracts/components` JSON subpaths.
+`./prospecting/claim-component`, `./prospecting/gameplay-contracts` (25 ABIs),
+`./prospecting/gameplay-artifacts` (hashes/constants) and
+`./contracts/{abis,systems,events,types,components}` JSON subpaths.
 
 Artifacts include the genuine Cairo Claim schema, compiled TypeComponent class
 provenance, the compiled sandbox campaign ABI, ten verifier ABIs/verification keys,
 class hashes and hashed proof-asset descriptors. WASM, proving keys and full
 Sierra/CASM programs are not bundled into npm. Host the development assets separately.
-All proof setup keys and campaign bindings are explicitly development-only.
+Existing sandbox proof setup keys remain development-only. The game bindings are
+compiled gameplay interfaces with an **undeployed** manifest and no invented addresses.
 The sandbox campaign fixes sampling quality at 10000 BPS; the transition kernel
 supports up to 15000 BPS for circuit experiments, not a claim of production crew
 quality integration.
@@ -195,13 +263,21 @@ Regenerate from the two compiled repositories:
 
 ```sh
 npm run export-prospecting -- /path/to/mining-prototype /path/to/influence-starknet
+npm run export-prospecting-gameplay -- /path/to/influence-starknet
 npm test
 npm run build:release
 npm run test:prospecting-build
 ```
 
-Remaining contract implementation: production campaign systems, real crew/drill
-accounting, baseline/new extraction starts, atomic claim creation, old-start cutover
-and updated mission observer policy. Client/server must adopt those ABIs and events
-when that code exists. The release does not fabricate production entrypoints or
-claim that changing SDK mission text already changes on-chain mission qualification.
+The gameplay exporter verifies each ABI, class hash and artifact SHA-256 against
+the current compiled contracts before updating any registry. Run the gameplay
+exporter after the sandbox exporter when refreshing both families.
+
+The gameplay contracts now implement crew/drill accounting, atomic claim creation,
+baseline/claim extraction, legacy completion and the updated mission observer.
+Client transaction flows and server indexing still need to adopt these bindings.
+Sepolia declaration/deployment may be staged for integration testing with matching
+development proving keys. Do not register/activate the shared gameplay cutover until
+client/server consumers understand the new components/events and have passed the
+integrated workflow. `ConfigureProspecting` registers the verifier and activates
+the rules together. Production trusted setup/key selection remains deferred.

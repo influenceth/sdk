@@ -1,6 +1,6 @@
 {
   "name": "@influenceth/sdk",
-  "version": "2.9.0-rc.0",
+  "version": "2.9.0-rc.1",
   "description": "Influence SDK",
   "type": "module",
   "engines": {
@@ -19,7 +19,13 @@
     "./prospecting/verifiers": "./src/contracts/prospecting/verifiers.json",
     "./prospecting/proof-assets": "./src/contracts/prospecting/proof-assets.json",
     "./prospecting/claim-component": "./src/contracts/prospecting/claim-component.json",
-    "./contracts/components": "./src/contracts/starknet_components.json"
+    "./contracts/components": "./src/contracts/starknet_components.json",
+    "./prospecting/gameplay-contracts": "./src/contracts/prospecting/gameplay.json",
+    "./prospecting/gameplay-artifacts": "./src/contracts/prospecting/gameplay-manifest.json",
+    "./contracts/abis": "./src/contracts/starknet_abis.json",
+    "./contracts/systems": "./src/contracts/starknet_systems.json",
+    "./contracts/events": "./src/contracts/starknet_events.json",
+    "./contracts/types": "./src/contracts/starknet_types.json"
   },
   "browser": {
     "crypto": false
@@ -31,21 +37,26 @@
     "assets/images/manifests/latest.json",
     "src/contracts/prospecting/*.json",
     "src/contracts/starknet_components.json",
-    "docs/prospecting.md"
+    "docs/prospecting.md",
+    "src/contracts/starknet_abis.json",
+    "src/contracts/starknet_systems.json",
+    "src/contracts/starknet_events.json",
+    "src/contracts/starknet_types.json"
   ],
   "scripts": {
     "build": "rollup --config ./rollup.config.js",
     "export-production-chains": "node ./src/scripts/exportProductionChains.js",
     "images:build": "node ./assets/images/tools/build-images.js --version v1 --clean",
     "lint": "eslint ./src",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build:release",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive",
     "test:mission-bindings-build": "npm run build && node src/scripts/testStarterMissionBindingsBuild.mjs",
     "publish-sdk": "npm run build && npm publish --access public",
     "export-prospecting": "node ./src/scripts/exportProspectingArtifacts.js",
     "build:release": "NODE_ENV=production npm run build",
-    "test:prospecting": "NODE_ENV=test mocha test/lib/prospecting.spec.js test/lib/prospectingBindings.spec.js test/lib/claimMining.spec.js test/lib/privateData.spec.js",
-    "test:prospecting-build": "node src/scripts/testProspectingBuild.mjs"
+    "test:prospecting": "NODE_ENV=test mocha test/lib/prospecting.spec.js test/lib/prospectingBindings.spec.js test/lib/prospectingGame.spec.js test/lib/claimMining.spec.js test/lib/privateData.spec.js",
+    "test:prospecting-build": "node src/scripts/testProspectingBuild.mjs",
+    "export-prospecting-gameplay": "node ./src/scripts/exportProspectingGameplay.js"
   },
   "repository": {
     "type": "git",

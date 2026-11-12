@@ -6,6 +6,7 @@ import * as Lifecycle from './prospecting/lifecycle.js';
 import * as Transactions from './prospecting/transactions.js';
 import * as Geography from './prospecting/geography.js';
 import Contracts from './prospecting/bindings.js';
+import Game from './prospecting/game.js';
 import Proof from './prospecting/proof.js';
 import * as Kernel from './prospecting/kernel.js';
 
@@ -37,6 +38,7 @@ export default {
   ...Transactions,
   ...Geography,
   Contracts,
+  Game,
   Proof,
   LEGACY_START_SYSTEMS,
   ACCIDENTS: Kernel.ACCIDENTS,

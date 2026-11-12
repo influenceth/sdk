@@ -14,8 +14,12 @@ const parseCairoType = (cairoType) => {
   let type;
   if (cairoType === 'influence::common::missions::Assignment') return { type: 'MissionAssignment' };
   if (cairoType === 'core::integer::u32') return { type: 'Number' };
-  // ReadMissionState returns a tuple; this registry describes, but does not decode, outputs.
+  // Structured view outputs are decoded with their generated ABIs.
   if (cairoType === '(core::bool, core::bool, core::bool, core::felt252)') return { type: 'Raw' };
+  if (['influence::components::prospecting_campaign::ProspectingCampaign',
+    'influence::components::prospecting_core::ProspectingCore',
+    '(core::integer::u128, core::integer::u16)',
+    '(cubit::f64::types::fixed::Fixed, cubit::f64::types::fixed::Fixed, cubit::f64::types::fixed::Fixed)'].includes(cairoType)) return { type: 'Raw' };
   if (['influence::common::types::entity::Entity'].includes(cairoType)) type = 'Entity';
   else if (['core::starknet::contract_address::ContractAddress'].includes(cairoType)) type = 'ContractAddress';
   else if (['core::integer::u64', 'core::integer::u128'].includes(cairoType)) type = 'BigNumber';

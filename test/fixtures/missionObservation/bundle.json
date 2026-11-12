@@ -167,5 +167,15 @@
     "ColonizationMissionCampaign.abi.json": "0953d94511baa3aa1b2133bda357572891345fbc81c7f953fff3afe8feb3a5ad",
     "sepolia-deployment.json": "1b17c8541bb2aef6b765ca2409b698933caaa41da98e00342882508b7e917165",
     "MissionValidate.abi.json": "a8f72f93c00860568a5c2cfdbe0f22a12074259d5019d6a0624e20bdf359f307"
+  },
+  "unchangedAbisSha256": {
+    "Dispatcher": "ab0b6259bb1c25fe653ab2a8a51ee8d1aca6eab0424f84e57ca63bbb197bc28a",
+    "Asteroid": "3dcef03b4e081400f26b8f208a1d1aec370fed4891a520f630514009b651d0a6",
+    "Crew": "62d682db1e6b596c915bd593c3f2b3e0345d9108b95dcdda8de7d697faaac001",
+    "Crewmate": "a499a7f9f9c886544b75dd47ae44f4ddc926b676460cf84509d72da8d2a4fc91",
+    "Designate": "734903333a07f57ddc07a347e64cd2f042f45151d4166c8ec30e019dd6c6a6e2",
+    "Ship": "2f8b4c5d0db002db75b85f589dff377b4ec3763040e791437ce58791a2ac85e0",
+    "Sway": "1ec4b15c80b75581e2c8cb32f77eaa0d4f910cd1e9a5d81363994fb062f1c2a2",
+    "ColonizationMissionCampaign": "1f0cb2effccd297adf72812acc54d71536e254c99065e3aea5aa477f80decdd0"
   }
 }

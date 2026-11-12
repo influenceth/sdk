@@ -2453,5 +2453,277 @@
     ],
     "outputs": [],
     "state_mutability": "external"
+  },
+  "ConfigureProspecting": {
+    "type": "function",
+    "name": "ConfigureProspecting",
+    "inputs": [
+      {
+        "name": "verifier",
+        "type": "core::starknet::contract_address::ContractAddress"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ProspectingStart": {
+    "type": "function",
+    "name": "ProspectingStart",
+    "inputs": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "core::integer::u64"
+      }
+    ],
+    "state_mutability": "external"
+  },
+  "ProspectingSample": {
+    "type": "function",
+    "name": "ProspectingSample",
+    "inputs": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "expected_index",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "commitment",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ProspectingFinalize": {
+    "type": "function",
+    "name": "ProspectingFinalize",
+    "inputs": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "quantity",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "rate_bps",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "proof",
+        "type": "core::array::Span::<core::felt252>"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "state_mutability": "external"
+  },
+  "ProspectingAbandon": {
+    "type": "function",
+    "name": "ProspectingAbandon",
+    "inputs": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "ReadProspectingCampaign": {
+    "type": "function",
+    "name": "ReadProspectingCampaign",
+    "inputs": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "influence::components::prospecting_campaign::ProspectingCampaign"
+      }
+    ],
+    "state_mutability": "view"
+  },
+  "ReadProspectingSample": {
+    "type": "function",
+    "name": "ReadProspectingSample",
+    "inputs": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "index",
+        "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "influence::components::prospecting_core::ProspectingCore"
+      }
+    ],
+    "state_mutability": "view"
+  },
+  "ReadProspectingRandomness": {
+    "type": "function",
+    "name": "ReadProspectingRandomness",
+    "inputs": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "core::integer::u64"
+      }
+    ],
+    "state_mutability": "view"
+  },
+  "ReadProspectingOrigin": {
+    "type": "function",
+    "name": "ReadProspectingOrigin",
+    "inputs": [
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "core::integer::u64"
+      }
+    ],
+    "state_mutability": "view"
+  },
+  "PreviewProspectingSample": {
+    "type": "function",
+    "name": "PreviewProspectingSample",
+    "inputs": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "(core::integer::u128, core::integer::u16)"
+      }
+    ],
+    "state_mutability": "view"
+  },
+  "BaselineExtractResourceStart": {
+    "type": "function",
+    "name": "BaselineExtractResourceStart",
+    "inputs": [
+      {
+        "name": "resource",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity"
+      }
+    ],
+    "outputs": [],
+    "state_mutability": "external"
+  },
+  "Abundance": {
+    "type": "function",
+    "name": "Abundance",
+    "inputs": [
+      {
+        "name": "ast",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "lot",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "(cubit::f64::types::fixed::Fixed, cubit::f64::types::fixed::Fixed, cubit::f64::types::fixed::Fixed)"
+      }
+    ],
+    "state_mutability": "view"
   }
 }

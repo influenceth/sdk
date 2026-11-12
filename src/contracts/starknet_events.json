@@ -3517,5 +3517,305 @@
         "kind": "data"
       }
     ]
+  },
+  "ProspectingCampaignStarted": {
+    "type": "event",
+    "name": "ProspectingCampaignStarted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "context",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "quality_bps",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "verifier",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "replaceable_at",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "replaced_campaign_id",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ProspectingSampleCommitted": {
+    "type": "event",
+    "name": "ProspectingSampleCommitted",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "index",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "commitment",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "meta",
+        "type": "core::integer::u128",
+        "kind": "data"
+      },
+      {
+        "name": "blocked_approaches",
+        "type": "core::integer::u16",
+        "kind": "data"
+      },
+      {
+        "name": "target_block",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "ready_at",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "crew_ready_at",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "origin_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "replaceable_at",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ProspectingCampaignFinalized": {
+    "type": "event",
+    "name": "ProspectingCampaignFinalized",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "lot",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "initial_yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "rate_bps",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "reference_abundance_ppm",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "rules_version",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "sample_count",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ProspectingCampaignAbandoned": {
+    "type": "event",
+    "name": "ProspectingCampaignAbandoned",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "campaign_id",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "origin",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "replaceable_at",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  "ResourceExtractionStartedV1": {
+    "type": "event",
+    "name": "ResourceExtractionStartedV1",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "mode",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "deposit",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "resource",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "yield",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "extractor",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "extractor_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "destination",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "destination_slot",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "finish_time",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "rate_bps",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "reference_abundance_ppm",
+        "type": "core::integer::u64",
+        "kind": "data"
+      },
+      {
+        "name": "caller_crew",
+        "type": "influence::common::types::entity::Entity",
+        "kind": "data"
+      },
+      {
+        "name": "caller",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
   }
 }

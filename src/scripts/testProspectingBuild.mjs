@@ -24,5 +24,14 @@ for (const [i, sdk] of builds.entries()) {
   assert.deepEqual(await sdk.PrivateData.decryptRecord(key, 'build-scope', record), { secret: 'build recovery' });
   assert.equal(sdk.Mining.isSamplingBlocked([{ status: 1, finishTime: 0 }]), true);
   assert.equal(sdk.Prospecting.Contracts.manifest.claimComponent.storageFelts, 1);
+  assert.equal(Object.keys(sdk.Prospecting.Game.manifest.contracts).length, 25);
+  assert.equal(sdk.Prospecting.Game.manifest.samplingQualityBps, 10000);
+  const commit = sdk.Prospecting.Game.getSampleCall({
+    dispatcher: '0x2', campaignId: 7, lot: { label: 4, id: sdk.Lot.toId(250000, 1) },
+    index: 2, commitment: (1n << 200n) + 123n, inventoryOrigin: { label: 5, id: 3 }, originSlot: 2, crew: { label: 1, id: 9 }
+  });
+  assert.equal(commit.entrypoint, 'run_system');
+  assert.deepEqual(commit.calldata.slice(2, 8), ['7', '4', String(sdk.Lot.toId(250000, 1)), '2', '123', String(1n << 72n)]);
+  assert.equal(sdk.System.Systems.ProspectingFinalize.inputs.some(input => input.name === 'context'), false);
   console.log(`${i === 0 ? 'ESM' : 'CommonJS'}: ten proof statements, Garaga calldata, encrypted recovery and claim artifacts passed`);
 }

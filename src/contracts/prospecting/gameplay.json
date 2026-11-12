@@ -1,0 +1,4728 @@
+{
+  "ConfigureProspecting": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "verifier",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::configure::ConfigureProspecting::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "ProspectingStart": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u64"
+        }
+      ],
+      "state_mutability": "external"
+    },
+    {
+      "type": "struct",
+      "name": "core::integer::u256",
+      "members": [
+        {
+          "name": "low",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "high",
+          "type": "core::integer::u128"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::create::ProspectingStart::ProspectingCampaignStarted",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "context",
+          "type": "core::integer::u256",
+          "kind": "data"
+        },
+        {
+          "name": "quality_bps",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "verifier",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        },
+        {
+          "name": "replaceable_at",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "replaced_campaign_id",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::create::ProspectingStart::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ProspectingCampaignStarted",
+          "type": "influence::systems::prospecting::create::ProspectingStart::ProspectingCampaignStarted",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "ProspectingSample": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::integer::u256",
+      "members": [
+        {
+          "name": "low",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "high",
+          "type": "core::integer::u128"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "expected_index",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "commitment",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "origin_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::commit::ProspectingSample::ProspectingSampleCommitted",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "index",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "commitment",
+          "type": "core::integer::u256",
+          "kind": "data"
+        },
+        {
+          "name": "meta",
+          "type": "core::integer::u128",
+          "kind": "data"
+        },
+        {
+          "name": "blocked_approaches",
+          "type": "core::integer::u16",
+          "kind": "data"
+        },
+        {
+          "name": "target_block",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "ready_at",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "crew_ready_at",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "origin_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "replaceable_at",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::commit::ProspectingSample::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ProspectingSampleCommitted",
+          "type": "influence::systems::prospecting::commit::ProspectingSample::ProspectingSampleCommitted",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "ProspectingFinalize": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "quantity",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "rate_bps",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "proof",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::common::types::entity::Entity"
+        }
+      ],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::finalize::ProspectingFinalize::ProspectingCampaignFinalized",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "initial_yield",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "rate_bps",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "reference_abundance_ppm",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "rules_version",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "sample_count",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::finalize::ProspectingFinalize::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ProspectingCampaignFinalized",
+          "type": "influence::systems::prospecting::finalize::ProspectingFinalize::ProspectingCampaignFinalized",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "ProspectingAbandon": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::abandon::ProspectingAbandon::ProspectingCampaignAbandoned",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "replaceable_at",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::abandon::ProspectingAbandon::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ProspectingCampaignAbandoned",
+          "type": "influence::systems::prospecting::abandon::ProspectingAbandon::ProspectingCampaignAbandoned",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "ReadProspectingCampaign": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::integer::u256",
+      "members": [
+        {
+          "name": "low",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "high",
+          "type": "core::integer::u128"
+        }
+      ]
+    },
+    {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::prospecting_campaign::ProspectingCampaign",
+      "members": [
+        {
+          "name": "crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "creator",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "context",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "quality_bps",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "verifier",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "count",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "pending",
+          "type": "core::bool"
+        },
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "replaceable_at",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "claim",
+          "type": "influence::common::types::entity::Entity"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::prospecting_campaign::ProspectingCampaign"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::read::ReadProspectingCampaign::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "ReadProspectingSample": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::integer::u256",
+      "members": [
+        {
+          "name": "low",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "high",
+          "type": "core::integer::u128"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::prospecting_core::ProspectingCore",
+      "members": [
+        {
+          "name": "commitment",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "meta",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "blocked_approaches",
+          "type": "core::integer::u16"
+        },
+        {
+          "name": "randomness",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "target_block",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "ready_at",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "index",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::prospecting_core::ProspectingCore"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::read::ReadProspectingSample::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "ReadProspectingRandomness": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u64"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::read::ReadProspectingRandomness::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "ReadProspectingOrigin": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u64"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::read::ReadProspectingOrigin::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "PreviewProspectingSample": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "(core::integer::u128, core::integer::u16)"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::prospecting::read::PreviewProspectingSample::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "BaselineExtractResourceStart": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "resource",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "yield",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "extractor",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "extractor_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "destination",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "destination_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::common::extraction::ResourceExtractionStartedV1",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "mode",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "yield",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "extractor",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "extractor_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "destination",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "destination_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "rate_bps",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "reference_abundance_ppm",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::production::baseline_extract_start::BaselineExtractResourceStart::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ResourceExtractionStartedV1",
+          "type": "influence::common::extraction::ResourceExtractionStartedV1",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "ExtractResourceStart": [
+    {
+      "type": "function",
+      "name": "prospecting_version",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "core::integer::u64"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "yield",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "extractor",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "extractor_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "destination",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "destination_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::production::extract_resource_start::ExtractResourceStart::ResourceExtractionStarted",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "yield",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "extractor",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "extractor_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "destination",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "destination_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::common::extraction::ResourceExtractionStartedV1",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "mode",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "yield",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "extractor",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "extractor_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "destination",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "destination_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "rate_bps",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "reference_abundance_ppm",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::production::extract_resource_start::ExtractResourceStart::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ResourceExtractionStarted",
+          "type": "influence::systems::production::extract_resource_start::ExtractResourceStart::ResourceExtractionStarted",
+          "kind": "nested"
+        },
+        {
+          "name": "ResourceExtractionStartedV1",
+          "type": "influence::common::extraction::ResourceExtractionStartedV1",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "ExtractResourceFinish": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "extractor",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "extractor_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::production::extract_resource_finish::ExtractResourceFinish::ResourceExtractionFinished",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "extractor",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "extractor_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "yield",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "destination",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "destination_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::production::extract_resource_finish::ExtractResourceFinish::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ResourceExtractionFinished",
+          "type": "influence::systems::production::extract_resource_finish::ExtractResourceFinish::ResourceExtractionFinished",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "SampleDepositStart": [
+    {
+      "type": "function",
+      "name": "prospecting_version",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "core::integer::u64"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "origin_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::sample_start::SampleDepositStart::SamplingDepositStarted",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::sample_start::SampleDepositStart::SamplingDepositStartedV1",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "improving",
+          "type": "core::bool",
+          "kind": "data"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "origin_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::sample_start::SampleDepositStart::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "SamplingDepositStarted",
+          "type": "influence::systems::deposits::sample_start::SampleDepositStart::SamplingDepositStarted",
+          "kind": "nested"
+        },
+        {
+          "name": "SamplingDepositStartedV1",
+          "type": "influence::systems::deposits::sample_start::SampleDepositStart::SamplingDepositStartedV1",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "SampleDepositImprove": [
+    {
+      "type": "function",
+      "name": "prospecting_version",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "core::integer::u64"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "origin_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::sample_improve::SampleDepositImprove::SamplingDepositStartedV1",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "lot",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "improving",
+          "type": "core::bool",
+          "kind": "data"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "origin_slot",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::sample_improve::SampleDepositImprove::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "SamplingDepositStartedV1",
+          "type": "influence::systems::deposits::sample_improve::SampleDepositImprove::SamplingDepositStartedV1",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "SampleDepositFinish": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::sample_finish::SampleDepositFinish::SamplingDepositFinished",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "deposit",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "initial_yield",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "cubit::f64::types::fixed::Fixed",
+      "members": [
+        {
+          "name": "mag",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "sign",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::sample_finish::SampleDepositFinish::Debug_DepositBounds",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "lot_abundance",
+          "type": "cubit::f64::types::fixed::Fixed",
+          "kind": "data"
+        },
+        {
+          "name": "initial_yield",
+          "type": "core::integer::u64",
+          "kind": "data"
+        },
+        {
+          "name": "lower_bound",
+          "type": "cubit::f64::types::fixed::Fixed",
+          "kind": "data"
+        },
+        {
+          "name": "upper_bound",
+          "type": "cubit::f64::types::fixed::Fixed",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::sample_finish::SampleDepositFinish::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "SamplingDepositFinished",
+          "type": "influence::systems::deposits::sample_finish::SampleDepositFinish::SamplingDepositFinished",
+          "kind": "nested"
+        },
+        {
+          "name": "Debug_DepositBounds",
+          "type": "influence::systems::deposits::sample_finish::SampleDepositFinish::Debug_DepositBounds",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "Abundance": [
+    {
+      "type": "function",
+      "name": "prospecting_version",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "core::integer::u64"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "ppm",
+      "inputs": [
+        {
+          "name": "asteroid",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "lot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u64"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "cubit::f64::types::fixed::Fixed",
+      "members": [
+        {
+          "name": "mag",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "sign",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "ast",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "lot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "(cubit::f64::types::fixed::Fixed, cubit::f64::types::fixed::Fixed, cubit::f64::types::fixed::Fixed)"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::deposits::abundance::Abundance::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "ConstructionFinish": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "building",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::construction::construction_finish::ConstructionFinish::ConstructionFinished",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "building",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::construction::construction_finish::ConstructionFinish::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ConstructionFinished",
+          "type": "influence::systems::construction::construction_finish::ConstructionFinish::ConstructionFinished",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "ConstructionDeconstruct": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "building",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::construction::construction_deconstruct::ConstructionDeconstruct::ConstructionDeconstructed",
+      "kind": "struct",
+      "members": [
+        {
+          "name": "building",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller_crew",
+          "type": "influence::common::types::entity::Entity",
+          "kind": "data"
+        },
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress",
+          "kind": "data"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::construction::construction_deconstruct::ConstructionDeconstruct::Event",
+      "kind": "enum",
+      "variants": [
+        {
+          "name": "ConstructionDeconstructed",
+          "type": "influence::systems::construction::construction_deconstruct::ConstructionDeconstruct::ConstructionDeconstructed",
+          "kind": "nested"
+        }
+      ]
+    }
+  ],
+  "TypeComponent": [
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::mission::Mission",
+      "members": [
+        {
+          "name": "value",
+          "type": "core::felt252"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getMission",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::mission::Mission"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::building::Building",
+      "members": [
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "building_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "planned_at",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getBuilding",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::building::Building"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::building_type::BuildingType",
+      "members": [
+        {
+          "name": "process_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "site_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "site_type",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getBuildingType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::building_type::BuildingType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "cubit::f128::types::fixed::Fixed",
+      "members": [
+        {
+          "name": "mag",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "sign",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "cubit::f64::types::fixed::Fixed",
+      "members": [
+        {
+          "name": "mag",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "sign",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::celestial::Celestial",
+      "members": [
+        {
+          "name": "celestial_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "mass",
+          "type": "cubit::f128::types::fixed::Fixed"
+        },
+        {
+          "name": "radius",
+          "type": "cubit::f64::types::fixed::Fixed"
+        },
+        {
+          "name": "purchase_order",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "scan_status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "scan_finish_time",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "bonuses",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "abundances",
+          "type": "core::felt252"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getCelestial",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::celestial::Celestial"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::control::Control",
+      "members": [
+        {
+          "name": "controller",
+          "type": "influence::common::types::entity::Entity"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getControl",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::control::Control"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::integer::u64>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::integer::u64>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::crew::Crew",
+      "members": [
+        {
+          "name": "delegated_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "roster",
+          "type": "core::array::Span::<core::integer::u64>"
+        },
+        {
+          "name": "last_fed",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "ready_at",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "action_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "action_target",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "action_round",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "action_weight",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "action_strategy",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getCrew",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::crew::Crew"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::crewmate::Crewmate",
+      "members": [
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "collection",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "class",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "title",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "appearance",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "cosmetic",
+          "type": "core::array::Span::<core::integer::u64>"
+        },
+        {
+          "name": "impactful",
+          "type": "core::array::Span::<core::integer::u64>"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getCrewmate",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::crewmate::Crewmate"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::inventory_item::InventoryItem",
+      "members": [
+        {
+          "name": "product",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<influence::common::types::inventory_item::InventoryItem>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::delivery::Delivery",
+      "members": [
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "origin_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "dest",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "dest_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "contents",
+          "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getDelivery",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::delivery::Delivery"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "core::integer::u256",
+      "members": [
+        {
+          "name": "low",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "high",
+          "type": "core::integer::u128"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::prospecting_campaign::ProspectingCampaign",
+      "members": [
+        {
+          "name": "crew",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "creator",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "context",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "quality_bps",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "verifier",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "count",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "pending",
+          "type": "core::bool"
+        },
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "replaceable_at",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "claim",
+          "type": "influence::common::types::entity::Entity"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getProspectingCampaign",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::prospecting_campaign::ProspectingCampaign"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::prospecting_core::ProspectingCore",
+      "members": [
+        {
+          "name": "commitment",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "meta",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "blocked_approaches",
+          "type": "core::integer::u16"
+        },
+        {
+          "name": "randomness",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "target_block",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "ready_at",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getProspectingCore",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::prospecting_core::ProspectingCore"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::prospecting_origin::ProspectingOrigin",
+      "members": [
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getProspectingOrigin",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::prospecting_origin::ProspectingOrigin"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::extractor_slots::ExtractorSlots",
+      "members": [
+        {
+          "name": "count",
+          "type": "core::integer::u8"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getExtractorSlots",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::extractor_slots::ExtractorSlots"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::claim::Claim",
+      "members": [
+        {
+          "name": "rules_version",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "rate_bps",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "reference_abundance_ppm",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "campaign_id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getClaim",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::claim::Claim"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::deposit::Deposit",
+      "members": [
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "resource",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "initial_yield",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "remaining_yield",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "yield_eff",
+          "type": "cubit::f64::types::fixed::Fixed"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getDeposit",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::deposit::Deposit"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::dock::Dock",
+      "members": [
+        {
+          "name": "dock_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "docked_ships",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "ready_at",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getDock",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::dock::Dock"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::dock_type::DockType",
+      "members": [
+        {
+          "name": "cap",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "delay",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getDockType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::dock_type::DockType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::dry_dock::DryDock",
+      "members": [
+        {
+          "name": "dry_dock_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "output_ship",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getDryDock",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::dry_dock::DryDock"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::dry_dock_type::DryDockType",
+      "members": [
+        {
+          "name": "max_mass",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "max_volume",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getDryDockType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::dry_dock_type::DryDockType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::exchange::Exchange",
+      "members": [
+        {
+          "name": "exchange_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "maker_fee",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "taker_fee",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "orders",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "allowed_products",
+          "type": "core::array::Span::<core::integer::u64>"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getExchange",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::exchange::Exchange"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::exchange_type::ExchangeType",
+      "members": [
+        {
+          "name": "allowed_products",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getExchangeType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::exchange_type::ExchangeType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::extractor::Extractor",
+      "members": [
+        {
+          "name": "extractor_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "output_product",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "yield",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "destination",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "destination_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getExtractor",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::extractor::Extractor"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::inventory::Inventory",
+      "members": [
+        {
+          "name": "inventory_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "mass",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "volume",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "reserved_mass",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "reserved_volume",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "contents",
+          "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+        },
+        {
+          "name": "reservations",
+          "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getInventory",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::inventory::Inventory"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::inventory_type::InventoryType",
+      "members": [
+        {
+          "name": "mass",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "volume",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "modifiable",
+          "type": "core::bool"
+        },
+        {
+          "name": "products",
+          "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getInventoryType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::inventory_type::InventoryType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::location::Location",
+      "members": [
+        {
+          "name": "location",
+          "type": "influence::common::types::entity::Entity"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getLocation",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::location::Location"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::modifier_type::ModifierType",
+      "members": [
+        {
+          "name": "class",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "dept_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "dept_eff",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "mgmt_eff",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "trait_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "trait_eff",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "further_modified",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getModifierType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::modifier_type::ModifierType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::string::String",
+      "members": [
+        {
+          "name": "value",
+          "type": "core::integer::u256"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::name::Name",
+      "members": [
+        {
+          "name": "name",
+          "type": "influence::common::types::string::String"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getName",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::name::Name"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::orbit::Orbit",
+      "members": [
+        {
+          "name": "a",
+          "type": "cubit::f128::types::fixed::Fixed"
+        },
+        {
+          "name": "ecc",
+          "type": "cubit::f128::types::fixed::Fixed"
+        },
+        {
+          "name": "inc",
+          "type": "cubit::f128::types::fixed::Fixed"
+        },
+        {
+          "name": "raan",
+          "type": "cubit::f128::types::fixed::Fixed"
+        },
+        {
+          "name": "argp",
+          "type": "cubit::f128::types::fixed::Fixed"
+        },
+        {
+          "name": "m",
+          "type": "cubit::f128::types::fixed::Fixed"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getOrbit",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::orbit::Orbit"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::order::Order",
+      "members": [
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "amount",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "valid_time",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "maker_fee",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getOrder",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::order::Order"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::private_sale::PrivateSale",
+      "members": [
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getPrivateSale",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::private_sale::PrivateSale"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::process_type::ProcessType",
+      "members": [
+        {
+          "name": "setup_time",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "recipe_time",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "batched",
+          "type": "core::bool"
+        },
+        {
+          "name": "processor_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "inputs",
+          "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+        },
+        {
+          "name": "outputs",
+          "type": "core::array::Span::<influence::common::types::inventory_item::InventoryItem>"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getProcessType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::process_type::ProcessType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::processor::Processor",
+      "members": [
+        {
+          "name": "processor_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "running_process",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "output_product",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "recipes",
+          "type": "cubit::f64::types::fixed::Fixed"
+        },
+        {
+          "name": "secondary_eff",
+          "type": "cubit::f64::types::fixed::Fixed"
+        },
+        {
+          "name": "destination",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "destination_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "finish_time",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getProcessor",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::processor::Processor"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::product_type::ProductType",
+      "members": [
+        {
+          "name": "mass",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "volume",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getProductType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::product_type::ProductType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::ship::Ship",
+      "members": [
+        {
+          "name": "ship_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "ready_at",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "variant",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "emergency_at",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "transit_origin",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "transit_departure",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "transit_destination",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "transit_arrival",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getShip",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::ship::Ship"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::ship_type::ShipType",
+      "members": [
+        {
+          "name": "cargo_inventory_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "cargo_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "docking",
+          "type": "core::bool"
+        },
+        {
+          "name": "exhaust_velocity",
+          "type": "cubit::f128::types::fixed::Fixed"
+        },
+        {
+          "name": "hull_mass",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "landing",
+          "type": "core::bool"
+        },
+        {
+          "name": "process_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "propellant_emergency_divisor",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "propellant_inventory_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "propellant_slot",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "propellant_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "station_type",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getShipType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::ship_type::ShipType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::ship_variant_type::ShipVariantType",
+      "members": [
+        {
+          "name": "ship_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "exhaust_velocity_modifier",
+          "type": "cubit::f64::types::fixed::Fixed"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getShipVariantType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::ship_variant_type::ShipVariantType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::station::Station",
+      "members": [
+        {
+          "name": "station_type",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "population",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getStation",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::station::Station"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::station_type::StationType",
+      "members": [
+        {
+          "name": "cap",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "recruitment",
+          "type": "core::bool"
+        },
+        {
+          "name": "efficiency",
+          "type": "cubit::f64::types::fixed::Fixed"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getStationType",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::station_type::StationType"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::unique::Unique",
+      "members": [
+        {
+          "name": "unique",
+          "type": "core::felt252"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getUnique",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::unique::Unique"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::policies::contract::ContractPolicy",
+      "members": [
+        {
+          "name": "address",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getContractPolicy",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::policies::contract::ContractPolicy"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::policies::prepaid::PrepaidPolicy",
+      "members": [
+        {
+          "name": "rate",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "initial_term",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "notice_period",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getPrepaidPolicy",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::policies::prepaid::PrepaidPolicy"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::policies::public::PublicPolicy",
+      "members": [
+        {
+          "name": "public",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getPublicPolicy",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::policies::public::PublicPolicy"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::agreements::contract::ContractAgreement",
+      "members": [
+        {
+          "name": "address",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getContractAgreement",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::agreements::contract::ContractAgreement"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::agreements::prepaid::PrepaidAgreement",
+      "members": [
+        {
+          "name": "rate",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "initial_term",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "notice_period",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "start_time",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "end_time",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "notice_time",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getPrepaidAgreement",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::agreements::prepaid::PrepaidAgreement"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::agreements::prepaid_auction::PrepaidAgreementAuction",
+      "members": [
+        {
+          "name": "status",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "start_time",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getPrepaidAgreementAuction",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::agreements::prepaid_auction::PrepaidAgreementAuction"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::agreements::prepaid_auction::PrepaidAgreementAuctionSettings",
+      "members": [
+        {
+          "name": "mode",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "grace_period",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getPrepaidAgreementAuctionSettings",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::agreements::prepaid_auction::PrepaidAgreementAuctionSettings"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "struct",
+      "name": "influence::components::agreements::whitelist::WhitelistAgreement",
+      "members": [
+        {
+          "name": "whitelisted",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "getWhitelistAgreement",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "influence::components::agreements::whitelist::WhitelistAgreement"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::type_component::TypeComponent::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "ReadComponent": [
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::read_component::ReadComponent::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "WriteComponent": [
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "run",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "path",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "data",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::write_component::WriteComponent::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "MissionObserver": [
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "before",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "data",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "targets",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "state_mutability": "external"
+    },
+    {
+      "type": "function",
+      "name": "after",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "data",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "snapshot",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "result",
+          "type": "core::array::Span::<core::felt252>"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::missions::observer::MissionObserver::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "StarterMissionCampaign": [
+    {
+      "type": "struct",
+      "name": "influence::common::types::entity::Entity",
+      "members": [
+        {
+          "name": "label",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "id",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::missions::Assignment",
+      "members": [
+        {
+          "name": "campaign",
+          "type": "core::felt252"
+        },
+        {
+          "name": "subject",
+          "type": "influence::common::types::entity::Entity"
+        },
+        {
+          "name": "mission",
+          "type": "core::integer::u32"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "influence::common::types::context::Context",
+      "members": [
+        {
+          "name": "caller",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "now",
+          "type": "core::integer::u64"
+        },
+        {
+          "name": "payment_to",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u64"
+        }
+      ]
+    },
+    {
+      "type": "function",
+      "name": "evaluate",
+      "inputs": [
+        {
+          "name": "assignment",
+          "type": "influence::common::missions::Assignment"
+        },
+        {
+          "name": "operation",
+          "type": "core::integer::u32"
+        },
+        {
+          "name": "action_name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "args",
+          "type": "core::array::Span::<core::felt252>"
+        },
+        {
+          "name": "context",
+          "type": "influence::common::types::context::Context"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "(core::starknet::contract_address::ContractAddress, core::integer::u128)"
+        }
+      ],
+      "state_mutability": "external"
+    },
+    {
+      "type": "event",
+      "name": "influence::systems::missions::starter::StarterMissionCampaign::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ],
+  "ProspectingVerifier": [
+    {
+      "type": "impl",
+      "name": "Verifier",
+      "interface_name": "prospecting_verifier::IProspectingVerifier"
+    },
+    {
+      "type": "struct",
+      "name": "core::integer::u256",
+      "members": [
+        {
+          "name": "low",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "high",
+          "type": "core::integer::u128"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::integer::u256>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::integer::u256>"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::felt252>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::felt252>"
+        }
+      ]
+    },
+    {
+      "type": "enum",
+      "name": "core::bool",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "type": "interface",
+      "name": "prospecting_verifier::IProspectingVerifier",
+      "items": [
+        {
+          "type": "function",
+          "name": "rules",
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "core::felt252"
+            }
+          ],
+          "state_mutability": "view"
+        },
+        {
+          "type": "function",
+          "name": "verify",
+          "inputs": [
+            {
+              "name": "samples",
+              "type": "core::integer::u32"
+            },
+            {
+              "name": "statement",
+              "type": "core::array::Span::<core::integer::u256>"
+            },
+            {
+              "name": "proof",
+              "type": "core::array::Span::<core::felt252>"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "core::bool"
+            }
+          ],
+          "state_mutability": "view"
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "core::array::Span::<core::starknet::contract_address::ContractAddress>",
+      "members": [
+        {
+          "name": "snapshot",
+          "type": "@core::array::Array::<core::starknet::contract_address::ContractAddress>"
+        }
+      ]
+    },
+    {
+      "type": "constructor",
+      "name": "constructor",
+      "inputs": [
+        {
+          "name": "verifiers",
+          "type": "core::array::Span::<core::starknet::contract_address::ContractAddress>"
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "prospecting_verifier::ProspectingVerifier::Event",
+      "kind": "enum",
+      "variants": []
+    }
+  ]
+}
